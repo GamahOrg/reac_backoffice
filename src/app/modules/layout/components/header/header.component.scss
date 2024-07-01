@@ -1,0 +1,8 @@
+.main-header {
+    background: linear-gradient(0deg, #0175bc, #0175bc), linear-gradient(80.18deg, #0175bc 58.22%, #03598d 118.85%);
+    border-radius: 6px;
+
+    @media (min-width: 992px) {
+        margin-inline-end: 28px;
+    }
+}

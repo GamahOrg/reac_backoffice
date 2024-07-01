@@ -1,0 +1,412 @@
+:root {
+    --white: #fff;
+    --black: #000;
+    --brown: #61686b;
+    --bs-primary: #0075bc;
+    --primary: #0075bc;
+    --bs-success: #61a60e;
+    --success: #61a60e;
+    --danger: #be4949;
+    --beige: #f8f9fb;
+    --beige2: #f4f5f9;
+}
+
+@font-face {
+    font-family: "Readex Pro Light";
+    src: url("../fonts/ReadexPro-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Readex Pro";
+    src: url("../fonts/ReadexPro-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Readex Pro Medium";
+    src: url("../fonts/ReadexPro-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Readex Pro SemiBold";
+    src: url("../fonts/ReadexPro-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Readex Pro";
+    src: url("../fonts/ReadexPro-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    @media (min-width: 1450px) and (-webkit-max-device-pixel-ratio: 1) {
+    }
+    src: url("../fonts/material-icons.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Material Icons Outlined";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/material-symbols-outlined.woff2") format("woff2");
+}
+
+.material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: inherit;
+    // font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    direction: ltr;
+    font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+
+    // &.small {
+    //     font-size: 1rem;
+    // }
+}
+
+.material-icons-outlined {
+    font-family: "Material Icons Outlined";
+    font-weight: normal;
+    font-style: normal;
+    font-size: inherit;
+    // font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+
+    // &.small {
+    //     font-size: 1rem;
+    // }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    // outline: 1px solid red;
+}
+
+html {
+    background: none !important;
+    border: none;
+}
+
+body {
+    font-size: 16px !important;
+    font-family: "Readex Pro", sans-serif !important;
+
+    text-align: start;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+
+    @media (max-width: 991px) {
+        font-size: clamp(0.75rem, 3.5vw, 1rem) !important;
+    }
+
+    [lang="ar"] & {
+        direction: rtl !important;
+    }
+
+    &[data-bs-theme="dark"] {
+        &::-webkit-scrollbar-track,
+        *::-webkit-scrollbar-track {
+            background-color: #ddd;
+            box-shadow: none;
+        }
+
+        &::-webkit-scrollbar-thumb,
+        *::-webkit-scrollbar-thumb {
+            background-color: #919191;
+
+            &:hover {
+                background-color: #6b6b6b;
+            }
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    width: 0.63rem;
+    height: 0.5rem;
+
+    @media (max-width: 767px) {
+        width: 0.5rem;
+    }
+}
+
+::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+    background-color: rgba(#024771, 0.5);
+    box-shadow: 0 2px 4px rgba(#024771, 0.5);
+}
+
+::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(#024771, 0.5);
+    border-radius: 10px;
+
+    &:hover {
+        background-color: rgba(#024771, 0.6);
+    }
+}
+
+img {
+    &[src*=".svg"] {
+        // max-width: 100%;
+
+        &:not([height]) {
+            height: auto;
+        }
+    }
+
+    &:not([src*=".svg"]) {
+        object-fit: cover;
+    }
+
+    // @media (max-width: 991px) {
+    //     max-width: 100% !important;
+    // }
+}
+
+p,
+h6 {
+    margin-bottom: 0;
+    line-height: 1.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    outline: none !important;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+video,
+input {
+    outline: 0 !important;
+}
+
+button,
+[class*="btn"],
+.btn {
+    outline: 0 !important;
+
+    &:hover {
+        filter: saturate(1.2);
+        opacity: 1 !important;
+    }
+}
+
+label.required {
+    position: relative;
+
+    &::after {
+        content: "*";
+        position: absolute;
+        bottom: 50%;
+        transform: translateY(50%);
+        inset-inline-end: -8px;
+        color: $primary;
+    }
+}
+
+details {
+    position: relative;
+    width: 100%;
+    outline: 0 !important;
+
+    &::after {
+        content: "\00276E";
+        position: absolute;
+        top: 0;
+        inset-inline-end: 0;
+        transform: rotate(90deg);
+        z-index: 10;
+    }
+
+    &[open]::after {
+        transform: rotate(270deg);
+    }
+
+    &:not([open]) {
+        summary::before {
+            content: none;
+        }
+    }
+
+    summary {
+        position: relative;
+        outline: 0 !important;
+        cursor: pointer;
+
+        &::marker {
+            content: none;
+        }
+    }
+}
+
+.main-search {
+    &::placeholder {
+        font-size: 0.75rem;
+    }
+}
+
+/******** mat override ********/
+.mat-typography {
+    &,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font: unset;
+        margin: unset;
+        letter-spacing: unset;
+    }
+}
+
+/******** components ********/
+.main-content {
+    background-color: #f6f6f6;
+    height: 100vh;
+
+    @media (min-width: 992px) {
+        padding: 18px 0 54px;
+        padding-inline-start: 28px;
+
+        border-start-start-radius: 30px;
+        border-end-start-radius: 30px;
+    }
+
+    main {
+        margin-block: 20px 50px;
+
+        @media (min-width: 992px) {
+            height: calc(100vh - 110px);
+            overflow-y: auto;
+            margin-inline-end: 20px;
+            padding-inline-end: 8px;
+            // direction: ltr;
+        }
+
+        @media (max-width: 991px) {
+            background-color: #f6f6f6;
+            padding: 0 5vw 50px;
+        }
+    }
+
+    * {
+        [lang="ar"] & {
+            direction: rtl;
+        }
+    }
+}
+
+.main-footer {
+    background-color: $white;
+    box-shadow: 0 -12px 10px rgba(#000, 8%);
+    border-end-start-radius: 30px;
+
+    padding: 24px;
+    padding-inline-start: 30px;
+    margin-top: 100px;
+
+    @media (max-width: 991px) {
+        padding: 24px 12px;
+    }
+
+    .btn {
+        padding-inline: 1.5rem;
+
+        @media (max-width: 767px) {
+            padding-inline: 0.9rem;
+        }
+    }
+}
+
+.form-wrapper {
+    background-color: $white;
+    padding: 24px;
+    border-radius: 8px;
+    margin-top: 14px;
+    // margin-bottom: 120px;
+
+    .form-header {
+        padding-bottom: 24px;
+        border-bottom: 1px solid #eee;
+        font-size: 1.13rem;
+        font-weight: 700;
+    }
+}
+
+.pagination {
+    justify-content: flex-end;
+    gap: 4px;
+
+    .page-link {
+        border-radius: 6px;
+        border: none;
+
+        background-color: #eee;
+        color: #6f717c;
+
+        font-size: 12px;
+        font-weight: 500;
+        font-family: "Readex Pro Medium";
+    }
+
+    .page-item {
+        &.active {
+            .page-link {
+                color: $white;
+                background: linear-gradient(0deg, #0175bc, #0175bc),
+                    linear-gradient(80.18deg, #0175bc 58.22%, #03598d 118.85%);
+            }
+        }
+    }
+}

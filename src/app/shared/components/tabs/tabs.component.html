@@ -1,0 +1,36 @@
+<div class="d-flex flex-column h-100" [ngClass]="{'verticalTabs': tabContent.verticalTabs}">
+    <mat-tab-group
+      mat-stretch-tabs="false"
+      mat-align-tabs="start"
+      class="flex-fill {{tabClassName}}"
+      (selectedTabChange)="updateActiveTabIndex($event);"
+      [selectedIndex]="tabContent.activeTabIndex">
+        <ng-container *ngFor="let component of tabContent.tabsComponentList; index as i">
+            <mat-tab [disabled]="component.disabled" *ngIf="component.isVisible">
+                <ng-template mat-tab-label class="collapseTitle">
+                    <div class="tab-title flex-y-row" [class.active]="tabContent.activeTabIndex == i">
+                        <span *ngIf="component.icon" class="icon">
+                            <i class="material-icons-outlined">{{component.icon}}</i>
+                        </span>
+                        <span class="number flex-center">{{i + 1}}</span>
+                        {{component.title}}
+                    </div>
+                </ng-template>
+                <ng-container *ngIf="tabContent.activeTabIndex == i && component.Component">
+                    <ng-container *ngComponentOutlet="component.Component"></ng-container>
+                </ng-container>
+            </mat-tab>
+        </ng-container>
+    </mat-tab-group>
+</div>
+
+<!-- <footer class="main-footer flex-between flex-row gap-0">
+    <button class="btn small fw-6 border" (click)="previousTab()">{{translations.actions.goBack| translate}}</button>
+    <div class="flex-y-row gap-0">
+        <button class="btn small fw-6 text-primary" (click)="openDraftModal()">{{translations.actions.saveAsDraft| translate}}</button>
+        <button class="btn small fw-6 btn-primary" (click)="isLastTab() ? openSuccessModal() : nextTab()">
+            {{ isLastTab() ? (translations.actions.send | translate) : (translations.actions.next | translate) }}
+        </button>
+    </div>
+</footer> -->
+

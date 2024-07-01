@@ -1,0 +1,17 @@
+.count {
+    color: var(--white);
+    background-color: var(--danger);
+
+    position: absolute;
+    top: 4px;
+    inset-inline-start: 5px;
+
+    border-radius: 50%;
+
+    font-size: 13px;
+    font-weight: 600;
+    font-family: "Readex Pro SemiBold";
+
+    width: 18px;
+    height: 18px;
+}
