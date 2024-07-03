@@ -1,5 +1,6 @@
 stages:
   - build
+  - test
   - deploy
 
 variables:
@@ -13,7 +14,7 @@ variables:
   IMAGE_TAG_NAME: ${PRE_IMAGE_TAG_NAME}/${APPLICATION_NAME}:${CI_COMMIT_SHORT_SHA}-${CI_COMMIT_BRANCH}
 
   # For gitops deployment
-  FILE_PATH: applications/${APPLICATION_NAME}/deployment.yaml
+  FILE_PATH: applications/${APPLICATION_NAME}/environments/${ENVIRONMENT}/deployment.yaml
   TAG: "$IMAGE_TAG_NAME"
   TAG_PATH: .spec.template.spec.containers[0].image
 
@@ -22,3 +23,13 @@ include:
     file: 'pipelines/Kaniko.gitlab-ci.yml'
   - project: 'rega-softwares/rega-devops'
     file: 'pipelines/yaml-updater.yaml'
+
+test:
+  stage: test
+  needs:
+    - job: build-and-push
+      artifacts: true
+  script:
+    - echo "This job tests something."
+    - echo "${BUILD_VARIABLE}"
+    - echo "${ENVIRONMENT}"
