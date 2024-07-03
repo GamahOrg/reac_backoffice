@@ -1,0 +1,54 @@
+:host {
+    display: block;
+}
+
+.drag-drop {
+    position: relative;
+    padding: 8px 12px;
+    padding-inline-start: 2.7rem;
+
+    border: 1px dashed var(--primary) !important;
+    border-radius: 0.5rem;
+
+    background: url("/assets/images/icons/upload.svg") no-repeat 2% center;
+    background-color: #f4f7fb !important;
+
+    :host & {
+        [lang="ar"] & {
+            background: url("/assets/images/icons/upload.svg") no-repeat 98% center;
+        }
+    }
+
+    input {
+        border: none !important;
+        cursor: pointer;
+
+        font-weight: 600;
+        font-family: "Readex Pro SemiBold";
+        font-size: 12px;
+
+        width: 0;
+
+        display: flex;
+        order: 4;
+
+        @media (max-width: 991px) {
+            padding-inline: 0 64px;
+        }
+
+        &::-webkit-file-upload-button {
+            background-color: transparent;
+            color: transparent;
+            border: none;
+            text-align: center;
+        }
+
+        &.active {
+            width: auto;
+
+            & ~ p {
+                display: none;
+            }
+        }
+    }
+}

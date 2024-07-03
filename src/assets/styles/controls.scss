@@ -1,0 +1,61 @@
+.form-control.en,
+[type="email"] {
+    html:lang(ar) & {
+        direction: ltr;
+        text-align: end;
+    }
+}
+
+input[type="radio"] {
+    label & {
+        display: none;
+
+        & ~ span {
+            opacity: 0.7;
+
+            &::before {
+                content: url("/assets/images/icons/radio-white.svg");
+                vertical-align: sub;
+                margin-inline-end: 0.25rem;
+            }
+        }
+
+        &:checked {
+            & ~ span::before {
+                content: url("/assets/images/icons/radio.svg");
+            }
+            & ~ span {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@mixin action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background: #e9f5fc;
+    color: var(--info);
+
+    padding: 9px 1.5rem;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.add-btn {
+    @include action-btn();
+
+    background: #e9f5fc;
+    color: var(--info);
+}
+
+.remove-btn {
+    @include action-btn();
+
+    background: #f5eae7;
+    color: var(--danger);
+}

@@ -1,0 +1,103 @@
+<div class="grid-3 mt-5">
+
+    <div>
+        <h6 class="small fw-5">رقم عقد الإيجار</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/hashtag.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.contractKey || '--'}}</h6>
+        </div>
+    </div>
+
+    <div>
+        <h6 class="small fw-5">رقم النسخة</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/hashtag.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.versionNumber || '--'}}</h6>
+        </div>
+    </div>
+
+    <div>
+        <h6 class="small fw-5">عقد إيجار محل الدعوى</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
+            <h6 class="small op-7">
+                {{
+                    contract?.leaseContractFile 
+                        ? (contract?.leaseContractFile?.fileDescription + '.' + contract?.leaseContractFile?.fileType)
+                        : '--'
+                }}
+            </h6>
+            @if (contract?.leaseContractFile?.filePath) {
+                <a [href]="contract?.leaseContractFile?.filePath" class="ms-4" download>
+                    <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
+                </a>
+            }
+        </div>
+    </div>
+
+    <div>
+        <h6 class="small fw-5">مقدم الدعوى</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{applicantCitizen?.fullName || '--'}}
+            </h6>
+        </div>
+    </div> 
+    
+    <div>
+        <h6 class="small fw-5">صفة المدعي</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.secondPartyCapacity || '--'}}</h6>
+        </div>
+    </div>  
+
+    <div>
+        <h6 class="small fw-5">اسم المدعي</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.secondPartyName || '--'}}</h6>
+        </div>
+    </div> 
+    
+    <div>
+        <h6 class="small fw-5">رقم الهوية</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/hashtag.svg" alt="icon">
+            <h6 class="small op-7">{{applicantCitizen?.identityNumber || '--'}}</h6>
+        </div>
+    </div>  
+
+    <div>
+        <h6 class="small fw-5">الجنسية</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+            <h6 class="small op-7">{{applicantCitizen?.identityType?.identityType || '--'}}</h6>
+        </div>
+    </div> 
+
+    <div>
+        <h6 class="small fw-5">رقم الجوال</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+            <h6 class="small op-7">{{applicantCitizen?.mobile || '--'}}</h6>
+        </div>
+    </div>
+
+    <div>
+        <h6 class="small fw-5">تاريخ الميلاد</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/calendar.svg" alt="icon">
+            <h6 class="small op-7">{{(applicantCitizen?.birthDate | date: 'dd-MM-yyy') || '--'}}</h6>
+        </div>
+    </div>  
+    
+    <div>
+        <h6 class="small fw-5">البريد الإلكتروني</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+            <h6 class="small op-7">{{applicantCitizen?.email || '--'}}</h6>
+        </div>
+    </div> 
+</div>

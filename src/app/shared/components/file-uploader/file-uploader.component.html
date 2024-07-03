@@ -1,0 +1,83 @@
+<div class="drag-drop">
+  <div class="upload-text"></div>
+
+ <div class="flex-between">
+   <div class="upload-button">
+     <ng-container *ngIf="data.multiple; else singleInputFile">
+       <input type="file"
+              hidden
+              #InputMultipleFiles
+              multiple
+              (change)="selectFiles($event)" />
+       <button type="button"
+               class="btn text-primary"
+               (click)="InputMultipleFiles.click()">
+         {{data.buttonText?data.buttonText: (translations.actions.selectFile| translate) }}
+       </button>
+     </ng-container>
+     <ng-template #singleInputFile>
+       <input type="file"
+              hidden
+              #inputSingleFile
+              accept="{{data.allowedExtensions?.join(',')}}"
+              (change)="selectFiles($event)" />
+       <button type="button"
+               class="btn text-primary"
+               (click)="inputSingleFile.click()">
+         {{data.buttonText?data.buttonText: (translations.actions.selectFile| translate)}}
+       </button>
+     </ng-template>
+   </div>
+
+    <div>
+      <button class="btn btn-primary mx-2"
+              [disabled]="!selectedFiles"
+              (click)="upload()">
+        {{data.uploadAllLabel? data.uploadAllLabel : (translations.actions.uploadAll | translate)}}
+      </button>
+
+      <button class="btn btn-outline-primary"
+              [disabled]="!selectedFiles"
+              (click)="deleteAll()">
+        {{data.removeAllLabel?data.removeAllLabel : (translations.actions.clearAll | translate)}}
+      </button>
+  </div>
+ </div>
+
+  <div *ngFor="let fileName of selectedFilesName">
+    {{fileName}}
+  </div>
+
+  <div *ngIf="currentFile"
+       class="progress my-3">
+    <div class="progress-bar progress-bar-striped bg-success progress-bar-animated"
+         role="progressbar"
+         attr.aria-valuenow="{{ progress }}"
+         aria-valuemin="0"
+         aria-valuemax="100"
+         [ngStyle]="{ width: progress + '%' }">
+      {{ progress }}%
+    </div>
+  </div>
+
+  <div *ngIf="message"
+       class="alert alert-secondary"
+       role="alert">
+    {{ message }}
+  </div>
+
+  <div *ngIf="extensionErrorMessage"
+       class="alert alert-secondary"
+       role="alert">
+    {{ extensionErrorMessage }}
+  </div>
+</div>
+
+<div class="flex-between flex-row mt-1">
+  <p class="op-6 fw-6 v-small">
+      {{translations.lawsuits.createEditLawsuit.supportedFormats| translate}}: pdf, docx, excel, png, jpg
+  </p>
+  <p class="op-6 fw-6 v-small">
+      {{translations.lawsuits.createEditLawsuit.maximumSize| translate}}: 5 {{translations.lawsuits.createEditLawsuit.megabytes| translate}}
+  </p>
+</div>

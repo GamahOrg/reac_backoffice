@@ -1,0 +1,7 @@
+.main-layout {
+    @media (min-width: 992px) {
+        background-color: #137ec1;
+        display: grid;
+        grid-template-columns: auto 1fr;
+    }
+}
