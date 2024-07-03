@@ -8,7 +8,7 @@ variables:
   PRE_IMAGE_TAG_NAME: ${HARBOR_HOST}/${HARBOR_PROJECT}/${CI_PROJECT_NAME}
 
   # For docker image build
-  APPLICATION_NAME: reac-frontend-portal
+  APPLICATION_NAME: reac-backoffice
   BUILD_CONTEXT: /
   IMAGE_TAG_NAME: ${PRE_IMAGE_TAG_NAME}/${APPLICATION_NAME}:${CI_COMMIT_SHORT_SHA}-${CI_COMMIT_BRANCH}
 
@@ -20,5 +20,5 @@ variables:
 include:
   - project: 'rega-softwares/rega-devops'
     file: 'pipelines/Kaniko.gitlab-ci.yml'
-  # - project: 'rega-softwares/rega-devops'
-  #   file: 'pipelines/yaml-updater.yaml'
+  - project: 'rega-softwares/rega-devops'
+    file: 'pipelines/yaml-updater.yaml'
