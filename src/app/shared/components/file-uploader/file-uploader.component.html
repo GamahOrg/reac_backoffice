@@ -1,33 +1,33 @@
 <div class="drag-drop">
   <div class="upload-text"></div>
 
- <div class="flex-between">
-   <div class="upload-button">
-     <ng-container *ngIf="data.multiple; else singleInputFile">
-       <input type="file"
-              hidden
-              #InputMultipleFiles
-              multiple
-              (change)="selectFiles($event)" />
-       <button type="button"
-               class="btn text-primary"
-               (click)="InputMultipleFiles.click()">
-         {{data.buttonText?data.buttonText: (translations.actions.selectFile| translate) }}
-       </button>
-     </ng-container>
-     <ng-template #singleInputFile>
-       <input type="file"
-              hidden
-              #inputSingleFile
-              accept="{{data.allowedExtensions?.join(',')}}"
-              (change)="selectFiles($event)" />
-       <button type="button"
-               class="btn text-primary"
-               (click)="inputSingleFile.click()">
-         {{data.buttonText?data.buttonText: (translations.actions.selectFile| translate)}}
-       </button>
-     </ng-template>
-   </div>
+   <div class="flex-between">
+     <div class="upload-button">
+       <ng-container *ngIf="data.multiple; else singleInputFile">
+         <input type="file"
+                hidden
+                #InputMultipleFiles
+                multiple
+                (change)="selectFiles($event)" />
+         <button type="button"
+                 class="btn select-btn text-primary v-small fw-6"
+                 (click)="InputMultipleFiles.click()">
+           {{data.buttonText?data.buttonText: (translations.actions.selectFile| translate) }}
+         </button>
+       </ng-container>
+       <ng-template #singleInputFile>
+         <input type="file"
+                hidden
+                #inputSingleFile
+                accept="{{data.allowedExtensions?.join(',')}}"
+                (change)="selectFiles($event)" />
+         <button type="button"
+                 class="btn select-btn text-primary v-small fw-6"
+                 (click)="inputSingleFile.click()">
+           {{data.buttonText?data.buttonText: (translations.actions.selectFile| translate)}}
+         </button>
+       </ng-template>
+     </div>
 
     <div>
       <button class="btn btn-primary mx-2"
@@ -60,17 +60,17 @@
     </div>
   </div>
 
-  <div *ngIf="message"
-       class="alert alert-secondary"
-       role="alert">
-    {{ message }}
-  </div>
+    <div *ngIf="message"
+        class="alert alert-success text-success mb-0 py-2 small"
+        role="alert">
+      {{ message }}
+    </div>
 
-  <div *ngIf="extensionErrorMessage"
-       class="alert alert-secondary"
-       role="alert">
-    {{ extensionErrorMessage }}
-  </div>
+    <div *ngIf="extensionErrorMessage"
+        class="alert alert-success text-success mb-0 py-2 small"
+        role="alert">
+      {{ extensionErrorMessage }}
+    </div>
 </div>
 
 <div class="flex-between flex-row mt-1">

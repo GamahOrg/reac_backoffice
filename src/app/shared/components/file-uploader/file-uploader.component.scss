@@ -5,18 +5,21 @@
 .drag-drop {
     position: relative;
     padding: 8px 12px;
-    padding-inline-start: 2.7rem;
 
     border: 1px dashed var(--primary) !important;
     border-radius: 0.5rem;
 
-    background: url("/assets/images/icons/upload.svg") no-repeat 2% center;
+    background: url("/assets/images/icons/upload.svg") no-repeat 2% 10px;
     background-color: #f4f7fb !important;
 
     :host & {
         [lang="ar"] & {
-            background: url("/assets/images/icons/upload.svg") no-repeat 98% center;
+            background: url("/assets/images/icons/upload.svg") no-repeat 98% 10px;
         }
+    }
+
+    .select-btn {
+        margin-inline-start: 2rem;
     }
 
     input {

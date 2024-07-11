@@ -57,6 +57,15 @@ a {
     html:lang(ar) & {
         background-position: left 0.75rem center;
     }
+
+    &.is-invalid {
+        background-position-x: calc(100% - 30px), calc(100% - 5px) !important;
+
+        [lang="ar"] & {
+            background-position-x: 30px, 5px !important;
+            padding-inline-start: 12px !important;
+        }
+    }
 }
 
 .form-control {
@@ -69,6 +78,17 @@ a {
 
         body:lang(ar) & {
             background-position-x: 98.5%;
+        }
+    }
+
+    &.is-invalid {
+        [lang="ar"] & {
+            background-position-x: 2%;
+            padding-inline-start: 12px;
+        }
+
+        &[type="date"] {
+            padding-inline-end: clamp(2rem, 7vw, 3rem);
         }
     }
 }
