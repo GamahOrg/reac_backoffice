@@ -26,6 +26,7 @@ import { LawsuitEventsComponent } from './components/lawsuit-events/lawsuit-even
 import { LawsuitReeditReasonComponent } from './components/lawsuit-reedit-reason/lawsuit-reedit-reason.component';
 import { LawsuitReviewComponent } from './components/lawsuit-review/lawsuit-review.component';
 import { LawsuitReviewService } from './services/lawsuit-review/lawsuit-review.service';
+import { ReasonReturnLawsuitComponent } from './components/reason-return-lawsuit/reason-return-lawsuit.component';
 
 @NgModule({
     declarations: [
@@ -58,7 +59,8 @@ import { LawsuitReviewService } from './services/lawsuit-review/lawsuit-review.s
         PaginationComponent,
         BreadcrumbsComponent,
         AccordionComponent,
-        AngularMaterialModule
+        AngularMaterialModule,
+        ReasonReturnLawsuitComponent
         // NgbPaginationModule,
     ],
     exports: [AccordionComponent]

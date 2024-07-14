@@ -94,10 +94,9 @@
             "lackOfReconciliation": "عدم الصلح",
             "saveAndClose": "حفظ و اغلاق",
             "saveAsDraft": "حفظ كمسودة",
-          
             "Rejected": "مرفوضة",
             "SentBackForEdit": "معاده للتعديل",
-            "Edited":"تم التعديل",
+            "Edited": "تم التعديل",
             "CharterRequestSent": "قيد المشارطة"
         },
         "lawsuitDetails": {
@@ -143,7 +142,9 @@
             "lawsuitRequests": "طلبات الدعوى",
             "attachments": "المرفقات",
             "partiesAgreeToSettleDisputeThroughArbitration": "اتفق الأطراف على تسوية هذا النزاع عن طريق التحكيم لدى المركز السعودي للتحكيم العقاري وفق نظامه وقواعده الإجرائية.",
-            "assignAuditor": "تعيين المدقق"
+            "assignAuditor": "تعيين المدقق",
+            "selectLawsuitAuditorToAssignLawsuit": "اختر مدقق دعاوی (لتعيين الدعوی عليه)",
+            "attachmentsList": "مرفقات"
         },
         "createEditLawsuit": {
             "rentContractData": "بيانات عقد الإيجار",
