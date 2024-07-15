@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    baseURL: "https://reacbackend.asgatech.com",
+    baseURL: "https://dev-reac-api.rega.gov.sa",
     securityURl: ""
 };
