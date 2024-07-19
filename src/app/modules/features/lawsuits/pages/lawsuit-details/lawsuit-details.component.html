@@ -1,5 +1,5 @@
 <app-breadcrumbs></app-breadcrumbs>
-
+<!-- 
 <div class="flex-between py-4 px-7 rounded-2" style="background: #E5F4D4;">
   <h6 class="fw-7 small">{{translations.lawsuits.lawsuitDetails.lawsuitUnderReviewByLawsuitAuditor| translate}}</h6>
   <div style="background: #E5F4D4; padding-block: 2px"
@@ -8,23 +8,22 @@
         <i class="material-icons fs-6"> watch_later </i> قيد التدقيق
     </span>
   </div>
-</div>
+</div> -->
 
-<div class="flex-between py-3 px-6 rounded-2" style="background: #F5EAE7;">
+<!-- <div class="flex-between py-3 px-6 rounded-2" style="background: #F5EAE7;">
     <h6 class="fw-7 text-danger">{{translations.lawsuits.lawsuitDetails.modificationRequestInProgress| translate}}</h6>
     <button type="button" class="btn btn-primary py-2 px-6" (click)="openReasonModal(reasonModal)">
         {{translations.lawsuits.lawsuitDetails.viewModificationRequest| translate}}
     </button>
-</div>
+</div> -->
 
 <div class="flex-end gap-2 w-fit">
   <div style="background: #E6F2FB; padding-block: 2px" class="px-2 rounded-2 w-fit">
-    <!-- <span class="flex-y-row gap-1 small fw-6 text-primary"><i class="material-icons fs-6"> watch_later </i> جديدة</span> -->
     <span class="flex-y-row gap-1 small fw-6 text-primary"><i class="material-icons fs-6"> watch_later </i> {{lawsuitDetails ? (lawsuitStatus[lawsuitDetails.internalStatusId] | translate) : "--"}}</span>
   </div>
-  <button type="button" class="btn btn-primary px-6 py-2" (click)="openAuditorsModal(auditorsModal)">
+  <!-- <button type="button" class="btn btn-primary px-6 py-2" (click)="openAuditorsModal(auditorsModal)">
         {{translations.lawsuits.lawsuitDetails.assignAuditor| translate}}
-    </button>
+    </button> -->
 </div>
 
 <ul class="steps-list">

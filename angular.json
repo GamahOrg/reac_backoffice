@@ -110,7 +110,7 @@
                         },
                         "testing": {
                             "buildTarget": "REAC_BackOfficePortal:build:testing",
-                            "port": 4400
+                            "port": 2010
                         }
                     },
                     "defaultConfiguration": "development"

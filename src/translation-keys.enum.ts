@@ -248,6 +248,44 @@ export namespace translations {
         }
     }
 
+    export enum auth {
+        login = "auth.login",
+        saudiCenterForRealEstateArbitration = "auth.saudiCenterForRealEstateArbitration",
+        about = "auth.about",
+        center = "auth.center",
+        createYourAccountOnRealEstateArbitrationCenter = "auth.createYourAccountOnRealEstateArbitrationCenter",
+        toBenefitFromAllCenterServices = "auth.toBenefitFromAllCenterServices",
+        identityType = "auth.identityType",
+        selectidentityType = "auth.selectidentityType",
+        identityNumber = "auth.identityNumber",
+        enterIdNumber = "auth.enterIdNumber",
+        idExpirationDate = "auth.idExpirationDate",
+        enterIdExpirationDate = "auth.enterIdExpirationDate",
+        hijriBirthDate = "auth.hijriBirthDate",
+        enterHijriBirthDate = "auth.enterHijriBirthDate",
+        gregorianBirthDate = "auth.gregorianBirthDate",
+        enterGregorianBirthDate = "auth.enterGregorianBirthDate",
+        nationalId = "auth.nationalId",
+        gulfId = "auth.gulfId",
+        residencePermit = "auth.residencePermit",
+        email = "auth.email",
+        enterEmail = "auth.enterEmail",
+        reenterEmail = "auth.reenterEmail",
+        reenterEmailAgain = "auth.reenterEmailAgain",
+        phoneNumber = "auth.phoneNumber",
+        password = "auth.password",
+        enterPassword = "auth.enterPassword",
+        confirmPassword = "auth.confirmPassword",
+        reenterPassword = "auth.reenterPassword",
+        register = "auth.register",
+        verify = "auth.verify",
+        enter4DigitCodeSentViaSms = "auth.enter4DigitCodeSentViaSms",
+        sendCode = "auth.sendCode",
+        didNotReceiveSms = "auth.didNotReceiveSms",
+        resendCode = "auth.resendCode",
+        second = "auth.second",
+    }
+    
     export enum formValidationError {
         required = "formValidationError.required"
     }

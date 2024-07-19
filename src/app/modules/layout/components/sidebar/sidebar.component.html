@@ -11,7 +11,19 @@
     </div>
 
     <ul class="items-list">
-        <li class="grid-icon align-items-center side-menu-item justify-content-start w-100 mb-5 active">
+                <ng-container *ngFor="let item of menuItems">
+            <ng-container *ngIf="item">
+                <a
+                  class="side-menu-item ms-4"
+                  [routerLink]="item.url"
+                  [routerLinkActive]="'active'"
+                  [routerLinkActiveOptions]="{ exact: true }">
+                    <img [src]="item.icon" alt="icon" class="link-icon">
+                    <span class="item-text link"> {{ item.title | translate }} </span>
+                </a>
+            </ng-container>
+        </ng-container>
+        <!-- <li class="grid-icon align-items-center side-menu-item justify-content-start w-100 mb-5 active">
             <img src="https://picsum.photos/id/11/1000" width="40" height="40" class="rounded-circle" alt="">
             <span class="text-white fw-3 v-small">{{translations.layout.sidebar.auditor | translate}}</span>
             <span class="text-white v-small fw-5">سالم بن حمد الدوسري</span>
@@ -59,7 +71,7 @@
                 <img src="assets/images/icons/sidebar/24-support.svg" alt="24-support.svg" class="link-icon">
                 <span class="item-text link"> {{translations.layout.sidebar.support| translate}} </span>
             </a>
-        </li>
+        </li> -->
     </ul>
     <div class="bg"></div>
 </aside>

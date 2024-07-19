@@ -15,10 +15,10 @@ export class LawsuitReviewService {
   create(date: LawsuitReiewRequestDto): Observable<BaseResponse<any>> {
     return this._httpClient.post<BaseResponse<any>>(Configuration.APIs.BpfService.ProcessWorkFlow, date)
   }
-  GetWorkflowStepEventsForEmployee(requestId: string, employeeId: string): Observable<BaseResponse<GetWorkflowStepEventsForEmployeeDto>> {
+  GetWorkflowStepEventsForEmployee(requestId: string): Observable<BaseResponse<GetWorkflowStepEventsForEmployeeDto>> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("requestId", requestId);
-    queryParams = queryParams.append("employeeId", employeeId);
+    // queryParams = queryParams.append("employeeId", employeeId);
     return this._httpClient.get<BaseResponse<GetWorkflowStepEventsForEmployeeDto>>(Configuration.APIs.BpfService.GetWorkflowStepEventsForEmployee, { params: queryParams })
   }
 }

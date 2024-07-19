@@ -17,7 +17,7 @@ export const headersHandlerInterceptor: HttpInterceptorFn = (req, next) => {
       // this.changeLanguageService.getSelectedLang().subscribe((data) => {
       req = req.clone({
         // headers: req.headers.set('Accept-Language', 'ar-EG'),
-        // headers: req.headers.set('culture', 'ar-SA'),
+        headers: req.headers.set('culture', 'ar-SA'),
       });
   
       if (req.context.get(fileUploader) === true) {

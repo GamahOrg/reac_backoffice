@@ -238,6 +238,43 @@
             "ReconciliationAndArbitration": "صلح و تحكيم"
         }
     },
+    "auth": {
+        "login": "تسجيل الدخول",
+        "saudiCenterForRealEstateArbitration": "المركز السعودي للتحكيم العقاري",
+        "about": "عن",
+        "center": "المركز",
+        "createYourAccountOnRealEstateArbitrationCenter": "إنشئ حسابك على مركز التحكيم العقاري",
+        "toBenefitFromAllCenterServices": "لتكون قادراً علي الإستفادة من جميع خدمات المركز",
+        "identityType": "نوع الهوية",
+        "selectidentityType": "اختر نوع الهوية",
+        "identityNumber": "رقم الهوية",
+        "enterIdNumber": "ادخل رقم الهوية",
+        "idExpirationDate": "تاريخ إنتهاء الهوية",
+        "enterIdExpirationDate": "ادخل تاريخ انتهاء الهوية",
+        "hijriBirthDate": "تاريخ الميلاد هجري",
+        "enterHijriBirthDate": "ادخل تاريخ الميلاد هجري",
+        "gregorianBirthDate": "تاريخ الميلاد ميلادي",
+        "enterGregorianBirthDate": "ادخل تاريخ الميلاد ميلادي",
+        "nationalId": "هوية وطنية",
+        "gulfId": "هوية خليجية",
+        "residencePermit": "إقامة",
+        "email": "البريد الإلكتروني",
+        "enterEmail": "ادخل البريد الإلكتروني",
+        "reenterEmail": "إعادة البريد الإلكتروني",
+        "reenterEmailAgain": "اعد ادخال البريد الإلكتروني",
+        "phoneNumber": "رقم الجوال",
+        "password": "كلمة المرور",
+        "enterPassword": "ادخل كلمة المرور",
+        "confirmPassword": "تأكيد كلمة المرور",
+        "reenterPassword": "اعد ادخال كلمة المرور",
+        "register": "تسجيل",
+        "verify": "التحقق",
+        "enter4DigitCodeSentViaSms": "ادخل الكود المكون من ٤ ارقام المُرسل لك عبر رسالة نصية إلي رقمك",
+        "sendCode": "ارسل الكود",
+        "didNotReceiveSms": "لم تصلك رسالة بعد؟",
+        "resendCode": "ارسل الكود مجدداً",
+        "second": "ثانية"
+    },
     "formValidationError": {
         "required": "حقل مطلوب"
     }

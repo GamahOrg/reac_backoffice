@@ -15,44 +15,45 @@ export class SidebarComponent extends BaseComponent {
     isCollapsed: boolean | undefined;
 
     menuItems: MenuItem[] = [
-        {
-            id: 'home-link',
-            title: this.translate.instant(translations.layout.sidebar.home),
-            icon: 'assets/images/icons/sidebar/home.svg',
-            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
-        },
+        // {
+        //     id: 'home-link',
+        //     title: this.translate.instant(translations.layout.sidebar.home),
+        //     icon: 'assets/images/icons/sidebar/home.svg',
+        //     url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
+        // },
         {
             id: 'claims-link',
             title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
-            icon: 'assets/images/icons/sidebar/menu.svg',
+            // icon: 'assets/images/icons/sidebar/menu.svg',
+            icon: 'assets/images/icons/sidebar/book.svg',
             url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
-            children: [
-                {
-                    id: 'new-lawsuits-link',
-                    title: this.translate.instant(translations.layout.sidebar.newLawsuitsList),
-                    icon: '',
-                    url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
-                },
-                {
-                    id: 'new-lawsuits-link',
-                    title: this.translate.instant(translations.layout.sidebar.completedLawsuitsList),
-                    icon: '',
-                    url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.editLawsuit,
-                },
-            ]
+            // children: [
+            //     {
+            //         id: 'new-lawsuits-link',
+            //         title: this.translate.instant(translations.layout.sidebar.newLawsuitsList),
+            //         icon: '',
+            //         url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
+            //     },
+            //     {
+            //         id: 'new-lawsuits-link',
+            //         title: this.translate.instant(translations.layout.sidebar.completedLawsuitsList),
+            //         icon: '',
+            //         url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.editLawsuit,
+            //     },
+            // ]
         },
-        {
-            id: 'profile-link',
-            title: this.translate.instant(translations.layout.sidebar.profile),
-            icon: 'assets/images/icons/sidebar/profile-2user.svg',
-            url: 'profile',
-        },
-        {
-            id: 'setting-link',
-            title: this.translate.instant(translations.layout.sidebar.settings),
-            icon: 'assets/images/icons/sidebar/setting.svg',
-            url: 'setting',
-        }
+        // {
+        //     id: 'profile-link',
+        //     title: this.translate.instant(translations.layout.sidebar.profile),
+        //     icon: 'assets/images/icons/sidebar/profile-2user.svg',
+        //     url: 'profile',
+        // },
+        // {
+        //     id: 'setting-link',
+        //     title: this.translate.instant(translations.layout.sidebar.settings),
+        //     icon: 'assets/images/icons/sidebar/setting.svg',
+        //     url: 'setting',
+        // }
     ];
 
     constructor(private translate: TranslateService) {

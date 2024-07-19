@@ -17,8 +17,7 @@ export const Configuration = {
     },
     BpfService:{
       ProcessWorkFlow:"/api/BpfService/ProcessWorkFlow",
-      // GetWorkflowStepEventsForEmployee:"/api/BpfService/GetWorkflowStepEventsForEmployee"
-      GetWorkflowStepEventsForEmployee:"/api/BpfService/GetWorkflowStepEventsForEmployee/requestId/employeeId"
+      GetWorkflowStepEventsForEmployee:"/api/BpfService/GetWorkflowStepEventsForEmployee/requestId"
     }
   },
   modules: {
@@ -26,6 +25,9 @@ export const Configuration = {
     lawsuits: 'Lawsuits'
   },
   pages: {
+    auth: {
+      login: "login",
+    },
     lawsuits:{
       lawsuitList: "lawsuit-list",
       lawsuitTypes: "lawsuit-types",

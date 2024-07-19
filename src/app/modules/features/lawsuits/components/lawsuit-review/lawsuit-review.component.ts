@@ -56,7 +56,7 @@ export class LawsuitReviewComponent extends BaseComponent implements OnInit {
   };
 
   private GetWorkflowStepEventsForEmployee() {
-    this._lawsuitReviewService.GetWorkflowStepEventsForEmployee(this.requestId, "3afafe63-62e5-4bc9-a8b9-7713c42e7097").pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<GetWorkflowStepEventsForEmployeeDto>) => {
+    this._lawsuitReviewService.GetWorkflowStepEventsForEmployee(this.requestId).pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<GetWorkflowStepEventsForEmployeeDto>) => {
       if (res.data && res.isDone)
         this.buttonActions = res.data
       console.log("this.buttonActions", this.buttonActions);
@@ -85,7 +85,7 @@ export class LawsuitReviewComponent extends BaseComponent implements OnInit {
       // finishedOn: new Date(),
       // workFlowProcessingLogFiles: this.workFlowProcessingLogFiles
       requestId: this.requestId,
-      employeeId: "3afafe63-62e5-4bc9-a8b9-7713c42e7097",
+      // employeeId: "3afafe63-62e5-4bc9-a8b9-7713c42e7097",
       processingLogId: this.buttonActions.workFlowStepEventShortDtos[0].processingLogId,
       workflowStepEventId: this.actionData.id,
       notes: this.notes,

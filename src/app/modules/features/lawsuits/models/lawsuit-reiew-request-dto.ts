@@ -13,7 +13,7 @@ export interface LawsuitReiewRequestDto {
   // finishedOn: Date;
   // workFlowProcessingLogFiles: workFlowProcessingLogFile[]
   requestId: string;
-  employeeId: string;
+  // employeeId: string;
   processingLogId: string;
   workflowStepEventId: string;
   notes: string;
