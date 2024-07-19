@@ -6,5 +6,5 @@ export const environment = {
         //baseURL: "http://38.170.241.69:208",
         //securityURl: "http://38.170.241.69:207",
         baseURL: "https://dev-reac-api.rega.gov.sa",
-        securityURl: "https://dev-reac-api.rega.gov.sa",
+        securityURl: "https://dev-reac-security.rega.gov.sa",
 };
