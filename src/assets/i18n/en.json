@@ -144,7 +144,8 @@
             "partiesAgreeToSettleDisputeThroughArbitration": "اتفق الأطراف على تسوية هذا النزاع عن طريق التحكيم لدى المركز السعودي للتحكيم العقاري وفق نظامه وقواعده الإجرائية.",
             "assignAuditor": "تعيين المدقق",
             "selectLawsuitAuditorToAssignLawsuit": "اختر مدقق دعاوی (لتعيين الدعوی عليه)",
-            "attachmentsList": "مرفقات"
+            "attachmentsList": "مرفقات",
+            "editData": "تعديل البيانات"
         },
         "createEditLawsuit": {
             "rentContractData": "بيانات عقد الإيجار",

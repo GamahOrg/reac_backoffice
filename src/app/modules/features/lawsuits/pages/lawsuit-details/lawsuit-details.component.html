@@ -4,7 +4,7 @@
   <h6 class="fw-7 small">{{translations.lawsuits.lawsuitDetails.lawsuitUnderReviewByLawsuitAuditor| translate}}</h6>
   <div style="background: #E5F4D4; padding-block: 2px"
        class="px-2 rounded-2 border border-success w-fit">
-    <span class="flex-y-row gap-1 small fw-6 text-success">
+    <span class="flex-y-row gap-1 px-3 py-1 small rounded-1 text-success">
         <i class="material-icons fs-6"> watch_later </i> قيد التدقيق
     </span>
   </div>
@@ -16,6 +16,18 @@
         {{translations.lawsuits.lawsuitDetails.viewModificationRequest| translate}}
     </button>
 </div> -->
+
+<div class="flex-between">
+    <h6 class="fw-7 text-danger">{{translations.lawsuits.lawsuitDetails.modificationRequestInProgress| translate}}</h6>
+    <div class="flex-y-row gap-2">
+        <span class="flex-y-row gap-1 px-3 py-1 small rounded-1 fw-6" style="background: #E6F2FB; color: #4DC1BB;">
+            <i class="material-icons fs-6"> watch_later </i> معاد للتعديل
+        </span>
+        <button type="button" class="btn btn-primary py-2 px-6">
+            {{translations.lawsuits.lawsuitDetails.editData| translate}}
+        </button>
+    </div>
+</div>
 
 <div class="flex-end gap-2 w-fit">
   <div style="background: #E6F2FB; padding-block: 2px" class="px-2 rounded-2 w-fit">

@@ -102,7 +102,7 @@
                     "configurations": {
                         "production": {
                             "buildTarget": "REAC_BackOfficePortal:build:production",
-                            "port": 4100
+                            "port": 2010
                         },
                         "development": {
                             "buildTarget": "REAC_BackOfficePortal:build:development",

@@ -11,4 +11,8 @@ import { LoaderComponent } from "./core/components/loader/loader.component";
 })
 export class AppComponent {
 
+    constructor(
+    ) {
+        document.title = 'المركز السعودي للتحكيم العقاري'
+    }
 }
