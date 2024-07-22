@@ -58,6 +58,10 @@ a {
         background-position: left 0.75rem center;
     }
 
+    &:disabled {
+        background-blend-mode: difference;
+    }
+
     &.is-invalid {
         background-position-x: calc(100% - 30px), calc(100% - 5px) !important;
 
@@ -81,16 +85,24 @@ a {
         }
     }
 
-    &.is-invalid {
-        [lang="ar"] & {
-            background-position-x: 2%;
-            padding-inline-start: 12px;
-        }
-
-        &[type="date"] {
-            padding-inline-end: clamp(2rem, 7vw, 3rem);
-        }
+   &.is-invalid {
+    [lang="ar"] & {
+      background-position-x: 2%;
+      padding-inline-start: 12px;
     }
+
+    &[type="date"] {
+      padding-inline-end: clamp(2rem, 7vw, 3rem);
+    }
+
+    &[type="number"] {
+      padding-inline-end: clamp(2.5rem, 7vw, 3rem);
+    }
+
+    &[type="search"] {
+      padding-inline-end: clamp(2.5rem, 7vw, 3rem);
+    }
+  }
 }
 
 .breadcrumb {

@@ -18,7 +18,6 @@ import { BreadcrumbsComponent } from "../../../shared/components/breadcrumbs/bre
 import { AccordionComponent } from '@app/shared/components/accordion/accordion.component';
 import { LawsuitDataComponent } from './components/lawsuit-data/lawsuit-data.component';
 import { LawsuitListService } from './services/lawsuit-list/lawsuit-list.service';
-import { ModificationReturnComponent } from './components/modification-return/modification-return.component';
 import { LawsuitRequestDetailsService } from './services/lawsuit-request-details/lawsuit-request-details.service';
 import { AccordionService } from '@app/shared/services/accordion/accordion.service';
 import { ArbitrationRequestComponent } from './components/arbitration-request/arbitration-request.component';
@@ -36,7 +35,6 @@ import { ReasonReturnLawsuitComponent } from './components/reason-return-lawsuit
         LawsuitEventsComponent,
         LawsuitReeditReasonComponent,
         ArbitrationRequestComponent,
-        ModificationReturnComponent,
         LawsuitReviewComponent
     ],
     providers: [

@@ -30,32 +30,3 @@ input[type="radio"] {
         }
     }
 }
-
-@mixin action-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    background: #e9f5fc;
-    color: var(--info);
-
-    padding: 9px 1.5rem;
-    border-radius: 8px;
-
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.add-btn {
-    @include action-btn();
-
-    background: #e9f5fc;
-    color: var(--info);
-}
-
-.remove-btn {
-    @include action-btn();
-
-    background: #f5eae7;
-    color: var(--danger);
-}

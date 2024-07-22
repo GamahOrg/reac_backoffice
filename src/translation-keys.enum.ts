@@ -153,6 +153,7 @@ export namespace translations {
             partiesAgreeToSettleDisputeThroughArbitration = 'lawsuits.lawsuitDetails.partiesAgreeToSettleDisputeThroughArbitration',
             assignAuditor = 'lawsuits.lawsuitDetails.assignAuditor',
             attachmentsList = 'lawsuits.lawsuitDetails.attachmentsList',
+            editData = 'lawsuits.lawsuitDetails.editData',
         }
 
         export enum createEditLawsuit {
