@@ -1,5 +1,5 @@
 <div class="grid-3 mt-5">
-    <div>
+    <div *ngIf="contract?.secondPartyName">
         <h6 class="small fw-5">اسم المدعي عليه</h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
@@ -7,47 +7,41 @@
         </div>
     </div>
 
-    <div>
+    <div *ngIf="contract?.secondPartyCitizen">
         <h6 class="small fw-5">رقم الهوية</h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/hashtag.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyIdentityNumber || '--'}}</h6>
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.identityNumber || '--'}}</h6>
         </div>
     </div>
 
-    <div>
+    <div *ngIf="contract?.secondPartyCitizen">
         <h6 class="small fw-5">رقم الجوال</h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/call.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyMobile || '--'}}</h6>
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.mobile || '--'}}</h6>
         </div>
     </div>
 
-    <div>
+    <div *ngIf="contract?.secondPartyCitizen">
         <h6 class="small fw-5">تاريخ الميلاد</h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
-            <h6 class="small op-7">{{(contract?.secondPartyBirthDate | date: 'dd-MM-yyy') || '--'}}</h6>
+            <h6 class="small op-7">{{(contract?.secondPartyCitizen.birthDate | date: 'dd-MM-yyy') || '--'}}</h6>
         </div>
     </div>
 
-    <div>
+    <div *ngIf="contract?.secondPartyCitizen">
         <h6 class="small fw-5">الجنسية</h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/calendar.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyCitizen || '--'}}</h6>
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.nationality || '--'}}</h6>
         </div>
     </div> 
 
-    <div>
-        <h6 class="small fw-5">العنوان الوطني</h6>
-        <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
-            <h6 class="small op-7">{{nationalAddress}}</h6>
-        </div>
-    </div>  
 
-    <div>
+
+    <div *ngIf="contract?.secondPartyCapacity">
         <h6 class="small fw-5">صفة المدعي عليه</h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
@@ -55,11 +49,36 @@
         </div>
     </div>  
 
-    <div>
+    <div *ngIf="contract?.secondPartyCitizen">
         <h6 class="small fw-5">البريد الإلكتروني</h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyEmail || '--'}}</h6>
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.email || '--'}}</h6>
         </div>
-    </div>    
+    </div>   
+    
+    <div *ngIf="contract?.secondPartyFacility">
+        <h6 class="small fw-5">أسم المنشأة</h6>
+        <div class="flex-y-row gap-2">
+            <h6 class="small op-7">
+                {{contract?.secondPartyFacility?.arabicFacilityName || "--" }}
+            </h6>
+        </div>
+    </div>
+    <div *ngIf="contract?.secondPartyFacility">
+        <h6 class="small fw-5">السجل التجاري</h6>
+        <div class="flex-y-row gap-2">
+            <h6 class="small op-7">
+                {{contract?.secondPartyFacility?.commercialRegisterNumber || "--" }}
+            </h6>
+        </div>
+    </div>
+    <div *ngIf="contract?.secondPartyFacility">
+        <h6 class="small fw-5">رقم المنشأة “رقم 700” </h6>
+        <div class="flex-y-row gap-2">
+            <h6 class="small op-7">
+                {{contract?.secondPartyFacility?.facility700Number || "--" }}
+            </h6>
+        </div>
+    </div>
 </div>

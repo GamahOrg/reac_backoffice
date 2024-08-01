@@ -27,25 +27,6 @@
     }
 }
 
-.bg-primary,
-.btn-primary {
-    background: linear-gradient(270deg, #0267a5 0%, #0175bc 40%);
-    border: none;
-}
-
-.btn-outline-primary {
-    &:hover {
-        background: linear-gradient(270deg, #0267a5 0%, #0175bc 40%);
-    }
-}
-
-.text-primary {
-    background: linear-gradient(270deg, #0268a6 0%, #0175bc 50%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent !important;
-}
-
 a {
     color: $black;
 }
@@ -85,24 +66,24 @@ a {
         }
     }
 
-   &.is-invalid {
-    [lang="ar"] & {
-      background-position-x: 2%;
-      padding-inline-start: 12px;
-    }
+    &.is-invalid {
+        [lang="ar"] & {
+            background-position-x: 2%;
+            padding-inline-start: 12px;
+        }
 
-    &[type="date"] {
-      padding-inline-end: clamp(2rem, 7vw, 3rem);
-    }
+        &[type="date"] {
+            padding-inline-end: clamp(2rem, 7vw, 3rem);
+        }
 
-    &[type="number"] {
-      padding-inline-end: clamp(2.5rem, 7vw, 3rem);
-    }
+        &[type="number"] {
+            padding-inline-end: clamp(2.5rem, 7vw, 3rem);
+        }
 
-    &[type="search"] {
-      padding-inline-end: clamp(2.5rem, 7vw, 3rem);
+        &[type="search"] {
+            padding-inline-end: clamp(2.5rem, 7vw, 3rem);
+        }
     }
-  }
 }
 
 .breadcrumb {

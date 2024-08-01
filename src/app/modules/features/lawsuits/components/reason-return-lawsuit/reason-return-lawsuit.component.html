@@ -1,42 +1,32 @@
-<article class="accordion-card">
-    <header class="flex-between border-bottom pb-5">
-        <div class="flex-y-row gap-2">
+<div class="accordion-card">
+    <details open>
+        <summary class="flex-y-row gap-2 border-bottom pb-5">
             <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
-            <h6 class="small fw-6 op-7">يتم عرض الغرض من التعديل المطلوب</h6>
-        </div>
+            <h6 class="small fw-6 op-7">{{translations.lawsuits.lawsuitDetails.reasonForReturningLawsuitForModification | translate}}</h6>
+        </summary>
 
-        <div class="fw-6 op-7">١٦\٥\٢٠٢٤ م</div>
-    </header>
+        <ng-container *ngIf="isEditMode">
+            <app-modification-return></app-modification-return>
+        </ng-container>
 
-    <ng-container *ngIf="isEditMode">
-        <app-modification-return></app-modification-return>    
-    </ng-container>
+        <ng-container *ngIf="!isEditMode">
+            <ng-container *ngIf="auditNotes && auditNotes.length > 0">
+                <ul class="mt-4">
+                    <ng-container *ngFor="let AuditNote of auditNotes">
+                        <li class="flex-between">
+                            <div class="flex-y-row gap-1">
+                                <img src="assets/images/icons/lawsuit-details/document-text.svg" width="18" alt="document-text">
+                                <p class="fw-5 small op-7"> {{ AuditNote.Subject }} </p>
+                            </div>
 
-    <ng-container *ngIf="!isEditMode">
-        <label class="mt-5 mb-2 small fw-6">{{translations.lawsuits.lawsuitDetails.subject | translate}}</label>
-        <p class="px-4 py-8 rounded-2 small" style="background: var(--beige2);">
-            يتم عرض التعديل المطلوب يتم عرض التعديل المطلوب يتم عرض التعديل المطلوب
-        </p>
-        
-        <label class="mt-5 mb-2 small fw-6">{{translations.lawsuits.lawsuitDetails.notes | translate}}</label>
-        <p class="px-4 py-8 rounded-2 small" style="background: var(--beige2);">
-            يتم عرض التعديل المطلوب يتم عرض التعديل المطلوب يتم عرض التعديل المطلوب
-        </p>
-        
-        <label class="mt-5 mb-2 small fw-6">{{translations.lawsuits.lawsuitDetails.attachmentsList | translate}}</label>
-        <div class="flex-between p-2 rounded-2 w-lg-5" style="background: #F7F7F7;">
-            <div class="flex-y-row gap-2">
-                <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
-                <p class="v-small fw-6 op-9">اسم المرفق.pdf</p>
-            </div>
-            <div class="flex-y-row gap-1">
-                <a href="">
-                    <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
-                </a>
-                <a href="">
-                    <i class='btn px-0 material-icons op-3 fs-5'>download</i>
-                </a>
-            </div>
-        </div>
-    </ng-container>
-</article>
+                            <div class="flex-y-row gap-1">
+                                <img src="assets/images/icons/calendar-2.svg" width="18" alt="calendar">
+                                <p class="fw-5 small op-7">{{AuditNote.createdOn | date: 'dd/MM/yyy'}}</p>
+                            </div>
+                        </li>
+                    </ng-container>
+                </ul>
+            </ng-container>
+        </ng-container>
+    </details>
+</div>

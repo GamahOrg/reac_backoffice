@@ -23,17 +23,17 @@ export interface LawsuitItemDetails {
             cities: string[],
             id: string,
             litigationRequests: string[],
-            name: string
+            areaName: string
         },
         areaId: string,
         litigationRequests: string[],
-        name: string
+        cityName: string
     },
     area: {
         cities: string[],
         id: string,
         litigationRequests: string[],
-        name: string
+        areaName: string
     },
     litigationRequestRequestFiles: {
         id: string,
@@ -265,7 +265,12 @@ export interface LitigationRequestGroundFile {
     id: string,
     litigationRequestGroundId: string,
     fileManagerId: string,
-    fileManager: string,
+    fileManager: {
+        id: string
+        fileDescription: string
+        filePath: string
+        fileType: string
+    },
     litigationRequestGround: string
 }
 
@@ -394,6 +399,7 @@ export interface SecondPartyRegistrationRequest {
 }
 
 export interface SecondPartyFacility {
+    arabicFacilityName: string;
     id: string,
     code: string,
     citizenId: string,
@@ -489,7 +495,7 @@ export interface Contract {
     litigationRequestContractType: LitigationRequestContractType,
     litigationRequests: string[],
     secondPartyRegistrationRequest: SecondPartyRegistrationRequest,
-    secondPartyCitizen: string,
+    secondPartyCitizen: any,
     secondPartyFacility: SecondPartyFacility
 }
 

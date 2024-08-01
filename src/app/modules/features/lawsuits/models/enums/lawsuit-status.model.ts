@@ -9,32 +9,70 @@ export enum LawsuitStatus {
     // LackOfReconciliation = 8,
     // SaveAndClose = 9,
     // SaveAsDraft = 10
-    // /<summary>جديدة</summary>
+    ///<summary>جديدة</summary>
+    // New = 1,
+    ///<summary>مُستلمة</summary>
+    // Received = 2,
+    ///<summary>تم تحديد ميعاد جلسة</summary>
+    // AsessionTimeHasBeenSet = 3,
+    ///<summary>تمت الجلسة</summary>
+    // TheSessionWasCompleted = 4,
+    ///<summary>تم كتابة محضر الجلسة</summary>
+    // TheMinutesOfTheMeetingWereWritten = 5,
+    ///<summary>تنازل عن الحق</summary>
+    // WaiverOfRight = 6,
+    ///<summary>تنازل عن الدعوى</summary>
+    // WaiverOfTheLawsuit = 7,
+    ///<summary>عدم الصُلح</summa
+    // LackOfReconciliation = 8,
+    ///<summary>حفظ وإغلاق</summary>
+    // SaveAndClose = 9,
+    ///<summary> حفظ كمسودة</summary>
+    // SaveAsDraft = 10,
+    ///<summary>مرفوضة</summary>
+    // Rejected = 11,
+    ///<summary>معاده للتعديل</summary>
+    // SentBackForEdit = 12,
+    ///<summary>تم التعديل</summary>
+    // Edited = 13,
+    ///<summary>قيد المشارطة</summary>
+    // CharterRequestSent = 14
+
+
+    ///<summary>جديدة</summary>
     New = 1,
     ///<summary>مُستلمة</summary>
     Received = 2,
     ///<summary>تم تحديد ميعاد جلسة</summary>
     AsessionTimeHasBeenSet = 3,
+    ///<summary>تم إعادة تحديد ميعاد جلسة</summary>
+    AsessionTimeHasBeenReset = 4,
     ///<summary>تمت الجلسة</summary>
-    TheSessionWasCompleted = 4,
+    TheSessionWasCompleted = 5,
     ///<summary>تم كتابة محضر الجلسة</summary>
-    TheMinutesOfTheMeetingWereWritten = 5,
+    TheMinutesOfTheMeetingWereWritten = 6,
     ///<summary>تنازل عن الحق</summary>
-    WaiverOfRight = 6,
+    WaiverOfRight = 7,
     ///<summary>تنازل عن الدعوى</summary>
-    WaiverOfTheLawsuit = 7,
-    ///<summary>عدم الصُلح</summa
-    LackOfReconciliation = 8,
+    WaiverOfTheLitigation = 8,
+    ///<summary>عدم الصُلح</summary>
+    ReconciliationWasNotMade = 9,
     ///<summary>حفظ وإغلاق</summary>
-    SaveAndClose = 9,
+    SaveAndClose = 10,
     ///<summary> حفظ كمسودة</summary>
-    SaveAsDraft = 10,
+    SaveAsDraft = 11,
     ///<summary>مرفوضة</summary>
-    Rejected = 11,
+    Rejected = 12,
     ///<summary>معاده للتعديل</summary>
-    SentBackForEdit = 12,
+    SentBackForEdit = 13,
     ///<summary>تم التعديل</summary>
-    Edited = 13,
+    Edited = 14,
     ///<summary>قيد المشارطة</summary>
-    CharterRequestSent = 14
+    CharterRequestSent = 15,
+    ///<summary>تم قبول محضر الصلح</summary>
+    AcceptanceOfTheReconciliationReport = 16,
+    ///<summary>تم رفض محضر الصلح</summary>
+    RejectionOfTheReconciliationReport = 17,
+    ///<summary>تم الصلح</summary>
+    ReconciliationWasMade = 18
 }

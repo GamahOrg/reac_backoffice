@@ -60,7 +60,7 @@
 ::ng-deep .tab-title {
     font-weight: 400;
     font-size: 1.13rem;
-    font-family: "Readex Pro";
+    font-family: "REGA";
 
     letter-spacing: 0;
     padding: 1rem 12px;
@@ -74,6 +74,11 @@
         // background-color: #f5f5f5;
         color: var(--black);
         font-weight: 700;
+        font-family: "Loew Next Arabic ExtraBold";
+
+        [lang="ar"] & {
+            font-family: "REGA SemBd";
+        }
 
         .number {
             background-color: #2397de;
@@ -83,6 +88,11 @@
 
     .number {
         font-weight: 700;
+        font-family: "Loew Next Arabic ExtraBold";
+
+        [lang="ar"] & {
+            font-family: "REGA SemBd";
+        }
 
         width: 36px;
         height: 36px;

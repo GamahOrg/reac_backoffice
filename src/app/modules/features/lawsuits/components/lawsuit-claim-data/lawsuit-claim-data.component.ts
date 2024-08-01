@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, Injector, OnInit, effect, inject } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { LawsuitRequestDetailsService } from '../../services/lawsuit-request-details/lawsuit-request-details.service';
-import { LawsuitItemDetails } from '../../models/lawsuit-details.model';
+import { Contract, LawsuitItemDetails } from '../../models/lawsuit-details.model';
+import { environment } from '@environment/environment.development';
 
 @Component({
   selector: 'app-lawsuit-claim-data',
@@ -16,7 +17,8 @@ import { LawsuitItemDetails } from '../../models/lawsuit-details.model';
 export class LawsuitClaimDataComponent extends BaseComponent implements OnInit {
   _injector = inject(Injector);
   litigationDetails!: LawsuitItemDetails | null;
-
+  contract!: Contract | undefined;
+  baseUrl = `${environment.baseURL}/`;
   requestOwnerType = [
     this.translations.lawsuits.createEditLawsuit.reconciliation,
     this.translations.lawsuits.createEditLawsuit.arbitration,
@@ -35,6 +37,7 @@ export class LawsuitClaimDataComponent extends BaseComponent implements OnInit {
 
   private observeLawsuitRequestDetailsSignal() {
     effect(() => {
+      this.contract = this._lawsuitRequestDetailsService.litigationDetails()?.contract;
       this.litigationDetails = this._lawsuitRequestDetailsService.litigationDetails();
         console.log(this._lawsuitRequestDetailsService.litigationDetails())
     },{

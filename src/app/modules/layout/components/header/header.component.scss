@@ -1,7 +1,7 @@
 .main-header {
-    background: linear-gradient(0deg, #0175bc, #0175bc), linear-gradient(80.18deg, #0175bc 58.22%, #03598d 118.85%);
+    background: var(--primary);
     border-radius: 6px;
-    // added by kholoud to fix style till add inner wedgit 
+    // added by kholoud to fix style till add inner wedgit
     min-height: 64px;
     align-items: center;
     display: flex;

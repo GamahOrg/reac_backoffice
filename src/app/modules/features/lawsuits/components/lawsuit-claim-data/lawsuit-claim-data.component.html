@@ -1,8 +1,26 @@
 <div class="grid-3 mt-5">
     <div>
+        <h6 class="small fw-5">رقم عقد الإيجار</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/hashtag.svg"
+                 alt="icon">
+            <h6 class="small op-7">{{contract?.contractKey || '--'}}</h6>
+        </div>
+    </div>
+
+    <div>
+        <h6 class="small fw-5">رقم النسخة</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/hashtag.svg"
+                 alt="icon">
+            <h6 class="small op-7">{{contract?.versionNumber || '--'}}</h6>
+        </div>
+    </div>
+    <div>
         <h6 class="small fw-5">عنوان الدعوى</h6>
         <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+            <img src="assets/images/icons/lawsuit-details/book.svg"
+                 alt="icon">
             <h6 class="small op-7">{{litigationDetails?.title || '--'}}</h6>
         </div>
     </div>
@@ -10,7 +28,8 @@
     <div>
         <h6 class="small fw-5">وصف الدعوى</h6>
         <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+            <img src="assets/images/icons/lawsuit-details/book.svg"
+                 alt="icon">
             <h6 class="small op-7">{{litigationDetails?.description || '--'}}</h6>
         </div>
     </div>
@@ -18,39 +37,45 @@
     <div>
         <h6 class="small fw-5">نوع النزاع</h6>
         <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
-            <h6 class="small op-7">{{litigationDetails?.isFinancialLitigation ? 'نعم' : 'لا'}}</h6>
+            <img src="assets/images/icons/lawsuit-details/book.svg"
+                 alt="icon">
+            <h6 class="small op-7">{{litigationDetails?.isFinancialLitigation ? 'مالي' : 'غير مالي'}}</h6>
         </div>
     </div>
 
     <div>
         <h6 class="small fw-5">مبلغ المنازعة</h6>
         <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/hashtag.svg" alt="icon">
-            <h6 class="small op-7">{{(litigationDetails && litigationDetails.fees >= 0) ? litigationDetails?.fees : '--'}}</h6>
+            <img src="assets/images/icons/lawsuit-details/hashtag.svg"
+                 alt="icon">
+            <h6 class="small op-7">{{litigationDetails?.litigationRequestAmount?.litigationAmount ?
+                litigationDetails?.litigationRequestAmount?.litigationAmount : '--'}}</h6>
         </div>
     </div>
 
     <div>
         <h6 class="small fw-5">المنطقة</h6>
         <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/location.svg" alt="icon">
-            <h6 class="small op-7">{{litigationDetails?.area?.name || '--'}}</h6>
+            <img src="assets/images/icons/lawsuit-details/location.svg"
+                 alt="icon">
+            <h6 class="small op-7">{{litigationDetails?.area?.areaName || '--'}}</h6>
         </div>
     </div>
 
     <div>
         <h6 class="small fw-5">المدينة</h6>
         <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/location.svg" alt="icon">
-            <h6 class="small op-7">{{litigationDetails?.city?.name || '--'}}</h6>
+            <img src="assets/images/icons/lawsuit-details/location.svg"
+                 alt="icon">
+            <h6 class="small op-7">{{litigationDetails?.city?.cityName || '--'}}</h6>
         </div>
     </div>
 
     <div>
-        <h6 class="small fw-5">العنوان الوطني</h6>
+        <h6 class="small fw-5">العنوان</h6>
         <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/location.svg" alt="icon">
+            <img src="assets/images/icons/lawsuit-details/location.svg"
+                 alt="icon">
             <h6 class="small op-7">{{litigationDetails?.contractAddress || '--'}}</h6>
         </div>
     </div>
@@ -58,40 +83,60 @@
     <div>
         <h6 class="small fw-5">نوع الطلب</h6>
         <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+            <img src="assets/images/icons/lawsuit-details/book.svg"
+                 alt="icon">
             <h6 class="small op-7">{{litigationDetails?.litigationRequestCategory?.categoryName || '--'}}</h6>
         </div>
     </div>
 
-    <div>
-        <h6 class="small fw-5">المرفق</h6>
-        <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
-            <h6 class="small op-7">{{litigationDetails?.requestCode || '--'}}</h6>
-            <!-- <a href="" class="ms-4">
-                <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
-            </a> -->
-        </div>
-    </div>
 
-    <div>
-        <h6 class="small fw-5">طلب الدعوى</h6>
-        <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+    <div class="span-3">
+        <h6 class="small fw-5">طلبات الدعوى</h6>
+        <div class="gap-2">
             <ng-container *ngFor="let request of litigationDetails?.litigationRequestRequests">
+                <img src="assets/images/icons/lawsuit-details/book.svg"
+                     alt="icon">
                 <h6 class="small op-7">{{request.requestContent || "--"}}</h6>
             </ng-container>
         </div>
     </div>
 
-    <div>
-        <h6 class="small fw-5">عنوان الإسناد</h6>
-        <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+    <div class="span-3">
+        <h6 class="small fw-5"> الإسنادات</h6>
+        <div class=" gap-2">
             <ng-container *ngFor="let ref of litigationDetails?.litigationRequestGrounds">
-                <h6 class="small op-7">{{ref.title || '--'}}</h6>
+                <div class="flex-y-row">
+                    <img src="assets/images/icons/lawsuit-details/book.svg"
+                         alt="icon">
+                    <h6 class="small op-7">{{ref.title || '--'}}</h6>
+                </div>
+                <ng-container *ngFor="let file of ref.litigationRequestGroundFiles">
+
+                    <div class="flex-between px-2 py-3 rounded-2"
+                         style="background: #F7F7F7;"
+                         *ngIf="file.fileManager.filePath">
+                        <div class="flex-y-row gap-2">
+                            <img src="assets/images/icons/lawsuit-details/attachment.svg"
+                                 alt="attachment">
+                            <p class="v-small fw-6 op-9"> {{ file.fileManager.fileDescription }}.{{
+                                file.fileManager.fileType }} </p>
+                        </div>
+                        <div class="flex-y-row gap-1">
+                            <a [href]="baseUrl + file.fileManager.filePath"
+                               target="_blank">
+                                <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+                            </a>
+                            <a [href]="baseUrl + file.fileManager.filePath"
+                               download>
+                                <i class='btn px-0 material-icons op-3 fs-5'>download</i>
+                            </a>
+                        </div>
+                    </div>
+                </ng-container>
             </ng-container>
             <!-- <h6 class="small op-7">اسناد 1</h6> -->
         </div>
     </div>
+
+
 </div>

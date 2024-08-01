@@ -38,23 +38,18 @@ export class LawsuitListComponent extends BaseComponent implements OnInit {
         [LawsuitStatus.TheSessionWasCompleted]: this.translations.lawsuits.lawsuitsList.theSessionWasCompleted,
         [LawsuitStatus.TheMinutesOfTheMeetingWereWritten]: this.translations.lawsuits.lawsuitsList.theMinutesOfTheMeetingWereWritten,
         [LawsuitStatus.WaiverOfRight]: this.translations.lawsuits.lawsuitsList.waiverOfRight,
-        [LawsuitStatus.WaiverOfTheLawsuit]: this.translations.lawsuits.lawsuitsList.waiverOfTheLawsuit,
-        [LawsuitStatus.LackOfReconciliation]: this.translations.lawsuits.lawsuitsList.lackOfReconciliation,
+        // [LawsuitStatus.WaiverOfRight]: this.translations.lawsuits.lawsuitsList.WaiverOfRight,
+        [LawsuitStatus.ReconciliationWasNotMade]: this.translations.lawsuits.lawsuitsList.ReconciliationWasNotMade,
         [LawsuitStatus.SaveAndClose]: this.translations.lawsuits.lawsuitsList.saveAndClose,
         [LawsuitStatus.SaveAsDraft]: this.translations.lawsuits.lawsuitsList.saveAsDraft,
         [LawsuitStatus.Rejected]: this.translations.lawsuits.lawsuitsList.Rejected,
         [LawsuitStatus.SentBackForEdit]: this.translations.lawsuits.lawsuitsList.SentBackForEdit,
         [LawsuitStatus.Edited]: this.translations.lawsuits.lawsuitsList.Edited,
         [LawsuitStatus.CharterRequestSent]: this.translations.lawsuits.lawsuitsList.CharterRequestSent,
+        [LawsuitStatus.AcceptanceOfTheReconciliationReport]: this.translations.lawsuits.lawsuitsList.AcceptanceOfTheReconciliationReport,
+        [LawsuitStatus.RejectionOfTheReconciliationReport]: this.translations.lawsuits.lawsuitsList.RejectionOfTheReconciliationReport,
+        [LawsuitStatus.ReconciliationWasMade]: this.translations.lawsuits.lawsuitsList.ReconciliationWasMade,
 
-        // ///<summary>مرفوضة</summary>
-        // Rejected = 11,
-        // ///<summary>معاده للتعديل</summary>
-        // SentBackForEdit = 12,
-        // ///<summary>تم التعديل</summary>
-        // Edited = 13,
-        // ///<summary>قيد المشارطة</summary>
-        // CharterRequestSent = 14
     }
 
     remainingAuditDays: number[] = [1, 2, 3, 4, 5]

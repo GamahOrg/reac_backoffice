@@ -11,12 +11,17 @@ table {
 
     th,
     td {
-        font-size: 0.75rem;
-        font-weight: 500;
-
         white-space: nowrap;
         color: #3f3e43;
         vertical-align: middle;
+
+        font-size: 0.75rem;
+        font-weight: 500;
+        font-family: "Loew Next Arabic";
+
+        [lang="ar"] & {
+            font-family: "REGA SemBd";
+        }
     }
 
     th {

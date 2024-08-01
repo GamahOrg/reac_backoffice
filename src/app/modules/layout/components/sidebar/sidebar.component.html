@@ -7,20 +7,22 @@
     [class.collapsed]="isCollapsed"
     [class.expanded]="!isCollapsed">
     <div class="logo p-5 border-bottom mb-5">
-        <img src="assets/images/logo.svg" alt="logo.svg">
+        <img src="assets/images/logo.svg" width="170" alt="logo.svg">
     </div>
 
     <ul class="items-list">
                 <ng-container *ngFor="let item of menuItems">
             <ng-container *ngIf="item">
-                <a
-                  class="side-menu-item ms-4"
-                  [routerLink]="item.url"
-                  [routerLinkActive]="'active'"
-                  [routerLinkActiveOptions]="{ exact: true }">
+                <li>
+                    <a
+                    class="side-menu-item mx-4"
+                    [routerLink]="item.url"
+                    [routerLinkActive]="'active'"
+                    [routerLinkActiveOptions]="{ exact: true }">
                     <img [src]="item.icon" alt="icon" class="link-icon">
                     <span class="item-text link"> {{ item.title | translate }} </span>
                 </a>
+            </li>
             </ng-container>
         </ng-container>
         <!-- <li class="grid-icon align-items-center side-menu-item justify-content-start w-100 mb-5 active">
@@ -32,7 +34,7 @@
         <ng-container *ngFor="let item of menuItems">
             <ng-container *ngIf="item && !item.children">
                 <a
-                    class="side-menu-item ms-4"
+                    class="side-menu-item mx-4"
                     [routerLink]="item.url"
                     [routerLinkActive]="'active'"
                     [routerLinkActiveOptions]="{ exact: true }">
@@ -42,7 +44,7 @@
             </ng-container>
             <ng-container *ngIf="item && item.children">
                 <details>
-                    <summary class="side-menu-item text-white ms-4">
+                    <summary class="side-menu-item text-white mx-4">
                         <img [src]="item.icon" alt="icon" class="link-icon">
                         {{item.title | translate}}
                         <img src="assets/images/icons/sidebar/arrow-down.svg" alt="arrow-down" class="arrow-down ms-auto">
@@ -51,7 +53,7 @@
                         <ng-container *ngFor="let child of item.children">
                             <li>
                                 <a
-                                    class="text-white ms-4"
+                                    class="text-white mx-4"
                                     [routerLink]="item.url"
                                     [routerLinkActive]="'fw-7'">
                                     {{ child.title | translate }}
@@ -67,7 +69,7 @@
             <div class="fw-5 ms-6 mt-5 p-1 text-white" style="font-size: 0.75rem;">
                 {{translations.layout.sidebar.extra| translate}}
             </div>
-            <a class="side-menu-item ms-4" [routerLink]="'suuport'" [routerLinkActive]="'active'">
+            <a class="side-menu-item mx-4" [routerLink]="'suuport'" [routerLinkActive]="'active'">
                 <img src="assets/images/icons/sidebar/24-support.svg" alt="24-support.svg" class="link-icon">
                 <span class="item-text link"> {{translations.layout.sidebar.support| translate}} </span>
             </a>
