@@ -2,8 +2,8 @@
     --white: #fff;
     --black: #000;
     --brown: #61686b;
-    --bs-primary: #0075bc;
-    --primary: #0075bc;
+    --bs-primary: #002f56;
+    --primary: #002f56;
     --bs-success: #61a60e;
     --success: #61a60e;
     --danger: #be4949;
@@ -11,41 +11,51 @@
     --beige2: #f4f5f9;
 }
 
+// arabic
 @font-face {
-    font-family: "Readex Pro Light";
-    src: url("../fonts/ReadexPro-Light.ttf") format("truetype");
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Readex Pro";
-    src: url("../fonts/ReadexPro-Regular.ttf") format("truetype");
+    font-family: "REGA";
+    src: url("../fonts/REGA-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Readex Pro Medium";
-    src: url("../fonts/ReadexPro-Medium.ttf") format("truetype");
-    font-weight: 500;
+    font-family: "REGA SemBd";
+    src: url("../fonts/REGA-SemiBold.ttf") format("truetype");
+    font-weight: 600 700;
+    font-style: normal;
+}
+
+// english
+@font-face {
+    font-family: "Loew Next Arabic Light";
+    src: url("../fonts/Loew-Next-Arabic-Light.otf") format("opentype");
+    font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Readex Pro SemiBold";
-    src: url("../fonts/ReadexPro-SemiBold.ttf") format("truetype");
-    font-weight: 600;
+    font-family: "Loew Next Arabic Medium";
+    src: url("../fonts/Loew-Next-Arabic-Medium.otf") format("opentype");
+    font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Readex Pro";
-    src: url("../fonts/ReadexPro-Bold.ttf") format("truetype");
+    font-family: "Loew Next Arabic";
+    src: url("../fonts/Loew-Next-Arabic-Bold.otf") format("opentype");
+    font-weight: 500 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Loew Next Arabic ExtraBold";
+    src: url("../fonts/Loew-Next-Arabic-ExtraBold.otf") format("opentype");
     font-weight: 700;
     font-style: normal;
 }
 
+// material
 @font-face {
     font-family: "Material Icons";
     font-style: normal;
@@ -118,7 +128,11 @@ html {
 
 body {
     font-size: 16px !important;
-    font-family: "Readex Pro", sans-serif !important;
+    font-family: "Loew Next Arabic Medium";
+
+    [lang="ar"] & {
+        font-family: "REGA", sans-serif !important;
+    }
 
     text-align: start;
     min-height: 100vh;
@@ -354,16 +368,16 @@ details {
 
     padding: 24px;
     padding-inline-start: 30px;
-    margin-top: 100px;
+
+    position: fixed;
+    inset: auto 0 0;
 
     @media (min-width: 992px) {
-        position: fixed;
-        inset: auto 0 0;
         inset-inline-start: 270px;
     }
 
     @media (max-width: 991px) {
-        padding: 24px 12px;
+        padding: 12px;
     }
 
     .btn {
@@ -380,13 +394,22 @@ details {
     padding: 24px;
     border-radius: 8px;
     margin-top: 14px;
-    // margin-bottom: 120px;
+
+    &:last-of-type {
+        margin-bottom: 130px;
+    }
 
     .form-header {
         padding-bottom: 24px;
         border-bottom: 1px solid #eee;
+
         font-size: 1.13rem;
         font-weight: 700;
+        font-family: "Loew Next Arabic ExtraBold";
+
+        [lang="ar"] & {
+            font-family: "REGA SemBd";
+        }
     }
 }
 
@@ -409,8 +432,7 @@ details {
         &.active {
             .page-link {
                 color: $white;
-                background: linear-gradient(0deg, #0175bc, #0175bc),
-                    linear-gradient(80.18deg, #0175bc 58.22%, #03598d 118.85%);
+                background: $primary;
             }
         }
     }

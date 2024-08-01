@@ -91,13 +91,16 @@
             "theMinutesOfTheMeetingWereWritten": "The Minutes of the Meeting Were Written",
             "waiverOfRight": "Waiver of Right",
             "waiverOfTheLawsuit": "Waiver of the Lawsuit",
-            "lackOfReconciliation": "Lack of Reconciliation",
+            "ReconciliationWasNotMade": "Reconciliation was not made",
             "saveAndClose": "Save and Close",
             "saveAsDraft": "Save as draft",
             "Rejected": "Rejected",
             "SentBackForEdit": "Sent back for edit",
             "Edited": "Edited",
-            "CharterRequestSent": "Charter RequestSent"
+            "CharterRequestSent": "Charter RequestSent",
+            "AcceptanceOfTheReconciliationReport" : "Acceptance of The Reconciliation Report",
+            "RejectionOfTheReconciliationReport" : "Rejection of The Reconciliation Report",
+            "ReconciliationWasMade" : "Reconciliation was made"
         },
         "lawsuitDetails": {
             "administrativeFeesNotPaid": "لم يتم تسديد الرسوم الإدارية للدعوى بعد",
@@ -145,7 +148,13 @@
             "assignAuditor": "تعيين المدقق",
             "selectLawsuitAuditorToAssignLawsuit": "اختر مدقق دعاوی (لتعيين الدعوی عليه)",
             "attachmentsList": "مرفقات",
-            "editData": "تعديل البيانات"
+            "editData": "تعديل البيانات",
+            "LawsuitEditReasons": "أسباب إعادة التعديل",
+            "lawsuitSubject": "الموضوع",
+            "lawsuitNotes": "الملاحظات",
+            "lawsuitAttachements": "المرفقات",
+            "InvitationTypeTemplate": "نموذج نوع الدعوة",
+            "replyForCharterRequest": "الرد على طلب المشارطة"
         },
         "createEditLawsuit": {
             "rentContractData": "بيانات عقد الإيجار",

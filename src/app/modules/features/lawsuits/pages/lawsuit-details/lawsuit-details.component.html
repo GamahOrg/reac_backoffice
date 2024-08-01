@@ -17,7 +17,7 @@
     </button>
 </div> -->
 
-<div class="flex-between">
+<!-- <div class="flex-between">
     <h6 class="fw-7 text-danger">{{translations.lawsuits.lawsuitDetails.modificationRequestInProgress| translate}}</h6>
     <div class="flex-y-row gap-2">
         <span class="flex-y-row gap-1 px-3 py-1 small rounded-1 fw-6" style="background: #E6F2FB; color: #4DC1BB;">
@@ -27,10 +27,10 @@
             {{translations.lawsuits.lawsuitDetails.editData| translate}}
         </button>
     </div>
-</div>
+</div> -->
 
 <div class="flex-end gap-2 w-fit">
-  <div style="background: #E6F2FB; padding-block: 2px" class="px-2 rounded-2 w-fit">
+  <div style="background: #E6F2FB; padding-block: 2px" class="px-2 rounded-2 border border-primary w-fit">
     <span class="flex-y-row gap-1 small fw-6 text-primary"><i class="material-icons fs-6"> watch_later </i> {{lawsuitDetails ? (lawsuitStatus[lawsuitDetails.internalStatusId] | translate) : "--"}}</span>
   </div>
   <!-- <button type="button" class="btn btn-primary px-6 py-2" (click)="openAuditorsModal(auditorsModal)">
@@ -48,7 +48,7 @@
     </div>
     <p class="v-small fw-7"> 1 - {{translations.lawsuits.lawsuitDetails.lawsuitDetails | translate}} </p>
   </li>
-  <li *ngIf="lawsuitDetails && lawsuitDetails.internalStatusId == LawsuitStatus.New"
+  <li *ngIf="lawsuitDetails && (lawsuitDetails.internalStatusId == LawsuitStatus.New || lawsuitDetails.internalStatusId == LawsuitStatus.Edited) "
       [ngClass]="{'active':!isLawsuitDetails}"
       (click)="updateIsLawsuitDetails(false)">
     <div class="flex-y-row gap-3">

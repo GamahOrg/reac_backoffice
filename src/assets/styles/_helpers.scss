@@ -173,13 +173,34 @@
 }
 
 .fw-3 {
-    font-family: "Readex Pro Light";
+    font-family: "Loew Next Arabic Light";
+
+    [lang="ar"] & {
+        font-family: "REGA";
+    }
 }
+
+.fw-5 {
+    font-family: "Loew Next Arabic";
+
+    [lang="ar"] & {
+        font-family: "REGA SemBd";
+    }
+}
+
 .fw-6 {
-    font-family: "Readex Pro SemiBold";
+    font-family: "Loew Next Arabic";
+
+    [lang="ar"] & {
+        font-family: "REGA SemBd";
+    }
 }
-.f-18 {
-    font-size: 1.13rem !important;
+.fw-7 {
+    font-family: "Loew Next Arabic ExtraBold";
+
+    [lang="ar"] & {
+        font-family: "REGA SemBd";
+    }
 }
 
 @for $fw from 3 through 9 {

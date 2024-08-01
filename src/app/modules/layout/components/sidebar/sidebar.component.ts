@@ -42,6 +42,20 @@ export class SidebarComponent extends BaseComponent {
             //     },
             // ]
         },
+        {
+            id: 'claims-link',
+            title: this.translate.instant(translations.layout.sidebar.arbitratorRequestList),
+            // icon: 'assets/images/icons/sidebar/menu.svg',
+            icon: 'assets/images/icons/sidebar/book.svg',
+            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.arbitratorRequestList,
+        },
+        {
+            id: 'claims-link',
+            title: this.translate.instant(translations.layout.sidebar.reformerRequestList),
+            // icon: 'assets/images/icons/sidebar/menu.svg',
+            icon: 'assets/images/icons/sidebar/book.svg',
+            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.reformerRequestList,
+        },
         // {
         //     id: 'profile-link',
         //     title: this.translate.instant(translations.layout.sidebar.profile),

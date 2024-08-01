@@ -8,10 +8,14 @@
 
     border-radius: 50%;
 
-    font-size: 13px;
-    font-weight: 600;
-    font-family: "Readex Pro SemiBold";
-
     width: 18px;
     height: 18px;
+
+    font-size: 13px;
+    font-weight: 600;
+    font-family: "Loew Next Arabic";
+
+    [lang="ar"] & {
+        font-family: "REGA SemBd";
+    }
 }

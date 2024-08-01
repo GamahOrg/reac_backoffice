@@ -26,14 +26,18 @@
         border: none !important;
         cursor: pointer;
 
-        font-weight: 600;
-        font-family: "Readex Pro SemiBold";
-        font-size: 12px;
-
         width: 0;
 
         display: flex;
         order: 4;
+
+        font-size: 12px;
+        font-weight: 600;
+        font-family: "Loew Next Arabic";
+
+        [lang="ar"] & {
+            font-family: "REGA SemBd";
+        }
 
         @media (max-width: 991px) {
             padding-inline: 0 64px;

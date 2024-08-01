@@ -16,7 +16,7 @@ export class LawsuitDataComponent extends BaseComponent implements OnInit {
     accordionContent: Accordion = {
         accordionComponentList: [
             {
-                title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.rentContractData),
+                title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.plaintiffData2),
                 icon: 'assets/images/icons/bookmarks.svg',
                 component: LawsuitRentContractDataComponent,
                 isVisible: true,

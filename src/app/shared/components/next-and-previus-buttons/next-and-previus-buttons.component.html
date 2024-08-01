@@ -3,7 +3,7 @@
 					(click)="back()"
 					*ngIf="previousBtnIsVisible">{{translations.actions.goBack| translate}}</button>
 
-	<div class="flex-y-row gap-0 ms-auto">
+    <div class="gap-0 flex-row flex-wrap" [class]="previousBtnIsVisible ? 'flex-y-row' : 'flex-between w-100'">
 		<button class="btn small fw-6 text-primary"
 						*ngIf="saveAsDraftBtnIsVisible"
 						(click)="saveAsDraft()">{{translations.actions.saveAsDraft| translate}}</button>

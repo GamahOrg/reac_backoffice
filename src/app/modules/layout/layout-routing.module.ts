@@ -14,6 +14,11 @@ const routes: Routes = [
           import('../features/lawsuits/lawsuits.module').then((m) => m.LawsuitsModule),
       },
       {
+        path: Configuration.modules.citizenRequests,
+        loadChildren: () =>
+          import('../features/citizen-requests/citizen-requests.module').then((m) => m.CitizenRequestsModule),
+      },
+      {
         path: '',
         redirectTo: Configuration.modules.lawsuits,
         pathMatch: 'full'
