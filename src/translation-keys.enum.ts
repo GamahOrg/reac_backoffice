@@ -332,7 +332,8 @@ export namespace translations {
             CompanyRepresentative = 'lawsuits.createEditLawsuit.CompanyRepresentative',
             Lawyer = 'lawsuits.createEditLawsuit.Lawyer',
             Agent = 'lawsuits.createEditLawsuit.Agent',
-            ReconciliationAndArbitration = 'lawsuits.createEditLawsuit.ReconciliationAndArbitration'
+            ReconciliationAndArbitration = 'lawsuits.createEditLawsuit.ReconciliationAndArbitration',
+            fileOfContract = 'lawsuits.createEditLawsuit.fileOfContract',
         }
     }
 

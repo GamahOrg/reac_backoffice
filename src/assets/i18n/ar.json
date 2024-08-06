@@ -241,6 +241,8 @@
       "disputeAmount": "مبلغ المنازعة",
       "disputeLocation": "محل النزاع",
       "requests": "الطلبات",
+      "fileOfContract": "ملف عقد",
+      "references": "الإسنادات",
       "lawsuitType": "نوع طلب الدعوى",
       "reconciliation": "صلح",
       "lawsuitObjective": "هدف الدعوى",

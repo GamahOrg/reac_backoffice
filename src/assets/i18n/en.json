@@ -166,7 +166,9 @@
             "lawsuitNotes": "الملاحظات",
             "lawsuitAttachements": "المرفقات",
             "InvitationTypeTemplate": "نموذج نوع الدعوة",
-            "replyForCharterRequest": "الرد على طلب المشارطة"
+            "replyForCharterRequest": "الرد على طلب المشارطة",
+            "fileOfContract": "ملف عقد",
+            "references": "الإسنادات"
         },
         "createEditLawsuit": {
             "rentContractData": "بيانات عقد الإيجار",
