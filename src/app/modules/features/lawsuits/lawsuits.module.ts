@@ -28,6 +28,9 @@ import { LawsuitReviewService } from './services/lawsuit-review/lawsuit-review.s
 import { ReasonReturnLawsuitComponent } from './components/reason-return-lawsuit/reason-return-lawsuit.component';
 import { ModificationReturnComponent } from './components/modification-return/modification-return.component';
 import { LawsuitEditReasonsService } from './services/lawsuit-edit-reasons/lawsuit-edit-reasons.service';
+import { AuditngListArbitrationComponent } from './pages/auditng-list-arbitration/auditng-list-arbitration.component';
+import { AuditngListReconciliationComponent } from './pages/auditng-list-reconciliation/auditng-list-reconciliation.component';
+import { LawsuitClaimDataComponent } from './components/lawsuit-claim-data/lawsuit-claim-data.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +41,10 @@ import { LawsuitEditReasonsService } from './services/lawsuit-edit-reasons/lawsu
         LawsuitReeditReasonComponent,
         ArbitrationRequestComponent,
         LawsuitReviewComponent,
-        ReasonReturnLawsuitComponent
+        ReasonReturnLawsuitComponent,
+        AuditngListArbitrationComponent,
+        AuditngListReconciliationComponent,
+        LawsuitClaimDataComponent
     ],
     providers: [
         LawsuitListService,

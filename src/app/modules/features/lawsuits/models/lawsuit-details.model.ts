@@ -1,3 +1,5 @@
+import { SysFileManagerCreateUpdateDto } from "@app/shared/models/sys-file-manager-create-update-dto"
+
 export interface LawsuitItemDetails {
     applicantCitizen: ApplicantCitizen,
     applicantCitizenId: string,
@@ -86,7 +88,7 @@ export interface LawsuitItemDetails {
         id: number,
         litigationRequestOwnerType: string,
         litigationRequests: string[],
-        translations: { litigationRequestOwnerType: string, languageCode: string}[]
+        translations: { litigationRequestOwnerType: string, languageCode: string }[]
     },
     litigationRequestOwnerTypeId: number,
     litigationRequestReconciliationMeetings: LitigationRequestReconciliationMeeting[],
@@ -191,7 +193,7 @@ export interface Gender {
     id: number,
     gender: string,
     citizens: string[],
-    translations: { gender: string, languageCode: string}[]
+    translations: { gender: string, languageCode: string }[]
 }
 
 export interface IdentityType {
@@ -322,6 +324,7 @@ export interface LitigationRequestContractFirstPartyCitizen {
 }
 
 export interface FirstPartyFacility {
+    arabicFacilityName: string
     id: string,
     code: string,
     citizenId: string,
@@ -489,14 +492,18 @@ export interface Contract {
     secondPartyEmail: string,
     secondPartyMobile: string,
     secondPartyRegistrationRequestId: string,
-    firstPartyCitizen: string,
+    firstPartyCitizen: any,
     firstPartyFacility: FirstPartyFacility,
     leaseContractFile: LeaseContractFile,
     litigationRequestContractType: LitigationRequestContractType,
     litigationRequests: string[],
     secondPartyRegistrationRequest: SecondPartyRegistrationRequest,
     secondPartyCitizen: any,
-    secondPartyFacility: SecondPartyFacility
+    secondPartyFacility: SecondPartyFacility,
+    contractFile: SysFileManagerCreateUpdateDto | null
+    associationRegistrationCertificateFile: SysFileManagerCreateUpdateDto |null
+    foundingLetterFile: SysFileManagerCreateUpdateDto |null
+    internalRegulationsFile: SysFileManagerCreateUpdateDto |null
 }
 
 export interface Status {
@@ -528,7 +535,7 @@ export interface RequestCorrespondenc {
     litigationRequestCorrespondenceDestination: {
         id: number,
         destination: string,
-        translations: { destination: string, languageCode: string}[],
+        translations: { destination: string, languageCode: string }[],
         litigationRequestCorrespondences: string[]
     },
     litigationRequestCorrespondenceFiles: LitigationRequestCorrespondenceFile[]

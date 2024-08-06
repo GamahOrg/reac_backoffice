@@ -4,13 +4,10 @@ import { BaseComponent } from '@app/shared/components/base/base.component';
 import { LawsuitRequestDetailsService } from '../../services/lawsuit-request-details/lawsuit-request-details.service';
 import { Contract, LawsuitItemDetails } from '../../models/lawsuit-details.model';
 import { environment } from '@environment/environment.development';
+import { LawsuitTypeEnum } from '../../models/enums/lawsuit-type.model';
 
 @Component({
   selector: 'app-lawsuit-claim-data',
-  standalone: true,
-  imports: [
-    CommonModule
-  ],
   templateUrl: './lawsuit-claim-data.component.html',
   styleUrl: './lawsuit-claim-data.component.scss'
 })
@@ -24,7 +21,9 @@ export class LawsuitClaimDataComponent extends BaseComponent implements OnInit {
     this.translations.lawsuits.createEditLawsuit.arbitration,
     this.translations.lawsuits.createEditLawsuit.ReconciliationAndArbitration
   ]  
-
+  get LawsuitType() {
+    return LawsuitTypeEnum;
+  }
   constructor(
     private _lawsuitRequestDetailsService: LawsuitRequestDetailsService
   ) {
@@ -45,4 +44,12 @@ export class LawsuitClaimDataComponent extends BaseComponent implements OnInit {
         allowSignalWrites: true
     })
   } 
+
+  lawsuitTypeTranslation: { [key: number]: string } = {
+    [LawsuitTypeEnum.Rent]: this.translations.lawsuits.lawsuitsList.ejar,
+    [LawsuitTypeEnum.Properties]: this.translations.lawsuits.lawsuitsList.mullak,
+    [LawsuitTypeEnum.Wafi]: this.translations.lawsuits.lawsuitsList.wafi,
+    [LawsuitTypeEnum.RealEstateBrokerage]: this.translations.lawsuits.lawsuitsList.wasatah,
+    [LawsuitTypeEnum.OtherServices]: this.translations.lawsuits.lawsuitsList.others,
+  }
 }

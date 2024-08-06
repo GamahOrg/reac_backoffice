@@ -11,10 +11,20 @@ export const Configuration = {
             Remove: '/api/SysFileManager/Remove',
             RemoveRange: '/api/SysFileManager/RemoveRange',
         },
+        Reconciliation:{
+            AddReconciliationExtendPeriodForEmployee: '/api/Reconciliation/AddReconciliationExtendPeriodForEmployee',
+            GetLitigationRequestExtendPeriodForEmployee: '/api/Reconciliation/GetLitigationRequestExtendPeriodForEmployee',
+            GetLitigationRequestExtendPeriodForEmployeeByRequestId: '/api/Reconciliation/GetLitigationRequestExtendPeriodForEmployeeByRequestId',
+            GetLitigationRequestForFullAllSession:'/api/Reconciliation/GetLitigationRequestForFullAllSession',
+            GetLitigationRequestForFullAllReformer:'/api/Reconciliation/GetLitigationRequestForFullAllReformer',
+            Assign:'/api/Reconciliation/Assign',
+        },
         LitigationRequest: {
             AuditngList: '/api/LitigationRequest/AuditngList',
+            AuditngListArbitration: '/api/LitigationRequest/AuditngListArbitration',
+            AuditngListReconciliation: '/api/LitigationRequest/AuditngListReconciliation',
             GetLitigationById: '/api/LitigationRequest/GetLitigationById',
-            GetAuditNotesById: "/api/LitigationRequest/GetAuditNotesById",
+            GetAuditNotesById: "/api/LitigationRequest/GetAuditNotesById",           
         },
         WorkFlowProcessingLog: {
             GetAuditNotesById: "/api/WorkFlowProcessingLog/GetAuditNotesById",
@@ -31,7 +41,18 @@ export const Configuration = {
         ArbitratorClass: {
             GetArbitratorClasses: '/api/SysArbitratorClass/GetArbitratorClasses',
             GetArbitratorClass: '/api/SysArbitratorClass/GetArbitratorClass',
-        }
+        },
+        Citizen: {
+            AddArbitratorFreeUpDecision: "/api/Citizen/AddArbitratorFreeUpDecision",
+            AddArbitratorStopDecision: "/api/Citizen/AddArbitratorStopDecision",
+            AddReformerFreeUpDecision: "/api/Citizen/AddReformerFreeUpDecision",
+            AddReformerStopDecision: "/api/Citizen/AddReformerStopDecision",
+            GetReformersDecisions: "/api/Citizen/GetReformersDecisions",
+            GetReformersDecisionsByCitizenId: "/api/Citizen/GetReformersDecisionsByCitizenId",
+            GetArbitratorsDecisions: "/api/Citizen/GetArbitratorsDecisions",
+            GetArbitratorsDecisionsByCitizenId: "/api/Citizen/GetArbitratorsDecisionsByCitizenId",
+            GetReformersLookup: "/api/Citizen/GetReformersLookup",
+        },
     },
     modules: {
         auth: 'auth',
@@ -48,11 +69,21 @@ export const Configuration = {
             createLawsuit: "create-lawsuit",
             editLawsuit: "edit-lawsuit",
             lawsuitDetails: "lawsuit-details",
+            AuditngListReconciliation: 'auditng-list-reconciliation',
+            AuditngListArbitration: 'auditng-list-arbitration'
         },
         citizenRequests: {
             arbitratorRequestList: 'arbitrator-request-list',
             reformerRequestList: 'reformer-request-list',
             details: 'details',
+            requestToExtendSettlementPeriodList:'request-extend-settlement-period-list',
+            requestToExtendSettlementPeriodDetails:'request-extend-settlement-period-details',
+            stopAndReleaseReformer: "stop-and-release-reformer",
+            stopAndReleaseArbitrator: "stop-and-release-arbitrator",
+            arbitratorDecisionDetails: "arbitrator-decision-details",
+            reformerDecisionDetails: "reformer-decision-details",
+            sessionList:'session-list',
+            reformerList:'refomer-list'
         }
     },
     validators: {

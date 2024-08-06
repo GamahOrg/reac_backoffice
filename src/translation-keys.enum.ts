@@ -3,7 +3,55 @@ export namespace translations {
         rtl = 'direction.rtl',
         ltr = 'direction.ltr',
     }
-
+    export enum General{
+        successfullySave='general.successfullySave',
+        uploadAttachments='general.uploadAttachments'
+        
+    }
+    
+    export enum LitigationRequest{
+         sessionLink = 'litigationRequest.sessionLink',
+        reformerName = 'litigationRequest.reformerName',
+        rejectionReasons='litigationRequest.rejectionReasons',
+        requestCode='litigationRequest.requestCode',
+        requestDate='litigationRequest.requestDate',
+        firstPartyName='litigationRequest.firstPartyName',
+        secondPartyName='litigationRequest.secondPartyName',
+        requestTypeName='litigationRequest.requestTypeName',
+        status='litigationRequest.status',
+        isDone='litigationRequest.isDone',
+        replyStatus='litigationRequest.replyStatus',
+        sessionDatetime='litigationRequest.sessionDatetime',
+        litigationRequesSessions='litigationRequest.litigationRequesSessions',
+        addSession='litigationRequest.addSession',
+        requestNumber='litigationRequest.requestNumber',
+        cityName='litigationRequest.cityName',
+        areaName='litigationRequest.areaName',
+        contractAddress='litigationRequest.contractAddress',
+        litigationRequestCategory='litigationRequest.litigationRequestCategory',
+        litigationRequestContractType='litigationRequest.litigationRequestContractType',
+        facilityCode='litigationRequest.facilityCode',
+        facilityName='litigationRequest.facilityName',
+        commercialRegisterNumber='litigationRequest.commercialRegisterNumber',
+        facility700Number='litigationRequest.facility700Number',
+        firstPartyCapacity='litigationRequest.firstPartyCapacity',
+        secondPartyCapacity='litigationRequest.secondPartyCapacity',
+        firstPartyData='litigationRequest.firstPartyData',
+        secondPartyData='litigationRequest.secondPartyData',
+        litigationData='litigationRequest.litigationData',
+        reconciliationSessionDetails='litigationRequest.reconciliationSessionDetails',
+        modificationRequest='litigationRequest.modificationRequest',
+        reconciliationItem='litigationRequest.reconciliationItem',
+        reconciliationItems='litigationRequest.reconciliationItems',
+        litigationRequesReplayReport='litigationRequest.litigationRequesReplayReport',
+        acceptance='litigationRequest.acceptance',
+        reject='litigationRequest.reject',
+        response = 'litigationRequest.response',
+        applyActionMessageBody='litigationRequest.applyActionMessageBody',
+        selectReformer='litigationRequest.selectReformer',
+        requestreson='litigationRequest.requestreson',
+        dayscount='litigationRequest.dayscount'
+    }
     export namespace layout {
         export enum sidebar {
             home = 'layout.sidebar.home',
@@ -17,13 +65,34 @@ export namespace translations {
             lawsuitsList = 'layout.sidebar.lawsuitsList',
             newLawsuitsList = 'layout.sidebar.newLawsuitsList',
             completedLawsuitsList = 'layout.sidebar.completedLawsuitsList',
-            citizenRequests='layout.sidebar.citizenRequests',
-            reformerRequestList= 'layout.sidebar.reformerRequestList',
-            arbitratorRequestList= 'layout.sidebar.arbitratorRequestList',
+            citizenRequests = 'layout.sidebar.citizenRequests',
+            reformerRequestList = 'layout.sidebar.reformerRequestList',
+            arbitratorRequestList = 'layout.sidebar.arbitratorRequestList',
+            reformation = 'layout.sidebar.reformation',
+            arbitration = 'layout.sidebar.arbitration',
+            requestToExtendSettlementPeriod="layout.sidebar.requestToExtendSettlementPeriod",
+            review = 'layout.sidebar.review',
+            stopAndReleaseReformer = 'layout.sidebar.stopAndReleaseReformer',
+            stopAndReleaseArbitrator = 'layout.sidebar.stopAndReleaseArbitrator',
+            sessionList = 'layout.sidebar.sessionList',
+            assignReformers='layout.sidebar.assignReformers',
         }
     }
 
+    export enum RequestToExtendSettlementPeriod {
+       requestCode = 'RequestToExtendSettlementPeriod.requestCode',
+       requestDate = 'RequestToExtendSettlementPeriod.requestDate',
+       firstPartyName = 'RequestToExtendSettlementPeriod.firstPartyName',
+       secondPartyName = 'RequestToExtendSettlementPeriod.secondPartyName',
+       requestTypeName = 'RequestToExtendSettlementPeriod.requestTypeName',
+       status = 'RequestToExtendSettlementPeriod.status',
+       isDone = 'RequestToExtendSettlementPeriod.isDone',
+
+    }
+
+
     export enum actions {
+        procedures = 'actions.procedures',
         save = 'actions.save',
         cancel = 'actions.cancel',
         confirm = 'actions.confirm',
@@ -47,10 +116,12 @@ export namespace translations {
         choose = "actions.choose",
         clearAll = 'actions.clearAll',
         uploadAll = 'actions.uploadAll',
-        accept='actions.accept',
-        reject='actions.reject',
-        sendForEdit='actions.sendForEdit',
-        acceptWithFees='actions.acceptWithFees',
+        accept = 'actions.accept',
+        reject = 'actions.reject',
+        sendForEdit = 'actions.sendForEdit',
+        acceptWithFees = 'actions.acceptWithFees',
+        assignReformer = 'actions.assignReformer',
+        startSession='actions.startSession',
     }
 
     export enum tables {
@@ -327,34 +398,62 @@ export namespace translations {
         citizenRequestType = 'citizenRequest.addArbitratorRequest',
         statusName = 'citizenRequest.statusName',
         actions = 'citizenRequest.actions',
-        enterCertificateName='citizenRequest.enterCertificateName',
-        academicDegreeFiles='citizenRequest.academicDegreeFiles',
-        writeBrief='citizenRequest.writeBrief',
-        experienceCertificates='citizenRequest.experienceCertificates',
-        yearObtained= 'citizenRequest.yearObtained',
-        enterAcquisitionDate= 'citizenRequest.enterAcquisitionDate',
-        enterIssuingEntityName='citizenRequest.enterIssuingEntityName',
-        certificateAttachment='citizenRequest.certificateAttachment',
-        enterYearsOfExperience= 'citizenRequest.enterYearsOfExperience',
-        selectarbitratorClass='citizenRequest.selectarbitratorClass',
-        edit= 'citizenRequest.edit',
-        viewRequest= 'citizenRequest.viewRequest',
-        successfullySave='citizenRequest.successfullySave',
-        addCertificate='citizenRequest.addCertificate',
-        deleteCertificate='citizenRequest.deleteCertificate',
-        attachment= 'citizenRequest.attachment',
-        certificate='citizenRequest.certificate',
-        certificateRequired='citizenRequest.certificateRequired',
-        acceptHeaderTitle='citizenRequest.acceptHeaderTitle',
-        acceptWithoutFeesMessageBody='citizenRequest.acceptWithoutFeesMessageBody',
-        acceptWithFeesMessageBody='citizenRequest.acceptWithFeesMessageBody',
-        rejectHeaderTitle='citizenRequest.rejectHeaderTitle',
-        sendForEditHeaderTitle='citizenRequest.sendForEditHeaderTitle',
-        enterNotes= 'citizenRequest.enterNotes',
-        notes= 'citizenRequest.notes',
-        requestType= 'citizenRequest.requestType',
-    }
+        enterCertificateName = 'citizenRequest.enterCertificateName',
+        academicDegreeFiles = 'citizenRequest.academicDegreeFiles',
+        writeBrief = 'citizenRequest.writeBrief',
+        experienceCertificates = 'citizenRequest.experienceCertificates',
+        yearObtained = 'citizenRequest.yearObtained',
+        enterAcquisitionDate = 'citizenRequest.enterAcquisitionDate',
+        enterIssuingEntityName = 'citizenRequest.enterIssuingEntityName',
+        certificateAttachment = 'citizenRequest.certificateAttachment',
+        enterYearsOfExperience = 'citizenRequest.enterYearsOfExperience',
+        selectarbitratorClass = 'citizenRequest.selectarbitratorClass',
+        edit = 'citizenRequest.edit',
+        viewRequest = 'citizenRequest.viewRequest',
+        successfullySave = 'citizenRequest.successfullySave',
+        addCertificate = 'citizenRequest.addCertificate',
+        deleteCertificate = 'citizenRequest.deleteCertificate',
+        attachment = 'citizenRequest.attachment',
+        certificate = 'citizenRequest.certificate',
+        certificateRequired = 'citizenRequest.certificateRequired',
+        acceptHeaderTitle = 'citizenRequest.acceptHeaderTitle',
+        acceptWithoutFeesMessageBody = 'citizenRequest.acceptWithoutFeesMessageBody',
+        acceptWithFeesMessageBody = 'citizenRequest.acceptWithFeesMessageBody',
+        rejectHeaderTitle = 'citizenRequest.rejectHeaderTitle',
+        sendForEditHeaderTitle = 'citizenRequest.sendForEditHeaderTitle',
+        enterNotes = 'citizenRequest.enterNotes',
+        notes = 'citizenRequest.notes',
+        requestType = 'citizenRequest.requestType',
+        noCurrentDecisions = 'citizenRequest.noCurrentDecisions',
 
+        identityNumber = 'citizenRequest.identityNumber',
+        fullName = 'citizenRequest.fullName',
+        mobile = 'citizenRequest.mobile',
+        email = 'citizenRequest.email',
+        requestsCount = 'citizenRequest.requestsCount',
+        reformerStatus = 'citizenRequest.reformerStatus',
+        reformerStatusDate = 'citizenRequest.reformerStatusDate',
+        arbitratorStatus = 'citizenRequest.arbitratorStatus',
+        arbitratorStatusDate = 'citizenRequest.arbitratorStatusDate',
+        reformerDecisionDetails = 'citizenRequest.reformerDecisionDetails',
+        arbitratorDecisionDetails = 'citizenRequest.arbitratorDecisionDetails',
+        homeTelephone = 'citizenRequest.homeTelephone',
+        workTelephone = 'citizenRequest.workTelephone',
+        fax = 'citizenRequest.fax',
+        reformerStopFreeUpDetailDecision = 'citizenRequest.reformerStopFreeUpDetailDecision',
+        decisionDate = 'citizenRequest.decisionDate',
+        stoppingReason = 'citizenRequest.stoppingReason',
+        lateLitigationRequestNumber = 'citizenRequest.lateLitigationRequestNumber',
+        freeUpRequest = 'citizenRequest.freeUpRequest',
+        stopRequest = 'citizenRequest.stopRequest',
+        BadRating = 'citizenRequest.BadRating',
+        LateLitigationRequest = 'citizenRequest.LateLitigationRequest',
+        NonPaymentOfMembershipFees = 'citizenRequest.NonPaymentOfMembershipFees',
+        
+
+
+
+    }
 
     export enum arbitrator {
         arbitratorRegistrationForm = "arbitrator.arbitratorRegistrationForm",
@@ -422,8 +521,12 @@ export namespace translations {
         reformerInformation = "arbitrator.reformerInformation",
         fullName = "arbitrator.fullName",
         isVolunteerApproval = "arbitrator.isVolunteerApproval",
-        identityNumber='arbitrator.identityNumber'
+        identityNumber = 'arbitrator.identityNumber',
+        areaName = 'arbitrator.areaName',
+        arbitratorStopFreeUpDetailDecision = 'arbitrator.arbitratorStopFreeUpDetailDecision',
+        experienceYears = 'arbitrator.experienceYears',
+        arbitratorClass = 'arbitrator.arbitratorClass',
+        brief = 'arbitrator.brief',
     }
-
 
 }

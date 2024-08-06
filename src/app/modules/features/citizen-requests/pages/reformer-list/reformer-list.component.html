@@ -1,0 +1,91 @@
+<ng-container>
+  <div class="table-wrapper mt-0 pt-0">
+
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">{{translations.LitigationRequest.requestCode | translate}}</th>
+            <th scope="col">{{translations.LitigationRequest.requestDate | translate}}</th>
+            <th scope="col">{{translations.LitigationRequest.firstPartyName | translate}}</th>
+            <th scope="col">{{translations.LitigationRequest.secondPartyName | translate}}</th>
+            <th scope="col">{{translations.LitigationRequest.requestTypeName | translate}}</th>
+            <th scope="col">{{translations.LitigationRequest.reformerName | translate}}</th>
+            <th scope="col">{{translations.CitizenRequest.actions | translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (litigationRequest of reformerList; track $index) {
+          <tr>
+            <td>{{litigationRequest.requestCode}}</td>
+            <td>{{litigationRequest.requestDate | date:'yyyy/MM/dd'}}</td>
+            <td>{{litigationRequest.firstPartyName}}</td>
+            <td>{{litigationRequest.secondPartyName}}</td>
+            <td>{{litigationRequest.requestTypeName}}</td>
+            <td>{{litigationRequest.reformerName }}</td>
+            <td>              
+              <button (click)="assignReformer(litigationRequest.reformerId,litigationRequest.id,assignReformerModal)"
+                class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;">
+                <img src="assets/images/icons/eye.svg" alt="eye">
+                {{translations.actions.assignReformer| translate}}
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  @if (reformerList && reformerList.length) {
+  <div class="flex-between">
+    <div class="op-6 v-small fw-5">
+      <span>{{translations.tables.from | translate}} </span>
+      <span>{{page}} </span>
+      <span>{{translations.tables.to | translate}} </span>
+      <span>6 </span>
+      <span>{{translations.tables.ofTotal | translate}} </span>
+      <span>{{collectionSize}} </span>
+      <span>{{translations.tables.row | translate}} </span>
+    </div>
+
+
+    <app-pagination></app-pagination>
+  </div>
+  }
+</ng-container>
+
+
+<ng-template #assignReformerModal let-modal>
+  <div class="modal-header">
+    <label> {{translations.actions.assignReformer| translate}}</label>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <form [formGroup]="assignRequestForm">
+    <div class="modal-body pt-0">
+      <select class="form-select" formControlName="reformerId"  [class.is-invalid]="controls.reformerId.invalid && controls.reformerId.touched">
+        <option disabled [ngValue]="null" selected>
+          {{ translations.LitigationRequest.selectReformer | translate }}
+        </option>
+        <option *ngFor="let citizenReformer of citizenReformers" [ngValue]="citizenReformer.id">
+          الاسم: {{ citizenReformer.fullName}} - عدد الدعاوى: {{ citizenReformer.requestsCount}}
+        </option>
+      </select>
+      <div class="invalid-feedback"
+      *ngIf="controls.reformerId.touched && controls.reformerId.errors">
+      {{translations.formValidationError.required | translate}}
+  </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="sendReformerRequest(modal)">{{ translations.actions.save |
+        translate
+        }}</button>
+
+      <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+        }}</button>
+
+    </div>
+  </form>
+</ng-template>

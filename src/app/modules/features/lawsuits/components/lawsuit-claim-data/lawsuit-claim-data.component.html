@@ -1,6 +1,11 @@
 <div class="grid-3 mt-5">
     <div>
-        <h6 class="small fw-5">رقم عقد الإيجار</h6>
+        <h6 class="small fw-5">رقم عقد
+
+            {{ contract && contract.litigationRequestContractTypeId ?
+            (lawsuitTypeTranslation[contract.litigationRequestContractTypeId] | translate) : "--"}}
+
+        </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/hashtag.svg"
                  alt="icon">
@@ -94,12 +99,115 @@
         <h6 class="small fw-5">طلبات الدعوى</h6>
         <div class="gap-2">
             <ng-container *ngFor="let request of litigationDetails?.litigationRequestRequests">
-                <img src="assets/images/icons/lawsuit-details/book.svg"
-                     alt="icon">
-                <h6 class="small op-7">{{request.requestContent || "--"}}</h6>
+                <div class="flex-y-row">
+                    <img src="assets/images/icons/lawsuit-details/book.svg"
+                         alt="icon">
+                    <h6 class="small op-7">{{request.requestContent || "--"}}</h6>
+                </div>
             </ng-container>
         </div>
     </div>
+
+    <div *ngIf="contract?.associationRegistrationCertificateFile"
+         class="span-3">
+        <h6 class="small fw-5">شهادة تسجيل الجمعية
+        </h6>
+        <div class=" gap-2">
+            <div class="flex-y-row">
+                <img src="assets/images/icons/lawsuit-details/book.svg"
+                     alt="icon">
+                <h6 class="small op-7">{{contract?.associationRegistrationCertificateFile?.fileDescription || '--'}}
+                </h6>
+            </div>
+            <div class="flex-between px-2 py-3 rounded-2"
+                 style="background: #F7F7F7;"
+                 *ngIf="contract?.associationRegistrationCertificateFile?.filePath">
+                <div class="flex-y-row gap-2">
+                    <img src="assets/images/icons/lawsuit-details/attachment.svg"
+                         alt="attachment">
+                    <p class="v-small fw-6 op-9"> {{ contract?.associationRegistrationCertificateFile?.fileDescription
+                        }} </p>
+                </div>
+                <div class="flex-y-row gap-1">
+                    <a [href]="baseUrl + contract?.associationRegistrationCertificateFile?.filePath"
+                       target="_blank">
+                        <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+                    </a>
+                    <a [href]="baseUrl + contract?.associationRegistrationCertificateFile?.filePath"
+                       download>
+                        <i class='btn px-0 material-icons op-3 fs-5'>download</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="contract?.internalRegulationsFile"
+         class="span-3">
+        <h6 class="small fw-5">
+            اللائحة الداخلية للجمعيه
+        </h6>
+        <div class=" gap-2">
+            <div class="flex-y-row">
+                <img src="assets/images/icons/lawsuit-details/book.svg"
+                     alt="icon">
+                <h6 class="small op-7">{{contract?.internalRegulationsFile?.fileDescription || '--'}}</h6>
+            </div>
+            <div class="flex-between px-2 py-3 rounded-2"
+                 style="background: #F7F7F7;"
+                 *ngIf="contract?.internalRegulationsFile?.filePath">
+                <div class="flex-y-row gap-2">
+                    <img src="assets/images/icons/lawsuit-details/attachment.svg"
+                         alt="attachment">
+                    <p class="v-small fw-6 op-9"> {{ contract?.internalRegulationsFile?.fileDescription }} </p>
+                </div>
+                <div class="flex-y-row gap-1">
+                    <a [href]="baseUrl + contract?.internalRegulationsFile?.filePath"
+                       target="_blank">
+                        <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+                    </a>
+                    <a [href]="baseUrl + contract?.internalRegulationsFile?.filePath"
+                       download>
+                        <i class='btn px-0 material-icons op-3 fs-5'>download</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="contract?.foundingLetterFile"
+         class="span-3">
+        <h6 class="small fw-5">
+            خطاب تأسيس الجمعية
+        </h6>
+        <div class=" gap-2">
+            <div class="flex-y-row">
+                <img src="assets/images/icons/lawsuit-details/book.svg"
+                     alt="icon">
+                <h6 class="small op-7">{{contract?.foundingLetterFile?.fileDescription || '--'}}</h6>
+            </div>
+            <div class="flex-between px-2 py-3 rounded-2"
+                 style="background: #F7F7F7;"
+                 *ngIf="contract?.foundingLetterFile?.filePath">
+                <div class="flex-y-row gap-2">
+                    <img src="assets/images/icons/lawsuit-details/attachment.svg"
+                         alt="attachment">
+                    <p class="v-small fw-6 op-9"> {{ contract?.foundingLetterFile?.fileDescription }} </p>
+                </div>
+                <div class="flex-y-row gap-1">
+                    <a [href]="baseUrl + contract?.foundingLetterFile?.filePath"
+                       target="_blank">
+                        <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+                    </a>
+                    <a [href]="baseUrl + contract?.foundingLetterFile?.filePath"
+                       download>
+                        <i class='btn px-0 material-icons op-3 fs-5'>download</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="span-3">
         <h6 class="small fw-5"> الإسنادات</h6>
