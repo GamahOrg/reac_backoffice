@@ -15,4 +15,13 @@ export class LawsuitListService {
   AuditngList(body: AuditingListFilter): Observable<BaseResponse<AuditngList>>{    
     return this._httpClient.get<BaseResponse<AuditngList>>(`${Configuration.APIs.LitigationRequest.AuditngList}`, { params: createQuery(body) })  
   }
+
+  AuditngListArbitration(body: AuditingListFilter): Observable<BaseResponse<AuditngList>>{    
+    return this._httpClient.get<BaseResponse<AuditngList>>(`${Configuration.APIs.LitigationRequest.AuditngListArbitration}`, { params: createQuery(body) })  
+  }
+
+  AuditngListReconciliation(body: AuditingListFilter): Observable<BaseResponse<AuditngList>>{    
+    return this._httpClient.get<BaseResponse<AuditngList>>(`${Configuration.APIs.LitigationRequest.AuditngListReconciliation}`, { params: createQuery(body) })  
+  }
+
 }

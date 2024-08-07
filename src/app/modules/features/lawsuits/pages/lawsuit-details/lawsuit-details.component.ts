@@ -15,6 +15,7 @@ import { LawsuitItemDetails } from '../../models/lawsuit-details.model';
 import { LawsuitEventsComponent } from '../../components/lawsuit-events/lawsuit-events.component';
 import { LawsuitReeditReasonComponent } from '../../components/lawsuit-reedit-reason/lawsuit-reedit-reason.component';
 import { LawsuitStatus } from '../../models/enums/lawsuit-status.model';
+import { LawsuitTypeEnum } from '../../models/enums/lawsuit-type.model';
 
 @Component({
   selector: 'app-lawsuits-details',
@@ -121,6 +122,16 @@ export class LawsuitDetailsComponent extends BaseComponent {
     [LawsuitStatus.ReconciliationWasMade]: this.translations.lawsuits.lawsuitsList.ReconciliationWasMade,
 
   }
+  get LawsuitType() {
+    return LawsuitTypeEnum;
+  }
+  lawsuitTypeTranslation: { [key: number]: string } = {
+    [LawsuitTypeEnum.Rent]: this.translations.lawsuits.lawsuitsList.ejar,
+    [LawsuitTypeEnum.Properties]: this.translations.lawsuits.lawsuitsList.mullak,
+    [LawsuitTypeEnum.Wafi]: this.translations.lawsuits.lawsuitsList.wafi,
+    [LawsuitTypeEnum.RealEstateBrokerage]: this.translations.lawsuits.lawsuitsList.wasatah,
+    [LawsuitTypeEnum.OtherServices]: this.translations.lawsuits.lawsuitsList.others,
+  }
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _lawsuitRequestDetailsService: LawsuitRequestDetailsService
@@ -141,7 +152,7 @@ export class LawsuitDetailsComponent extends BaseComponent {
           this._breadcrumbService.updateBreadcrumbListContent([
             { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
             { label: this._translateService.instant(this.translations.lawsuits.lawsuitsList.lawsuitsList), link: Configuration.modules.lawsuits },
-            { label: `دعوى إيجار رقم ${this.lawsuitDetails.requestCode}` }
+            { label: `دعوى ${this._translateService.instant(this.lawsuitTypeTranslation[this.lawsuitDetails.contract.litigationRequestContractTypeId])} رقم ${this.lawsuitDetails.requestCode}` }
           ]);
           this._lawsuitRequestDetailsService.litigationDetails.set(this.lawsuitDetails);
         }

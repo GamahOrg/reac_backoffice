@@ -1,4 +1,24 @@
 <form>
+  <div *ngIf="statusId===citizenRequestStatus.WaitingForCertify || statusId===citizenRequestStatus.SentFromEdit"
+  class="form-wrapper">
+  <div class="flex flex-end justify-content-end">
+
+    <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
+      (click)="open(acceptModel)">{{translations.actions.accept| translate}}</button>
+
+    <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
+      (click)="open(acceptWithFeesModel)">{{translations.actions.acceptWithFees| translate}}</button>
+
+    <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
+      (click)="open(rejectModel)">{{translations.actions.reject| translate}}</button>
+
+    <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
+      (click)="open(senToEditModel)">{{translations.actions.sendForEdit| translate}}</button>
+
+  </div>
+
+</div>
+
   <div class="form-wrapper">
     <div class="accordion-card">
       <details open>
@@ -136,25 +156,7 @@
   </div>
 
 
-  <div *ngIf="statusId===citizenRequestStatus.WaitingForCertify || statusId===citizenRequestStatus.SentFromEdit"
-    class="form-wrapper">
-    <div class="flex flex-end">
 
-      <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
-        (click)="open(acceptModel)">{{translations.actions.accept| translate}}</button>
-
-      <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
-        (click)="open(acceptWithFeesModel)">{{translations.actions.acceptWithFees| translate}}</button>
-
-      <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
-        (click)="open(rejectModel)">{{translations.actions.reject| translate}}</button>
-
-      <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
-        (click)="open(senToEditModel)">{{translations.actions.sendForEdit| translate}}</button>
-
-    </div>
-
-  </div>
 </form>
 
 <ng-template #acceptModel let-modal>

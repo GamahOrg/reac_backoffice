@@ -1,0 +1,192 @@
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+      <details open>
+        <summary class="flex-y-row gap-2 border-bottom pb-5">
+          <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+          <h6 class="small fw-6 op-7">مد مدة الصلح</h6>
+        </summary>
+  
+        <div>
+          <ng-container>
+            <div>
+              <label style="font-size: 16px; color: #002f56" class="font-weight-bold" class="small fw-6 mb-2 me-2 ">
+                {{ translations.LitigationRequest.requestreson | translate }}:
+              </label>
+               <label class="small fw-6 mb-2 ">{{litigationRequestForReportDto?.litigationRequestExtendPeriodRequestCreateUpdateDto?.requestReason}}</label>
+
+            </div>
+
+            <div>
+              <label style="font-size: 16px; color: #002f56" class="font-weight-bold" class="small fw-6 mb-2 me-2 ">
+                {{ translations.LitigationRequest.dayscount | translate }}:
+              </label>
+               <label class="small fw-6 mb-2 ">{{litigationRequestForReportDto?.litigationRequestExtendPeriodRequestCreateUpdateDto?.requiredDays}}</label>
+
+            </div>
+            
+            <div *ngIf="litigationRequestForReportDto?.litigationRequestExtendPeriodRequestCreateUpdateDto?.finishStatusReason">
+              <label style="font-size: 16px; color: #002f56" class="font-weight-bold" class="small fw-6 mb-2 me-2 ">
+                {{ translations.LitigationRequest.rejectionReasons | translate }}:
+              </label>
+               <label class="small fw-6 mb-2 ">{{litigationRequestForReportDto?.litigationRequestExtendPeriodRequestCreateUpdateDto?.finishStatusReason}}</label>
+
+            </div>
+           <div class="col-12 col-lg-6">
+              <div class="form-group mb-4">
+                <div class="key">الملفات</div>
+                <div class="value"
+                  *ngFor="let file of litigationRequestForReportDto?.litigationRequestExtendPeriodRequestCreateUpdateDto?.litigationRequestExtendPeriodRequestFiles">
+                  <span class="icon material-icons-outlined">content_copy</span>
+                  <a *ngIf="file && file.fileManager" id="link-marketingPlanFile"
+                    [href]="baseUrl + file.fileManager.filePath" target="_blank">
+                    {{file.fileManager.fileDescription}}</a>
+                </div>
+              
+              </div>
+            </div> 
+  
+        <div class="form-group row" *ngIf="litigationRequestForReportDto && litigationRequestForReportDto.allowAdd">
+          <button  (click)="open(acceptModal)" class="col-md-6 btn btn-primary flex-start px-8 py-3 span-2 w-fit mt-4 me-2"
+          type="button">{{translations.actions.accept| translate}}</button>
+
+        <button (click)="open(rejectModal)" class="col-md-6 btn btn-primary flex-start px-8 py-3 span-2 w-fit mt-4 me-2"
+          type="button">{{translations.actions.reject| translate}}</button>
+        </div>
+
+          </ng-container>
+        </div>
+      </details>
+    </div>
+  </div>
+  
+  
+  
+  <ng-template #acceptModal let-modal>
+    <div class="modal-header">
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+      <p>قبول مد مدة الصلح</p>
+    </div>
+  
+    <div class="modal-body pt-0">
+      {{ translations.LitigationRequest.applyActionMessageBody | translate }}
+    </div>
+  
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary"
+        (click)="addReconciliationExtendPeriodForEmployee(modal,litigationRequestExtendPeriodRequestStatus.Approve)">{{
+        translations.actions.accept |
+        translate
+        }}</button>
+  
+      <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+        }}</button>
+  
+    </div>
+  </ng-template>
+  
+  <ng-template #rejectModal let-modal>
+    <div class="modal-header">
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+      <p>
+        رفض مد مدة الصلح
+      </p>
+    
+    </div>
+  
+    <div class="modal-body pt-0" [formGroup]="form">
+      {{ translations.LitigationRequest.applyActionMessageBody | translate }}
+
+      <div class="form-control">
+        <textarea class="form-control border-0  pt-0 px-0 shadow-none"
+                  rows="7"
+                  placeholder="{{translations.LitigationRequest.rejectionReasons | translate}}"
+                  formControlName="finishStatusReason"></textarea>
+       
+        <div class="invalid-feedback d-block"
+             *ngIf="showValidation">
+  
+             {{translations.formValidationError.required| translate}}
+         
+        </div>
+      </div>
+    </div>
+  
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary"
+        (click)="addReconciliationExtendPeriodForEmployee(modal,litigationRequestExtendPeriodRequestStatus.Reject)">{{
+        translations.actions.reject |
+        translate }}</button>
+  
+      <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+        }}</button>
+    </div>
+  </ng-template>
+
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+      <details open>
+        <summary class="flex-y-row gap-2 border-bottom pb-5">
+          <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+          <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.firstPartyData| translate }} </h6>
+        </summary>
+  
+        <div class="grid-3 mt-5">
+          <ng-container *ngFor="let item of firstParty">
+            <div>
+              <h6 class="small fw-5">{{item.title}}</h6>
+              <div class="flex-y-row gap-2">
+                <h6 class="small op-7">{{item.value}}</h6>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </details>
+    </div>
+  </div>
+  
+  <div class="form-wrapper">
+    <div class="accordion-card">
+      <details open>
+        <summary class="flex-y-row gap-2 border-bottom pb-5">
+          <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+          <h6 class="small fw-6 op-7"> {{ translations.LitigationRequest.secondPartyData| translate }}</h6>
+        </summary>
+  
+        <div class="grid-3 mt-5">
+          <ng-container *ngFor="let item of secondParty">
+            <div>
+              <h6 class="small fw-5">{{item.title}}</h6>
+              <div class="flex-y-row gap-2">
+                <h6 class="small op-7">{{item.value}}</h6>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </details>
+    </div>
+  </div>
+  
+  
+  <div class="form-wrapper">
+    <div class="accordion-card">
+      <details open>
+        <summary class="flex-y-row gap-2 border-bottom pb-5">
+          <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+          <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.litigationData| translate }} </h6>
+        </summary>
+  
+        <div class="grid-3 mt-5">
+          <ng-container *ngFor="let item of dataList">
+            <div>
+              <h6 class="small fw-5">{{item.title}}</h6>
+              <div class="flex-y-row gap-2">
+                <h6 class="small op-7">{{item.value}}</h6>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </details>
+    </div>
+  </div>

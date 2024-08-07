@@ -1,7 +1,5 @@
 <ng-container>
   <div class="table-wrapper">      
-
-    
       <div class="table-responsive">
           <table class="table table-striped">
               <thead>
@@ -28,17 +26,23 @@
                       <td *ngIf="citizenRequest.isVolunteerApproval">{{translations.actions.yes|translate}}</td>
                       <td *ngIf="!citizenRequest.isVolunteerApproval">{{translations.actions.no|translate}}</td>
                       <td>
-                          <a [routerLink]="[detailsArbitratorRequest,citizenRequest.id]"
+                          <a class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" [routerLink]="[detailsArbitratorRequest,citizenRequest.id]"
                           *ngIf="citizenRequest.citizenRequestTypeId ==citizenRequestType.Arbitrator"
-                          class="btn btn-primary py-2 px-6"
-                          >{{translations.CitizenRequest.viewRequest
-                           | translate}}</a>
+                          
+                          >
+                          
+                          <img src="assets/images/icons/eye.svg" alt="eye">
+                                {{translations.actions.view| translate}}
+                        
+                        </a>
 
-                           <a [routerLink]="[detailsReformerRequest,citizenRequest.id]"
+                           <a class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" [routerLink]="[detailsReformerRequest,citizenRequest.id]"
                            *ngIf="citizenRequest.citizenRequestTypeId ==citizenRequestType.Reformer"
-                           class="btn btn-primary py-2 px-6"
-                           >{{translations.CitizenRequest.viewRequest
-                            | translate}}</a>
+                       
+                           >
+                           <img src="assets/images/icons/eye.svg" alt="eye">
+                           {{translations.actions.view| translate}}
+                        </a>
                       </td>
                   </tr>
                   }

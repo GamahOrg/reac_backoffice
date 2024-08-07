@@ -1,7 +1,7 @@
 export interface Pagination<T> {
   results: T,
   currentPage: number,
-  // pageCount: number,
+  pageCount: number,
   pageSize: number,
   totalCount: number
 }
