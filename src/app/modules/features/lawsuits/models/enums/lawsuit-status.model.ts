@@ -74,5 +74,13 @@ export enum LawsuitStatus {
     ///<summary>تم رفض محضر الصلح</summary>
     RejectionOfTheReconciliationReport = 17,
     ///<summary>تم الصلح</summary>
-    ReconciliationWasMade = 18
+    ReconciliationWasMade = 18,
+    ///<summary>عدم الصُلح والانتقال للتحكيم</summary>
+    ReconciliationWasNotMadeAndMoveToArbitration = 19,
+    ///<summary>تم التحكيم</summary>
+    JudgmentDecisionIssued = 20,
+    ///<summary>بإنتظار التفسير</summary>
+    WaitingForExplanation = 21,
+    ///<summary>تم الرد</summary>
+    ExplanationResponsed = 22
 }

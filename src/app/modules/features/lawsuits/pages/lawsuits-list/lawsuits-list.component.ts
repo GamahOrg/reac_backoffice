@@ -49,6 +49,10 @@ export class LawsuitListComponent extends BaseComponent implements OnInit {
         [LawsuitStatus.AcceptanceOfTheReconciliationReport]: this.translations.lawsuits.lawsuitsList.AcceptanceOfTheReconciliationReport,
         [LawsuitStatus.RejectionOfTheReconciliationReport]: this.translations.lawsuits.lawsuitsList.RejectionOfTheReconciliationReport,
         [LawsuitStatus.ReconciliationWasMade]: this.translations.lawsuits.lawsuitsList.ReconciliationWasMade,
+        [LawsuitStatus.ReconciliationWasNotMadeAndMoveToArbitration]: this.translations.lawsuits.lawsuitsList.ReconciliationWasNotMadeAndMoveToArbitration,
+        [LawsuitStatus.JudgmentDecisionIssued]: this.translations.lawsuits.lawsuitsList.JudgmentDecisionIssued,
+        [LawsuitStatus.WaitingForExplanation]: this.translations.lawsuits.lawsuitsList.WaitingForExplanation,
+        [LawsuitStatus.ExplanationResponsed]: this.translations.lawsuits.lawsuitsList.ExplanationResponsed,
 
     }
 

@@ -161,7 +161,7 @@
 
 <ng-template #acceptModel let-modal>
   <div class="modal-header">
-    <!-- <h5 class="modal-title">{{ translations.CitizenRequest.acceptHeaderTitle | translate }}</h5> -->
+    <!-- <h5 class="modal-title fw-6">{{ translations.CitizenRequest.acceptHeaderTitle | translate }}</h5> -->
     <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
   </div>
 
@@ -173,7 +173,7 @@
     <button type="button" class="btn btn-primary" (click)="onAccept(modal)">{{ translations.actions.accept | translate
       }}</button>
 
-    <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate
       }}</button>
 
   </div>
@@ -181,7 +181,7 @@
 
 <ng-template #acceptWithFeesModel let-modal>
   <div class="modal-header">
-    <!-- <h5 class="modal-title">{{ translations.CitizenRequest.acceptHeaderTitle | translate }}</h5> -->
+    <!-- <h5 class="modal-title fw-6">{{ translations.CitizenRequest.acceptHeaderTitle | translate }}</h5> -->
     <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
   </div>
 
@@ -193,14 +193,14 @@
     <button type="button" class="btn btn-primary" (click)="onAcceptWithFees(modal)">{{ translations.actions.accept |
       translate }}</button>
 
-    <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate
       }}</button>
   </div>
 </ng-template>
 
 <ng-template #rejectModel let-modal>
   <div class="modal-header">
-    <h5 class="modal-title">{{ translations.CitizenRequest.rejectHeaderTitle | translate }}</h5>
+    <h5 class="modal-title fw-6">{{ translations.CitizenRequest.rejectHeaderTitle | translate }}</h5>
     <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
   </div>
 
@@ -214,7 +214,7 @@
     <button type="button" class="btn btn-primary" (click)="onReject(modal,rejectNotes.value)">{{
       translations.actions.reject | translate }}</button>
 
-    <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate
       }}</button>
 
   </div>
@@ -222,7 +222,7 @@
 
 <ng-template #senToEditModel let-modal>
   <div class="modal-header">
-    <h5 class="modal-title">{{ translations.CitizenRequest.sendForEditHeaderTitle | translate }}</h5>
+    <h5 class="modal-title fw-6">{{ translations.CitizenRequest.sendForEditHeaderTitle | translate }}</h5>
     <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
   </div>
 
@@ -236,7 +236,7 @@
     <button type="button" class="btn btn-primary" (click)="onSendToEdit(modal,notes.value)">{{
       translations.actions.sendForEdit | translate }}</button>
 
-    <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate
       }}</button>
 
   </div>

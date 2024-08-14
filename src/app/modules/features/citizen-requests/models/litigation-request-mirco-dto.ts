@@ -7,4 +7,6 @@ export interface LitigationRequestMircoDto {
     requestTypeName:string;
     status:string;
     isDone :string;
+    arbitratorId : string;
+    arbitratorName : string;
 }

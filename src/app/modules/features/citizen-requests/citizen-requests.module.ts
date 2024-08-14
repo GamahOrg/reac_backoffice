@@ -8,7 +8,7 @@ import { TabsComponent } from '@app/shared/components/tabs/tabs.component';
 import { NextAndPreviusButtonsComponent } from '@app/shared/components/next-and-previus-buttons/next-and-previus-buttons.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploaderComponent } from '@app/shared/components/file-uploader/file-uploader.component';
-import { NgbAccordionModule, NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbsComponent } from '@app/shared/components/breadcrumbs/breadcrumbs.component';
 import { PaginationComponent } from '@app/shared/components/pagination/pagination.component';
 import { AccordionComponent } from '@app/shared/components/accordion/accordion.component';
@@ -28,7 +28,18 @@ import { ReformerDecisionDetailsComponent } from './pages/reformer-decision-deta
 import { SessionListComponent } from './pages/session-list/session-list.component';
 import { LitigationRequestService } from './services/litigation-request.service';
 import { ReformerListComponent } from './pages/reformer-list/reformer-list.component';
+import { RequestToExtendArbitrationPeriodListComponent } from './pages/request-to-extend-arbitration-period-list/request-to-extend-arbitration-period-list.component';
+import { ShowRequestToExtendArbitrationPeriodDetailsComponent } from './pages/show-request-to-extend-arbitration-period-details/show-request-to-extend-arbitration-period-details.component';
+import { RequestToExtendArbitrationPeridService } from './services/request-to-extend-arbitration-perid.service';
 import { CitizenService } from './services/citizen.service';
+import { LitigationRequestForArbitratorSelectionDurationListComponent } from './pages/litigation-request-for-arbitrator-selection-duration-list/litigation-request-for-arbitrator-selection-duration-list.component';
+import { LitigationRequestForArbitratorSelectionDurationDetailsComponent } from './pages/litigation-request-for-arbitrator-selection-duration-details/litigation-request-for-arbitrator-selection-duration-details.component';
+import { DeterminearbitratorperiodService } from './services/determinearbitratorperiod.service';
+import { AssignArbitrationMemberListComponent } from './pages/assign-arbitration-member-list/assign-arbitration-member-list.component';
+import { AssignArbitrationHeadListComponent } from './pages/assign-arbitration-head-list/assign-arbitration-head-list.component';
+import { AssignArbitrationMemberDetailsComponent } from './pages/assign-arbitration-member-details/assign-arbitration-member-details.component';
+import { AssignArbitrationHeadDetailsComponent } from './pages/assign-arbitration-head-details/assign-arbitration-head-details.component';
+import { ReformerAssigningRequestForAllComponent } from './pages/reformer-assigning-request-for-all/reformer-assigning-request-for-all.component';
 
 @NgModule({
   imports: [
@@ -58,8 +69,17 @@ import { CitizenService } from './services/citizen.service';
     ReformerDecisionDetailsComponent,
     SessionListComponent,
     ReformerListComponent,
-    RequestToExtendSettlementPeriodListComponent, 
-    ShowRequestToExtendSettlementPeriodDetailsComponent
+    RequestToExtendSettlementPeriodListComponent,
+    ShowRequestToExtendSettlementPeriodDetailsComponent,
+    RequestToExtendArbitrationPeriodListComponent,
+    ShowRequestToExtendArbitrationPeriodDetailsComponent,
+    LitigationRequestForArbitratorSelectionDurationListComponent,
+    LitigationRequestForArbitratorSelectionDurationDetailsComponent,
+     ReformerAssigningRequestForAllComponent,
+    AssignArbitrationMemberListComponent,
+    AssignArbitrationHeadListComponent,
+    AssignArbitrationMemberDetailsComponent,
+    AssignArbitrationHeadDetailsComponent
   ],
   providers: [
     CitizenRequestService,
@@ -68,7 +88,9 @@ import { CitizenService } from './services/citizen.service';
     LitigationRequestService,
     CitizenRequestService,
     RequestToExtendSettlementPeriodService,
-    CitizenService
+    RequestToExtendArbitrationPeridService,
+    CitizenService,
+    DeterminearbitratorperiodService
   ]
 })
 export class CitizenRequestsModule { }

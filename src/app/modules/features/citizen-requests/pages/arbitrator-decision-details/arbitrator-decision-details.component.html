@@ -189,18 +189,18 @@
 <ng-template #content
              let-modal>
   <div class="modal-header">
-    <button type="button"
-            class="btn-close"
-            aria-label="Close"
-            (click)="modal.dismiss('Cross click')"></button>
-    <h4 class="modal-title"
-        id="modal-basic-title">
-      {{arbitratorDecisionDetails.arbitratorStatusId == reformerArbitratorStatus.Stopped ?
-      (translations.CitizenRequest.freeUpRequest | translate)
-      :
-      (translations.CitizenRequest.stopRequest | translate)
-      }}
-    </h4>
+        <h5 class="modal-title fw-6"
+            id="modal-basic-title">
+            {{arbitratorDecisionDetails.arbitratorStatusId == reformerArbitratorStatus.Stopped ?
+            (translations.CitizenRequest.freeUpRequest | translate)
+            :
+            (translations.CitizenRequest.stopRequest | translate)
+            }}
+        </h5>
+        <button type="button"
+                class="btn-close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
     <div class="form-wrapper mb-0"

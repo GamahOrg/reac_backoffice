@@ -1,0 +1,41 @@
+@import "assets/styles/controls.scss";
+@import "assets/styles/tables.scss";
+@import "assets/styles/modals.scss";
+
+:host {
+    display: block;
+}
+
+details {
+    &::after {
+        inset-inline-end: 1rem;
+    }
+
+    summary {
+        margin-bottom: 1rem;
+    }
+}
+
+footer {
+    border-top: 1px solid #e6f2fb;
+    box-shadow: 0px -4px 10.6px 0px rgba(#d2d2d2, 25%);
+}
+
+.status-1 {
+    color: #d8b934;
+}
+.status-2 {
+    color: #0075bc;
+}
+.status-3 {
+    color: #719b37;
+}
+.status-4 {
+    color: #4dc1bb;
+}
+.status-5 {
+    color: #222325;
+}
+.status-6 {
+    color: var(--danger);
+}

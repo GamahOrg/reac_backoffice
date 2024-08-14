@@ -13,6 +13,15 @@ import { ArbitratorDecisionDetailsComponent } from './pages/arbitrator-decision-
 import { ReformerDecisionDetailsComponent } from './pages/reformer-decision-details/reformer-decision-details.component';
 import { SessionListComponent } from './pages/session-list/session-list.component';
 import { ReformerListComponent } from './pages/reformer-list/reformer-list.component';
+import { RequestToExtendArbitrationPeriodListComponent } from './pages/request-to-extend-arbitration-period-list/request-to-extend-arbitration-period-list.component';
+import { ShowRequestToExtendArbitrationPeriodDetailsComponent } from './pages/show-request-to-extend-arbitration-period-details/show-request-to-extend-arbitration-period-details.component';
+import { LitigationRequestForArbitratorSelectionDurationDetailsComponent } from './pages/litigation-request-for-arbitrator-selection-duration-details/litigation-request-for-arbitrator-selection-duration-details.component';
+import { LitigationRequestForArbitratorSelectionDurationListComponent } from './pages/litigation-request-for-arbitrator-selection-duration-list/litigation-request-for-arbitrator-selection-duration-list.component';
+import { AssignArbitrationMemberListComponent } from './pages/assign-arbitration-member-list/assign-arbitration-member-list.component';
+import { AssignArbitrationHeadListComponent } from './pages/assign-arbitration-head-list/assign-arbitration-head-list.component';
+import { AssignArbitrationHeadDetailsComponent } from './pages/assign-arbitration-head-details/assign-arbitration-head-details.component';
+import { AssignArbitrationMemberDetailsComponent } from './pages/assign-arbitration-member-details/assign-arbitration-member-details.component';
+import { ReformerAssigningRequestForAllComponent } from './pages/reformer-assigning-request-for-all/reformer-assigning-request-for-all.component';
 
 const routes: Routes = [
   // {
@@ -63,6 +72,43 @@ const routes: Routes = [
   {
     path: Configuration.pages.citizenRequests.reformerList,
     component: ReformerListComponent,
+  },
+
+  {
+    path: Configuration.pages.citizenRequests.requestToExtendArbitrationPeriodList,
+    component: RequestToExtendArbitrationPeriodListComponent,
+  },
+  {
+    path: Configuration.pages.citizenRequests.reformerassigningrequestforall,
+    component: ReformerAssigningRequestForAllComponent,
+  },
+  {
+    path: `${Configuration.pages.citizenRequests.requestToExtendArbitrationPeriodDetails}/:id`,
+    component: ShowRequestToExtendArbitrationPeriodDetailsComponent,
+  },
+  {
+    path: Configuration.pages.citizenRequests.litigationRequestForArbitratorSelectionDurationList,
+    component: LitigationRequestForArbitratorSelectionDurationListComponent,
+  },
+  {
+    path: `${Configuration.pages.citizenRequests.litigationRequestForArbitratorSelectionDurationDetails}/:id`,
+    component: LitigationRequestForArbitratorSelectionDurationDetailsComponent,
+  },
+  {
+    path: Configuration.pages.citizenRequests.assignArbitrationHeadList,
+    component: AssignArbitrationHeadListComponent,
+  },
+  {
+    path: `${Configuration.pages.citizenRequests.assignArbitrationHeadDetails}/:id`,
+    component: AssignArbitrationHeadDetailsComponent,
+  },
+  {
+    path: Configuration.pages.citizenRequests.assignArbitrationMemberList,
+    component: AssignArbitrationMemberListComponent,
+  },
+  {
+    path: `${Configuration.pages.citizenRequests.assignArbitrationMemberDetails}/:id`,
+    component: AssignArbitrationMemberDetailsComponent,
   },
 ];
 
