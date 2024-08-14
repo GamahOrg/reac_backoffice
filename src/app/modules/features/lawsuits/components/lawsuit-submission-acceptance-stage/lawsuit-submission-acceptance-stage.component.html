@@ -20,7 +20,7 @@
     </div>
     <div class="span-2">
         <div style="background: #E6F2FB; padding-block: 2px" class="px-2 rounded-2 border border-success w-fit">
-            <span class="flex-y-row gap-1 small fw-6 text-primary">
+            <span class="flex-y-row gap-1 small fw-6 text-primary status-{{litigationDetails?.internalStatusId}}">
                 <i class="material-icons"> watch_later </i> 
                 {{litigationDetails?.internalStatus?.requestStatus}}                
             </span>
@@ -41,7 +41,7 @@
         <ul>
             <li class="d-flex align-items-start gap-2">
                 <img src="assets/images/icons/lawsuit-details/calendar-add.svg" class="mt-1" alt="icon">
-                <h6 class="small op-7">تم دفع الرسوم الادارية {{litigationDetails?.fees}} ريال سعودي بتاريخ {{litigationDetails?.paidOn | date: 'dd-MM-YYY'}}  - الرقم المرجعي لعملية الدفع ########</h6>
+                <h6 class="small op-7"> {{ translations.lawsuits.lawsuitDetails.adminFeesPaid | translate }} {{litigationDetails?.fees}} {{ translations.lawsuits.createEditLawsuit.saudiRiyal | translate }} {{ translations.lawsuits.lawsuitDetails.date| translate }} {{litigationDetails?.paidOn | date: 'dd-MM-YYY'}}  - {{ translations.lawsuits.lawsuitDetails.referenceNumberForPayment| translate }} ########</h6>
             </li>
         </ul>
     </div>

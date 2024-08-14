@@ -1,0 +1,55 @@
+<ng-container>
+    <div class="table-wrapper mt-0 pt-0">
+  
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">{{translations.LitigationRequest.requestCode | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.requestDate | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.firstPartyName | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.secondPartyName | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.arbitratorName | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.requestTypeName | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.status | translate}}</th>
+              <th scope="col">{{translations.arbitrator.arbitratorAssigningRequestType | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.response | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (litigationRequest of litigationRequests; track $index) {
+            <tr>
+              <td>{{litigationRequest.requestCode}}</td>
+              <td>{{litigationRequest.requestDate | date:'yyyy/MM/dd'}}</td>
+              <td>{{litigationRequest.firstPartyName}}</td>
+              <td>{{litigationRequest.secondPartyName}}</td>
+              <td>{{litigationRequest.arbitratorName}}</td>
+              <td>{{litigationRequest.requestTypeName}}</td>
+              <td>{{litigationRequest.status}}</td>
+              <td>{{litigationRequest.arbitratorAssigningRequestType ? (arbitratorAssigningRequestType[litigationRequest.arbitratorAssigningRequestType] | translate) : '--'}}</td>
+              <td>{{litigationRequest.response ? (localization[litigationRequest.response] | translate) : '--'}}</td>
+              
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    @if (litigationRequests && litigationRequests.length) {
+    <div class="flex-between">
+      <div class="op-6 v-small fw-5">
+        <span>{{translations.tables.from | translate}} </span>
+        <span>{{page}} </span>
+        <span>{{translations.tables.to | translate}} </span>
+        <span>6 </span>
+        <span>{{translations.tables.ofTotal | translate}} </span>
+        <span>{{collectionSize}} </span>
+        <span>{{translations.tables.row | translate}} </span>
+      </div>
+  
+  
+      <app-pagination></app-pagination>
+    </div>
+    }
+  </ng-container>

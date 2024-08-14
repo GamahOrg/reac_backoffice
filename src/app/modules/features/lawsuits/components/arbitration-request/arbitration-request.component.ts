@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { LawsuitDetailsItem } from '../../models/lawsuit-details.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-arbitration-request',
@@ -8,16 +9,18 @@ import { LawsuitDetailsItem } from '../../models/lawsuit-details.model';
     styleUrl: './arbitration-request.component.scss'
 })
 export class ArbitrationRequestComponent extends BaseComponent {
+    private _translate = inject(TranslateService)
+
     arbitrationAgreementEjar: LawsuitDetailsItem[] = [
         {
             icon: 'assets/images/icons/lawsuit-details/hashtag.svg',
-            title: 'رقم الدعوى',
+            title: this._translate.instant(this.translations.lawsuits.lawsuitsList.lawsuitNumber),
             value: '346780435678',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/hashtag.svg',
-            title: 'رقم عقد الإيجار',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.rentalContractNumber),
             value: '5678453',
             isDownload: false,
         },
@@ -27,37 +30,37 @@ export class ArbitrationRequestComponent extends BaseComponent {
     plaintiffData: LawsuitDetailsItem[] = [
         {
             icon: 'assets/images/icons/lawsuit-details/user.svg',
-            title: 'اسم المدعي',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.plaintiffName),
             value: 'سارة إبراهيم أحمد الجارحي',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/hashtag.svg',
-            title: 'رقم الهوية',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.identityNumber),
             value: '051789497',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/call.svg',
-            title: 'رقم الجوال',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.mobileNumber),
             value: '+966452894562',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/book.svg',
-            title: 'الجنسية',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.nationality),
             value: 'سعودي',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/book.svg',
-            title: 'العنوان الوطني',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.nationalAddress),
             value: 'العنوان الوطني',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/book.svg',
-            title: 'البريد الإلكتروني',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.email),
             value: 'mohamed@gmail.com',
             isDownload: false,
         },
@@ -66,49 +69,49 @@ export class ArbitrationRequestComponent extends BaseComponent {
     defendantData: LawsuitDetailsItem[] = [
         {
             icon: 'assets/images/icons/lawsuit-details/user.svg',
-            title: 'اسم المدعي',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.plaintiffName),
             value: 'سارة إبراهيم أحمد الجارحي',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/hashtag.svg',
-            title: 'رقم الهوية',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.identityNumber),
             value: '051789497',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/call.svg',
-            title: 'رقم الجوال',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.mobileNumber),
             value: '+966452894562',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/book.svg',
-            title: 'الجنسية',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.nationality),
             value: 'سعودي',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/book.svg',
-            title: 'العنوان الوطني',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.nationalAddress),
             value: 'العنوان الوطني',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/book.svg',
-            title: 'البريد الإلكتروني',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.email),
             value: 'mohamed@gmail.com',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/book.svg',
-            title: 'مبلغ النزاع المالي',
+            title: this._translate.instant(this.translations.lawsuits.lawsuitDetails.financialDisputeAmount),
             value: '10000',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/book.svg',
-            title: 'تفاصيل الدعوى',
+            title: this._translate.instant(this.translations.lawsuits.lawsuitDetails.lawsuitDetails),
             value: 'تفاصيل الدعوى',
             isDownload: false,
         },
@@ -117,13 +120,13 @@ export class ArbitrationRequestComponent extends BaseComponent {
     lawsuitRequests: LawsuitDetailsItem[] = [
         {
             icon: 'assets/images/icons/lawsuit-details/user.svg',
-            title: 'المرفقات',
+            title: this._translate.instant(this.translations.lawsuits.lawsuitDetails.attachments),
             value: 'يتم هنا عرض الطلبات يتم هنا عرض الطلبات ',
             isDownload: false,
         },
         {
             icon: 'assets/images/icons/lawsuit-details/hashtag.svg',
-            title: 'الطلبات',
+            title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.requests),
             value: 'اسم الملف يكون هنا.pdf',
             isDownload: true,
         },

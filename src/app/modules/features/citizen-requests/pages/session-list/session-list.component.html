@@ -63,7 +63,7 @@
   </div>
 
   <div class="modal-body pt-0">
-   رابط الجلسة:{{this.selectedUrl}}
+    {{ translations.LitigationRequest.sessionLink | translate }} :{{this.selectedUrl}}
   </div>
 
   <div class="modal-footer">
@@ -72,7 +72,7 @@
       translate
       }}</button>
 
-    <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate
       }}</button>
 
   </div>

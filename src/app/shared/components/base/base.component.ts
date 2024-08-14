@@ -12,6 +12,8 @@ import { translations } from 'translation-keys.enum';
 export class BaseComponent implements OnDestroy {
     translations = translations;
 
+
+    
     destroy$ = new Subject<void>();
     public ngOnDestroy(): void {
         this.destroy$.next();

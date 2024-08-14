@@ -1,0 +1,196 @@
+<div class="form-wrapper" *ngIf="litigationRequestForReportDto?.allowAdd">
+  <div class="accordion-card">
+    <details open>
+      <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+        <h6 class="small fw-6 op-7">تعيين رئيس هيئة التحكيم</h6>
+        -
+        <p *ngIf="this.litigationRequestForReportDto?.listCount && +this.litigationRequestForReportDto?.listCount!>1"
+          class="text-success">يجب اختار {{this.litigationRequestForReportDto?.listCount}} محكمين</p>
+        <p *ngIf="this.litigationRequestForReportDto?.listCount && +this.litigationRequestForReportDto?.listCount! ===1"
+          class="text-success">يجب اختار {{this.litigationRequestForReportDto?.listCount}} محكم</p>
+      </summary>
+
+      <div>
+        <ng-container [formGroup]="form">
+          <div class="d-flex mt-4 justify-content-end">
+            <button type="button" class="btn btn-primary "
+              (click)="AddLitigationRequestArbitratorsNominationList()">اضافة</button>
+          </div>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">تعيين</th>
+                <th scope="col">الأسم</th>
+                <th scope="col">عدد الدعاوى</th>
+                <th scope="col">{{translations.CitizenRequest.area | translate}}</th>
+                <th scope="col">سنوات الخبرة</th>
+                <th scope="col">{{translations.CitizenRequest.arbitratorClass | translate}}</th>
+                <th scope="col">{{translations.CitizenRequest.brief | translate}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (request of citizens; track $index) {
+              <tr>
+                <td><input type="checkbox" (change)="onSelectedChange($event, request.id)" /></td>
+                <td>{{request.fullName}}</td>
+                <td>{{request.requestsCount}}</td>
+                <td>{{request.areaName}}</td>
+                <td>{{request.experienceYears}}</td>
+                <td>{{request.arbitratorClass}}</td>
+                <td>
+                  <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;"
+                    (click)="open(showBriefModel,request.brief)">
+                    <img src="assets/images/icons/eye.svg" alt="eye">
+                    عرض نبذة عن المحكم
+                  </button>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="form-wrapper" *ngIf="!litigationRequestForReportDto?.allowAdd">
+  <div class="accordion-card">
+    <details open>
+      <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+        <h6 class="small fw-6 op-7">تعيين رئيس هيئة التحكيم</h6>
+      </summary>
+
+      <div>
+        <ng-container>
+          <table class="table table-striped">
+            <thead>
+              <tr>              
+                <th scope="col">أولوية الأختيار</th>
+                <th scope="col">رقم الهوية</th>
+                <th scope="col">الأسم</th>
+                <th scope="col">عدد الدعاوى</th>
+                <th scope="col">سنوات الخبرة</th>
+                <th scope="col">{{translations.CitizenRequest.arbitratorClass | translate}}</th>
+                <th scope="col">رقم التليفون</th>
+                <th scope="col">الإيميل</th>
+                <th scope="col">الحالة</th>
+                <th scope="col">{{translations.CitizenRequest.brief | translate}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (request of litigationRequestForReportDto?.citizenArbitratorCharmanShortStatusDtos; track $index) {
+              <tr>             
+                <td>{{request.totalPriority}}</td>
+                <td>{{request.identityNumber}}</td>
+                <td>{{request.fullName}}</td>
+                <td>{{request.requestsCount}}</td>
+                <td>{{request.experienceYears}}</td>
+                <td>{{request.arbitratorClass}}</td>
+                <td>{{request.mobile}}</td>
+                <td>{{request.email}}</td>
+                <td>{{request.status}}</td>
+                <td>
+                  <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;"
+                    (click)="open(showBriefModel,request.brief)">
+                    <img src="assets/images/icons/eye.svg" alt="eye">
+                    {{translations.actions.view| translate}}
+                  </button>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+        <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.firstPartyData| translate }} </h6>
+      </summary>
+
+      <div class="grid-3 mt-5">
+        <ng-container *ngFor="let item of firstParty">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+        <h6 class="small fw-6 op-7"> {{ translations.LitigationRequest.secondPartyData| translate }}</h6>
+      </summary>
+
+      <div class="grid-3 mt-5">
+        <ng-container *ngFor="let item of secondParty">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+        <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.litigationData| translate }} </h6>
+      </summary>
+
+      <div class="grid-3 mt-5">
+        <ng-container *ngFor="let item of dataList">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+<ng-template #showBriefModel let-modal>
+  <div class="modal-header">
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+
+  <div class="modal-body pt-0">
+    <label class="small fw-6 mb-2"> {{translations.CitizenRequest.brief | translate}} :</label>
+    <label class="small fw-6 mb-2"> {{selectedBrief}} </label>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close |
+      translate
+      }}</button>
+
+  </div>
+</ng-template>

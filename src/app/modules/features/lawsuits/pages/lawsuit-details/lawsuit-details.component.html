@@ -31,7 +31,7 @@
 
 <div class="flex-end gap-2 w-fit">
   <div style="background: #E6F2FB; padding-block: 2px" class="px-2 rounded-2 border border-primary w-fit">
-    <span class="flex-y-row gap-1 small fw-6 text-primary"><i class="material-icons fs-6"> watch_later </i> {{lawsuitDetails ? (lawsuitStatus[lawsuitDetails.internalStatusId] | translate) : "--"}}</span>
+    <span class="flex-y-row gap-1 small fw-6  status-{{lawsuitDetails.internalStatusId}}"><i class="material-icons fs-6"> watch_later </i> {{lawsuitDetails ? (lawsuitStatus[lawsuitDetails.internalStatusId] | translate) : "--"}}</span>
   </div>
   <!-- <button type="button" class="btn btn-primary px-6 py-2" (click)="openAuditorsModal(auditorsModal)">
         {{translations.lawsuits.lawsuitDetails.assignAuditor| translate}}
@@ -123,7 +123,7 @@
 <ng-template #auditorsModal
              let-modal>
   <div class="modal-header">
-    <h5 class="modal-title fw-6">اختر مدقق دعاوی (لتعيين الدعوی عليه)</h5>
+    <h5 class="modal-title fw-6"> {{ translations.lawsuits.lawsuitDetails.selectLawsuitAuditorToAssignLawsuit | translate }} </h5>
     <button type="button"
             class="close-btn"
             aria-label="Close"
@@ -139,6 +139,6 @@
             class="btn px-8 btn-outline-primary"
             (click)="modal.close()">{{translations.actions.goBack| translate}}</button>
     <button type="button"
-            class="btn px-8 btn-primary">تعيين</button>
+            class="btn px-8 btn-primary"> {{ translations.actions.assign | translate }} </button>
   </div>
 </ng-template>

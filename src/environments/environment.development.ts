@@ -7,5 +7,5 @@ export const environment = {
     // securityURl: "http://38.170.241.69:207"
 
     // baseURL: "https://localhost:7156",
-    //  securityURl: "http://localhost:7144"
+    //  securityURl: "https://localhost:7156"
 };

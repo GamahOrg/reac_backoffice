@@ -11,20 +11,62 @@ export const Configuration = {
             Remove: '/api/SysFileManager/Remove',
             RemoveRange: '/api/SysFileManager/RemoveRange',
         },
-        Reconciliation:{
+        Arbitration:{
+            AddArbitrationExtendPeriodForEmployee: '/api/Arbitration/AddArbitrationExtendPeriodForEmployee',
+            GetLitigationRequestExtendPeriodForEmployee: '/api/Arbitration/GetLitigationRequestExtendPeriodForEmployee',
+            GetLitigationRequestExtendPeriodForEmployeeByRequestId: '/api/Arbitration/GetLitigationRequestExtendPeriodForEmployeeByRequestId',
+            AddArbitratorSelectionDuration: '/api/Arbitration/AddArbitratorSelectionDuration',
+            GetLitigationRequestForArbitratorSelectionDuration: '/api/Arbitration/GetLitigationRequestForArbitratorSelectionDuration',
+            
+            GetLitigationRequestForAddArbitratorSelectionDurationByRequestId: '/api/Arbitration/GetLitigationRequestForAddArbitratorSelectionDuration',
+            GetLitigationRequestForAddArbitratorsCount: "/api/Arbitration/GetLitigationRequestForAddArbitratorsCount",
+            GetLitigationRequestForAddArbitratorsCountByRequestId: "/api/Arbitration/GetLitigationRequestForAddArbitratorsCountByRequestId",
+           
+            AddArbitratorsCount: "/api/Arbitration/AddArbitratorsCount",
+            GetLitigationRequestForReportExplanationRequestForArbitrator: "/api/Arbitration/GetLitigationRequestForReportExplanationRequestForArbitrator",
+            GetLitigationRequestForReportExplanationRequestForArbitratorByRequestId: "/api/Arbitration/GetLitigationRequestForReportExplanationRequestForArbitrator",
+            AddArbitrationReportExplanationRequestForArbitrator: "/api/Arbitration/AddArbitrationReportExplanationRequestForArbitrator",
+            GetLitigationRequestArbitratorAssigningRequestsAll: "/api/LitigationRequestArbitratorAssigningRequest/GetLitigationRequestArbitratorAssigningRequestsAll",
+
+            GetLitigationRequestForFullAllSession: '/api/ArbitrationSession/GetLitigationRequestForFullAllSession',
+            GetLitigationRequestForAllSessionForArbitrator: '/api/ArbitrationSession/GetLitigationRequestForAllSessionForArbitrator',
+
+
+            assignArbitrationMemeberList: '/api/Arbitration/GetLitigationRequestForAddArbitratorsNominationList',
+            GetLitigationRequestForAddArbitratorsNominationListByRequestId: '/api/Arbitration/GetLitigationRequestForAddArbitratorsNominationListByRequestId',
+            AddLitigationRequestArbitratorsNominationList: '/api/Arbitration/AddLitigationRequestArbitratorsNominationList',
+
+            GetLitigationRequestForAddArbitratorsChairmanNominationList: '/api/Arbitration/GetLitigationRequestForAddArbitratorsChairmanNominationList',
+            GetLitigationRequestForAddArbitratorsChairmanNominationListByRequestId: '/api/Arbitration/GetLitigationRequestForAddArbitratorsChairmanNominationListByRequestId',
+            AddLitigationRequestArbitratorsChairmanNominationList: '/api/Arbitration/AddLitigationRequestArbitratorsChairmanNominationList',
+
+
+            Assign: "/api/Arbitration/Assign",
+            GetAllArbitrationLitigationRequest: "/api/Arbitration/GetAllArbitrationLitigationRequest",
+
+
+            GetLitigationRequestForArbitratorRecusalRequestForArbitrator: "/api/Arbitration/GetLitigationRequestForArbitratorRecusalRequestForArbitrator",
+            GetLitigationRequestForArbitratorRecusalRequestForArbitratorByRequestId: "/api/Arbitration/GetLitigationRequestForArbitratorRecusalRequestForArbitratorByRequestId",
+            AddArbitrationReportArbitratorRecusalForArbitrator: "/api/Arbitration/AddArbitrationReportArbitratorRecusalForArbitrator",
+        },
+        SysArbitratorCount: {
+            Get: "/api/SysArbitratorCount/Get"
+        },
+        Reconciliation: {
             AddReconciliationExtendPeriodForEmployee: '/api/Reconciliation/AddReconciliationExtendPeriodForEmployee',
             GetLitigationRequestExtendPeriodForEmployee: '/api/Reconciliation/GetLitigationRequestExtendPeriodForEmployee',
+            GetLitigationRequestReformerAssigningRequestsAll: '/api/LitigationRequestReformerAssigningRequest/GetLitigationRequestReformerAssigningRequestsAll',
             GetLitigationRequestExtendPeriodForEmployeeByRequestId: '/api/Reconciliation/GetLitigationRequestExtendPeriodForEmployeeByRequestId',
-            GetLitigationRequestForFullAllSession:'/api/Reconciliation/GetLitigationRequestForFullAllSession',
-            GetLitigationRequestForFullAllReformer:'/api/Reconciliation/GetLitigationRequestForFullAllReformer',
-            Assign:'/api/Reconciliation/Assign',
+            GetLitigationRequestForFullAllSession: '/api/Reconciliation/GetLitigationRequestForFullAllSession',
+            GetLitigationRequestForFullAllReformer: '/api/Reconciliation/GetLitigationRequestForFullAllReformer',
+            Assign: '/api/Reconciliation/Assign',
         },
         LitigationRequest: {
             AuditngList: '/api/LitigationRequest/AuditngList',
             AuditngListArbitration: '/api/LitigationRequest/AuditngListArbitration',
             AuditngListReconciliation: '/api/LitigationRequest/AuditngListReconciliation',
             GetLitigationById: '/api/LitigationRequest/GetLitigationById',
-            GetAuditNotesById: "/api/LitigationRequest/GetAuditNotesById",           
+            GetAuditNotesById: "/api/LitigationRequest/GetAuditNotesById",
         },
         WorkFlowProcessingLog: {
             GetAuditNotesById: "/api/WorkFlowProcessingLog/GetAuditNotesById",
@@ -52,16 +94,28 @@ export const Configuration = {
             GetArbitratorsDecisions: "/api/Citizen/GetArbitratorsDecisions",
             GetArbitratorsDecisionsByCitizenId: "/api/Citizen/GetArbitratorsDecisionsByCitizenId",
             GetReformersLookup: "/api/Citizen/GetReformersLookup",
+            GetArbitratorsFullLookup: "/api/Citizen/GetArbitratorsFullLookup",
+            GetArbitratorsLookup: "/api/Citizen/GetArbitratorsLookup",
         },
     },
     modules: {
         auth: 'auth',
         lawsuits: 'Lawsuits',
-        citizenRequests: 'citizen-requests'
+        citizenRequests: 'citizen-requests',
+        arbitration: "arbitration"
     },
     pages: {
         auth: {
             login: "login",
+        },
+        arbitration: {
+            arbitratorCountList: "arbitrator-count-list",
+            arbitratorCountDetails: "arbitrator-count-details",
+            assignedArbitrationRequests: 'assigned-arbitration-requests',
+            arbitratorSessionList: "arbitrator-session-list",
+            assignarbitratorlist:'assign-arbitrator-list',
+            arbitratorRecusalRequests:'arbitrator-recusal-requests',
+            approveOrRejectArbitrattionRecusalRequest:'approve-or-reject-arbitrator-recusal-request'
         },
         lawsuits: {
             lawsuitList: "lawsuit-list",
@@ -76,15 +130,25 @@ export const Configuration = {
             arbitratorRequestList: 'arbitrator-request-list',
             reformerRequestList: 'reformer-request-list',
             details: 'details',
-            requestToExtendSettlementPeriodList:'request-extend-settlement-period-list',
-            requestToExtendSettlementPeriodDetails:'request-extend-settlement-period-details',
+            requestToExtendSettlementPeriodList: 'request-extend-settlement-period-list',
+            reformerassigningrequestforall:'reformer-assigning-request-for-all',
+            requestToExtendSettlementPeriodDetails: 'request-extend-settlement-period-details',
             stopAndReleaseReformer: "stop-and-release-reformer",
             stopAndReleaseArbitrator: "stop-and-release-arbitrator",
             arbitratorDecisionDetails: "arbitrator-decision-details",
             reformerDecisionDetails: "reformer-decision-details",
             sessionList:'session-list',
-            reformerList:'refomer-list'
-        }
+            reformerList:'refomer-list',
+            requestToExtendArbitrationPeriodList:'request-extend-arbitration-period-list',
+            requestToExtendArbitrationPeriodDetails:'request-extend-arbitration-period-details',
+            litigationRequestForArbitratorSelectionDurationList:'arbitrator-selection-duration-List',
+            litigationRequestForArbitratorSelectionDurationDetails:'arbitrator-selection-duration-details',
+            assignArbitrationHeadList:'assign-arbitration-head-list',
+            assignArbitrationHeadDetails:'assign-arbitration-head-details',
+            assignArbitrationMemberList:'assign-arbitration-member-list',
+            assignArbitrationMemberDetails:'assign-arbitration-member-details',
+            
+        },
     },
     validators: {
         regexLat:

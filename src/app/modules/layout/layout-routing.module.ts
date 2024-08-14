@@ -19,6 +19,11 @@ const routes: Routes = [
           import('../features/citizen-requests/citizen-requests.module').then((m) => m.CitizenRequestsModule),
       },
       {
+        path: Configuration.modules.arbitration,
+        loadChildren: () =>
+          import('../features/arbitration/arbitration.module').then((m) => m.ArbitrationModule),
+      },
+      {
         path: '',
         redirectTo: Configuration.modules.lawsuits,
         pathMatch: 'full'

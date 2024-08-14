@@ -1,6 +1,6 @@
 <div class="grid-3 mt-5">
     <div>
-        <h6 class="small fw-5">رقم عقد
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.contractNumber | translate }} 
 
             {{ contract && contract.litigationRequestContractTypeId ?
             (lawsuitTypeTranslation[contract.litigationRequestContractTypeId] | translate) : "--"}}
@@ -14,7 +14,7 @@
     </div>
 
     <div>
-        <h6 class="small fw-5">رقم النسخة</h6>
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.versionNumber| translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/hashtag.svg"
                  alt="icon">
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div>
-        <h6 class="small fw-5">عنوان الدعوى</h6>
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.lawsuitTitle| translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/book.svg"
                  alt="icon">
@@ -31,7 +31,7 @@
     </div>
 
     <div>
-        <h6 class="small fw-5">وصف الدعوى</h6>
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.lawsuitDescription | translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/book.svg"
                  alt="icon">
@@ -40,16 +40,20 @@
     </div>
 
     <div>
-        <h6 class="small fw-5">نوع النزاع</h6>
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.disputeType | translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/book.svg"
                  alt="icon">
-            <h6 class="small op-7">{{litigationDetails?.isFinancialLitigation ? 'مالي' : 'غير مالي'}}</h6>
+            <h6 class="small op-7">
+                {{litigationDetails?.isFinancialLitigation ? 
+                (translations.lawsuits.createEditLawsuit.financial | translate) :
+                (translations.lawsuits.createEditLawsuit.nonFinancial | translate) }}
+            </h6>
         </div>
     </div>
 
     <div>
-        <h6 class="small fw-5">مبلغ المنازعة</h6>
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.disputeAmount | translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/hashtag.svg"
                  alt="icon">
@@ -59,7 +63,7 @@
     </div>
 
     <div>
-        <h6 class="small fw-5">المنطقة</h6>
+        <h6 class="small fw-5"> {{ translations.CitizenRequest.area | translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/location.svg"
                  alt="icon">
@@ -68,7 +72,7 @@
     </div>
 
     <div>
-        <h6 class="small fw-5">المدينة</h6>
+        <h6 class="small fw-5"> {{translations.lawsuits.createEditLawsuit.city | translate}} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/location.svg"
                  alt="icon">
@@ -77,7 +81,7 @@
     </div>
 
     <div>
-        <h6 class="small fw-5">العنوان</h6>
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.contractAddress | translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/location.svg"
                  alt="icon">
@@ -86,7 +90,7 @@
     </div>
 
     <div>
-        <h6 class="small fw-5">نوع الطلب</h6>
+        <h6 class="small fw-5"> {{translations.CitizenRequest.citizenRequestType | translate}} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/book.svg"
                  alt="icon">
@@ -96,7 +100,7 @@
 
 
     <div class="span-3">
-        <h6 class="small fw-5">طلبات الدعوى</h6>
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.caseRequests | translate }} </h6>
         <div class="gap-2">
             <ng-container *ngFor="let request of litigationDetails?.litigationRequestRequests">
                 <div class="flex-y-row">
@@ -109,7 +113,7 @@
     </div>
     <div *ngIf="contract?.contractFile"
          class="span-3">
-        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.fileOfContract | translate }}
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.fileOfContract | translate }} 
             {{ contract && contract.litigationRequestContractTypeId ?
             (lawsuitTypeTranslation[contract.litigationRequestContractTypeId] | translate) : "--"}}
 
@@ -143,7 +147,7 @@
     </div>
     <div *ngIf="contract?.associationRegistrationCertificateFile"
          class="span-3">
-        <h6 class="small fw-5">شهادة تسجيل الجمعية
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.associationRegistrationCertificate | translate }} 
         </h6>
         <div class=" gap-2">
             <div class="flex-y-row">
@@ -178,7 +182,7 @@
     <div *ngIf="contract?.internalRegulationsFile"
          class="span-3">
         <h6 class="small fw-5">
-            اللائحة الداخلية للجمعيه
+            {{ translations.lawsuits.createEditLawsuit.associationInternalRegulations | translate }}
         </h6>
         <div class=" gap-2">
             <div class="flex-y-row">
@@ -211,7 +215,7 @@
     <div *ngIf="contract?.foundingLetterFile"
          class="span-3">
         <h6 class="small fw-5">
-            خطاب تأسيس الجمعية
+            {{ translations.lawsuits.createEditLawsuit.associationEstablishmentLetter | translate }}
         </h6>
         <div class=" gap-2">
             <div class="flex-y-row">
@@ -243,7 +247,7 @@
 
 
     <div class="span-3">
-        <h6 class="small fw-5"> الإسنادات</h6>
+        <h6 class="small fw-5">  {{ translations.lawsuits.createEditLawsuit.references | translate }} </h6>
         <div class=" gap-2">
             <ng-container *ngFor="let ref of litigationDetails?.litigationRequestGrounds">
                 <div class="flex-y-row">

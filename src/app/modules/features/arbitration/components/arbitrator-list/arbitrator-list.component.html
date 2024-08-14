@@ -1,0 +1,94 @@
+<app-breadcrumbs></app-breadcrumbs>
+<ng-container>
+    <div class="table-wrapper mt-0 pt-0">
+  
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">{{translations.LitigationRequest.requestCode | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.requestDate | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.firstPartyName | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.secondPartyName | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.requestTypeName | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.arbitratorName | translate}}</th>
+              <th scope="col">الدور</th>
+              <th scope="col">{{translations.CitizenRequest.actions | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (litigationRequest of ArbitratorList; track $index) {
+            <tr>
+              <td>{{litigationRequest.requestCode}}</td>
+              <td>{{litigationRequest.requestDate | date:'yyyy/MM/dd'}}</td>
+              <td>{{litigationRequest.firstPartyName}}</td>
+              <td>{{litigationRequest.secondPartyName}}</td>
+              <td>{{litigationRequest.requestTypeName}}</td>
+              <td>{{litigationRequest.arbitratorName }}</td>
+              <td >{{litigationRequest.arbitratorAssigningRequestTypeId==1?'محكم':'رئيس هيئة تحكيم'}}</td>
+              <td>              
+                <button (click)="assignArbitrator(litigationRequest,assignArbitratorModal)"
+                  class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;">
+                  <img src="assets/images/icons/eye.svg" alt="eye">
+                  {{translations.actions.assignArbitrator| translate}}
+                </button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    @if (ArbitratorList && ArbitratorList.length) {
+    <div class="flex-between">
+      <div class="op-6 v-small fw-5">
+        <span>{{translations.tables.from | translate}} </span>
+        <span>{{page}} </span>
+        <span>{{translations.tables.to | translate}} </span>
+        <span>6 </span>
+        <span>{{translations.tables.ofTotal | translate}} </span>
+        <span>{{collectionSize}} </span>
+        <span>{{translations.tables.row | translate}} </span>
+      </div>
+  
+  
+      <app-pagination></app-pagination>
+    </div>
+    }
+  </ng-container>
+  
+  
+  <ng-template #assignArbitratorModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title fw-6"> {{translations.actions.assignArbitrator| translate}}</h5>
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <form [formGroup]="assignForm">
+      <div class="modal-body pt-0">
+        <select class="form-select" formControlName="arbitratorId"  [class.is-invalid]="controls.arbitratorId.invalid && controls.arbitratorId.touched">
+          <option disabled [ngValue]="null" selected>
+            {{ translations.LitigationRequest.selectArbitrator | translate }}
+          </option>
+          <option *ngFor="let citizenArbitrator of arbitrators" [ngValue]="citizenArbitrator.id">
+             {{ translations.general.name| translate }} : {{ citizenArbitrator.fullName}} -  {{ translations.arbitrator.lawsuitsCount | translate }} : {{ citizenArbitrator.requestsCount}}
+          </option>
+        </select>
+        <div class="invalid-feedback"
+        *ngIf="controls.arbitratorId">
+        {{translations.formValidationError.required | translate}}
+    </div>
+  
+      </div>
+  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="sendArbitratorRequest(modal)">{{ translations.actions.save |
+          translate
+          }}</button>
+  
+        <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate
+          }}</button>
+  
+      </div>
+    </form>
+  </ng-template>

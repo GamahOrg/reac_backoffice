@@ -20,7 +20,7 @@ import { LawsuitDataComponent } from './components/lawsuit-data/lawsuit-data.com
 import { LawsuitListService } from './services/lawsuit-list/lawsuit-list.service';
 import { LawsuitRequestDetailsService } from './services/lawsuit-request-details/lawsuit-request-details.service';
 import { AccordionService } from '@app/shared/services/accordion/accordion.service';
-import { ArbitrationRequestComponent } from './components/arbitration-request/arbitration-request.component';
+// import { ArbitrationRequestComponent } from './components/arbitration-request/arbitration-request.component';
 import { LawsuitEventsComponent } from './components/lawsuit-events/lawsuit-events.component';
 import { LawsuitReeditReasonComponent } from './components/lawsuit-reedit-reason/lawsuit-reedit-reason.component';
 import { LawsuitReviewComponent } from './components/lawsuit-review/lawsuit-review.component';
@@ -39,7 +39,7 @@ import { LawsuitClaimDataComponent } from './components/lawsuit-claim-data/lawsu
         LawsuitDataComponent,
         LawsuitEventsComponent,
         LawsuitReeditReasonComponent,
-        ArbitrationRequestComponent,
+        // ArbitrationRequestComponent,
         LawsuitReviewComponent,
         ReasonReturnLawsuitComponent,
         AuditngListArbitrationComponent,
