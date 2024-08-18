@@ -9,147 +9,152 @@ import { BreadcrumbService } from "@app/shared/services/breadcrumb/breadcrumb.se
 import { LawsuitListService } from "../../services/lawsuit-list/lawsuit-list.service";
 import { LawsuitContractType } from "../../models/enums/lawsuit-contract-type";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { pagination, Pagination } from "@app/shared/models/pagination.model";
+import { takeUntil } from "rxjs";
+import { BaseResponse } from "@app/core/models/base-response";
 
 @Component({
-    selector: 'app-lawsuits-list',
-    templateUrl: './lawsuits-list.component.html',
-    styleUrl: './lawsuits-list.component.scss'
+  selector: 'app-lawsuits-list',
+  templateUrl: './lawsuits-list.component.html',
+  styleUrl: './lawsuits-list.component.scss'
 })
 export class LawsuitListComponent extends BaseComponent implements OnInit {
-    auditngForm!: FormGroup;
-    collectionSize!: number;
+  auditngForm!: FormGroup;
+  // collectionSize!: number;
 
-    lawsuitTypesURL: string = '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitTypes
-    selectedLawsuits: any[] = [];
-    auditngList: AuditngListItem[] = [];
+  lawsuitTypesURL: string = '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitTypes
+  // selectedLawsuits: any[] = [];
+  auditngList: Pagination<AuditngListItem[]> = {} as Pagination<AuditngListItem[]>;
 
-    lawsuitContractType: { [key: number]: string } = {
-        [LawsuitContractType.Ejar]: this.translations.lawsuits.lawsuitsList.ejar,
-        [LawsuitContractType.Mullak]: this.translations.lawsuits.lawsuitsList.mullak,
-        [LawsuitContractType.Wafi]: this.translations.lawsuits.lawsuitsList.wafi,
-        [LawsuitContractType.Wasatah]: this.translations.lawsuits.lawsuitsList.wasatah,
-        [LawsuitContractType.Others]: this.translations.lawsuits.lawsuitsList.others
-    }
+  lawsuitContractType: { [key: number]: string } = {
+    [LawsuitContractType.Ejar]: this.translations.lawsuits.lawsuitsList.ejar,
+    [LawsuitContractType.Mullak]: this.translations.lawsuits.lawsuitsList.mullak,
+    [LawsuitContractType.Wafi]: this.translations.lawsuits.lawsuitsList.wafi,
+    [LawsuitContractType.Wasatah]: this.translations.lawsuits.lawsuitsList.wasatah,
+    [LawsuitContractType.Others]: this.translations.lawsuits.lawsuitsList.others
+  }
 
-    lawsuitStatus: { [key: number]: string } = {
-        [LawsuitStatus.New]: this.translations.lawsuits.lawsuitsList.new,
-        [LawsuitStatus.Received]: this.translations.lawsuits.lawsuitsList.received,
-        [LawsuitStatus.AsessionTimeHasBeenSet]: this.translations.lawsuits.lawsuitsList.asessionTimeHasBeenSet,
-        [LawsuitStatus.TheSessionWasCompleted]: this.translations.lawsuits.lawsuitsList.theSessionWasCompleted,
-        [LawsuitStatus.TheMinutesOfTheMeetingWereWritten]: this.translations.lawsuits.lawsuitsList.theMinutesOfTheMeetingWereWritten,
-        [LawsuitStatus.WaiverOfRight]: this.translations.lawsuits.lawsuitsList.waiverOfRight,
-        // [LawsuitStatus.WaiverOfRight]: this.translations.lawsuits.lawsuitsList.WaiverOfRight,
-        [LawsuitStatus.ReconciliationWasNotMade]: this.translations.lawsuits.lawsuitsList.ReconciliationWasNotMade,
-        [LawsuitStatus.SaveAndClose]: this.translations.lawsuits.lawsuitsList.saveAndClose,
-        [LawsuitStatus.SaveAsDraft]: this.translations.lawsuits.lawsuitsList.saveAsDraft,
-        [LawsuitStatus.Rejected]: this.translations.lawsuits.lawsuitsList.Rejected,
-        [LawsuitStatus.SentBackForEdit]: this.translations.lawsuits.lawsuitsList.SentBackForEdit,
-        [LawsuitStatus.Edited]: this.translations.lawsuits.lawsuitsList.Edited,
-        [LawsuitStatus.CharterRequestSent]: this.translations.lawsuits.lawsuitsList.CharterRequestSent,
-        [LawsuitStatus.AcceptanceOfTheReconciliationReport]: this.translations.lawsuits.lawsuitsList.AcceptanceOfTheReconciliationReport,
-        [LawsuitStatus.RejectionOfTheReconciliationReport]: this.translations.lawsuits.lawsuitsList.RejectionOfTheReconciliationReport,
-        [LawsuitStatus.ReconciliationWasMade]: this.translations.lawsuits.lawsuitsList.ReconciliationWasMade,
-        [LawsuitStatus.ReconciliationWasNotMadeAndMoveToArbitration]: this.translations.lawsuits.lawsuitsList.ReconciliationWasNotMadeAndMoveToArbitration,
-        [LawsuitStatus.JudgmentDecisionIssued]: this.translations.lawsuits.lawsuitsList.JudgmentDecisionIssued,
-        [LawsuitStatus.WaitingForExplanation]: this.translations.lawsuits.lawsuitsList.WaitingForExplanation,
-        [LawsuitStatus.ExplanationResponsed]: this.translations.lawsuits.lawsuitsList.ExplanationResponsed,
+  lawsuitStatus: { [key: number]: string } = {
+    [LawsuitStatus.New]: this.translations.lawsuits.lawsuitsList.new,
+    [LawsuitStatus.Received]: this.translations.lawsuits.lawsuitsList.received,
+    [LawsuitStatus.AsessionTimeHasBeenSet]: this.translations.lawsuits.lawsuitsList.asessionTimeHasBeenSet,
+    [LawsuitStatus.TheSessionWasCompleted]: this.translations.lawsuits.lawsuitsList.theSessionWasCompleted,
+    [LawsuitStatus.TheMinutesOfTheMeetingWereWritten]: this.translations.lawsuits.lawsuitsList.theMinutesOfTheMeetingWereWritten,
+    [LawsuitStatus.WaiverOfRight]: this.translations.lawsuits.lawsuitsList.waiverOfRight,
+    // [LawsuitStatus.WaiverOfRight]: this.translations.lawsuits.lawsuitsList.WaiverOfRight,
+    [LawsuitStatus.ReconciliationWasNotMade]: this.translations.lawsuits.lawsuitsList.ReconciliationWasNotMade,
+    [LawsuitStatus.SaveAndClose]: this.translations.lawsuits.lawsuitsList.saveAndClose,
+    [LawsuitStatus.SaveAsDraft]: this.translations.lawsuits.lawsuitsList.saveAsDraft,
+    [LawsuitStatus.Rejected]: this.translations.lawsuits.lawsuitsList.Rejected,
+    [LawsuitStatus.SentBackForEdit]: this.translations.lawsuits.lawsuitsList.SentBackForEdit,
+    [LawsuitStatus.Edited]: this.translations.lawsuits.lawsuitsList.Edited,
+    [LawsuitStatus.CharterRequestSent]: this.translations.lawsuits.lawsuitsList.CharterRequestSent,
+    [LawsuitStatus.AcceptanceOfTheReconciliationReport]: this.translations.lawsuits.lawsuitsList.AcceptanceOfTheReconciliationReport,
+    [LawsuitStatus.RejectionOfTheReconciliationReport]: this.translations.lawsuits.lawsuitsList.RejectionOfTheReconciliationReport,
+    [LawsuitStatus.ReconciliationWasMade]: this.translations.lawsuits.lawsuitsList.ReconciliationWasMade,
+    [LawsuitStatus.ReconciliationWasNotMadeAndMoveToArbitration]: this.translations.lawsuits.lawsuitsList.ReconciliationWasNotMadeAndMoveToArbitration,
+    [LawsuitStatus.JudgmentDecisionIssued]: this.translations.lawsuits.lawsuitsList.JudgmentDecisionIssued,
+    [LawsuitStatus.WaitingForExplanation]: this.translations.lawsuits.lawsuitsList.WaitingForExplanation,
+    [LawsuitStatus.ExplanationResponsed]: this.translations.lawsuits.lawsuitsList.ExplanationResponsed,
 
-    }
+  }
 
-    remainingAuditDays: number[] = [1, 2, 3, 4, 5]
+  // remainingAuditDays: number[] = [1, 2, 3, 4, 5]
+  newPageNo: number = 1;
+  pageCount: number = 0;
+  pagintationData: pagination = {
+    currentPage: 1,
+    // pageCount: 0,
+    pageSize: 10,
+    totalCount: 0,
+  };
 
-    pagintationData = {
-        currentPage: 1,
-        pageSize: 0,
-        totalCount: 0,
-    }
+  constructor(
+    private _paginationService: PaginationService,
+    private _translateService: TranslateService,
+    private _breadcrumbService: BreadcrumbService,
+    private _lawsuitListService: LawsuitListService,
+    private _injector: Injector,
+    private _fb: FormBuilder
+  ) {
+    super();
+  }
 
-    constructor(
-        private _paginationService: PaginationService,
-        private _translateService: TranslateService,
-        private _breadcrumbService: BreadcrumbService,
-        private _lawsuitListService: LawsuitListService,
-        private _injector: Injector,
-        private _fb: FormBuilder
-    ) {
-        super();
-        //this.refreshLawsuits();
-    }
+  ngOnInit(): void {
+    this.setBreadcrumb();
+    this.AuditngList();
+    this.watchPaginationActions();
+  }
 
-    ngOnInit(): void {
-        this.createAuditngForm();
-        this.setBreadcrumb();
-        this.observePageChange();
-        this.setPaginationData(this.pageIndex, this.pageSize, 50);
-    }
 
-    public get pageIndex(): number {
-        return this.auditngForm.get('pageIndex')?.value || 1;
-    }
 
-    public get pageSize(): number {
-        return this.auditngForm.get('pageSize')?.value || 10;
-    }
 
-    private createAuditngForm(): void {
-        this.auditngForm = this._fb.group({
-            id: ['c4e6b8d0-a1b2-4f3c-4e6b-8d0a1b2f3c4e'],
-            searchKey: [null],
-            InternalStatusId: [null],
-            LitigationRequestContractTypeId: [null],
-            pageIndex: [1],
-            pageSize: [10]
-        })
-    }
 
-    private setBreadcrumb(): void {
-        this._breadcrumbService.updateBreadcrumbListContent([
-            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
-            { label: this._translateService.instant(this.translations.layout.sidebar.newLawsuitsList), link: Configuration.modules.lawsuits }
-        ])
-    }
+  private setBreadcrumb(): void {
+    this._breadcrumbService.updateBreadcrumbListContent([
+      { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+      { label: this._translateService.instant(this.translations.layout.sidebar.newLawsuitsList), link: Configuration.modules.lawsuits }
+    ])
+  }
 
-    private observePageChange(): void {
-        effect(() => {
-            this.auditngForm.get('pageIndex')?.setValue(this._paginationService.currentPage())
-            this.AuditngList();
-        }, {
-            injector: this._injector,
-            allowSignalWrites: true
-        });
-    }
 
-    private AuditngList(): void {
-        this._lawsuitListService.AuditngList(this.auditngForm.getRawValue()).subscribe({
-            next: (res) => {
-                this.auditngList = res.data?.items || [];
-                this.collectionSize = res?.data?.totalPages || 0;
-                this.setPaginationData(this.pageIndex, this.pageSize, this.collectionSize);
-            }
-        })
-    }
 
-    private setPaginationData(currentPage: number, pageSize: number, totalCount: number): void {
-        this.pagintationData.currentPage = currentPage
-        this.pagintationData.pageSize = pageSize
-        this.pagintationData.totalCount = totalCount
-        this._paginationService.updatePaginationData(this.pagintationData);
-    }
+  private AuditngList(): void {
+    this._lawsuitListService.AuditngList(this.pagintationData.currentPage, this.pagintationData.pageSize)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res: BaseResponse<Pagination<AuditngListItem[]>>) => {
+        if (res.isDone && res.data) {
+          this.updateRequestList(res.data as Pagination<AuditngListItem[]>);
+          this.pageCount = res.data.pageCount;
+        }
+      })
+  }
 
-    public filterAuditngList() {
-        this.auditngForm.get('pageIndex')?.setValue(1);
-        this.AuditngList();
-    }
 
-    public resetAuditngFilter() {
-        this.auditngForm.get('InternalStatusId')?.reset();
-        this.auditngForm.get('LitigationRequestContractTypeId')?.reset();
-    }
+  //private methods
+  private updateRequestList(TypeListView: Pagination<AuditngListItem[]>): void {
+    this.auditngList = TypeListView;
 
-    // refreshLawsuits() {
-    //     this.lawsuitLists = this.LAWSUITLIST.map((lawsuitList, i) => ({ id: i + 1, ...lawsuitList })).slice(
-    //         (this.page - 1) * this.pageSize,
-    //         (this.page - 1) * this.pageSize + this.pageSize,
-    //     );
-    // }
+    this.setPaginationData(
+      this.auditngList.pageSize,
+      this.auditngList.totalCount
+    );
+  }
+  private setPaginationData(pageSize: number, total: number): void {
+    this.pagintationData.pageSize = pageSize
+    this.pagintationData.totalCount = total
+    this._paginationService.updatePaginationData(this.pagintationData);
+
+  }
+
+  private watchPaginationActions(): void {
+    this.watchPagechanged();
+    this.watchPaginationClicked();
+  }
+
+  private watchPagechanged(): void {
+    this._paginationService.pageChanged
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((pageNo) => {
+        this.newPageNo = pageNo;
+      })
+  }
+
+  private watchPaginationClicked(): void {
+    this._paginationService.pageClicked
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((nextPage: number) => {
+        if (this.pagintationData.currentPage != nextPage) {
+          this.loadNextPage(nextPage);
+          this.pagintationData.currentPage = this.newPageNo;
+        }
+      })
+  }
+
+  private loadNextPage(nextPage: number): void {
+    this.pagintationData.currentPage = nextPage;
+    this.AuditngList()
+  }
+
+
 }

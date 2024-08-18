@@ -1,71 +1,63 @@
-<ng-container>
-  <div class="table-wrapper">      
-      <div class="table-responsive">
-          <table class="table table-striped">
-              <thead>
-                  <tr>                      
-                      <th scope="col">{{translations.CitizenRequest.academicDegreeName | translate}}</th>
-                      <th scope="col">{{translations.CitizenRequest.arbitratorClass | translate}}</th>
-                      <th scope="col">{{translations.CitizenRequest.citizenRequestType | translate}}</th>
-                      <th scope="col">{{translations.CitizenRequest.experienceYears | translate}}</th>
-                      <th scope="col">{{translations.CitizenRequest.area | translate}}</th>
-                      <th scope="col">{{translations.CitizenRequest.statusName | translate}}</th>
-                      <th scope="col">{{translations.CitizenRequest.isVolunteerApproval | translate}}</th>
-                      <th scope="col">{{translations.CitizenRequest.actions | translate}}</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  @for (citizenRequest of citizenRequestsLists; track $index) {
-                  <tr>
-                      <td>{{citizenRequest.academicDegreeName}}</td>
-                      <td>{{citizenRequest.arbitratorClassName}}</td>
-                      <td>{{citizenRequest.citizenRequestType}}</td>
-                      <td>{{citizenRequest.experienceYears}}</td>
-                      <td>{{citizenRequest.areaName}}</td>
-                      <td>{{citizenRequest.statusName}}</td>
-                      <td *ngIf="citizenRequest.isVolunteerApproval">{{translations.actions.yes|translate}}</td>
-                      <td *ngIf="!citizenRequest.isVolunteerApproval">{{translations.actions.no|translate}}</td>
-                      <td>
-                          <a class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" [routerLink]="[detailsArbitratorRequest,citizenRequest.id]"
-                          *ngIf="citizenRequest.citizenRequestTypeId ==citizenRequestType.Arbitrator"
-                          
-                          >
-                          
-                          <img src="assets/images/icons/eye.svg" alt="eye">
-                                {{translations.actions.view| translate}}
-                        
+<app-breadcrumbs></app-breadcrumbs>
+
+<div class="table-wrapper">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">{{translations.CitizenRequest.academicDegreeName | translate}}</th>
+                    <th scope="col">{{translations.CitizenRequest.arbitratorClass | translate}}</th>
+                    <th scope="col">{{translations.CitizenRequest.citizenRequestType | translate}}</th>
+                    <th scope="col">{{translations.CitizenRequest.experienceYears | translate}}</th>
+                    <th scope="col">{{translations.CitizenRequest.area | translate}}</th>
+                    <th scope="col">{{translations.CitizenRequest.statusName | translate}}</th>
+                    <th scope="col">{{translations.CitizenRequest.isVolunteerApproval | translate}}</th>
+                    <th scope="col">{{translations.CitizenRequest.actions | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (citizenRequest of citizenRequestsLists; track $index) {
+                <tr>
+                    <td>{{citizenRequest.academicDegreeName}}</td>
+                    <td>{{citizenRequest.arbitratorClassName}}</td>
+                    <td>{{citizenRequest.citizenRequestType}}</td>
+                    <td>{{citizenRequest.experienceYears}}</td>
+                    <td>{{citizenRequest.areaName}}</td>
+                    <td>{{citizenRequest.statusName}}</td>
+                    <td *ngIf="citizenRequest.isVolunteerApproval">{{translations.actions.yes|translate}}</td>
+                    <td *ngIf="!citizenRequest.isVolunteerApproval">{{translations.actions.no|translate}}</td>
+                    <td>
+                        <a class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" [routerLink]="[detailsArbitratorRequest,citizenRequest.id]" *ngIf="citizenRequest.citizenRequestTypeId ==citizenRequestType.Arbitrator">
+
+                            <img src="assets/images/icons/eye.svg" alt="eye">
+                            {{translations.actions.view| translate}}
+
                         </a>
 
-                           <a class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" [routerLink]="[detailsReformerRequest,citizenRequest.id]"
-                           *ngIf="citizenRequest.citizenRequestTypeId ==citizenRequestType.Reformer"
-                       
-                           >
-                           <img src="assets/images/icons/eye.svg" alt="eye">
-                           {{translations.actions.view| translate}}
+                        <a class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" [routerLink]="[detailsReformerRequest,citizenRequest.id]" *ngIf="citizenRequest.citizenRequestTypeId ==citizenRequestType.Reformer">
+                            <img src="assets/images/icons/eye.svg" alt="eye">
+                            {{translations.actions.view| translate}}
                         </a>
-                      </td>
-                  </tr>
-                  }
-              </tbody>
-          </table>
-      </div>
-  </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-  @if (citizenRequestsLists && citizenRequestsLists.length) {
-  <div class="flex-between">
-      <div class="op-6 v-small fw-5">
-          <span>{{translations.tables.from | translate}} </span>
-          <span>{{page}} </span>
-          <span>{{translations.tables.to | translate}} </span>
-          <span>6 </span>
-          <span>{{translations.tables.ofTotal | translate}} </span>
-          <span>{{collectionSize}} </span>
-          <span>{{translations.tables.row | translate}} </span>
-      </div>
+@if (citizenRequestsLists && citizenRequestsLists.length) {
+    <div class="flex-between">
+        <div class="op-6 v-small fw-5">
+            <span>{{translations.tables.from | translate}} </span>
+            <span>{{page}} </span>
+            <span>{{translations.tables.to | translate}} </span>
+            <span>6 </span>
+            <span>{{translations.tables.ofTotal | translate}} </span>
+            <span>{{collectionSize}} </span>
+            <span>{{translations.tables.row | translate}} </span>
+        </div>
 
-
-      <app-pagination></app-pagination>
-  </div>
-  }
-</ng-container>
-
+        <app-pagination></app-pagination>
+    </div>
+}

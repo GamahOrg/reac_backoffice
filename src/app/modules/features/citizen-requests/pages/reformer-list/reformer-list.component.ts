@@ -3,13 +3,13 @@ import { BaseComponent } from '@app/shared/components/base/base.component';
 import { LitigationRequestMircoForRequestReformerDto, LitigationRequestMircoForRequestSessionDto } from '../../models/litigation-request.model';
 import { LitigationRequestService } from '../../services/litigation-request.service';
 import { PaginationService } from '@app/shared/services/pagination/pagination.service';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CitizenService } from '../../services/citizen.service';
 import { AssignRequestPayload, CitizenReformer } from '../../models/citizen.model';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ToastrNotificationService } from '@app/core/services/toastr-notification/toastr-notification.service';
 import { TranslateService } from '@ngx-translate/core';
+import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 
 @Component({
     selector: 'app-reformer-list',
@@ -37,16 +37,24 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
         private _injector: Injector,
         private modalService: NgbModal,
         private _formBuilder: FormBuilder,
+        private _breadcrumbService: BreadcrumbService,
+        private _translateService: TranslateService,
         private citizenService: CitizenService
     ) {
         super();
     }
 
     ngOnInit() {
+        this.updateBreadcrumb()
         this.observePageChange()
     }
 
-
+    private updateBreadcrumb(): void {
+        this._breadcrumbService.updateBreadcrumbListContent([
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.assignReformers) }
+        ])
+    };
 
     private list(pageIndex: number, pageSize: number): void {
         this.litigationRequestService.GetLitigationRequestForFullAllReformer(pageIndex, pageSize).subscribe({

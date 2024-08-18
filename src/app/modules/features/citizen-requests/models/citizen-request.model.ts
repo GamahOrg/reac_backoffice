@@ -11,6 +11,8 @@ export interface CitizenRequestShortDataDto {
     experienceYears: number | null;
     arbitratorClassName: string | null;
     statusName: string;
+    citizenName: string;
+    identityNumber: string
 }
 
 export interface CitizenRequestCreateUpdateDto {

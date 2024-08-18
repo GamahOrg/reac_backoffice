@@ -14,7 +14,8 @@
         "invalidFormat": "يجب رفع ملف بصيغة",
         "fileUploadError": "لا يمكن رفع هذا الملف",
         "files": "الملفات",
-        "name": "الاسم"
+        "name": "الاسم",
+        "and": "و"
     },
     "layout": {
         "sidebar": {
@@ -31,7 +32,7 @@
             "completedLawsuitsList": "قائمة الدعاوى المنجزة",
             "citizenRequests": "قائمة طلبات المصلح والمحكم",
             "arbitratorRequestList": "طلبات الانضمام كمحكم",
-            "arbitratorRequestTaskList":"قائمة مهام الدعاوى",
+            "arbitratorRequestTaskList": "قائمة مهام الدعاوى",
             "reformerRequestList": "طلبات الانضمام كمصلح",
             "reformation": "الصلح",
             "arbitration": "التحكيم",
@@ -44,14 +45,13 @@
             "requestToExtendArbitrationPeriodList": "طلب مد فترة التحكيم",
             "assignReformers": "تعيين المصلحين ",
             "arbitratorCount": "تحديد عدد المحكمين",
-             "assignarbitratorlist":"تعين المحكمين",
-             "details":"عرض التفاصيل",
+            "assignarbitratorlist": "تعين المحكمين",
+            "details": "عرض التفاصيل",
             "litigationRequestForArbitratorSelectionDurationList": "تحديد مدة اختيار المحكمين",
-             "arbitrationSessionList":"قائمة الجلسات",
-             "assignArbitrationMemberList":"تعيين أعضاء هيئة التحكيم",
-             "assignArbitrationHeadList":"نعيين رئيس هيئة التحكيم",
-            "arbitratorRecusalRequests":"طلبات رد المحكمين"
-
+            "arbitrationSessionList": "قائمة الجلسات",
+            "assignArbitrationMemberList": "تعيين أعضاء هيئة التحكيم",
+            "assignArbitrationHeadList": "تعيين رئيس هيئة التحكيم",
+            "arbitratorRecusalRequests": "طلبات رد المحكمين"
         }
     },
     "actions": {
@@ -87,7 +87,7 @@
         "procedures": "الاجراءات",
         "assign": "تعيين",
         "logout": "تسجيل خروج",
-        "assignArbitrator":"تعين محكم"
+        "assignArbitrator": "تعين محكم"
     },
     "tables": {
         "from": "من",
@@ -150,10 +150,10 @@
             "AcceptanceOfTheReconciliationReport": "تم قبول محضر الصلح",
             "RejectionOfTheReconciliationReport": "تم رفض محضر الصلح",
             "ReconciliationWasMade": "تم الصلح",
-            "ReconciliationWasNotMadeAndMoveToArbitration":"عدم الصُلح والانتقال للتحكيم",
-            "JudgmentDecisionIssued":"تم اصدار حكم التحكيم",
-            "WaitingForExplanation":"بإنتظار التفسير",
-            "ExplanationResponsed":"تم الرد"
+            "ReconciliationWasNotMadeAndMoveToArbitration": "عدم الصُلح والانتقال للتحكيم",
+            "JudgmentDecisionIssued": "تم اصدار حكم التحكيم",
+            "WaitingForExplanation": "بإنتظار التفسير",
+            "ExplanationResponsed": "تم الرد"
         },
         "lawsuitDetails": {
             "administrativeFeesNotPaid": "لم يتم تسديد الرسوم الإدارية للدعوى بعد",
@@ -412,7 +412,15 @@
         "REACAbout": "أُسس مركز التحكيم العقاري بصدور موافقة اللجنة الدائمة لمراكز التحكيم السعودية في تاريخ 9/4/1440هـ بمنح الترخيص للمركز، كأول مركز يتم الترخيص له من قبل اللجنة وأول مركز من نوعه في المملكة ودول الخليج."
     },
     "formValidationError": {
-        "required": "حقل مطلوب"
+        "required": "حقل مطلوب",
+        "maxlength": "طول الحقل يجب ألا يتعدى {{value}} حرفًا",
+        "minlength": "طول الحقل يجب ألا يقل {{value}} حرفًا",
+        "numberOnly": "يجب الا يحتوي الحقل علي حروف",
+        "otp": "رمز التحقق المدخل غير صحيح رجاء التأكد وإعادة المحاولة",
+        "passwordsIsNotMatchedError": "كلمة المرور غير متطابقة",
+        "emailPattern": "من فضلك ادخل البريد الإلكتروني صحيح",
+        "phonePattern": "من فضلك ادخل رقم جوال صحيح",
+        "noArabicLettersError": "كلمة السر يجب ألا تحتوي علي حروف باللغة العربية"
     },
     "citizenRequest": {
         "area": "المنطقة",
@@ -483,7 +491,8 @@
         "stopRequest": "إيقاف",
         "BadRating": "تقييم سيئ",
         "LateLitigationRequest": "دعوة متأخرة",
-        "NonPaymentOfMembershipFees": "عدم سداد الرسوم"
+        "NonPaymentOfMembershipFees": "عدم سداد الرسوم",
+        "requestDetails": "تفاصيل الطلب"
     },
     "extendLitigationRequest": {
         "extendLitigationRequest": "مد فترة الصلح",
@@ -499,7 +508,7 @@
         "rejectExtendLitigationRequest": "قبول مد مدة الصلح"
     },
     "arbitrator": {
-        "arbitratorAssigningRequestType" : "نوع المهمة",
+        "arbitratorAssigningRequestType": "نوع المهمة",
         "arbitratorRegistrationForm": "استمارة التسجيل للمحكم",
         "arbitratorDetails": "بيانات المحكم",
         "certificates": "الشهادات",
@@ -587,7 +596,25 @@
         "isDone": "حالة الانتهاء",
         "arbitratorCountDetails": "تفاصيل عدد المحكمين",
         "addArbitratorCount": "اضف عدد المحكمين",
-        "arbitratorsCountAddedSuccessfully": "تم أضافه عدد المحكمين بنجاح"
+        "arbitratorsCountAddedSuccessfully": "تم أضافه عدد المحكمين بنجاح",
+        "acceptTask": "قبول المهمة",
+        "arbitratorAcceptingTaskForm": "نموذج قبول المُحكم مهمته",
+        "arbitratorRejectingTaskForm": "نموذج رفض المُحكم مهمته",
+        "arbitrator": "المحكم",
+        "signature": "التوقيع",
+        "arbitratorDeclaration": "وأعلن انه ليس بيني وبين اطراف النزاع اي قرابة او اي علاقة او مصلحة تمنعني من ان اكون محكما في هذا النزاع.",
+        "acceptanceDeclaration": "وبناءا علي ماتقدم أقر بقبولي المهمه التي كلفت بها بأجمالي قيمة قدرها",
+        "iTheUndersigned": "أنا الموقع أدناه",
+        "iHaveReviewed": "اطلعت على",
+        "nominatedArbitrator": "و حيث تم ترشيحي محكما من قبل",
+        "contractNumber": "العقد المبرم رقم",
+        "caseNumber": "للدعوي رقم",
+        "between": "بين كل من",
+        "declineTask": "وبناءا علي ماتقدم أمتنع عن عمل المهمه التي كلفت بها و ذلك للأسباب التاليه",
+        "articleProvision": "و الذي تنص المادة",
+        "relatedTo": "المتعلق ب",
+        "disputeResolutionClause": "منه علي حل النزاعات التي تحصل بين الطرفين عن طريق التحكيم لدي المركز السعودي للتحكيم العقاري",
+        "homeownersAssociationBylaw": "النظام الأساسي لجمعية ملاك"
     },
     "RequestToExtendSettlementPeriod": {
         "requestCode": "كود الدعوة",
@@ -597,8 +624,8 @@
         "requestTypeName": "نوع الدعوة",
         "status": "حالة الدعوة",
         "isDone": "الحالة",
-        "duration":"المدة (ساعات)",
-        "arbitratorName":"اسم المحكم"
+        "duration": "المدة (ساعات)",
+        "arbitratorName": "اسم المحكم"
     },
     "litigationRequest": {
         "requestreson": "سبب الطلب",
@@ -642,8 +669,8 @@
         "reformerName": "اسم المصلح",
         "selectReformer": "اختار مصلح",
         "sessionLink": "رابط الجلسة",
-        "arbitratorName" : "اسم المحكم",
-        "selectArbitrator":"اختار محكم"
+        "arbitratorName": "اسم المحكم",
+        "selectArbitrator": "اختار محكم"
     },
     "tasksRequestsList": {
         "None": "لم يتم الرد",
@@ -677,20 +704,20 @@
         "reject": "رفض"
     },
     "ArbitratorAssigningRequestType": {
-        "arbitrator" : "محكم",
-        "arbitratorsChairman":"رئيس هيئة التحكيم"
+        "arbitrator": "محكم",
+        "arbitratorsChairman": "رئيس هيئة التحكيم"
     },
     "arbitratorRecusalRequest": {
-        "chooseArbitrator" : "أختر محكم",
-        "reason" : "سبب الرد",
-        "arbitratorRecusalRequest" :"طلب رد المحكم",
-        "requestOn" : "تم الطلب يوم",
-        "approveRejectStatus" : "حالة الطلب",
-        "fullName" : "اسم المحكم",
+        "chooseArbitrator": "أختر محكم",
+        "reason": "سبب الرد",
+        "arbitratorRecusalRequest": "طلب رد المحكم",
+        "requestOn": "تم الطلب يوم",
+        "approveRejectStatus": "حالة الطلب",
+        "fullName": "اسم المحكم",
         "arbitrator": "محكم",
         "arbitratorsChairman": "رئيس هيئة التحكيم",
         "attachments": "عرض المرفقات",
         "approve": "تمت الموافقة",
         "reject": "تم الرفض"
-     }
+    }
 }

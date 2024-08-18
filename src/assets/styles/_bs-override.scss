@@ -76,10 +76,8 @@ a {
             padding-inline-end: clamp(2rem, 7vw, 3rem);
         }
 
-        &[type="number"] {
-            padding-inline-end: clamp(2.5rem, 7vw, 3rem);
-        }
-
+        &[type="number"],
+        &[type="time"],
         &[type="search"] {
             padding-inline-end: clamp(2.5rem, 7vw, 3rem);
         }

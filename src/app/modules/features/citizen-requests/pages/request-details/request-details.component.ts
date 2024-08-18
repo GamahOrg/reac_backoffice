@@ -14,6 +14,7 @@ import { LawsuitDetailsItem } from '../../../lawsuits/models/lawsuit-details.mod
 import { Subscription, takeUntil } from 'rxjs';
 import { CitizenRequestAction } from '../../models/enums/citizen-request-type.model';
 import { environment } from '@environment/environment';
+import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 
 @Component({
     selector: 'app-request-details',
@@ -62,13 +63,16 @@ export class RequestDetailsComponent extends BaseComponent implements OnInit {
         private _translate: TranslateService,
         private toastrNotificationService: ToastrNotificationService,
         private citizenRequestService: CitizenRequestService,
-        private _activatedRoute: ActivatedRoute
+        private _activatedRoute: ActivatedRoute,
+        private _breadcrumbService: BreadcrumbService,
     ) {
         super();
 
 
     }
     ngOnInit(): void {
+        this.setBreadcrumb()
+
         this._activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((res: Params) => {
 
             let code = res['code'];
@@ -90,6 +94,13 @@ export class RequestDetailsComponent extends BaseComponent implements OnInit {
 
     get citizenRequestStatus() {
         return CitizenRequestStatus;
+    }
+
+    private setBreadcrumb(): void {
+        this._breadcrumbService.updateBreadcrumbListContent([
+            { label: this._translate.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translate.instant(this.translations.CitizenRequest.requestDetails) }
+        ])
     }
 
     getCitizenRequestById(id: string) {

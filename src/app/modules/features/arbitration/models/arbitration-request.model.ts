@@ -31,6 +31,10 @@ export interface LitigationRequestMircoDto {
     requestId?: string
 }
 
+export class ArbitrationRequestDocumentContent{
+    documentContent : CustomLitigationRequestMircoArbitratorDto | undefined
+}
+
 export interface CustomLitigationRequestMircoArbitratorDto{
     id: string;
     requestCode: string | null;
@@ -39,6 +43,7 @@ export interface CustomLitigationRequestMircoArbitratorDto{
     firstPartyName: string;
     secondPartyName: string;
     requestTypeName: string;
+    requestTypeId: number;
     status: string;
     isDone: string;
     requestId?: string;

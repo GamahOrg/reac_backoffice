@@ -4,7 +4,6 @@ export namespace translations {
         ltr = "direction.ltr",
     }
 
-
     export enum TasksRequestsList {
         None = "tasksRequestsList.None",
         Approve = "tasksRequestsList.Approve",
@@ -49,6 +48,7 @@ export namespace translations {
         fileUploadError = "general.fileUploadError",
         files = "general.files",
         name = "general.name",
+        and = "general.and",
     }
 
     export namespace layout {
@@ -79,14 +79,14 @@ export namespace translations {
             reformationLawsuitsList = "layout.sidebar.reformationLawsuitsList",
             assignReformers = "layout.sidebar.assignReformers",
             arbitratorCount = "layout.sidebar.arbitratorCount",
-            litigationRequestForArbitratorSelectionDurationList='layout.sidebar.litigationRequestForArbitratorSelectionDurationList',
-            reportexplanationList='layout.sidebar.reportexplanationList',
-            assignarbitratorlist='layout.sidebar.assignarbitratorlist',
-            details='layout.sidebar.details',
+            litigationRequestForArbitratorSelectionDurationList = 'layout.sidebar.litigationRequestForArbitratorSelectionDurationList',
+            reportexplanationList = 'layout.sidebar.reportexplanationList',
+            assignarbitratorlist = 'layout.sidebar.assignarbitratorlist',
+            details = 'layout.sidebar.details',
             arbitrationSessionList = 'layout.sidebar.arbitrationSessionList',
-            assignArbitrationMemberList='layout.sidebar.assignArbitrationMemberList',
-            assignArbitrationHeadList='layout.sidebar.assignArbitrationHeadList',
-            arbitratorRecusalRequests='layout.sidebar.arbitratorRecusalRequests',
+            assignArbitrationMemberList = 'layout.sidebar.assignArbitrationMemberList',
+            assignArbitrationHeadList = 'layout.sidebar.assignArbitrationHeadList',
+            arbitratorRecusalRequests = 'layout.sidebar.arbitratorRecusalRequests',
         }
     }
 
@@ -123,7 +123,7 @@ export namespace translations {
         procedures = "actions.procedures",
         assign = "actions.assign",
         logout = "actions.logout",
-        assignArbitrator="actions.assignArbitrator"
+        assignArbitrator = "actions.assignArbitrator"
     }
 
     export enum tables {
@@ -189,10 +189,10 @@ export namespace translations {
             AcceptanceOfTheReconciliationReport = "lawsuits.lawsuitsList.AcceptanceOfTheReconciliationReport",
             RejectionOfTheReconciliationReport = "lawsuits.lawsuitsList.RejectionOfTheReconciliationReport",
             ReconciliationWasMade = "lawsuits.lawsuitsList.ReconciliationWasMade",
-            ReconciliationWasNotMadeAndMoveToArbitration= "lawsuits.lawsuitsList.ReconciliationWasNotMadeAndMoveToArbitration",
-            JudgmentDecisionIssued= "lawsuits.lawsuitsList.JudgmentDecisionIssued",
-            WaitingForExplanation= "lawsuits.lawsuitsList.WaitingForExplanation",
-            ExplanationResponsed= "lawsuits.lawsuitsList.ExplanationResponsed",
+            ReconciliationWasNotMadeAndMoveToArbitration = "lawsuits.lawsuitsList.ReconciliationWasNotMadeAndMoveToArbitration",
+            JudgmentDecisionIssued = "lawsuits.lawsuitsList.JudgmentDecisionIssued",
+            WaitingForExplanation = "lawsuits.lawsuitsList.WaitingForExplanation",
+            ExplanationResponsed = "lawsuits.lawsuitsList.ExplanationResponsed",
         }
 
         export enum lawsuitDetails {
@@ -459,7 +459,15 @@ export namespace translations {
     }
 
     export enum formValidationError {
-        required = "formValidationError.required"
+        required = "formValidationError.required",
+        maxlength = "formValidationError.maxlength",
+        minlength = "formValidationError.minlength",
+        numberOnly = "formValidationError.numberOnly",
+        otp = "formValidationError.otp",
+        passwordsIsNotMatchedError = "formValidationError.passwordsIsNotMatchedError",
+        emailPattern = "formValidationError.emailPattern",
+        phonePattern = "formValidationError.phonePattern",
+        noArabicLettersError = "formValidationError.noArabicLettersError",
     }
 
     export enum CitizenRequest {
@@ -533,6 +541,7 @@ export namespace translations {
         BadRating = "citizenRequest.BadRating",
         LateLitigationRequest = "citizenRequest.LateLitigationRequest",
         NonPaymentOfMembershipFees = "citizenRequest.NonPaymentOfMembershipFees",
+        requestDetails = "citizenRequest.requestDetails",
     }
 
     export enum ExtendLitigationRequest {
@@ -626,7 +635,7 @@ export namespace translations {
         requestFreeSuccessfully = "arbitrator.requestFreeSuccessfully",
         requestStoppedSuccessfully = "arbitrator.requestStoppedSuccessfully",
         lawsuitsCount = "arbitrator.lawsuitsCount",
-        
+
         requestCode = "arbitrator.requestCode",
         requestDate = "arbitrator.requestDate",
         firstPartyName = "arbitrator.firstPartyName",
@@ -640,7 +649,24 @@ export namespace translations {
         arbitratorCountDetails = "arbitrator.arbitratorCountDetails",
         addArbitratorCount = "arbitrator.addArbitratorCount",
         arbitratorsCountAddedSuccessfully = "arbitrator.arbitratorsCountAddedSuccessfully",
-
+        acceptTask = "arbitrator.acceptTask",
+        arbitratorAcceptingTaskForm = "arbitrator.arbitratorAcceptingTaskForm",
+        arbitratorRejectingTaskForm = "arbitrator.arbitratorRejectingTaskForm",
+        arbitrator = "arbitrator.arbitrator",
+        signature = "arbitrator.signature",
+        arbitratorDeclaration = "arbitrator.arbitratorDeclaration",
+        acceptanceDeclaration = "arbitrator.acceptanceDeclaration",
+        iTheUndersigned = "arbitrator.iTheUndersigned",
+        iHaveReviewed = "arbitrator.iHaveReviewed",
+        nominatedArbitrator = "arbitrator.nominatedArbitrator",
+        contractNumber = "arbitrator.contractNumber",
+        caseNumber = "arbitrator.caseNumber",
+        between = "arbitrator.between",
+        declineTask = "arbitrator.declineTask",
+        articleProvision = "arbitrator.articleProvision",
+        relatedTo = "arbitrator.relatedTo",
+        disputeResolutionClause = "arbitrator.disputeResolutionClause",
+        homeownersAssociationBylaw = "arbitrator.homeownersAssociationBylaw",
     }
 
     export enum RequestToExtendSettlementPeriod {
@@ -651,9 +677,9 @@ export namespace translations {
         requestTypeName = "RequestToExtendSettlementPeriod.requestTypeName",
         status = "RequestToExtendSettlementPeriod.status",
         isDone = "RequestToExtendSettlementPeriod.isDone",
-        duration='RequestToExtendSettlementPeriod.duration',
-        arbitratorName='RequestToExtendSettlementPeriod.arbitratorName',
-        
+        duration = 'RequestToExtendSettlementPeriod.duration',
+        arbitratorName = 'RequestToExtendSettlementPeriod.arbitratorName',
+
 
     }
 
@@ -665,8 +691,8 @@ export namespace translations {
         requestTypeName = "RequestToExtendSettlementPeriod.requestTypeName",
         status = "RequestToExtendSettlementPeriod.status",
         isDone = "RequestToExtendSettlementPeriod.isDone",
-        duration='RequestToExtendSettlementPeriod.duration',
-        reformerName='litigationRequest.reformerName'
+        duration = 'RequestToExtendSettlementPeriod.duration',
+        reformerName = 'litigationRequest.reformerName'
     }
 
     export enum LitigationRequest {
@@ -712,15 +738,15 @@ export namespace translations {
         requestreson = "litigationRequest.requestreson",
         dayscount = "litigationRequest.dayscount",
         arbitratorName = "litigationRequest.arbitratorName",
-        selectArbitrator="litigationRequest.selectArbitrator"
+        selectArbitrator = "litigationRequest.selectArbitrator"
     }
 
-    export enum ArbitratorAssigningRequestType{
+    export enum ArbitratorAssigningRequestType {
         arbitrator = "ArbitratorAssigningRequestType.arbitrator",
         arbitratorsChairman = "ArbitratorAssigningRequestType.arbitratorsChairman",
     }
 
-    export enum ArbitratorRecusalRequest{
+    export enum ArbitratorRecusalRequest {
         arbitratorRecusalRequest = 'arbitratorRecusalRequest.arbitratorRecusalRequest',
         chooseArbitrator = 'arbitratorRecusalRequest.chooseArbitrator',
         reason = "arbitratorRecusalRequest.reason",

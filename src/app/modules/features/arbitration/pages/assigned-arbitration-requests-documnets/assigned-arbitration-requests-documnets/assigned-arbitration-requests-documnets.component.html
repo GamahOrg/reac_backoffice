@@ -1,0 +1,125 @@
+<!-- Accept Properties -->
+<div *ngIf="this.documentId == 1">
+    <div class="modal-header mx-0 border-bottom mb-4">
+        <h4 class="modal-title fw-7"> {{ translations.arbitrator.arbitratorAcceptingTaskForm | translate }} </h4>
+    </div>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.iTheUndersigned | translate }} {{this.litigationDocument?.arbitratorName}} {{ translations.arbitrator.iHaveReviewed | translate }} :
+    </p>
+
+    <p class="fw-6 mb-8">
+        {{ translations.arbitrator.homeownersAssociationBylaw | translate }} {{this.litigationDocument?.associationName}} {{ translations.arbitrator.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}}) {{ translations.arbitrator.between | translate }}
+        {{this.litigationDocument?.firstPartyName}} {{ translations.general.and | translate }} {{this.litigationDocument?.secondPartyName}} {{ translations.arbitrator.relatedTo | translate }} {{this.litigationDocument?.litigationType}} {{ translations.arbitrator.articleProvision | translate }}
+        {{this.litigationDocument?.subject}} {{ translations.arbitrator.disputeResolutionClause | translate }}
+    </p>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.nominatedArbitrator | translate }} {{this.litigationDocument?.arbitratorAssignerName}} {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.arbitratorAssigningDate}}
+    </p>
+
+    <p class="fw-6">
+        {{ translations.arbitrator.acceptanceDeclaration | translate }} {{this.litigationDocument?.arbitratorAssigningCost}} {{ translations.lawsuits.createEditLawsuit.saudiRiyal| translate }}
+    </p>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.arbitratorDeclaration | translate }}
+    </p>
+
+    <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+</div>
+
+<!-- Reject Properties -->
+<div *ngIf="this.documentId == 2">
+    <div class="modal-header mx-0 border-bottom mb-4">
+        <h4 class="modal-title fw-7"> {{ translations.arbitrator.arbitratorRejectingTaskForm | translate }} </h4>
+    </div>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.iTheUndersigned | translate }} {{this.litigationDocument?.arbitratorName}} {{ translations.arbitrator.iHaveReviewed | translate }} :
+    </p>
+
+    <p class="fw-6 mb-8">
+        {{ translations.arbitrator.homeownersAssociationBylaw | translate }} {{this.litigationDocument?.associationName}} {{ translations.arbitrator.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}}) {{ translations.arbitrator.between | translate }}
+        {{this.litigationDocument?.firstPartyName}} {{ translations.general.and | translate }} {{this.litigationDocument?.secondPartyName}} {{ translations.arbitrator.relatedTo | translate }} {{this.litigationDocument?.litigationType}} {{ translations.arbitrator.articleProvision | translate }}
+        {{this.litigationDocument?.subject}} {{ translations.arbitrator.disputeResolutionClause | translate }}
+    </p>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.nominatedArbitrator | translate }} {{this.litigationDocument?.arbitratorAssignerName}} {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.arbitratorAssigningDate}}
+    </p>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.declineTask | translate }}
+    </p>
+
+    <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+</div>
+
+<!-- Accept Ejar-Wafi-RealEstateBrokerage -->
+<div *ngIf="this.documentId == 3">
+    <div class="modal-header mx-0 border-bottom mb-4">
+        <h4 class="modal-title fw-7"> {{ translations.arbitrator.arbitratorAcceptingTaskForm | translate }} </h4>
+    </div>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.iTheUndersigned | translate }} {{this.litigationDocument?.arbitratorName}} {{ translations.arbitrator.iHaveReviewed | translate }} :
+    </p>
+
+    <p class="fw-6 mb-8">
+        {{ translations.arbitrator.contractNumber | translate }} {{this.litigationDocument?.contractNumber}} {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.contractReleaseDate}} {{ translations.arbitrator.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}}) {{ translations.arbitrator.between | translate }}
+    </p>
+
+    <p class="fw-6 mb-8">
+        {{this.litigationDocument?.firstPartyName}} {{ translations.general.and | translate }} {{this.litigationDocument?.secondPartyName}} {{ translations.arbitrator.relatedTo | translate }} {{this.litigationDocument?.litigationType}} {{ translations.arbitrator.articleProvision | translate }}
+        {{this.litigationDocument?.subject}} {{ translations.arbitrator.disputeResolutionClause | translate }}
+    </p>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.nominatedArbitrator | translate }} {{this.litigationDocument?.arbitratorAssignerName}} {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.arbitratorAssigningDate }}
+    </p>
+
+    <p class="fw-6">
+        {{ translations.arbitrator.acceptanceDeclaration | translate }} {{this.litigationDocument?.arbitratorAssigningCost}} {{ translations.lawsuits.createEditLawsuit.saudiRiyal| translate }}
+    </p>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.arbitratorDeclaration | translate }}
+    </p>
+
+    <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+</div>
+
+<!-- Reject Ejar-Wafi-RealEstateBrokerage -->
+<div *ngIf="this.documentId == 4">
+    <div class="modal-header mx-0 border-bottom mb-4">
+        <h4 class="modal-title fw-7"> {{ translations.arbitrator.arbitratorRejectingTaskForm | translate }} </h4>
+    </div>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.iTheUndersigned | translate }} {{this.litigationDocument?.arbitratorName}} {{ translations.arbitrator.iHaveReviewed | translate }} :
+    </p>
+
+    <p class="fw-6 mb-8">
+        {{ translations.arbitrator.contractNumber | translate }} {{this.litigationDocument?.contractNumber}} {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.contractReleaseDate}} {{ translations.arbitrator.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}}) {{ translations.arbitrator.between | translate }}
+    </p>
+
+    <p class="fw-6 mb-8">
+        {{this.litigationDocument?.firstPartyName}} {{ translations.general.and | translate }} {{this.litigationDocument?.secondPartyName}} {{ translations.arbitrator.relatedTo | translate }} {{this.litigationDocument?.litigationType}} {{ translations.arbitrator.articleProvision | translate }}
+        {{this.litigationDocument?.subject}} {{ translations.arbitrator.disputeResolutionClause | translate }}
+    </p>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.nominatedArbitrator | translate }} {{this.litigationDocument?.arbitratorAssignerName}} {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.arbitratorAssigningDate }}
+    </p>
+
+    <p class="fw-6 mb-12">
+        {{ translations.arbitrator.declineTask | translate }}
+    </p>
+
+    <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+</div>
