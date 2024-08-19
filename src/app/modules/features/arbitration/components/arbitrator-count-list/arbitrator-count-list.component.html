@@ -1,0 +1,72 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+@if (arbitratorsCountList && arbitratorsCountList.results && arbitratorsCountList.results.length) {
+    <div class="table-wrapper">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">{{translations.arbitrator.requestCode | translate}}</th>
+              <th scope="col">{{translations.arbitrator.requestDate | translate}}</th>
+              <th scope="col">{{translations.arbitrator.firstPartyName | translate}}</th>
+              <th scope="col">{{translations.arbitrator.secondPartyName | translate}}</th>
+              <th scope="col">{{translations.arbitrator.requestTypeName | translate}}</th>
+              <th scope="col">{{translations.arbitrator.status | translate}}</th>
+              <th scope="col">{{translations.arbitrator.firstPartyArbitratorsCount | translate}}</th>
+              <th scope="col">{{translations.arbitrator.secondPartyArbitratorsCount | translate}}</th>
+              <th scope="col">{{translations.arbitrator.arbitratorsCount | translate}}</th>
+              <th scope="col">{{translations.arbitrator.isDone | translate}}</th>
+              <th scope="col">{{translations.arbitrator.actions | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (decisions of arbitratorsCountList.results; track $index) {
+            <tr>
+              <td>{{decisions.requestCode || "--"}}</td>
+              <td>{{(decisions.requestDate|date:'dd/MM/yyyy') || "--"}}</td>
+              <td>{{decisions.firstPartyName || "--"}}</td>
+              <td>{{decisions.secondPartyName || "--"}}</td>
+              <td>{{decisions.requestTypeName || "--"}}</td>
+              <td>{{decisions.status || "--"}}</td>
+              <td>{{decisions.firstPartyArbitratorsCount || "--"}}</td>
+              <td>{{decisions.secondPartyArbitratorsCount || "--"}}</td>
+              <td>{{decisions.arbitratorsCount || "--"}}</td>
+              <td>{{decisions.isDone || "--"}}</td>
+
+              <td>
+                <a class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2"
+                   style="background: #F6F6F6;"
+                   [routerLink]="[arbitratorsCountDetailsURL,decisions.id]">
+                  <img src="assets/images/icons/eye.svg"
+                       alt="eye">
+                  {{translations.actions.view| translate}}
+                </a>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="flex-between">
+      <div class="op-6 v-small fw-5">
+        <span>{{translations.tables.from | translate}} </span>
+        <span>{{pagintationData.currentPage}} </span>
+        <span>{{translations.tables.to | translate}} </span>
+        <span>{{pagintationData.totalCount}} </span>
+        <span>{{translations.tables.ofTotal | translate}} </span>
+        <span>{{pageCount}} </span>
+        <span>{{translations.tables.row | translate}} </span>
+      </div>
+      <app-pagination></app-pagination>
+    </div>
+    }
+    
+    @if((!arbitratorsCountList.results) || arbitratorsCountList.results.length==0){
+    <div class="flex-center flex-column">
+      <img src="assets/images/no-data.svg"
+           alt="no-data">
+      <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.lawsuits.lawsuitsList.noCurrentLawsuits| translate}}</h4>
+    </div>
+    }

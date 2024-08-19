@@ -1,0 +1,21 @@
+.count {
+    color: var(--white);
+    background-color: var(--danger);
+
+    position: absolute;
+    top: 4px;
+    inset-inline-start: 5px;
+
+    border-radius: 50%;
+
+    width: 18px;
+    height: 18px;
+
+    font-size: 13px;
+    font-weight: 600;
+    font-family: "Loew Next Arabic";
+
+    [lang="ar"] & {
+        font-family: "REGA SemBd";
+    }
+}

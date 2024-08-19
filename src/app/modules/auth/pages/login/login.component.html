@@ -1,0 +1,202 @@
+<div class="login-wrapper grid-2">
+  <img src="assets/images/logo.svg"
+       class="d-lg-none img-fluid logo mx-auto py-2 order-2"
+       alt="logo">
+
+  <div class="px-11 form">
+    <img src="assets/images/logo.svg"
+         class="img-fluid d-none d-lg-block logo mb-4"
+         alt="logo">
+
+    <!-- login -->
+    <ng-container [formGroup]="loginForm">
+      <h4 class="fw-6 mt-4"
+          style="margin-bottom: 3vw"> {{ translations.auth.login | translate }} </h4>
+
+      <label class="small fw-6 required mb-2"> {{ translations.auth.identityNumber | translate }} </label>
+
+      <input class="form-control"
+             [placeholder]="translations.auth.enterIdNumber | translate"
+             type="text"
+             formControlName="username"
+             id="control-username"
+             [ngClass]="{'is-invalid': (controls.username.touched && controls.username.errors) || errorFeedback}">
+
+      <div *ngIf="controls.username.errors && !errorFeedback"
+           class="invalid-feedback">
+        <div *ngIf="controls.username.touched && controls.username.errors?.['required']">
+          {{translations.formValidationError.required | translate}}
+        </div>
+
+      </div>
+
+      <label class="small fw-6 required mb-2 mt-4"> {{ translations.auth.password | translate }} </label>
+      <input type="password"
+             class="form-control"
+             formControlName="password"
+             id="control-password"
+             [ngClass]="{'is-invalid': controls.password.touched && controls.password.errors}"
+             [placeholder]="translations.auth.enterPassword | translate">
+      <div *ngIf=" controls.password.touched &&  controls.password.errors"
+           class="invalid-feedback d-block">
+        <div *ngIf=" controls.password.errors?.['required']">
+          {{translations.formValidationError.required | translate}}
+        </div>
+        <div *ngIf=" controls.password.errors?.['pattern']">
+          {{translations.formValidationError.required | translate}}
+        </div>
+      </div>
+      <button class="btn btn-primary login-btn flex-center" (click)="onSubmit()">
+        {{ translations.auth.login | translate }} <i class="material-icons px-4"> arrow_back_ios </i>
+      </button>
+    </ng-container>
+
+    <!-- register -->
+    <!-- <ng-container *ngIf="!isUser" [formGroup]="registerForm">
+            <ng-container *ngIf="step !== 3">
+                <h4 class="fw-6 mt-4"> {{ translations.auth.createYourAccountOnRealEstateArbitrationCenter | translate }} </h4>
+                <p class="small mt-2 op-5" style="margin-bottom: 3vw"> {{ translations.auth.toBenefitFromAllCenterServices | translate }} </p>
+            </ng-container>
+
+            <!- - step 1 - ->
+            <ng-container *ngIf="step === 1">
+                <label class="small fw-6 required mb-2"> {{ translations.auth.identityType | translate }} </label>
+                <select class="form-select">
+                    <option
+                        disabled
+                        [ngValue]="null"
+                        selected> 
+                        {{ translations.auth.selectidentityType | translate }} 
+                    </option>
+                    <option
+                        *ngFor="let identityType of identityTypes"
+                        [ngValue]="identityType.value">
+                        {{identityType.title|translate}}
+                    </option>
+                </select>
+
+                <label class="small fw-6 required mb-2 mt-4"> {{ translations.auth.identityNumber | translate }} </label>
+                <input
+                    class="form-control"
+                    [placeholder]="translations.auth.enterIdNumber | translate">
+
+                <label class="small fw-6 required mb-2 mt-4"> {{ translations.auth.idExpirationDate | translate }} </label>
+                <input
+                    class="form-control"
+                    [placeholder]="translations.auth.enterIdExpirationDate | translate">
+
+                <label class="small fw-6 required mb-2 mt-4"> {{ translations.auth.hijriBirthDate | translate }} </label>
+                <input
+                    class="form-control"
+                    [placeholder]="translations.auth.enterHijriBirthDate | translate">
+
+                <label class="small fw-6 required mb-2 mt-4"> {{ translations.auth.gregorianBirthDate | translate }} </label>
+                <input
+                    class="form-control"
+                    type="text"
+                    [placeholder]="translations.auth.enterGregorianBirthDate | translate"
+                    (focus)="showDatePicker($event)"
+                    (blur)="resetDate($event)">
+
+                <button class="btn btn-primary login-btn flex-center" (click)="next()">
+                    {{ translations.actions.next| translate }} <i class="material-icons px-4"> arrow_back_ios </i>
+                </button>
+            </ng-container>
+
+            <!- - step 2 - ->
+            <ng-container *ngIf="step === 2">
+                <label class="small fw-6 required mb-2"> {{ translations.auth.email | translate }} </label>
+                <input
+                    class="form-control"
+                    [placeholder]="translations.auth.enterEmail | translate">
+
+                <label class="small fw-6 required mb-2 mt-4"> {{ translations.auth.reenterEmail | translate }} </label>
+                <input
+                    class="form-control"
+                    [placeholder]="translations.auth.reenterEmailAgain | translate">
+
+                <label class="small fw-6 required mb-2 mt-4"> {{ translations.auth.phoneNumber | translate }} </label>
+                <input
+                    class="form-control"
+                    placeholder="00">
+
+                <label class="small fw-6 required mb-2 mt-4"> {{ translations.auth.password | translate }} </label>
+                <input
+                    class="form-control"
+                    [placeholder]="translations.auth.enterPassword | translate">
+
+                <label class="small fw-6 required mb-2 mt-4"> {{ translations.auth.confirmPassword | translate }} </label>
+                <input
+                    class="form-control"
+                    [placeholder]="translations.auth.reenterPassword | translate">
+
+                <button class="btn btn-primary login-btn flex-center" (click)="showOTP()"> 
+                    {{ translations.auth.register| translate }} <i class="material-icons px-4"> arrow_back_ios </i>
+                </button>
+            </ng-container>
+
+            <!- - step 3 otp - ->
+            <ng-container *ngIf="step === 3">
+                <button class="btn small op-7 mb-7 flex-y-row" style="margin-top: 3vw;" (click)="step = 2">
+                    <i class="material-icons pt-1">east</i> <span class="px-2">{{ translations.actions.goBack| translate }}</span> 
+                </button>
+
+                <h4 class="fw-5 text-start"> {{ translations.auth.verify | translate }} </h4>
+                <p class="op-5 small fw-5 mt-3 text-start"> {{ translations.auth.enter4DigitCodeSentViaSms | translate }} </p>
+                <p class="text-primary fw-5 text-start">966594367189+</p>
+
+                <div class="grid-6 gapy-0 mt-6 w-lg-7">
+                    <div class="grid-6 me-6 span-6" style="direction: ltr;">
+                        <input #otpInput class="form-control otp" [maxLength]="1" (input)="onInputOTP($event, 0)">
+                        <input #otpInput class="form-control otp" [maxLength]="1" (input)="onInputOTP($event, 1)">
+                        <input #otpInput class="form-control otp" [maxLength]="1" (input)="onInputOTP($event, 2)">
+                        <input #otpInput class="form-control otp" [maxLength]="1" (input)="onInputOTP($event, 3)">
+                        <input #otpInput class="form-control otp" [maxLength]="1" (input)="onInputOTP($event, 4)">
+                        <input #otpInput class="form-control otp" [maxLength]="1" (input)="onInputOTP($event, 5)">
+                    </div>
+
+                    <ng-container>
+                        <p class="text-danger flex-y-row gap-1 small span-6 mt-2">
+                            <i class="material-icons-outlined text-danger"> error_outline </i>
+                            {{ translations.formValidationError.otp| translate }} 
+                        </p>
+                    </ng-container>
+
+                    <button class="btn btn-primary span-6 mt-11 flex-center"> 
+                        {{ translations.auth.sendCode| translate }} <i class="material-icons px-4"> arrow_back_ios </i>
+                    </button>
+
+                    <div class="flex-between span-6 mt-4 text-nowrap">
+                        <span class="small fw-7 op-5"> {{ translations.auth.didNotReceiveSms | translate }} </span>
+                        <button
+                            class="btn border flex-center small rounded-3 fw-5"
+                            [class.border-0]="isOTPSent"
+                            [ngStyle]="{ 'background': isOTPSent ? '#F5F6F7' : '' }"
+                            (click)="resendOTP()"
+                            [disabled]="isOTPSent">
+                            <ng-container *ngIf="isOTPSent">
+                                <img src="assets/images/icons/lead-icon.svg" class="me-2" alt="lead-icon">
+                                <span class="small fw-5 op-5">{{ otpTime }} {{ translations.auth.second | translate }} </span>
+                                <span class="small fw-5 op-5"></span> <span class="px-2 op-5">&#x7C;</span>
+                            </ng-container>
+
+                            <span class="mx-2" [class.op-5]="isOTPSent">{{ translations.auth.resendCode | translate }}</span>
+                            <i class="material-icons" [class]="isOTPSent ? 'op-5' : 'op-7'">west</i>
+                         </button>
+                    </div>
+                </div>
+
+            </ng-container>
+        </ng-container> -->
+  </div>
+
+  <div class="about px-11">
+    <h4 class="fw-7 about-title">
+      <span style="color: #128EDA;"> {{ translations.auth.about| translate }} </span>
+      <span class="text-white"> {{ translations.auth.center| translate }} </span>
+    </h4>
+
+    <h4 class="fw-7 about-subtitle"> {{ translations.auth.saudiCenterForRealEstateArbitration| translate }} </h4>
+    <p class="text-white w-lg-9 mt-4 description"> {{ translations.auth.REACAbout | translate }} </p>
+  </div>
+</div>

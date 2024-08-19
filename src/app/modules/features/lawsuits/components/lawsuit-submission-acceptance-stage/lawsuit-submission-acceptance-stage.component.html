@@ -1,0 +1,48 @@
+<div class="grid-6 mt-5">
+    <div class="span-2">
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDetails.stageStartDate | translate}}</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/calendar.svg" alt="icon">
+            <h6 class="small op-7">{{(litigationDetails?.createdOn | date: 'dd/MM/yyyy') || '--'}}</h6>
+        </div>
+    </div>
+    <div class="span-2">
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDetails.administrativeFees | translate}}</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/hashtag.svg" alt="icon">
+            <h6 class="small op-7">
+                {{(litigationDetails && litigationDetails.fees >= 0 ) ? litigationDetails.fees : '--'}}
+                @if (litigationDetails && litigationDetails.fees >= 0) {
+                    <span class="ms-4">{{translations.lawsuits.lawsuitDetails.sar | translate}}</span>
+                }
+            </h6>
+        </div>
+    </div>
+    <div class="span-2">
+        <div style="background: #E6F2FB; padding-block: 2px" class="px-2 rounded-2 border border-success w-fit">
+            <span class="flex-y-row gap-1 small fw-6 text-primary status-{{litigationDetails?.internalStatusId}}">
+                <i class="material-icons"> watch_later </i> 
+                {{litigationDetails?.internalStatus?.requestStatus}}                
+            </span>
+        </div>
+    </div>
+    @if(litigationDetails?.litigationRequestNotes) {    
+        <div class="span-6">
+            <div class="flex-y-row gap-2" *ngFor="let item of litigationDetails?.litigationRequestNotes">
+                <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+                <h6 class="small op-7">
+                    {{item?.notes}}
+                </h6>
+            </div>
+        </div>
+    }
+    <div class="span-3">
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDetails.lawsuitEventDetails | translate}}</h6>
+        <ul>
+            <li class="d-flex align-items-start gap-2">
+                <img src="assets/images/icons/lawsuit-details/calendar-add.svg" class="mt-1" alt="icon">
+                <h6 class="small op-7"> {{ translations.lawsuits.lawsuitDetails.adminFeesPaid | translate }} {{litigationDetails?.fees}} {{ translations.lawsuits.createEditLawsuit.saudiRiyal | translate }} {{ translations.lawsuits.lawsuitDetails.date| translate }} {{litigationDetails?.paidOn | date: 'dd-MM-YYY'}}  - {{ translations.lawsuits.lawsuitDetails.referenceNumberForPayment| translate }} ########</h6>
+            </li>
+        </ul>
+    </div>
+</div>

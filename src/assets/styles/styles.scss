@@ -1,0 +1,30 @@
+@import "./bootstrap.scss";
+@import "variables";
+@import "global";
+@import "helpers";
+@import "bs-override";
+.status-1,
+.status-9 {
+    color: #d8b934;
+}
+.status-2,
+.status-6,
+.status-11 {
+    color: #4dc1bb;
+}
+.status-3,
+.status-4,
+.status-5 {
+    color: #719b37;
+}
+.status-7,
+.status-9
+ {
+    color: var(--danger);
+}
+.status-8 {
+    color: var(--black);
+}
+.status-10 {
+    color: var(--primary);
+}
