@@ -3,13 +3,16 @@ import { BaseComponent } from '@app/shared/components/base/base.component';
 import { LitigationRequestMircoForRequestReformerDto, LitigationRequestMircoForRequestSessionDto } from '../../models/litigation-request.model';
 import { LitigationRequestService } from '../../services/litigation-request.service';
 import { PaginationService } from '@app/shared/services/pagination/pagination.service';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CitizenService } from '../../services/citizen.service';
 import { AssignRequestPayload, CitizenReformer } from '../../models/citizen.model';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ToastrNotificationService } from '@app/core/services/toastr-notification/toastr-notification.service';
 import { TranslateService } from '@ngx-translate/core';
+import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
+import { Pagination, pagination } from '@app/shared/models/pagination.model';
+import { takeUntil } from 'rxjs';
+import { BaseResponse } from '@app/core/models/base-response';
 
 @Component({
     selector: 'app-reformer-list',
@@ -18,16 +21,23 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ReformerListComponent extends BaseComponent implements OnInit {
 
-    page = 1;
-    pageSize = 10;
-    collectionSize!: number;
-    pagintationData = {
-        currentPage: this.page,
-        pageSize: 0,
+    // pagintationData = {
+    //     currentPage: this.page,
+    //     pageSize: 0,
+    //     totalCount: 0,
+    //     from: 0,
+    //     to: 0,
+    // }
+    newPageNo: number = 1;
+    pageCount: number = 0;
+    pagintationData: pagination = {
+        currentPage: 1,
+        // pageCount: 0,
+        pageSize: 10,
         totalCount: 0,
-    }
+    };
 
-    reformerList: LitigationRequestMircoForRequestReformerDto[] | undefined = [];
+    reformerList: Pagination<LitigationRequestMircoForRequestReformerDto[]> = {} as Pagination<LitigationRequestMircoForRequestReformerDto[]>;
     citizenReformers: CitizenReformer[] = [];
 
     constructor(private litigationRequestService: LitigationRequestService,
@@ -37,46 +47,83 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
         private _injector: Injector,
         private modalService: NgbModal,
         private _formBuilder: FormBuilder,
+        private _breadcrumbService: BreadcrumbService,
+        private _translateService: TranslateService,
         private citizenService: CitizenService
     ) {
         super();
     }
 
     ngOnInit() {
-        this.observePageChange()
+        this.updateBreadcrumb();
+        this.GetLitigationRequestForFullAllReformer();
+        this.watchPaginationActions();
+    }
+
+    private updateBreadcrumb(): void {
+        this._breadcrumbService.updateBreadcrumbListContent([
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.assignReformers) }
+        ])
+    };
+
+    private GetLitigationRequestForFullAllReformer(): void {
+        this.litigationRequestService.GetLitigationRequestForFullAllReformer(this.pagintationData.currentPage, this.pagintationData.pageSize)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((res: BaseResponse<Pagination<LitigationRequestMircoForRequestReformerDto[]>>) => {
+                if (res.isDone && res.data) {
+                    this.updateRequestList(res.data as Pagination<LitigationRequestMircoForRequestReformerDto[]>);
+                    this.pageCount = res.data.pageCount;
+                }
+            })
     }
 
 
+    //private methods
+    private updateRequestList(TypeListView: Pagination<LitigationRequestMircoForRequestReformerDto[]>): void {
+        this.reformerList = TypeListView;
 
-    private list(pageIndex: number, pageSize: number): void {
-        this.litigationRequestService.GetLitigationRequestForFullAllReformer(pageIndex, pageSize).subscribe({
-            next: (res) => {
-                console.log(res);
-
-                this.reformerList = res?.data?.results;
-
-                this.collectionSize = res?.data?.totalCount || 0;
-                this.setPaginationData(this.page, this.pageSize, this.collectionSize)
-            }
-        })
+        this.setPaginationData(
+            this.reformerList.pageSize,
+            this.reformerList.totalCount
+        );
     }
-
-    private observePageChange(): void {
-        effect(() => {
-            this.page = this._paginationService.currentPage();
-            this.list(this.page, this.pageSize)
-        }, {
-            injector: this._injector,
-            allowSignalWrites: true
-        });
-    }
-
-    private setPaginationData(currentPage: number, pageSize: number, totalCount: number): void {
-        this.pagintationData.currentPage = currentPage
+    private setPaginationData(pageSize: number, total: number): void {
         this.pagintationData.pageSize = pageSize
-        this.pagintationData.totalCount = totalCount
+        this.pagintationData.totalCount = total
         this._paginationService.updatePaginationData(this.pagintationData);
+
     }
+
+    private watchPaginationActions(): void {
+        this.watchPagechanged();
+        this.watchPaginationClicked();
+    }
+
+    private watchPagechanged(): void {
+        this._paginationService.pageChanged
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((pageNo) => {
+                this.newPageNo = pageNo;
+            })
+    }
+
+    private watchPaginationClicked(): void {
+        this._paginationService.pageClicked
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((nextPage: number) => {
+                if (this.pagintationData.currentPage != nextPage) {
+                    this.loadNextPage(nextPage);
+                    this.pagintationData.currentPage = this.newPageNo;
+                }
+            })
+    }
+
+    private loadNextPage(nextPage: number): void {
+        this.pagintationData.currentPage = nextPage;
+        this.GetLitigationRequestForFullAllReformer();
+    }
+
 
     assignReformer(currentReformerId: string, requestId: string, content: TemplateRef<any>) {
         debugger

@@ -40,7 +40,7 @@ export class LoginComponent extends BaseComponent {
 
     loginForm = this._formBuilder.group({
         username: ['', Validators.required],
-        password: ['', Validators.required],
+        password: ['', [Validators.required, Validators.pattern(Configuration.validators.noArabicLetters)]],
     })
     get controls() {
         return this.loginForm.controls

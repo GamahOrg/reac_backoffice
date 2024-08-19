@@ -1,52 +1,45 @@
-<ng-container>
-  <div class="table-wrapper">      
+<app-breadcrumbs></app-breadcrumbs>
 
-    
-      <div class="table-responsive">
-          <table class="table table-striped">
-              <thead>
-                  <tr>                      
-                      <th scope="col">{{translations.RequestToExtendSettlementPeriod.requestCode | translate}}</th>
-                      <th scope="col">{{translations.RequestToExtendSettlementPeriod.requestDate | translate}}</th>
-                      <th scope="col">{{translations.RequestToExtendSettlementPeriod.firstPartyName | translate}}</th>
-                      <th scope="col">{{translations.RequestToExtendSettlementPeriod.secondPartyName | translate}}</th>
-                      <th scope="col">{{translations.RequestToExtendSettlementPeriod.requestTypeName | translate}}</th>
-                      <th scope="col">{{translations.RequestToExtendSettlementPeriod.status | translate}}</th>
-                      <th scope="col">{{translations.RequestToExtendSettlementPeriod.isDone | translate}}</th>
-                      <th scope="col">{{translations.actions.procedures | translate}}</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  @for (request of reqList; track $index) {
-                  <tr>
-                      <td>{{request.requestCode}}</td>
-                      <td>{{request.requestDate | date:'yyyy/MM/dd'}}</td>
-                      <td>{{request.firstPartyName}}</td>
-                      <td>{{request.secondPartyName}}</td>
-                      <td>{{request.requestTypeName}}</td>
-                      <td>{{request.status}}</td>
-                      <td>{{request.isDone}}</td>
-                     
-                      <td>
+<div class="table-wrapper">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.requestCode | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.requestDate | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.firstPartyName | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.secondPartyName | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.requestTypeName | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.status | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.isDone | translate}}</th>
+                    <th scope="col">{{translations.actions.procedures | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (request of reqList; track $index) {
+                <tr>
+                    <td>{{request.requestCode}}</td>
+                    <td>{{request.requestDate | date:'yyyy/MM/dd'}}</td>
+                    <td>{{request.firstPartyName}}</td>
+                    <td>{{request.secondPartyName}}</td>
+                    <td>{{request.requestTypeName}}</td>
+                    <td>{{request.status}}</td>
+                    <td>{{request.isDone}}</td>
 
-                          <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;"
-                          (click)="goToDetailsPage(request.id)">
-                          <img src="assets/images/icons/eye.svg" alt="eye">
-                          {{translations.actions.view| translate}}
-                        </button> 
+                    <td>
 
-                      </td>
-                
-                  </tr>
-                  }
-              </tbody>
-          </table>
-      </div>
+                        <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" (click)="goToDetailsPage(request.id)">
+                            <img src="assets/images/icons/eye.svg" alt="eye">
+                            {{translations.actions.view| translate}}
+                        </button>
+
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
     </div>
-    <app-pagination></app-pagination>
+</div>
 
-
-</ng-container>
-
-
-
+<app-pagination></app-pagination>

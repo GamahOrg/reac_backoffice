@@ -144,14 +144,10 @@
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="addReconciliationExtendPeriodForEmployee(modal,litigationRequestExtendPeriodRequestStatus.Approve)">{{
-            translations.actions.accept |
-            translate
-            }}</button>
-
-        <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate
-            }}</button>
-
+        <button type="button" class="btn btn-primary" (click)="addReconciliationExtendPeriodForEmployee(modal,litigationRequestExtendPeriodRequestStatus.Approve)">
+            {{ translations.actions.accept | translate }}
+        </button>
+        <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate }}</button>
     </div>
 </ng-template>
 
@@ -164,7 +160,11 @@
     <div class="modal-body pt-0" [formGroup]="form">
         {{ translations.LitigationRequest.applyActionMessageBody | translate }}
 
-        <textarea class="form-control" rows="7" placeholder="{{translations.LitigationRequest.rejectionReasons | translate}}" formControlName="finishStatusReason"></textarea>
+        <textarea
+            class="form-control"
+            rows="7"
+            placeholder="{{translations.LitigationRequest.rejectionReasons | translate}}"
+            formControlName="finishStatusReason"></textarea>
 
         <div class="invalid-feedback d-block" *ngIf="showValidation">
             {{translations.formValidationError.required| translate}}
@@ -172,11 +172,9 @@
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="addReconciliationExtendPeriodForEmployee(modal,litigationRequestExtendPeriodRequestStatus.Reject)">{{
-            translations.actions.reject |
-            translate }}</button>
-
-        <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate
-            }}</button>
+        <button type="button" class="btn btn-primary" (click)="addReconciliationExtendPeriodForEmployee(modal,litigationRequestExtendPeriodRequestStatus.Reject)">
+            {{ translations.actions.reject | translate }}
+        </button>
+        <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate }}</button>
     </div>
 </ng-template>

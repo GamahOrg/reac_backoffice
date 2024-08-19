@@ -1,3 +1,5 @@
+import { AssignedArbitrationRequestsDocumnetsComponent } from "@app/modules/features/arbitration/pages/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets.component";
+
 export const Configuration = {
     languages: ['ar', 'en'],
     defaultLang: 'ar',
@@ -48,6 +50,9 @@ export const Configuration = {
             GetLitigationRequestForArbitratorRecusalRequestForArbitrator: "/api/Arbitration/GetLitigationRequestForArbitratorRecusalRequestForArbitrator",
             GetLitigationRequestForArbitratorRecusalRequestForArbitratorByRequestId: "/api/Arbitration/GetLitigationRequestForArbitratorRecusalRequestForArbitratorByRequestId",
             AddArbitrationReportArbitratorRecusalForArbitrator: "/api/Arbitration/AddArbitrationReportArbitratorRecusalForArbitrator",
+        
+            GetLitigationAcceptanceOrRejectDocumentData : "/api/LitigationRequest/GetLitigationAcceptanceOrRejectDocumentData"
+        
         },
         SysArbitratorCount: {
             Get: "/api/SysArbitratorCount/Get"
@@ -115,7 +120,8 @@ export const Configuration = {
             arbitratorSessionList: "arbitrator-session-list",
             assignarbitratorlist:'assign-arbitrator-list',
             arbitratorRecusalRequests:'arbitrator-recusal-requests',
-            approveOrRejectArbitrattionRecusalRequest:'approve-or-reject-arbitrator-recusal-request'
+            approveOrRejectArbitrattionRecusalRequest:'approve-or-reject-arbitrator-recusal-request',
+            assignedArbitrationRequestsDocumnets:'assigned-arbitration-request-documents'
         },
         lawsuits: {
             lawsuitList: "lawsuit-list",

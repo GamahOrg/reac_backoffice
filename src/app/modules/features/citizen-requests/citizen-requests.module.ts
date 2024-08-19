@@ -40,7 +40,8 @@ import { AssignArbitrationHeadListComponent } from './pages/assign-arbitration-h
 import { AssignArbitrationMemberDetailsComponent } from './pages/assign-arbitration-member-details/assign-arbitration-member-details.component';
 import { AssignArbitrationHeadDetailsComponent } from './pages/assign-arbitration-head-details/assign-arbitration-head-details.component';
 import { ReformerAssigningRequestForAllComponent } from './pages/reformer-assigning-request-for-all/reformer-assigning-request-for-all.component';
-
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   imports: [
     CommonModule,
@@ -57,6 +58,9 @@ import { ReformerAssigningRequestForAllComponent } from './pages/reformer-assign
     BreadcrumbsComponent,
     AccordionComponent,
     AngularMaterialModule,
+    MatTableModule,
+     MatPaginatorModule,
+     MatPaginator,
   ],
   declarations: [
     RequestListComponent,

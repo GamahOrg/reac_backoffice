@@ -21,9 +21,8 @@ export class RequestListComponent extends BaseComponent implements OnInit {
     constructor(
         private _injector: Injector,
         private _paginationService: PaginationService,
-        _breadcrumbService: BreadcrumbService,
-        _translateService: TranslateService,
-
+        private _breadcrumbService: BreadcrumbService,
+        public _translateService: TranslateService,
         private _citizenRequestService: CitizenRequestService
     ) {
         super();
@@ -39,6 +38,7 @@ export class RequestListComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.setBreadcrumb()
         this.page = this._paginationService.currentPage();
         this.list();
     }
@@ -46,6 +46,14 @@ export class RequestListComponent extends BaseComponent implements OnInit {
     get citizenRequestType() {
         return CitizenRequestType;
     }
+
+    private setBreadcrumb(): void {
+        this._breadcrumbService.updateBreadcrumbListContent([
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.lawsuits.createEditLawsuit.requests) }
+        ])
+    }
+
     private list(): void {
 
         this._citizenRequestService.GetCitizenRequestsForEmployee(this.page, this.pageSize, CitizenRequestType.Arbitrator).subscribe({

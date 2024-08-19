@@ -9,26 +9,25 @@ import { CitizenRequestType } from '../../models/enums/citizen-request-type.mode
 import { Configuration } from '@app/core/configurations/shared.config';
 
 @Component({
-  selector: 'app-arbitrator-request-list',
-  templateUrl: './arbitrator-request-list.component.html',
-  styleUrls: ['./arbitrator-request-list.component.scss']
+    selector: 'app-arbitrator-request-list',
+    templateUrl: './arbitrator-request-list.component.html',
+    styleUrls: ['./arbitrator-request-list.component.scss']
 })
 export class ArbitratorRequestListComponent extends BaseComponent implements OnInit {
 
-  detailsArbitratorRequest:string=`/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.details}/arbitrator/`
-  // detailsReformerRequest:string=`/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.details}/reformer/`
+    detailsArbitratorRequest: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.details}/arbitrator/`
+    // detailsReformerRequest:string=`/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.details}/reformer/`
 
-  constructor(
-    private _injector: Injector,
-    private _paginationService:PaginationService,
-    _breadcrumbService:BreadcrumbService,
-    _translateService:TranslateService,
-
-    private _citizenRequestService: CitizenRequestService
-) {
-    super();
-}
-page = 1;
+    constructor(
+        private _injector: Injector,
+        private _paginationService: PaginationService,
+        private _breadcrumbService: BreadcrumbService,
+        public _translateService: TranslateService,
+        private _citizenRequestService: CitizenRequestService
+    ) {
+        super();
+    }
+    page = 1;
     pageSize = 10;
     collectionSize!: number;
     citizenRequestsLists!: CitizenRequestShortDataDto[] | undefined;
@@ -40,23 +39,23 @@ page = 1;
 
     ngOnInit(): void {
         // this.observePageChange();
-        // this.setBreadcrumb()
+        this.setBreadcrumb()
         this.page = this._paginationService.currentPage();
         this.list();
     }
 
-    get citizenRequestType(){
+    get citizenRequestType() {
         return CitizenRequestType;
     }
     private list(): void {
 
-        this._citizenRequestService.GetCitizenRequestsForEmployee( this.page, this.pageSize,CitizenRequestType.Arbitrator).subscribe({
-            next: (res) => {                
+        this._citizenRequestService.GetCitizenRequestsForEmployee(this.page, this.pageSize, CitizenRequestType.Arbitrator).subscribe({
+            next: (res) => {
                 this.citizenRequestsLists = res?.data?.results;
                 console.log();
-                
+
                 console.log(this.citizenRequestsLists);
-                
+
                 this.collectionSize = res?.data?.totalCount || 0;
                 this.setPaginationData(this.page, this.pageSize, this.collectionSize)
             }
@@ -80,13 +79,11 @@ page = 1;
         this._paginationService.updatePaginationData(this.pagintationData);
     }
 
-   
-    // private setBreadcrumb(): void {
-    //     this._breadcrumbService.updateBreadcrumbListContent([
-    //         { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
-    //         { label: this._translateService.instant(this.translations.layout.sidebar.lawsuits), link: Configuration.modules.lawsuits }
-    //     ])
-    // }
-   
 
+    private setBreadcrumb(): void {
+        this._breadcrumbService.updateBreadcrumbListContent([
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.arbitratorRequestList) }
+        ])
+    }
 }

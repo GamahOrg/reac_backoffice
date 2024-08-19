@@ -4,7 +4,7 @@
   </summary>
 
   <label class="required mb-2 mt-6" >{{translations.lawsuits.lawsuitDetails.selectReviewResult | translate}}</label>
-  <div class="grid-3"  *ngIf="buttonActions && buttonActions.workFlowStepEventShortDtos.length>0">
+  <div class="grid-4"  *ngIf="buttonActions && buttonActions.workFlowStepEventShortDtos.length>0">
     <label class="rounded-2 border p-4"
            *ngFor="let button of buttonActions.workFlowStepEventShortDtos"
            [ngClass]="{'active': actionData && actionData.id === button.id}">

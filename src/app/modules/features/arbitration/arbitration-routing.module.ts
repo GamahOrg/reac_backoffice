@@ -8,6 +8,7 @@ import { AssignedArbitrationRequestsComponent } from './components/assigned-arbi
 import { ArbitratorListComponent } from './components/arbitrator-list/arbitrator-list.component';
 import { ArbitratorRecusalRequestsComponent } from './components/arbitrator-recusal-requests/arbitrator-recusal-requests/arbitrator-recusal-requests.component';
 import { ApproveOrRejectArbitratorRecusalRequestComponent } from './components/approve-or-reject-arbitrator-recusal-request/approve-or-reject-arbitrator-recusal-request.component';
+import { AssignedArbitrationRequestsDocumnetsComponent } from './pages/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: `${Configuration.pages.arbitration.approveOrRejectArbitrattionRecusalRequest}/:id`,
     component: ApproveOrRejectArbitratorRecusalRequestComponent,
+  },
+  {
+    path: `${Configuration.pages.arbitration.assignedArbitrationRequestsDocumnets}/:id/:requestId`,
+    component: AssignedArbitrationRequestsDocumnetsComponent,
   },
 ];
 

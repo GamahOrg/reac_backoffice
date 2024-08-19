@@ -22,44 +22,50 @@ import { AccordionComponent } from "../../../shared/components/accordion/accordi
 import { ArbitratorRecusalRequestsComponent } from './components/arbitrator-recusal-requests/arbitrator-recusal-requests/arbitrator-recusal-requests.component';
 import { ArbitratorRecusalService } from './services/arbitrator-recusal/arbitrator-recusal.service';
 import { ApproveOrRejectArbitratorRecusalRequestComponent } from './components/approve-or-reject-arbitrator-recusal-request/approve-or-reject-arbitrator-recusal-request.component';
+import { AssignedArbitrationRequestsDocumnetsComponent } from './pages/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets.component';
+import { NgxPrintModule } from 'ngx-print';
+import { ArbitrationDocumentService } from './services/arbitrator-document/arbitrator-document.service';
 
 
 @NgModule({
-  declarations: [
-    ArbitrationSessionListComponent,
-    ArbitratorCountListComponent,
-    ArbitratorCountDetailsComponent,
-    AssignedArbitrationRequestsComponent,
-    ArbitrationRequestComponent,
-    ArbitratorListComponent,
-    ArbitratorRecusalRequestsComponent,
-    ApproveOrRejectArbitratorRecusalRequestComponent
-  ],
-  imports: [
-    CommonModule,
-    ArbitrationRoutingModule,
-    BreadcrumbsComponent,
-    SharedModule,
-    PaginationComponent,
-    SharedModule,
-    PaginationComponent,
-    ReactiveFormsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    DatePipe,
-    AccordionComponent
-],
-  providers: [
-    ArbitratorCountListService,
-    ArbitrationService,
-    LitigationRequestForReportExplanationService,
-    FormsModule,
-    ReactiveFormsModule,
-    TasksRequestsListService,
-    ArbitratorCountDetailsService,
-    AssignArbitorService,
-    ArbitratorRecusalService
-],
- 
+    declarations: [
+        ArbitrationSessionListComponent,
+        ArbitratorCountListComponent,
+        ArbitratorCountDetailsComponent,
+        AssignedArbitrationRequestsComponent,
+        ArbitrationRequestComponent,
+        ArbitratorListComponent,
+        ArbitratorRecusalRequestsComponent,
+        ApproveOrRejectArbitratorRecusalRequestComponent,
+        AssignedArbitrationRequestsDocumnetsComponent
+    ],
+    imports: [
+        CommonModule,
+        ArbitrationRoutingModule,
+        BreadcrumbsComponent,
+        SharedModule,
+        PaginationComponent,
+        SharedModule,
+        PaginationComponent,
+        ReactiveFormsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DatePipe,
+        AccordionComponent,
+        NgxPrintModule
+    ],
+    providers: [
+        ArbitratorCountListService,
+        ArbitrationService,
+        LitigationRequestForReportExplanationService,
+        FormsModule,
+        ReactiveFormsModule,
+        TasksRequestsListService,
+        ArbitratorCountDetailsService,
+        AssignArbitorService,
+        ArbitratorRecusalService,
+        ArbitrationDocumentService
+    ],
+
 })
-export class ArbitrationModule { }
+export class ArbitrationModule {}

@@ -1,172 +1,103 @@
 <app-breadcrumbs></app-breadcrumbs>
+@if (auditngList && auditngList.results && auditngList.results.length) {
 
-<ng-container *ngIf="auditngList.length">
-    <div class="table-wrapper">
-        <!-- <div class="flex-y-row flex-wrap flex-lg-nowrap gap-3 my-5 mx-4" [formGroup]="auditngForm">
-            <input 
-                class="form-control py-3 main-search search" 
-                placeholder="{{translations.lawsuits.lawsuitsList.searchByLawsuitNumberOrOpponentName| translate}}"
-                formControlName="searchKey"
-                (keyup.enter)="filterAuditngList()">
 
-            <div ngbDropdown #dropdown="ngbDropdown">
-                <button type="button" class="btn text-primary no-caret fw-5 py-3 flex-y-row border px-8" id="dropdownFilter" ngbDropdownToggle>
-                    {{translations.actions.filter | translate}}
-                    <img src="assets/images/icons/filter-tick.svg" class="ms-2" alt="filter-tick.svg">
-                </button>
+<div class="table-wrapper">
 
-                <div style="min-width: max-content;" ngbDropdownMenu aria-labelledby="dropdownFilter">
-                    <div class="flex-between px-4 pt-3 pb-2">
-                        <h6 class="small fw-7">{{translations.actions.theFilter | translate}}</h6>
-                        <div>
-                            <button class="btn small text-primary">{{translations.actions.save | translate}}</button>
-                            <span class="text-primary"> - </span>
-                            <button class="btn small text-primary" (click)="resetAuditngFilter()">{{translations.actions.deleteAll | translate}}</button>
-                        </div>
-                    </div>
+  <!-- table -->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">
+            {{translations.lawsuits.lawsuitsList.lawsuitNumber | translate}}
+          </th>
+          <th scope="col">{{translations.lawsuits.lawsuitsList.submissionDate | translate}}</th>
+          <th scope="col">{{translations.lawsuits.lawsuitsList.lawsuitType | translate}}</th>
+          <th scope="col">{{translations.lawsuits.createEditLawsuit.plaintiffName | translate}}</th>
+          <th scope="col">{{translations.lawsuits.createEditLawsuit.nameOfTheDefendant | translate}}</th>
+          <th scope="col">{{translations.lawsuits.lawsuitsList.appointmentDate | translate}}</th>
+          <th scope="col">{{translations.lawsuits.lawsuitsList.lawsuitStatus | translate}}</th>
+          <th scope="col">
+            <span
+                  style="max-width: 120px; white-space: normal; display: block;">{{translations.lawsuits.lawsuitsList.remainingAuditDays
+              | translate}}</span>
+          </th>
+          <th scope="col">{{translations.lawsuits.lawsuitsList.actions | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of auditngList.results; track $index) {
+        <tr>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ item.requestCode || '--' }}</span>
+          </td>
+          <td>
+            {{ (item.createdOn | date: 'dd/MM/yyy') || '--' }}
+          </td>
+          <td>
+            {{
+            item.litigationRequestContractTypeId
+            ? (lawsuitContractType[item.litigationRequestContractTypeId] | translate)
+            : '--'
+            }}
+          </td>
+          <td>
+            {{ item.firstPartyName || '--' }}
+          </td>
+          <td>
+            {{ item.secondPartyName || '--' }}
+          </td>
+          <td>
+            {{ (item.assignedOn | date: 'dd/MM/yyy') || '--' }}
+          </td>
+          <td>
+            <span class="fw-4 small status-{{item.internalStatusId}}">
+              {{lawsuitStatus[item.internalStatusId] | translate}}
+            </span>
+          </td>
+          <td>
+            {{
+            (item.auditngRemaningDays && item.auditngRemaningDays >= 0)
+            ? item.auditngRemaningDays + (translations.lawsuits.lawsuitsList.days| translate)
+            : '--'
+            }}
+          </td>
+          <td>
+            <a [routerLink]="'/Lawsuits/lawsuit-details/' + item.id"
+               class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2"
+               style="background: #F6F6F6;">
+              <img src="assets/images/icons/eye.svg"
+                   alt="eye">
+              {{translations.actions.view| translate}}
+            </a>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
 
-                    <details class="px-5">
-                        <summary class="small"> {{translations.lawsuits.createEditLawsuit.lawsuitType | translate}} </summary>
-                        <div class="d-flex flex-column mb-4">
-                            <ng-container *ngFor="let item of lawsuitContractType | keyvalue">
-                                <label>
-                                    <input 
-                                        type="radio" 
-                                        [value]="item.key"
-                                        formControlName="LitigationRequestContractTypeId"
-                                        id="lawsuit-type-{{item.key}}">
-                                    <span class="op-6 ms-2">{{ item.value | translate }}</span>
-                                </label>
-                            </ng-container>
-                        </div>
-                    </details>
+<div class="flex-between">
+  <div class="op-6 v-small fw-5">
+    <span>{{translations.tables.from | translate}} </span>
+    <span>{{pagintationData.currentPage}} </span>
+    <span>{{translations.tables.to | translate}} </span>
+    <span>{{pagintationData.totalCount}} </span>
+    <span>{{translations.tables.ofTotal | translate}} </span>
+    <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+    <span>{{translations.tables.row | translate}} </span>
+  </div>
+  <app-pagination></app-pagination>
+</div>
+}
 
-                    <details class="px-5">
-                        <summary class="small"> {{translations.lawsuits.lawsuitsList.lawsuitStatus | translate}} </summary>
-                        <div class="d-flex flex-column my-3 border-top pt-3">
-                            <ng-container *ngFor="let item of lawsuitStatus | keyvalue">
-                                <label>
-                                    <input 
-                                        type="radio" 
-                                        [value]="item.key"
-                                        formControlName="InternalStatusId"
-                                        id="lawsuit-status-{{item.key}}">
-                                    <span class="op-6 ms-2">{{ item.value | translate }}</span>
-                                </label>
-                            </ng-container>
-                        </div>
-                    </details>
 
-                    <details class="px-5">
-                        <summary class="small"> {{translations.lawsuits.lawsuitsList.remainingAuditDays | translate}} </summary>
-                        <div class="d-flex flex-column my-3 border-top pt-3">
-                            <ng-container *ngIf="lawsuitStatus && lawsuitStatus.length > 0">
-                                <ng-container *ngFor="let day of remainingAuditDays; index as i">
-                                    <label>
-                                        <input type="checkbox" name="lawsuit-status" id="lawsuit-status-{{i}}">
-                                        <span class="op-6 ms-2">{{ day }} {{translations.lawsuits.lawsuitsList.days| translate}}</span>
-                                    </label>
-                                </ng-container>
-                            </ng-container>
-                        </div>
-                    </details>
-
-                    <footer class="d-flex justify-content-end gap-1 px-4 py-2">
-                        <button class="btn px-6 border" (click)="dropdown.close()">{{translations.actions.cancel | translate}}</button>
-                        <button class="btn px-6 btn-primary" (click)="filterAuditngList()">{{translations.actions.confirm | translate}}</button>
-                    </footer>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- table -->
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            {{translations.lawsuits.lawsuitsList.lawsuitNumber | translate}}
-                        </th>
-                        <th scope="col">{{translations.lawsuits.lawsuitsList.submissionDate | translate}}</th>
-                        <th scope="col">{{translations.lawsuits.lawsuitsList.lawsuitType | translate}}</th>
-                        <th scope="col">{{translations.lawsuits.createEditLawsuit.plaintiffName | translate}}</th>
-                        <th scope="col">{{translations.lawsuits.createEditLawsuit.nameOfTheDefendant | translate}}</th>
-                        <th scope="col">{{translations.lawsuits.lawsuitsList.appointmentDate | translate}}</th>
-                        <th scope="col">{{translations.lawsuits.lawsuitsList.lawsuitStatus | translate}}</th>
-                        <th scope="col">
-                            <span style="max-width: 120px; white-space: normal; display: block;">{{translations.lawsuits.lawsuitsList.remainingAuditDays | translate}}</span>
-                        </th>
-                        <th scope="col">{{translations.lawsuits.lawsuitsList.actions | translate}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <ng-container *ngFor="let item of auditngList">
-                        <tr>
-                            <td scope="row">
-                                <span style="font-size: .88rem;">{{ item.requestCode || '--' }}</span>
-                            </td>
-                            <td>
-                                {{ (item.createdOn | date: 'dd/MM/yyy') || '--' }}
-                            </td>
-                            <td>
-                                {{ 
-                                    item.litigationRequestContractTypeId
-                                        ? (lawsuitContractType[item.litigationRequestContractTypeId] | translate)
-                                        : '--'
-                                }}
-                            </td>
-                            <td>
-                                {{ item.firstPartyName || '--' }}
-                            </td>
-                            <td>
-                                {{ item.secondPartyName || '--' }}
-                            </td>
-                            <td>
-                                {{ (item.assignedOn | date: 'dd/MM/yyy') || '--' }}
-                            </td>
-                            <td>
-                                <span class="fw-4 small status-{{item.internalStatusId}}">
-                                    {{lawsuitStatus[item.internalStatusId] | translate}}
-                                </span>
-                            </td>
-                            <td>
-                                {{
-                                    (item.auditngRemaningDays && item.auditngRemaningDays >= 0)
-                                        ? item.auditngRemaningDays + (translations.lawsuits.lawsuitsList.days| translate)
-                                        : '--'
-                                }}
-                            </td>
-                            <td>
-                                <a [routerLink]="'/Lawsuits/lawsuit-details/' + item.id" class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;">
-                                    <img src="assets/images/icons/eye.svg" alt="eye">
-                                    {{translations.actions.view| translate}}
-                                </a>
-                            </td>
-                        </tr>
-                    </ng-container>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="flex-between">
-        <div class="op-6 v-small fw-5">
-            <span>{{translations.tables.from | translate}} </span>
-            <span>{{pageIndex}} </span>
-            <span>{{translations.tables.to | translate}} </span>
-            <span>{{pageSize}} </span>
-            <span>{{translations.tables.ofTotal | translate}} </span>
-            <span>{{collectionSize}} </span>
-            <span>{{translations.tables.row | translate}} </span>
-        </div>
-
-        <app-pagination></app-pagination>
-    </div>
-</ng-container>
-
-<ng-container *ngIf="!auditngList.length">
-    <div class="flex-center flex-column">
-        <img src="assets/images/no-data.svg" alt="no-data">
-        <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.lawsuits.lawsuitsList.noCurrentLawsuits| translate}}</h4>
-    </div>
-</ng-container>
+@if((!auditngList.results) || auditngList.results.length==0){
+<div class="flex-center flex-column">
+  <img src="assets/images/no-data.svg"
+       alt="no-data">
+  <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.lawsuits.lawsuitsList.noCurrentLawsuits| translate}}</h4>
+</div>
+}
