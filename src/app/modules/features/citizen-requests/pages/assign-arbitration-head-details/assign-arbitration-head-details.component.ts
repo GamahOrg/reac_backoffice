@@ -16,6 +16,7 @@ import { takeUntil } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
+import { BaseResponse } from '@app/core/models/base-response';
 
 
 @Component({
@@ -27,11 +28,11 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
     litigationRequestForReportDto?: LitigationRequestForAllArbitratorNominationCharmanListDto
     arbitratorSelectionDurationRequestPayload = {} as ArbitratorSelectionDurationRequestPayload
     requestId?: string;
-    displayedColumns: string[] = ['totalPriority', 'identityNumber', 'fullName','requestsCount',
-      'experienceYears','arbitratorClass','mobile','email','status','brief'];
-dataSource :any;
-
-@ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+    displayedColumns: string[] = ['totalPriority', 'identityNumber', 'fullName', 'requestsCount',
+        'experienceYears', 'arbitratorClass', 'mobile', 'email', 'status', 'brief'];
+    dataSource: any;
+    arbitratorChairmanId: string = ""
+    @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
     constructor(private activatedRoute: ActivatedRoute,
         private _translate: TranslateService,
         private _determinearbitratorperiodService: DeterminearbitratorperiodService,
@@ -75,7 +76,7 @@ dataSource :any;
 
     getLitigationRequestForSession(requestId: string) {
         this._determinearbitratorperiodService.GetLitigationRequestForAddArbitratorsChairmanNominationListByRequestId(requestId).subscribe(res => {
-            debugger;
+             ;
             this.litigationRequestForReportDto = res as LitigationRequestForAllArbitratorNominationCharmanListDto;
             this.dataSource = new MatTableDataSource<CitizenArbitratorShortStatusDto>(this.litigationRequestForReportDto.citizenArbitratorCharmanShortStatusDtos);
             this.dataSource.paginator = this.paginator;
@@ -373,8 +374,24 @@ dataSource :any;
         } as ArbitratorNominationListRequestPayload).subscribe(result => {
             if (result.isDone) {
                 this.litigationRequestForReportDto = result.data as LitigationRequestForAllArbitratorNominationCharmanListDto;
+                // for test
+                this.dataSource = new MatTableDataSource<CitizenArbitratorShortStatusDto>(this.litigationRequestForReportDto.citizenArbitratorCharmanShortStatusDtos);
+                this.dataSource.paginator = this.paginator;
                 this.toastrNotificationService.showSuccess(this._translate.instant(this.translations.general.successfullySave))
             }
+        })
+    }
+    public addLitigationRequestArbitratorsChairmandecision(): void {
+        console.log("this.requestId", this.requestId);
+        console.log("this.arbitratorChairmanId", this.arbitratorChairmanId);
+        if (this.arbitratorChairmanId == "") {
+            this.toastrNotificationService.showError("لابد من أختيار رئيس أعضاء هيئة المحكمين")
+            return;
+        }
+        this.citizenService.AddLitigationRequestArbitratorsChairmandecision(this.requestId as string, this.arbitratorChairmanId)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((res: BaseResponse<any>) =>{
+            if(res.isDone && this.requestId)  this.getLitigationRequestForSession(this.requestId);
         })
     }
 }

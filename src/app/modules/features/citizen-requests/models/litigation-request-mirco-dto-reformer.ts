@@ -1,3 +1,5 @@
+import { LitigationRequestReformerAssigningRequestStatus } from "./enums/litigation-request-reformer-assigning-request-status";
+
 export interface LitigationRequestMircoDtoReformer {
     id:string;
      requestCode:string;
@@ -8,4 +10,6 @@ export interface LitigationRequestMircoDtoReformer {
     reformerName:string;
     status:string;
     isDone :string;
+    response: LitigationRequestReformerAssigningRequestStatus;
+
 }

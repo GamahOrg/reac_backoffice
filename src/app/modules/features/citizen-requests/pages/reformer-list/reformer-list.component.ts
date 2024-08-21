@@ -126,7 +126,7 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
 
 
     assignReformer(currentReformerId: string, requestId: string, content: TemplateRef<any>) {
-        debugger
+         
         this.modalService.open(content)
         this.controls.requestId.setValue(requestId)
         this.citizenService.getReformersLookup(currentReformerId, requestId).subscribe(res => {

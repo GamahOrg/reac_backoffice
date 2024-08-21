@@ -37,7 +37,7 @@ export class LitigationRequestForArbitratorSelectionDurationListComponent extend
         private _breadcrumbService: BreadcrumbService
     ) { super(); }
     ngOnInit(): void {
-        debugger;
+         
         this.getLitigationRequestExtendPeriodForEmployee();
         this.updateBreadcrumb();
         this.watchPaginationActions();
@@ -49,7 +49,7 @@ export class LitigationRequestForArbitratorSelectionDurationListComponent extend
         ])
     };
     // getLitigationRequestExtendPeriodForEmployee(): void {
-    //  debugger;
+    
     //   this.subscriptions.push(
     //     this._determinearbitratorperiodService.getLitigationRequestForArbitratorSelectionDuration()
     //       .subscribe((res: LitigationRequestMircoForArbitratorsSelectionDurationDto[] |null) => {
@@ -57,13 +57,12 @@ export class LitigationRequestForArbitratorSelectionDurationListComponent extend
     //     private router: Router
     //   ) { super(); }
     // ngOnInit(): void {
-    //   // debugger;
     //   this.getLitigationRequestExtendPeriodForEmployee();
     //   this.watchPaginationActions();
     // }
 
     getLitigationRequestExtendPeriodForEmployee(): void {
-        debugger;
+         
         this.subscriptions.push(
             this._determinearbitratorperiodService.getLitigationRequestForArbitratorSelectionDuration(this.pagintationData.currentPage, this.pagintationData.pageSize)
                 .pipe(takeUntil(this.destroy$))

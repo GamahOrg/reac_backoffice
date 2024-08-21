@@ -8,6 +8,7 @@ import { BaseComponent } from '@app/shared/components/base/base.component';
 import { Router } from '@angular/router';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import { TranslateService } from '@ngx-translate/core';
+import { LitigationRequestReformerAssigningRequestStatus } from '../../models/enums/litigation-request-reformer-assigning-request-status';
 
 @Component({
     selector: 'app-reformer-assigning-request-for-all',
@@ -17,6 +18,16 @@ import { TranslateService } from '@ngx-translate/core';
 export class ReformerAssigningRequestForAllComponent extends BaseComponent implements OnInit {
     reqList: Pagination<LitigationRequestMircoDtoReformer[]> = {} as Pagination<LitigationRequestMircoDtoReformer[]>;
     subscriptions: Subscription[] = [];
+    localization = {
+        ///<summary>لم يتم الرد</summary>
+        [LitigationRequestReformerAssigningRequestStatus.None]: this.translations.TasksRequestsList.None,
+        ///<summary>تمت الموافقة</summary>
+        [LitigationRequestReformerAssigningRequestStatus.Approve]: this.translations.TasksRequestsList.Approve,
+        ///<summary>تم الرفض</summary>
+        [LitigationRequestReformerAssigningRequestStatus.Reject]: this.translations.TasksRequestsList.Reject,
+        ///<summary>تم الإلغاء</summary>
+        [LitigationRequestReformerAssigningRequestStatus.Cancelled]: this.translations.TasksRequestsList.Cancelled,
+    }
     newPageNo: number = 1;
     pagintationData = {
         currentPage: 1,

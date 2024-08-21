@@ -34,7 +34,7 @@ export class RequestToExtendArbitrationPeriodListComponent extends BaseComponent
         private _breadcrumbService: BreadcrumbService
     ) { super(); }
     ngOnInit(): void {
-        debugger;
+         
         this.getLitigationRequestExtendPeriodForEmployee();
         this.updateBreadcrumb();
     }
@@ -45,7 +45,7 @@ export class RequestToExtendArbitrationPeriodListComponent extends BaseComponent
         ])
     };
     getLitigationRequestExtendPeriodForEmployee(): void {
-        debugger;
+         
         this.subscriptions.push(
             this._requestToExtendArbitrationPeridService.getLitigationRequestExtendPeriodForEmployee(this.pagintationData.currentPage, this.pagintationData.pageSize)
                 .subscribe((res: Pagination<LitigationRequestMircoDto[]> | null) => {

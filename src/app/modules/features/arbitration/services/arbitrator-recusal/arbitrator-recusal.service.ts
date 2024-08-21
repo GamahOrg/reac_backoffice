@@ -21,7 +21,7 @@ export class ArbitratorRecusalService {
 }
 
   getLitigationRequestForArbitratorRecusalRequestById(litigationRequestId : string): Observable<BaseResponse<LitigationRequestForArbitratorRecusalRequestDto>> {
-    debugger;
+     
     let queryParams = new HttpParams();
     queryParams = queryParams.append('litigationRequestId',litigationRequestId)
 

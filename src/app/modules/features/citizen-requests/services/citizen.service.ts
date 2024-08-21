@@ -25,4 +25,12 @@ export class CitizenService {
     queryParams = queryParams.append("requestId", requestId);
     return this._httpClient.get<BaseResponse<CitizenFullLookupArbirator[]>>(`${Configuration.APIs.Citizen.GetArbitratorsFullLookup}`, { params: queryParams })
   }
+
+  AddLitigationRequestArbitratorsChairmandecision(requestId:string, arbitratorChairmanId:string) :Observable<BaseResponse<any>>{
+    let obj = {
+      requestId,
+      arbitratorChairmanId
+    }
+    return this._httpClient.post<BaseResponse<any>>(Configuration.APIs.Arbitration.AddLitigationRequestArbitratorsChairmandecision, obj)
+  }
 }

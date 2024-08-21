@@ -66,7 +66,7 @@ export class ArbitratorRecusalRequestsComponent extends BaseComponent implements
     this._arbitratorRecusalService.getLitigationRequestForArbitratorRecusalRequestForArbitrator(pageIndex,pageSize).subscribe({
       next: (res) => {
         
-        debugger;
+         
 
         this.litigationRequests = res?.data?.results;
 
@@ -94,7 +94,7 @@ export class ArbitratorRecusalRequestsComponent extends BaseComponent implements
   }
 
   goToDetailsPage(requestId: string) {
-    debugger;
+     
     this.router.navigate([this.detailsRequestUrl,requestId]);
   }
 

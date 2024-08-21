@@ -63,7 +63,7 @@ export class ShowRequestToExtendArbitrationPeriodDetailsComponent extends BaseCo
   };
   getLitigationRequestForSession(requestId: string) {
     this._requestToExtendArbitrationPeridService.getLitigationRequestExtendPeriodForEmployeeByRequestId(requestId).subscribe(res => {
-      debugger;
+       
       this.litigationRequestForReportDto = res as LitigationRequestForExtendPeriodRequestDto;
       this.fillData()
       this.fillfirstPartyData()
@@ -330,7 +330,7 @@ export class ShowRequestToExtendArbitrationPeriodDetailsComponent extends BaseCo
     // console.log(this.litigationRequestExtendPeriodRequestCreateUpdateEmployee);
     
     this._requestToExtendArbitrationPeridService.addArbitrationExtendPeriodForEmployee(this.litigationRequestExtendPeriodRequestCreateUpdateEmployee as LitigationRequestExtendPeriodRequestCreateUpdateEmployeeDto).subscribe(result => {
-      debugger;
+       
       if (result) {
         this.litigationRequestForReportDto = result as LitigationRequestForExtendPeriodRequestDto;
         this.toastrNotificationService.showSuccess(this._translate.instant(this.translations.general.successfullySave))

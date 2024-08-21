@@ -38,13 +38,13 @@ export class AssignArbitrationHeadListComponent extends BaseComponent implements
     ) { super(); }
 
     ngOnInit(): void {
-        debugger;
+         
         this.setBreadcrumb()
         this.observePageChange();
     }
 
     // getLitigationRequestExtendPeriodForEmployee(): void {
-    //   debugger;
+    
     //   this.subscriptions.push(
     //     this._determinearbitratorperiodService.getLitigationRequestForArbitratorSelectionDuration()
     //       .subscribe((res: LitigationRequestMircoForArbitratorsSelectionDurationDto[] | null) => {

@@ -50,20 +50,22 @@ export class LoginComponent extends BaseComponent {
         //   userName: this.loginForm.value.username,
         //   password: this.loginForm.value.password,
         // }
-
-        this._loginService
-            .login(this.loginForm.value as LoginParams)
-            .pipe(takeUntil(this.destroy$))
-            .subscribe((res: BaseResponse<TokenResponse>) => {
-                if (res) {
-                    if (res.data) {
-                        this._storageService.saveTokens(res.data);
-                        this.navigateTolawsuitsModule()
-                    } else {
-                        this.errorFeedback = res.message;
+        this.loginForm.markAllAsTouched()
+        if (this.loginForm.valid) {
+            this._loginService
+                .login(this.loginForm.value as LoginParams)
+                .pipe(takeUntil(this.destroy$))
+                .subscribe((res: BaseResponse<TokenResponse>) => {
+                    if (res) {
+                        if (res.data) {
+                            this._storageService.saveTokens(res.data);
+                            this.navigateTolawsuitsModule()
+                        } else {
+                            this.errorFeedback = res.message;
+                        }
                     }
-                }
-            });
+                });
+        }
     }
     private navigateTolawsuitsModule(): void {
         this._router.navigate([

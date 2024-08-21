@@ -60,7 +60,7 @@ export class LitigationRequestForArbitratorSelectionDurationDetailsComponent ext
   };
   getLitigationRequestForSession(requestId: string) {
     this._determinearbitratorperiodService.getLitigationRequestForAddArbitratorSelectionDurationByRequestId(requestId).subscribe(res => {
-      debugger;
+       
       this.litigationRequestForReportDto = res as LitigationRequestForArbitratorSelectionDurationDto;
       this.fillData()
       this.fillfirstPartyData()
@@ -313,7 +313,7 @@ export class LitigationRequestForArbitratorSelectionDurationDetailsComponent ext
   }
 
   addReconciliationExtendPeriodForEmployee() {
-    debugger;
+     
     if (!this.form.valid) {
       this.showValidation = true;
       return;
@@ -321,9 +321,9 @@ export class LitigationRequestForArbitratorSelectionDurationDetailsComponent ext
     this.arbitratorSelectionDurationRequestPayload.arbitratorSelectionDuration = this.form.controls.arbitratorSelectionDuration.value as number;
     this.arbitratorSelectionDurationRequestPayload.requestId = this.requestId as string;
     this._determinearbitratorperiodService.addArbitratorSelectionDuration(this.arbitratorSelectionDurationRequestPayload as ArbitratorSelectionDurationRequestPayload).subscribe(result => {
-      debugger;
+       
       if (result) {
-        debugger;
+         
         this.litigationRequestForReportDto = result as LitigationRequestForArbitratorSelectionDurationDto;
         this.toastrNotificationService.showSuccess(this._translate.instant(this.translations.general.successfullySave))
       }

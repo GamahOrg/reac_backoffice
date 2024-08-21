@@ -42,3 +42,7 @@ footer {
 table {
     width: 100%;
   }
+  .mat-mdc-paginator-range-actions,
+  .mat-mdc-paginator-range-label{
+    display: none !important;
+  }

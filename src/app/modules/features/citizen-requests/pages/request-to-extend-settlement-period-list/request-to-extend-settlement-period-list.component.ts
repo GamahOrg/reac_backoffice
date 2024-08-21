@@ -35,7 +35,7 @@ export class RequestToExtendSettlementPeriodListComponent extends BaseComponent 
     ) { super(); }
 
     ngOnInit(): void {
-        debugger;
+         
         this.getLitigationRequestExtendPeriodForEmployee();
         this.updateBreadcrumb();
     }
@@ -47,7 +47,7 @@ export class RequestToExtendSettlementPeriodListComponent extends BaseComponent 
     };
 
     getLitigationRequestExtendPeriodForEmployee(): void {
-        debugger;
+         
         this.subscriptions.push(
             this._requestToExtendSettlementPeriodService.getLitigationRequestExtendPeriodForEmployee(this.pagintationData.currentPage, this.pagintationData.pageSize)
                 .subscribe((res: Pagination<LitigationRequestMircoDto[]> | null) => {

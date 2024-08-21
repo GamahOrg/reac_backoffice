@@ -43,12 +43,12 @@ export class AssignedArbitrationRequestsDocumnetsComponent extends BaseComponent
   constructor(
     private _arbitrationDocumentService : ArbitrationDocumentService  ) {
     super();
-    debugger;
+     
    
   }
 
   ngOnInit(): void {
-    debugger;
+     
     console.log('Litigation Data:', this.litigationData);
 
     // this.litigationRequest = this.documentData();
@@ -64,10 +64,10 @@ export class AssignedArbitrationRequestsDocumnetsComponent extends BaseComponent
 }
 
 GetLitigationAcceptanceOrRejectDocumentData(litigationId: string, requestId: string) {
-  debugger;
+   
     this._arbitrationDocumentService.GetLitigationAcceptanceOrRejectDocumentData(litigationId,requestId)
     .subscribe((res) => {
-      debugger;
+       
       if(res.isDone){
         this.litigationDocument = res.data
         this.selectDocumentId();
@@ -81,7 +81,7 @@ GetLitigationAcceptanceOrRejectDocumentData(litigationId: string, requestId: str
 
 
   selectDocumentId(){
-    debugger;
+     
     this.documentId = this.documentCompination.find(item => item.response === this.litigationDocument?.response 
       && item.requestTypeId.includes(this.litigationDocument.requestTypeId))?.documentId;
   }

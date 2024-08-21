@@ -13,17 +13,17 @@ export const Configuration = {
             Remove: '/api/SysFileManager/Remove',
             RemoveRange: '/api/SysFileManager/RemoveRange',
         },
-        Arbitration:{
+        Arbitration: {
             AddArbitrationExtendPeriodForEmployee: '/api/Arbitration/AddArbitrationExtendPeriodForEmployee',
             GetLitigationRequestExtendPeriodForEmployee: '/api/Arbitration/GetLitigationRequestExtendPeriodForEmployee',
             GetLitigationRequestExtendPeriodForEmployeeByRequestId: '/api/Arbitration/GetLitigationRequestExtendPeriodForEmployeeByRequestId',
             AddArbitratorSelectionDuration: '/api/Arbitration/AddArbitratorSelectionDuration',
             GetLitigationRequestForArbitratorSelectionDuration: '/api/Arbitration/GetLitigationRequestForArbitratorSelectionDuration',
-            
+
             GetLitigationRequestForAddArbitratorSelectionDurationByRequestId: '/api/Arbitration/GetLitigationRequestForAddArbitratorSelectionDuration',
             GetLitigationRequestForAddArbitratorsCount: "/api/Arbitration/GetLitigationRequestForAddArbitratorsCount",
             GetLitigationRequestForAddArbitratorsCountByRequestId: "/api/Arbitration/GetLitigationRequestForAddArbitratorsCountByRequestId",
-           
+
             AddArbitratorsCount: "/api/Arbitration/AddArbitratorsCount",
             GetLitigationRequestForReportExplanationRequestForArbitrator: "/api/Arbitration/GetLitigationRequestForReportExplanationRequestForArbitrator",
             GetLitigationRequestForReportExplanationRequestForArbitratorByRequestId: "/api/Arbitration/GetLitigationRequestForReportExplanationRequestForArbitrator",
@@ -50,9 +50,10 @@ export const Configuration = {
             GetLitigationRequestForArbitratorRecusalRequestForArbitrator: "/api/Arbitration/GetLitigationRequestForArbitratorRecusalRequestForArbitrator",
             GetLitigationRequestForArbitratorRecusalRequestForArbitratorByRequestId: "/api/Arbitration/GetLitigationRequestForArbitratorRecusalRequestForArbitratorByRequestId",
             AddArbitrationReportArbitratorRecusalForArbitrator: "/api/Arbitration/AddArbitrationReportArbitratorRecusalForArbitrator",
-        
-            GetLitigationAcceptanceOrRejectDocumentData : "/api/LitigationRequest/GetLitigationAcceptanceOrRejectDocumentData"
-        
+
+            GetLitigationAcceptanceOrRejectDocumentData: "/api/LitigationRequest/GetLitigationAcceptanceOrRejectDocumentData",
+            AddLitigationRequestArbitratorsChairmandecision: "/api/Arbitration/AddLitigationRequestArbitratorsChairmandecision"
+
         },
         SysArbitratorCount: {
             Get: "/api/SysArbitratorCount/Get"
@@ -118,10 +119,10 @@ export const Configuration = {
             arbitratorCountDetails: "arbitrator-count-details",
             assignedArbitrationRequests: 'assigned-arbitration-requests',
             arbitratorSessionList: "arbitrator-session-list",
-            assignarbitratorlist:'assign-arbitrator-list',
-            arbitratorRecusalRequests:'arbitrator-recusal-requests',
-            approveOrRejectArbitrattionRecusalRequest:'approve-or-reject-arbitrator-recusal-request',
-            assignedArbitrationRequestsDocumnets:'assigned-arbitration-request-documents'
+            assignarbitratorlist: 'assign-arbitrator-list',
+            arbitratorRecusalRequests: 'arbitrator-recusal-requests',
+            approveOrRejectArbitrattionRecusalRequest: 'approve-or-reject-arbitrator-recusal-request',
+            assignedArbitrationRequestsDocumnets: 'assigned-arbitration-request-documents'
         },
         lawsuits: {
             lawsuitList: "lawsuit-list",
@@ -137,23 +138,23 @@ export const Configuration = {
             reformerRequestList: 'reformer-request-list',
             details: 'details',
             requestToExtendSettlementPeriodList: 'request-extend-settlement-period-list',
-            reformerassigningrequestforall:'reformer-assigning-request-for-all',
+            reformerassigningrequestforall: 'reformer-assigning-request-for-all',
             requestToExtendSettlementPeriodDetails: 'request-extend-settlement-period-details',
             stopAndReleaseReformer: "stop-and-release-reformer",
             stopAndReleaseArbitrator: "stop-and-release-arbitrator",
             arbitratorDecisionDetails: "arbitrator-decision-details",
             reformerDecisionDetails: "reformer-decision-details",
-            sessionList:'session-list',
-            reformerList:'refomer-list',
-            requestToExtendArbitrationPeriodList:'request-extend-arbitration-period-list',
-            requestToExtendArbitrationPeriodDetails:'request-extend-arbitration-period-details',
-            litigationRequestForArbitratorSelectionDurationList:'arbitrator-selection-duration-List',
-            litigationRequestForArbitratorSelectionDurationDetails:'arbitrator-selection-duration-details',
-            assignArbitrationHeadList:'assign-arbitration-head-list',
-            assignArbitrationHeadDetails:'assign-arbitration-head-details',
-            assignArbitrationMemberList:'assign-arbitration-member-list',
-            assignArbitrationMemberDetails:'assign-arbitration-member-details',
-            
+            sessionList: 'session-list',
+            reformerList: 'refomer-list',
+            requestToExtendArbitrationPeriodList: 'request-extend-arbitration-period-list',
+            requestToExtendArbitrationPeriodDetails: 'request-extend-arbitration-period-details',
+            litigationRequestForArbitratorSelectionDurationList: 'arbitrator-selection-duration-List',
+            litigationRequestForArbitratorSelectionDurationDetails: 'arbitrator-selection-duration-details',
+            assignArbitrationHeadList: 'assign-arbitration-head-list',
+            assignArbitrationHeadDetails: 'assign-arbitration-head-details',
+            assignArbitrationMemberList: 'assign-arbitration-member-list',
+            assignArbitrationMemberDetails: 'assign-arbitration-member-details',
+
         },
     },
     validators: {

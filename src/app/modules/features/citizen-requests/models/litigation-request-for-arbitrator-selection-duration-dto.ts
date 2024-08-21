@@ -1,9 +1,9 @@
 import { LitigationRequestShortDto } from "./litigation-request-for-extend-period-request-dto";
 
 export interface LitigationRequestForArbitratorSelectionDurationDto {
-    allowAdd:boolean;
-    arbitratorSelectionDuration:number
-    litigationRequestShortDto :LitigationRequestShortDto;
+    allowAdd: boolean;
+    arbitratorSelectionDuration: number
+    litigationRequestShortDto: LitigationRequestShortDto;
 }
 
 
@@ -16,12 +16,13 @@ export interface LitigationRequestForAllArbitratorNominationListDto {
 
 export interface LitigationRequestForAllArbitratorNominationCharmanListDto {
     allowAdd: boolean;
+    allowDecision: boolean
     listCount: number | null;
     citizenArbitratorCharmanShortStatusDtos: CitizenArbitratorShortStatusDto[];
     litigationRequestShortDto: LitigationRequestShortDto | null;
 }
 
-export interface CitizenArbitratorShortStatusDto  {
+export interface CitizenArbitratorShortStatusDto {
     id: string;
     plaintiffPriority: string;
     defendantPriority: string;
@@ -36,7 +37,7 @@ export interface CitizenArbitratorShortStatusDto  {
     arbitratorStatus: string | null;
     arbitratorStatusDate: string | null;
     status: string;
-    totalPriority:number
+    totalPriority: number
 }
 
 export interface ArbitratorNominationListRequestPayload {

@@ -302,9 +302,9 @@
     a.active {
         font-size: 0.88rem !important;
 
-        &::before {
-            content: "\01F784";
-            margin-inline-start: -7px;
-        }
+        // &::before {
+            // content: "\01F784";
+        //     margin-inline-start: -7px;
+        // }
     }
 }

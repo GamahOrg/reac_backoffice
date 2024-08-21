@@ -77,7 +77,7 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
 
     getLitigationRequestForSession(requestId: string) {
         this._determinearbitratorperiodService.GetLitigationRequestForAddArbitratorsNominationListByRequestId(requestId).subscribe(res => {
-            debugger;
+             
             this.litigationRequestForReportDto = res as LitigationRequestForAllArbitratorNominationListDto;
             this.dataSource = new MatTableDataSource<CitizenArbitratorShortStatusDto>(this.litigationRequestForReportDto.citizenArbitratorShortStatusDtos);
             this.dataSource.paginator = this.paginator;
@@ -374,6 +374,9 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
         } as ArbitratorNominationListRequestPayload).subscribe(result => {
             if (result.isDone) {
                 this.litigationRequestForReportDto = result.data as LitigationRequestForAllArbitratorNominationListDto;
+                // for test
+                this.dataSource = new MatTableDataSource<CitizenArbitratorShortStatusDto>(this.litigationRequestForReportDto.citizenArbitratorShortStatusDtos);
+                this.dataSource.paginator = this.paginator;
                 this.toastrNotificationService.showSuccess(this._translate.instant(this.translations.general.successfullySave))
             }
         })

@@ -85,7 +85,7 @@ export class ArbitratorListComponent  extends BaseComponent implements OnInit{
     }
 
     assignArbitrator(litigationRequestMircoArbitrator:LitigationRequestMircoArbitratorDto, content: TemplateRef<any>) {
-        debugger
+         
         this.modalService.open(content)
         this.assignArbitratorRequestPayload.requestId=litigationRequestMircoArbitrator.id;
         this.assignArbitratorRequestPayload.litigationRequestArbitratorListId=litigationRequestMircoArbitrator.litigationRequestArbitratorListId;

@@ -67,7 +67,7 @@ export class ApproveOrRejectArbitratorRecusalRequestComponent extends BaseCompon
 
     private observeActivatedRoute(): void {
       this._activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((res: Params) => {
-        debugger;
+         
           this.litigationId = res['id'];      
       })
   };
@@ -78,7 +78,7 @@ export class ApproveOrRejectArbitratorRecusalRequestComponent extends BaseCompon
         GetArbitratorRecusalData : this._arbitratorRecusalService.getLitigationRequestForArbitratorRecusalRequestById(this.litigationId)
       }
     ).pipe(takeUntil(this.destroy$)).subscribe(res => {
-      debugger;
+       ;
       if(res.GetArbitratorRecusalData.isDone && res.GetArbitratorRecusalData.data){
           this.litigationRequestForSessionDto = res.GetArbitratorRecusalData?.data;
           if(res.GetArbitratorRecusalData.data.request.approveRejectStatus != null){
@@ -340,7 +340,7 @@ sendStatus(modal: any, litigationRequestArbitratorRecusalRequestStatus: ApproveR
             litigationRequestId: this.litigationId, 
             response: litigationRequestArbitratorRecusalRequestStatus 
         }).subscribe(res => {
-            debugger;
+             
         modal.dismiss()
         this.toastrNotificationService.showSuccess(this._translate.instant(this.translations.general.successfullySave))
         this.showAction = false;

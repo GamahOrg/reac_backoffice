@@ -69,7 +69,7 @@ export class ShowRequestToExtendSettlementPeriodDetailsComponent extends BaseCom
     };
     getLitigationRequestForSession(requestId: string) {
         this._requestToExtendSettlementPeriodService.getLitigationRequestExtendPeriodForEmployeeByRequestId(requestId).subscribe(res => {
-            debugger;
+             
             this.litigationRequestForReportDto = res as LitigationRequestForExtendPeriodRequestDto;
             this.fillData()
             this.fillfirstPartyData()
@@ -323,7 +323,7 @@ export class ShowRequestToExtendSettlementPeriodDetailsComponent extends BaseCom
         this.modalService.open(content)
     }
     addReconciliationExtendPeriodForEmployee(modal: any, litigationRequestExtendPeriodRequestStatus: LitigationRequestExtendPeriodRequestStatus) {
-        debugger;
+         
         if (litigationRequestExtendPeriodRequestStatus == this.litigationRequestExtendPeriodRequestStatus.Reject) {
             this.litigationRequestExtendPeriodRequestCreateUpdateEmployee.finishStatusReason = this.form.controls.finishStatusReason.value as string;
             if (!this.litigationRequestExtendPeriodRequestCreateUpdateEmployee.finishStatusReason) {
@@ -333,9 +333,9 @@ export class ShowRequestToExtendSettlementPeriodDetailsComponent extends BaseCom
         } this.litigationRequestExtendPeriodRequestCreateUpdateEmployee.litigationRequestExtendPeriodRequestStatusId = litigationRequestExtendPeriodRequestStatus;
         this.litigationRequestExtendPeriodRequestCreateUpdateEmployee.litigationRequestId = this.requestId as string;
         this._requestToExtendSettlementPeriodService.addReconciliationExtendPeriodForEmployee(this.litigationRequestExtendPeriodRequestCreateUpdateEmployee as LitigationRequestExtendPeriodRequestCreateUpdateEmployeeDto).subscribe(result => {
-            debugger;
+             
             if (result) {
-                debugger;
+                 
                 this.litigationRequestForReportDto = result as LitigationRequestForExtendPeriodRequestDto;
                 this.toastrNotificationService.showSuccess(this._translate.instant(this.translations.general.successfullySave))
                 modal.dismiss()

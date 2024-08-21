@@ -12,6 +12,7 @@
                     <th scope="col">{{translations.Reformerassigningrequestforall.reformerName | translate}}</th>
                     <th scope="col">{{translations.Reformerassigningrequestforall.requestTypeName | translate}}</th>
                     <th scope="col">{{translations.Reformerassigningrequestforall.status | translate}}</th>
+                    <th scope="col">{{translations.LitigationRequest.response | translate}}</th>
                     <!-- <th scope="col">{{translations.Reformerassigningrequestforall.isDone | translate}}</th> -->
                 </tr>
             </thead>
@@ -25,6 +26,8 @@
                     <td>{{request.reformerName}}</td>
                     <td>{{request.requestTypeName}}</td>
                     <td>{{request.status}}</td>
+                    <td>{{request.response ? (localization[request.response] | translate) : (translations.TasksRequestsList.None | translate)}}</td>
+
                     <!-- <td>{{request.isDone}}</td> -->
 
                 </tr>

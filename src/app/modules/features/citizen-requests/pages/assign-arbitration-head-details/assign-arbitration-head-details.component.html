@@ -1,20 +1,26 @@
 <app-breadcrumbs></app-breadcrumbs>
 
-<div class="form-wrapper" *ngIf="litigationRequestForReportDto?.allowAdd">
+<div class="form-wrapper"
+     *ngIf="litigationRequestForReportDto?.allowAdd">
     <div class="accordion-card">
         <details open>
             <summary class="flex-y-row gap-2 border-bottom pb-5">
-                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <img src="assets/images/icons/bookmarks.svg"
+                     alt="bookmarks">
                 <h6 class="small fw-6 op-7">تعيين رئيس هيئة التحكيم</h6>
                 -
-                <p *ngIf="this.litigationRequestForReportDto?.listCount && +this.litigationRequestForReportDto?.listCount!>1" class="text-success">يجب اختار {{this.litigationRequestForReportDto?.listCount}} محكمين</p>
-                <p *ngIf="this.litigationRequestForReportDto?.listCount && +this.litigationRequestForReportDto?.listCount! ===1" class="text-success">يجب اختار {{this.litigationRequestForReportDto?.listCount}} محكم</p>
+                <p *ngIf="this.litigationRequestForReportDto?.listCount && +this.litigationRequestForReportDto?.listCount!>1"
+                   class="text-success">يجب اختار {{this.litigationRequestForReportDto?.listCount}} محكمين</p>
+                <p *ngIf="this.litigationRequestForReportDto?.listCount && +this.litigationRequestForReportDto?.listCount! ===1"
+                   class="text-success">يجب اختار {{this.litigationRequestForReportDto?.listCount}} محكم</p>
             </summary>
 
             <div>
                 <ng-container [formGroup]="form">
                     <div class="d-flex mt-4 justify-content-end">
-                        <button type="button" class="btn btn-primary " (click)="AddLitigationRequestArbitratorsNominationList()">اضافة</button>
+                        <button type="button"
+                                class="btn btn-primary "
+                                (click)="AddLitigationRequestArbitratorsNominationList()">اضافة</button>
                     </div>
 
                     <table class="table table-striped">
@@ -32,15 +38,19 @@
                         <tbody>
                             @for (request of citizens; track $index) {
                             <tr>
-                                <td><input type="checkbox" (change)="onSelectedChange($event, request.id)" /></td>
+                                <td><input type="checkbox"
+                                           (change)="onSelectedChange($event, request.id)" /></td>
                                 <td>{{request.fullName}}</td>
                                 <td>{{request.requestsCount}}</td>
                                 <td>{{request.areaName}}</td>
                                 <td>{{request.experienceYears}}</td>
                                 <td>{{request.arbitratorClass}}</td>
                                 <td>
-                                    <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" (click)="open(showBriefModel,request.brief)">
-                                        <img src="assets/images/icons/eye.svg" alt="eye">
+                                    <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2"
+                                            style="background: #F6F6F6;"
+                                            (click)="open(showBriefModel,request.brief)">
+                                        <img src="assets/images/icons/eye.svg"
+                                             alt="eye">
                                         عرض نبذة عن المحكم
                                     </button>
                                 </td>
@@ -54,17 +64,19 @@
     </div>
 </div>
 
-<div class="form-wrapper" *ngIf="!litigationRequestForReportDto?.allowAdd">
+<div class="form-wrapper"
+     *ngIf="!litigationRequestForReportDto?.allowAdd">
     <div class="accordion-card">
         <details open>
             <summary class="flex-y-row gap-2 border-bottom pb-5">
-                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <img src="assets/images/icons/bookmarks.svg"
+                     alt="bookmarks">
                 <h6 class="small fw-6 op-7">تعيين رئيس هيئة التحكيم</h6>
             </summary>
 
             <div>
                 <ng-container>
-                   <!--  <table class="table table-striped">
+                    <!--  <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th scope="col">أولوية الأختيار</th>
@@ -104,79 +116,116 @@
                             }
                         </tbody>
                     </table> -->
-
+                    <div class="d-flex mt-4 justify-content-end" *ngIf="litigationRequestForReportDto?.allowDecision">
+                        <button type="button"
+                                class="btn btn-primary mt-5"
+                                (click)="addLitigationRequestArbitratorsChairmandecision()">اضافة</button>
+                    </div>
                     <div class="mat-elevation-z8">
-                        <table mat-table [dataSource]="dataSource">
-                      
-                          <!-- totalPriority Column -->
-                          <ng-container matColumnDef="totalPriority">
-                            <th mat-header-cell *matHeaderCellDef>أولوية الأختيار</th>
-                            <td mat-cell *matCellDef="let element"> {{element.totalPriority}} </td>
-                          </ng-container>
-                          <!-- identityNumber Column -->
-                          <ng-container matColumnDef="identityNumber">
-                            <th mat-header-cell *matHeaderCellDef> رقم الهوية </th>
-                            <td mat-cell *matCellDef="let element"> {{element.identityNumber}} </td>
-                          </ng-container>
-                      
-                          <!-- fullName Column -->
-                          <ng-container matColumnDef="fullName">
-                            <th mat-header-cell *matHeaderCellDef> الأسم </th>
-                            <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
-                          </ng-container>
-                          <!-- requestsCount -->
-                          <ng-container matColumnDef="requestsCount">
-                            <th mat-header-cell *matHeaderCellDef>   عدد الدعاوى </th>
-                            <td mat-cell *matCellDef="let element"> {{element.requestsCount}} </td>
-                          </ng-container>
-                          <!-- experienceYears -->
-                          <ng-container matColumnDef="experienceYears">
-                            <th mat-header-cell *matHeaderCellDef> سنوات الخبرة </th>
-                            <td mat-cell *matCellDef="let element"> {{element.experienceYears}} </td>
-                          </ng-container>
-                          <!-- arbitratorClass -->
-                          <ng-container matColumnDef="arbitratorClass">
-                            <th mat-header-cell *matHeaderCellDef> {{translations.CitizenRequest.arbitratorClass | translate}} </th>
-                            <td mat-cell *matCellDef="let element"> {{element.arbitratorClass}} </td>
-                          </ng-container>
-                          <!-- mobile -->
-                          <ng-container matColumnDef="mobile">
-                            <th mat-header-cell *matHeaderCellDef> رقم التليفون </th>
-                            <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
-                          </ng-container>
-                          <!-- email -->
-                          <ng-container matColumnDef="email">
-                            <th mat-header-cell *matHeaderCellDef> الإيميل </th>
-                            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-                          </ng-container>
-                          <!-- status -->
-                          <ng-container matColumnDef="status">
-                            <th mat-header-cell *matHeaderCellDef> الحالة </th>
-                            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-                          </ng-container>
-              
-                          <ng-container matColumnDef="brief">
-                            <th mat-header-cell *matHeaderCellDef> {{translations.CitizenRequest.brief | translate}} </th>
-                            <td mat-cell *matCellDef="let element"> 
-                              <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;"
-                              (click)="open(showBriefModel,element.brief)">
-                              <img src="assets/images/icons/eye.svg" alt="eye">
-                              {{translations.actions.view| translate}}
-                            </button> 
-                               </td>
-                          </ng-container>
-                       
-              
-                         
-                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <table mat-table
+                               [dataSource]="dataSource">
+
+                            <!-- totalPriority Column -->
+                            <ng-container matColumnDef="totalPriority">
+                                <th mat-header-cell
+                                    *matHeaderCellDef>أولوية الأختيار</th>
+                                <td mat-cell
+                                    *matCellDef="let element">
+                                    <input type="radio"
+                                            *ngIf="litigationRequestForReportDto?.allowDecision"
+                                           [id]="element.id"
+                                           name="arbitratorChairmanId"
+                                           [value]="element.id"
+                                           [(ngModel)]="arbitratorChairmanId">
+                                    {{element.totalPriority}}
+                                </td>
+                            </ng-container>
+                            <!-- identityNumber Column -->
+                            <ng-container matColumnDef="identityNumber">
+                                <th mat-header-cell
+                                    *matHeaderCellDef> رقم الهوية </th>
+                                <td mat-cell
+                                    *matCellDef="let element"> {{element.identityNumber}} </td>
+                            </ng-container>
+
+                            <!-- fullName Column -->
+                            <ng-container matColumnDef="fullName">
+                                <th mat-header-cell
+                                    *matHeaderCellDef> الأسم </th>
+                                <td mat-cell
+                                    *matCellDef="let element"> {{element.fullName}} </td>
+                            </ng-container>
+                            <!-- requestsCount -->
+                            <ng-container matColumnDef="requestsCount">
+                                <th mat-header-cell
+                                    *matHeaderCellDef> عدد الدعاوى </th>
+                                <td mat-cell
+                                    *matCellDef="let element"> {{element.requestsCount}} </td>
+                            </ng-container>
+                            <!-- experienceYears -->
+                            <ng-container matColumnDef="experienceYears">
+                                <th mat-header-cell
+                                    *matHeaderCellDef> سنوات الخبرة </th>
+                                <td mat-cell
+                                    *matCellDef="let element"> {{element.experienceYears}} </td>
+                            </ng-container>
+                            <!-- arbitratorClass -->
+                            <ng-container matColumnDef="arbitratorClass">
+                                <th mat-header-cell
+                                    *matHeaderCellDef> {{translations.CitizenRequest.arbitratorClass | translate}} </th>
+                                <td mat-cell
+                                    *matCellDef="let element"> {{element.arbitratorClass}} </td>
+                            </ng-container>
+                            <!-- mobile -->
+                            <ng-container matColumnDef="mobile">
+                                <th mat-header-cell
+                                    *matHeaderCellDef> رقم التليفون </th>
+                                <td mat-cell
+                                    *matCellDef="let element"> {{element.mobile}} </td>
+                            </ng-container>
+                            <!-- email -->
+                            <ng-container matColumnDef="email">
+                                <th mat-header-cell
+                                    *matHeaderCellDef> الإيميل </th>
+                                <td mat-cell
+                                    *matCellDef="let element"> {{element.email}} </td>
+                            </ng-container>
+                            <!-- status -->
+                            <ng-container matColumnDef="status">
+                                <th mat-header-cell
+                                    *matHeaderCellDef> الحالة </th>
+                                <td mat-cell
+                                    *matCellDef="let element"> {{element.status}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="brief">
+                                <th mat-header-cell
+                                    *matHeaderCellDef> {{translations.CitizenRequest.brief | translate}} </th>
+                                <td mat-cell
+                                    *matCellDef="let element">
+                                    <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2"
+                                            style="background: #F6F6F6;"
+                                            (click)="open(showBriefModel,element.brief)">
+                                        <img src="assets/images/icons/eye.svg"
+                                             alt="eye">
+                                        {{translations.actions.view| translate}}
+                                    </button>
+                                </td>
+                            </ng-container>
+
+
+
+                            <tr mat-header-row
+                                *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row
+                                *matRowDef="let row; columns: displayedColumns;"></tr>
                         </table>
-                      
+
                         <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                                        showFirstLastButtons
                                        aria-label="Select page of periodic elements">
                         </mat-paginator>
-                      </div>
+                    </div>
                 </ng-container>
             </div>
         </details>
@@ -186,7 +235,8 @@
     <div class="accordion-card">
         <details open>
             <summary class="flex-y-row gap-2 border-bottom pb-5">
-                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <img src="assets/images/icons/bookmarks.svg"
+                     alt="bookmarks">
                 <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.firstPartyData| translate }} </h6>
             </summary>
 
@@ -208,7 +258,8 @@
     <div class="accordion-card">
         <details open>
             <summary class="flex-y-row gap-2 border-bottom pb-5">
-                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <img src="assets/images/icons/bookmarks.svg"
+                     alt="bookmarks">
                 <h6 class="small fw-6 op-7"> {{ translations.LitigationRequest.secondPartyData| translate }}</h6>
             </summary>
 
@@ -231,7 +282,8 @@
     <div class="accordion-card">
         <details open>
             <summary class="flex-y-row gap-2 border-bottom pb-5">
-                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <img src="assets/images/icons/bookmarks.svg"
+                     alt="bookmarks">
                 <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.litigationData| translate }} </h6>
             </summary>
 
@@ -249,9 +301,13 @@
     </div>
 </div>
 
-<ng-template #showBriefModel let-modal>
+<ng-template #showBriefModel
+             let-modal>
     <div class="modal-header">
-        <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+        <button type="button"
+                class="close-btn"
+                aria-label="Close"
+                (click)="modal.dismiss()"></button>
     </div>
 
     <div class="modal-body pt-0">
@@ -260,6 +316,8 @@
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate }}</button>
+        <button type="button"
+                class="btn btn-outline-primary"
+                (click)="modal.close()">{{ translations.actions.close | translate }}</button>
     </div>
 </ng-template>

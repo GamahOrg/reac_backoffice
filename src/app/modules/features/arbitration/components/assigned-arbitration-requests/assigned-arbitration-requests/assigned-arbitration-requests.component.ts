@@ -80,7 +80,7 @@ export class AssignedArbitrationRequestsComponent extends BaseComponent implemen
     private list(pageIndex: number, pageSize: number): void {
         this._tasksRequestsListService.getLitigationRequestArbitrationAssigningRequests(pageIndex, pageSize).subscribe({
             next: (res) => {
-                debugger;
+                 
 
                 this.litigationRequests = res?.data?.results
 
@@ -108,7 +108,7 @@ export class AssignedArbitrationRequestsComponent extends BaseComponent implemen
     }
 
   goToDetailsPage(litigationId: string,requestId: string){
-    // debugger;
+    
     // this._signalService.setData(this.litigationRequests?.find(l => l.requestId == requestId));
 
     this.router.navigate([this.documentsUrl, litigationId,requestId]);
@@ -121,7 +121,7 @@ export class AssignedArbitrationRequestsComponent extends BaseComponent implemen
 
 
     public openFormModal(content: TemplateRef<any>, litigationId : string, requestId : string ) {
-        debugger;
+         
         this.litigationData = {litigationId,requestId}
         const modalOptions: NgbModalOptions = {
             modalDialogClass: 'modal-dialog-scrollable',
