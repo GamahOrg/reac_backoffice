@@ -37,9 +37,18 @@ export class LoginComponent extends BaseComponent {
     // countdownInterval: any;
 
     // @ViewChildren('otpInput') otpInputs!: QueryList<any>;
-
+    loginFormValidationLengths = {
+        username: 10
+    };
     loginForm = this._formBuilder.group({
-        username: ['', Validators.required],
+        username: ['',
+            [
+                Validators.required,
+                // Validators.maxLength(this.loginFormValidationLengths.username),
+                // Validators.minLength(this.loginFormValidationLengths.username),
+                // Validators.pattern(Configuration.validators.numberOnly),
+            ]
+        ],
         password: ['', [Validators.required, Validators.pattern(Configuration.validators.noArabicLetters)]],
     })
     get controls() {
@@ -59,6 +68,7 @@ export class LoginComponent extends BaseComponent {
                     if (res) {
                         if (res.data) {
                             this._storageService.saveTokens(res.data);
+                            this._storageService.saveDepartmentType(res.data.departmentType)
                             this.navigateTolawsuitsModule()
                         } else {
                             this.errorFeedback = res.message;

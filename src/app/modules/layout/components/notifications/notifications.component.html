@@ -1,4 +1,30 @@
-<a href="" class="btn position-relative">
-    <span class="count flex-center">4</span>
-    <img src="assets/images/icons/notification.svg" width="20" alt="notification icon">
-</a>
+<div ngbDropdown>
+    <button
+        class="btn no-caret"
+        id="dropdownNotifications"
+        ngbDropdownToggle>
+        <span class="count flex-center">{{notViewedCount}}</span>
+        <img src="assets/images/icons/notification.svg" width="20" alt="notification icon">
+    </button>
+
+    <div
+        ngbDropdownMenu
+        aria-labelledby="dropdownNotifications"
+        [class.py-4]="notificationList && notificationList.length === 0">
+        @if (notificationList && notificationList.length > 0) {
+            @for (notification of notificationList; track $index) {
+                <button ngbDropdownItem [ngClass]="{'new': !notification.isViewed}">
+                    <a class="notification-link" (click)="onNotificationClicked(notification)">
+                        {{ notification.message }}
+                    </a>
+                </button>
+            }
+        }
+
+        @if (notificationList && notificationList.length === 0) {
+            <span class="notification-item p-4 text-center">
+                لا يوجد إشعارات
+            </span>
+        }
+    </div>
+</div>

@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { Accordion } from '@app/shared/models/accordion.model';
 import { AccordionService } from '@app/shared/services/accordion/accordion.service';
 import { TranslateService } from '@ngx-translate/core';
-import { LawsuitReviewStageComponent } from '../lawsuit-review-stage/lawsuit-review-stage.component';
-import { LawsuitSubmissionAcceptanceStageComponent } from '../lawsuit-submission-acceptance-stage/lawsuit-submission-acceptance-stage.component';
+import { LawsuitEventsService } from '../../services/lawsuit-events/lawsuit-events.service';
+import { GetRequestLogForEmployeeResponseDto } from '../../models/get-request-log-for-employee-response-dto.model';
+import { takeUntil } from 'rxjs';
+import { BaseResponse } from '@app/core/models/base-response';
+// import { LawsuitReviewStageComponent } from '../lawsuit-review-stage/lawsuit-review-stage.component';
+// import { LawsuitSubmissionAcceptanceStageComponent } from '../lawsuit-submission-acceptance-stage/lawsuit-submission-acceptance-stage.component';
 
 @Component({
     selector: 'app-lawsuit-events',
@@ -12,33 +17,27 @@ import { LawsuitSubmissionAcceptanceStageComponent } from '../lawsuit-submission
     styleUrl: './lawsuit-events.component.scss'
 })
 export class LawsuitEventsComponent extends BaseComponent implements OnInit {
-    accordionContent: Accordion = {
-        accordionComponentList: [
-            {
-                title: this._translate.instant(this.translations.lawsuits.lawsuitDetails.lawsuitSubmissionAndAcceptanceStage),
-                icon: 'assets/images/icons/bookmarks.svg',
-                component: LawsuitSubmissionAcceptanceStageComponent,
-                isVisible: true,
-                isRendered: true
-            },
-            {
-                title: this._translate.instant(this.translations.lawsuits.lawsuitDetails.lawsuitReviewStage),
-                icon: 'assets/images/icons/bookmarks.svg',
-                component: LawsuitReviewStageComponent,
-                isVisible: true,
-                isRendered: true                
-            }
-        ]
-    }
-
-    constructor(
-        private _accordionService: AccordionService,
-        private _translate: TranslateService
-    ) {
-        super()
-    }
+    private _activatedRoute = inject(ActivatedRoute);
+    private _lawsuitEventsService = inject(LawsuitEventsService);
+    requestId: string = "";
+    logList: GetRequestLogForEmployeeResponseDto[] = [];
 
     ngOnInit(): void {
-        this._accordionService.updateAccordionContent(this.accordionContent)
+        this.observeActivatedRoute();
+    }
+    private observeActivatedRoute(): void {
+        this._activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((res: Params) => {
+            this.requestId = res['id'];
+            if (this.requestId && this.requestId.length > 0) {
+                this.GetRequestLogForEmployee()
+            }
+        })
+    };
+    private GetRequestLogForEmployee(): void {
+        this._lawsuitEventsService.GetRequestLogForEmployee(this.requestId)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((res: BaseResponse<GetRequestLogForEmployeeResponseDto[]>) => {
+                if (res.isDone && res.data) this.logList = res.data
+            })
     }
 }

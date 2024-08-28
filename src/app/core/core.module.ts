@@ -22,7 +22,7 @@ import { BrowserModule } from '@angular/platform-browser';
   declarations: [
     // LoaderComponent
   ],
-  providers:[
+  providers: [
     LanguageService,
     StorageService,
     ToastrNotificationService,
@@ -30,12 +30,13 @@ import { BrowserModule } from '@angular/platform-browser';
     LoaderService,
     provideHttpClient(
       withInterceptors([
-      loaderHandlerInterceptor, 
-      baseURlHandlerInterceptor, 
-      headersHandlerInterceptor,
-      errorsHandlerInterceptor,
-      refreshTokenInterceptor
-    ])),
+        loaderHandlerInterceptor,
+        baseURlHandlerInterceptor,
+        headersHandlerInterceptor,
+        errorsHandlerInterceptor,
+        refreshTokenInterceptor
+      ])
+    )
   ],
   imports: [
     CommonModule,
@@ -44,7 +45,7 @@ import { BrowserModule } from '@angular/platform-browser';
     HttpClientModule,
     // TranslateModule.forChild(),
   ],
-  exports:[
+  exports: [
     // LoaderComponent
   ]
 })

@@ -28,7 +28,7 @@ export const errorsHandlerInterceptor: HttpInterceptorFn = (req, next) => {
       _loaderService.showLoader.next(false);
       console.log('in return of error handler interceptor', req.url);
       console.log('in return of error handler interceptor', error);
-      console.log('in return of error handler interceptor', error.status);
+      console.log('in return of error handler interceptor', error?.status);
 
       if (
         error.status === Configuration.httpResponseStatusCode.badRequest ||
