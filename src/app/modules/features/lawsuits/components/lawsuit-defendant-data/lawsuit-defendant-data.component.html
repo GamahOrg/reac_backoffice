@@ -1,9 +1,9 @@
 <div class="grid-3 mt-5">
-    <div *ngIf="contract?.secondPartyName">
+    <div *ngIf="contract?.secondPartyCitizen.fullName">
         <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.secondPartyName | translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyName || '--'}}</h6>
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.fullName || '--'}}</h6>
         </div>
     </div>
 

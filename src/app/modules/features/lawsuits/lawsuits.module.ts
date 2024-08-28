@@ -31,6 +31,7 @@ import { LawsuitEditReasonsService } from './services/lawsuit-edit-reasons/lawsu
 import { AuditngListArbitrationComponent } from './pages/auditng-list-arbitration/auditng-list-arbitration.component';
 import { AuditngListReconciliationComponent } from './pages/auditng-list-reconciliation/auditng-list-reconciliation.component';
 import { LawsuitClaimDataComponent } from './components/lawsuit-claim-data/lawsuit-claim-data.component';
+import { LawsuitEventsService } from './services/lawsuit-events/lawsuit-events.service';
 
 @NgModule({
     declarations: [
@@ -51,7 +52,8 @@ import { LawsuitClaimDataComponent } from './components/lawsuit-claim-data/lawsu
         LawsuitRequestDetailsService,
         AccordionService,
         LawsuitReviewService,
-        LawsuitEditReasonsService
+        LawsuitEditReasonsService,
+        LawsuitEventsService
     ],
     imports: [
         CommonModule,

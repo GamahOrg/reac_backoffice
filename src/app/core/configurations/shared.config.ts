@@ -8,6 +8,10 @@ export const Configuration = {
             login: '/api/Account/Login',
             refreshToken: '/api/Account/RefreshToken',
         },
+        Notification: {
+            GetNotificationListForBackOffice: "/api/Notification/GetNotificationListForBackOffice",
+            MarkNotificationViewed: "/api/Notification/MarkNotificationViewed",
+        },
         SysFileManager: {
             Upload: '/api/SysFileManager/Upload',
             Remove: '/api/SysFileManager/Remove',
@@ -79,8 +83,10 @@ export const Configuration = {
         },
         BpfService: {
             ProcessWorkFlow: "/api/BpfService/ProcessWorkFlow",
-            GetWorkflowStepEventsForEmployee: "/api/BpfService/GetWorkflowStepEventsForEmployee/requestId"
-        }, citizenRequests: {
+            GetWorkflowStepEventsForEmployee: "/api/BpfService/GetWorkflowStepEventsForEmployee/requestId",
+            GetRequestLogForEmployee : "/api/BpfService/GetRequestLogForEmployee/requestId"
+        },
+        citizenRequests: {
             GetCitizenRequestsForEmployee: '/api/CitizenRequest/GetCitizenRequestsForEmployee',
             GetCitizenRequestById: '/api/CitizenRequest/GetCitizenRequestById',
             SaveCitizenRequest: '/api/CitizenRequest/SaveCitizenRequest',

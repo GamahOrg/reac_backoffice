@@ -13,9 +13,9 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { SharedModule } from '../../shared/shared.module';
 import { TabsComponent } from "../../shared/components/tabs/tabs.component";
 import { TabsService } from '../../shared/services/tabs-service/tabs.service';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
-import { BreadcrumbsComponent } from "../../shared/components/breadcrumbs/breadcrumbs.component";
+import { NotificationsService } from './services/notifications/notifications.service';
 
 
 @NgModule({
@@ -35,7 +35,10 @@ import { BreadcrumbsComponent } from "../../shared/components/breadcrumbs/breadc
         TabsComponent,
         NgbTooltip,
         TranslateModule,
-        // BreadcrumbsComponent
+        NgbDropdownModule
+    ],
+    providers: [
+        NotificationsService
     ]
 })
-export class LayoutModule {}
+export class LayoutModule { }
