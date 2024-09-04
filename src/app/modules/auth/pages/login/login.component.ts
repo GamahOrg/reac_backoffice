@@ -10,6 +10,7 @@ import { BaseResponse } from '@app/core/models/base-response';
 import { Configuration } from '@app/core/configurations/shared.config';
 import { takeUntil } from 'rxjs';
 import { BaseComponent } from '@app/shared/components/base/base.component';
+import { DepartmentType } from '@app/core/models/enums/department-type.model';
 
 @Component({
     selector: 'app-login',
@@ -69,7 +70,14 @@ export class LoginComponent extends BaseComponent {
                         if (res.data) {
                             this._storageService.saveTokens(res.data);
                             this._storageService.saveDepartmentType(res.data.departmentType)
-                            this.navigateTolawsuitsModule()
+                            if(res.data.departmentType == DepartmentType.Review){
+
+                                this.navigateTolawsuitsModule()
+                            }else if(res.data.departmentType == DepartmentType.Reconciliation){
+                                this.navigateToaReformerAssigningRequestsModule()
+                            }else if(res.data.departmentType == DepartmentType.Arbitration){
+                                this.navigateToaArbitratorAssigningRequestsModule()
+                            }
                         } else {
                             this.errorFeedback = res.message;
                         }
@@ -80,6 +88,16 @@ export class LoginComponent extends BaseComponent {
     private navigateTolawsuitsModule(): void {
         this._router.navigate([
             `${Configuration.modules.lawsuits}`,
+        ]);
+    }
+    private navigateToaReformerAssigningRequestsModule(): void {
+        this._router.navigate([
+            Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.reformerassigningrequestforall,
+        ]);
+    }
+    private navigateToaArbitratorAssigningRequestsModule(): void {
+        this._router.navigate([
+            Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.assignedArbitrationRequests,
         ]);
     }
     // registerForm = this._formBuilder.group({

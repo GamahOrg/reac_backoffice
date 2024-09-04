@@ -3,7 +3,7 @@ import { Component, Injector, OnInit, effect, inject } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { LawsuitRequestDetailsService } from '../../services/lawsuit-request-details/lawsuit-request-details.service';
 import { Contract, LawsuitItemDetails } from '../../models/lawsuit-details.model';
-import { environment } from '@environment/environment.development';
+import { environment } from '@environment/environment';
 import { LawsuitTypeEnum } from '../../models/enums/lawsuit-type.model';
 
 @Component({
