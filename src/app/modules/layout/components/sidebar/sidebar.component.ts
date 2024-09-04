@@ -56,13 +56,13 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                     title: this.translate.instant(translations.layout.sidebar.reformation),
                     icon: 'assets/images/icons/home/hands.svg',
                     children: [
-                        {
-                            id: 'claims-link',
-                            title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
-                            // icon: 'assets/images/icons/sidebar/menu.svg',
-                            icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.AuditngListReconciliation,
-                        },
+                        // {
+                        //     id: 'claims-link',
+                        //     title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
+                        //     // icon: 'assets/images/icons/sidebar/menu.svg',
+                        //     icon: 'assets/images/icons/sidebar/book.svg',
+                        //     url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.AuditngListReconciliation,
+                        // },
                         {
                             id: 'stop-and-release-reformer',
                             title: this.translate.instant(translations.layout.sidebar.reformationLawsuitsList),
@@ -113,13 +113,13 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                     title: this.translate.instant(translations.layout.sidebar.arbitration),
                     icon: 'assets/images/icons/home/judge.svg',
                     children: [
-                        {
-                            id: 'claims-link',
-                            title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
-                            // icon: 'assets/images/icons/sidebar/menu.svg',
-                            icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.AuditngListArbitration,
-                        },
+                        // {
+                        //     id: 'claims-link',
+                        //     title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
+                        //     // icon: 'assets/images/icons/sidebar/menu.svg',
+                        //     icon: 'assets/images/icons/sidebar/book.svg',
+                        //     url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.AuditngListArbitration,
+                        // },
                         {
                             id: 'claims-link',
                             title: this.translate.instant(translations.layout.sidebar.arbitratorRequestTaskList),
