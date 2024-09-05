@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { translations } from 'translation-keys.enum';
 import { StorageService } from '@app/core/services/storage-service/storage.service';
-import { DepartmentType } from '@app/core/models/enums/department-type.model';
+import { DepartmentType } from '@app/core/models/enums/department-type.model'; 
 
 
 @Component({
