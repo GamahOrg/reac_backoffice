@@ -16,7 +16,7 @@
           <th scope="col">{{translations.lawsuits.lawsuitsList.lawsuitType | translate}}</th>
           <th scope="col">{{translations.lawsuits.createEditLawsuit.plaintiffName | translate}}</th>
           <th scope="col">{{translations.lawsuits.createEditLawsuit.nameOfTheDefendant | translate}}</th>
-          <th scope="col">{{translations.lawsuits.lawsuitsList.appointmentDate | translate}}</th>
+          <!--<th scope="col">{{translations.lawsuits.lawsuitsList.appointmentDate | translate}}</th>-->
           <th scope="col">{{translations.lawsuits.lawsuitsList.lawsuitStatus | translate}}</th>
           <th scope="col">
             <span
@@ -48,9 +48,9 @@
           <td>
             {{ item.secondPartyName || '--' }}
           </td>
-          <td>
+          <!--<td>
             {{ (item.assignedOn | date: 'dd/MM/yyy') || '--' }}
-          </td>
+          </td>-->
           <td>
             <span class="fw-4 small status-{{item.internalStatusId}}">
               {{lawsuitStatus[item.internalStatusId] | translate}}

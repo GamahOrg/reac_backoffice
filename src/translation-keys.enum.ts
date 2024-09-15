@@ -703,6 +703,7 @@ export namespace translations {
         requestDate = "litigationRequest.requestDate",
         firstPartyName = "litigationRequest.firstPartyName",
         secondPartyName = "litigationRequest.secondPartyName",
+        requestParty = "litigationRequest.requestParty",
         requestTypeName = "litigationRequest.requestTypeName",
         status = "litigationRequest.status",
         isDone = "litigationRequest.isDone",
@@ -756,5 +757,7 @@ export namespace translations {
         attachments = "arbitratorRecusalRequest.attachments",
         approve = "arbitratorRecusalRequest.approve",
         reject = "arbitratorRecusalRequest.reject",
+        plaintiff = "arbitratorRecusalRequest.plaintiff",
+        defendant = "arbitratorRecusalRequest.defendant",
     }
 }

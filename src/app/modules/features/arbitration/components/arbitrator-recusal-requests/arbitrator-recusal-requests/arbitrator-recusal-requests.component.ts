@@ -9,6 +9,8 @@ import { ArbitratorRecusalService } from '../../../services/arbitrator-recusal/a
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import { TranslateService } from '@ngx-translate/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
+import { CitizenRequestAction } from '@app/modules/features/citizen-requests/models/enums/citizen-request-type.model';
+import { LitigationRequestParty } from '../../../models/enums/arbitrator-recusal';
 
 @Component({
   selector: 'app-arbitrator-recusal-requests',
@@ -55,12 +57,17 @@ export class ArbitratorRecusalRequestsComponent extends BaseComponent implements
     [LitigationRequestReformerAssigningRequestStatus.Cancelled]:this.translations.TasksRequestsList.Cancelled,
   }
   arbitratorAssigningRequestType = {
-    ///<summary>لم يتم الرد</summary>
     [ArbitratorAssigningRequestType.Arbitrator]: this.translations.ArbitratorAssigningRequestType.arbitrator,
-    ///<summary>تمت الموافقة</summary>
     [ArbitratorAssigningRequestType.ArbitratorsChairman]: this.translations.ArbitratorAssigningRequestType.arbitratorsChairman,
    
   }
+  arbitratorRecusalRequestParty = {
+    [LitigationRequestParty.Plaintiff]: this.translations.ArbitratorRecusalRequest.plaintiff,
+    [LitigationRequestParty.Defendant]: this.translations.ArbitratorRecusalRequest.defendant,
+   
+  }
+
+  
 
   private list(pageIndex: number, pageSize: number): void {
     this._arbitratorRecusalService.getLitigationRequestForArbitratorRecusalRequestForArbitrator(pageIndex,pageSize).subscribe({

@@ -10,7 +10,7 @@
                     "style": "scss"
                 }
             },
-            "root": "",
+            "root": "src",
             "sourceRoot": "src",
             "prefix": "app",
             "architect": {
@@ -27,7 +27,8 @@
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "src/favicon.ico",
-                            "src/assets"
+                            "src/assets",
+                            "src/app/core/configurations/shared.config.ts"
                         ],
                         "styles": [
                             "@angular/material/prebuilt-themes/indigo-pink.css",
@@ -132,7 +133,8 @@
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "src/favicon.ico",
-                            "src/assets"
+                            "src/assets",
+                            "src/app/core/configurations/shared.config.ts"
                         ],
                         "styles": [
                             "@angular/material/prebuilt-themes/indigo-pink.css",
