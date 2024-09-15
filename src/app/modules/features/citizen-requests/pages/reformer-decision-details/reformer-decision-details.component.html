@@ -131,7 +131,7 @@
               <tr>
                 <th scope="col">{{translations.CitizenRequest.reformerStatus | translate}}</th>
                 <th scope="col">{{translations.CitizenRequest.decisionDate | translate}}</th>
-                <th scope="col">{{translations.CitizenRequest.stoppingReason | translate}}</th>
+                <th scope="col">{{translations.ExtendLitigationRequest.reason | translate}}</th>
                 <th scope="col">{{translations.CitizenRequest.lateLitigationRequestNumber | translate}}</th>
               </tr>
             </thead>
@@ -181,7 +181,7 @@
             translate}}</label>
           <div class="border flex-y-row rounded-2">
             <input class="form-control border-0 shadow-none"
-                   type="date"
+                   type="date" [ngModel] ="dt | date:'yyyy-MM-dd'"
                    placeholder="{{translations.actions.enter| translate}} {{translations.CitizenRequest.decisionDate| translate}}"
                    formControlName="decisionDate"
                    [ngClass]="{'is-invalid': showValidation && controls.decisionDate.errors}" />

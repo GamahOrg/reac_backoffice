@@ -1,5 +1,6 @@
 import { CitizenShortDto, SysFileManagerCreateUpdateDto } from "../../citizen-requests/models/citizen-request.model";
 import { litigationRequestContractType, litigationRequestExtendPeriodRequestStatus } from "./enums/arbitration-request-contract-type";
+import { LitigationRequestParty } from "./enums/arbitrator-recusal";
 import { ArbitratorAssigningRequestType, LitigationRequestReformerAssigningRequestStatus } from "./enums/litigation-request-reformer-assigning-request-status";
 
 
@@ -24,6 +25,7 @@ export interface LitigationRequestMircoDto {
     requestDate: string;
     firstPartyName: string;
     secondPartyName: string;
+    requestParty?: LitigationRequestParty;
     requestTypeName: string;
     status: string;
     isDone: string;

@@ -1,4 +1,4 @@
-<div ngbDropdown>
+<div class="notifications-dropdown" ngbDropdown>
     <button
         class="btn no-caret"
         id="dropdownNotifications"
@@ -13,7 +13,7 @@
         [class.py-4]="notificationList && notificationList.length === 0">
         @if (notificationList && notificationList.length > 0) {
             @for (notification of notificationList; track $index) {
-                <button ngbDropdownItem [ngClass]="{'new': !notification.isViewed}">
+                <button ngbDropdownItem [ngClass]="{'read': !notification.isViewed}">
                     <a class="notification-link" (click)="onNotificationClicked(notification)">
                         {{ notification.message }}
                     </a>

@@ -3,6 +3,24 @@ import { AssignedArbitrationRequestsDocumnetsComponent } from "@app/modules/feat
 export const Configuration = {
     languages: ['ar', 'en'],
     defaultLang: 'ar',
+    environments: {
+        development: {
+            production: false,
+            baseURL: "http://192.168.194.171:3333",
+            securityURl: "http://192.168.194.171:222"
+            // securityURl: "http://192.168.194.171:3333"
+        },
+        testingAndStaging: {
+            production: true,
+            baseURL: "http://192.168.194.171:3333",
+            securityURl: "http://192.168.194.171:222",
+        },
+        // staging: {
+        //     production: true,
+        //     baseURL: "http://192.168.194.171:3333",
+        //     securityURl: "http://192.168.194.171:222",
+        // },
+    },
     APIs: {
         Account: {
             login: '/api/Account/Login',

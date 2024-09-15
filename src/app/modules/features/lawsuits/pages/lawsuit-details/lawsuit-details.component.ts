@@ -17,6 +17,9 @@ import { LawsuitReeditReasonComponent } from '../../components/lawsuit-reedit-re
 import { LawsuitStatus } from '../../models/enums/lawsuit-status.model';
 import { LawsuitTypeEnum } from '../../models/enums/lawsuit-type.model';
 import { takeUntil } from 'rxjs';
+import { LawsuitReviewService } from '../../services/lawsuit-review/lawsuit-review.service';
+import { GetWorkflowStepEventsForEmployeeDto } from '../../models/get-workflow-step-events-for-employee-dto.model';
+import { BaseResponse } from '@app/core/models/base-response';
 
 @Component({
     selector: 'app-lawsuits-details',
@@ -28,12 +31,14 @@ export class LawsuitDetailsComponent extends BaseComponent {
     private _translateService = inject(TranslateService)
     private _breadcrumbService = inject(BreadcrumbService)
     private modalService = inject(NgbModal);
+    private _lawsuitReviewService = inject(LawsuitReviewService);
 
     id: string | null = null;
     reason: string = '';
     selectedReason!: string;
 
     isLawsuitDetails: boolean = true;
+    buttonActions!: GetWorkflowStepEventsForEmployeeDto
 
     charCounts: { [key: string]: number } = {
         subject: 0,
@@ -137,7 +142,10 @@ export class LawsuitDetailsComponent extends BaseComponent {
     ngOnInit(): void {
         this._activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((res: Params) => {
             this.id = res['id']
-            if (this.id) this.getLitigationById();
+            if (this.id){
+                this.getLitigationById();
+                this.GetWorkflowStepEventsForEmployee(this.id);
+            } 
         })
     }
 
@@ -201,6 +209,24 @@ export class LawsuitDetailsComponent extends BaseComponent {
     }
 
     public updateIsLawsuitDetails(value: boolean): void {
-        this.isLawsuitDetails = value
+        debugger;
+        if( !value && this.buttonActions && this.buttonActions.workFlowStepEventShortDtos.length == 0){
+            this.isLawsuitDetails = true;
+        }else{
+
+            this.isLawsuitDetails = value
+        }
+    }
+
+    private GetWorkflowStepEventsForEmployee(requestId :any) {
+        this._lawsuitReviewService.GetWorkflowStepEventsForEmployee(requestId).pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<GetWorkflowStepEventsForEmployeeDto>) => {
+            if (res.data && res.isDone){
+                debugger;
+                this.buttonActions = res.data
+
+            }
+            console.log("this.buttonActions", this.buttonActions);
+
+        })
     }
 }
