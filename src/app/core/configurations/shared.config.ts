@@ -12,8 +12,8 @@ export const Configuration = {
         },
         testingAndStaging: {
             production: true,
-            baseURL: "http://192.168.194.171:3333",
-            securityURl: "http://192.168.194.171:222",
+            baseURL: "https://dev-reac-api.rega.gov.sa",
+            securityURl: "https://dev-reac-sso.rega.gov.sa",
         },
         // staging: {
         //     production: true,
