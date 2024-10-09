@@ -87,6 +87,9 @@ export namespace translations {
             assignArbitrationMemberList = 'layout.sidebar.assignArbitrationMemberList',
             assignArbitrationHeadList = 'layout.sidebar.assignArbitrationHeadList',
             arbitratorRecusalRequests = 'layout.sidebar.arbitratorRecusalRequests',
+            reports = 'layout.sidebar.reports',
+            litigationStatisticsReviewReport = 'layout.sidebar.litigationStatisticsReviewReport',
+            litigationStatisticsReformerReport = 'layout.sidebar.litigationStatisticsReformerReport',
         }
     }
 
@@ -703,6 +706,7 @@ export namespace translations {
         requestDate = "litigationRequest.requestDate",
         firstPartyName = "litigationRequest.firstPartyName",
         secondPartyName = "litigationRequest.secondPartyName",
+        requestParty = "litigationRequest.requestParty",
         requestTypeName = "litigationRequest.requestTypeName",
         status = "litigationRequest.status",
         isDone = "litigationRequest.isDone",
@@ -756,5 +760,26 @@ export namespace translations {
         attachments = "arbitratorRecusalRequest.attachments",
         approve = "arbitratorRecusalRequest.approve",
         reject = "arbitratorRecusalRequest.reject",
+        plaintiff = "arbitratorRecusalRequest.plaintiff",
+        defendant = "arbitratorRecusalRequest.defendant",
+    }
+
+    export enum Reports{
+        totalLitigationCount = "reports.totalLitigationCount",
+        notFinishedCount = "reports.notFinishedCount",
+        finishedCount = "reports.finishedCount",
+        realEstateBrokerageCount = "reports.realEstateBrokerageCount",
+        wafiCount = "reports.wafiCount",
+        otherServicesCount = "reports.otherServicesCount",
+        rentCount = "reports.rentCount",
+        propertiesCount = "reports.propertiesCount",
+
+        notFinishedRatio = "reports.notFinishedRatio",
+        finishedRatio = "reports.finishedRatio",
+        realEstateBrokerageRatio = "reports.realEstateBrokerageRatio",
+        wafiRatio = "reports.wafiRatio",
+        otherServicesRatio = "reports.otherServicesRatio",
+        rentRatio = "reports.rentRatio",
+        propertiesRatio = "reports.propertiesRatio",
     }
 }

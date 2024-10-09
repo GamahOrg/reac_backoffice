@@ -76,7 +76,7 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
 
     getLitigationRequestForSession(requestId: string) {
         this._determinearbitratorperiodService.GetLitigationRequestForAddArbitratorsChairmanNominationListByRequestId(requestId).subscribe(res => {
-             ;
+            ;
             this.litigationRequestForReportDto = res as LitigationRequestForAllArbitratorNominationCharmanListDto;
             this.dataSource = new MatTableDataSource<CitizenArbitratorShortStatusDto>(this.litigationRequestForReportDto.citizenArbitratorCharmanShortStatusDtos);
             this.dataSource.paginator = this.paginator;
@@ -389,9 +389,13 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
             return;
         }
         this.citizenService.AddLitigationRequestArbitratorsChairmandecision(this.requestId as string, this.arbitratorChairmanId)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe((res: BaseResponse<any>) =>{
-            if(res.isDone && this.requestId)  this.getLitigationRequestForSession(this.requestId);
-        })
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((res: BaseResponse<any>) => {
+                if (res.isDone && this.requestId) {
+
+                    this.getLitigationRequestForSession(this.requestId);
+                    this.toastrNotificationService.showSuccess(this._translate.instant(this.translations.general.successfullySave))
+                }
+            })
     }
 }

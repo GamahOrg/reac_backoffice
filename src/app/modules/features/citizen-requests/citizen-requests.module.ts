@@ -42,6 +42,7 @@ import { AssignArbitrationHeadDetailsComponent } from './pages/assign-arbitratio
 import { ReformerAssigningRequestForAllComponent } from './pages/reformer-assigning-request-for-all/reformer-assigning-request-for-all.component';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
+import { SystemSettingsService } from '@app/shared/services/system-settings/system-settings.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -94,7 +95,8 @@ import {MatTableModule} from '@angular/material/table';
     RequestToExtendSettlementPeriodService,
     RequestToExtendArbitrationPeridService,
     CitizenService,
-    DeterminearbitratorperiodService
+    DeterminearbitratorperiodService,
+    SystemSettingsService
   ]
 })
 export class CitizenRequestsModule { }

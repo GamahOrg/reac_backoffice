@@ -24,6 +24,11 @@ const routes: Routes = [
           import('../features/arbitration/arbitration.module').then((m) => m.ArbitrationModule),
       },
       {
+        path: Configuration.modules.reports,
+        loadChildren: () =>
+          import('../reports/reports.module').then((m) => m.ReportsModule),
+      },
+      {
         path: '',
         redirectTo: Configuration.modules.lawsuits,
         pathMatch: 'full'

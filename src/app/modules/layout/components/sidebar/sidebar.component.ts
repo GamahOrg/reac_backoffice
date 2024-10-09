@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { translations } from 'translation-keys.enum';
 import { StorageService } from '@app/core/services/storage-service/storage.service';
-import { DepartmentType } from '@app/core/models/enums/department-type.model'; 
+import { DepartmentType } from '@app/core/models/enums/department-type.model';
 
 
 @Component({
@@ -30,6 +30,33 @@ export class SidebarComponent extends BaseComponent implements OnInit {
     private getDepartmentType(): void {
         this.departmentType = Number(this._storageService.getDepartmentType());
         console.log("this.departmentType", this.departmentType);
+
+        // this.menuItems.push(
+        //     {
+        //         id: 'reports-collapse',
+        //         title: this.translate.instant(translations.layout.sidebar.reports),
+        //         icon: 'assets/images/icons/sidebar/book.svg',
+        //         children: [
+        //             {
+        //                 id: 'reports-link',
+        //                 title: this.translate.instant(translations.layout.sidebar.litigationStatisticsReviewReport),
+        //                 // icon: 'assets/images/icons/sidebar/menu.svg',
+        //                 icon: 'assets/images/icons/sidebar/book.svg',
+        //                 url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.statisticsReview,
+        //             },
+        //             {
+        //                 id: 'reports-link',
+        //                 title: this.translate.instant(translations.layout.sidebar.litigationStatisticsReformerReport),
+        //                 // icon: 'assets/images/icons/sidebar/menu.svg',
+        //                 icon: 'assets/images/icons/sidebar/book.svg',
+        //                 url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.statisticsReformer,
+        //             },
+
+        //         ]
+        //     },
+        // );
+
+
 
         if (this.departmentType == DepartmentType.Review) {
             this.menuItems.push(
@@ -176,18 +203,18 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.requestToExtendArbitrationPeriodList,
                         },
-                        {
-                            id: 'stop-and-release-reformer',
-                            title: this.translate.instant(translations.layout.sidebar.arbitratorCount),
-                            icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.arbitratorCountList,
-                        },
-                        {
-                            id: 'stop-and-release-reformer',
-                            title: this.translate.instant(translations.layout.sidebar.litigationRequestForArbitratorSelectionDurationList),
-                            icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.litigationRequestForArbitratorSelectionDurationList,
-                        },
+                        // {
+                        //     id: 'stop-and-release-reformer',
+                        //     title: this.translate.instant(translations.layout.sidebar.arbitratorCount),
+                        //     icon: 'assets/images/icons/sidebar/book.svg',
+                        //     url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.arbitratorCountList,
+                        // },
+                        // {
+                        //     id: 'stop-and-release-reformer',
+                        //     title: this.translate.instant(translations.layout.sidebar.litigationRequestForArbitratorSelectionDurationList),
+                        //     icon: 'assets/images/icons/sidebar/book.svg',
+                        //     url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.litigationRequestForArbitratorSelectionDurationList,
+                        // },
                         {
                             id: 'stop-and-release-reformer',
                             title: this.translate.instant(translations.layout.sidebar.assignarbitratorlist),

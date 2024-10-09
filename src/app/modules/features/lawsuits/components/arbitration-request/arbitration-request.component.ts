@@ -55,7 +55,7 @@ export class ArbitrationRequestComponent extends BaseComponent {
         {
             icon: 'assets/images/icons/lawsuit-details/book.svg',
             title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.nationalAddress),
-            value: 'العنوان الوطني',
+            value: 'العنوان',
             isDownload: false,
         },
         {
@@ -94,7 +94,7 @@ export class ArbitrationRequestComponent extends BaseComponent {
         {
             icon: 'assets/images/icons/lawsuit-details/book.svg',
             title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.nationalAddress),
-            value: 'العنوان الوطني',
+            value: 'العنوان',
             isDownload: false,
         },
         {

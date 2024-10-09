@@ -8,11 +8,12 @@ import { forkJoin, takeUntil } from 'rxjs';
 import { Validators, FormBuilder } from '@angular/forms';
 import { FileUploader } from '@app/shared/models/file-uploader.model';
 import { LawsuitDetailsItem } from '@app/modules/features/lawsuits/models/lawsuit-details.model';
-import { environment } from '@environment/environment.development';
+
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { ArbitratorRecusalService } from '../../services/arbitrator-recusal/arbitrator-recusal.service';
 import { LitigationRequestArbitrationReportExplanationRequestGetDto, LitigationRequestForArbitratorRecusalRequestDto } from '../../models/litigation-request-arbitration-report-explanation-request-get-dto';
 import { ApproveRejectStatus } from '../../models/enums/arbitrator-recusal';
+import { environment } from '@environment/environment';
 
 @Component({
   selector: 'app-approve-or-reject-arbitrator-recusal-request',

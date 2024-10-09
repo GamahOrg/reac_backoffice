@@ -15,6 +15,7 @@ export interface LitigationRequestMircoExplanationRequestDto{
     requestDate: string;
     firstPartyName: string;
     secondPartyName: string;
+    requestParty: LitigationRequestParty;
     requestTypeName: string;
     status: string;
     isDone: string;

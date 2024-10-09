@@ -11,7 +11,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { LawsuitDetailsItem } from '@app/modules/features/lawsuits/models/lawsuit-details.model';
 import { Configuration } from '@app/core/configurations/shared.config';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
-import { takeUntil } from 'rxjs';
+import { forkJoin, takeUntil } from 'rxjs';
+import { SystemSettingsService } from '@app/shared/services/system-settings/system-settings.service';
+import { SysSettings } from '@app/shared/models/system-settings.model';
 
 @Component({
   selector: 'app-litigation-request-for-arbitrator-selection-duration-details',
@@ -20,11 +22,13 @@ import { takeUntil } from 'rxjs';
 })
 export class LitigationRequestForArbitratorSelectionDurationDetailsComponent extends BaseComponent implements OnInit {
   litigationRequestForReportDto?: LitigationRequestForArbitratorSelectionDurationDto
+  sysSettings?: SysSettings
   arbitratorSelectionDurationRequestPayload = {} as ArbitratorSelectionDurationRequestPayload
   requestId?: string;
   constructor(private activatedRoute: ActivatedRoute,
     private _translate: TranslateService,
     private _determinearbitratorperiodService: DeterminearbitratorperiodService,
+    private _sysSettingsService: SystemSettingsService,
     private toastrNotificationService: ToastrNotificationService,
     private _formBuilder: FormBuilder,
     private _breadcrumbService :BreadcrumbService,
@@ -45,7 +49,8 @@ export class LitigationRequestForArbitratorSelectionDurationDetailsComponent ext
     this._activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((res: Params) => {
       this.requestId = res['id'];
       if (this.requestId) {
-        this.getLitigationRequestForSession(this.requestId);
+        // this.getLitigationRequestForSession(this.requestId);
+        this.forkJoinAllLookups(this.requestId);
       }
     })
 
@@ -329,4 +334,28 @@ export class LitigationRequestForArbitratorSelectionDurationDetailsComponent ext
       }
     })
   }
+
+  private forkJoinAllLookups(requestId: string): void {
+    debugger;
+    forkJoin(
+      {
+        GetLitigationRequestForAddArbitratorSelectionDuration : this._determinearbitratorperiodService.getLitigationRequestForAddArbitratorSelectionDurationByRequestId(requestId),
+        GetSelectionDurationValue: this._sysSettingsService.GetSystemSettingsByKey("Configurable.ArbitratorsCountSelectDuration")
+      }
+    ).pipe(takeUntil(this.destroy$)).subscribe(res => {
+       debugger;
+      if(res.GetLitigationRequestForAddArbitratorSelectionDuration){
+        this.litigationRequestForReportDto = res.GetLitigationRequestForAddArbitratorSelectionDuration as LitigationRequestForArbitratorSelectionDurationDto;
+        this.fillData()
+        this.fillfirstPartyData()
+        this.fillsecondPartyData()
+      }
+      if(res.GetSelectionDurationValue.data){
+        this.sysSettings = res.GetSelectionDurationValue.data as SysSettings
+        this.form.controls.arbitratorSelectionDuration.setValue(parseInt(this.sysSettings.value))
+
+      }
+    }
+    )
+  };
 }

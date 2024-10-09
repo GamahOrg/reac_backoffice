@@ -11,6 +11,7 @@
               <th scope="col">{{translations.LitigationRequest.requestDate | translate}}</th>
               <th scope="col">{{translations.LitigationRequest.firstPartyName | translate}}</th>
               <th scope="col">{{translations.LitigationRequest.secondPartyName | translate}}</th>
+              <th scope="col">{{translations.LitigationRequest.requestParty | translate}}</th>
               <th scope="col">{{translations.LitigationRequest.requestTypeName | translate}}</th>
               <th scope="col">{{translations.LitigationRequest.status | translate}}</th>
               <th scope="col">{{translations.LitigationRequest.response | translate}}</th>
@@ -24,6 +25,7 @@
               <td>{{litigationRequest.requestDate | date:'yyyy/MM/dd'}}</td>
               <td>{{litigationRequest.firstPartyName}}</td>
               <td>{{litigationRequest.secondPartyName}}</td>
+              <td>{{litigationRequest.requestParty ? (arbitratorRecusalRequestParty[litigationRequest.requestParty] | translate) : ''}}</td>
               <td>{{litigationRequest.requestTypeName}}</td>
               <td>{{litigationRequest.status}}</td>
               <td>{{litigationRequest.response ? (localization[litigationRequest.response] | translate) : '--'}}</td>

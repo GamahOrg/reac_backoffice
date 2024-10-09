@@ -47,11 +47,15 @@
             "arbitratorCount": "تحديد عدد المحكمين",
             "assignarbitratorlist": "تعين المحكمين",
             "details": "عرض التفاصيل",
-            "litigationRequestForArbitratorSelectionDurationList": "تحديد مدة اختيار المحكمين",
+            "litigationRequestForArbitratorSelectionDurationList": "تحديد مدة اختيار عدد المحكمين",
             "arbitrationSessionList": "قائمة الجلسات",
             "assignArbitrationMemberList": "تعيين أعضاء هيئة التحكيم",
             "assignArbitrationHeadList": "تعيين رئيس هيئة التحكيم",
-            "arbitratorRecusalRequests": "طلبات رد المحكمين"
+            "arbitratorRecusalRequests": "طلبات رد المحكمين",
+            "reports": "التقارير",
+            "litigationStatisticsReviewReport": "تقرير أعداد الدعاوى في مرحلة التدقيق",
+            "litigationStatisticsReformerReport": "تقرير أعداد الدعاوى في مرحلة الصلح"
+
         }
     },
     "actions": {
@@ -242,7 +246,7 @@
             "identityNumber": "رقم الهوية",
             "nationality": "الجنسية",
             "birthDate": "تاريخ الميلاد",
-            "nationalAddress": "العنوان الوطني",
+            "nationalAddress": "العنوان",
             "mobileNumber": "رقم الجوال",
             "email": "البريد الالكتروني",
             "agentName": "اسم الوكيل",
@@ -292,7 +296,7 @@
             "pleaseWriteLawsuitObjective": "برجاء كتابة الهدف من الدعوى",
             "attachmentsToBeAttached": "المرفقات التي ستقوم بإرفاقها",
             "region": "المدينة",
-            "city": "المنطقة",
+            "city": "المدينة",
             "lawsuitAttachments": "اسانيد الدعوى",
             "assignmentTitle": "عنوان الإسناد",
             "addAttachment": "اضافة مرفق",
@@ -635,6 +639,7 @@
         "requestDate": "تاريخ التقديم",
         "firstPartyName": "اسم المدعى",
         "secondPartyName": "اسم المدعى عليه",
+        "requestParty": "صفة مقدم الطلب",
         "requestTypeName": "نوع الدعوى",
         "status": "حالة الدعوى",
         "isDone": "حالة الانتهاء",
@@ -718,6 +723,27 @@
         "arbitratorsChairman": "رئيس هيئة التحكيم",
         "attachments": "عرض المرفقات",
         "approve": "تمت الموافقة",
-        "reject": "تم الرفض"
+        "reject": "تم الرفض",
+        "plaintiff": "المدعي",
+        "defendant": "المدعي عليه"
+    },
+
+    "reports":{
+        "totalLitigationCount" : "عدد الدعاوى الكلية",
+        "notFinishedCount" : "عدد الدعاوى الحالية",
+        "finishedCount" : "عدد الدعاوى المنتهية",
+        "realEstateBrokerageCount" : "عدد دعاوى وساطة",
+        "wafiCount" : "عدد دعاوى وافي",
+        "otherServicesCount" : "عدد دعاوى اخري",
+        "rentCount" : "عدد دعاوى ايجار",
+        "propertiesCount" : "عدد دعاوى ملاك",
+
+        "notFinishedRatio" : "نسبة الدعاوى الحالية",
+        "finishedRatio" : "نسبة الدعاوى المنتهية",
+        "realEstateBrokerageRatio" : "نسبة دعاوى وساطة",
+        "wafiRatio" : "نسبة دعاوى وافي",
+        "otherServicesRatio" : "نسبة دعاوى اخري",
+        "rentRatio" : "نسبة دعاوى ايجار",
+        "propertiesRatio" : "نسبة دعاوى ملاك"
     }
 }

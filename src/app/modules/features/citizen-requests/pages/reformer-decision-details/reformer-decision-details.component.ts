@@ -68,8 +68,8 @@ export class ReformerDecisionDetailsComponent extends BaseComponent implements O
         [StoppingReason.LateLitigationRequest]: this.translations.CitizenRequest.LateLitigationRequest,
         [StoppingReason.NonPaymentOfMembershipFees]: this.translations.CitizenRequest.NonPaymentOfMembershipFees,
     }
-
-    ngOnInit(): void {
+  dt=new Date();;
+  ngOnInit(): void {
         this.updateBreadcrumb();
         this.observeActivatedRoute();
     }

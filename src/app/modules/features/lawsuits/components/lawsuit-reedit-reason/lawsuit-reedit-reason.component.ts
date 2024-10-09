@@ -6,10 +6,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { ReasonReturnLawsuitComponent } from '../reason-return-lawsuit/reason-return-lawsuit.component';
 import { ActivatedRoute, Params } from '@angular/router';
 import { LawsuitEditReasonsService } from '../../services/lawsuit-edit-reasons/lawsuit-edit-reasons.service';
-import { environment } from '@environment/environment.development';
+
 import { AuditNotesDto } from '../../models/audit-notes-dto.model';
 import { takeUntil } from 'rxjs';
 import { BaseResponse } from '@app/core/models/base-response';
+import { environment } from '@environment/environment';
 
 @Component({
     selector: 'app-lawsuit-reedit-reason',
