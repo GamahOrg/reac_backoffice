@@ -726,7 +726,6 @@
         "reject": "تم الرفض",
         "plaintiff": "المدعي",
         "defendant": "المدعي عليه"
-<<<<<<< HEAD
     },
 
     "reports":{
@@ -746,7 +745,5 @@
         "otherServicesRatio" : "نسبة دعاوى اخري",
         "rentRatio" : "نسبة دعاوى ايجار",
         "propertiesRatio" : "نسبة دعاوى ملاك"
-=======
->>>>>>> 910efd1d2c19bc2d88629a7f7f73ce7a05c1c5a7
     }
 }

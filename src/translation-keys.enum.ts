@@ -762,7 +762,6 @@ export namespace translations {
         reject = "arbitratorRecusalRequest.reject",
         plaintiff = "arbitratorRecusalRequest.plaintiff",
         defendant = "arbitratorRecusalRequest.defendant",
-<<<<<<< HEAD
     }
 
     export enum Reports{
@@ -782,7 +781,5 @@ export namespace translations {
         otherServicesRatio = "reports.otherServicesRatio",
         rentRatio = "reports.rentRatio",
         propertiesRatio = "reports.propertiesRatio",
-=======
->>>>>>> 910efd1d2c19bc2d88629a7f7f73ce7a05c1c5a7
     }
 }
