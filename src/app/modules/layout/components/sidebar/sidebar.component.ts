@@ -31,6 +31,33 @@ export class SidebarComponent extends BaseComponent implements OnInit {
         this.departmentType = Number(this._storageService.getDepartmentType());
         console.log("this.departmentType", this.departmentType);
 
+        // this.menuItems.push(
+        //     {
+        //         id: 'reports-collapse',
+        //         title: this.translate.instant(translations.layout.sidebar.reports),
+        //         icon: 'assets/images/icons/sidebar/book.svg',
+        //         children: [
+        //             {
+        //                 id: 'reports-link',
+        //                 title: this.translate.instant(translations.layout.sidebar.litigationStatisticsReviewReport),
+        //                 // icon: 'assets/images/icons/sidebar/menu.svg',
+        //                 icon: 'assets/images/icons/sidebar/book.svg',
+        //                 url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.statisticsReview,
+        //             },
+        //             {
+        //                 id: 'reports-link',
+        //                 title: this.translate.instant(translations.layout.sidebar.litigationStatisticsReformerReport),
+        //                 // icon: 'assets/images/icons/sidebar/menu.svg',
+        //                 icon: 'assets/images/icons/sidebar/book.svg',
+        //                 url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.statisticsReformer,
+        //             },
+
+        //         ]
+        //     },
+        // );
+
+
+
         if (this.departmentType == DepartmentType.Review) {
             this.menuItems.push(
                 {

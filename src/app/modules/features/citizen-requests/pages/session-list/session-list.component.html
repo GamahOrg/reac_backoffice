@@ -58,7 +58,7 @@
     </div>
 
     <div class="modal-body pt-0">
-        {{ translations.LitigationRequest.sessionLink | translate }} :{{this.selectedUrl}}
+        {{ translations.LitigationRequest.sessionLink | translate }} :<a [href]="this.selectedUrl" target="_blank">اضغط هنا</a>
     </div>
 
     <div class="modal-footer">

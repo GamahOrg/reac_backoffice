@@ -6,9 +6,10 @@ export const Configuration = {
     environments: {
         development: {
             production: false,
-            baseURL: "http://192.168.194.171:3333",
-            securityURl: "http://192.168.194.171:222"
-            // securityURl: "http://192.168.194.171:3333"
+            baseURL: "https://localhost:7156",
+            securityURl: "http://localhost:7144",
+            // securityURl: "http://192.168.194.171:3333",
+            // baseURL: "http://192.168.194.171:3333",
         },
         testingAndStaging: {
             production: true,
@@ -127,12 +128,22 @@ export const Configuration = {
             GetArbitratorsFullLookup: "/api/Citizen/GetArbitratorsFullLookup",
             GetArbitratorsLookup: "/api/Citizen/GetArbitratorsLookup",
         },
+        Reports: {
+            GetLitigationStatisticsMainReportResult: "/api/Reports/GetLitigationStatisticsReviewReport",
+            GetLitigationStatisticsReformerReport: "/api/Reports/GetLitigationStatisticsReformerReport",
+            GetLitigationStatisticsArbitrationReport: "/api/Reports/GetLitigationStatisticsArbitrationReport",
+        },
+        SysSetting:{
+            GetSettingByKey: "/api/SysSetting/GetSettingByKey"
+        }
     },
     modules: {
         auth: 'auth',
         lawsuits: 'Lawsuits',
         citizenRequests: 'citizen-requests',
-        arbitration: "arbitration"
+        arbitration: "arbitration",
+        reports: "reports",
+
     },
     pages: {
         auth: {
@@ -180,6 +191,11 @@ export const Configuration = {
             assignArbitrationMemberDetails: 'assign-arbitration-member-details',
 
         },
+        reports: {
+            statisticsReview : 'statistics-review',
+            statisticsReformer : 'statistics-reformer',
+            statisticsArbitration : 'statistics-arbitration'
+        }
     },
     validators: {
         regexLat:
