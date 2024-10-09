@@ -6,10 +6,16 @@ export const Configuration = {
     environments: {
         development: {
             production: false,
+<<<<<<< HEAD
             baseURL: "https://localhost:7156",
             securityURl: "http://localhost:7144",
             // securityURl: "http://192.168.194.171:3333",
             // baseURL: "http://192.168.194.171:3333",
+=======
+            baseURL: "http://192.168.194.171:3333",
+            securityURl: "http://192.168.194.171:222"
+            // securityURl: "http://192.168.194.171:3333"
+>>>>>>> 910efd1d2c19bc2d88629a7f7f73ce7a05c1c5a7
         },
         testingAndStaging: {
             production: true,
