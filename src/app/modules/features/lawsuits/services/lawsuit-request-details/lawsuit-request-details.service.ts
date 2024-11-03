@@ -8,7 +8,7 @@ import { LawsuitItemDetails } from '../../models/lawsuit-details.model';
 
 @Injectable()
 export class LawsuitRequestDetailsService {
-  litigationDetails: WritableSignal<LawsuitItemDetails | null> = signal(null);
+  litigationDetails: WritableSignal<any | null> = signal(null);
 
   constructor(private _httpClient: HttpClient) { }
 

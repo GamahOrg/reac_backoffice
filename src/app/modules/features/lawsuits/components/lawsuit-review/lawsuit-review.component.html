@@ -85,7 +85,10 @@
                 [(ngModel)]="notes"></textarea>
       <span class="op-7 w-fit flex-end">{{ charCounts['notes'] }}/{{1000}}</span>
     </div>
-
+    <div *ngIf="isReviewSubmitted && actionData?.allowNotes && notes.length === 0"
+    class="invalid-feedback d-block">
+          {{translations.formValidationError.required | translate}}
+    </div>
     <div class="w-lg-7"
          *ngIf="actionData?.allowFileUpload">
       <label class="mt-4 small fw-6">{{translations.lawsuits.lawsuitDetails.addAttachments | translate}}</label>

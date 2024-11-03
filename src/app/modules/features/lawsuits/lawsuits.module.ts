@@ -32,6 +32,10 @@ import { AuditngListArbitrationComponent } from './pages/auditng-list-arbitratio
 import { AuditngListReconciliationComponent } from './pages/auditng-list-reconciliation/auditng-list-reconciliation.component';
 import { LawsuitClaimDataComponent } from './components/lawsuit-claim-data/lawsuit-claim-data.component';
 import { LawsuitEventsService } from './services/lawsuit-events/lawsuit-events.service';
+import { LawsuitReviewerNotesComponent } from './components/lawsuit-reviewer-notes/lawsuit-reviewer-notes.component';
+import { LitigationRequestCorrespondenceListComponent } from './components/litigation-request-correspondence-list/litigation-request-correspondence-list.component';
+import { LitigationRequestCorrespondencesService } from './services/litigation-request-correspondence/litigation-request-correspondence-service';
+import { LitigationRequestCorrespondenceDetailsComponent } from './components/litigation-request-correspondence-details/litigation-request-correspondence-details.component';
 
 @NgModule({
     declarations: [
@@ -45,7 +49,10 @@ import { LawsuitEventsService } from './services/lawsuit-events/lawsuit-events.s
         ReasonReturnLawsuitComponent,
         AuditngListArbitrationComponent,
         AuditngListReconciliationComponent,
-        LawsuitClaimDataComponent
+        LawsuitClaimDataComponent,
+        LawsuitReviewerNotesComponent,
+        LitigationRequestCorrespondenceListComponent,
+        LitigationRequestCorrespondenceDetailsComponent
     ],
     providers: [
         LawsuitListService,
@@ -53,7 +60,8 @@ import { LawsuitEventsService } from './services/lawsuit-events/lawsuit-events.s
         AccordionService,
         LawsuitReviewService,
         LawsuitEditReasonsService,
-        LawsuitEventsService
+        LawsuitEventsService,
+        LitigationRequestCorrespondencesService
     ],
     imports: [
         CommonModule,

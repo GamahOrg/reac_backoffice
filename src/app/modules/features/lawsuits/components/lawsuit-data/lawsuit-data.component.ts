@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LawsuitRentContractDataComponent } from '../lawsuit-rent-contract-data/lawsuit-rent-contract-data.component';
 import { LawsuitDefendantDataComponent } from '../lawsuit-defendant-data/lawsuit-defendant-data.component';
 import { LawsuitClaimDataComponent } from '../lawsuit-claim-data/lawsuit-claim-data.component';
+import { LawsuitReviewerNotesComponent } from '../lawsuit-reviewer-notes/lawsuit-reviewer-notes.component';
 
 @Component({
     selector: 'app-lawsuit-data',
@@ -15,6 +16,13 @@ import { LawsuitClaimDataComponent } from '../lawsuit-claim-data/lawsuit-claim-d
 export class LawsuitDataComponent extends BaseComponent implements OnInit {
     accordionContent: Accordion = {
         accordionComponentList: [
+            {
+                title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.reviwerNotes),
+                icon: 'assets/images/icons/bookmarks.svg',
+                component: LawsuitReviewerNotesComponent,
+                isVisible: true,
+                isRendered: true
+            },
             {
                 title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.plaintiffData2),
                 icon: 'assets/images/icons/bookmarks.svg',

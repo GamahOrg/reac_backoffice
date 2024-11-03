@@ -1,5 +1,17 @@
 import { SysFileManagerCreateUpdateDto } from "@app/shared/models/sys-file-manager-create-update-dto"
 
+export interface ReviwerNotes{
+    notes : string;
+    createdOn : string;
+    employee : Employee;
+    
+}
+
+export interface Employee {
+    employeeName : string;
+}
+
+
 export interface LawsuitItemDetails {
     applicantCitizen: ApplicantCitizen,
     applicantCitizenId: string,

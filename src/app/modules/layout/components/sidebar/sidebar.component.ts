@@ -130,6 +130,13 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.requestToExtendSettlementPeriodList,
                         },
 
+                        {
+                            id: 'litigation-request-correspondences-list',
+                            icon:'',
+                            title: this.translate.instant(translations.layout.sidebar.arbitrationRequestCorrespondences),
+                            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationRequestCorrespondencesList,
+                          },
+
                     ]
                 },
             );
@@ -226,7 +233,14 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             title: this.translate.instant(translations.layout.sidebar.arbitratorRecusalRequests),
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.arbitratorRecusalRequests,
-                        }
+                        },
+                        {
+                            id: 'arbitration-request-correspondences-list',
+                            icon:'',
+                            title: this.translate.instant(translations.layout.sidebar.arbitrationRequestCorrespondences),
+                            url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.arbitrationRequestCorrespondencesList,
+                          },
+                        
 
                     ]
                 },

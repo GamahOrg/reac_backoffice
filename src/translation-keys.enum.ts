@@ -86,6 +86,8 @@ export namespace translations {
             arbitrationSessionList = 'layout.sidebar.arbitrationSessionList',
             assignArbitrationMemberList = 'layout.sidebar.assignArbitrationMemberList',
             assignArbitrationHeadList = 'layout.sidebar.assignArbitrationHeadList',
+            arbitrationRequestCorrespondences = "layout.sidebar.arbitrationRequestCorrespondences",
+            litigationRequestCorrespondences = "layout.sidebar.litigationRequestCorrespondences",
             arbitratorRecusalRequests = 'layout.sidebar.arbitratorRecusalRequests',
             reports = 'layout.sidebar.reports',
             litigationStatisticsReviewReport = 'layout.sidebar.litigationStatisticsReviewReport',
@@ -281,6 +283,8 @@ export namespace translations {
             plaintiff = "lawsuits.createEditLawsuit.plaintiff",
             plaintiffData = "lawsuits.createEditLawsuit.plaintiffData",
             plaintiffData2 = "lawsuits.createEditLawsuit.plaintiffData2",
+            reviwerNotes = "lawsuits.createEditLawsuit.reviwerNotes",
+            notesCreatedDate = "lawsuits.createEditLawsuit.notesCreatedDate",
             plaintiffName = "lawsuits.createEditLawsuit.plaintiffName",
             plaintiffRole = "lawsuits.createEditLawsuit.plaintiffRole",
             identityNumber = "lawsuits.createEditLawsuit.identityNumber",
@@ -781,5 +785,17 @@ export namespace translations {
         otherServicesRatio = "reports.otherServicesRatio",
         rentRatio = "reports.rentRatio",
         propertiesRatio = "reports.propertiesRatio",
+    }
+
+    export enum LitigationRequestCorrespondences{
+        correspondences = 'LitigationRequestCorrespondences.correspondences',
+        addCorrespondence = 'LitigationRequestCorrespondences.addCorrespondence',
+        subject = 'LitigationRequestCorrespondences.subject',
+        message = 'LitigationRequestCorrespondences.message',
+        correspondenceCreatedBy = 'LitigationRequestCorrespondences.correspondenceCreatedBy',
+        correspondenceCreatedOn = 'LitigationRequestCorrespondences.correspondenceCreatedOn',
+        correspondenceFile = 'LitigationRequestCorrespondences.correspondenceFile',
+        actions = 'LitigationRequestCorrespondences.actions',
+        replies = 'LitigationRequestCorrespondences.replies',
     }
 }
