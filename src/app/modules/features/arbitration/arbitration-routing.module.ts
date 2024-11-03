@@ -9,6 +9,8 @@ import { ArbitratorListComponent } from './components/arbitrator-list/arbitrator
 import { ArbitratorRecusalRequestsComponent } from './components/arbitrator-recusal-requests/arbitrator-recusal-requests/arbitrator-recusal-requests.component';
 import { ApproveOrRejectArbitratorRecusalRequestComponent } from './components/approve-or-reject-arbitrator-recusal-request/approve-or-reject-arbitrator-recusal-request.component';
 import { AssignedArbitrationRequestsDocumnetsComponent } from './pages/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets.component';
+import { ArbitrationRequestCorrespondencesDetailsComponent } from './components/arbitration-request-correspondences-details/arbitration-request-correspondences-details.component';
+import { ArbitrationRequestCorrespondencesListComponent } from './components/arbitration-request-correspondences-list/arbitration-request-correspondences-list.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,14 @@ const routes: Routes = [
   {
     path: Configuration.pages.arbitration.assignarbitratorlist,
     component: ArbitratorListComponent,
+  },
+  {
+    path: Configuration.pages.arbitration.arbitrationRequestCorrespondencesList,
+    component: ArbitrationRequestCorrespondencesListComponent,
+  },
+  {
+    path: `${Configuration.pages.arbitration.arbitrationRequestCorrespondencesDetails}/:id`,
+    component: ArbitrationRequestCorrespondencesDetailsComponent,
   },
   {
     path: Configuration.pages.arbitration.arbitratorRecusalRequests,

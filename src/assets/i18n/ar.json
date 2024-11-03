@@ -33,6 +33,8 @@
             "citizenRequests": "قائمة طلبات المصلح والمحكم",
             "arbitratorRequestList": "طلبات الانضمام كمحكم",
             "arbitratorRequestTaskList": "قائمة مهام الدعاوى",
+            "arbitrationRequestCorrespondences": "المراسلات",
+            "litigationRequestCorrespondences": "المراسلات",
             "reformerRequestList": "طلبات الانضمام كمصلح",
             "reformation": "الصلح",
             "arbitration": "التحكيم",
@@ -241,6 +243,8 @@
             "plaintiff": "مقدم الدعوى",
             "plaintiffData": "بيانات مقدم الدعوى",
             "plaintiffData2": "بيانات المدعي",
+            "reviwerNotes": "ملاحظات المدقق",
+            "notesCreatedDate": "التاريخ",
             "plaintiffName": "اسم المدعي",
             "plaintiffRole": "صفة المدعي",
             "identityNumber": "رقم الهوية",
@@ -745,5 +749,17 @@
         "otherServicesRatio" : "نسبة دعاوى اخري",
         "rentRatio" : "نسبة دعاوى ايجار",
         "propertiesRatio" : "نسبة دعاوى ملاك"
+    },
+
+    "LitigationRequestCorrespondences":{
+        "correspondences" : "المراسلات",
+        "addCorrespondence" : "أضف مراسلة",
+        "subject" : "الموضوع",
+        "message" : "الرسالة",
+        "correspondenceCreatedBy" : "انشاء بواسطة",
+        "correspondenceCreatedOn" : "انشاء بتاريخ",
+        "correspondenceFile" : "ملف",
+        "actions" : "الإجراءات",
+        "replies" : "الردود"
     }
 }

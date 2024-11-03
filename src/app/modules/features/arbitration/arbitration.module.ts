@@ -25,6 +25,9 @@ import { ApproveOrRejectArbitratorRecusalRequestComponent } from './components/a
 import { AssignedArbitrationRequestsDocumnetsComponent } from './pages/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets.component';
 import { NgxPrintModule } from 'ngx-print';
 import { ArbitrationDocumentService } from './services/arbitrator-document/arbitrator-document.service';
+import { ArbitrationRequestCorrespondencesListComponent } from './components/arbitration-request-correspondences-list/arbitration-request-correspondences-list.component';
+import { ArbitrationRequestCorrespondencesDetailsComponent } from './components/arbitration-request-correspondences-details/arbitration-request-correspondences-details.component';
+import { ArbitrationRequestCorrespondencesService } from './services/arbitration-request-correspondences/arbitration-request-correspondences.service';
 
 
 @NgModule({
@@ -37,7 +40,9 @@ import { ArbitrationDocumentService } from './services/arbitrator-document/arbit
         ArbitratorListComponent,
         ArbitratorRecusalRequestsComponent,
         ApproveOrRejectArbitratorRecusalRequestComponent,
-        AssignedArbitrationRequestsDocumnetsComponent
+        AssignedArbitrationRequestsDocumnetsComponent,
+        ArbitrationRequestCorrespondencesListComponent,
+        ArbitrationRequestCorrespondencesDetailsComponent
     ],
     imports: [
         CommonModule,
@@ -64,7 +69,8 @@ import { ArbitrationDocumentService } from './services/arbitrator-document/arbit
         ArbitratorCountDetailsService,
         AssignArbitorService,
         ArbitratorRecusalService,
-        ArbitrationDocumentService
+        ArbitrationDocumentService,
+        ArbitrationRequestCorrespondencesService
     ],
 
 })

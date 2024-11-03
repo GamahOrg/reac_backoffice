@@ -1,0 +1,30 @@
+<div class="grid-3 mt-5">
+
+    <div *ngIf="reviwerNotes?.length !== 0">
+        <div *ngFor="let review of reviwerNotes ; index as i">
+        
+            <h6 class="small fw-5 mt-5"> {{ translations.lawsuits.createEditLawsuit.reviwerNotes | translate }} <span> {{ review?.employee?.employeeName}}</span> </h6>
+            <div class="flex-y-row gap-2 mt-5">
+                <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+                <h6 class="small op-7">
+                    {{review?.notes || '--'}}
+                </h6>
+            </div>
+            
+            <h6 class="small fw-5 mt-5"> {{ translations.lawsuits.createEditLawsuit.notesCreatedDate | translate }} </h6>
+
+                <div class="small op-7 mt-5" >
+                    {{review?.createdOn | date}}
+                </div>
+
+            <div>
+                <hr class="solid">
+            </div>
+    </div>
+    </div>
+    
+
+    
+    
+    
+</div>

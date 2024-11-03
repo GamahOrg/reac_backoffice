@@ -27,6 +27,15 @@ export const Configuration = {
             login: '/api/Account/Login',
             refreshToken: '/api/Account/RefreshToken',
         },
+        LitigationRequestCorrespondence:{
+            addCorrespondence: "/api/LitigationRequestCorrespondence/AddLitigationCorrespondence",
+            getCorrespondencesById: "/api/LitigationRequestCorrespondence/GetLitigationCorrespondences",
+            addCorrespondenceReply: "/api/LitigationRequestCorrespondence/AddLitigationCorrespondenceReply",
+            getCorrespondenceReply: "/api/LitigationRequestCorrespondence/GetLitigationCorrespondenceReply",
+            getCorrespondenceReplyByRequestId: "/api/LitigationRequestCorrespondence/GetLitigationCorrespondencesByLitigationRequestId",
+            getLitigationRequestArbitrationCorrespondence: "/api/LitigationRequestCorrespondence/GetLitigationRequestArbitrationCorrespondence",
+            getLitigationRequestReconciliationCorrespondence: "/api/LitigationRequestCorrespondence/GetLitigationRequestReconciliationCorrespondence"
+        },
         Notification: {
             GetNotificationListForBackOffice: "/api/Notification/GetNotificationListForBackOffice",
             MarkNotificationViewed: "/api/Notification/MarkNotificationViewed",
@@ -152,6 +161,8 @@ export const Configuration = {
         arbitration: {
             arbitratorCountList: "arbitrator-count-list",
             arbitratorCountDetails: "arbitrator-count-details",
+            arbitrationRequestCorrespondencesList: "arbitration-request-correspondences-list",
+            arbitrationRequestCorrespondencesDetails: "arbitration-request-correspondences-details",
             assignedArbitrationRequests: 'assigned-arbitration-requests',
             arbitratorSessionList: "arbitrator-session-list",
             assignarbitratorlist: 'assign-arbitrator-list',
@@ -167,6 +178,11 @@ export const Configuration = {
             lawsuitDetails: "lawsuit-details",
             AuditngListReconciliation: 'auditng-list-reconciliation',
             AuditngListArbitration: 'auditng-list-arbitration'
+        },
+        litigation:{
+            litigationRequestCorrespondencesList:"litigation-request-correspondences-list",
+            litigationRequestCorrespondencesDetails: "litigation-request-correspondences-details",
+
         },
         citizenRequests: {
             arbitratorRequestList: 'arbitrator-request-list',

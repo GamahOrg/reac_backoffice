@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { ReviewResult } from '../../models/enums/review-result.model';
 import { LawsuitReiewRequestDto } from '../../models/lawsuit-reiew-request-dto';
@@ -26,6 +26,7 @@ export class LawsuitReviewComponent extends BaseComponent implements OnInit {
     private _activatedRoute = inject(ActivatedRoute);
     private _router = inject(Router);
     lawsuitListURL: string = "/" + Configuration.modules.lawsuits + "/" + Configuration.pages.lawsuits.lawsuitList
+    isReviewSubmitted : boolean = false;
 
     ReviewResult = ReviewResult;
     // rejectionDescription: string = '';
@@ -59,9 +60,11 @@ export class LawsuitReviewComponent extends BaseComponent implements OnInit {
 
     private GetWorkflowStepEventsForEmployee() {
         this._lawsuitReviewService.GetWorkflowStepEventsForEmployee(this.requestId).pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<GetWorkflowStepEventsForEmployeeDto>) => {
-            if (res.data && res.isDone)
+            if (res.data && res.isDone){
+                debugger;
                 this.buttonActions = res.data
-            console.log("this.buttonActions", this.buttonActions);
+                
+            }
 
         })
     }
@@ -93,8 +96,10 @@ export class LawsuitReviewComponent extends BaseComponent implements OnInit {
             notes: this.notes,
             uploadedFilesIds: this.workFlowProcessingLogFiles
         }
-
-
+        debugger;
+        this.isReviewSubmitted = true;
+        if(!this.actionData.allowNotes ||  (this.actionData.allowNotes && this.notes.length !== 0)){
+            debugger;
         this._lawsuitReviewService.create(this.lawsuitReiewRequest).pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<any>) => {
             if (res.isDone) {
                 this._toastrNotificationService.showSuccess(this._translateService.instant(this.translations.actions.done) + ' ' + this.actionData.eventName + ' ' + this._translateService.instant(this.translations.general.successfully));
@@ -110,6 +115,9 @@ export class LawsuitReviewComponent extends BaseComponent implements OnInit {
                 // }
             }
         })
+        this.isReviewSubmitted = false;
+
+        }
     }
     public navigateToLawsuitList(): void {
         this._router.navigate([this.lawsuitListURL]);

@@ -5,6 +5,8 @@ import { LawsuitListComponent } from './pages/lawsuits-list/lawsuits-list.compon
 import { LawsuitDetailsComponent } from './pages/lawsuit-details/lawsuit-details.component';
 import { AuditngListReconciliationComponent } from './pages/auditng-list-reconciliation/auditng-list-reconciliation.component';
 import { AuditngListArbitrationComponent } from './pages/auditng-list-arbitration/auditng-list-arbitration.component';
+import { LitigationRequestCorrespondenceListComponent } from './components/litigation-request-correspondence-list/litigation-request-correspondence-list.component';
+import { LitigationRequestCorrespondenceDetailsComponent } from './components/litigation-request-correspondence-details/litigation-request-correspondence-details.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,14 @@ const routes: Routes = [
   {
     path: Configuration.pages.lawsuits.AuditngListArbitration,
     component: AuditngListArbitrationComponent,
+  },
+  {
+    path: Configuration.pages.litigation.litigationRequestCorrespondencesList,
+    component: LitigationRequestCorrespondenceListComponent,
+  },
+  {
+    path: `${Configuration.pages.litigation.litigationRequestCorrespondencesDetails}/:id`,
+    component: LitigationRequestCorrespondenceDetailsComponent,
   },
   {
     path: `${Configuration.pages.lawsuits.lawsuitDetails}/:id`,

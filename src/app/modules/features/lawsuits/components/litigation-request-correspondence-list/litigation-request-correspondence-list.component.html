@@ -1,0 +1,62 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+<div class="table-wrapper">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">{{translations.Reformerassigningrequestforall.requestCode | translate}}</th>
+                    <th scope="col">{{translations.Reformerassigningrequestforall.requestDate | translate}}</th>
+                    <th scope="col">{{translations.Reformerassigningrequestforall.firstPartyName | translate}}</th>
+                    <th scope="col">{{translations.Reformerassigningrequestforall.secondPartyName | translate}}</th>
+                    <th scope="col">{{translations.Reformerassigningrequestforall.reformerName | translate}}</th>
+                    <th scope="col">{{translations.Reformerassigningrequestforall.requestTypeName | translate}}</th>
+                    <th scope="col">{{translations.Reformerassigningrequestforall.status | translate}}</th>
+                    <th scope="col">{{translations.LitigationRequest.response | translate}}</th>
+                    <th scope="col">{{translations.CitizenRequest.actions | translate}}</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @for (request of reqList.results; track $index) {
+                <tr>
+                    <td>{{request.requestCode}}</td>
+                    <td>{{request.requestDate | date:'MMM d, y'}}</td>
+                    <td>{{request.firstPartyName}}</td>
+                    <td>{{request.secondPartyName}}</td>
+                    <td>{{request.reformerName}}</td>
+                    <td>{{request.requestTypeName}}</td>
+                    <td>{{request.status}}</td>
+                    <td>{{request.response ? (localization[request.response] | translate) : (translations.TasksRequestsList.None | translate)}}</td>
+
+                    <td>
+                        <button *ngIf="request.id" class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2"
+                          style="background: #F6F6F6;"
+                          (click)="goToDetailsPage(request.id)">
+                          <img src="assets/images/icons/eye.svg" alt="eye">
+                          {{translations.actions.view| translate}}
+                        </button>
+                      </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (reqList.results && reqList.results.length) {
+    <div class="flex-between">
+        <div class="op-6 v-small fw-5">
+            <span>{{translations.tables.from | translate}} </span>
+            <span>{{pagintationData.currentPage}} </span>
+            <span>{{translations.tables.to | translate}} </span>
+            <span>6 </span>
+            <span>{{translations.tables.ofTotal | translate}} </span>
+            <span>{{pagintationData.totalCount}} </span>
+            <span>{{translations.tables.row | translate}} </span>
+        </div>
+
+        <app-pagination></app-pagination>
+    </div>
+}
