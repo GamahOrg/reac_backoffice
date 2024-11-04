@@ -116,6 +116,7 @@ export namespace translations {
         no = "actions.no",
         delete = "actions.delete",
         view = "actions.view",
+        viewDetails = "actions.viewDetails",
         choose = "actions.choose",
         clearAll = "actions.clearAll",
         uploadAll = "actions.uploadAll",
@@ -747,6 +748,21 @@ export namespace translations {
         dayscount = "litigationRequest.dayscount",
         arbitratorName = "litigationRequest.arbitratorName",
         selectArbitrator = "litigationRequest.selectArbitrator"
+    }
+
+    export enum SessionDetails{
+        source = "SessionDetails.source",
+        startTime = "SessionDetails.startTime",
+        totalMinutes = "SessionDetails.totalMinutes",
+        endTime = "SessionDetails.endTime",
+        duration = "SessionDetails.duration",
+        participantsCount = "SessionDetails.participantsCount",
+        participants = "SessionDetails.participants",
+        participantTotalMinutes = "SessionDetails.participantTotalMinutes",
+        participantJoinTime = "SessionDetails.participantJoinTime",
+        participantLeaveTime = "SessionDetails.participantLeaveTime",
+        noDetails = "SessionDetails.noDetails",
+
     }
 
     export enum ArbitratorAssigningRequestType {

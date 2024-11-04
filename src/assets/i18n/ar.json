@@ -81,6 +81,7 @@
         "no": "لا",
         "delete": "حذف",
         "view": "عرض",
+        "viewDetails": "عرض التفاصيل",
         "choose": "أختر",
         "clearAll": "مسح الكل",
         "uploadAll": "رفع الكل",
@@ -761,5 +762,20 @@
         "correspondenceFile" : "ملف",
         "actions" : "الإجراءات",
         "replies" : "الردود"
+    },
+
+    "SessionDetails":{
+        "source" : "الشركة",
+        "startTime" : "وقت البدء",
+        "totalMinutes" : "عدد الدقائق",
+        "endTime" : "وقت الانتهاء",
+        "duration" : "المدة (ساعات)",
+        "participantsCount" : "عدد المشاركين",
+        "participants" : "المشاركين",
+        "participantTotalMinutes" : "عدد الدقائق للمشترك",
+        "participantJoinTime" : "وقت انضمام المشترك",
+        "participantLeaveTime" : "وقت مغادرة المشترك",
+        "noDetails" : "لا يوجد تفاصيل"
+
     }
 }

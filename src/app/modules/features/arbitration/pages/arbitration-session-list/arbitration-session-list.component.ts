@@ -1,5 +1,5 @@
 import { Component, effect, Injector, OnInit, TemplateRef } from '@angular/core';
-import { LitigationRequestMircoForRequestSessionDto } from '@app/modules/features/citizen-requests/models/litigation-request.model';
+import { LitigationRequestMircoForRequestSessionDto, LitigationRequestSessionDetailsDto } from '@app/modules/features/citizen-requests/models/litigation-request.model';
 import { PaginationService } from '@app/shared/services/pagination/pagination.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ArbitrationService } from '../../services/arbitration.service';
@@ -24,7 +24,8 @@ export class ArbitrationSessionListComponent extends BaseComponent implements On
     }
 
     sessionsList: LitigationRequestMircoForRequestSessionDto[] | undefined = [];
-
+    sessionDetails: LitigationRequestSessionDetailsDto | undefined;
+    participantList : any[] = [];
     constructor(private arbitrationService: ArbitrationService,
         private _paginationService: PaginationService,
         private _injector: Injector,
@@ -76,6 +77,33 @@ export class ArbitrationSessionListComponent extends BaseComponent implements On
         this.pagintationData.totalCount = totalCount
         this._paginationService.updatePaginationData(this.pagintationData);
     }
+
+    openSessionDetails(content: TemplateRef<any>, meetingId: number | null) {
+        
+        this.arbitrationService.GetLitigationRequestSessionDetails(meetingId!).subscribe({
+            next: (res) => {
+                debugger;
+                if(res.isDone){
+                    this.sessionDetails = res.data
+                    this.sessionDetails?.participants.forEach(participant => {
+                        if(this.participantList.findIndex(x => x.name == participant.name) == -1){
+
+                            this.participantList.push(participant)
+                        }
+                    });
+
+                    this.modalService.open(content)
+
+                }else{
+
+                }
+
+            }
+        })
+
+
+    }
+
 
 
     openSession(content: TemplateRef<any>, url: string | null) {
