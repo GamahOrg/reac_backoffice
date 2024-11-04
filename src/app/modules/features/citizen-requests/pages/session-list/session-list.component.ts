@@ -1,6 +1,6 @@
 import { Component, effect, Injector, OnInit, TemplateRef } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
-import { LitigationRequestMircoForRequestSessionDto } from '../../models/litigation-request.model';
+import { LitigationRequestMircoForRequestSessionDto, LitigationRequestSessionDetailsDto } from '../../models/litigation-request.model';
 import { LitigationRequestService } from '../../services/litigation-request.service';
 import { PaginationService } from '@app/shared/services/pagination/pagination.service';
 import { Router } from '@angular/router';
@@ -25,6 +25,9 @@ export class SessionListComponent extends BaseComponent implements OnInit {
     }
 
     sessionsList: LitigationRequestMircoForRequestSessionDto[] | undefined = [];
+    sessionDetails: LitigationRequestSessionDetailsDto | undefined;
+    participantList : any[] = [];
+
 
     constructor(private litigationRequestService: LitigationRequestService,
         private _paginationService: PaginationService,
@@ -82,6 +85,31 @@ export class SessionListComponent extends BaseComponent implements OnInit {
     openSession(content: TemplateRef<any>, url: string | null) {
         this.selectedUrl = url;
         this.modalService.open(content)
+    }
+    openSessionDetails(content: TemplateRef<any>, meetingId: number | null) {
+        
+        this.litigationRequestService.GetLitigationRequestSessionDetails(meetingId!).subscribe({
+            next: (res) => {
+                debugger;
+                if(res.isDone){
+                    this.sessionDetails = res.data
+                    this.sessionDetails?.participants.forEach(participant => {
+                        if(this.participantList.findIndex(x => x.name == participant.name) == -1){
+
+                            this.participantList.push(participant)
+                        }
+                    });
+
+                    this.modalService.open(content)
+
+                }else{
+
+                }
+
+            }
+        })
+
+
     }
 
     selectedUrl: string | null = ''

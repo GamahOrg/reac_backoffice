@@ -29,6 +29,12 @@
                             {{translations.actions.view| translate}}
                         </button>
                     </td>
+                    <td>
+                        <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" (click)="openSessionDetails(sessionDetailsModal,litigationRequest.meetingId)">
+                            <img src="assets/images/icons/eye.svg" alt="eye">
+                            {{translations.actions.viewDetails| translate}}
+                        </button>
+                    </td>
                 </tr>
                 }
             </tbody>
@@ -64,5 +70,87 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="startSession(modal)">{{ translations.actions.startSession | translate }}</button>
         <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate }}</button>
+    </div>
+</ng-template>
+
+<ng-template #sessionDetailsModal let-modal>
+    <div class="modal-header">
+        <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+
+    <div *ngIf="sessionDetails != undefined" class="modal-body pt-0">
+        
+        <div>
+            <h6 class="small fw-5">{{translations.SessionDetails.startTime| translate}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">
+                {{sessionDetails?.start_time | date:'yyyy/MM/dd hh:mm'}}
+              </h6>
+            </div>
+        </div>
+
+        <div>
+            <h6 class="small fw-5">{{translations.SessionDetails.endTime| translate}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">
+                {{sessionDetails?.end_time | date:'yyyy/MM/dd hh:mm'}}
+              </h6>
+            </div>
+        </div>
+
+        <div>
+            <h6 class="small fw-5">{{translations.SessionDetails.totalMinutes| translate}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">
+                {{sessionDetails?.total_minutes}}
+              </h6>
+            </div>
+        </div>
+        
+        <!-- <div>
+            <h6 class="small fw-5">{{translations.SessionDetails.duration| translate}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">
+                {{sessionDetails?.duration}}
+              </h6>
+            </div>
+        </div> -->
+        <div>
+            <h6 class="small fw-5">{{translations.SessionDetails.participantsCount| translate}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">
+                {{sessionDetails?.participants_count}}
+              </h6>
+            </div>
+        </div>
+        <div *ngIf="this.participantList.length > 0">
+            <h6 class="small fw-5">{{translations.SessionDetails.participants| translate}}</h6>
+            <div class="flex-y-row gap-2">
+                <div *ngFor="let participant of participantList">
+                    <h6 class="small op-7">
+                      {{participant.name}}
+                    </h6>
+                    <!-- <h6 class="small op-7">
+                      {{participant.join_time | date}}
+                    </h6>
+                    <h6 class="small op-7">
+                      {{participant.leave_time | date}}
+                    </h6>
+                    <h6 class="small op-7">
+                      {{participant.total_minutes}}
+                    </h6> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="sessionDetails == undefined" class="modal-body pt-0">
+        <div>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">
+                {{translations.SessionDetails.noDetails| translate}}
+              </h6>
+            </div>
+        </div>
     </div>
 </ng-template>

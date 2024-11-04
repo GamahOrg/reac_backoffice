@@ -23,6 +23,9 @@ export const Configuration = {
         // },
     },
     APIs: {
+        OTP:{
+            getZoomMeetingDetails : '/api/OTP/GetZoomMeeting'
+        },
         Account: {
             login: '/api/Account/Login',
             refreshToken: '/api/Account/RefreshToken',
