@@ -18,7 +18,11 @@ let refreshTokenSubject: BehaviorSubject<string|null> = new BehaviorSubject<stri
 
 
 export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
+  const _refreshTokenService = inject(RefreshTokenService);
   const _loaderService = inject(LoaderService);
+  const _storageService = inject(StorageService);
+  const _toastrNotificationService = inject(ToastrNotificationService);
+  const _router = inject(Router);
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       _loaderService.showLoader.next(false);
@@ -31,7 +35,48 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
         error.status ===
         Configuration.httpResponseStatusCode.proxyAuthenticationRequired
       ) {
-        return handleUnauthorized(req, next);
+        if (!refreshTokenInProgress) {
+          refreshTokenInProgress = true;
+          refreshTokenSubject.next(null);
+      
+          const token = _storageService.getRefreshToken();
+          _loaderService.showLoader.next(true);
+      
+          if (token) {
+            return _refreshTokenService.refreshToken(token).pipe(
+              switchMap((res: any) => {
+                refreshTokenInProgress = false;
+                if (res.data != null) {
+                  _storageService.saveTokens(res.data);
+      
+                  refreshTokenSubject.next(res.data.accessToken);
+      
+                  return next(addTokenHeader(req, res.data.accessToken));
+                } else {
+                  return logout();
+                }
+              }),
+              catchError((error) => {
+                localStorage.clear();
+                _toastrNotificationService.showError('Unauthorized');
+                _router.navigate([Configuration.modules.auth]);
+                return throwError(() => 'Unauthorized');     
+              })
+            );
+          }else{
+            localStorage.clear();
+            _toastrNotificationService.showError('Unauthorized');
+            _router.navigate([Configuration.modules.auth]);
+            return throwError(() => 'Unauthorized');   
+          }
+      
+        }
+      
+        return refreshTokenSubject.pipe(
+          filter(token => token !== null),
+          take(1),
+          switchMap((token) => next(addTokenHeader(req, token as string)))
+        );
       }
       return throwError(() => error.statusText);
     })
