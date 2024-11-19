@@ -65,19 +65,24 @@ export class LoginComponent extends BaseComponent {
             this._loginService
                 .login(this.loginForm.value as LoginParams)
                 .pipe(takeUntil(this.destroy$))
-                .subscribe((res: BaseResponse<TokenResponse>) => {
+              .subscribe((res: BaseResponse<TokenResponse>) => {
                     if (res) {
                         if (res.data) {
                             this._storageService.saveTokens(res.data);
-                            this._storageService.saveDepartmentType(res.data.departmentType)
-                            if(res.data.departmentType == DepartmentType.Review){
+                          this._storageService.saveDepartmentType(res.data.departmentType)
+                          setTimeout((app: any, res: BaseResponse<TokenResponse>) => {
+                            if (res.data?.departmentType == DepartmentType.Review) {
 
-                                this.navigateTolawsuitsModule()
-                            }else if(res.data.departmentType == DepartmentType.Reconciliation){
-                                this.navigateToaReformerAssigningRequestsModule()
-                            }else if(res.data.departmentType == DepartmentType.Arbitration){
-                                this.navigateToaArbitratorAssigningRequestsModule()
+                              app.navigateTolawsuitsModule()
+                            } else if (res.data?.departmentType == DepartmentType.Reconciliation) {
+                              app.navigateToaReformerAssigningRequestsModule()
+                            } else if (res.data?.departmentType == DepartmentType.Arbitration) {
+                              app.navigateToaArbitratorAssigningRequestsModule()
                             }
+                          }, 4000,this,res);
+
+
+                            
                         } else {
                             this.errorFeedback = res.message;
                         }
