@@ -40,7 +40,7 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
   ArbitratorNominationListUrl: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.assignArbitrationMemberDetails}`
   ArbitratorChairmanNominationListUrl: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.assignArbitrationHeadDetails}`
 
-  // getter 
+  // getter
   get requestType() {
     return RequestType
   };
@@ -53,14 +53,18 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
   };
 
   private GetNotificationListForBackOffice(): void {
-    this._notificationsService.GetNotificationListForBackOffice()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((res: BaseResponse<NotificationResponseDto>) => {
-        if (res.isDone && res.data) {
-          this.notificationList = res.data.notificationList;
-          this.notViewedCount = res.data.notViewedCount
-        }
-      })
+    var app  = this;
+    setTimeout(function (){
+      app._notificationsService.GetNotificationListForBackOffice()
+        .subscribe((res: BaseResponse<NotificationResponseDto>) => {
+          if (res.isDone && res.data) {
+            app.notificationList = res.data.notificationList;
+            app.notViewedCount = res.data.notViewedCount
+          }
+        })
+
+    }, 2000);
+
   }
   public onNotificationClicked(notification: SysNotification) {
     console.log("notification", notification);
