@@ -3,6 +3,8 @@
 @import "global";
 @import "helpers";
 @import "bs-override";
+@import "@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+
 .status-1,
 .status-9 {
     color: #d8b934;
@@ -28,3 +30,9 @@
 .status-10 {
     color: var(--primary);
 }
+
+.cdk-overlay-pane.owl-dt-popup{
+    direction: ltr !important;
+    z-index: 1050 !important; /* Ensure this is higher than the modal */
+    position: absolute; /* or relative */
+    }

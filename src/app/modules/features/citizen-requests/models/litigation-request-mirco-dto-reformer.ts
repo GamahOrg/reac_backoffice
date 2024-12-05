@@ -11,5 +11,5 @@ export interface LitigationRequestMircoDtoReformer {
     status:string;
     isDone :string;
     response: LitigationRequestReformerAssigningRequestStatus;
-
+    reconciliationPeriod : number;
 }

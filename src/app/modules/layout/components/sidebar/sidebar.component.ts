@@ -16,6 +16,7 @@ import { DepartmentType } from '@app/core/models/enums/department-type.model';
 export class SidebarComponent extends BaseComponent implements OnInit {
     private _storageService = inject(StorageService);
     departmentType: DepartmentType | null = null;
+    isAdmin!: string | null;
     isCollapsed: boolean | undefined;
 
     menuItems: MenuItem[] = [];
@@ -29,34 +30,11 @@ export class SidebarComponent extends BaseComponent implements OnInit {
     }
     private getDepartmentType(): void {
         this.departmentType = Number(this._storageService.getDepartmentType());
+        debugger;
+
+        this.isAdmin = this._storageService.getUserType();
+        
         console.log("this.departmentType", this.departmentType);
-
-        // this.menuItems.push(
-        //     {
-        //         id: 'reports-collapse',
-        //         title: this.translate.instant(translations.layout.sidebar.reports),
-        //         icon: 'assets/images/icons/sidebar/book.svg',
-        //         children: [
-        //             {
-        //                 id: 'reports-link',
-        //                 title: this.translate.instant(translations.layout.sidebar.litigationStatisticsReviewReport),
-        //                 // icon: 'assets/images/icons/sidebar/menu.svg',
-        //                 icon: 'assets/images/icons/sidebar/book.svg',
-        //                 url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.statisticsReview,
-        //             },
-        //             {
-        //                 id: 'reports-link',
-        //                 title: this.translate.instant(translations.layout.sidebar.litigationStatisticsReformerReport),
-        //                 // icon: 'assets/images/icons/sidebar/menu.svg',
-        //                 icon: 'assets/images/icons/sidebar/book.svg',
-        //                 url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.statisticsReformer,
-        //             },
-
-        //         ]
-        //     },
-        // );
-
-
 
         if (this.departmentType == DepartmentType.Review) {
             this.menuItems.push(
@@ -68,14 +46,32 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                         {
                             id: 'claims-link',
                             title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
-                            // icon: 'assets/images/icons/sidebar/menu.svg',
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
+                        },
+                        {
+                            id: 'vacation-request',
+                            title: this.translate.instant(translations.layout.sidebar.vacationRequest),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UserManagement + '/' + Configuration.pages.userManagement.vacationRequest,
                         },
 
                     ]
                 },
             );
+            if(this.isAdmin === "true"){
+                this.menuItems[0]?.children?.push(
+                    
+                    {
+                        id: 'vacation-request-reply',
+                        title: this.translate.instant(translations.layout.sidebar.vacationRequestReply),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        url: '/' + Configuration.modules.UserManagement + '/' + Configuration.pages.userManagement.vacationRequestReply,
+                    },
+    
+                );
+            }
+
         } else if (this.departmentType == DepartmentType.Reconciliation) {
             this.menuItems.push(
                 {

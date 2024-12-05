@@ -82,5 +82,9 @@ export enum LawsuitStatus {
     ///<summary>بإنتظار التفسير</summary>
     WaitingForExplanation = 21,
     ///<summary>تم الرد</summary>
-    ExplanationResponsed = 22
+    ExplanationResponsed = 22,
+    ///<summary>تم رفض طلب المشارطة</summary>
+    RejectionOfAgreementRequest = 23,
+    ///<summary>ملغاة</summary>
+    Cancelled = 24
 }

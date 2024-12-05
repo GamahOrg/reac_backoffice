@@ -12,7 +12,15 @@ import { PaginationService } from './services/pagination/pagination.service';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 // import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
 
-
+export const MY_MOMENT_FORMATS = {
+    parseInput: 'DD/MM/YYYY HH:mm:ss',
+    fullPickerInput: 'DD/MM/YYYY HH:mm:ss',
+    datePickerInput: 'DD/MM/YYYY',
+    timePickerInput: 'HH:mm:ss',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  };
 
 @NgModule({
     declarations: [],

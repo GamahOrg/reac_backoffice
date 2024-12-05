@@ -437,3 +437,8 @@ details {
         }
     }
 }
+
+// date time picker
+.cdk-overlay-container {
+    z-index: 1100;
+}

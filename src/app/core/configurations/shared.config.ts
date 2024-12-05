@@ -1,4 +1,5 @@
 import { AssignedArbitrationRequestsDocumnetsComponent } from "@app/modules/features/arbitration/pages/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets.component";
+import { UserManagementModule } from "@app/modules/features/user-management/user-management.module";
 
 export const Configuration = {
     languages: ['ar', 'en'],
@@ -147,6 +148,12 @@ export const Configuration = {
         },
         SysSetting:{
             GetSettingByKey: "/api/SysSetting/GetSettingByKey"
+        },
+        userManagement:{
+            ProcessVacationRequest: "/api/SysVacationRequest/ProcessVacationRequestAsync",
+            createVacationRequest: "/api/SysVacationRequest/CreateVacationAsync",
+            getVacationRequestsForEmployee: "/api/SysVacationRequest/EmployeeList",
+            getVacationRequestsForAdmin: "/api/SysVacationRequest/AdminList",
         }
     },
     modules: {
@@ -155,7 +162,7 @@ export const Configuration = {
         citizenRequests: 'citizen-requests',
         arbitration: "arbitration",
         reports: "reports",
-
+        UserManagement: 'user-management'
     },
     pages: {
         auth: {
@@ -214,6 +221,10 @@ export const Configuration = {
             statisticsReview : 'statistics-review',
             statisticsReformer : 'statistics-reformer',
             statisticsArbitration : 'statistics-arbitration'
+        },
+        userManagement: {
+            vacationRequest:'vacation-request',
+            vacationRequestReply:'vacation-request-reply'
         }
     },
     validators: {

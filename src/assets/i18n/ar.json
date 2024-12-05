@@ -56,8 +56,9 @@
             "arbitratorRecusalRequests": "طلبات رد المحكمين",
             "reports": "التقارير",
             "litigationStatisticsReviewReport": "تقرير أعداد الدعاوى في مرحلة التدقيق",
-            "litigationStatisticsReformerReport": "تقرير أعداد الدعاوى في مرحلة الصلح"
-
+            "litigationStatisticsReformerReport": "تقرير أعداد الدعاوى في مرحلة الصلح",
+            "vacationRequest" : "تقديم طلبات الاجازة" ,
+            "vacationRequestReply" : "طلبات الاجازة المستقبلة" 
         }
     },
     "actions": {
@@ -139,6 +140,8 @@
             "actions": "الإجراءات",
             "appointmentDate": "تاريخ التعيين",
             "remainingAuditDays": "عدد ايام التدقيق المتبقية\/ ايام عمل",
+            "remainingReconciliationDays": "عدد ايام الصلح المتبقية\/ ايام عمل",
+            "remainingArbitrationDays": "عدد ايام التحكيم المتبقية\/ ايام عمل",
             "days": "أيام",
             "new": "جديدة",
             "received": "مستلمة",
@@ -160,7 +163,9 @@
             "ReconciliationWasNotMadeAndMoveToArbitration": "عدم الصُلح والانتقال للتحكيم",
             "JudgmentDecisionIssued": "تم اصدار حكم التحكيم",
             "WaitingForExplanation": "بإنتظار التفسير",
-            "ExplanationResponsed": "تم الرد"
+            "ExplanationResponsed": "تم الرد",
+            "RejectionOfAgreementRequest": "تم رفض طلب المشارطة",
+            "Cancelled": "ملغاة"
         },
         "lawsuitDetails": {
             "administrativeFeesNotPaid": "لم يتم تسديد الرسوم الإدارية للدعوى بعد",
@@ -777,5 +782,23 @@
         "participantLeaveTime" : "وقت مغادرة المشترك",
         "noDetails" : "لا يوجد تفاصيل"
 
+    },
+
+     "UserManagement":{
+         "vacationRequests":{
+            "vacationRequests" : "تقديم طلبات الاجازة",
+            "createVacationRequest" : "انشاء طلب اجازة جديد",
+            "noVacationRequests" : "لا يوجد طلبات اجازة حاليا",
+            "startDate" : "من",
+            "endDate" : "الي",
+            "reason" : "الاسباب",
+            "isApproved" : "الحالة",
+            "employeeName" : "اسم مقدم الطلب",
+            "approvedBy" : "مدير الادارة",
+            "approvedOn" : "موافقة/رفض بتاريخ",
+            "approve" : "الموافقة", 
+            "reject" :"رفض"
+        }
+        
     }
 }
