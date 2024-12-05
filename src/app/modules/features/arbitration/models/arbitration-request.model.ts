@@ -46,6 +46,7 @@ export interface CustomLitigationRequestMircoArbitratorDto{
     secondPartyName: string;
     requestTypeName: string;
     requestTypeId: number;
+    arbitrationPeriod: number;
     status: string;
     isDone: string;
     requestId?: string;

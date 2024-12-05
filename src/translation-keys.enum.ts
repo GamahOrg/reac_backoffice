@@ -92,6 +92,8 @@ export namespace translations {
             reports = 'layout.sidebar.reports',
             litigationStatisticsReviewReport = 'layout.sidebar.litigationStatisticsReviewReport',
             litigationStatisticsReformerReport = 'layout.sidebar.litigationStatisticsReformerReport',
+            vacationRequest = 'layout.sidebar.vacationRequest',
+            vacationRequestReply = 'layout.sidebar.vacationRequestReply',
         }
     }
 
@@ -177,6 +179,8 @@ export namespace translations {
             actions = "lawsuits.lawsuitsList.actions",
             appointmentDate = "lawsuits.lawsuitsList.appointmentDate",
             remainingAuditDays = "lawsuits.lawsuitsList.remainingAuditDays",
+            remainingReconciliationDays = "lawsuits.lawsuitsList.remainingReconciliationDays",
+            remainingArbitrationDays = "lawsuits.lawsuitsList.remainingArbitrationDays",
             days = "lawsuits.lawsuitsList.days",
             new = "lawsuits.lawsuitsList.new",
             received = "lawsuits.lawsuitsList.received",
@@ -199,6 +203,8 @@ export namespace translations {
             JudgmentDecisionIssued = "lawsuits.lawsuitsList.JudgmentDecisionIssued",
             WaitingForExplanation = "lawsuits.lawsuitsList.WaitingForExplanation",
             ExplanationResponsed = "lawsuits.lawsuitsList.ExplanationResponsed",
+            RejectionOfAgreementRequest = "lawsuits.lawsuitsList.RejectionOfAgreementRequest",
+            Cancelled = "lawsuits.lawsuitsList.Cancelled",
         }
 
         export enum lawsuitDetails {
@@ -813,5 +819,23 @@ export namespace translations {
         correspondenceFile = 'LitigationRequestCorrespondences.correspondenceFile',
         actions = 'LitigationRequestCorrespondences.actions',
         replies = 'LitigationRequestCorrespondences.replies',
+    }
+
+    export namespace UserManagement{
+        export enum vacationRequests{
+            vacationRequests = 'UserManagement.vacationRequests.vacationRequests',
+            createVacationRequest = 'UserManagement.vacationRequests.createVacationRequest',
+            noVacationRequests = 'UserManagement.vacationRequests.noVacationRequests',
+            startDate = 'UserManagement.vacationRequests.startDate',
+            endDate = 'UserManagement.vacationRequests.endDate',
+            reason = 'UserManagement.vacationRequests.reason',
+            isApproved = 'UserManagement.vacationRequests.isApproved',
+            employeeName = 'UserManagement.vacationRequests.employeeName',
+            approvedBy = 'UserManagement.vacationRequests.approvedBy',
+            approvedOn = 'UserManagement.vacationRequests.approvedOn',
+            approve = 'UserManagement.vacationRequests.approve',
+            reject = 'UserManagement.vacationRequests.reject',
+        }
+        
     }
 }

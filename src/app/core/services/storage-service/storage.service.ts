@@ -18,12 +18,18 @@ export class StorageService {
   saveDepartmentType(departmentType: DepartmentType): void {
     localStorage.setItem('departmentType', departmentType.toString());
   }
+  saveUserType(isAdmin : boolean): void {
+    localStorage.setItem('isAdmin', isAdmin.toString());
+  }
 
   getToken(): string | null {
     return localStorage.getItem('token');
   }
   getDepartmentType(): string | null {
     return localStorage.getItem('departmentType');
+  }
+  getUserType(): string | null {
+    return localStorage.getItem('isAdmin');
   }
   
   getRefreshToken(): string | null {

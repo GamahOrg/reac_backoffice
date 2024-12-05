@@ -1,9 +1,11 @@
 import { SysFileManagerCreateUpdateDto } from "@app/shared/models/sys-file-manager-create-update-dto"
+import { workFlowProcessingLogFiles } from "./audit-notes-dto.model";
 
 export interface ReviwerNotes{
     notes : string;
     createdOn : string;
     employee : Employee;
+    workFlowProcessingLogFiles: workFlowProcessingLogFiles[],
     
 }
 

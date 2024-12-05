@@ -71,6 +71,7 @@ export class LoginComponent extends BaseComponent {
               this.showLoader = true;
               this._storageService.saveTokens(res.data);
               this._storageService.saveDepartmentType(res.data.departmentType)
+              this._storageService.saveUserType(res.data.isAdmin)
               setTimeout((app: any, res: BaseResponse<TokenResponse>) => {
                 this.showLoader = false;
                 if (res.data?.departmentType == DepartmentType.Review) {

@@ -56,6 +56,8 @@ export class LawsuitListComponent extends BaseComponent implements OnInit {
     [LawsuitStatus.JudgmentDecisionIssued]: this.translations.lawsuits.lawsuitsList.JudgmentDecisionIssued,
     [LawsuitStatus.WaitingForExplanation]: this.translations.lawsuits.lawsuitsList.WaitingForExplanation,
     [LawsuitStatus.ExplanationResponsed]: this.translations.lawsuits.lawsuitsList.ExplanationResponsed,
+    [LawsuitStatus.RejectionOfAgreementRequest]: this.translations.lawsuits.lawsuitsList.RejectionOfAgreementRequest,
+    [LawsuitStatus.Cancelled]: this.translations.lawsuits.lawsuitsList.Cancelled,
 
   }
 
@@ -113,6 +115,7 @@ export class LawsuitListComponent extends BaseComponent implements OnInit {
 
   //private methods
   private updateRequestList(TypeListView: Pagination<AuditngListItem[]>): void {
+    debugger;
     this.auditngList = TypeListView;
 
     this.setPaginationData(

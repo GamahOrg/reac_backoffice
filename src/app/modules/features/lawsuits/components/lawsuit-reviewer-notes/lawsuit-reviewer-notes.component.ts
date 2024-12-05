@@ -2,6 +2,7 @@ import { Component, effect, inject, Injector, OnInit } from '@angular/core';
 import { LawsuitRequestDetailsService } from '../../services/lawsuit-request-details/lawsuit-request-details.service';
 import { ReviwerNotes } from '../../models/lawsuit-details.model';
 import { BaseComponent } from '@app/shared/components/base/base.component';
+import { environment } from '@environment/environment';
 
 @Component({
   selector: 'app-lawsuit-reviewer-notes',
@@ -13,6 +14,7 @@ export class LawsuitReviewerNotesComponent extends BaseComponent implements OnIn
   _injector = inject(Injector);
   private _lawsuitRequestDetailsService= inject(LawsuitRequestDetailsService);
   reviwerNotes: ReviwerNotes[] | undefined;
+  baseUrl = `${environment.baseURL}/`;
 
   ngOnInit(): void {
     this.observeLawsuitRequestDetailsSignal();

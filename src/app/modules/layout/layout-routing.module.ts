@@ -29,6 +29,11 @@ const routes: Routes = [
           import('../reports/reports.module').then((m) => m.ReportsModule),
       },
       {
+        path: Configuration.modules.UserManagement,
+        loadChildren: () =>
+          import('../features/user-management/user-management.module').then((m) => m.UserManagementModule),
+      },
+      {
         path: '',
         redirectTo: Configuration.modules.lawsuits,
         pathMatch: 'full'

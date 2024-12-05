@@ -16,6 +16,7 @@ export interface AuditngListItem {
     firstPartyName: string,
     secondPartyName: string,
     auditngRemaningDays: number,
+    pretenderRating: number,
     internalStatusId: number,
     litigationRequestContractTypeId: number,
     externalStatusId: number,
