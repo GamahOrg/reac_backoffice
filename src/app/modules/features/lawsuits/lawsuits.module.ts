@@ -36,6 +36,8 @@ import { LawsuitReviewerNotesComponent } from './components/lawsuit-reviewer-not
 import { LitigationRequestCorrespondenceListComponent } from './components/litigation-request-correspondence-list/litigation-request-correspondence-list.component';
 import { LitigationRequestCorrespondencesService } from './services/litigation-request-correspondence/litigation-request-correspondence-service';
 import { LitigationRequestCorrespondenceDetailsComponent } from './components/litigation-request-correspondence-details/litigation-request-correspondence-details.component';
+import { LitigationRequestNotesListComponent } from './pages/litigation-request-notes-list/litigation-request-notes-list.component';
+import { LitigationRequestNotesService } from './services/litigation-request-notes/litigation-request-notes.service';
 
 @NgModule({
     declarations: [
@@ -52,7 +54,8 @@ import { LitigationRequestCorrespondenceDetailsComponent } from './components/li
         LawsuitClaimDataComponent,
         LawsuitReviewerNotesComponent,
         LitigationRequestCorrespondenceListComponent,
-        LitigationRequestCorrespondenceDetailsComponent
+        LitigationRequestCorrespondenceDetailsComponent,
+        LitigationRequestNotesListComponent
     ],
     providers: [
         LawsuitListService,
@@ -61,7 +64,8 @@ import { LitigationRequestCorrespondenceDetailsComponent } from './components/li
         LawsuitReviewService,
         LawsuitEditReasonsService,
         LawsuitEventsService,
-        LitigationRequestCorrespondencesService
+        LitigationRequestCorrespondencesService,
+        LitigationRequestNotesService
     ],
     imports: [
         CommonModule,

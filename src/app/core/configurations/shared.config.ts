@@ -24,6 +24,10 @@ export const Configuration = {
         // },
     },
     APIs: {
+        LitigationRequestNote:{
+            GetLitigationRequestNotesForBackoffice: "/api/LitigationRequestNote/GetLitigationRequestNotesForBackoffice",
+            getNoteById: "/api/LitigationRequestNote/GetLitigationNotes"
+        },
         OTP:{
             getZoomMeetingDetails : '/api/OTP/GetZoomMeeting'
         },
@@ -107,7 +111,7 @@ export const Configuration = {
             AuditngList: '/api/LitigationRequest/AuditngList',
             AuditngListArbitration: '/api/LitigationRequest/AuditngListArbitration',
             AuditngListReconciliation: '/api/LitigationRequest/AuditngListReconciliation',
-            GetLitigationById: '/api/LitigationRequest/GetLitigationById',
+            GetLitigationById: '/api/LitigationRequest/GetLitigationByIdForEmployee',
             GetAuditNotesById: "/api/LitigationRequest/GetAuditNotesById",
         },
         WorkFlowProcessingLog: {
@@ -192,6 +196,8 @@ export const Configuration = {
         litigation:{
             litigationRequestCorrespondencesList:"litigation-request-correspondences-list",
             litigationRequestCorrespondencesDetails: "litigation-request-correspondences-details",
+            litigationRequestNotesList:"litigation-request-notes-list",
+            litigationRequestNotesDetails: "litigation-request-notes-details",
 
         },
         citizenRequests: {
