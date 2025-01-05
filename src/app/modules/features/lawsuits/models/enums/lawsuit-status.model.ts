@@ -86,5 +86,21 @@ export enum LawsuitStatus {
     ///<summary>تم رفض طلب المشارطة</summary>
     RejectionOfAgreementRequest = 23,
     ///<summary>ملغاة</summary>
-    Cancelled = 24
+    Cancelled = 24,
+    ///<summary>الصلح بواسطة منصة تراضى </summary>
+    ReconciliationOnTradyPlatform = 25,
+    ///<summary>تم إرسال طلب تحصيل رسوم الدعوة</summary>
+    CollectionOfLitigationFeesRequestIsBeingSent = 26,
+    ///<summary>تم تحصيل رسوم الدعوة</summary>
+    LitigationFeesHaveBeenCollected = 27,
+    ///<summary>تم إرسال طلب تحصيل رسوم الصلح</summary>
+    CollectionOfReconciliationFeesRequestIsBeingSent = 28,
+    ///<summary>تم تحصيل رسوم الصلح</summary>
+    ReconciliationFeesHaveBeenCollected = 29,
+    ///<summary>تم إرسال طلب تحصيل رسوم التحكيم</summary>
+    CollectionOfArbitrationFeesRequestIsBeingSent = 30,
+    ///<summary>تم تحصيل رسوم التحكيم</summary>
+    ArbitrationFeesHaveBeenCollected = 31,
+    ///<summary>تم قبول الدعوى وجارى إرسال طلب تحصيل رسوم الصلح</summary>
+    LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend = 32
 }

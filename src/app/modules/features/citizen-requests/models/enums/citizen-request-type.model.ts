@@ -9,7 +9,9 @@ export enum CitizenRequestAction {
     CertifiedWithFees = 3,
     Reject = 4,
     SendForEdit = 5,
-    SendFromEdit = 6
+    SendFromEdit = 6,
+    SendToPayFees = 7,
+    FeesPaid = 8,
 }
 
 export enum CitizenRequestActionButton {

@@ -95,7 +95,8 @@
         "procedures": "الاجراءات",
         "assign": "تعيين",
         "logout": "تسجيل خروج",
-        "assignArbitrator": "تعين محكم"
+        "assignArbitrator": "تعين محكم",
+        "sendToPayFees":"ارسال الطلب لدفع الرسوم"
     },
     "tables": {
         "from": "من",
@@ -165,7 +166,15 @@
             "WaitingForExplanation": "بإنتظار التفسير",
             "ExplanationResponsed": "تم الرد",
             "RejectionOfAgreementRequest": "تم رفض طلب المشارطة",
-            "Cancelled": "ملغاة"
+            "Cancelled": "ملغاة",
+
+            "CollectionOfLitigationFeesRequestIsBeingSent": "تم ارسال طلب دفع رسوم الدعوي",
+            "LitigationFeesHaveBeenCollected": "تم دفع رسوم الدعوي",
+            "CollectionOfReconciliationFeesRequestIsBeingSent": "تم ارسال طلب دفع رسوم الصلح",
+            "ReconciliationFeesHaveBeenCollected": "تم دفع رسوم الصلح",
+            "CollectionOfArbitrationFeesRequestIsBeingSent": "تم ارسال طلب دفع رسوم التحكيم",
+            "ArbitrationFeesHaveBeenCollected": "تم دفع رسوم التحكيم",
+            "LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend": "تم ارسال طلب تأكيد دفع رسوم الصلح"
         },
         "lawsuitDetails": {
             "administrativeFeesNotPaid": "لم يتم تسديد الرسوم الإدارية للدعوى بعد",
@@ -475,7 +484,7 @@
         "certificateRequired": "يجب اضافة شهادة على الأقل",
         "viewRequest": "عرض الطلب",
         "acceptHeaderTitle": "الموافق على الطلب",
-        "acceptWithoutFeesMessageBody": "الموافقة على الطلب بدون رسوم",
+        "acceptWithoutFeesMessageBody": "الموافقة على الطلب",
         "acceptWithFeesMessageBody": "الموافقة على الطلب مع دفع رسوم",
         "rejectHeaderTitle": "رفض الطلب",
         "sendForEditHeaderTitle": "اعادة الطلب للنعديل",
@@ -506,7 +515,8 @@
         "BadRating": "تقييم سيئ",
         "LateLitigationRequest": "دعوة متأخرة",
         "NonPaymentOfMembershipFees": "عدم سداد الرسوم",
-        "requestDetails": "تفاصيل الطلب"
+        "requestDetails": "تفاصيل الطلب",
+        "sendToPayFeesMessageBody":"ارسال الطلب لدفع الرسوم"
     },
     "extendLitigationRequest": {
         "extendLitigationRequest": "مد فترة الصلح",

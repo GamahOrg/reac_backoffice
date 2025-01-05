@@ -52,7 +52,7 @@
     </div>
     <p class="v-small fw-7"> 1 - {{translations.lawsuits.lawsuitDetails.lawsuitDetails | translate}} </p>
   </li>
-  <li *ngIf="lawsuitDetails && (lawsuitDetails.internalStatusId == LawsuitStatus.New || lawsuitDetails.internalStatusId == LawsuitStatus.Edited) "
+  <li *ngIf="lawsuitDetails && (lawsuitDetails.internalStatusId == LawsuitStatus.ReconciliationFeesHaveBeenCollected || lawsuitDetails.internalStatusId == LawsuitStatus.LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend || lawsuitDetails.internalStatusId == LawsuitStatus.LitigationFeesHaveBeenCollected || lawsuitDetails.internalStatusId == LawsuitStatus.New || lawsuitDetails.internalStatusId == LawsuitStatus.Edited) "
       [ngClass]="{'active':!isLawsuitDetails}"
       (click)="updateIsLawsuitDetails(false)">
     <div class="flex-y-row gap-3">
