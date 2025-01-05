@@ -1,9 +1,12 @@
 <app-breadcrumbs></app-breadcrumbs>
 
 <form>
-  <div *ngIf="statusId===citizenRequestStatus.WaitingForCertify || statusId===citizenRequestStatus.SentFromEdit"
+  <div *ngIf="statusId===citizenRequestStatus.WaitingForCertify || statusId===citizenRequestStatus.SentFromEdit || statusId===citizenRequestStatus.FeesPaid"
   class="form-wrapper">
   <div class="flex flex-end justify-content-end">
+
+    <button *ngIf="statusId!==citizenRequestStatus.FeesPaid" class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
+    (click)="open(sendToPayFeesModel)">{{translations.actions.sendToPayFees| translate}}</button>
 
     <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
       (click)="open(acceptModel)">{{translations.actions.accept| translate}}</button>
@@ -160,6 +163,26 @@
 
 
 </form>
+
+<ng-template #sendToPayFeesModel let-modal>
+  <div class="modal-header">
+    <!-- <h5 class="modal-title fw-6">{{ translations.CitizenRequest.acceptHeaderTitle | translate }}</h5> -->
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+
+  <div class="modal-body pt-0">
+    {{ translations.CitizenRequest.sendToPayFeesMessageBody | translate }}
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="onSendToPayFees(modal)">{{ translations.actions.send | translate
+      }}</button>
+
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate
+      }}</button>
+
+  </div>
+</ng-template>
 
 <ng-template #acceptModel let-modal>
   <div class="modal-header">

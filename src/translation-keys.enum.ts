@@ -133,7 +133,8 @@ export namespace translations {
         procedures = "actions.procedures",
         assign = "actions.assign",
         logout = "actions.logout",
-        assignArbitrator = "actions.assignArbitrator"
+        assignArbitrator = "actions.assignArbitrator",
+        sendToPayFees= "actions.sendToPayFees",
     }
 
     export enum tables {
@@ -159,6 +160,14 @@ export namespace translations {
         }
 
         export enum lawsuitsList {
+            CollectionOfLitigationFeesRequestIsBeingSent = "lawsuits.lawsuitsList.CollectionOfLitigationFeesRequestIsBeingSent",
+            LitigationFeesHaveBeenCollected = "lawsuits.lawsuitsList.LitigationFeesHaveBeenCollected",
+            CollectionOfReconciliationFeesRequestIsBeingSent = "lawsuits.lawsuitsList.CollectionOfReconciliationFeesRequestIsBeingSent",
+            ReconciliationFeesHaveBeenCollected = "lawsuits.lawsuitsList.ReconciliationFeesHaveBeenCollected",
+            CollectionOfArbitrationFeesRequestIsBeingSent = "lawsuits.lawsuitsList.CollectionOfArbitrationFeesRequestIsBeingSent",
+            ArbitrationFeesHaveBeenCollected = "lawsuits.lawsuitsList.ArbitrationFeesHaveBeenCollected",
+            LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend = "lawsuits.lawsuitsList.LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend",
+
             lawsuitsList = "lawsuits.lawsuitsList.lawsuitsList",
             addLawsuit = "lawsuits.lawsuitsList.addLawsuit",
             searchByLawsuitNumberOrOpponentName = "lawsuits.lawsuitsList.searchByLawsuitNumberOrOpponentName",
@@ -526,6 +535,7 @@ export namespace translations {
         certificateRequired = "citizenRequest.certificateRequired",
         acceptHeaderTitle = "citizenRequest.acceptHeaderTitle",
         acceptWithoutFeesMessageBody = "citizenRequest.acceptWithoutFeesMessageBody",
+        sendToPayFeesMessageBody = "citizenRequest.sendToPayFeesMessageBody",
         acceptWithFeesMessageBody = "citizenRequest.acceptWithFeesMessageBody",
         rejectHeaderTitle = "citizenRequest.rejectHeaderTitle",
         sendForEditHeaderTitle = "citizenRequest.sendForEditHeaderTitle",
