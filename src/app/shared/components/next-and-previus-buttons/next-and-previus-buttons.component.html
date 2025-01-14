@@ -1,0 +1,26 @@
+<footer class="main-footer flex-between flex-row gap-0">
+	<button class="btn small fw-6 border"
+					(click)="back()"
+					*ngIf="previousBtnIsVisible">{{translations.actions.goBack| translate}}</button>
+
+    <div class="gap-0 flex-row flex-wrap" [class]="previousBtnIsVisible ? 'flex-y-row' : 'flex-between w-100'">
+		<button class="btn small fw-6 text-primary"
+						*ngIf="saveAsDraftBtnIsVisible"
+						(click)="saveAsDraft()">{{translations.actions.saveAsDraft| translate}}</button>
+
+		<button class="btn small fw-6 btn-primary"
+						(click)="next()"
+						*ngIf="nextBtnIsVisible">{{translations.actions.next| translate}}</button>
+	</div>
+</footer>
+
+<!-- <footer class="main-footer flex-between flex-row gap-0">
+        <button class="btn small fw-6 border" (click)="previousTab()">{{translations.actions.goBack| translate}}</button>
+
+        <div class="flex-y-row gap-0">
+            <button class="btn small fw-6 text-primary" (click)="openDraftModal()">{{translations.actions.saveAsDraft| translate}}</button>
+            <button class="btn small fw-6 btn-primary" (click)="isLastTab() ? openSuccessModal() : nextTab()">
+                {{ isLastTab() ? (translations.actions.send | translate) : (translations.actions.next | translate) }}
+            </button>
+        </div>
+    </footer> -->

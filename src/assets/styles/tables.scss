@@ -1,0 +1,38 @@
+.table-wrapper {
+    background-color: var(--white);
+    margin-bottom: 2rem;
+
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+table {
+    border: 1px solid #f6f6f6;
+
+    th,
+    td {
+        color: #3f3e43;
+        vertical-align: middle;
+
+        font-size: 0.75rem;
+        font-weight: 500;
+        font-family: "Loew Next Arabic";
+
+        [lang="ar"] & {
+            font-family: "REGA SemBd";
+        }
+
+        @media (max-width: 991px) {
+            white-space: nowrap;
+        }
+    }
+
+    th {
+        border-bottom: 1px solid #eee !important;
+        padding-block: 19px;
+    }
+
+    td {
+        padding-block: 18px;
+    }
+}

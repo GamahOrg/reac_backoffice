@@ -1,0 +1,11 @@
+.modal-header {
+    @media print {
+        padding-bottom: 1.5rem;
+    }
+}
+
+div {
+    @media print {
+        direction: rtl;
+    }
+}

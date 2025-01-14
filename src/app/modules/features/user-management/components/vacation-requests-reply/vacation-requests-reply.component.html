@@ -1,0 +1,83 @@
+
+<app-breadcrumbs></app-breadcrumbs>
+
+<div class="table-wrapper">
+
+  <!-- table -->
+  <div *ngIf="vacationsList?.length != 0" class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          
+          <th scope="col">{{translations.UserManagement.vacationRequests.employeeName| translate}}</th>
+          <th scope="col">{{translations.UserManagement.vacationRequests.startDate| translate}}</th>
+          <th scope="col">{{translations.UserManagement.vacationRequests.endDate| translate}}</th>
+          <th scope="col">{{translations.UserManagement.vacationRequests.reason| translate}}</th>
+          <th scope="col">{{translations.UserManagement.vacationRequests.isApproved| translate}}</th>
+          <th scope="col">{{translations.UserManagement.vacationRequests.approvedBy| translate}}</th>
+          <th scope="col">{{translations.UserManagement.vacationRequests.approvedOn| translate}}</th>
+          <th scope="col">{{translations.lawsuits.lawsuitsList.actions| translate}}</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        @for (vacation of vacationsList; track $index) {
+        <tr>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ vacation.employeeName || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ (vacation.startDate | date: 'dd/MM/yyy') || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ (vacation.endDate | date: 'dd/MM/yyy') || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ vacation.reason || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ vacation.isApproved == true ? 'تمت الموافقه' : vacation.isApproved == false ? 'مرفوضة' : '--'  }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ vacation.approvedBy || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ (vacation.approvedOn | date: 'dd/MM/yyy') || '--' }}</span>
+          </td>
+          <td scope="row">
+            <button *ngIf="vacation.isApproved == null" class="btn btn-primary fw-5 py-2 flex-y-row text-nowrap px-8" (click)="acceptVacation(vacation.id)">{{translations.UserManagement.vacationRequests.approve | translate}}</button>
+          </td>
+          <td scope="row">
+            <button *ngIf="vacation.isApproved == null" class="btn btn-danger fw-5 py-2 flex-y-row text-nowrap px-8" (click)="rejectVacation(vacation.id)">{{translations.UserManagement.vacationRequests.reject | translate}}</button>
+          </td>
+         
+          
+          
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="flex-between">
+    <div class="op-6 v-small fw-5">
+      <span>{{translations.tables.from | translate}} </span>
+      <span>{{pagintationData.currentPage}} </span>
+      <span>{{translations.tables.to | translate}} </span>
+      <span>{{pagintationData.totalCount}} </span>
+      <span>{{translations.tables.ofTotal | translate}} </span>
+      <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+      <span>{{translations.tables.row | translate}} </span>
+    </div>
+    <app-pagination></app-pagination>
+  </div>
+
+
+
+@if((!vacationsList) || vacationsList.length==0){
+<div class="flex-center flex-column">
+  <img src="assets/images/no-data.svg"
+       alt="no-data">
+  <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.UserManagement.vacationRequests.noVacationRequests| translate}}</h4>
+</div>
+}

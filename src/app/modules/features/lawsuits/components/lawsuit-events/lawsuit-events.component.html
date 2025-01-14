@@ -1,0 +1,10 @@
+<div class="form-wrapper">
+    <h6 class="small fw-6 mb-3"> {{ translations.lawsuits.lawsuitDetails.lawsuitEventDetails| translate }} </h6>
+
+    <div class="item" *ngFor="let event of logList">
+        <img src="assets/images/icons/lawsuit-details/calendar-add.svg" alt="calendar">
+        <span> {{event.logMessage || '--'}} </span>
+        <span> {{ translations.lawsuits.lawsuitDetails.date | translate }} </span>
+        <span> {{event.createdOn |date:'yyyy/MM/dd'}}</span>
+    </div>
+</div>

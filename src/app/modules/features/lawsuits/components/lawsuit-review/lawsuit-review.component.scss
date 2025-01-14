@@ -1,0 +1,26 @@
+@import "assets/styles/tabs.scss";
+@import "assets/styles/controls.scss";
+@import "assets/styles/modals.scss";
+
+label {
+    &.active {
+        background-color: #e6f2fb;
+        border: 1px solid var(--primary);
+    }
+}
+
+input[type="radio"]:checked {
+    & + span {
+        color: var(--primary);
+    }
+}
+
+.steps-list {
+    display: flex;
+    gap: 24px;
+    margin: 24px 0;
+
+    .active {
+        color: var(--primary);
+    }
+}

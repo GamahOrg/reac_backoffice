@@ -1,0 +1,285 @@
+<app-breadcrumbs></app-breadcrumbs>
+@if (arbitratorDecisionDetails) {
+
+<div class="grid-3 mt-5">
+  <div class="span-3 text-end">
+    <button class="btn btn-primary my-3"
+            (click)="open(content)">{{arbitratorDecisionDetails.arbitratorStatusId == reformerArbitratorStatus.Stopped ?
+      (translations.CitizenRequest.freeUpRequest | translate)
+      :
+      (translations.CitizenRequest.stopRequest | translate)
+      }}</button>
+  </div>
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.identityNumber | translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.identityNumber || '--'}}
+      </h6>
+    </div>
+  </div>
+
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.fullName | translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.fullName || '--'}}
+      </h6>
+    </div>
+  </div>
+
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.mobile| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.mobile || '--'}}
+      </h6>
+    </div>
+  </div>
+
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.homeTelephone| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.homeTelephone || '--'}}
+      </h6>
+    </div>
+  </div>
+
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.workTelephone| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.workTelephone || '--'}}
+      </h6>
+    </div>
+  </div>
+
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.fax| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.fax || '--'}}
+      </h6>
+    </div>
+  </div>
+
+
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.email| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.email || '--'}}
+      </h6>
+    </div>
+  </div>
+
+
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.academicDegreeName| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.academicDegreeName || '--'}}
+      </h6>
+    </div>
+  </div>
+
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.isVolunteerApproval| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.isVolunteerApproval || '--'}}
+      </h6>
+    </div>
+  </div>
+
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.requestsCount| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.requestsCount || '--'}}
+      </h6>
+    </div>
+  </div>
+
+
+
+  <div>
+    <h6 class="small fw-5">{{translations.arbitrator.areaName| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.areaName || '--'}}
+      </h6>
+    </div>
+  </div>
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.arbitratorStatus| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.arbitratorStatus || '--'}}
+      </h6>
+    </div>
+  </div>
+
+  <div>
+    <h6 class="small fw-5">{{translations.CitizenRequest.arbitratorStatusDate| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{(arbitratorDecisionDetails.arbitratorStatusDate| date: 'dd-MM-yyy') || '--'}}
+      </h6>
+    </div>
+  </div>
+  <div>
+    <h6 class="small fw-5">{{translations.arbitrator.experienceYears| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.experienceYears || '--'}}
+      </h6>
+    </div>
+  </div>
+  <div>
+    <h6 class="small fw-5">{{translations.arbitrator.arbitratorClass| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.arbitratorClass || '--'}}
+      </h6>
+    </div>
+  </div>
+  <div class="span-3">
+    <h6 class="small fw-5">{{translations.arbitrator.brief| translate}}</h6>
+    <div class="flex-y-row gap-2">
+      <h6 class="small op-7">
+        {{arbitratorDecisionDetails.brief || '--'}}
+      </h6>
+    </div>
+  </div>
+
+  <div class="span-3">
+    <h6 class="small fw-5">{{translations.arbitrator.arbitratorStopFreeUpDetailDecision| translate}}</h6>
+    <div class="gap-2">
+      <div class="table-wrapper">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">{{translations.CitizenRequest.reformerStatus | translate}}</th>
+                <th scope="col">{{translations.CitizenRequest.decisionDate | translate}}</th>
+                <th scope="col">{{translations.CitizenRequest.stoppingReason | translate}}</th>
+                <th scope="col">{{translations.CitizenRequest.lateLitigationRequestNumber | translate}}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (details of arbitratorDecisionDetails.arbitratorStopFreeUpDetailDecisionDtos; track
+              $index) {
+              <tr>
+                <td>{{details.arbitratorStatus || "--"}}</td>
+                <td>{{(details.decisionDate| date: 'dd-MM-yyy') || "--"}}</td>
+                <td>{{(stoppingReasonTranslation[details.stoppingReason] | translate) || "--"}}</td>
+                <td>{{details.lateLitigationRequestNumber || "--"}}</td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content
+             let-modal>
+  <div class="modal-header">
+        <h5 class="modal-title fw-6"
+            id="modal-basic-title">
+            {{arbitratorDecisionDetails.arbitratorStatusId == reformerArbitratorStatus.Stopped ?
+            (translations.CitizenRequest.freeUpRequest | translate)
+            :
+            (translations.CitizenRequest.stopRequest | translate)
+            }}
+        </h5>
+        <button type="button"
+                class="btn-close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="form-wrapper mb-0"
+         [formGroup]="addDecision">
+      <div class="grid-2">
+
+        <div [ngClass]="{'span-2': arbitratorDecisionDetails.arbitratorStatusId == reformerArbitratorStatus.Stopped}">
+          <label class="mb-1 required">{{translations.CitizenRequest.decisionDate|
+            translate}}</label>
+          <div class="border flex-y-row rounded-2">
+            <input class="form-control border-0 shadow-none"
+                   type="date"
+                   placeholder="{{translations.actions.enter| translate}} {{translations.CitizenRequest.decisionDate| translate}}"
+                   formControlName="decisionDate"
+                   [ngClass]="{'is-invalid': showValidation && controls.decisionDate.errors}" />
+          </div>
+          <div class="invalid-feedback d-block"
+               *ngIf="showValidation && controls.decisionDate.errors">
+
+            <div *ngIf="controls.decisionDate.errors['required']">
+              {{translations.formValidationError.required | translate}}
+            </div>
+          </div>
+        </div>
+
+
+
+        <div *ngIf="arbitratorDecisionDetails.arbitratorStatusId == reformerArbitratorStatus.Certified">
+          <label class="mb-1 required">{{translations.CitizenRequest.stoppingReason |translate}}</label>
+          <select class="form-select"
+                  formControlName="stoppingReason">
+            <option disabled
+                    [ngValue]="null"
+                    selected>{{translations.actions.choose|translate}}
+              {{translations.CitizenRequest.stoppingReason|translate}}</option>
+
+            <option *ngFor="let reason of stoppingReasonObj"
+                    [ngValue]="reason.value">
+              {{stoppingReasonTranslation[reason.value]|translate}}
+            </option>
+          </select>
+          <div class="invalid-feedback d-block"
+               *ngIf="showValidation && controls.stoppingReason.errors">
+            {{translations.formValidationError.required | translate}}
+          </div>
+        </div>
+
+
+        <div class="span-2"
+             *ngIf="(controls.stoppingReason.value == stoppingReason.LateLitigationRequest) && (arbitratorDecisionDetails.arbitratorStatusId == reformerArbitratorStatus.Certified)">
+          <label class="mb-1 required">{{translations.CitizenRequest.lateLitigationRequestNumber|
+            translate}}</label>
+          <div class="border flex-y-row rounded-2">
+            <input class="form-control border-0 shadow-none"
+                   type="text"
+                   placeholder="{{translations.actions.enter| translate}} {{translations.CitizenRequest.lateLitigationRequestNumber| translate}}"
+                   formControlName="lateLitigationRequestNumber"
+                   [ngClass]="{'is-invalid': showValidation && controls.lateLitigationRequestNumber.errors}" />
+          </div>
+          <div class="invalid-feedback d-block"
+               *ngIf="showValidation && controls.lateLitigationRequestNumber.errors">
+
+            <div *ngIf="controls.lateLitigationRequestNumber.errors['required']">
+              {{translations.formValidationError.required | translate}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button"
+            class="btn btn-primary my-3"
+            (click)="onClickSave()">{{translations.actions.save | translate}}</button>
+  </div>
+</ng-template>
+
+}

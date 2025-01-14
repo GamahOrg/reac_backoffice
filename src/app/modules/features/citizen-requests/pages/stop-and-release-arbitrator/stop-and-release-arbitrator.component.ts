@@ -1,0 +1,104 @@
+import { Component, inject, OnInit } from '@angular/core';
+import { Configuration } from '@app/core/configurations/shared.config';
+import { BaseComponent } from '@app/shared/components/base/base.component';
+import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
+import { TranslateService } from '@ngx-translate/core';
+import { ArbitratorsDecisionsService } from '../../services/Arbitrators-decisions/arbitrators-decisions.service';
+import { PaginationService } from '@app/shared/services/pagination/pagination.service';
+import { Pagination, pagination } from '@app/shared/models/pagination.model';
+import { ReformersDecisionsDto } from '../../models/reformers-decisions-dto.model';
+import { takeUntil } from 'rxjs';
+import { BaseResponse } from '@app/core/models/base-response';
+
+@Component({
+  selector: 'app-stop-and-release-arbitrator',
+  templateUrl: './stop-and-release-arbitrator.component.html',
+  styleUrl: './stop-and-release-arbitrator.component.scss'
+})
+export class StopAndReleaseArbitratorComponent extends BaseComponent implements OnInit {
+
+  private _breadcrumbService = inject(BreadcrumbService);
+  private _translateService = inject(TranslateService);
+  private _paginationService = inject(PaginationService);
+  private _arbitratorsDecisionsService = inject(ArbitratorsDecisionsService);
+
+  arbitratorDecisionDetails: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.arbitratorDecisionDetails}/`
+
+  newPageNo: number = 1;
+  pageCount: number = 0;
+  pagintationData: pagination = {
+    currentPage: 1,
+    // pageCount: 0,
+    pageSize: 10,
+    totalCount: 0,
+  };
+  arbitratorsDecisions: Pagination<ReformersDecisionsDto[]> = {} as Pagination<ReformersDecisionsDto[]>;
+  selectedArbitratorsDecision: ReformersDecisionsDto = {} as ReformersDecisionsDto;
+  private updateBreadcrumb(): void {
+    this._breadcrumbService.updateBreadcrumbListContent([
+      { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+      { label: this._translateService.instant(this.translations.layout.sidebar.stopAndReleaseArbitrator), link: Configuration.pages.citizenRequests.stopAndReleaseArbitrator }
+    ])
+  };
+
+  ngOnInit(): void {
+    this.updateBreadcrumb();
+    this.getArbitratorsDecisions();
+    this.watchPaginationActions();
+  }
+
+  private getArbitratorsDecisions() {
+    this._arbitratorsDecisionsService.GetArbitratorsDecisions(this.pagintationData.currentPage, this.pagintationData.pageSize)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res: BaseResponse<Pagination<ReformersDecisionsDto[]>>) => {
+        if (res.isDone && res.data) {
+          this.updateRequestList(res.data as Pagination<ReformersDecisionsDto[]>);
+          this.pageCount = res.data.pageCount;
+        }
+      })
+  }
+  //private methods
+  private updateRequestList(TypeListView: Pagination<ReformersDecisionsDto[]>): void {
+    this.arbitratorsDecisions = TypeListView;
+    this.setPaginationData(
+      this.arbitratorsDecisions.pageSize,
+      this.arbitratorsDecisions.totalCount
+    );
+  }
+  private setPaginationData(pageSize: number, total: number): void {
+    this.pagintationData.pageSize = pageSize
+    this.pagintationData.totalCount = total
+    this._paginationService.updatePaginationData(this.pagintationData);
+    console.log("this.arbitratorsDecisions", this.arbitratorsDecisions);
+    console.log("this.pagintationData", this.pagintationData);
+  }
+
+  private watchPaginationActions(): void {
+    this.watchPagechanged();
+    this.watchPaginationClicked();
+  }
+
+  private watchPagechanged(): void {
+    this._paginationService.pageChanged
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((pageNo) => {
+        this.newPageNo = pageNo;
+      })
+  }
+
+  private watchPaginationClicked(): void {
+    this._paginationService.pageClicked
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((nextPage: number) => {
+        if (this.pagintationData.currentPage != nextPage) {
+          this.loadNextPage(nextPage);
+          this.pagintationData.currentPage = this.newPageNo;
+        }
+      })
+  }
+
+  private loadNextPage(nextPage: number): void {
+    this.pagintationData.currentPage = nextPage;
+    this.getArbitratorsDecisions()
+  }
+}

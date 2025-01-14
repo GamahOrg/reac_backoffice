@@ -1,0 +1,183 @@
+
+<div class="form-wrapper">
+    <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+        <h6 class="small fw-6 op-7">{{ translations.LitigationRequestNotes.notes| translate }} </h6>
+    </summary>
+    <button class="btn btn-primary flex-end px-8 py-4 span-2 mt-4" type="button"
+        (click)="openNotesModal(notesModal)">{{translations.LitigationRequestNotes.addNote|
+        translate}}</button>
+    <div class="table-responsive">
+        <table class="table table-striped w-lg-12 mt-0">
+            <thead>
+                <tr>
+                    <th scope="col">{{translations.LitigationRequestNotes.noteTitle | translate}}</th>
+                    <th scope="col"> {{ translations.LitigationRequestNotes.noteText | translate }} </th>
+                    <th scope="col"> {{ translations.LitigationRequestNotes.noteCreatedOn | translate }} </th>
+                    <th scope="col"> {{ translations.LitigationRequestNotes.noteUpdatedOn | translate }} </th>
+                    <th scope="col"> {{ translations.LitigationRequestNotes.noteCreatedBy | translate }} </th>
+                    <th scope="col"> {{ translations.LitigationRequestNotes.noteFile | translate }} </th>
+                    <th scope="col"> {{ translations.LitigationRequestNotes.actions | translate }} </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (note of this.LitigationRequestForNotes?.notes; track $index) {
+                <tr>
+                    <td>{{note.title}}</td>
+                    <td>{{note.notes}}</td>
+                    <td>{{note.createdOn| date:'a hh:mm yyyy-MM-dd'}}</td>
+                    <td>{{note.updatedOn| date:'a hh:mm yyyy-MM-dd'}}</td>
+                    <td>{{note.citizen.fullName}}</td>
+                    <td>
+                    <div>
+                     <div class="form-group mb-4">
+                       <div class="value"
+                            *ngFor="let file of note.litigationRequestNoteFiles">
+                         <span class="icon material-icons-outlined">content_copy</span>
+                         <a 
+                            [href]="baseUrl + file.filePath"
+                            target="_blank">
+                           {{file.fileDescription}}</a>
+                       </div>
+                     </div>
+                   </div></td>
+                   <td>
+                    <button
+                    class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" type="button"
+                    (click)="openEditNoteModal(editNotesModal,note)">
+                        تعديل
+                    </button>
+                   </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+        <details open>
+            <summary class="flex-y-row gap-2 border-bottom pb-5">
+                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.firstPartyData| translate }} </h6>
+            </summary>
+
+            <div class="grid-3 mt-5">
+                <ng-container *ngFor="let item of firstParty">
+                    <div>
+                        <h6 class="small fw-5">{{item.title}}</h6>
+                        <h6 class="small op-7">{{item.value}}</h6>
+                    </div>
+                </ng-container>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+        <details open>
+            <summary class="flex-y-row gap-2 border-bottom pb-5">
+                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <h6 class="small fw-6 op-7"> {{ translations.LitigationRequest.secondPartyData| translate }}</h6>
+            </summary>
+
+            <div class="grid-3 mt-5">
+                <ng-container *ngFor="let item of secondParty">
+                    <div>
+                        <h6 class="small fw-5">{{item.title}}</h6>
+                        <h6 class="small op-7">{{item.value}}</h6>
+                    </div>
+                </ng-container>
+            </div>
+        </details>
+    </div>
+</div>
+
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+        <details open>
+            <summary class="flex-y-row gap-2 border-bottom pb-5">
+                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.litigationData| translate }} </h6>
+            </summary>
+
+            <div class="grid-3 mt-5">
+                <ng-container *ngFor="let item of dataList">
+                    <div>
+                        <h6 class="small fw-5">{{item.title}}</h6>
+                        <h6 class="small op-7">{{item.value}}</h6>
+                    </div>
+                </ng-container>
+            </div>
+        </details>
+    </div>
+</div>
+
+<ng-template #notesModal let-modal>
+    <div class="modal-header">
+      <h4>أضافة ملاحظة</h4>
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+  
+      <div class="modal-body">
+    <form [formGroup]="notesForm">
+        <div class="key"> الموضوع</div>
+
+        <input type="text" class="form-control" formControlName="title">
+
+        <div class="key">الملاحظة</div>
+
+      <textarea class="form-control" formControlName="notes" name="notes" id="notes"></textarea>
+      <div class="form-group mb-4">
+        <div class="key"> رفع الملفات</div>
+
+        <app-file-uploader [data]="multiFileUploaderData"
+                           (fileUploaded)="onFilesUploaded($event)"></app-file-uploader>
+      </div>
+    </form>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"
+          (click)="addNote(modal)">اضافة ملاحظة</button>
+    
+        <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+          }}</button>
+    
+      </div>
+  </ng-template>
+<ng-template #editNotesModal let-modal>
+    <div class="modal-header">
+      <h4>تعديل الملاحظة</h4>
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+  
+      <div class="modal-body">
+    <form [formGroup]="editNotesForm">
+        <div class="key"> الموضوع</div>
+
+        <input type="text" class="form-control" formControlName="title">
+        <div class="key">الملاحظة</div>
+
+      <textarea class="form-control" formControlName="notes" name="notes" id="notes"></textarea>
+      <div class="form-group mb-4">
+        <div class="key"> رفع الملفات</div>
+
+        <app-file-uploader [data]="multiFileUploaderData"
+                           (fileUploaded)="onFilesUploaded($event)"></app-file-uploader>
+      </div>
+    </form>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"
+          (click)="editNote(modal)">تعديل ملاحظة</button>
+    
+        <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+          }}</button>
+    
+      </div>
+  </ng-template>

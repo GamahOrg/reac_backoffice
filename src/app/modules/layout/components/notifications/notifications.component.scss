@@ -1,0 +1,54 @@
+.count {
+    color: var(--white);
+    background-color: var(--danger);
+
+    position: absolute;
+    top: 0px;
+    inset-inline-start: 5px;
+
+    border-radius: 50%;
+    font: 600 0.75rem sans-serif !important;
+
+    width: 18px;
+    height: 18px;
+}
+
+.notifications-dropdown {
+    .dropdown-menu {
+        max-height: 500px;
+        overflow-y: auto;        
+
+        .dropdown-item {
+            padding: 1.5rem 0.5rem;
+            background-color: #eee;
+            border-radius: 0;
+
+            display: block;
+            width: 400px;
+            white-space: normal;
+
+            &:first-of-type {
+                border-start-start-radius: 0.5rem;
+                border-start-end-radius: 0.5rem;
+            }
+
+            &:last-of-type {
+                border-end-start-radius: 0.5rem;
+                border-end-end-radius: 0.5rem;
+            }
+
+            &:not(:last-of-type) {
+                border-bottom: 1px solid #ccc;
+
+            }
+
+            &.read {
+                background-color: var(--white);
+            }
+
+            a {
+                color: #333;
+            }
+        }
+    }
+}

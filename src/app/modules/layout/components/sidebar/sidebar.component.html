@@ -1,0 +1,50 @@
+<button class="btn toggle-side-btn" (click)="toggleCollapse()">
+    <i class="material-icons" [class.collapsed]="isCollapsed"> chevron_right </i>
+</button>
+
+<aside
+    class="side-menu"
+    [class.collapsed]="isCollapsed"
+    [class.expanded]="!isCollapsed">
+    <div class="logo p-5 border-bottom mb-5">
+        <img src="assets/images/logo.svg" class="white-img" width="170" alt="logo.svg">
+    </div>
+
+    <ul class="items-list">
+
+        <ng-container *ngFor="let item of menuItems">
+            <ng-container *ngIf="item && !item.children">
+                <a
+                    class="side-menu-item mx-4"
+                    [routerLink]="item.url"
+                    [routerLinkActive]="'active'"
+                    [routerLinkActiveOptions]="{ exact: true }">
+                    <img [src]="item.icon" class="link-icon" width="22" alt="icon">
+                    <span class="item-text link"> {{ item.title | translate }} </span>
+                </a>
+            </ng-container>
+            
+            <ng-container *ngIf="item && item.children">
+                <details>
+                    <summary class="side-menu-item text-white mx-4">
+                        <img [src]="item.icon" class="link-icon" width="22" alt="icon">
+                        {{item.title | translate}}
+                        <img src="assets/images/icons/sidebar/arrow-down.svg" alt="arrow-down" class="arrow ms-auto">
+                    </summary>
+                    <ul class="child-list">
+                        <ng-container *ngFor="let child of item.children">
+                            <li>
+                                <a
+                                    class="text-white mx-4 v-small"
+                                    [routerLink]="child.url"
+                                    [routerLinkActive]="'active fw-7'">
+                                    {{ child.title | translate }}
+                                </a>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </details>
+            </ng-container>
+        </ng-container>
+    </ul>
+</aside>

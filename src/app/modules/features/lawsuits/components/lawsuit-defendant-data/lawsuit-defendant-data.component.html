@@ -1,0 +1,84 @@
+<div class="grid-3 mt-5">
+    <div *ngIf="contract?.secondPartyCitizen.fullName">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.secondPartyName | translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.fullName || '--'}}</h6>
+        </div>
+    </div>
+
+    <div *ngIf="contract?.secondPartyCitizen.identityNumber">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.identityNumber | translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/hashtag.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.identityNumber || '--'}}</h6>
+        </div>
+    </div>
+
+    <div *ngIf="contract?.secondPartyCitizen.mobile">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.mobileNumber| translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/call.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.mobile || '--'}}</h6>
+        </div>
+    </div>
+
+    <div *ngIf="contract?.secondPartyCitizen.birthDate">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.birthDate| translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+            <h6 class="small op-7">{{(contract?.secondPartyCitizen.birthDate | date: 'dd-MM-yyy') || '--'}}</h6>
+        </div>
+    </div>
+
+    <div *ngIf="contract?.secondPartyCitizen?.nationality?.nationalityName">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.nationality| translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/calendar.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.nationality.nationalityName || '--'}}</h6>
+        </div>
+    </div> 
+
+
+
+    <div *ngIf="contract?.secondPartyCapacity">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.secondPartyCapacity | translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.secondPartyCapacity || '--'}}</h6>
+        </div>
+    </div>  
+
+    <div *ngIf="contract?.secondPartyCitizen.email">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.email| translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.email || '--'}}</h6>
+        </div>
+    </div>   
+    
+    <div *ngIf="contract?.secondPartyFacility?.arabicFacilityName">
+        <h6 class="small fw-5"> {{ translations.establishments.establishmentsList.arabicEstablishmentName| translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <h6 class="small op-7">
+                {{contract?.secondPartyFacility?.arabicFacilityName || "--" }}
+            </h6>
+        </div>
+    </div>
+    <div *ngIf="contract?.secondPartyFacility?.commercialRegisterNumber">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.commercialRegistrationNumber| translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <h6 class="small op-7">
+                {{contract?.secondPartyFacility?.commercialRegisterNumber || "--" }}
+            </h6>
+        </div>
+    </div>
+    <div *ngIf="contract?.secondPartyFacility?.facility700Number">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.companyNumber| translate }}  </h6>
+        <div class="flex-y-row gap-2">
+            <h6 class="small op-7">
+                {{contract?.secondPartyFacility?.facility700Number || "--" }}
+            </h6>
+        </div>
+    </div>
+</div>

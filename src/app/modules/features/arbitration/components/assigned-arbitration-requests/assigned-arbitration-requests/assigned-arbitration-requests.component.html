@@ -1,0 +1,90 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+<div class="table-wrapper mt-0 pt-0">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">{{translations.LitigationRequest.requestCode | translate}}</th>
+                    <th scope="col">{{translations.LitigationRequest.requestDate | translate}}</th>
+                    <th scope="col">{{translations.LitigationRequest.firstPartyName | translate}}</th>
+                    <th scope="col">{{translations.LitigationRequest.secondPartyName | translate}}</th>
+                    <th scope="col">{{translations.LitigationRequest.arbitratorName | translate}}</th>
+                    <th scope="col">{{translations.LitigationRequest.requestTypeName | translate}}</th>
+                    <th scope="col">{{translations.LitigationRequest.status | translate}}</th>
+                    <th scope="col">{{translations.arbitrator.arbitratorAssigningRequestType | translate}}</th>
+                    <th scope="col">{{translations.LitigationRequest.response | translate}}</th>
+                    <th scope="col">
+                        <span
+                              style="max-width: 120px; white-space: normal; display: block;">{{translations.lawsuits.lawsuitsList.remainingArbitrationDays
+                          | translate}}</span>
+                      </th>
+                    <th scope="col">{{translations.CitizenRequest.actions | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (litigationRequest of litigationRequests; track $index) {
+                <tr>
+                    <td>{{litigationRequest.requestCode}}</td>
+                    <td>{{litigationRequest.requestDate | date:'yyyy/MM/dd'}}</td>
+                    <td>{{litigationRequest.firstPartyName}}</td>
+                    <td>{{litigationRequest.secondPartyName}}</td>
+                    <td>{{litigationRequest.arbitratorName}}</td>
+                    <td>{{litigationRequest.requestTypeName}}</td>
+                    <td>{{litigationRequest.status}}</td>
+                    <td>{{litigationRequest.arbitratorAssigningRequestType ? (arbitratorAssigningRequestType[litigationRequest.arbitratorAssigningRequestType] | translate) : '--'}}</td>
+                    <td>{{litigationRequest.response ? (localization[litigationRequest.response] | translate) : '--'}}</td>
+                    <td>
+                        {{
+                        (litigationRequest.arbitrationPeriod && litigationRequest.arbitrationPeriod >= 0)
+                        ? litigationRequest.arbitrationPeriod + (translations.lawsuits.lawsuitsList.days| translate)
+                        : '--'
+                        }}
+                      </td>
+                    <td>
+                        <button
+                            *ngIf="litigationRequest.response != null"
+                            class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2"
+                            style="background: #F6F6F6;"
+                            (click)="openFormModal(formModal,litigationRequest?.requestId!,litigationRequest?.id!)">
+                            <img src="assets/images/icons/eye.svg" alt="eye">
+                            {{translations.actions.view| translate}}
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (litigationRequests && litigationRequests.length) {
+<div class="flex-between">
+    <div class="op-6 v-small fw-5">
+        <span>{{translations.tables.from | translate}} </span>
+        <span>{{page}} </span>
+        <span>{{translations.tables.to | translate}} </span>
+        <span>6 </span>
+        <span>{{translations.tables.ofTotal | translate}} </span>
+        <span>{{collectionSize}} </span>
+        <span>{{translations.tables.row | translate}} </span>
+    </div>
+
+    <app-pagination></app-pagination>
+</div>
+}
+
+<ng-template #formModal let-modal>
+    <div class="modal-body pt-0" id="formPaper">
+        <app-assigned-arbitration-requests-documnets [litigationData]="litigationData"></app-assigned-arbitration-requests-documnets>
+        <img src="assets/images/logo-bg.svg" class="absolute-center" alt="logo">
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn op-7 mw-fit border-0" (click)="printForm()">
+            <i class='material-icons fs-5 text-primary'> download</i>
+        </button>
+        <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.goBack | translate }}</button>
+        
+    </div>
+</ng-template>

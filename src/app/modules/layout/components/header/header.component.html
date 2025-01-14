@@ -1,0 +1,16 @@
+<header class="main-header">
+    <div class="flex-between flex-row flex-wrap px-6 w-100" style="padding-block: 5px;">
+        <h6 class="text-white fw-7 f-18"></h6>
+
+        <div>
+            <nav class="flex-y-row">
+                <!-- <app-search></app-search>
+                <app-language></app-language> -->
+                <app-notifications></app-notifications>
+                <!-- <app-account></app-account> -->
+                <button class="btn btn-primary" (click)="logout()"> {{ translations.actions.logout| translate }} </button>
+            </nav>
+            <!-- <app-tabs></app-tabs> -->
+        </div>
+    </div>
+</header>

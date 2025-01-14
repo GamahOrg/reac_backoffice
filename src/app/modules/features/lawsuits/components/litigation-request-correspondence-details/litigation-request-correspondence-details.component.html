@@ -1,0 +1,208 @@
+
+<div class="form-wrapper">
+    <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+        <h6 class="small fw-6 op-7">{{ translations.LitigationRequestCorrespondences.correspondences| translate }} </h6>
+    </summary>
+    
+    <div class="table-responsive">
+        <table class="table table-striped w-lg-12 mt-0">
+            <thead>
+                <tr>
+                    <th scope="col">{{translations.LitigationRequestCorrespondences.subject | translate}}</th>
+                    <th scope="col"> {{ translations.LitigationRequestCorrespondences.message | translate }} </th>
+                    <th scope="col"> {{ translations.LitigationRequestCorrespondences.correspondenceCreatedOn | translate }} </th>
+                    <th scope="col"> {{ translations.LitigationRequestCorrespondences.correspondenceCreatedBy | translate }} </th>
+                    <th scope="col"> {{ translations.LitigationRequestCorrespondences.correspondenceFile | translate }} </th>
+                    <th scope="col"> {{ translations.LitigationRequestCorrespondences.actions | translate }} </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (correspondence of this.LitigationRequestForCorrespondences?.correspondences; track $index) {
+                <tr>
+                    <td>{{correspondence.subject}}</td>
+                    <td>{{correspondence.message}}</td>
+                    <td>{{correspondence.createdOn| date:'a hh:mm yyyy-MM-dd'}}</td>
+                    <td>{{correspondence.citizen.fullName}}</td>
+                    <td>
+                    <div>
+                     <div class="form-group mb-4">
+                       <div class="value"
+                            *ngFor="let file of correspondence.litigationRequestCorrespondenceFiles">
+                         <span class="icon material-icons-outlined">content_copy</span>
+                         <a 
+                            [href]="baseUrl + file.filePath"
+                            target="_blank">
+                           {{file.fileDescription}}</a>
+                       </div>
+                     </div>
+                   </div></td>
+                   <!-- <td>
+                    <button
+                    class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" type="button"
+                    (click)="openEditNoteModal(editNotesModal,note)">
+                        تعديل
+                    </button>
+                   </td> -->
+                   <td>
+                    <button
+                    class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" type="button"
+                    (click)="openCorrespondenceReplyListModal(correspondenceReplyListModal,correspondence)">
+                        عرض الردود
+                    </button>
+                  </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+        <details open>
+            <summary class="flex-y-row gap-2 border-bottom pb-5">
+                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.firstPartyData| translate }} </h6>
+            </summary>
+
+            <div class="grid-3 mt-5">
+                <ng-container *ngFor="let item of firstParty">
+                    <div>
+                        <h6 class="small fw-5">{{item.title}}</h6>
+                        <h6 class="small op-7">{{item.value}}</h6>
+                    </div>
+                </ng-container>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+        <details open>
+            <summary class="flex-y-row gap-2 border-bottom pb-5">
+                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <h6 class="small fw-6 op-7"> {{ translations.LitigationRequest.secondPartyData| translate }}</h6>
+            </summary>
+
+            <div class="grid-3 mt-5">
+                <ng-container *ngFor="let item of secondParty">
+                    <div>
+                        <h6 class="small fw-5">{{item.title}}</h6>
+                        <h6 class="small op-7">{{item.value}}</h6>
+                    </div>
+                </ng-container>
+            </div>
+        </details>
+    </div>
+</div>
+
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+        <details open>
+            <summary class="flex-y-row gap-2 border-bottom pb-5">
+                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.litigationData| translate }} </h6>
+            </summary>
+
+            <div class="grid-3 mt-5">
+                <ng-container *ngFor="let item of dataList">
+                    <div>
+                        <h6 class="small fw-5">{{item.title}}</h6>
+                        <h6 class="small op-7">{{item.value}}</h6>
+                    </div>
+                </ng-container>
+            </div>
+        </details>
+    </div>
+</div>
+
+
+  <ng-template #correspondenceReplyListModal let-modal>
+    <div class="modal-header">
+      <h4> ردود المراسلة</h4>
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+  
+      <div class="modal-body">
+        <div class="table-responsive">
+            <table class="table table-striped w-lg-12 mt-0">
+                <thead>
+                    <tr>
+    
+                        <th scope="col"> {{ translations.LitigationRequestCorrespondences.message | translate }} </th>
+                        <th scope="col"> {{ translations.LitigationRequestCorrespondences.correspondenceCreatedOn | translate }} </th>
+                        <th scope="col"> {{ translations.LitigationRequestCorrespondences.correspondenceCreatedBy | translate }} </th>
+                        <th scope="col"> {{ translations.LitigationRequestCorrespondences.correspondenceFile | translate }} </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (reply of this.replyModalData; track $index) {
+                    <tr>
+                        
+                        <td>{{reply?.replyMessage}}</td>
+                            <td>{{reply?.createdOn| date:'a hh:mm yyyy-MM-dd'}}</td>
+                            <td>{{reply?.citizen?.fullName}}</td>
+                            <td>
+                            <div>
+                             <div class="form-group mb-4">
+                               <div class="value"
+                                    *ngFor="let file of reply.litigationRequestCorrespondenceReplyFiles">
+                                 <span class="icon material-icons-outlined">content_copy</span>
+                                 <a 
+                                    [href]="baseUrl + file.filePath"
+                                    target="_blank">
+                                   {{file.fileDescription}}</a>
+                               </div>
+                             </div>
+                           </div></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        
+      </div>
+  
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+          }}</button>
+    
+      </div>
+  </ng-template>
+  
+<!-- <ng-template #editNotesModal let-modal>
+    <div class="modal-header">
+      <h4>تعديل الملاحظة</h4>
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+  
+      <div class="modal-body">
+    <form [formGroup]="editNotesForm">
+        <div class="key"> الموضوع</div>
+
+        <input type="text" class="form-control" formControlName="title">
+        <div class="key">الملاحظة</div>
+
+      <textarea class="form-control" formControlName="notes" name="notes" id="notes"></textarea>
+      <div class="form-group mb-4">
+        <div class="key"> رفع الملفات</div>
+
+        <app-file-uploader [data]="multiFileUploaderData"
+                           (fileUploaded)="onFilesUploaded($event)"></app-file-uploader>
+      </div>
+    </form>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"
+          (click)="editNote(modal)">تعديل ملاحظة</button>
+    
+        <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+          }}</button>
+    
+      </div>
+  </ng-template> -->
