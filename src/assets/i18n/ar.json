@@ -174,7 +174,7 @@
             "ReconciliationFeesHaveBeenCollected": "تم دفع رسوم الصلح",
             "CollectionOfArbitrationFeesRequestIsBeingSent": "تم ارسال طلب دفع رسوم التحكيم",
             "ArbitrationFeesHaveBeenCollected": "تم دفع رسوم التحكيم",
-            "LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend": "تم ارسال طلب تأكيد دفع رسوم الصلح"
+            "LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend": "تم قبول الدعوى وجارى إرسال طلب تحصيل رسوم الصلح"
         },
         "lawsuitDetails": {
             "administrativeFeesNotPaid": "لم يتم تسديد الرسوم الإدارية للدعوى بعد",

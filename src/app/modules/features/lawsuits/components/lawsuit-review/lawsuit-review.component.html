@@ -14,7 +14,14 @@
              [checked]="actionData && actionData.id === button.id"
              [value]="button.id">
              
-      <span>{{button.eventName}}</span>
+      <span>
+        {{button.eventName}}
+
+        <div *ngIf="buttonActions.fees != null">
+          {{buttonActions.fees }} ريال 
+        </div>
+
+      </span>
     </label>
     <!-- <label class="rounded-2 border p-4"
            [ngClass]="{'active': actionData.value === ReviewResult.LawsuitAcceptance}">

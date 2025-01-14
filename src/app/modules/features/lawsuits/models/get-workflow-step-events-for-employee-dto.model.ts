@@ -5,4 +5,5 @@ export interface GetWorkflowStepEventsForEmployeeDto {
     allowReAssign: null | boolean,
     workFlowStepEventShortDtos: WorkFlowStepEventShortDtos[],
     id: string
+    fees: string;
 }

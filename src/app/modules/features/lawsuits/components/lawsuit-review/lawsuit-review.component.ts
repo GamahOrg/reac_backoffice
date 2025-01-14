@@ -124,6 +124,7 @@ export class LawsuitReviewComponent extends BaseComponent implements OnInit {
     }
 
     public updateActionData(button: WorkFlowStepEventShortDtos) {
+        debugger;
         this.actionData = button;
         console.log("this.actionData", this.actionData)
     }
