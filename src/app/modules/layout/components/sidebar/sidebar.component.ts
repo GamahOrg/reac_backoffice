@@ -132,12 +132,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             title: this.translate.instant(translations.layout.sidebar.litigationRequestCorrespondences),
                             url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationRequestCorrespondencesList,
                         },
-                        {
-                            id: 'litigation-request-notes-list',
-                            icon:'',
-                            title: this.translate.instant(translations.layout.sidebar.litigationRequestNotes),
-                            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationRequestNotesList,
-                        },
+                        // {
+                        //     id: 'litigation-request-notes-list',
+                        //     icon:'',
+                        //     title: this.translate.instant(translations.layout.sidebar.litigationRequestNotes),
+                        //     url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationRequestNotesList,
+                        // },
 
                     ]
                 },
