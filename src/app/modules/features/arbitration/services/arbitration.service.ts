@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BaseResponse } from '@app/core/models/base-response';
+import { BaseResponse, type EmptyBaseResponse } from '@app/core/models/base-response';
 import { Pagination } from '@app/shared/models/pagination.model';
 import { Observable } from 'rxjs';
 import { LitigationRequestMircoForRequestSessionDto, LitigationRequestSessionDetailsDto } from '../../citizen-requests/models/litigation-request.model';
@@ -23,5 +23,9 @@ export class ArbitrationService {
     queryParams = queryParams.append("MeetingId", meetingId);
     return this._httpClient.get<BaseResponse<LitigationRequestSessionDetailsDto>>(`${Configuration.APIs.OTP.getZoomMeetingDetails}`, { params: queryParams })
   }
+
+  ApproveArbitrationFeesPaid(requestId: string): Observable<EmptyBaseResponse> {
+      return this._httpClient.get<EmptyBaseResponse>(`${Configuration.APIs.LitigationRequest.ApproveArbitrationFeesPaid}/${requestId}`)
+    }
 
 }

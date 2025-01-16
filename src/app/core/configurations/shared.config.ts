@@ -114,6 +114,8 @@ export const Configuration = {
       AuditngListReconciliation: '/api/LitigationRequest/AuditngListReconciliation',
       GetLitigationById: '/api/LitigationRequest/GetLitigationByIdForEmployee',
       GetAuditNotesById: "/api/LitigationRequest/GetAuditNotesById",
+      ApproveArbitrationFeesPaid: '/api/LitigationRequest/ApproveArbitrationFeesPaid',
+
     },
     WorkFlowProcessingLog: {
       GetAuditNotesById: "/api/WorkFlowProcessingLog/GetAuditNotesById",
@@ -183,7 +185,10 @@ export const Configuration = {
       assignarbitratorlist: 'assign-arbitrator-list',
       arbitratorRecusalRequests: 'arbitrator-recusal-requests',
       approveOrRejectArbitrattionRecusalRequest: 'approve-or-reject-arbitrator-recusal-request',
-      assignedArbitrationRequestsDocumnets: 'assigned-arbitration-request-documents'
+      assignedArbitrationRequestsDocumnets: 'assigned-arbitration-request-documents',
+      approveArbitrationFeesPaidList:'approve-arbitration-fees-paid-list',
+      approveArbitrationFeesPaidDetails:'approve-arbitration-fees-paid-details',
+      
     },
     lawsuits: {
       lawsuitList: "lawsuit-list",

@@ -1,0 +1,100 @@
+<app-breadcrumbs></app-breadcrumbs>
+@if (arbitratorsRequest) {
+  <div *ngIf="!arbitratorsRequest.litigationRequestShortDto.isArbitrationFeesHaveBeenCollected"  class="flex flex-end justify-content-end">
+
+    <button  (click)="open(approveInvoicepaymentModal)" class="btn btn-primary flex-start px-8 py-3 span-2 mt-4 me-2"
+        type="button">{{translations.actions.approveArbitrationFeesPaid| translate}}</button>
+
+
+</div>
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <img src="assets/images/icons/bookmarks.svg"
+             alt="bookmarks">
+        <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.firstPartyData| translate }} </h6>
+      </summary>
+
+      <div class="grid-3 mt-5">
+        <ng-container *ngFor="let item of firstParty">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <img src="assets/images/icons/bookmarks.svg"
+             alt="bookmarks">
+        <h6 class="small fw-6 op-7"> {{ translations.LitigationRequest.secondPartyData| translate }}</h6>
+      </summary>
+
+      <div class="grid-3 mt-5">
+        <ng-container *ngFor="let item of secondParty">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <img src="assets/images/icons/bookmarks.svg"
+             alt="bookmarks">
+        <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.litigationData| translate }} </h6>
+      </summary>
+
+      <div class="grid-3 mt-5">
+        <ng-container *ngFor="let item of dataList">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+<ng-template #approveInvoicepaymentModal let-modal>
+  <div class="modal-header">
+    <h4>تأكد دفع رسوم التحكيم </h4>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+
+  <div class="modal-body pt-0 mt-5">
+    تاكيد دفع فاتورة رسوم التحكيم
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary"
+      (click)="ApprovePayment(modal)">تاكيد سداد الفاتورة</button>
+
+    <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+      }}</button>
+
+  </div>
+</ng-template>
+}
