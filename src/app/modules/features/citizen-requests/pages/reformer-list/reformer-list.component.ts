@@ -153,6 +153,8 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
                     this.assignRequestForm.reset();
                     this.toastrNotificationService.showSuccess(this._translate.instant(this.translations.general.successfullySave))
                     modal.dismiss()
+                    this.GetLitigationRequestForFullAllReformer();
+
                 } else {
                     this.toastrNotificationService.showError(res.message)
                 }
