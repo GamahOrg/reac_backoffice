@@ -9,5 +9,6 @@ export interface GetArbitratorsCountResponseDto {
     secondPartyArbitratorsCount: null|number,
     arbitratorsCount: null|number,
     isDone: string,
+    isArbitrationFeesHaveBeenCollected?:boolean,
     id: string
 }

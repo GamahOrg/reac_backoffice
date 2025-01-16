@@ -242,7 +242,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             title: this.translate.instant(translations.layout.sidebar.arbitrationRequestCorrespondences),
                             url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.arbitrationRequestCorrespondencesList,
                           },
-                        
+                          {
+                            id: 'approve-arbitration-fees-paid-list',
+                            icon:'',
+                            title: this.translate.instant(translations.layout.sidebar.approveArbitrationFeesPaid),
+                            url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.approveArbitrationFeesPaidList,
+                          },
 
                     ]
                 },

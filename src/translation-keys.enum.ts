@@ -96,6 +96,7 @@ export namespace translations {
             litigationStatisticsReformerReport = 'layout.sidebar.litigationStatisticsReformerReport',
             vacationRequest = 'layout.sidebar.vacationRequest',
             vacationRequestReply = 'layout.sidebar.vacationRequestReply',
+            approveArbitrationFeesPaid='layout.sidebar.approveArbitrationFeesPaid'
         }
     }
 
@@ -135,6 +136,7 @@ export namespace translations {
         logout = "actions.logout",
         assignArbitrator = "actions.assignArbitrator",
         sendToPayFees= "actions.sendToPayFees",
+        approveArbitrationFeesPaid= "actions.approveArbitrationFeesPaid"
     }
 
     export enum tables {
@@ -693,6 +695,8 @@ export namespace translations {
         relatedTo = "arbitrator.relatedTo",
         disputeResolutionClause = "arbitrator.disputeResolutionClause",
         homeownersAssociationBylaw = "arbitrator.homeownersAssociationBylaw",
+        approveArbitrationFeesPaidDetails="arbitrator.approveArbitrationFeesPaidDetails",
+        approveArbitrationFeedPaid='arbitrator.approveArbitrationFeedPaid'
     }
 
     export enum RequestToExtendSettlementPeriod {

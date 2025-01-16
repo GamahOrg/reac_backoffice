@@ -2,74 +2,70 @@ import { SysFileManagerCreateUpdateDto } from "@app/shared/models/sys-file-manag
 import { LitigationRequestContractType } from "../../lawsuits/models/lawsuit-details.model";
 
 export interface LitigationRequestForExtendPeriodRequestDto {
-     allowAdd :boolean;
-    allowDecision :boolean;
-   
-     litigationRequestShortDto :LitigationRequestShortDto;
-     litigationRequestExtendPeriodRequestCreateUpdateDto:LitigationRequestExtendPeriodRequestCreateUpdateDto
+    allowAdd: boolean;
+    allowDecision: boolean;
+
+    litigationRequestShortDto: LitigationRequestShortDto;
+    litigationRequestExtendPeriodRequestCreateUpdateDto: LitigationRequestExtendPeriodRequestCreateUpdateDto
 }
 
-export interface LitigationRequestExtendPeriodRequestCreateUpdateDto
-{
-    id:string;
-  litigationRequestId :string;
+export interface LitigationRequestExtendPeriodRequestCreateUpdateDto {
+    id: string;
+    litigationRequestId: string;
 
-    requiredDays :number;
-    requestReason :string;
-   
-   
-    reason :string;
-   
-    notes :string;
-   
-    litigationRequestExtendPeriodRequestStatusId :number;
-   
-     finishStatusReason :string;
-   
-     litigationRequestExtendPeriodRequestFiles :LitigationRequestExtendPeriodRequestFileCreateUpdateDto[];
+    requiredDays: number;
+    requestReason: string;
+
+
+    reason: string;
+
+    notes: string;
+
+    litigationRequestExtendPeriodRequestStatusId: number;
+
+    finishStatusReason: string;
+
+    litigationRequestExtendPeriodRequestFiles: LitigationRequestExtendPeriodRequestFileCreateUpdateDto[];
 }
-export interface LitigationRequestExtendPeriodRequestFileCreateUpdateDto
-{
-    id:string;
-     litigationRequestExtendPeriodRequestId :string;
+export interface LitigationRequestExtendPeriodRequestFileCreateUpdateDto {
+    id: string;
+    litigationRequestExtendPeriodRequestId: string;
 
-      fileManager :SysFileManagerCreateUpdateDto;
+    fileManager: SysFileManagerCreateUpdateDto;
 }
-export interface LitigationRequestReconciliationReportCreateUpdateDto
-{
-id:string;
-LitigationRequestId :string;
+export interface LitigationRequestReconciliationReportCreateUpdateDto {
+    id: string;
+    LitigationRequestId: string;
 
-ReportDate:Date;
+    ReportDate: Date;
 
-reconciliationSessionDetails:string;
+    reconciliationSessionDetails: string;
 
-modificationRequest:string;
-litigationRequestMeetingReconciliationItems:LitigationRequestReconciliationReportItemCreateUpdateDto[];
+    modificationRequest: string;
+    litigationRequestMeetingReconciliationItems: LitigationRequestReconciliationReportItemCreateUpdateDto[];
 }
-export interface LitigationRequestShortDto
-{
-    id:string;
-    requestCode :string;
-    cityName :string;
-   areaName :string;
-   contractAddress :string; // العنوان الوطني
+export interface LitigationRequestShortDto {
+    id: string;
+    requestCode: string;
+    cityName: string;
+    areaName: string;
+    contractAddress: string; // العنوان الوطني
+    isArbitrationFeesHaveBeenCollected: boolean;
+    mintuesOfMeetingApprovalPlaintiffStatusOn: Date;
+    mintuesOfMeetingApprovalDefendantStatusOn: Date;
 
-mintuesOfMeetingApprovalPlaintiffStatusOn :Date;
-mintuesOfMeetingApprovalDefendantStatusOn :Date;
-
-title :string;
-description :string;
-isFinancialLitigation :boolean;
-isExemptionReduction:boolean;
-applicantCitizen: CitizenShortDto;
-contract: LitigationRequestContractShortDto;
-externalStatus: SysLitigationRequestStatusDto;
-internalStatus: SysLitigationRequestStatusDto;
-litigationRequestAmount: SysLitigationRequestAmountCreateUpdateDto;
-litigationRequestCategory: SysLitigationRequestCategoryDto | null;
-sysExemptionReductionCategory: SysExemptionReductionCategoryDto | null;
-litigationRequestOwnerType: SysLitigationRequestOwnerTypeDto;
+    title: string;
+    description: string;
+    isFinancialLitigation: boolean;
+    isExemptionReduction: boolean;
+    applicantCitizen: CitizenShortDto;
+    contract: LitigationRequestContractShortDto;
+    externalStatus: SysLitigationRequestStatusDto;
+    internalStatus: SysLitigationRequestStatusDto;
+    litigationRequestAmount: SysLitigationRequestAmountCreateUpdateDto;
+    litigationRequestCategory: SysLitigationRequestCategoryDto | null;
+    sysExemptionReductionCategory: SysExemptionReductionCategoryDto | null;
+    litigationRequestOwnerType: SysLitigationRequestOwnerTypeDto;
 }
 export interface CitizenShortDto {
     id: string;
@@ -153,7 +149,7 @@ export interface WritingMinutesOfTheMeetingRequestPayload {
     litigationRequestMeetingReconciliationItems: LitigationRequestReconciliationReportItemCreateUpdateDto[];
 }
 
-export interface LitigationRequestReconciliationReportItemCreateUpdateDto  {
+export interface LitigationRequestReconciliationReportItemCreateUpdateDto {
     id: string;
     reconciliationItem: string;
 }
@@ -164,7 +160,7 @@ export interface LitigationRequestForReportDto {
     report: LitigationRequestReconciliationReportCreateUpdateDto | null;
 }
 
-export interface LitigationRequestReconciliationReportCreateUpdateDto  {
+export interface LitigationRequestReconciliationReportCreateUpdateDto {
     id: string;
     litigationRequestId: string;
     reportDate: string;
@@ -172,7 +168,7 @@ export interface LitigationRequestReconciliationReportCreateUpdateDto  {
     modificationRequest: string;
     litigationRequestMeetingReconciliationItems: LitigationRequestReconciliationReportItemCreateUpdateDto[];
 }
-export interface LitigationRequestReconciliationReportItemCreateUpdateDto{
-    id:string;
-    reconciliationItem:string;
+export interface LitigationRequestReconciliationReportItemCreateUpdateDto {
+    id: string;
+    reconciliationItem: string;
 }

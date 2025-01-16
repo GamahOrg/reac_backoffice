@@ -28,6 +28,8 @@ import { ArbitrationDocumentService } from './services/arbitrator-document/arbit
 import { ArbitrationRequestCorrespondencesListComponent } from './components/arbitration-request-correspondences-list/arbitration-request-correspondences-list.component';
 import { ArbitrationRequestCorrespondencesDetailsComponent } from './components/arbitration-request-correspondences-details/arbitration-request-correspondences-details.component';
 import { ArbitrationRequestCorrespondencesService } from './services/arbitration-request-correspondences/arbitration-request-correspondences.service';
+import { ApproveArbitrationFeesPaidListComponent } from './pages/approve-arbitration-fees-paid-list/approve-arbitration-fees-paid-list.component';
+import { ApproveArbitrationFeesPaidDetailsComponent } from './pages/approve-arbitration-fees-paid-details/approve-arbitration-fees-paid-details.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { ArbitrationRequestCorrespondencesService } from './services/arbitration
         ApproveOrRejectArbitratorRecusalRequestComponent,
         AssignedArbitrationRequestsDocumnetsComponent,
         ArbitrationRequestCorrespondencesListComponent,
-        ArbitrationRequestCorrespondencesDetailsComponent
+        ArbitrationRequestCorrespondencesDetailsComponent,
+        ApproveArbitrationFeesPaidListComponent,
+        ApproveArbitrationFeesPaidDetailsComponent
     ],
     imports: [
         CommonModule,

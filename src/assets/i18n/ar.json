@@ -58,7 +58,8 @@
             "litigationStatisticsReviewReport": "تقرير أعداد الدعاوى في مرحلة التدقيق",
             "litigationStatisticsReformerReport": "تقرير أعداد الدعاوى في مرحلة الصلح",
             "vacationRequest" : "تقديم طلبات الاجازة" ,
-            "vacationRequestReply" : "طلبات الاجازة المستقبلة" 
+            "vacationRequestReply" : "طلبات الاجازة المستقبلة",
+            "approveArbitrationFeesPaid":"تأكيد دفع رسوم التحكيم"
         }
     },
     "actions": {
@@ -96,7 +97,8 @@
         "assign": "تعيين",
         "logout": "تسجيل خروج",
         "assignArbitrator": "تعين محكم",
-        "sendToPayFees":"ارسال الطلب لدفع الرسوم"
+        "sendToPayFees":"ارسال الطلب لدفع الرسوم",
+        "approveArbitrationFeesPaid":"تأكيد دفع رسوم التحكيم"
     },
     "tables": {
         "from": "من",
@@ -638,7 +640,9 @@
         "articleProvision": "و الذي تنص المادة",
         "relatedTo": "المتعلق ب",
         "disputeResolutionClause": "منه علي حل النزاعات التي تحصل بين الطرفين عن طريق التحكيم لدي المركز السعودي للتحكيم العقاري",
-        "homeownersAssociationBylaw": "النظام الأساسي لجمعية ملاك"
+        "homeownersAssociationBylaw": "النظام الأساسي لجمعية ملاك",
+        "approveArbitrationFeesPaidDetails":"تفاصيل تاكيد دفع رسوم التحكيم",
+        "approveArbitrationFeedPaid":"تاكيد الدفع"
     },
     "RequestToExtendSettlementPeriod": {
         "requestCode": "كود الدعوة",
