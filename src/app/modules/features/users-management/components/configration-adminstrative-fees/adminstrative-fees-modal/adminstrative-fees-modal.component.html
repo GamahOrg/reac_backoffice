@@ -1,0 +1,62 @@
+<div class="modal" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"> أضافة رسوم اداريه </h5>
+          <button type="button" class="close-btn" aria-label="Close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body " class="mt-5">
+          <form  [formGroup]="feesForm" (ngSubmit)="save()">
+       
+            <div class="form-group mt-5">
+              <label for="fromAmount">{{translations.UsersManagement.AdminstrationFees.fromAmount| translate}}</label>
+              <input type="number" min="1" class="form-control" id="fromAmount" formControlName="fromAmount" required>
+              <div *ngIf="feesForm.controls['fromAmount'].errors && feesForm.controls['fromAmount'].touched" class="text-danger">
+                <div *ngIf="feesForm.controls['fromAmount'].errors?.['required']">
+                  {{translations.formValidationError.required | translate}} 
+                </div>
+              </div>
+              <div *ngIf="feesForm.controls['fromAmount'].errors && feesForm.controls['fromAmount'].touched" class="text-danger">
+                  <div *ngIf="feesForm.controls['fromAmount'].errors?.['min']">
+                    {{translations.formValidationError.minlength | translate}}
+                  </div>
+                </div>
+            </div>
+            <div class="form-group  mt-5">
+              <label for="toAmount">{{translations.UsersManagement.AdminstrationFees.toAmount| translate}}</label>
+              <input type="number"   min="1" class="form-control" id="toAmount" formControlName="toAmount" required>
+              <div *ngIf="feesForm.controls['toAmount'].errors && feesForm.controls['toAmount'].touched" class="text-danger">
+                <div *ngIf="feesForm.controls['toAmount'].errors?.['required']">
+                  {{translations.formValidationError.required | translate}} 
+                </div>
+              </div>
+              <div *ngIf="feesForm.controls['toAmount'].errors && feesForm.controls['toAmount'].touched" class="text-danger">
+                  <div *ngIf="feesForm.controls['toAmount'].errors?.['min']">
+                    {{translations.formValidationError.minlength | translate}}
+                  </div>
+                </div>
+            </div>
+            <div class="form-group  mt-5">
+                <label for="fees">{{translations.UsersManagement.AdminstrationFees.fees| translate}}</label>
+                <input type="number"  min="1" class="form-control" id="fees" formControlName="fees" required>
+                <div *ngIf="feesForm.controls['fees'].errors && feesForm.controls['fees'].touched" class="text-danger">
+                    <div *ngIf="feesForm.controls['fees'].errors?.['required']">
+                      {{translations.formValidationError.required | translate}} 
+                    </div>
+                  </div>
+                  <div *ngIf="feesForm.controls['fees'].errors && feesForm.controls['fees'].touched" class="text-danger">
+                      <div *ngIf="feesForm.controls['fees'].errors?.['min']">
+                        {{translations.formValidationError.minlength | translate}}
+                      </div>
+                    </div>
+              </div>
+
+            <div class="modal-footer p-5" >
+                <button type="button" class="btn btn-primary" (click)="closeModal()">{{ translations.actions.close | translate}}</button>
+                <button [disabled]="feesForm.invalid" type="submit" class="btn btn-primary">{{ translations.actions.save | translate}}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

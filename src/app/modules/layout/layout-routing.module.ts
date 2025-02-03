@@ -29,9 +29,14 @@ const routes: Routes = [
           import('../reports/reports.module').then((m) => m.ReportsModule),
       },
       {
-        path: Configuration.modules.UserManagement,
+        path: Configuration.modules.profile,
         loadChildren: () =>
-          import('../features/user-management/user-management.module').then((m) => m.UserManagementModule),
+          import('../features/profile/profile.module').then((m) => m.ProfileModule),
+      },
+      {
+        path: Configuration.modules.UsersManagement,
+        loadChildren: () =>
+          import('../features/users-management/users-management.module').then((m) => m.UsersManagementModule),
       },
       {
         path: '',

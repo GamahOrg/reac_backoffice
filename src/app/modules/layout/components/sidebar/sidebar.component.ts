@@ -36,6 +36,31 @@ export class SidebarComponent extends BaseComponent implements OnInit {
         
         console.log("this.departmentType", this.departmentType);
 
+        // Profile Section
+        this.menuItems.push(
+            {
+                id: 'profile-collapse',
+                title: this.translate.instant(translations.layout.sidebar.profile),
+                icon: 'assets/images/icons/sidebar/book.svg',
+                children: [
+                    {
+                        id: 'change-password',
+                        title: this.translate.instant(translations.layout.sidebar.changePassword),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        url: '/' + Configuration.modules.profile + '/' + Configuration.pages.profile.changePassword,
+                    },
+                    {
+                        id: 'vacation-request',
+                        title: this.translate.instant(translations.layout.sidebar.vacationRequest),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        url: '/' + Configuration.modules.profile + '/' + Configuration.pages.profile.vacationRequest,
+                    },
+
+                ]
+            },
+        );
+
+
         if (this.departmentType == DepartmentType.Review) {
             this.menuItems.push(
                 {
@@ -48,30 +73,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
-                        },
-                        {
-                            id: 'vacation-request',
-                            title: this.translate.instant(translations.layout.sidebar.vacationRequest),
-                            icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.UserManagement + '/' + Configuration.pages.userManagement.vacationRequest,
-                        },
+                        }
 
                     ]
                 },
             );
-            if(this.isAdmin === "true"){
-                this.menuItems[0]?.children?.push(
-                    
-                    {
-                        id: 'vacation-request-reply',
-                        title: this.translate.instant(translations.layout.sidebar.vacationRequestReply),
-                        icon: 'assets/images/icons/sidebar/book.svg',
-                        url: '/' + Configuration.modules.UserManagement + '/' + Configuration.pages.userManagement.vacationRequestReply,
-                    },
-    
-                );
-            }
-
+            
         } else if (this.departmentType == DepartmentType.Reconciliation) {
             this.menuItems.push(
                 {
@@ -224,6 +231,224 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                         //     icon: 'assets/images/icons/sidebar/book.svg',
                         //     url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.litigationRequestForArbitratorSelectionDurationList,
                         // },
+                        {
+                            id: 'stop-and-release-reformer',
+                            title: this.translate.instant(translations.layout.sidebar.assignarbitratorlist),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.assignarbitratorlist,
+                        },
+                        {
+                            id: 'arbitrator-recusal-request',
+                            title: this.translate.instant(translations.layout.sidebar.arbitratorRecusalRequests),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.arbitratorRecusalRequests,
+                        },
+                        {
+                            id: 'arbitration-request-correspondences-list',
+                            icon:'',
+                            title: this.translate.instant(translations.layout.sidebar.arbitrationRequestCorrespondences),
+                            url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.arbitrationRequestCorrespondencesList,
+                          },
+                          {
+                            id: 'approve-arbitration-fees-paid-list',
+                            icon:'',
+                            title: this.translate.instant(translations.layout.sidebar.approveArbitrationFeesPaid),
+                            url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.approveArbitrationFeesPaidList,
+                          },
+
+                    ]
+                },
+            );
+        }else if (this.departmentType == DepartmentType.SystemManagement){
+            // Management Section
+            this.menuItems.push(
+                {
+                    id: 'management-collapse',
+                    title: this.translate.instant(translations.layout.sidebar.management),
+                    icon: 'assets/images/icons/sidebar/book.svg',
+                    children: [
+                        {
+                            id: 'create-user',
+                            title: this.translate.instant(translations.layout.sidebar.createEmployee),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.createUser,
+                        },
+                        {
+                            id: 'users-list',
+                            title: this.translate.instant(translations.layout.sidebar.employeeList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.userList,
+                        },
+                        {
+                            id: 'admistrative-fees',
+                            title: this.translate.instant(translations.layout.sidebar.adminstrationFees),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.admistrativeFees,
+                        },
+                        {
+                            id: 'reconciliation-fees',
+                            title: this.translate.instant(translations.layout.sidebar.reconciliationFees),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.reconciliationFees,
+                        },
+                        {
+                            id: 'reconciliation-setting-fees',
+                            title: this.translate.instant(translations.layout.sidebar.reconciliationSettingFees),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.reconciliationSettings,
+                        },
+                        {
+                            id: 'vacation-request-reply',
+                            title: this.translate.instant(translations.layout.sidebar.vacationRequestReply),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.profile + '/' + Configuration.pages.profile.vacationRequestReply,
+                        },
+                    ]
+                },
+            );
+
+            // Review Section
+            this.menuItems.push(
+                {
+                    id: 'review-collapse',
+                    title: this.translate.instant(translations.layout.sidebar.review),
+                    icon: 'assets/images/icons/sidebar/book.svg',
+                    children: [
+                        {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
+                        }
+                    ]
+                },
+            );
+
+            // Reconciliation Section
+            this.menuItems.push(
+                {
+                    id: 'reformation-collapse',
+                    title: this.translate.instant(translations.layout.sidebar.reformation),
+                    icon: 'assets/images/icons/home/hands.svg',
+                    children: [
+                        
+                        {
+                            id: 'stop-and-release-reformer',
+                            title: this.translate.instant(translations.layout.sidebar.reformationLawsuitsList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.reformerassigningrequestforall,
+                        },
+                        {
+                            id: 'stop-and-release-reformer',
+                            title: this.translate.instant(translations.layout.sidebar.sessionList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.sessionList,
+                        },
+                        {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.assignReformers),
+                            // icon: 'assets/images/icons/sidebar/menu.svg',
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.reformerList,
+                        },
+                        {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.reformerRequestList),
+                            // icon: 'assets/images/icons/sidebar/menu.svg',
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.reformerRequestList,
+                        },
+                        {
+                            id: 'stop-and-release-reformer',
+                            title: this.translate.instant(translations.layout.sidebar.stopAndReleaseReformer),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.stopAndReleaseReformer,
+                        },
+
+                        {
+                            id: 'stop-and-release-reformer',
+                            title: this.translate.instant(translations.layout.sidebar.requestToExtendSettlementPeriod),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.requestToExtendSettlementPeriodList,
+                        },
+
+                        {
+                            id: 'litigation-request-correspondences-list',
+                            icon:'',
+                            title: this.translate.instant(translations.layout.sidebar.litigationRequestCorrespondences),
+                            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationRequestCorrespondencesList,
+                        },
+                        
+                    ]
+                },
+            );
+
+            // Arbitration Section
+
+            this.menuItems.push(
+                {
+                    id: 'arbitration-collapse',
+                    title: this.translate.instant(translations.layout.sidebar.arbitration),
+                    icon: 'assets/images/icons/home/judge.svg',
+                    children: [
+                        
+                        {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.arbitratorRequestTaskList),
+                            // icon: 'assets/images/icons/sidebar/menu.svg',
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.assignedArbitrationRequests,
+                        },
+                        {
+                            id: 'stop-and-release-reformer',
+                            title: this.translate.instant(translations.layout.sidebar.arbitrationSessionList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.arbitratorSessionList,
+                        },
+                        {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.litigationRequestForArbitratorSelectionDurationList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.litigationRequestForArbitratorSelectionDurationList,
+                        },
+                        {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.arbitratorCount),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.arbitratorCountList,
+                        },
+                        {
+                            id: 'stop-and-release-reformer',
+                            title: this.translate.instant(translations.layout.sidebar.assignArbitrationMemberList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.assignArbitrationMemberList,
+                        },
+                        {
+                            id: 'stop-and-release-reformer',
+                            title: this.translate.instant(translations.layout.sidebar.assignArbitrationHeadList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.assignArbitrationHeadList,
+                        },
+                        {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.arbitratorRequestList),
+                            // icon: 'assets/images/icons/sidebar/menu.svg',
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.arbitratorRequestList,
+                        },
+                        {
+                            id: 'stop-and-release-reformer',
+                            title: this.translate.instant(translations.layout.sidebar.stopAndReleaseArbitrator),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.stopAndReleaseArbitrator,
+                        },
+                        {
+                            id: 'stop-and-release-reformer',
+                            title: this.translate.instant(translations.layout.sidebar.requestToExtendArbitrationPeriodList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.requestToExtendArbitrationPeriodList,
+                        },
+                        
                         {
                             id: 'stop-and-release-reformer',
                             title: this.translate.instant(translations.layout.sidebar.assignarbitratorlist),

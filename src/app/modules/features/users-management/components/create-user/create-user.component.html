@@ -1,0 +1,185 @@
+
+
+<app-breadcrumbs></app-breadcrumbs>
+
+<div class="form-wrapper">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="grid-2">
+      <div class="form-field">
+        <label class="small fw-6 required mb-2">
+          {{translations.UsersManagement.Employee.employeeName | translate}}
+        </label>
+        <input 
+          type="text" 
+          formControlName="name" 
+          class="form-control span-2" 
+          placeholder="{{translations.UsersManagement.Employee.employeeName | translate}}"
+        />
+        <div *ngIf="employeeForm.controls['name'].errors && employeeForm.controls['name'].touched" class="text-danger">
+          <div *ngIf="employeeForm.controls['name'].errors?.['required']">
+            {{translations.formValidationError.required | translate}} 
+          </div>
+        </div>
+        <div *ngIf="employeeForm.controls['name'].errors && employeeForm.controls['name'].touched" class="text-danger">
+            <div *ngIf="employeeForm.controls['name'].errors?.['maxlength']">
+              {{translations.formValidationError.maxlength | translate}}
+            </div>
+          </div>
+      </div>
+  
+      <div class="form-field">
+        <label class="small fw-6 required mb-2">
+          {{translations.UsersManagement.Employee.identityNumber | translate}}
+        </label>
+        <input 
+          type="text" 
+          formControlName="identityNumber" 
+          class="form-control span-2" 
+          placeholder="{{translations.UsersManagement.Employee.identityNumber | translate}}"
+        />
+        <div *ngIf="employeeForm.controls['identityNumber'].errors && employeeForm.controls['identityNumber'].touched" class="text-danger">
+          <div *ngIf="employeeForm.controls['identityNumber'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+          <div *ngIf="employeeForm.controls['identityNumber'].errors?.['pattern']">
+            {{translations.UsersManagement.Employee.identityNumberValid | translate}}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="small fw-6 required mb-2">
+          {{translations.UsersManagement.Employee.email | translate}}
+        </label>
+        <input 
+          type="text" 
+          formControlName="email" 
+          class="form-control span-2" 
+          placeholder="{{translations.UsersManagement.Employee.email | translate}}"
+        />
+        <div *ngIf="employeeForm.controls['email'].errors && employeeForm.controls['email'].touched" class="text-danger">
+          <div *ngIf="employeeForm.controls['email'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+          <div *ngIf="employeeForm.controls['email'].errors?.['pattern']">
+            {{translations.UsersManagement.Employee.emailValid | translate}}
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-field">
+        <label class="small fw-6 required mb-2">
+          {{translations.UsersManagement.Employee.department | translate}}
+        </label>
+        <select 
+        formControlName="departmentId" 
+        class="form-select span-2"
+        (change)="onDepartmentChange($event)"
+      >
+        <option value="">{{translations.UsersManagement.Employee.department | translate}}</option>
+        <option *ngFor="let department of departments" [value]="department.id">
+          {{ department.departmentName }}
+        </option>
+      </select>
+        <div *ngIf="employeeForm.controls['departmentId'].errors && employeeForm.controls['departmentId'].touched" class="text-danger">
+          <div *ngIf="employeeForm.controls['departmentId'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+        </div>
+      </div>
+  
+      <div *ngIf="isRoleEnabled"  class="form-field">
+        <label class="small fw-6 required mb-2">
+          {{translations.UsersManagement.Employee.role | translate}}
+        </label>
+        <select 
+        formControlName="roleId" 
+        class="form-select span-2"
+        (change)="onRoleChange($event)"
+      >
+        <option value="1">{{translations.UsersManagement.Employee.employee | translate}}</option>
+        <option value="2">{{translations.UsersManagement.Employee.manager | translate}}</option>
+      </select>
+        <div *ngIf="employeeForm.controls['roleId'].errors && employeeForm.controls['roleId'].touched" class="text-danger">
+          <div *ngIf="employeeForm.controls['roleId'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="small fw-6 required mb-2">
+          {{translations.UsersManagement.Employee.jobTitle | translate}}
+        </label>
+        <input 
+          type="text" 
+          formControlName="jobTitle" 
+          class="form-control span-2" 
+          placeholder="{{translations.UsersManagement.Employee.jobTitle | translate}}"
+          
+        />
+        <div *ngIf="employeeForm.controls['jobTitle'].errors && employeeForm.controls['jobTitle'].touched" class="text-danger">
+          <div *ngIf="employeeForm.controls['jobTitle'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-field">
+        <label class="small fw-6 required mb-2">
+          {{translations.UsersManagement.Employee.mobile | translate}}
+        </label>
+        <input 
+          type="text" 
+          formControlName="mobile" 
+          class="form-control span-2" 
+          placeholder="{{translations.UsersManagement.Employee.mobile | translate}}"
+        />
+        <div *ngIf="employeeForm.controls['mobile'].errors && employeeForm.controls['mobile'].touched" class="text-danger">
+          <div *ngIf="employeeForm.controls['mobile'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+          <div *ngIf="employeeForm.controls['mobile'].errors?.['pattern']">
+            {{translations.formValidationError.phonePattern | translate}}
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-field">
+        <label class="small fw-6 required mb-2">
+          {{translations.UsersManagement.Employee.status | translate}}
+        </label>
+        <select 
+          formControlName="isActive" 
+          class="form-select span-2"
+        >
+          <option value="">{{"الكل"}}</option>
+          <option value="true">{{translations.UsersManagement.Employee.active | translate}}</option>
+          <option value="false">{{translations.UsersManagement.Employee.inActive | translate}}</option>
+        </select>
+        <div *ngIf="employeeForm.controls['isActive'].errors && employeeForm.controls['isActive'].touched" class="text-danger">
+          <div *ngIf="employeeForm.controls['isActive'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+        </div>
+      </div>
+  
+    
+      <div *ngIf="!isRoleEnabled" class="col-6">
+
+      </div>
+    
+      <div class="" >
+        <div class="form-action ml-6 fw-4 ">
+        
+        <button 
+          type="submit" 
+          class="btn btn-primary py-3 px-9 span-2 mt-6 ml-6"
+          [disabled]="employeeForm.invalid"
+        >
+          {{translations.actions.save | translate}}
+        </button>
+      </div>
+    </div>
+
+    </form>
+  </div>

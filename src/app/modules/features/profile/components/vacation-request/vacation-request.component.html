@@ -1,0 +1,143 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+<div class="flex-y-row flex-wrap flex-lg-nowrap gap-3">
+  
+    <a (click)="open(addVacationModal)"
+       class="btn btn-primary fw-5 py-2 flex-y-row text-nowrap px-8">
+      <img src="assets/images/icons/add.svg"
+           class="me-2"
+           alt="add.svg">
+      {{translations.Profile.vacationRequests.createVacationRequest | translate}}
+    </a>
+  </div>
+<div class="table-wrapper mt-5">
+
+
+
+  <!-- table -->
+  <div *ngIf="vacationsList?.length != 0" class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          
+          <th scope="col">{{translations.Profile.vacationRequests.startDate| translate}}</th>
+          <th scope="col">{{translations.Profile.vacationRequests.endDate| translate}}</th>
+          <th scope="col">{{translations.Profile.vacationRequests.reason| translate}}</th>
+          <th scope="col">{{translations.Profile.vacationRequests.isApproved| translate}}</th>
+          <th scope="col">{{translations.Profile.vacationRequests.approvedBy| translate}}</th>
+          <th scope="col">{{translations.Profile.vacationRequests.approvedOn| translate}}</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        @for (vacation of vacationsList; track $index) {
+        <tr>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ (vacation.startDate | date: 'dd/MM/yyy') || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ (vacation.endDate | date: 'dd/MM/yyy') || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ vacation.reason || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ vacation.isApproved == true ? 'تمت الموافقه' : vacation.isApproved == false ? 'مرفوضة' : '--'  }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ vacation.approvedBy || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ (vacation.approvedOn | date: 'dd/MM/yyy') || '--' }}</span>
+          </td>
+          
+          
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="flex-between">
+    <div class="op-6 v-small fw-5">
+      <span>{{translations.tables.from | translate}} </span>
+      <span>{{pagintationData.currentPage}} </span>
+      <span>{{translations.tables.to | translate}} </span>
+      <span>{{pagintationData.totalCount}} </span>
+      <span>{{translations.tables.ofTotal | translate}} </span>
+      <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+      <span>{{translations.tables.row | translate}} </span>
+    </div>
+    <app-pagination></app-pagination>
+  </div>
+
+
+
+@if((!vacationsList) || vacationsList.length==0){
+<div class="flex-center flex-column">
+  <img src="assets/images/no-data.svg"
+       alt="no-data">
+  <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.Profile.vacationRequests.noVacationRequests| translate}}</h4>
+</div>
+}
+
+<ng-template class="modal"  #addVacationModal let-modal>
+  <div class="modal-header">
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+
+  <div class="modal-body pt-0">
+      {{ translations.Profile.vacationRequests.vacationRequests| translate }}
+
+            <form [formGroup]="createVacationForm" class="mt-5">
+    
+                <div>
+                    <div class=" datePicker d-flex align-items-center">
+                        <p class="dateValue">
+                            {{(translations.Profile.vacationRequests.startDate| translate)}}
+                        </p>
+                        <input formControlName="startDate" useValueAsDate [owlDateTime]="fromdatepicker" [owlDateTimeTrigger]="fromdatepicker"
+                            [placeholder]="translations.Profile.vacationRequests.startDate | translate" class="form-control"
+                            [class.is-invalid]="createVacationFormControls.startDate.invalid && createVacationFormControls.startDate.touched">
+    
+                        <p class="dateValue">
+                            {{(translations.Profile.vacationRequests.endDate | translate)}}
+                        </p>
+                        <input formControlName="endDate" useValueAsDate [owlDateTime]="todatepicker" [owlDateTimeTrigger]="todatepicker"
+                            [placeholder]="translations.Profile.vacationRequests.endDate | translate" class="form-control"
+                            [class.is-invalid]="createVacationFormControls.endDate.invalid && createVacationFormControls.endDate.touched">
+                        <owl-date-time  #fromdatepicker></owl-date-time>
+                        <owl-date-time  #todatepicker></owl-date-time>
+                        <h4 class="trigger px-2">
+                            <!-- <mat-icon>calendar_today</mat-icon> -->
+                        </h4>
+                    </div>
+                    <div class="text-danger mt-5" *ngIf="this.createVacationSubmitted && (createVacationFormControls.startDate.errors || createVacationFormControls.endDate.errors || createVacationFormControls.reason.errors)">
+                        {{translations.formValidationError.required | translate}}
+                    </div>
+                </div>
+                
+                <div>
+                    {{translations.Profile.vacationRequests.reason| translate}}
+                
+                
+                    <textarea class="form-control" formControlName="reason" name="reason" id="reason"></textarea>
+    
+                </div>
+    
+                <a (click)="createVacation()" 
+                class="btn btn-primary mt-5 col-6 fw-5 py-2 flex-y-row text-nowrap px-8">
+                <img src="assets/images/icons/add.svg" class="me-2" alt="add.svg">
+                {{translations.Profile.vacationRequests.createVacationRequest| translate}}
+                </a>
+
+            </form>
+
+  </div>
+
+  <div class="modal-footer">
+      
+      <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate}}</button>
+
+  </div>
+</ng-template>

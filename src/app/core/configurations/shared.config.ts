@@ -1,5 +1,4 @@
 import { AssignedArbitrationRequestsDocumnetsComponent } from "@app/modules/features/arbitration/pages/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets.component";
-import { UserManagementModule } from "@app/modules/features/user-management/user-management.module";
 
 export const Configuration = {
   languages: ['ar', 'en'],
@@ -155,12 +154,34 @@ export const Configuration = {
     SysSetting: {
       GetSettingByKey: "/api/SysSetting/GetSettingByKey"
     },
-    userManagement: {
+    profile: {
       ProcessVacationRequest: "/api/SysVacationRequest/ProcessVacationRequestAsync",
       createVacationRequest: "/api/SysVacationRequest/CreateVacationAsync",
       getVacationRequestsForEmployee: "/api/SysVacationRequest/EmployeeList",
       getVacationRequestsForAdmin: "/api/SysVacationRequest/AdminList",
-    }
+      
+      changePassword:"/api/Account/ChangePassword"
+    },
+    usersManagement:{
+      CreateEmployee:"/api/SysEmployee/CreateEmployee",
+      getAllEmployee:"/api/SysEmployee/List",
+      getAllDepartmentsLookup:"/api/SysDepartment/Get",
+      UpdateEmployeeStatus:"/api/SysEmployee/UpdateEmployeeStatus"
+    },
+    adminstrativeFees:{
+      getAllFees:"/api/SysLitigationRequestAmount/Get",
+      updateFees:"/api/SysLitigationRequestAmount/Update",
+      GetFeesById:"/api/SysLitigationRequestAmount/GetById",
+      createFees:"/api/SysLitigationRequestAmount/Create",
+    },
+    reconciliationFees:{
+      getFees:"/api/SysSetting/GetReconciliationFeesSettings",
+      updateFees:"/api/SysSetting/UpdateRange",
+    },
+    reconciliationSettings:{
+      getsetting:"/api/SysSetting/GetReconciliationSetting",
+      updateFees:"/api/SysSetting/UpdateRange",
+    },
   },
   modules: {
     auth: 'auth',
@@ -168,7 +189,8 @@ export const Configuration = {
     citizenRequests: 'citizen-requests',
     arbitration: "arbitration",
     reports: "reports",
-    UserManagement: 'user-management'
+    profile: 'profile',
+    UsersManagement: 'users-management'
   },
   pages: {
     auth: {
@@ -233,9 +255,18 @@ export const Configuration = {
       statisticsReformer: 'statistics-reformer',
       statisticsArbitration: 'statistics-arbitration'
     },
-    userManagement: {
+    profile: {
       vacationRequest: 'vacation-request',
+      changePassword: 'change-password',
       vacationRequestReply: 'vacation-request-reply'
+    },
+    usersManagement: {
+      userList: 'user-list',
+      createUser: 'create-user',
+      admistrativeFees:'admistrative-fees',
+      reconciliationFees:'reconciliation-fees',
+      reconciliationSettings:'reconciliation-settings',
+
     }
   },
   validators: {
@@ -249,7 +280,8 @@ export const Configuration = {
     PhoneNumber: '^(05)([0-9]{8})$',
     numberOnly: '^[0-9]+$',
     decimal: '^[0-9][0-9]*[.]?[0-9]{0,2}$',
-    noArabicLetters: "^[a-zA-Z0-9$@$!%*?&#^-_. +]+$"
+    noArabicLetters: "^[a-zA-Z0-9$@$!%*?&#^-_. +]+$",
+    identityNumber:"^[0-9]{10}$"
   },
   OTPInputConfigration: {
     length: 6,
