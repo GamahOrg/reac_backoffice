@@ -74,7 +74,7 @@ export class LoginComponent extends BaseComponent {
               this._storageService.saveUserType(res.data.isAdmin)
               setTimeout((app: any, res: BaseResponse<TokenResponse>) => {
                 this.showLoader = false;
-                if (res.data?.departmentType == DepartmentType.Review) {
+                if (res.data?.departmentType == DepartmentType.Review || res.data?.departmentType == DepartmentType.SystemManagement) {
 
                   app.navigateTolawsuitsModule()
                 } else if (res.data?.departmentType == DepartmentType.Reconciliation) {

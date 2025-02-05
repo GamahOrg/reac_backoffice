@@ -34,6 +34,7 @@ export interface CitizenRequestFullDataDto {
 
     id: string;
     citizenId: string;
+    fees: string;
     areaId?: string;
     isVolunteerApproval: boolean;
     academicDegreeName: string;

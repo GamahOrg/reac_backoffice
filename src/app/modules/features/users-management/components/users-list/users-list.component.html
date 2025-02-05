@@ -1,0 +1,210 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+<div class="flex-y-row flex-wrap flex-lg-nowrap gap-3">
+  
+    <button [routerLink]="['/users-management/create-user']"
+       class="btn btn-primary fw-5 py-2 flex-y-row text-nowrap px-8">
+      <img src="assets/images/icons/add.svg"
+           class="me-2"
+           alt="add.svg">
+      {{translations.UsersManagement.Employee.createEmployee | translate}}
+    </button>
+  </div>
+
+
+  <div class="form-wrapper">
+    <form [formGroup]="searchForm" (ngSubmit)="GetAllEmployeeList()" class="grid-4">
+      <div class="form-field">
+        <label class="small fw-3 required mb-2">
+          {{translations.UsersManagement.Employee.employeeName | translate}}
+        </label>
+        <input 
+          type="text" 
+          formControlName="name" 
+          class="form-control span-2" 
+          placeholder="{{translations.UsersManagement.Employee.employeeName | translate}}" 
+        />
+        <!-- <div *ngIf="searchForm.controls['name'].errors && searchForm.controls['name'].touched" class="text-danger">
+          <div *ngIf="searchForm.controls['name'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+        </div> -->
+      </div>
+  
+      <div class="form-field">
+        <label class="small fw-3 required mb-2">
+          {{translations.UsersManagement.Employee.mobile | translate}}
+        </label>
+        <input 
+          type="text" 
+          formControlName="mobile" 
+          class="form-control span-2" 
+          placeholder="{{translations.UsersManagement.Employee.mobile | translate}}" 
+        />
+        <!-- <div *ngIf="searchForm.controls['mobile'].errors && searchForm.controls['mobile'].touched" class="text-danger">
+          <div *ngIf="searchForm.controls['mobile'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+        </div> -->
+      </div>
+  
+      <div class="form-field">
+        <label class="small fw-3 required mb-2">
+          {{translations.UsersManagement.Employee.department | translate}}
+        </label>
+        <input 
+          type="text" 
+          formControlName="department" 
+          class="form-control span-2" 
+          placeholder="{{translations.UsersManagement.Employee.department | translate}}" 
+        />
+        <!-- <div *ngIf="searchForm.controls['department'].errors && searchForm.controls['department'].touched" class="text-danger">
+          <div *ngIf="searchForm.controls['department'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+        </div> -->
+      </div>
+  
+      <div class="form-field">
+        <label class="small fw-3 required mb-2">
+          {{translations.UsersManagement.Employee.status | translate}}
+        </label>
+        <select 
+          formControlName="isActive" 
+          class="form-select span-2"
+        >
+          <option value="">{{"الكل"}}</option>
+          <option value="true">{{translations.UsersManagement.Employee.active | translate}}</option>
+          <option value="false">{{translations.UsersManagement.Employee.inActive | translate}}</option>
+        </select>
+        <!-- <div *ngIf="searchForm.controls['isActive'].errors && searchForm.controls['isActive'].touched" class="text-danger">
+          <div *ngIf="searchForm.controls['isActive'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+        </div> -->
+      </div>
+  
+      <!-- <div class="form-field">
+        <label class="small fw-3 required mb-2">
+          {{translations.UsersManagement.Employee.dateFrom | translate}}
+        </label>
+        <input 
+          type="date" 
+          formControlName="dateFrom" 
+          class="form-control span-2"
+        />
+        <!-- <div class="border flex-y-row rounded-2">
+            <input class="form-control border-0 shadow-none"
+                   type="date" [ngModel] ="dt | date:'yyyy-MM-dd'"
+                 
+                   formControlName="dateFrom"
+                    />
+          </div> -->
+        <!-- <div *ngIf="searchForm.controls['dateFrom'].errors && searchForm.controls['dateFrom'].touched" class="text-danger">
+          <div *ngIf="searchForm.controls['dateFrom'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-field">
+        <label class="small fw-3 required mb-2">
+          {{translations.UsersManagement.Employee.dateTo | translate}}
+        </label>
+        <input 
+          type="date" 
+          formControlName="dateTo" 
+          class="form-control span-2"
+        />
+         <div *ngIf="searchForm.controls['dateTo'].errors && searchForm.controls['dateTo'].touched" class="text-danger">
+          <div *ngIf="searchForm.controls['dateTo'].errors?.['required']">
+            {{translations.formValidationError.required | translate}}
+          </div>
+        </div> 
+      </div> -->
+  
+      <div class="form-action fw-3">
+        <button 
+          type="submit" 
+          
+          class="btn btn-primary py-3 px-9 span-2 mt-6 ml-6"
+          [disabled]="searchForm.invalid"
+        >
+         بحث
+        </button>
+      </div>
+    </form>
+  </div>
+  
+
+<div class="table-wrapper mt-5">
+
+
+
+  <!-- table -->
+  <div *ngIf="employeeList?.length != 0" class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          
+          <th scope="col">{{translations.UsersManagement.Employee.employeeName| translate}}</th>
+          <th scope="col">{{translations.UsersManagement.Employee.mobile | translate}}</th>
+          <th scope="col">{{translations.UsersManagement.Employee.department | translate}}</th>
+          <th scope="col">{{translations.UsersManagement.Employee.status | translate}}</th>
+          <th scope="col">{{translations.UsersManagement.Employee.actions| translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (employee of employeeList; track $index) {
+        <tr>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ employee.employeeName  }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ employee.mobile }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ employee.departmentName || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ employee.isActive == true ?  ' مفعل' : employee.isActive == false ? 'غير مفعل' : '--'  }} </span>
+            <img *ngIf="employee.isActive" src="assets/images/icons/checkbox.svg"  style="    width: 16px;" alt="attachment">
+            <img *ngIf="!employee.isActive" src="assets/images/icons/close-circle.svg"  alt="attachment">
+
+          </td>
+          <td scope="row">
+            <button (click)="showConfirmDialog(employee)" 
+            class="btn btn-sm"
+            [ngClass]="{'btn-danger': employee.isActive, 'btn-primary': !employee.isActive}">
+            {{ employee.isActive ? 'تعطيل' : 'تفعيل' }}
+            </button>
+          </td>
+          
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="flex-between">
+    <div class="op-6 v-small fw-5">
+      <span>{{translations.tables.from | translate}} </span>
+      <span>{{pagintationData.currentPage}} </span>
+      <span>{{translations.tables.to | translate}} </span>
+      <span>{{pagintationData.totalCount}} </span>
+      <span>{{translations.tables.ofTotal | translate}} </span>
+      <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+      <span>{{translations.tables.row | translate}} </span>
+    </div>
+    <app-pagination></app-pagination>
+  </div>
+
+
+
+@if((!employeeList) || employeeList.length==0){
+<div class="flex-center flex-column">
+  <img src="assets/images/no-data.svg"
+       alt="no-data">
+  <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.UsersManagement.Employee.noEmployees| translate}}</h4>
+</div>
+}

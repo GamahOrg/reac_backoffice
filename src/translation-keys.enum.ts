@@ -49,6 +49,7 @@ export namespace translations {
         files = "general.files",
         name = "general.name",
         and = "general.and",
+        errorSave = "general.errorSave",
     }
 
     export namespace layout {
@@ -71,6 +72,7 @@ export namespace translations {
             reformation = "layout.sidebar.reformation",
             arbitration = "layout.sidebar.arbitration",
             review = "layout.sidebar.review",
+            management = "layout.sidebar.management",
             stopAndReleaseReformer = "layout.sidebar.stopAndReleaseReformer",
             stopAndReleaseArbitrator = "layout.sidebar.stopAndReleaseArbitrator",
             sessionList = "layout.sidebar.sessionList",
@@ -96,7 +98,13 @@ export namespace translations {
             litigationStatisticsReformerReport = 'layout.sidebar.litigationStatisticsReformerReport',
             vacationRequest = 'layout.sidebar.vacationRequest',
             vacationRequestReply = 'layout.sidebar.vacationRequestReply',
-            approveArbitrationFeesPaid='layout.sidebar.approveArbitrationFeesPaid'
+            employeeList='layout.sidebar.employeeList',
+            createEmployee='layout.sidebar.createEmployee',
+            approveArbitrationFeesPaid='layout.sidebar.approveArbitrationFeesPaid',
+            changePassword='layout.sidebar.changePassword',
+            adminstrationFees='layout.sidebar.adminstrationFees',
+            reconciliationFees='layout.sidebar.reconciliationFees',
+            reconciliationSettingFees='layout.sidebar.reconciliationSettingFees',
         }
     }
 
@@ -492,9 +500,13 @@ export namespace translations {
         numberOnly = "formValidationError.numberOnly",
         otp = "formValidationError.otp",
         passwordsIsNotMatchedError = "formValidationError.passwordsIsNotMatchedError",
+        passwordPatternError = "formValidationError.passwordPatternError",
         emailPattern = "formValidationError.emailPattern",
         phonePattern = "formValidationError.phonePattern",
         noArabicLettersError = "formValidationError.noArabicLettersError",
+        containsLitigationCode="formValidationError.containsLitigationCode",
+        containsCitizenName="formValidationError.containsCitizenName",
+
     }
 
     export enum CitizenRequest {
@@ -837,21 +849,74 @@ export namespace translations {
         replies = 'LitigationRequestCorrespondences.replies',
     }
 
-    export namespace UserManagement{
+    export namespace Profile{
         export enum vacationRequests{
-            vacationRequests = 'UserManagement.vacationRequests.vacationRequests',
-            createVacationRequest = 'UserManagement.vacationRequests.createVacationRequest',
-            noVacationRequests = 'UserManagement.vacationRequests.noVacationRequests',
-            startDate = 'UserManagement.vacationRequests.startDate',
-            endDate = 'UserManagement.vacationRequests.endDate',
-            reason = 'UserManagement.vacationRequests.reason',
-            isApproved = 'UserManagement.vacationRequests.isApproved',
-            employeeName = 'UserManagement.vacationRequests.employeeName',
-            approvedBy = 'UserManagement.vacationRequests.approvedBy',
-            approvedOn = 'UserManagement.vacationRequests.approvedOn',
-            approve = 'UserManagement.vacationRequests.approve',
-            reject = 'UserManagement.vacationRequests.reject',
+            vacationRequests = 'Profile.vacationRequests.vacationRequests',
+            createVacationRequest = 'Profile.vacationRequests.createVacationRequest',
+            noVacationRequests = 'Profile.vacationRequests.noVacationRequests',
+            startDate = 'Profile.vacationRequests.startDate',
+            endDate = 'Profile.vacationRequests.endDate',
+            reason = 'Profile.vacationRequests.reason',
+            isApproved = 'Profile.vacationRequests.isApproved',
+            employeeName = 'Profile.vacationRequests.employeeName',
+            approvedBy = 'Profile.vacationRequests.approvedBy',
+            approvedOn = 'Profile.vacationRequests.approvedOn',
+            approve = 'Profile.vacationRequests.approve',
+            reject = 'Profile.vacationRequests.reject',
         }
         
+        export enum changePassword{
+            oldPassword = 'Profile.changePassword.oldPassword',
+            newPassword = 'Profile.changePassword.newPassword',
+            confirmPassword = 'Profile.changePassword.confirmPassword',
+        }
     }
+    
+    export namespace UsersManagement{
+        export enum Employee{
+            emploeeList = 'UsersManagement.Employee.emploeeList',
+            createEmployee = 'UsersManagement.Employee.createEmployee',
+            employeeName = 'UsersManagement.Employee.employeeName',
+            employeePhoneNumber = 'UsersManagement.Employee.employeePhoneNumber',
+            email = 'UsersManagement.Employee.email',
+            status = 'UsersManagement.Employee.status',
+            department = 'UsersManagement.Employee.department',
+            actions = 'UsersManagement.Employee.actions',
+            noEmployees = 'UsersManagement.Employee.noEmployees',
+            mobile = 'UsersManagement.Employee.mobile',
+            active = 'UsersManagement.Employee.active',
+            inActive = 'UsersManagement.Employee.inActive',
+            dateFrom = 'UsersManagement.Employee.dateFrom',
+            dateTo = 'UsersManagement.Employee.dateTo',
+            identityNumber='UsersManagement.Employee.identityNumber',
+            identityNumberValid='UsersManagement.Employee.identityNumberValid',
+            jobTitle='UsersManagement.Employee.jobTitle',
+            role='UsersManagement.Employee.role',
+            employee='UsersManagement.Employee.employee',
+            manager ='UsersManagement.Employee.manager',
+            emailValid='UsersManagement.Employee.emailValid'
+
+        }
+        export enum AdminstrationFees{
+            listFees = 'UsersManagement.AdminstrationFees.listFees',
+            createFees = 'UsersManagement.AdminstrationFees.createFees',
+            fees = 'UsersManagement.AdminstrationFees.fees',
+            fromAmount = 'UsersManagement.AdminstrationFees.fromAmount',
+            toAmount = 'UsersManagement.AdminstrationFees.toAmount',
+            litigationAmount = 'UsersManagement.AdminstrationFees.litigationAmount',
+            noFees = 'UsersManagement.AdminstrationFees.noFees',
+            actions = 'UsersManagement.AdminstrationFees.actions',
+        }
+        export enum Configurable{
+            ReconciliationAndRequestFees='UsersManagement.Configurable.reconciliationAndRequestFees',
+            ReconciliationFees='UsersManagement.Configurable.reconciliationFees',
+            ReformerJoiningRequestFees='UsersManagement.Configurable.reformerJoiningRequestFees',
+        }
+        export enum ReconciliationSettings{
+            ReconciliationSettings='UsersManagement.ReconciliationSettings.reconciliationSettings',
+            ReconciliationFees='UsersManagement.ReconciliationSettings.reconciliationFees',
+            ReformerJoiningRequestFees='UsersManagement.ReconciliationSettings.reformerJoiningRequestFees',
+        }
+    }
+   
 }

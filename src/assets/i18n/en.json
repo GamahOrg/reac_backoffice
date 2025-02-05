@@ -15,7 +15,8 @@
         "fileUploadError": "لا يمكن رفع هذا الملف",
         "files": "الملفات",
         "name": "الاسم",
-        "and": "و"
+        "and": "و",
+        "errorSave":"حدث خطأ اثناء الحفظ"
     },
     "layout": {
         "sidebar": {
@@ -43,7 +44,12 @@
             "reformationLawsuitsList": "مهام دعاوى الصلح",
             "requestToExtendArbitrationPeriodList": "طلب مد فترة التحكيم",
             "assignReformers": "تعيين المصلحين ",
-            "arbitratorCount": "تحديد عدد المحكمين"
+            "arbitratorCount": "تحديد عدد المحكمين",
+            "employeeList": "قائمة الموظفين",
+            "createEmployee": "طلب اضافة موظف",
+            "adminstrationFees":"قائمة الرسوم الاداريه",
+             "reconciliationFees":"قائمة رسوم الصلح والعضويه",
+            "reconciliationSettingFees":"إعدادات مرحلة الصُلح"
         }
     },
     "actions": {
@@ -407,7 +413,10 @@
         "passwordsIsNotMatchedError": "كلمة المرور غير متطابقة",
         "emailPattern": "من فضلك ادخل البريد الإلكتروني صحيح",
         "phonePattern": "من فضلك ادخل رقم جوال صحيح",
-        "noArabicLettersError": "كلمة السر يجب ألا تحتوي علي حروف باللغة العربية"
+        "noArabicLettersError": "كلمة السر يجب ألا تحتوي علي حروف باللغة العربية",
+        "passwordPatternError": "كلمة السر لابد ان تحتوي على ارقام وحروف غير عربية لا تقل عن ثمانية أحرف وعلى الاقل حرف واحد Capital ولا تحتوي على رموز خاصة",
+        "containsLitigationCode":"يجب ان يحتوي الحقل علي {LitigationCode}",
+        "containsCitizenName":"يجب ان يحتوي الحقل علي {CitizenName}"
     },
     "citizenRequest": {
         "area": "المنطقة",
@@ -684,5 +693,69 @@
         "litigationRequesReplayReport": "الرد علي الدعوة",
         "acceptance": "قبول",
         "reject": "رفض"
-    }
+    },
+    
+    "UsersManagement":{
+        "Employee":{
+           "emploeeList" : "قائمة الموظفين",
+           "createEmployee" : "انشاء موظف  جديد",
+           "employeeName" : "اسم الموظف",
+           "employeePhoneNumber" : "رقم الجوال",
+           "status" : "الحاله",
+           "department" : "الادارة",
+           "actions" : "الاجراءات",
+           "noEmployees" : "لا يوجد موظفين",
+           "email" : "البريد الإلكتروني",
+           "mobile" : "رقم الجوال",
+           "active" : "مفعل", 
+           "inActive" :"معطل",
+           "dateFrom" : "تاريخ من ", 
+           "dateTo" :"تاريخ الى ",
+           "identityNumber":"رقم الهوية",
+           "identityNumberValid":"من فضلك ادخل رقم هوية صحيح",
+           "jobTitle":"المسمي الوظيفى",
+           "role":"الدور",
+            "employee":"موظف",
+           "manager":"مدير",
+           "emailValid":"ادخل بريد الكترونى صحيح"
+
+       },
+       "AdminstrationFees":{
+        "listFees" : "قائمة الرسوم الاداريه",
+        "createFees" : "انشاء رسوم جديدة",
+        "fees" : "الرسوم الادارية",
+        "fromAmount" : " مبلغ النزاع من",
+        "toAmount" : "مبلغ النزاع الى",
+        "litigationAmount" : "الصيغه",
+        "actions" : "الاجراءات",
+        "noFees" : "لا يوجد رسوم اداريه"
+    },
+    "Configurable":{
+        "reformerJoiningRequestFees":"رسوم عضويه المُصلح ",
+        "reconciliationFees":"رسوم الصلح للدعوى ",
+        "reconciliationAndRequestFees":"قائمة رسوم الصلح والعضويه"
+        
+    }       
+       
+   },
+   
+   "Configurable":{
+    "ReconciliationFees":"رسوم الصلح للدعوى",
+    "ReformerJoiningRequestFees":"رسوم عضوية المُصلح"
+    
+},
+"reconciliationSettingsPage":{
+    "SLA.LitigationRequestReconciliationReportDecisionPeriod":"الفترة المسموح بها للرد على محضر الصُلح",
+    "SLA.LitigationRequestReformerAssigningRequestDecisionPeriod":"الفترة المسموح بها لقبول أو رفض مهمة الصُلح ",
+    "SLA.LitigationRequestReconciliationReportResponsePeriod":"مدة تذكير للمدعي/المدعي عليه بالرد على محضر الصُلح",
+    "SLA.ReformerReminderForReconciliationSecondPeriod":"مدة تذكير للمُصلح",
+    "Reconciliation.ExtendRequest.Rejected":"نص إشعار للمُصلح بقرار عدم الموافقة على تمديد فترة الصُلح",
+    "Reconciliation.ReformerMaxSessionsCountPerDay":"عدد الجلسات المتاحة للمُصلح في اليوم الواحد",
+    "Reformer.DeActivate":" نص إشعار لمدير إدارة الصُلح بإلغاء تفعيل حساب المُصلح",
+    "Reconciliation.Period":"مدة الصُلح للدعوى",
+    "Zoom.MeetingDuration":"مدة جلسة الصُلح",
+    "Reconciliation.ExtendRequest.Accepted":"نص إشعار للمُصلح بقرار تمديد فترة الصُلح",
+    "Reconciliation.ExtendRequest.Added":"نص إشعار لمدير إدارة الصُلح بوجود طلب تمديد فترة الصُلح",
+    "Reformer.Activate":" نص إشعار لمدير إدارة الصُلح بتفعيل حساب المُصلح"
+}
 }
