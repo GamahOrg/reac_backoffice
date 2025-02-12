@@ -45,6 +45,7 @@ export const Configuration = {
     },
     Notification: {
       GetNotificationListForBackOffice: "/api/Notification/GetNotificationListForBackOffice",
+      GetNotificationListForBackOfficePaged: "/api/Notification/GetNotificationListForBackOfficePaged",
       MarkNotificationViewed: "/api/Notification/MarkNotificationViewed",
     },
     SysFileManager: {
