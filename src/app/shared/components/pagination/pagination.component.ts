@@ -64,11 +64,14 @@ export class PaginationComponent extends BaseComponent implements OnInit {
         });
     }
     public pageChanged(e: any): void {
+        debugger;
         this.nextPage = e;
         this._paginationService.updatePageChanged(this.nextPage);
         this._paginationService.updateCurrentPage(this.nextPage);
     }
     public clickOnPagination(event: any): void {
+        debugger;
+
         if (!event?.srcElement.className.includes('disabled')) {
             this._paginationService.updatePageClicked(this.nextPage);
         }

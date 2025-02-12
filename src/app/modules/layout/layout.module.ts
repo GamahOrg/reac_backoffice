@@ -16,6 +16,7 @@ import { TabsService } from '../../shared/services/tabs-service/tabs.service';
 import { NgbDropdownModule, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { NotificationsService } from './services/notifications/notifications.service';
+import { PaginationComponent } from '@app/shared/components/pagination/pagination.component';
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import { NotificationsService } from './services/notifications/notifications.ser
         TabsComponent,
         NgbTooltip,
         TranslateModule,
-        NgbDropdownModule
+        NgbDropdownModule,
+        PaginationComponent,
+        
     ],
     providers: [
         NotificationsService

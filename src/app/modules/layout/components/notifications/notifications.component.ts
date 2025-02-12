@@ -9,6 +9,7 @@ import { Configuration } from '@app/core/configurations/shared.config';
 import { RequestType } from '../../models/enums/request-type.model';
 import { NotificationActorType } from '../../models/enums/notification-actor-type.model';
 import { Router } from '@angular/router';
+import { PaginationService } from '@app/shared/services/pagination/pagination.service';
 
 @Component({
   selector: 'app-notifications',
@@ -18,6 +19,7 @@ import { Router } from '@angular/router';
 export class NotificationsComponent extends BaseComponent implements OnInit {
   private _notificationsService = inject(NotificationsService);
   private _router = inject(Router)
+  private _paginationService = inject(PaginationService)
 
   notViewedCount: number = 0;
   notificationList: SysNotification[] | null = null;
@@ -40,7 +42,20 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
   ArbitratorNominationListUrl: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.assignArbitrationMemberDetails}`
   ArbitratorChairmanNominationListUrl: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.assignArbitrationHeadDetails}`
 
-  // getter
+  page = 1;
+  pageSize = 10;
+  collectionSize!: number;
+  pagintationData = {
+      currentPage: this.page,
+      pageSize: 0,
+      totalCount: 0,
+      from: 0,
+      to: 0,
+  }
+  newPageNo!: number;
+
+
+  // getter 
   get requestType() {
     return RequestType
   };
@@ -49,22 +64,70 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.GetNotificationListForBackOffice();
+    this.GetNotificationListForBackOffice(this.page, this.pageSize);
+    this.watchPaginationActions();
   };
 
-  private GetNotificationListForBackOffice(): void {
-    var app  = this;
-    setTimeout(function (){
-      app._notificationsService.GetNotificationListForBackOffice()
-        .subscribe((res: BaseResponse<NotificationResponseDto>) => {
-          if (res.isDone && res.data) {
-            app.notificationList = res.data.notificationList;
-            app.notViewedCount = res.data.notViewedCount
-          }
-        })
+  private setPaginationData(currentPage: number, pageSize: number, totalCount: number): void {
+    const from = (currentPage - 1) * pageSize + 1;
+    const to = Math.min(currentPage * pageSize, totalCount);
 
-    }, 2000);
+    this.pagintationData = {
+        currentPage,
+        pageSize,
+        totalCount,
+        from,
+        to,
+    };
 
+    this._paginationService.updatePaginationData(this.pagintationData);
+}
+
+private watchPaginationActions(): void {
+  this.watchPagechanged();
+  this.watchPaginationClicked();
+}
+
+private watchPagechanged(): void {
+  this._paginationService.pageChanged
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((pageNo) => {
+      debugger;
+      this.newPageNo = pageNo;
+    })
+}
+
+private watchPaginationClicked(): void {
+  this._paginationService.pageClicked
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((nextPage: number) => {
+      debugger;
+
+      if (this.pagintationData.currentPage != nextPage) {
+        this.loadNextPage(nextPage);
+        this.pagintationData.currentPage = this.newPageNo;
+      }
+    })
+}
+
+private loadNextPage(nextPage: number): void {
+  this.pagintationData.currentPage = nextPage;
+  this.GetNotificationListForBackOffice(this.pagintationData.currentPage, this.pagintationData.pageSize);
+}
+
+  private GetNotificationListForBackOffice(currentPage: number , pageSize:number): void {
+    this._notificationsService.GetNotificationListForBackOfficePaged(currentPage,pageSize)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res: any) => {
+        debugger;
+        if (res.isDone && res.data) {
+          this.notificationList = res.data.results;
+          this.notViewedCount = res.data.totalCount
+
+          this.setPaginationData(this.pagintationData.currentPage, this.pageSize, this.notViewedCount)
+
+        }
+      })
   }
   public onNotificationClicked(notification: SysNotification) {
     console.log("notification", notification);
@@ -72,7 +135,7 @@ export class NotificationsComponent extends BaseComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: BaseResponse<any>) => {
         if (res) {
-          this.GetNotificationListForBackOffice();
+          this.GetNotificationListForBackOffice(this.pagintationData.currentPage, this.pagintationData.pageSize);
           switch (notification.notificationActorTypeId) {
             case (this.notificationActorType.Employee):
               switch (notification.requestTypeId) {
