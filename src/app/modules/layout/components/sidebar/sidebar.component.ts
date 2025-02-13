@@ -298,6 +298,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.reconciliationSettings,
                         },
                         {
+                            id: 'terms-settings',
+                            title: this.translate.instant(translations.layout.sidebar.termsSettings),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.TermsSettings,
+                        },
+                        {
                             id: 'vacation-request-reply',
                             title: this.translate.instant(translations.layout.sidebar.vacationRequestReply),
                             icon: 'assets/images/icons/sidebar/book.svg',

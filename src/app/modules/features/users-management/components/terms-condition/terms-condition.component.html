@@ -1,0 +1,26 @@
+
+<app-breadcrumbs></app-breadcrumbs>
+<form [formGroup]="form">
+    <div class="row mt-5" *ngFor="let item of data; let i = index">
+      <div class="form-group col-12">
+        <label [for]="item.id">{{ item.typeName  }}</label>
+        <textarea 
+        class="form-control" 
+        [formControlName]="item.id" 
+        id="{{item.id}}" 
+        [placeholder]="'اضف ' + (item.typeName | translate)" 
+        style="resize: none;" 
+        rows="5">
+      </textarea>
+      </div>
+      <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
+        <div *ngIf="form.controls[item.id].errors?.['required']">
+          {{ 'formValidationError.required' | translate }} 
+        </div>
+      </div>
+  </div>
+    <div class="p-5">
+    <button [disabled]="form.invalid"  (click)="save()" class="btn btn-primary">حفظ</button>
+    </div>
+  </form>
+  

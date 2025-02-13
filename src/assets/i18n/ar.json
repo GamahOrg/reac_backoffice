@@ -67,7 +67,8 @@
             "approveArbitrationFeesPaid":"تأكيد دفع رسوم التحكيم",
             "adminstrationFees":"قائمة الرسوم الاداريه",
             "reconciliationFees":"قائمة رسوم الصلح والعضويه",
-            "reconciliationSettingFees":"إعدادات مرحلة الصُلح"
+            "reconciliationSettingFees":"إعدادات مرحلة الصُلح",
+            "termsConditions":"إعدادات الشروط والأحكام"
         }
     },
     "actions": {
@@ -878,7 +879,10 @@
             "reconciliationSettings":"إعدادات مرحلة الصُلح",
             "reconciliationFees":"رسوم عضوية المُصلح",
             "reconciliationAndRequestFees":"قائمة رسوم الصلح والعضويه"
-        }
+        },
+        "TermsConditionsSettings":{
+    "termsConditionsSettings":"تعديل الشروط والأحكام"
+}
 
 
    },
@@ -899,6 +903,9 @@
     "Zoom.MeetingDuration":"مدة جلسة الصُلح",
     "Reconciliation.ExtendRequest.Accepted":"نص إشعار للمُصلح بقرار تمديد فترة الصُلح",
     "Reconciliation.ExtendRequest.Added":"نص إشعار لمدير إدارة الصُلح بوجود طلب تمديد فترة الصُلح",
-    "Reformer.Activate":" نص إشعار لمدير إدارة الصُلح بتفعيل حساب المُصلح"
+    "Reformer.Activate":" نص إشعار لمدير إدارة الصُلح بتفعيل حساب المُصلح",
+    "SLA.LitigationRequestFeesNotPaidReminderFirstPeriod":"الفترة المسموح بها سداد الرسوم الادارية"
 }
+
+
 }
