@@ -183,6 +183,10 @@ export const Configuration = {
       getsetting:"/api/SysSetting/GetReconciliationSetting",
       updateFees:"/api/SysSetting/UpdateRange",
     },
+    termsSettings:{
+      getTerms:"/api/SysLitigationRequestContractType/GetAll",
+      updateTerms:"/api/SysLitigationRequestContractType/UpdateRange",
+    },
   },
   modules: {
     auth: 'auth',
@@ -267,7 +271,7 @@ export const Configuration = {
       admistrativeFees:'admistrative-fees',
       reconciliationFees:'reconciliation-fees',
       reconciliationSettings:'reconciliation-settings',
-
+      TermsSettings:'terms-settings'
     }
   },
   validators: {
