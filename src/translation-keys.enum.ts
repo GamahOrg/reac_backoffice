@@ -105,6 +105,7 @@ export namespace translations {
             adminstrationFees='layout.sidebar.adminstrationFees',
             reconciliationFees='layout.sidebar.reconciliationFees',
             reconciliationSettingFees='layout.sidebar.reconciliationSettingFees',
+            termsSettings='layout.sidebar.termsConditions'
         }
     }
 
@@ -916,6 +917,10 @@ export namespace translations {
             ReconciliationSettings='UsersManagement.ReconciliationSettings.reconciliationSettings',
             ReconciliationFees='UsersManagement.ReconciliationSettings.reconciliationFees',
             ReformerJoiningRequestFees='UsersManagement.ReconciliationSettings.reformerJoiningRequestFees',
+        }
+        export enum TermsConditionsSettings{
+            termsConditionsSettings='UsersManagement.TermsConditionsSettings.termsConditionsSettings',
+         
         }
     }
    

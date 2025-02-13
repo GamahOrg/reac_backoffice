@@ -6,6 +6,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { ConfigrationAdminstrativeFeesComponent } from './components/configration-adminstrative-fees/configration-adminstrative-fees.component';
 import { ConfigrationReconciliationFeesSettingsComponent } from './components/configration-reconciliation-fees-settings/configration-reconciliation-fees-settings.component';
 import { ConfigrationReconciliationSettingstageComponent } from './components/configration-reconciliation-settingstage/configration-reconciliation-settingstage.component';
+import { TermsConditionComponent } from './components/terms-condition/terms-condition.component';
 
 const routes: Routes = [
   
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: Configuration.pages.usersManagement.reconciliationSettings,
     component: ConfigrationReconciliationSettingstageComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.TermsSettings,
+    component: TermsConditionComponent,
   },
 ];
 

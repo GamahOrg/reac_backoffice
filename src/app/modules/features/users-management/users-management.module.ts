@@ -18,6 +18,8 @@ import { ConfigrationReconciliationFeesSettingsComponent } from './components/co
 import { ReconciliationFeesService } from './services/reconciliationFeesService';
 import { ConfigrationReconciliationSettingstageComponent } from './components/configration-reconciliation-settingstage/configration-reconciliation-settingstage.component';
 import { ReconciliationSettingService } from './services/reconciliationSettingService';
+import { TermsConditionComponent } from './components/terms-condition/terms-condition.component';
+import { termsConditionsService } from './services/termsConditionsService';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { ReconciliationSettingService } from './services/reconciliationSettingSe
     EditAdminstrativeFeesModalComponent,
     AdminstrativeFeesModalComponent,
     ConfigrationReconciliationFeesSettingsComponent,
-    ConfigrationReconciliationSettingstageComponent
+    ConfigrationReconciliationSettingstageComponent,
+    TermsConditionComponent
   ],
   imports: [
     CommonModule,
@@ -44,6 +47,7 @@ import { ReconciliationSettingService } from './services/reconciliationSettingSe
      AdminstrativeFeesService,
      ReconciliationFeesService,
      ReconciliationSettingService,
+     termsConditionsService,
   { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }
 
   ]
