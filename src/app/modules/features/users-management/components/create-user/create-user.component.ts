@@ -70,7 +70,7 @@ export class CreateUserComponent extends BaseComponent implements OnInit {
             mobile : employeeData.mobile,
             email: employeeData.email,
             isAdmin : employeeData.RoleId==1 ? false:true,
-            isActive: this.employeeForm.controls['isActive']?.value=='true'?true:false
+            isActive: this.employeeForm.controls['isActive']?.value == true ? true:false
       };
       debugger;
       this._usersManagementService.CreateEmploee(targetObject)

@@ -7,6 +7,7 @@ import { ConfigrationAdminstrativeFeesComponent } from './components/configratio
 import { ConfigrationReconciliationFeesSettingsComponent } from './components/configration-reconciliation-fees-settings/configration-reconciliation-fees-settings.component';
 import { ConfigrationReconciliationSettingstageComponent } from './components/configration-reconciliation-settingstage/configration-reconciliation-settingstage.component';
 import { TermsConditionComponent } from './components/terms-condition/terms-condition.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 const routes: Routes = [
   
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: Configuration.pages.usersManagement.TermsSettings,
     component: TermsConditionComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.HomePage,
+    component: HomePageComponent,
   },
 ];
 

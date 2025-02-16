@@ -271,7 +271,8 @@ export const Configuration = {
       admistrativeFees:'admistrative-fees',
       reconciliationFees:'reconciliation-fees',
       reconciliationSettings:'reconciliation-settings',
-      TermsSettings:'terms-settings'
+      TermsSettings:'terms-settings',
+      HomePage:'home'
     }
   },
   validators: {
