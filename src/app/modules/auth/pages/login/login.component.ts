@@ -74,13 +74,15 @@ export class LoginComponent extends BaseComponent {
               this._storageService.saveUserType(res.data.isAdmin)
               setTimeout((app: any, res: BaseResponse<TokenResponse>) => {
                 this.showLoader = false;
-                if (res.data?.departmentType == DepartmentType.Review || res.data?.departmentType == DepartmentType.SystemManagement) {
-
+                if (res.data?.departmentType == DepartmentType.Review ) {
                   app.navigateTolawsuitsModule()
                 } else if (res.data?.departmentType == DepartmentType.Reconciliation) {
                   app.navigateToaReformerAssigningRequestsModule()
                 } else if (res.data?.departmentType == DepartmentType.Arbitration) {
                   app.navigateToaArbitratorAssigningRequestsModule()
+                }
+                else if(res.data?.departmentType == DepartmentType.SystemManagement){
+                  app.navigateToHomeModule()
                 }
               }, 4000, this, res);
 
@@ -106,6 +108,11 @@ export class LoginComponent extends BaseComponent {
   private navigateToaArbitratorAssigningRequestsModule(): void {
     this._router.navigate([
       Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.assignedArbitrationRequests,
+    ]);
+  }
+  private navigateToHomeModule(): void {
+    this._router.navigate([
+      Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.HomePage,
     ]);
   }
   // registerForm = this._formBuilder.group({

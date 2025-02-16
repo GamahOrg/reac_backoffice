@@ -20,6 +20,7 @@ import { ConfigrationReconciliationSettingstageComponent } from './components/co
 import { ReconciliationSettingService } from './services/reconciliationSettingService';
 import { TermsConditionComponent } from './components/terms-condition/terms-condition.component';
 import { termsConditionsService } from './services/termsConditionsService';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { termsConditionsService } from './services/termsConditionsService';
     AdminstrativeFeesModalComponent,
     ConfigrationReconciliationFeesSettingsComponent,
     ConfigrationReconciliationSettingstageComponent,
-    TermsConditionComponent
+    TermsConditionComponent,
+    HomePageComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { termsConditionsService } from './services/termsConditionsService';
     ReactiveFormsModule,
     OwlDateTimeModule, OwlNativeDateTimeModule, OwlDateTimeModule,
     BreadcrumbsComponent,
+    
 ],
   providers:[
      UsersManagementService,
