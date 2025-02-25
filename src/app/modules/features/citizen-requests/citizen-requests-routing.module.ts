@@ -22,6 +22,7 @@ import { AssignArbitrationHeadListComponent } from './pages/assign-arbitration-h
 import { AssignArbitrationHeadDetailsComponent } from './pages/assign-arbitration-head-details/assign-arbitration-head-details.component';
 import { AssignArbitrationMemberDetailsComponent } from './pages/assign-arbitration-member-details/assign-arbitration-member-details.component';
 import { ReformerAssigningRequestForAllComponent } from './pages/reformer-assigning-request-for-all/reformer-assigning-request-for-all.component';
+import { ReviewerListComponent } from './pages/reviewer-list/reviewer-list.component';
 
 const routes: Routes = [
   // {
@@ -72,6 +73,10 @@ const routes: Routes = [
   {
     path: Configuration.pages.citizenRequests.reformerList,
     component: ReformerListComponent,
+  },
+  {
+    path: Configuration.pages.citizenRequests.reviewerList,
+    component: ReviewerListComponent,
   },
 
   {

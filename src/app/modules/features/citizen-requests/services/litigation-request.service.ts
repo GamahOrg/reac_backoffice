@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { LitigationRequestMircoForRequestReformerDto, LitigationRequestMircoForRequestSessionDto, LitigationRequestSessionDetailsDto } from '../models/litigation-request.model';
 import { Configuration } from '@app/core/configurations/shared.config';
 import { AssignRequestPayload } from '../models/citizen.model';
+import { AssignEmployeePayload, LitigationRequestMircoForRequestReviewerDto } from '../models/employee.model';
 
 @Injectable()
 export class LitigationRequestService {
@@ -31,10 +32,19 @@ export class LitigationRequestService {
     queryParams = queryParams.append("pageSize", pageSize);
     return this._httpClient.get<BaseResponse<Pagination<LitigationRequestMircoForRequestReformerDto[]>>>(`${Configuration.APIs.Reconciliation.GetLitigationRequestForFullAllReformer}`, { params: queryParams })
   }
+  GetLitigationRequestForFullAllReviewer(pageIndex: number, pageSize: number): Observable<BaseResponse<Pagination<LitigationRequestMircoForRequestReviewerDto[]>>> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("pageIndex", pageIndex);
+    queryParams = queryParams.append("pageSize", pageSize);
+    return this._httpClient.get<BaseResponse<Pagination<LitigationRequestMircoForRequestReviewerDto[]>>>(`${Configuration.APIs.LitigationRequest.GetLitigationRequestForFullAllReviewer}`, { params: queryParams })
+  }
 
 
   assign(model: AssignRequestPayload): Observable<EmptyBaseResponse> {
     return this._httpClient.post<EmptyBaseResponse>(`${Configuration.APIs.Reconciliation.Assign}`, model)
+  }
+  assignReviewer(model: AssignEmployeePayload): Observable<EmptyBaseResponse> {
+    return this._httpClient.post<EmptyBaseResponse>(`${Configuration.APIs.Reconciliation.AssignReviewer}`, model)
   }
 
 

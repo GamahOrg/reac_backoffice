@@ -42,6 +42,9 @@
             "review": "التدقيق",
             "changePassword": "تغيير كلمة المرور",
             "management": "ادارة النظام",
+            "managementReview":"اعدادات تقديم الدعوى والتدقيق ",
+            "managementReconciliation":"اعدادات الصلح",
+            "managementArbitiration":"اعدادات التحكيم",
             "stopAndReleaseReformer": "إيقاف/تحرير مصلح",
             "stopAndReleaseArbitrator": "إيقاف/تحرير محكم",
             "sessionList": "قائمة الجلسات",
@@ -49,6 +52,7 @@
             "reformationLawsuitsList": "قائمة مهام الدعاوى",
             "requestToExtendArbitrationPeriodList": "طلب مد فترة التحكيم",
             "assignReformers": "تعيين المصلحين ",
+            "assignReviewers": "تعيين المدققين ",
             "arbitratorCount": "تحديد عدد المحكمين",
             "assignarbitratorlist": "تعين المحكمين",
             "details": "عرض التفاصيل",
@@ -68,7 +72,11 @@
             "adminstrationFees":"قائمة الرسوم الاداريه",
             "reconciliationFees":"قائمة رسوم الصلح والعضويه",
             "reconciliationSettingFees":"إعدادات مرحلة الصُلح",
-            "termsConditions":"إعدادات الشروط والأحكام"
+            "reviewSetting":"إعدادات مرحلة التدقيق",
+            "termsConditions":"إعدادات الشروط والأحكام",
+            "arbitirationFees":"قائمة رسوم التحكيم ",
+            "arbitirationsettings":"إعدادات مرحلة التحكيم",
+            "dashbourd":"إحصائيات لوحة التحكم"
         }
     },
     "actions": {
@@ -101,6 +109,7 @@
         "reject": "رفض",
         "sendForEdit": "ارسال للتعديل",
         "assignReformer": "تعيين مصلح",
+        "assignReviewer": "تعيين مدقق",
         "startSession": "بدأ الجلسة",
         "procedures": "الاجراءات",
         "assign": "تعيين",
@@ -708,10 +717,13 @@
         "acceptance": "قبول",
         "reject": "رفض",
         "reformerName": "اسم المصلح",
+        "reviewerName": "اسم المدقق",
         "selectReformer": "اختار مصلح",
         "sessionLink": "رابط الجلسة",
         "arbitratorName": "اسم المحكم",
-        "selectArbitrator": "اختار محكم"
+        "selectArbitrator": "اختار محكم",
+        "selectReviewer": "اختار مدقق"
+         
     },
     "tasksRequestsList": {
         "None": "لم يتم الرد",
@@ -863,6 +875,7 @@
             "listFees" : "قائمة الرسوم الاداريه",
             "createFees" : "انشاء رسوم جديدة",
             "fees" : "الرسوم الادارية",
+            "updateFees" : "تعديل الرسوم الادارية",
             "fromAmount" : " مبلغ النزاع من",
             "toAmount" : "مبلغ النزاع الى",
             "litigationAmount" : "الصيغه",
@@ -881,15 +894,28 @@
             "reconciliationAndRequestFees":"قائمة رسوم الصلح والعضويه"
         },
         "TermsConditionsSettings":{
-    "termsConditionsSettings":"تعديل الشروط والأحكام"
-}
+              "termsConditionsSettings":"تعديل الشروط والأحكام"
+           },
+          "ConfigurableArbitiration":{
+            "arbitirationRequestFees":"رسوم عضوية التحكيم",
+            "arbitirationSettings":"قائمة اعدادات التحكيم"
 
+            }
+            ,
+            "ReviewSettings":{
+                "reviewSettings":"قائمة اعدادات مرحلة التدقيق"
+            }      
 
    },
    "Configurable":{
     "ReconciliationFees":"رسوم الصلح للدعوى",
-    "ReformerJoiningRequestFees":"رسوم عضوية المُصلح"
-    
+    "ReformerJoiningRequestFees":"رسوم عضوية المُصلح",
+   "ArbitratorMembershipFees.A":" رسوم عضوية المحكم (فئة أ)",
+    "ArbitratorMembershipFees.B":" رسوم عضوية المحكم (فئة ب)",
+    "ArbitratorMembershipFees.C":" رسوم عضوية المحكم (فئة ج)",
+    "ArbitratorRegisterationFees.A":" رسوم التسجيل كمحكم  (فئة أ)",
+    "ArbitratorRegisterationFees.B":" رسوم التسجيل كمحكم  (فئة ب)",
+    "ArbitratorRegisterationFees.C":" رسوم التسجيل كمحكم  (فئة ج)"
 },
 "reconciliationSettingsPage":{
     "SLA.LitigationRequestReconciliationReportDecisionPeriod":"الفترة المسموح بها للرد على محضر الصُلح",
@@ -905,6 +931,50 @@
     "Reconciliation.ExtendRequest.Added":"نص إشعار لمدير إدارة الصُلح بوجود طلب تمديد فترة الصُلح",
     "Reformer.Activate":" نص إشعار لمدير إدارة الصُلح بتفعيل حساب المُصلح",
     "SLA.LitigationRequestFeesNotPaidReminderFirstPeriod":"الفترة المسموح بها سداد الرسوم الادارية"
+},
+"arbitirationSettingsPage":{
+    "SLA.ArbitratorMembershipFeesNotification":" إشعار دفع رسوم عضوية المحكم قبل انتهاء المده",
+    "SLA.ArbitratorRegisterationFeesFirstNotificationPeriod":"  فترة الإخطار الاولى لدفع رسوم التسجيل ",
+    "SLA.ArbitratorsCount.FinalWarning.Defendant":"اشعار نهائى للمدعى عليه لاختيار عدد المحكمين ",
+    "SLA.LitigationRequestArbitratorCountSelectionDecisionPeriod":"الفتره النهائيه المسموح بها لاختيار  عدد المحكمين",
+    "SLA.ArbitratorRegisterationFeesNotification":"إشعار بسداد رسوم تسجيل المحكمين",
+    "SLA.ArbitratorMembershipFeesPeriod":"الفتره المسموح بها لدفع رسوم عضوية المحكم",
+    "SLA.ArbitratorMembershipRenewalFeesNotification":" إشعار برسوم تجديد عضوية المحكم",
+    "SLA.ArbitratorsCount.FinalWarning.Both":"الاشعار النهائي للمدعي والمدعى عليه لتحديد عدد المحكمين",
+    "SLA.LitigationRequestArbitratorCountSelectionResponsePeriod":"الفتره الاولى المسموح بها لاختيار عدد المحكمين ",
+    "SLA.ArbitratorsCount.FirstWarning":"نص إشعار اول لسرعه اختيار عدد المحكمين",
+    "SLA.ArbitratorsCount.SecondWarning":"نص إشعار ثان لسرعه اختيار عدد المحكمين",
+    "SLA.ArbitratorRegisterationFeesPeriod":" الفترة المسموح بها لدفع رسوم تسجيل المحكم",
+    "SLA.ArbitratorsCount.FinalWarning.Plantiff":"اشعار نهائى للمدعي لاختيار عدد المحكمين",
+    "SLA.ArbitratorMembershipFeesFirstNotificationPeriod":" فترة الإخطار الاولى لدفع رسوم العضويه ",
+    "SLA.LitigationRequestArbitratorAssigningRequestResponseSecondPeriod":" الفتره الثانيه المسموح بها للرد على طلب الانضمام كمحكم ",
+    "SLA.ArbitratorTaskRequest.FirstWarning":"إشعار اول بالرد على طلب مهمة التحكيم",
+    "SLA.LitigationRequestArbitratorAssigningRequestDecisionPeriod":"    الفترة المسموح بها للرد على طلب مهمة التحكيم ",
+    "SLA.ArbitratorTaskRequest.Cancelled":"اشعار إلغاء طلب مهمة التحكيم كمحكم",
+    "SLA.ArbitratorChairmanTaskRequest.Cancelled":" اشعار إلغاء طلب مهمة التحكيم كرئيس هيئة التحكيم",
+    "SLA.LitigationRequestArbitratorAssigningRequestResponseFirstPeriod":"الفتره الاولى المسموح بها للرد على طلب الانضمام كمحكم ",
+    "Arbitration.LitigationRequestArbitratorRecusalRequestPeriod":"الفترة المسموح بها لرد المحكم"
+
+},
+"reviewSettingsPage":{
+    "SLA.SecondAgreementRequestForForRequest":" الفترة الثانيه المسموح بها للرد على طلب المشارطة",
+    "Review.Period":"الفترة الاولى المسموح بها للرد على طلب التدقيق",
+    "LitigationRequest.Reject.Agreement":"نص اشعار بقبول / رفض  لطلب المشارطة ",
+    "Workflow.Condition.Review":"اشعار بارسال طلب المشارطة",
+    "SLA.FinishAgreementRequest":"نص اشعار بسرعه الرد على طلب المشارطة",
+    "SLA.ReviewDelay.ReviewerAdmin":"نص اشعار بتجاوز تجاوز المده المسموح بها للتدقيق",
+    "SLA.FinishLitigation.ReviewerEmployee":"نص اشعار بسرعه اتمام مراجعة الدعوى",
+    "SLA.AssignLitigation.NewReviewerEmployee":"نص اشعار بارسال دعوى جديدة للمدقق",
+    "Arbitrators.Count.Added.AfterAgreement":" نص اشعار لإنتهاء من تحديد عدد المحكمين النهائي للمدقق",
+    "LitigationRequest.Accept.Agreement":"نص اشعار بالموافقه على طلب المشارطة للمدعى و المدعى عليه ",
+    "SLA.ReminderForReviewerManager":" المده المسموح بها بعدم تدقيق الدعوة لمدير التدقيق ",
+    "SLA.ReminderForReviewer":"المده المسموح بها  لتدقيق الدعوة للمدقق  ",
+    "SLA.WithdrewLitigation.OldReviewerEmployee":"نص اشعار بتخطى مدة التدقيق ",
+    "SLA.FirstAgreementRequestForRequest":"الفترة الاولى المسموح بها للرد على طلب المشارطة",
+    "SLA.AssignLitigation.ReviewerAdmin":"نص اشعار مدقق جديد لتخطى المدقق السابق مدة التدقيق الفصوى",
+    "SLA.AgreementCancelled":"نص اشعار بعدم الرد على طلب المشارطة للمدعى والمدعى عليه",
+    "Review.Cancelled":"نص اشعار بإلغاء المهمة للمدقق و مدير التدقيق",
+    "Review.ReAssigned" :"نص اشعار باعاده تعيين مدقق لمدير التدقيق"
 }
 
 

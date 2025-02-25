@@ -1,16 +1,15 @@
-<div class="modal" tabindex="-1" role="dialog" >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"> أضافة رسوم اداريه </h5>
-          <button type="button" class="close-btn" aria-label="Close" (click)="closeModal()"></button>
-        </div>
+<app-breadcrumbs></app-breadcrumbs>
+<div class="wrapper">
+        <!-- <div class="modal-header">
+          <h5 class="modal-title"> انشاء رسوم اداريه </h5>
+           <button type="button" class="close-btn" aria-label="Close" (click)="closeModal()"></button>
+        </div> -->
         <div class="modal-body " class="mt-5">
           <form  [formGroup]="feesForm" (ngSubmit)="save()">
        
             <div class="form-group mt-5">
               <label for="fromAmount">{{translations.UsersManagement.AdminstrationFees.fromAmount| translate}}</label>
-              <input type="number" min="1" class="form-control" id="fromAmount" formControlName="fromAmount" required>
+              <input type="number" min="0" class="form-control" id="fromAmount" formControlName="fromAmount" required>
               <div *ngIf="feesForm.controls['fromAmount'].errors && feesForm.controls['fromAmount'].touched" class="text-danger">
                 <div *ngIf="feesForm.controls['fromAmount'].errors?.['required']">
                   {{translations.formValidationError.required | translate}} 
@@ -50,13 +49,32 @@
                       </div>
                     </div>
               </div>
+               <!-- Table for additional fields -->
+          <div class="form-group mt-5">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>عدد المحكمين</th>
+                  <th>الرسوم</th>
+                  <th>النسبة الإضافية %</th>
+                  <th>المبلغ الإضافي</th>
+                </tr>
+              </thead>
+              <tbody   formArrayName="litigationRequestFees">
+                <tr  *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+                  <td><input type="text"   class="form-control" formControlName="arbitratorsCount" readonly></td>
+                  <td><input type="number" class="form-control" formControlName="arbitrationFees" min="1" required></td>
+                  <td><input type="number" class="form-control" formControlName="percentageExtraAmount"  min="0"  placeholder="%"></td>
+                  <td><input type="number" class="form-control" formControlName="extraAmount"  min="0" ></td>
+                </tr>
+              </tbody> 
+            </table>
+          </div>
 
             <div class="modal-footer p-5" >
-                <button type="button" class="btn btn-primary" (click)="closeModal()">{{ translations.actions.close | translate}}</button>
+                <!-- <button type="button" class="btn btn-primary" (click)="closeModal()">{{ translations.actions.close | translate}}</button> -->
                 <button [disabled]="feesForm.invalid" type="submit" class="btn btn-primary">{{ translations.actions.save | translate}}</button>
             </div>
           </form>
         </div>
       </div>
-    </div>
-  </div>

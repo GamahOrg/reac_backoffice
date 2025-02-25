@@ -6,10 +6,10 @@ export const Configuration = {
   environments: {
     development: {
       production: false,
-      // baseURL: "https://localhost:7156",
-      // securityURl: "http://localhost:7144",
-      securityURl: "http://192.168.194.171:222",
-      baseURL: "http://192.168.194.171:3333",
+      baseURL: "https://localhost:7156",
+      securityURl: "http://localhost:7144",
+      // securityURl: "http://192.168.194.171:222",
+      // baseURL: "http://192.168.194.171:3333",
     },
     testingAndStaging: {
       production: true,
@@ -106,6 +106,7 @@ export const Configuration = {
       GetLitigationRequestForFullAllSession: '/api/Reconciliation/GetLitigationRequestForFullAllSession',
       GetLitigationRequestForFullAllReformer: '/api/Reconciliation/GetLitigationRequestForFullAllReformer',
       Assign: '/api/Reconciliation/Assign',
+      AssignReviewer: '/api/LitigationRequest/Assign',
     },
     LitigationRequest: {
       AuditngList: '/api/LitigationRequest/AuditngList',
@@ -114,6 +115,8 @@ export const Configuration = {
       GetLitigationById: '/api/LitigationRequest/GetLitigationByIdForEmployee',
       GetAuditNotesById: "/api/LitigationRequest/GetAuditNotesById",
       ApproveArbitrationFeesPaid: '/api/LitigationRequest/ApproveArbitrationFeesPaid',
+      GetLitigationRequestForFullAllReviewer: '/api/LitigationRequest/GetLitigationRequestForFullAllReviewer',
+      GetReviewersLookup: "/api/LitigationRequest/GetReviewersLookup",
 
     },
     WorkFlowProcessingLog: {
@@ -171,8 +174,8 @@ export const Configuration = {
     },
     adminstrativeFees:{
       getAllFees:"/api/SysLitigationRequestAmount/Get",
-      updateFees:"/api/SysLitigationRequestAmount/Update",
-      GetFeesById:"/api/SysLitigationRequestAmount/GetById",
+      updateFees:"/api/SysLitigationRequestAmount/UpdateAsync",
+      GetFeesById:"/api/SysLitigationRequestAmount/GetByIdAsync",
       createFees:"/api/SysLitigationRequestAmount/Create",
     },
     reconciliationFees:{
@@ -186,6 +189,18 @@ export const Configuration = {
     termsSettings:{
       getTerms:"/api/SysLitigationRequestContractType/GetAll",
       updateTerms:"/api/SysLitigationRequestContractType/UpdateRange",
+    },
+    arbitirationFees:{
+      getFees:"/api/SysSetting/GetArbitrationFeesSettings",
+      getsetting:"/api/SysSetting/GetArbitrationSettings",
+      updateFees:"/api/SysSetting/UpdateRange",
+    },
+    reviewSettings:{
+      getsetting:"/api/SysSetting/GetReviewSetting",
+      updatesetting:"/api/SysSetting/UpdateRange",
+    },
+    dashbourd:{
+      getStatistics:"/api/Reports/GetLitigationStatisticsForAllStages",
     },
   },
   modules: {
@@ -245,6 +260,7 @@ export const Configuration = {
       reformerDecisionDetails: "reformer-decision-details",
       sessionList: 'session-list',
       reformerList: 'refomer-list',
+      reviewerList: 'reviewer-list',
       requestToExtendArbitrationPeriodList: 'request-extend-arbitration-period-list',
       requestToExtendArbitrationPeriodDetails: 'request-extend-arbitration-period-details',
       litigationRequestForArbitratorSelectionDurationList: 'arbitrator-selection-duration-List',
@@ -269,10 +285,16 @@ export const Configuration = {
       userList: 'user-list',
       createUser: 'create-user',
       admistrativeFees:'admistrative-fees',
+      createAdmistrativeFees:'create-admistrative-fees',
+      updateAdmistrativeFees:'update-admistrative-fees/:id',
       reconciliationFees:'reconciliation-fees',
+      arbitirationFees:'arbitiration-fees',
+      arbitirationsettings:'arbitiration-settings',
       reconciliationSettings:'reconciliation-settings',
+      reviewSettings:'review-settings',
       TermsSettings:'terms-settings',
-      HomePage:'home'
+      HomePage:'home',
+      Dashbourd:'dashbourd'
     }
   },
   validators: {

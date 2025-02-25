@@ -62,22 +62,54 @@ export class SidebarComponent extends BaseComponent implements OnInit {
 
 
         if (this.departmentType == DepartmentType.Review) {
-            this.menuItems.push(
-                {
-                    id: 'review-collapse',
-                    title: this.translate.instant(translations.layout.sidebar.review),
-                    icon: 'assets/images/icons/sidebar/book.svg',
-                    children: [
-                        {
-                            id: 'claims-link',
-                            title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
-                            icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
-                        }
+            debugger;
+            if(this.isAdmin === "true"){
+                this.menuItems
+                
+                .push(
+                    {
+                        id: 'review-collapse',
+                        title: this.translate.instant(translations.layout.sidebar.review),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        children: [
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
+                            },
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.assignReviewers),
+                                // icon: 'assets/images/icons/sidebar/menu.svg',
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.reviewerList,
+                            }
+    
+                        ]
+                    },
+                );
+            }else{
 
-                    ]
-                },
-            );
+                this.menuItems.push(
+                    {
+                        id: 'review-collapse',
+                        title: this.translate.instant(translations.layout.sidebar.review),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        children: [
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
+                            }
+    
+                        ]
+                    },
+                );
+            }
+
+            
             
         } else if (this.departmentType == DepartmentType.Reconciliation) {
             this.menuItems.push(
@@ -268,34 +300,22 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                     icon: 'assets/images/icons/sidebar/book.svg',
                     children: [
                         {
-                            id: 'create-user',
-                            title: this.translate.instant(translations.layout.sidebar.createEmployee),
+                            id: 'dashbourd',
+                            title: this.translate.instant(translations.layout.sidebar.dashbourd),
                             icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.createUser,
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.Dashbourd,
                         },
+                        // {
+                        //     id: 'create-user',
+                        //     title: this.translate.instant(translations.layout.sidebar.createEmployee),
+                        //     icon: 'assets/images/icons/sidebar/book.svg',
+                        //     url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.createUser,
+                        // },
                         {
                             id: 'users-list',
                             title: this.translate.instant(translations.layout.sidebar.employeeList),
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.userList,
-                        },
-                        {
-                            id: 'admistrative-fees',
-                            title: this.translate.instant(translations.layout.sidebar.adminstrationFees),
-                            icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.admistrativeFees,
-                        },
-                        {
-                            id: 'reconciliation-fees',
-                            title: this.translate.instant(translations.layout.sidebar.reconciliationFees),
-                            icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.reconciliationFees,
-                        },
-                        {
-                            id: 'reconciliation-setting-fees',
-                            title: this.translate.instant(translations.layout.sidebar.reconciliationSettingFees),
-                            icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.reconciliationSettings,
                         },
                         {
                             id: 'terms-settings',
@@ -309,6 +329,64 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.profile + '/' + Configuration.pages.profile.vacationRequestReply,
                         },
+                    ],
+                },
+                {
+                id: 'managementReview-collapse',
+                title: this.translate.instant(translations.layout.sidebar.managementReview),
+                icon: 'assets/images/icons/sidebar/book.svg',
+                children: [
+                        {
+                            id: 'admistrative-fees',
+                            title: this.translate.instant(translations.layout.sidebar.adminstrationFees),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.admistrativeFees,
+                        },
+                        {
+                            id: 'review-setting',
+                            title: this.translate.instant(translations.layout.sidebar.reviewSetting),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.reviewSettings,
+                        },
+                    ]
+                },
+                {
+                    id: 'managementReconciliation-collapse',
+                    title: this.translate.instant(translations.layout.sidebar.managementReconciliation),
+                    icon: 'assets/images/icons/sidebar/book.svg',
+                    children: [
+                        {
+                            id: 'reconciliation-fees',
+                            title: this.translate.instant(translations.layout.sidebar.reconciliationFees),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.reconciliationFees,
+                        },
+                        {
+                            id: 'reconciliation-setting-fees',
+                            title: this.translate.instant(translations.layout.sidebar.reconciliationSettingFees),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.reconciliationSettings,
+                        },
+                    ]
+                },
+                {
+                    id: 'managementArbitiration-collapse',
+                    title: this.translate.instant(translations.layout.sidebar.managementArbitiration),
+                    icon: 'assets/images/icons/sidebar/book.svg',
+                    children: [
+                        {
+                            id: 'arbitiration-fees',
+                            title: this.translate.instant(translations.layout.sidebar.arbitirationFees),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.arbitirationFees,
+                        },
+                        {
+                            id: 'arbitiration-settings',
+                            title: this.translate.instant(translations.layout.sidebar.arbitirationsettings),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.arbitirationsettings,
+                        },
+                  
                     ]
                 },
             );

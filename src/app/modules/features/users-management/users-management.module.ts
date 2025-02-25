@@ -21,7 +21,14 @@ import { ReconciliationSettingService } from './services/reconciliationSettingSe
 import { TermsConditionComponent } from './components/terms-condition/terms-condition.component';
 import { termsConditionsService } from './services/termsConditionsService';
 import { HomePageComponent } from './components/home-page/home-page.component';
-
+import { ArbitirationFeesService } from './services/arbitirationFeesService';
+import { ConfigrationArbitrationFeesSettingsComponent } from './components/configration-arbitration-fees-settings/configration-arbitration-fees-settings.component';
+import { ConfigrationArbitrationSettingstageComponent } from './components/configration-arbitration-settingstage/configration-arbitration-settingstage.component';
+import { ReviewSettingService } from './services/reviewSettingService';
+import { ConfigratoinReviewSettingsComponent } from './components/configratoin-review-settings/configratoin-review-settings.component';
+import { NgChartsModule} from 'ng2-charts';
+import { StatisticDashbourdComponent } from './components/statistic-dashbourd/statistic-dashbourd.component';
+import { StatisticDashbourdService } from './services/statisticDashbourdService';
 
 @NgModule({
   declarations: [
@@ -33,7 +40,11 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     ConfigrationReconciliationFeesSettingsComponent,
     ConfigrationReconciliationSettingstageComponent,
     TermsConditionComponent,
-    HomePageComponent
+    HomePageComponent,
+    ConfigrationArbitrationFeesSettingsComponent,
+    ConfigrationArbitrationSettingstageComponent,
+    ConfigratoinReviewSettingsComponent,
+    StatisticDashbourdComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +54,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     ReactiveFormsModule,
     OwlDateTimeModule, OwlNativeDateTimeModule, OwlDateTimeModule,
     BreadcrumbsComponent,
-    
+    NgChartsModule
 ],
   providers:[
      UsersManagementService,
@@ -51,6 +62,9 @@ import { HomePageComponent } from './components/home-page/home-page.component';
      ReconciliationFeesService,
      ReconciliationSettingService,
      termsConditionsService,
+     ArbitirationFeesService,
+     ReviewSettingService,
+     StatisticDashbourdService,
   { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }
 
   ]

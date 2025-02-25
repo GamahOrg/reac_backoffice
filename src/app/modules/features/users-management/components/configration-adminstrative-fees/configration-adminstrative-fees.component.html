@@ -2,7 +2,7 @@
 
 <div class="flex-y-row flex-wrap flex-lg-nowrap gap-3">
   
-    <a (click)="openModal()"
+    <a [routerLink]="['/users-management/create-admistrative-fees']"
        class="btn btn-primary fw-5 py-2 flex-y-row text-nowrap px-8">
       <img src="assets/images/icons/add.svg"
            class="me-2"
@@ -45,7 +45,7 @@
                 <span style="font-size: .88rem;">{{ fee.litigationAmount  }}</span>
               </td>
               <td scope="row">
-                <span style="font-size: .88rem;"> <button (click)="editItem(fee)" class="btn btn-primary">تعديل</button></span>
+                <span style="font-size: .88rem;">  <a [routerLink]="['/users-management/update-admistrative-fees', fee.id]" class="btn btn-outline-primary">تعديل  </a></span>
               </td>
         
           
@@ -67,12 +67,11 @@
   <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.UsersManagement.AdminstrationFees.noFees| translate}}</h4>
 </div>
 }
-
+<!-- 
 <app-edit-adminstrative-fees-modal 
   *ngIf="selectedItem" 
-  [selectedItem]="selectedItem"
-  (onSave)="updateItem($event)">
+  >
 </app-edit-adminstrative-fees-modal>
 
-<app-adminstrative-fees-modal  *ngIf="isVisible" (ontoggle)="updatevisible($event)"  #createElement></app-adminstrative-fees-modal>
+<app-adminstrative-fees-modal  *ngIf="isVisible" (ontoggle)="updatevisible($event)"  #createElement></app-adminstrative-fees-modal> -->
 
