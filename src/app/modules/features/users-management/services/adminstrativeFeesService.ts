@@ -23,7 +23,7 @@ export class AdminstrativeFeesService {
   
   UpdateFees(FeesUpdate:AdminstrativeFeesDto):Observable<BaseResponse<any>>{
     console.log(FeesUpdate);
-    return this._httpClient.put<BaseResponse<any>>(Configuration.APIs.adminstrativeFees.updateFees,FeesUpdate)
+    return this._httpClient.put<BaseResponse<any>>(Configuration.APIs.adminstrativeFees.updateFees+"?id="+FeesUpdate.id,FeesUpdate)
   }
   
 }

@@ -6,6 +6,7 @@ import { BaseComponent } from '@app/shared/components/base/base.component';
 import { AdminstrativeFeesDto } from '../../models/AdminstrativeFeesDto';
 import { Configuration } from '@app/core/configurations/shared.config';
 import { ToastrNotificationService } from '@app/core/services/toastr-notification/toastr-notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configration-adminstrative-fees',
@@ -22,6 +23,7 @@ export class ConfigrationAdminstrativeFeesComponent extends BaseComponent implem
     private _breadcrumbService: BreadcrumbService,
     private _translateService: TranslateService,
     private _toastrNotificationService:ToastrNotificationService,
+    private router: Router
   ) {
     super();
     
@@ -35,6 +37,7 @@ export class ConfigrationAdminstrativeFeesComponent extends BaseComponent implem
   GetAllFees(){
     this._configrationAdmistrationFeesService.getAllFees()
     .subscribe(res => {
+      console.log(res);
       if(res.isDone){
         this.feesList = res.data;
       }
@@ -48,44 +51,50 @@ private setBreadcrumb(): void {
   ])
 }
 
-editItem(item: AdminstrativeFeesDto): void {
-  this.selectedItem = { ...item };
+navigateToFee(id: string) {
+  this.router.navigate(['/users-management/update-admistrative-fees'], {
+    queryParams: { id: id }  // Passing the ID as query parameter
+  });
 }
 
+// editItem(item: AdminstrativeFeesDto): void {
+//   this.selectedItem = { ...item };
+// }
 
-updateItem(updatedItem: AdminstrativeFeesDto): void {
-  console.log("updatedItem :",updatedItem )
-  updatedItem={... updatedItem,litigationAmount:`${updatedItem.fromAmount} - ${updatedItem.toAmount} \\ رسوم التسجيل ${updatedItem.fees}`}
+
+// updateItem(updatedItem: AdminstrativeFeesDto): void {
+//   console.log("updatedItem :",updatedItem )
+//   updatedItem={... updatedItem,litigationAmount:`${updatedItem.fromAmount} - ${updatedItem.toAmount} \\ رسوم التسجيل ${updatedItem.fees}`}
   
-  this._configrationAdmistrationFeesService.UpdateFees(updatedItem).subscribe(
-    (response) => {
-         this.GetAllFees();
-         this.showSuccess(this._translateService.instant(this.translations.general.successfullySave));
+//   this._configrationAdmistrationFeesService.UpdateFees(updatedItem).subscribe(
+//     (response) => {
+//          this.GetAllFees();
+//          this.showSuccess(this._translateService.instant(this.translations.general.successfullySave));
      
-    },
-    (error: any) => {
-      console.error('Error updating item:', error);
+//     },
+//     (error: any) => {
+//       console.error('Error updating item:', error);
      
-    }
-  );
-}
-private showSuccess(msg: string): void {
-  this._toastrNotificationService.showSuccess(msg);
-}
+//     }
+//   );
+// }
+// private showSuccess(msg: string): void {
+//   this._toastrNotificationService.showSuccess(msg);
+// }
 
-@ViewChild('createElement') inputElement!: ElementRef;
-isVisible:boolean=false;
-openModal() {
-  this.isVisible=!this.isVisible;
+// @ViewChild('createElement') inputElement!: ElementRef;
+// isVisible:boolean=false;
+// openModal() {
+//   this.isVisible=!this.isVisible;
  
-}
-updatevisible(toggle:any){
-  debugger;
-  this.isVisible=toggle;
-  if (this.isVisible) {
-    this.inputElement = null!; 
-    this.GetAllFees(); 
-  }
-}
+// }
+// updatevisible(toggle:any){
+//   debugger;
+//   this.isVisible=toggle;
+//   if (this.isVisible) {
+//     this.inputElement = null!; 
+//     this.GetAllFees(); 
+//   }
+// }
 
 }

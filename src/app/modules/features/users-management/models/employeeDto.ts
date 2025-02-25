@@ -15,7 +15,7 @@ export interface EmployeeDto {
         mobile : string;
         email:string;
         isActive : boolean;
-        RoleId:number;
+        roleId:string;
         }
 
         export interface targetEmployeeDto {

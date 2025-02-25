@@ -1,0 +1,64 @@
+
+<app-breadcrumbs></app-breadcrumbs>
+<form [formGroup]="form">
+    
+    <h3 class="section-title">اعدادات التسجيل و العضوية</h3>
+        <button [disabled]="form.invalid" style="float: inline-end;" (click)="save()" class="btn btn-lg  btn-outline-primary mt-5 d-flex align-items-end">تعديل</button>
+    <div class="row mt-5">
+      
+    <div *ngFor="let item of data; let i = index"  >
+    
+      <div *ngIf="item.key.includes('Membership') || item.key.includes('Registeration')"  class="form-group col-10 mt-5 d-flex align-items-end">
+        <label class="col-2" [for]="item.id">{{ ("arbitirationSettingsPage."+ item.key) | translate }}</label>
+        <input 
+          type="text" 
+          class="form-control col-8" 
+          [formControlName]="item.id" 
+          id="{{item.id}}" 
+          [placeholder]="'Enter ' + (item.key | translate)" />
+      </div>
+      <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
+        <div *ngIf="form.controls[item.id].errors?.['required']">
+          {{ 'formValidationError.required' | translate }} 
+        </div>
+        <div *ngIf="form.controls[item.id].errors?.['containsLitigationCode']">
+          {{ 'formValidationError.containsLitigationCode' | translate }}
+        </div>
+        <div *ngIf="form.controls[item.id].errors?.['containsCitizenName']">
+            {{ 'formValidationError.containsCitizenName' | translate }}
+          </div>
+      </div>
+  </div>
+</div>
+  <br>
+  <h3 class="section-title">اعدادات مرحله التحكيم</h3>
+    <button [disabled]="form.invalid"  (click)="save()"  style="float: inline-end;" class="btn btn-lg  btn-outline-primary mt-5 d-flex align-items-end">تعديل</button>
+  <div class="row mt-5">
+  <div *ngFor="let item of data; let i = index"  >
+    <div   *ngIf="!item.key.includes('Membership') && !item.key.includes('Registeration')" class="form-group col-10 mt-5 d-flex align-items-end" >
+      <label class="col-2" [for]="item.id">{{ ("arbitirationSettingsPage."+ item.key) | translate }}</label>
+      <input 
+        type="text" 
+        class="form-control col-8" 
+        [formControlName]="item.id" 
+        id="{{item.id}}" 
+        [placeholder]="'Enter ' + (item.key | translate)" />
+    </div>
+ 
+    <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
+      <div *ngIf="form.controls[item.id].errors?.['required']">
+        {{ 'formValidationError.required' | translate }} 
+      </div>
+      <div *ngIf="form.controls[item.id].errors?.['containsLitigationCode']">
+        {{ 'formValidationError.containsLitigationCode' | translate }}
+      </div>
+      <div *ngIf="form.controls[item.id].errors?.['containsCitizenName']">
+          {{ 'formValidationError.containsCitizenName' | translate }}
+        </div>
+    </div>
+</div>
+</div>
+
+ 
+  </form>
+  

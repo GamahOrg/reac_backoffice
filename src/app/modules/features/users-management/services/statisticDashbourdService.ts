@@ -1,0 +1,24 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Configuration } from '@app/core/configurations/shared.config';
+import { BaseResponse } from '@app/core/models/base-response';
+import { Observable } from 'rxjs';
+import { DashbourdRequestDto } from '../models/dashbourdRequestDto';
+
+
+@Injectable()
+export class StatisticDashbourdService {
+
+  constructor(private _httpClient: HttpClient) { }
+
+
+  getAllStatistics(requestDto:DashbourdRequestDto): Observable<BaseResponse<any>> {
+    // let queryParams = new HttpParams();
+    // if(fromDate || toDate ){
+    // queryParams = queryParams.append("fromDate", fromDate??'');
+    // queryParams = queryParams.append("toDate", toDate??'');
+    // }
+    return this._httpClient.post<BaseResponse<any>>(`${Configuration.APIs.dashbourd.getStatistics}`,requestDto)
+  }
+
+}

@@ -38,6 +38,7 @@ export const appConfig: ApplicationConfig = {
       ToastNoAnimationModule,
       ToastrModule.forRoot(), // ToastrModule added
       TranslateModule.forRoot(provideTranslation()),
-    ), provideAnimationsAsync()
+    ), provideAnimationsAsync(),
+  
   ],
 };

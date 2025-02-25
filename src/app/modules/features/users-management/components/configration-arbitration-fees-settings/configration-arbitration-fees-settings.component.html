@@ -1,0 +1,61 @@
+
+<app-breadcrumbs></app-breadcrumbs>
+<form [formGroup]="form">
+    <h3 class="section-title">رسوم التسجيل </h3>
+
+    <div class="row mt-5">
+    <div *ngFor="let item of data; let i = index">
+      <div  *ngIf="item.key.includes('Registeration')" class="form-group col-6">
+        <label [for]="item.id">{{ item.key | translate }}</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [formControlName]="item.id" 
+          id="{{item.id}}" 
+          [placeholder]="'Enter ' + (item.key | translate)" />
+      </div>
+        <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
+        <div *ngIf="form.controls[item.id].errors?.['required']">
+          {{translations.formValidationError.required | translate}} 
+        </div>
+      </div>
+      <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
+        <div *ngIf="form.controls[item.id].errors?.['min']">
+          {{translations.formValidationError.minlength | translate}}
+        </div>
+      </div>
+      
+  </div>
+</div>
+<br>
+  <h3 class="section-title">رسوم العضوية </h3>
+  <div class="row mt-5">
+  <div *ngFor="let item of data; let i = index">
+    <div  *ngIf="item.key.includes('Membership')" class="form-group col-6">
+      <label [for]="item.id">{{ item.key | translate }}</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        [formControlName]="item.id" 
+        id="{{item.id}}" 
+        [placeholder]="'Enter ' + (item.key | translate)" />
+    </div>
+      <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
+      <div *ngIf="form.controls[item.id].errors?.['required']">
+        {{translations.formValidationError.required | translate}} 
+      </div>
+    </div>
+    <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
+      <div *ngIf="form.controls[item.id].errors?.['min']">
+        {{translations.formValidationError.minlength | translate}}
+      </div>
+    </div>
+    
+</div>
+</div>
+
+    <div class="p-5">
+    <button [disabled]="form.invalid"  (click)="save()" class="btn btn-primary">تعديل</button>
+    </div>
+  </form>
+  

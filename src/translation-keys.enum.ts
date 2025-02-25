@@ -73,6 +73,9 @@ export namespace translations {
             arbitration = "layout.sidebar.arbitration",
             review = "layout.sidebar.review",
             management = "layout.sidebar.management",
+            managementReview = "layout.sidebar.managementReview",
+            managementReconciliation = "layout.sidebar.managementReconciliation",
+            managementArbitiration = "layout.sidebar.managementArbitiration",
             stopAndReleaseReformer = "layout.sidebar.stopAndReleaseReformer",
             stopAndReleaseArbitrator = "layout.sidebar.stopAndReleaseArbitrator",
             sessionList = "layout.sidebar.sessionList",
@@ -80,6 +83,7 @@ export namespace translations {
             requestToExtendSettlementPeriod = "layout.sidebar.requestToExtendSettlementPeriod",
             reformationLawsuitsList = "layout.sidebar.reformationLawsuitsList",
             assignReformers = "layout.sidebar.assignReformers",
+            assignReviewers = "layout.sidebar.assignReviewers",
             arbitratorCount = "layout.sidebar.arbitratorCount",
             litigationRequestForArbitratorSelectionDurationList = 'layout.sidebar.litigationRequestForArbitratorSelectionDurationList',
             reportexplanationList = 'layout.sidebar.reportexplanationList',
@@ -105,7 +109,11 @@ export namespace translations {
             adminstrationFees='layout.sidebar.adminstrationFees',
             reconciliationFees='layout.sidebar.reconciliationFees',
             reconciliationSettingFees='layout.sidebar.reconciliationSettingFees',
-            termsSettings='layout.sidebar.termsConditions'
+            reviewSetting='layout.sidebar.reviewSetting',
+            termsSettings='layout.sidebar.termsConditions',
+            arbitirationFees='layout.sidebar.arbitirationFees',
+            arbitirationsettings='layout.sidebar.arbitirationsettings',
+            dashbourd='layout.sidebar.dashbourd'
         }
     }
 
@@ -139,6 +147,7 @@ export namespace translations {
         sendForEdit = "actions.sendForEdit",
         acceptWithFees = "actions.acceptWithFees",
         assignReformer = "actions.assignReformer",
+        assignReviewer = "actions.assignReviewer",
         startSession = "actions.startSession",
         procedures = "actions.procedures",
         assign = "actions.assign",
@@ -741,6 +750,7 @@ export namespace translations {
     export enum LitigationRequest {
         sessionLink = "litigationRequest.sessionLink",
         reformerName = "litigationRequest.reformerName",
+        reviewerName = "litigationRequest.reviewerName",
         rejectionReasons = "litigationRequest.rejectionReasons",
         requestCode = "litigationRequest.requestCode",
         requestDate = "litigationRequest.requestDate",
@@ -782,7 +792,8 @@ export namespace translations {
         requestreson = "litigationRequest.requestreson",
         dayscount = "litigationRequest.dayscount",
         arbitratorName = "litigationRequest.arbitratorName",
-        selectArbitrator = "litigationRequest.selectArbitrator"
+        selectArbitrator = "litigationRequest.selectArbitrator",
+        selectReviewer = "litigationRequest.selectReviewer",
     }
 
     export enum SessionDetails{
@@ -901,6 +912,7 @@ export namespace translations {
         export enum AdminstrationFees{
             listFees = 'UsersManagement.AdminstrationFees.listFees',
             createFees = 'UsersManagement.AdminstrationFees.createFees',
+            updateFees = 'UsersManagement.AdminstrationFees.updateFees',
             fees = 'UsersManagement.AdminstrationFees.fees',
             fromAmount = 'UsersManagement.AdminstrationFees.fromAmount',
             toAmount = 'UsersManagement.AdminstrationFees.toAmount',
@@ -921,6 +933,14 @@ export namespace translations {
         export enum TermsConditionsSettings{
             termsConditionsSettings='UsersManagement.TermsConditionsSettings.termsConditionsSettings',
          
+        }
+        export enum ConfigurableArbitiration{
+            ArbitirationRequestFees='UsersManagement.ConfigurableArbitiration.arbitirationRequestFees',
+            ArbitirationSettings='UsersManagement.ConfigurableArbitiration.arbitirationSettings',
+            ReformerJoiningRequestFees='UsersManagement.ConfigurableArbitiration.reformerJoiningRequestFees',
+        }
+        export enum ReviewSettings{
+            ReviewSettings='UsersManagement.ReviewSettings.reviewSettings',
         }
     }
    
