@@ -958,7 +958,7 @@
 },
 "reviewSettingsPage":{
     "SLA.SecondAgreementRequestForForRequest":"  الفترة الثانيه المسموح بها للرد على طلب المشارطة (بالساعه)",
-    "Review.Period":" المده المسموح بها للتدقيق (بالساعه)", 
+    "Review.Period":" المده المسموح بها للتدقيق (باليوم)", 
     "LitigationRequest.Reject.Agreement":"نص اشعار بقبول / رفض  لطلب المشارطة ",
     "Workflow.Condition.Review":"اشعار بارسال طلب المشارطة",
     "SLA.FinishAgreementRequest":"نص اشعار بسرعه الرد على طلب المشارطة",
