@@ -6,6 +6,7 @@ import { BaseComponent } from '@app/shared/components/base/base.component';
 import { translations } from 'translation-keys.enum';
 import { StorageService } from '@app/core/services/storage-service/storage.service';
 import { DepartmentType } from '@app/core/models/enums/department-type.model';
+import { ModificationListItem } from '../../../features/lawsuits/models/modification-request.model';
 
 
 @Component({
@@ -102,7 +103,14 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
-                            }
+                            },
+                            // {
+                            //     id: 'claims-link',
+                            //     title: this.translate.instant(translations.layout.sidebar.modificationList),
+                            //     // icon: 'assets/images/icons/sidebar/menu.svg',
+                            //     icon: 'assets/images/icons/sidebar/book.svg',
+                            //     url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationModificationRequests,
+                            // }
     
                         ]
                     },

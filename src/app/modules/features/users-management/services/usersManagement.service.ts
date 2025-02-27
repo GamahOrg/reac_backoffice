@@ -46,5 +46,13 @@ export class UsersManagementService {
     console.log(employeeStatusUpdate);
     return this._httpClient.put<BaseResponse<any>>(Configuration.APIs.usersManagement.UpdateEmployeeStatus+"?employeeId="+employeeStatusUpdate.employeeId+"&isActive="+employeeStatusUpdate.isActive,employeeStatusUpdate)
   }
+
+  UpdateEmployee(employeeStatusUpdate:targetEmployeeDto):Observable<BaseResponse<any>>{
+    console.log(employeeStatusUpdate);
+    return this._httpClient.put<BaseResponse<any>>(Configuration.APIs.usersManagement.updateEmployee,employeeStatusUpdate)
+  }
   
+  GetEmployeeById(id:string): Observable<BaseResponse<EmployeeDto>> {
+    return this._httpClient.get<BaseResponse<EmployeeDto>>(`${Configuration.APIs.usersManagement.getEmployeeById}`+"?employeeId="+id)
+  }
 }

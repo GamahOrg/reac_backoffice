@@ -29,11 +29,13 @@ import { ConfigratoinReviewSettingsComponent } from './components/configratoin-r
 import { NgChartsModule} from 'ng2-charts';
 import { StatisticDashbourdComponent } from './components/statistic-dashbourd/statistic-dashbourd.component';
 import { StatisticDashbourdService } from './services/statisticDashbourdService';
+import { EditUserComponent } from './components/users-list/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
     UsersListComponent,
     CreateUserComponent,
+    EditUserComponent,
     ConfigrationAdminstrativeFeesComponent,
     EditAdminstrativeFeesModalComponent,
     AdminstrativeFeesModalComponent,

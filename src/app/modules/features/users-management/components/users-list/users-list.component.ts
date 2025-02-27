@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -9,6 +9,7 @@ import { Configuration } from '@app/core/configurations/shared.config';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrNotificationService } from '@app/core/services/toastr-notification/toastr-notification.service';
 import Swal from 'sweetalert2';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-users-list',
@@ -18,6 +19,7 @@ import Swal from 'sweetalert2';
 export class UsersListComponent extends BaseComponent implements OnInit {
   
   employeeList: EmployeeDto[] | undefined;
+  selectedItem!:any;
   dt=new Date();
   newPageNo: number = 1;
   pageCount: number = 0;
@@ -35,6 +37,7 @@ export class UsersListComponent extends BaseComponent implements OnInit {
     private _breadcrumbService: BreadcrumbService,
     private _translateService: TranslateService,
     private fb: FormBuilder,
+    private modalService: NgbModal,
     private _toastrNotificationService:ToastrNotificationService,
   ) {
     super();
@@ -129,4 +132,23 @@ private showSuccess(msg: string): void {
 private showError(msg: string): void {
   this._toastrNotificationService.showError(msg);
 }
+
+
+OpenDetails(employee:any, content: TemplateRef<any>) {
+ this.GetEmployeeById(employee.id,content)    
+}
+
+GetEmployeeById(id:string,content: TemplateRef<any>){
+  if (id) {
+     this._usersManagementService.GetEmployeeById(id)
+  .subscribe((res:any) => {
+    if(res.isDone){
+      console.log(res);
+      this.selectedItem = res.data;
+      this.modalService.open(content)
+    }
+  })
+  }
+ 
+} 
 }

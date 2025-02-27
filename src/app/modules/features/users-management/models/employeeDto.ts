@@ -16,9 +16,11 @@ export interface EmployeeDto {
         email:string;
         isActive : boolean;
         roleId:string;
+        employeeName:string;
         }
 
         export interface targetEmployeeDto {
+            id?:string;
             employeeName : string;
             identityNumber:string;
             departmentId : string;

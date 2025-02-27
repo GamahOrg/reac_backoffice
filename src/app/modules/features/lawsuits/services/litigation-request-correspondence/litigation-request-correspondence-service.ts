@@ -6,6 +6,7 @@ import { map, Observable } from 'rxjs';
 import { LitigationRequestMircoDtoReformer } from '@app/modules/features/citizen-requests/models/litigation-request-mirco-dto-reformer';
 import { Pagination } from '@app/shared/models/pagination.model';
 import { LitigationRequestForCorrespondences, LitigationRequestCorrespondenceCreateUpdateDto, LitigationRequestCorrespondencesDto } from '@app/modules/features/arbitration/models/arbitration-request-correspondences.model';
+import { ModificationListItem, ModificationRequesteStatusUpdate } from '../../models/modification-request.model';
 
 @Injectable()
 export class LitigationRequestCorrespondencesService {
@@ -39,4 +40,22 @@ export class LitigationRequestCorrespondencesService {
     );}
 
 
+    GetLitigationModificationRequests(pageIndex: number, pageSize: number):  Observable<Pagination<ModificationListItem[] >> {
+      let queryParams = new HttpParams();
+      queryParams = queryParams.append("pageIndex", pageIndex);
+      queryParams = queryParams.append("pageSize", pageSize);
+      return this._httpClient.get<BaseResponse<Pagination<ModificationListItem[]>>>(`${Configuration.APIs.LitigationRequestCorrespondence.getLitigationModificationRequests}`, { params: queryParams }).pipe(
+        map((res: BaseResponse<Pagination<ModificationListItem[]>>) => {
+          console.log("res" ,res)
+         if(res.isDone){
+           return res.data as Pagination<ModificationListItem[]>;
+         }
+         else
+         return {} as Pagination<ModificationListItem[]>;
+        })
+      );}
+
+      UpdateModificationRequestStatus(StatusUpdate:ModificationRequesteStatusUpdate):Observable<BaseResponse<any>>{
+        return this._httpClient.post<BaseResponse<any>>(Configuration.APIs.LitigationRequestCorrespondence.AddModificationRequestAction,StatusUpdate)
+      }
 }
