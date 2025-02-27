@@ -41,7 +41,9 @@ export const Configuration = {
       getCorrespondenceReply: "/api/LitigationRequestCorrespondence/GetLitigationCorrespondenceReply",
       getCorrespondenceReplyByRequestId: "/api/LitigationRequestCorrespondence/GetLitigationCorrespondencesByLitigationRequestId",
       getLitigationRequestArbitrationCorrespondence: "/api/LitigationRequestCorrespondence/GetLitigationRequestArbitrationCorrespondence",
-      getLitigationRequestReconciliationCorrespondence: "/api/LitigationRequestCorrespondence/GetLitigationRequestReconciliationCorrespondence"
+      getLitigationRequestReconciliationCorrespondence: "/api/LitigationRequestCorrespondence/GetLitigationRequestReconciliationCorrespondence",
+      getLitigationModificationRequests: "/api/LitigationRequestContract/GetModificationRequestForEmployee",
+      AddModificationRequestAction: "/api/LitigationRequestContract/AddModificationRequestAction",
     },
     Notification: {
       GetNotificationListForBackOffice: "/api/Notification/GetNotificationListForBackOffice",
@@ -170,7 +172,9 @@ export const Configuration = {
       CreateEmployee:"/api/SysEmployee/CreateEmployee",
       getAllEmployee:"/api/SysEmployee/List",
       getAllDepartmentsLookup:"/api/SysDepartment/Get",
-      UpdateEmployeeStatus:"/api/SysEmployee/UpdateEmployeeStatus"
+      UpdateEmployeeStatus:"/api/SysEmployee/UpdateEmployeeStatus",
+      updateEmployee:"/api/SysEmployee/UpdateEmployee",
+      getEmployeeById:"/api/SysEmployee/GetByIdAsync"
     },
     adminstrativeFees:{
       getAllFees:"/api/SysLitigationRequestAmount/Get",
@@ -245,7 +249,7 @@ export const Configuration = {
       litigationRequestCorrespondencesDetails: "litigation-request-correspondences-details",
       litigationRequestNotesList: "litigation-request-notes-list",
       litigationRequestNotesDetails: "litigation-request-notes-details",
-
+      litigationModificationRequests: "litigation-modification-requests",
     },
     citizenRequests: {
       arbitratorRequestList: 'arbitrator-request-list',
@@ -284,6 +288,7 @@ export const Configuration = {
     usersManagement: {
       userList: 'user-list',
       createUser: 'create-user',
+      updateUser: 'update-user/:id',
       admistrativeFees:'admistrative-fees',
       createAdmistrativeFees:'create-admistrative-fees',
       updateAdmistrativeFees:'update-admistrative-fees/:id',

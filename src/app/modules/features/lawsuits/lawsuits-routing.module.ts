@@ -8,6 +8,7 @@ import { AuditngListArbitrationComponent } from './pages/auditng-list-arbitratio
 import { LitigationRequestCorrespondenceListComponent } from './components/litigation-request-correspondence-list/litigation-request-correspondence-list.component';
 import { LitigationRequestCorrespondenceDetailsComponent } from './components/litigation-request-correspondence-details/litigation-request-correspondence-details.component';
 import { LitigationRequestNotesListComponent } from './pages/litigation-request-notes-list/litigation-request-notes-list.component';
+import { ModificationRequestsComponent } from './components/modification-requests/modification-requests.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: Configuration.pages.litigation.litigationRequestCorrespondencesList,
     component: LitigationRequestCorrespondenceListComponent,
+  },
+  {
+    path: Configuration.pages.litigation.litigationModificationRequests,
+    component: ModificationRequestsComponent,
   },
   {
     path: `${Configuration.pages.litigation.litigationRequestCorrespondencesDetails}/:id`,

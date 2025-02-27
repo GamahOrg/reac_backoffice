@@ -38,6 +38,7 @@ import { LitigationRequestCorrespondencesService } from './services/litigation-r
 import { LitigationRequestCorrespondenceDetailsComponent } from './components/litigation-request-correspondence-details/litigation-request-correspondence-details.component';
 import { LitigationRequestNotesListComponent } from './pages/litigation-request-notes-list/litigation-request-notes-list.component';
 import { LitigationRequestNotesService } from './services/litigation-request-notes/litigation-request-notes.service';
+import { ModificationRequestsComponent } from './components/modification-requests/modification-requests.component';
 
 @NgModule({
     declarations: [
@@ -55,7 +56,8 @@ import { LitigationRequestNotesService } from './services/litigation-request-not
         LawsuitReviewerNotesComponent,
         LitigationRequestCorrespondenceListComponent,
         LitigationRequestCorrespondenceDetailsComponent,
-        LitigationRequestNotesListComponent
+        LitigationRequestNotesListComponent,
+        ModificationRequestsComponent
     ],
     providers: [
         LawsuitListService,

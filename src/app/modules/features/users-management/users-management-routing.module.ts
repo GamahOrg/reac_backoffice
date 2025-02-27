@@ -14,6 +14,7 @@ import { AdminstrativeFeesModalComponent } from './components/configration-admin
 import { EditAdminstrativeFeesModalComponent } from './components/configration-adminstrative-fees/edit-adminstrative-fees-modal/edit-adminstrative-fees-modal.component';
 import { ConfigratoinReviewSettingsComponent } from './components/configratoin-review-settings/configratoin-review-settings.component';
 import { StatisticDashbourdComponent } from './components/statistic-dashbourd/statistic-dashbourd.component';
+import { EditUserComponent } from './components/users-list/edit-user/edit-user.component';
 
 const routes: Routes = [
   
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: Configuration.pages.usersManagement.createUser,
     component: CreateUserComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.updateUser,
+    component: EditUserComponent,
   },
   {
     path: Configuration.pages.usersManagement.admistrativeFees,

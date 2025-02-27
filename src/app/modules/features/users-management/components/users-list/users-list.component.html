@@ -173,11 +173,20 @@
 
           </td>
           <td scope="row">
-            <button (click)="showConfirmDialog(employee)" 
+            <span style="font-size: .88rem;padding-left: 15px;">
+              <button (click)="OpenDetails(employee,InfoModal)"
+              class="btn btn-sm rounded-2 v-small fw-5  w-fit gap-2 py-2" style="background: #F6F6F6; color: black;">
+              <img src="assets/images/icons/eye.svg" alt="eye">
+              تفاصيل
+            </button>
+            </span>
+            <span style="font-size: .88rem; padding-left: 15px;">  <a [routerLink]="['/users-management/update-user', employee.id]" class="btn btn btn-sm btn-outline-primary">تعديل  </a></span>
+            <span style="font-size: .88rem;padding-left: 15px; ">  <button (click)="showConfirmDialog(employee)" 
             class="btn btn-sm"
             [ngClass]="{'btn-danger': employee.isActive, 'btn-primary': !employee.isActive}">
             {{ employee.isActive ? 'تعطيل' : 'تفعيل' }}
-            </button>
+            </button></span>
+         
           </td>
           
         </tr>
@@ -208,3 +217,43 @@
   <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.UsersManagement.Employee.noEmployees| translate}}</h4>
 </div>
 }
+
+<ng-template #InfoModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title fw-6"> بيانات الموظف</h5>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body pt-0">
+    <table class="styled-table"> 
+      <tr>
+        <td class="label-cell"> {{translations.UsersManagement.Employee.employeeName | translate}} : </td>
+        <td> {{selectedItem.employeeName}}</td>
+      </tr>
+      <tr> 
+        <td class="label-cell"> {{translations.UsersManagement.Employee.identityNumber | translate}} :</td>
+        <td> {{selectedItem.identityNumber}}</td>
+      </tr>
+      <tr>
+        <td class="label-cell"> {{translations.UsersManagement.Employee.email | translate}} :</td>
+        <td> {{selectedItem.email}}</td>
+      </tr>
+      <tr>
+        <td class="label-cell"> {{translations.UsersManagement.Employee.mobile | translate}} : </td>
+        <td> {{selectedItem.mobile}}</td>
+      </tr>
+      <tr>
+        <td class="label-cell"> {{translations.UsersManagement.Employee.status | translate}} :</td>
+        <td *ngIf="selectedItem.isActive"> {{translations.UsersManagement.Employee.active | translate}}</td>
+        <td *ngIf="!selectedItem.isActive"> {{translations.UsersManagement.Employee.inActive | translate}}</td>
+
+      </tr>
+    </table>
+
+    </div>
+
+    <div class="modal-footer">
+
+      <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate}}</button>
+
+    </div>
+</ng-template>

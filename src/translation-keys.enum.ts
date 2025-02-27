@@ -63,6 +63,7 @@ export namespace translations {
             user = "layout.sidebar.user",
             auditor = "layout.sidebar.auditor",
             lawsuitsList = "layout.sidebar.lawsuitsList",
+            modificationList = "layout.sidebar.modificationList",
             newLawsuitsList = "layout.sidebar.newLawsuitsList",
             completedLawsuitsList = "layout.sidebar.completedLawsuitsList",
             citizenRequests = "layout.sidebar.citizenRequests",
@@ -95,6 +96,7 @@ export namespace translations {
             arbitrationRequestCorrespondences = "layout.sidebar.arbitrationRequestCorrespondences",
             arbitrationRequestNotes = "layout.sidebar.arbitrationRequestNotes",
             litigationRequestCorrespondences = "layout.sidebar.litigationRequestCorrespondences",
+            litigationModificationRequest = "layout.sidebar.litigationModificationRequest",
             litigationRequestNotes = "layout.sidebar.litigationRequestNotes",
             arbitratorRecusalRequests = 'layout.sidebar.arbitratorRecusalRequests',
             reports = 'layout.sidebar.reports',
@@ -104,6 +106,7 @@ export namespace translations {
             vacationRequestReply = 'layout.sidebar.vacationRequestReply',
             employeeList='layout.sidebar.employeeList',
             createEmployee='layout.sidebar.createEmployee',
+            updateEmployee='layout.sidebar.updateEmployee',
             approveArbitrationFeesPaid='layout.sidebar.approveArbitrationFeesPaid',
             changePassword='layout.sidebar.changePassword',
             adminstrationFees='layout.sidebar.adminstrationFees',
@@ -744,7 +747,18 @@ export namespace translations {
         status = "RequestToExtendSettlementPeriod.status",
         isDone = "RequestToExtendSettlementPeriod.isDone",
         duration = 'RequestToExtendSettlementPeriod.duration',
-        reformerName = 'litigationRequest.reformerName'
+        reformerName = 'litigationRequest.reformerName',
+        actorType='litigationRequest.actorType'
+    }
+
+    export enum Modificationrequestforall {
+        requestCode = "Modificationrequestforall.requestCode",
+        requestDate = "Modificationrequestforall.requestDate",
+        reason = "Modificationrequestforall.reason",
+        citizenName = "Modificationrequestforall.citizenName",
+        requestTypeName = "Modificationrequestforall.requestTypeName",
+        actorType='Modificationrequestforall.actorType',
+        status = "Modificationrequestforall.status",
     }
 
     export enum LitigationRequest {

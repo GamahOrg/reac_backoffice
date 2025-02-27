@@ -29,6 +29,7 @@
             "user": "المستخدم",
             "auditor": "المدقق",
             "lawsuitsList": "قائمة الدعاوى",
+            "modificationList":"قائمة طلبات التعديل",
             "newLawsuitsList": "قائمة الدعاوى الجديدة",
             "completedLawsuitsList": "قائمة الدعاوى المنجزة",
             "citizenRequests": "قائمة طلبات المصلح والمحكم",
@@ -36,6 +37,7 @@
             "arbitratorRequestTaskList": "قائمة مهام الدعاوى",
             "arbitrationRequestCorrespondences": "المراسلات",
             "litigationRequestCorrespondences": "المراسلات",
+            "litigationModificationRequest":"الطلبات المقدمه",
             "reformerRequestList": "طلبات الانضمام كمصلح",
             "reformation": "الصلح",
             "arbitration": "التحكيم",
@@ -68,6 +70,7 @@
             "vacationRequestReply" : "طلبات الاجازة المستقبلة" ,
             "employeeList": "قائمة الموظفين",
             "createEmployee": "طلب اضافة موظف",
+            "updateEmployee": "تعديل موظف",
             "approveArbitrationFeesPaid":"تأكيد دفع رسوم التحكيم",
             "adminstrationFees":"قائمة الرسوم الاداريه",
             "reconciliationFees":"قائمة رسوم الصلح والعضويه",
@@ -674,7 +677,18 @@
         "status": "حالة الدعوة",
         "isDone": "الحالة",
         "duration": "المدة (ساعات)",
-        "arbitratorName": "اسم المحكم"
+        "arbitratorName": "اسم المحكم",
+        "actorType":"صفة مقدم الطلب"
+    },
+    "Modificationrequestforall": {
+        "requestCode": "كود الدعوة",
+        "requestDate": "تاريخ الطلب",
+        "reason": "سبب الطلب",
+        "citizenName": "اسم مقدم الطلب ",
+        "actorType":"صفة مقدم الطلب",
+        "isDone": "الحالة",
+        "requestTypeName": "نوع الدعوة",
+        "status": "حالة الدعوة"
     },
     "litigationRequest": {
         "requestreson": "سبب الطلب",

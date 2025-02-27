@@ -1,0 +1,75 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+<div class="table-wrapper">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">{{translations.Modificationrequestforall.requestCode | translate}}</th>
+                    <th scope="col">{{translations.Modificationrequestforall.requestDate | translate}}</th>
+                    <th scope="col">{{translations.Modificationrequestforall.reason | translate}}</th>
+                    <th scope="col">{{translations.Modificationrequestforall.citizenName | translate}}</th>
+                    <th scope="col">{{translations.Modificationrequestforall.actorType | translate}}</th>
+                    <th scope="col">{{translations.Modificationrequestforall.status | translate}}</th>
+                    <th scope="col">{{translations.CitizenRequest.actions | translate}}</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @for (request of reqList.results; track $index) {
+                <tr>
+                    <td>{{request.requestCode}}</td>
+                    <td>{{request.createdOn | date:'MMM d, y'}}</td>
+                    <td>{{request.modificationRequest }}</td>
+                    <td>{{request.citizen.fullName}}</td>
+                    <td>{{ notificationActorType(request.actorType) }}</td>
+                    <td scope="row">
+                        <span style="font-size: .88rem;">{{ request.isApproved == true ?  ' تمت الموافقه' : request.isApproved == false ? 'تم الرفض' : '--'  }} </span>
+                        <img *ngIf="request.isApproved" src="assets/images/icons/checkbox.svg"  style="    width: 16px;" alt="attachment">
+                        <img *ngIf="!request.isApproved" src="assets/images/icons/close-circle.svg"  alt="attachment">
+                      </td>
+
+                    <td>
+                        <span style="font-size: .88rem; padding-left: 15px;">    <button (click)="showConfirmApproveDialog(request)" 
+                            class="btn btn-sm"
+                            [ngClass]="{'btn-danger': request.isApproved, 'btn-primary': !request.isApproved}">
+                                    موافقه
+                            </button></span>
+                            <span style="font-size: .88rem; padding-left: 15px;"> 
+                            <button (click)="showConfirmDisapproveDialog(request)" 
+                            class="btn btn-sm"
+                            [ngClass]="{'btn-danger': request.isApproved, 'btn-primary': !request.isApproved}">
+                                    رفض 
+                            </button>
+                            </span>
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@if (reqList.results && reqList.results.length) {
+    <div class="flex-between">
+        <div class="op-6 v-small fw-5">
+            <span>{{translations.tables.from | translate}} </span>
+            <span>{{pagintationData.currentPage}} </span>
+            <span>{{translations.tables.to | translate}} </span>
+            <span>6 </span>
+            <span>{{translations.tables.ofTotal | translate}} </span>
+            <span>{{pagintationData.totalCount}} </span>
+            <span>{{translations.tables.row | translate}} </span>
+        </div>
+
+        <app-pagination></app-pagination>
+    </div>
+}
+
+@if((!reqList.results) || reqList.results.length==0){
+    <div class="flex-center flex-column">
+      <img src="assets/images/no-data.svg"
+           alt="no-data">
+      <h4 class="op-4 fw-5 mt-6 mb-4">لا يوجد طلبات </h4>
+    </div>
+    }
