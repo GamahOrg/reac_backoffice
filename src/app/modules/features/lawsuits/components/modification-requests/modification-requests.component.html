@@ -29,7 +29,7 @@
                         <img *ngIf="!request.isApproved" src="assets/images/icons/close-circle.svg"  alt="attachment">
                       </td>
 
-                    <td>
+                    <td *ngIf="request.isApproved == null">
                         <span style="font-size: .88rem; padding-left: 15px;">    <button (click)="showConfirmApproveDialog(request)" 
                             class="btn btn-sm"
                             [ngClass]="{'btn-danger': request.isApproved, 'btn-primary': !request.isApproved}">

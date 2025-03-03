@@ -104,13 +104,13 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
                             },
-                            // {
-                            //     id: 'claims-link',
-                            //     title: this.translate.instant(translations.layout.sidebar.modificationList),
-                            //     // icon: 'assets/images/icons/sidebar/menu.svg',
-                            //     icon: 'assets/images/icons/sidebar/book.svg',
-                            //     url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationModificationRequests,
-                            // }
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.modificationList),
+                                // icon: 'assets/images/icons/sidebar/menu.svg',
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationModificationRequests,
+                            }
     
                         ]
                     },

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { ModificationListItem, ModificationRequesteStatusUpdate } from '../../models/modification-request.model';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
@@ -12,6 +12,11 @@ import { PaginationService } from '@app/shared/services/pagination/pagination.se
 import { Router } from '@angular/router';
 import { LitigationRequestCorrespondencesService } from '../../services/litigation-request-correspondence/litigation-request-correspondence-service';
 import { NotificationActorType } from '@app/modules/layout/models/enums/notification-actor-type.model';
+import { BaseResponse } from '@app/core/models/base-response';
+import { takeUntil } from 'rxjs';
+import { GetWorkflowStepEventsForEmployeeDto } from '../../models/get-workflow-step-events-for-employee-dto.model';
+import { LawsuitReviewService } from '../../services/lawsuit-review/lawsuit-review.service';
+import { LawsuitReiewRequestDto } from '../../models/lawsuit-reiew-request-dto';
 
 @Component({
   selector: 'app-modification-requests',
@@ -20,8 +25,13 @@ import { NotificationActorType } from '@app/modules/layout/models/enums/notifica
 })
 export class ModificationRequestsComponent  extends BaseComponent implements OnInit {
 
+    private _lawsuitReviewService = inject(LawsuitReviewService);
+
+
   requestsList: ModificationListItem[] | undefined;
   detailsRequestUrl: string = `/${Configuration.modules.lawsuits}/${Configuration.pages.litigation.litigationRequestCorrespondencesDetails}`
+  buttonActions!: GetWorkflowStepEventsForEmployeeDto
+  lawsuitReiewRequest!: LawsuitReiewRequestDto
 
   reqList: Pagination<ModificationListItem[]> = {} as Pagination<ModificationListItem[]>;
     newPageNo: number = 1;
@@ -88,7 +98,23 @@ GetLitigationModificationRequests(): void {
 }
 
 
+private GetWorkflowStepEventsForEmployee(requestId : string) {
+        this._lawsuitReviewService.GetWorkflowStepEventsForEmployee(requestId).pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<GetWorkflowStepEventsForEmployeeDto>) => {
+            if (res.data && res.isDone){
+                debugger;
+                this.buttonActions = res.data
+                
+            }
+
+        })
+    }
+
 showConfirmApproveDialog(employee: any): void {
+
+debugger;
+
+  this.GetWorkflowStepEventsForEmployee(employee.litigationRequestId);
+
   const action =  'الموافقه';
 
   // Show confirmation dialog using SweetAlert2
@@ -102,7 +128,7 @@ showConfirmApproveDialog(employee: any): void {
   }).then((result) => {
     if (result.isConfirmed) {
       // If confirmed, toggle the status
-      this.toggleApproveRequest(employee);
+      this.create(employee);
     }
   });
 }
@@ -114,7 +140,7 @@ toggleApproveRequest(request: any): void {
    modificationRequestId : request.id,
    isApproved:request.isApproved
   }
-  // Update the status in the backend
+  //Update the status in the backend
   this._litigationRequestCorrespondencesService.UpdateModificationRequestStatus(StatusUpdate).subscribe(
     response => {
       this.showSuccess(this._translateService.instant(this.translations.general.successfullySave));
@@ -124,7 +150,41 @@ toggleApproveRequest(request: any): void {
       this.showError(this._translateService.instant(this.translations.general.errorSave));
     }
   );
+
 }
+
+
+public create(request : any): void {
+
+  if(this.buttonActions.workFlowStepEventShortDtos != undefined && this.buttonActions.workFlowStepEventShortDtos.find(event => event.eventName === "إعادة  الدعوى للتعديل")?.id ){
+
+    this.lawsuitReiewRequest = {
+      requestId: request.litigationRequestId,
+      processingLogId: this.buttonActions.workFlowStepEventShortDtos[0].processingLogId,
+      workflowStepEventId: this.buttonActions.workFlowStepEventShortDtos.find(event => event.eventName === "إعادة  الدعوى للتعديل")!.id,
+      notes: "تعديل الدعوي بناءا علي طلب مقدم الطلب",
+      uploadedFilesIds: []
+  }
+  debugger;
+ 
+  this._lawsuitReviewService.create(this.lawsuitReiewRequest).pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<any>) => {
+      if (res.isDone) {
+
+        this.toggleApproveRequest(request);
+
+          
+      }
+  })
+
+
+  }else{
+    this.showError("لا يمكن قبول طلب تعديل الدعوي في هذه المرحلة");
+
+  }
+
+  
+
+  }
 
 showConfirmDisapproveDialog(employee: any): void {
   const action =  'رفض';
@@ -191,4 +251,9 @@ private setPaginationData(pageSize: number, total: number): void {
 goToDetailsPage(requestId: string) {
  this.router.navigate([this.detailsRequestUrl, requestId]);
 }
+
+
+
+
+
 }
