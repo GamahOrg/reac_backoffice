@@ -1,0 +1,8 @@
+<div class="chart-container">
+    <div class="form-wrapper pt-2" style="margin-bottom: 10px;"> {{ chartTitle }}</div>
+    <canvas baseChart 
+            [data]="chartData" 
+            [type]="chartType"
+            [options]="chartOptions">
+    </canvas>
+  </div>

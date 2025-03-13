@@ -7,6 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { CitizenRequestShortDataDto } from '../../models/citizen-request.model';
 import { CitizenRequestType } from '../../models/enums/citizen-request-type.model';
 import { Configuration } from '@app/core/configurations/shared.config';
+import { Pagination, pagination } from '@app/shared/models/pagination.model';
+import { takeUntil } from 'rxjs';
 @Component({
     selector: 'app-reformer-request-list',
     templateUrl: './reformer-request-list.component.html',
@@ -16,7 +18,7 @@ export class ReformerRequestListComponent extends BaseComponent implements OnIni
 
     // detailsArbitratorRequest: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.details}/arbitrator/`
     detailsReformerRequest: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.details}/reformer/`
-
+    ascending:boolean=true;
     constructor(
         private _paginationService: PaginationService,
         private _breadcrumbService: BreadcrumbService,
@@ -25,21 +27,23 @@ export class ReformerRequestListComponent extends BaseComponent implements OnIni
     ) {
         super();
     }
-    page = 1;
-    pageSize = 10;
+
     collectionSize!: number;
-    citizenRequestsLists!: CitizenRequestShortDataDto[] | undefined;
-    pagintationData = {
-        currentPage: this.page,
-        pageSize: 0,
-        totalCount: 0,
-    }
+    citizenRequestsLists: Pagination<CitizenRequestShortDataDto[]> | undefined  = {} as Pagination<CitizenRequestShortDataDto[]>;
+    newPageNo: number = 1;
+    pageCount: number = 0;
+    pagintationData: pagination = {
+      currentPage: 1,
+      // pageCount: 0,
+      pageSize: 10,
+      totalCount: 0,
+    };
 
     ngOnInit(): void {
         // this.observePageChange();
         this.setBreadcrumb()
-        this.page = this._paginationService.currentPage();
         this.list();
+        this.watchPaginationActions();
     }
 
     get citizenRequestType() {
@@ -47,15 +51,15 @@ export class ReformerRequestListComponent extends BaseComponent implements OnIni
     }
     private list(): void {
 
-        this._citizenRequestService.GetCitizenRequestsForEmployee(this.page, this.pageSize, CitizenRequestType.Reformer).subscribe({
+        this._citizenRequestService.GetCitizenRequestsForEmployee(this.pagintationData.currentPage, this.pagintationData.pageSize, CitizenRequestType.Reformer,this.ascending).subscribe({
             next: (res) => {
-                this.citizenRequestsLists = res?.data?.results;
+                this.citizenRequestsLists = res?.data;
                 console.log();
 
                 console.log(this.citizenRequestsLists);
 
                 this.collectionSize = res?.data?.totalCount || 0;
-                this.setPaginationData(this.page, this.pageSize, this.collectionSize)
+                this.setPaginationData(res.data!.pageSize,res.data!.totalCount)
             }
         })
     }
@@ -70,12 +74,46 @@ export class ReformerRequestListComponent extends BaseComponent implements OnIni
     //     });
     // }
 
-    private setPaginationData(currentPage: number, pageSize: number, totalCount: number): void {
-        this.pagintationData.currentPage = currentPage
+    private setPaginationData(pageSize: number, total: number): void {
         this.pagintationData.pageSize = pageSize
-        this.pagintationData.totalCount = totalCount
+        this.pagintationData.totalCount = total
         this._paginationService.updatePaginationData(this.pagintationData);
-    }
+    
+      }
+
+    private watchPaginationActions(): void {
+        debugger;
+        this.watchPagechanged();
+        this.watchPaginationClicked();
+      }
+    
+      private watchPagechanged(): void {
+        this._paginationService.pageChanged
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((pageNo) => {
+            debugger;
+            this.newPageNo = pageNo;
+            this.loadNextPage(this.newPageNo);
+    
+          })
+      }
+    
+      private watchPaginationClicked(): void {
+        this._paginationService.pageClicked
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((nextPage: number) => {
+            debugger;
+            if (this.pagintationData.currentPage != nextPage) {
+              this.loadNextPage(nextPage);
+              this.pagintationData.currentPage = this.newPageNo;
+            }
+          })
+      }
+      private loadNextPage(nextPage: number): void {
+        debugger;
+        this.pagintationData.currentPage = nextPage;
+        this.list()
+      }
 
     private setBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
@@ -83,4 +121,16 @@ export class ReformerRequestListComponent extends BaseComponent implements OnIni
             { label: this._translateService.instant(this.translations.layout.sidebar.reformerRequestList) }
         ])
     }
+    
+    orderList(event:any){
+      var ascendingValue= event.target.value;
+    if(ascendingValue == "true"){
+      this.ascending=true;
+      this.list();
+    }
+    else{
+      this.ascending=false;
+      this.list();
+    }
+  }
 }

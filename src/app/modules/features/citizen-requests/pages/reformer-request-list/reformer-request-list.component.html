@@ -1,5 +1,11 @@
 <app-breadcrumbs></app-breadcrumbs>
-
+<div *ngIf="citizenRequestsLists?.results" class="options">
+    <p class="text">ترتيب حسب</p>
+    <select (change)="orderList($event)" [value]="ascending">
+        <option value="false">الأحدث</option>
+        <option value="true">الأقدم</option>
+    </select>
+</div>
 <div class="table-wrapper">
     <div class="table-responsive">
         <table class="table">
@@ -14,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                @for (citizenRequest of citizenRequestsLists; track $index) {
+                @for (citizenRequest of citizenRequestsLists?.results; track $index) {
                 <tr>
                     <td>{{citizenRequest.citizenName}}</td>
                     <td>{{citizenRequest.identityNumber}}</td>
@@ -37,18 +43,18 @@
     </div>
 </div>
 
-@if (citizenRequestsLists && citizenRequestsLists.length) {
+@if (citizenRequestsLists && citizenRequestsLists.results) {
     <div class="flex-between">
         <div class="op-6 v-small fw-5">
-            <span>{{translations.tables.from | translate}} </span>
-            <span>{{page}} </span>
-            <span>{{translations.tables.to | translate}} </span>
-            <span>6 </span>
-            <span>{{translations.tables.ofTotal | translate}} </span>
-            <span>{{collectionSize}} </span>
-            <span>{{translations.tables.row | translate}} </span>
+          <span>{{translations.tables.from | translate}} </span>
+          <span>{{pagintationData.currentPage}} </span>
+          <span>{{translations.tables.to | translate}} </span>
+          <span>{{pagintationData.totalCount}} </span>
+          <span>{{translations.tables.ofTotal | translate}} </span>
+          <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+          <span>{{translations.tables.row | translate}} </span>
         </div>
-
         <app-pagination></app-pagination>
-    </div>
-}
+      </div>
+
+    }

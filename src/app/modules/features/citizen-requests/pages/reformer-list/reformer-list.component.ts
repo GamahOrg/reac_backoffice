@@ -1,4 +1,4 @@
-import { Component, effect, Injector, OnInit, TemplateRef } from '@angular/core';
+import { Component, effect, inject, Injector, OnInit, TemplateRef } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { LitigationRequestMircoForRequestReformerDto, LitigationRequestMircoForRequestSessionDto } from '../../models/litigation-request.model';
 import { LitigationRequestService } from '../../services/litigation-request.service';
@@ -11,8 +11,12 @@ import { ToastrNotificationService } from '@app/core/services/toastr-notificatio
 import { TranslateService } from '@ngx-translate/core';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import { Pagination, pagination } from '@app/shared/models/pagination.model';
-import { takeUntil } from 'rxjs';
+import { forkJoin, takeUntil } from 'rxjs';
 import { BaseResponse } from '@app/core/models/base-response';
+import { AreaResponse } from '../../models/area-response.model';
+import { CityResponse } from '../../models/city-response.model';
+import { LookupsService } from '@app/shared/services/lookups/lookups.service';
+import { AssignReformersFilter } from '../../models/assign-reformers-filter.model';
 
 @Component({
     selector: 'app-reformer-list',
@@ -21,24 +25,35 @@ import { BaseResponse } from '@app/core/models/base-response';
 })
 export class ReformerListComponent extends BaseComponent implements OnInit {
 
-    // pagintationData = {
-    //     currentPage: this.page,
-    //     pageSize: 0,
-    //     totalCount: 0,
-    //     from: 0,
-    //     to: 0,
-    // }
+
+    private _lookupsService = inject(LookupsService);
+
+
+    selectedArea: AreaResponse = {} as AreaResponse;
+    selectedCity: CityResponse = {} as CityResponse;
+    areasDropDownList: AreaResponse[] = [];
+    citiesDropDownList: CityResponse[] = [];
+    allCitiesDropDownList: CityResponse[] = [];
     newPageNo: number = 1;
     pageCount: number = 0;
     pagintationData: pagination = {
-        currentPage: 1,
-        // pageCount: 0,
-        pageSize: 10,
-        totalCount: 0,
+      currentPage: 1,
+      // pageCount: 0,
+      pageSize: 10,
+      totalCount: 0,
     };
 
     reformerList: Pagination<LitigationRequestMircoForRequestReformerDto[]> = {} as Pagination<LitigationRequestMircoForRequestReformerDto[]>;
     citizenReformers: CitizenReformer[] = [];
+    ascending:boolean=false;
+
+    filterForm = this._formBuilder.group({
+        reformerName: [],
+        areaId: [],
+        cityId: [],
+    })
+
+
 
     constructor(private litigationRequestService: LitigationRequestService,
         private _paginationService: PaginationService,
@@ -58,6 +73,7 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
         this.updateBreadcrumb();
         this.GetLitigationRequestForFullAllReformer();
         this.watchPaginationActions();
+        this.forkJoinAllLookups();
     }
 
     private updateBreadcrumb(): void {
@@ -67,8 +83,27 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
         ])
     };
 
-    private GetLitigationRequestForFullAllReformer(): void {
-        this.litigationRequestService.GetLitigationRequestForFullAllReformer(this.pagintationData.currentPage, this.pagintationData.pageSize)
+    private forkJoinAllLookups(): void {
+        forkJoin(
+            {
+                GetSysArea: this._lookupsService.GetSysArea(),
+                SysCity: this._lookupsService.SysCity()
+                
+            }
+        ).pipe(takeUntil(this.destroy$)).subscribe(res => {
+            this.areasDropDownList = res.GetSysArea.isDone && res.GetSysArea.data ? res.GetSysArea.data : [];
+            this.allCitiesDropDownList = res.SysCity.isDone && res.SysCity.data ? res.SysCity.data : [];
+            this.observeAreaControl();
+
+        }
+        )
+    };
+
+
+    public GetLitigationRequestForFullAllReformer(): void {
+        let filterFormValue = this.filterForm.getRawValue() as unknown as AssignReformersFilter;
+
+        this.litigationRequestService.GetLitigationRequestForFullAllReformer(this.pagintationData.currentPage, this.pagintationData.pageSize,this.ascending,filterFormValue)
             .pipe(takeUntil(this.destroy$))
             .subscribe((res: BaseResponse<Pagination<LitigationRequestMircoForRequestReformerDto[]>>) => {
                 if (res.isDone && res.data) {
@@ -78,6 +113,10 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
             })
     }
 
+    public ResetFilter(){
+        this.filterForm.reset();
+        this.GetLitigationRequestForFullAllReformer();
+    }
 
     //private methods
     private updateRequestList(TypeListView: Pagination<LitigationRequestMircoForRequestReformerDto[]>): void {
@@ -139,12 +178,14 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
     assignRequestForm = this._formBuilder.group({
         reformerId: new FormControl<string | null>(null, [Validators.required]),
         requestId: new FormControl<string | null>(null, [Validators.required]),
+        reason: ['',Validators.required],
     })
     get controls() {
         return this.assignRequestForm.controls
     }
 
     sendReformerRequest(modal: any) {
+        debugger;
         this.assignRequestForm.markAllAsTouched()
         if (this.assignRequestForm.valid) {
 
@@ -155,11 +196,44 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
                     modal.dismiss()
                     this.GetLitigationRequestForFullAllReformer();
 
-                } else {
-                    this.toastrNotificationService.showError(res.message)
-                }
+                } 
+                // else {
+                //     this.toastrNotificationService.showError(res.message)
+                // }
             })
         }
 
     }
+
+    orderList(event:any){
+     var ascendingValue= event.target.value;
+      if(ascendingValue == "true"){
+        this.ascending=true;
+        this.GetLitigationRequestForFullAllReformer();
+      }
+      else{
+        this.ascending=false;
+        this.GetLitigationRequestForFullAllReformer();
+      }
+    }
+    get filterFormcontrols() {
+        return this.filterForm.controls;
+    }
+    private observeAreaControl(): void {
+        this.filterFormcontrols.areaId.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(res => {
+            console.log("this.controls.areasId.valueChange", res);
+            if (res) {
+                this.filterCity(res as string);
+            }
+        })
+    };
+
+    private filterCity(areaId: string): void {
+        debugger;
+        this.selectedArea = this.areasDropDownList.find(area => area.id == areaId) as AreaResponse;
+        if (this.selectedArea.id) {
+            this.citiesDropDownList = this.allCitiesDropDownList.filter(city => city.areaId == this.selectedArea.id)
+        }
+        this.filterFormcontrols.cityId.setValue(null)
+    };
 }

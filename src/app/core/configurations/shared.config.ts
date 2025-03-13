@@ -158,7 +158,15 @@ export const Configuration = {
       GetLitigationStatisticsArbitrationReport: "/api/Reports/GetLitigationStatisticsArbitrationReport",
     },
     SysSetting: {
-      GetSettingByKey: "/api/SysSetting/GetSettingByKey"
+      GetSettingByKey: "/api/SysSetting/GetSettingByKey",
+      ToggleAutoDistributionOnAndOff: "/api/SysDepartment/ToggleAutoDistributionOnAndOff",
+      GetDistributionModeByDepartmentType: "/api/SysDepartment/GetDistributionModeByDepartmentType",
+    },
+    SysCity: {
+      Get: "/api/SysCity/Get"
+    },
+    SysArea: {
+      Get: "/api/SysArea/Get"
     },
     profile: {
       ProcessVacationRequest: "/api/SysVacationRequest/ProcessVacationRequestAsync",
@@ -205,6 +213,7 @@ export const Configuration = {
     },
     dashbourd:{
       getStatistics:"/api/Reports/GetLitigationStatisticsForAllStages",
+      DetailsForAllStages:"/api/Reports/GetLitigationStatisticsDetailsForAllStages"
     },
   },
   modules: {
@@ -299,7 +308,8 @@ export const Configuration = {
       reviewSettings:'review-settings',
       TermsSettings:'terms-settings',
       HomePage:'home',
-      Dashbourd:'dashbourd'
+      Dashbourd:'dashbourd',
+      DashbourdTypes:'dashbourd-litigationtypes'
     }
   },
   validators: {

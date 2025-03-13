@@ -38,3 +38,25 @@ footer {
 .status-6 {
     color: var(--danger);
 }
+.options {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 15px;
+
+    .text {
+        color: #76777a;
+        white-space: nowrap;
+    }
+
+    select {
+        border-color: var(--primary);
+        color: var(--primary);
+        min-width: 270px;
+        text-align: center;
+
+        @media (max-width: 1199px) {
+            min-width: 230px;
+        }
+    }
+}

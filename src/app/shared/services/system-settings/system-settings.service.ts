@@ -17,4 +17,21 @@ export class SystemSettingsService {
 
     return this._httpClient.get<BaseResponse<SysSettings>>(Configuration.APIs.SysSetting.GetSettingByKey, {params : queryParams})
   }
+
+  ToggleAutoDistributionOnAndOff(departmentType: number, status: number){
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("departmentType", departmentType);
+    queryParams = queryParams.append("status", status);
+
+    return this._httpClient.get<any>(Configuration.APIs.SysSetting.ToggleAutoDistributionOnAndOff, {params : queryParams})
+
+  }
+
+  GetDistributionModeByDepartmentType(departmentType: number){
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("departmentType", departmentType);
+
+    return this._httpClient.get<any>(Configuration.APIs.SysSetting.GetDistributionModeByDepartmentType, {params : queryParams})
+
+  }
 }

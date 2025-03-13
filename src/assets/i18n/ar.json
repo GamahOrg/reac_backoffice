@@ -16,7 +16,12 @@
         "files": "الملفات",
         "name": "الاسم",
         "and": "و",
-        "errorSave":"حدث خطأ اثناء الحفظ"
+        "errorSave":"حدث خطأ اثناء الحفظ",
+        "search":"بحث",
+        "searchByReformerName" : "البحث بأسم المصلح",
+        "searchByReformerArea" : "البحث بمنطقة المصلح",
+        "searchByReformerCity" : "البحث بمدينة المصلح",
+        "clearFilter":"مسح البحث"
     },
     "layout": {
         "sidebar": {
@@ -79,7 +84,8 @@
             "termsConditions":"إعدادات الشروط والأحكام",
             "arbitirationFees":"قائمة رسوم التحكيم ",
             "arbitirationsettings":"إعدادات مرحلة التحكيم",
-            "dashbourd":"إحصائيات لوحة التحكم"
+            "dashbourd":" إحصائيات حالات وأنواع الدعوى ",
+            "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى"
         }
     },
     "actions": {
@@ -337,7 +343,7 @@
             "enterRegion": "ادخل المنطقة",
             "pleaseWriteLawsuitObjective": "برجاء كتابة الهدف من الدعوى",
             "attachmentsToBeAttached": "المرفقات التي ستقوم بإرفاقها",
-            "region": "المدينة",
+            "region": "المنطقة",
             "city": "المدينة",
             "lawsuitAttachments": "اسانيد الدعوى",
             "assignmentTitle": "عنوان الإسناد",
@@ -542,7 +548,17 @@
         "LateLitigationRequest": "دعوة متأخرة",
         "NonPaymentOfMembershipFees": "عدم سداد الرسوم",
         "requestDetails": "تفاصيل الطلب",
-        "sendToPayFeesMessageBody":"ارسال الطلب لدفع الرسوم"
+        "sendToPayFeesMessageBody":"ارسال الطلب لدفع الرسوم",
+        "registeredWithConciliationCenter": "هل انت مصلح مسجل لدى مركز المصالحة في وزارة العدل؟ ",
+        "ReconciliationCenterDegreeFile": "شهادة تسجيل المصلح فى وزارة العدل",
+        "experiencedInArbitration": "هل لديك خبرة في التحكيم؟ في حال نعم يذكر في أي مجال من المجالات؟",
+        "experiencedInArbitrationFields": "مجالات التحكيم",
+        "passedTheRealEstateReformer": "هل اجتزت البرنامج التأهيلي للمصلح العقاري لدى المعهد العقاري؟",
+        "realEstateReformerFile": "مرفق الشهادة",
+        "experiencedInHousingPrograms": " هل لديك خبرة في الصلح في النزاعات الخاصة في برامج الإسكان؟ (ايجار، اتحاد ملاك، وافي، وساطة عقارية، أخرى)؟ ",
+        "experiencedInHousingProgramsStatuses": " حالات برامج الإسكان ",
+        "cvFile": "ارفاق السيره الذاتية",
+        "cvFiles":"مرفقات السيره الذاتية"
     },
     "extendLitigationRequest": {
         "extendLitigationRequest": "مد فترة الصلح",
@@ -671,6 +687,7 @@
     "RequestToExtendSettlementPeriod": {
         "requestCode": "كود الدعوة",
         "requestDate": "تاريخ الدعوة",
+        "reformerAssigningDate": "تاريخ التعيين",
         "firstPartyName": "المدعي",
         "secondPartyName": "المدعي عليه",
         "requestTypeName": "نوع الدعوة",
@@ -736,8 +753,8 @@
         "sessionLink": "رابط الجلسة",
         "arbitratorName": "اسم المحكم",
         "selectArbitrator": "اختار محكم",
-        "selectReviewer": "اختار مدقق"
-         
+        "selectReviewer": "اختار مدقق",
+        "selectReason": "السبب "
     },
     "tasksRequestsList": {
         "None": "لم يتم الرد",
@@ -939,12 +956,13 @@
     "Reconciliation.ExtendRequest.Rejected":"نص إشعار للمُصلح بقرار عدم الموافقة على تمديد فترة الصُلح",
     "Reconciliation.ReformerMaxSessionsCountPerDay":"عدد الجلسات المتاحة للمُصلح في اليوم الواحد",
     "Reformer.DeActivate":" نص إشعار لمدير إدارة الصُلح بإلغاء تفعيل حساب المُصلح",
-    "Reconciliation.Period":" مدة الصُلح للدعوى (بالساعه)",
+    "Reconciliation.Period":" مدة الصُلح للدعوى (باليوم)",
     "Zoom.MeetingDuration":"مدة جلسة الصُلح (بالساعه)",
     "Reconciliation.ExtendRequest.Accepted":"نص إشعار للمُصلح بقرار تمديد فترة الصُلح",
     "Reconciliation.ExtendRequest.Added":"نص إشعار لمدير إدارة الصُلح بوجود طلب تمديد فترة الصُلح",
     "Reformer.Activate":" نص إشعار لمدير إدارة الصُلح بتفعيل حساب المُصلح",
-    "SLA.LitigationRequestFeesNotPaidReminderFirstPeriod":"الفترة المسموح بها سداد الرسوم الادارية (بالساعه)"
+    "SLA.LitigationRequestFeesNotPaidReminderFirstPeriod":"الفترة المسموح بها سداد الرسوم الادارية (بالساعه)",
+    "SLA.LitigationRequestReformerAssigningRequestResponsePeriod":"مدة المسموح بها لارسال اشعار المصلح لاتخاذ قرار على المهمة (بالساعه)"
 },
 "arbitirationSettingsPage":{
     "SLA.ArbitratorMembershipFeesNotification":" إشعار دفع رسوم عضوية المحكم قبل انتهاء المده",

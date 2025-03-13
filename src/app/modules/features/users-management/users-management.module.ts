@@ -30,6 +30,8 @@ import { NgChartsModule} from 'ng2-charts';
 import { StatisticDashbourdComponent } from './components/statistic-dashbourd/statistic-dashbourd.component';
 import { StatisticDashbourdService } from './services/statisticDashbourdService';
 import { EditUserComponent } from './components/users-list/edit-user/edit-user.component';
+import { TypesStatusDashbourdComponent } from './components/statistic-dashbourd/types-status-dashbourd/types-status-dashbourd.component';
+import { LitigationStatisticsChartComponent } from './components/statistic-dashbourd/litigation-statistics-chart/litigation-statistics-chart.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { EditUserComponent } from './components/users-list/edit-user/edit-user.c
     ConfigrationArbitrationFeesSettingsComponent,
     ConfigrationArbitrationSettingstageComponent,
     ConfigratoinReviewSettingsComponent,
-    StatisticDashbourdComponent
+    StatisticDashbourdComponent,
+    LitigationStatisticsChartComponent,
+    TypesStatusDashbourdComponent
   ],
   imports: [
     CommonModule,

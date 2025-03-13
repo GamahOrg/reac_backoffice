@@ -13,12 +13,11 @@ export class StatisticDashbourdService {
 
 
   getAllStatistics(requestDto:DashbourdRequestDto): Observable<BaseResponse<any>> {
-    // let queryParams = new HttpParams();
-    // if(fromDate || toDate ){
-    // queryParams = queryParams.append("fromDate", fromDate??'');
-    // queryParams = queryParams.append("toDate", toDate??'');
-    // }
     return this._httpClient.post<BaseResponse<any>>(`${Configuration.APIs.dashbourd.getStatistics}`,requestDto)
   }
 
+
+  getAllLitigationByTypesStatusStatistics(requestDto:DashbourdRequestDto): Observable<BaseResponse<any>> {
+    return this._httpClient.post<BaseResponse<any>>(`${Configuration.APIs.dashbourd.DetailsForAllStages}`,requestDto)
+  }
 }

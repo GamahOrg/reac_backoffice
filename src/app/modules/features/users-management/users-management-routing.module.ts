@@ -15,6 +15,7 @@ import { EditAdminstrativeFeesModalComponent } from './components/configration-a
 import { ConfigratoinReviewSettingsComponent } from './components/configratoin-review-settings/configratoin-review-settings.component';
 import { StatisticDashbourdComponent } from './components/statistic-dashbourd/statistic-dashbourd.component';
 import { EditUserComponent } from './components/users-list/edit-user/edit-user.component';
+import { TypesStatusDashbourdComponent } from './components/statistic-dashbourd/types-status-dashbourd/types-status-dashbourd.component';
 
 const routes: Routes = [
   
@@ -74,6 +75,10 @@ const routes: Routes = [
   {
     path: Configuration.pages.usersManagement.Dashbourd,
     component: StatisticDashbourdComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.DashbourdTypes,
+    component: TypesStatusDashbourdComponent,
   },
   
 ];

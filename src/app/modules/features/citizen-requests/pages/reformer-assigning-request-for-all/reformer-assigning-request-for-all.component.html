@@ -1,4 +1,22 @@
 <app-breadcrumbs></app-breadcrumbs>
+<div class="row">
+    <div *ngIf="reqList.results" class="options col-6">
+        <p class="text">ترتيب حسب</p>
+        <select (change)="orderList($event)">
+            <option value="false">الأحدث</option>
+            <option value="true">الأقدم</option>
+        </select>
+    </div>
+
+    <div class="col-4 options">
+        <div class="text">توزيع الطلبات تلقائيا</div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" (click)="ToggleAutoDistributionOnAndOff()" type="checkbox" role="switch" [checked]="isAutoDistribution" id="flexSwitchCheckDefault">
+          </div>
+    
+    </div>
+</div>
+
 
 <div class="table-wrapper">
     <div class="table-responsive">
@@ -7,6 +25,7 @@
                 <tr>
                     <th scope="col">{{translations.Reformerassigningrequestforall.requestCode | translate}}</th>
                     <th scope="col">{{translations.Reformerassigningrequestforall.requestDate | translate}}</th>
+                    <th scope="col">{{translations.Reformerassigningrequestforall.reformerAssigningDate | translate}}</th>
                     <th scope="col">{{translations.Reformerassigningrequestforall.firstPartyName | translate}}</th>
                     <th scope="col">{{translations.Reformerassigningrequestforall.secondPartyName | translate}}</th>
                     <th scope="col">{{translations.Reformerassigningrequestforall.reformerName | translate}}</th>
@@ -26,6 +45,7 @@
                 <tr>
                     <td>{{request.requestCode}}</td>
                     <td>{{request.requestDate | date:'MMM d, y'}}</td>
+                    <td>{{request.reformerAssigningDate | date:'MMM d, y'}}</td>
                     <td>{{request.firstPartyName}}</td>
                     <td>{{request.secondPartyName}}</td>
                     <td>{{request.reformerName}}</td>
@@ -52,15 +72,14 @@
 @if (reqList.results && reqList.results.length) {
     <div class="flex-between">
         <div class="op-6 v-small fw-5">
-            <span>{{translations.tables.from | translate}} </span>
-            <span>{{pagintationData.currentPage}} </span>
-            <span>{{translations.tables.to | translate}} </span>
-            <span>6 </span>
-            <span>{{translations.tables.ofTotal | translate}} </span>
-            <span>{{pagintationData.totalCount}} </span>
-            <span>{{translations.tables.row | translate}} </span>
+          <span>{{translations.tables.from | translate}} </span>
+          <span>{{pagintationData.currentPage}} </span>
+          <span>{{translations.tables.to | translate}} </span>
+          <span>{{pagintationData.totalCount}} </span>
+          <span>{{translations.tables.ofTotal | translate}} </span>
+          <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+          <span>{{translations.tables.row | translate}} </span>
         </div>
-
         <app-pagination></app-pagination>
-    </div>
+      </div>
 }

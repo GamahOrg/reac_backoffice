@@ -7,6 +7,7 @@ export interface CitizenReformer  {
 export interface AssignRequestPayload {
     requestId: string;
     reformerId: string;
+    reason:string;
 }
 
 export interface CitizenFullLookupArbirator {

@@ -45,6 +45,7 @@ import {MatTableModule} from '@angular/material/table';
 import { SystemSettingsService } from '@app/shared/services/system-settings/system-settings.service';
 import { ReviewerListComponent } from './pages/reviewer-list/reviewer-list.component';
 import { EmployeeService } from './services/employee.service';
+import { LookupsService } from '@app/shared/services/lookups/lookups.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -100,7 +101,8 @@ import { EmployeeService } from './services/employee.service';
     CitizenService,
     DeterminearbitratorperiodService,
     SystemSettingsService,
-    EmployeeService
+    EmployeeService,
+    LookupsService
   ]
 })
 export class CitizenRequestsModule { }

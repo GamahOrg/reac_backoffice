@@ -12,11 +12,9 @@ import { DashbourdRequestDto } from '../../models/dashbourdRequestDto';
 })
 export class StatisticDashbourdComponent implements OnInit {
 
-  // public totalChartData: ChartDataset[] = [];
   public labels: any[] = ['مرحلة التدقيق', 'مرحلة الصلح', 'مرحلة التحكيم'];
   LitigationStatisticsData?:any;
 
-  // Reactive Form for date filter
   filterForm: FormGroup;
 
   // Chart configuration options
@@ -31,18 +29,16 @@ export class StatisticDashbourdComponent implements OnInit {
     }
   };
 
-  public chartType: ChartType = 'bar'; // Set chart type here (bar, line, etc.)
-  public chartLegend = true; // Display the legend
+  public chartType: ChartType = 'bar'; 
+  public chartLegend = true; 
 
   constructor(private fb: FormBuilder,private _statisticDashbourdService : StatisticDashbourdService) {
-    // Create reactive form for date inputs
     const today = new Date();
   
     // Calculate the date 7 days before today
     const sevenDaysBefore = new Date();
     sevenDaysBefore.setDate(today.getDate() - 7);
     today.setDate(today.getDate() +1);
-    // Format dates as 'yyyy-MM-dd'
     const todayFormatted = today.toISOString().split('T')[0];
     const sevenDaysBeforeFormatted = sevenDaysBefore.toISOString().split('T')[0];
 
@@ -55,8 +51,6 @@ export class StatisticDashbourdComponent implements OnInit {
 
   ngOnInit(): void {
    
-    // this.getLitigationStatisticsByStatus();
-    // this.getLitigationStatisticsByType(); 
   }
 
   public totalChartData: ChartData<'bar'> = {
@@ -146,7 +140,6 @@ this.typeChartData = {
   }
 
   filterDataByDateRange(startDate?: string, endDate?: string) {
-    // Filter the data based on the date range
     console.log('Filtering data from:', startDate, 'to:', endDate);
     var Request :DashbourdRequestDto={
       fromDate :startDate,

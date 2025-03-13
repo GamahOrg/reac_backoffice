@@ -8,7 +8,7 @@ import { Pagination } from '@app/shared/models/pagination.model';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import { PaginationService } from '@app/shared/services/pagination/pagination.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { Subscription, takeUntil } from 'rxjs';
 import { LitigationRequestCorrespondencesService } from '../../services/litigation-request-correspondence/litigation-request-correspondence-service';
 import { Configuration } from '@app/core/configurations/shared.config';
 
@@ -33,6 +33,7 @@ export class LitigationRequestCorrespondenceListComponent extends BaseComponent 
         [LitigationRequestReformerAssigningRequestStatus.Cancelled]: this.translations.TasksRequestsList.Cancelled,
     }
     newPageNo: number = 1;
+    pageCount: number = 0;
     pagintationData = {
         currentPage: 1,
         pageSize: 10,
@@ -49,6 +50,7 @@ export class LitigationRequestCorrespondenceListComponent extends BaseComponent 
     ngOnInit(): void {
         this.setBreadcrumb()
         this.GetLitigationRequestReformerAssigningRequests();
+        this.watchPaginationActions();
     }
 
     private setBreadcrumb(): void {
@@ -80,7 +82,41 @@ export class LitigationRequestCorrespondenceListComponent extends BaseComponent 
         this.pagintationData.pageSize = pageSize
         this.pagintationData.totalCount = total
         this._paginationService.updatePaginationData(this.pagintationData);
-    }
+    
+      }
+
+    private watchPaginationActions(): void {
+        debugger;
+        this.watchPagechanged();
+        this.watchPaginationClicked();
+      }
+    
+      private watchPagechanged(): void {
+        this._paginationService.pageChanged
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((pageNo) => {
+            this.newPageNo = pageNo;
+            this.loadNextPage(this.newPageNo);
+    
+          })
+      }
+    
+      private watchPaginationClicked(): void {
+        this._paginationService.pageClicked
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((nextPage: number) => {
+            if (this.pagintationData.currentPage != nextPage) {
+              this.loadNextPage(nextPage);
+              this.pagintationData.currentPage = this.newPageNo;
+            }
+          })
+      }
+
+      private loadNextPage(nextPage: number): void {
+        debugger;
+        this.pagintationData.currentPage = nextPage;
+        this.GetLitigationRequestReformerAssigningRequests()
+      }
 
     goToDetailsPage(requestId: string) {
         ;

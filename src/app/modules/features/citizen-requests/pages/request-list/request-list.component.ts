@@ -56,7 +56,7 @@ export class RequestListComponent extends BaseComponent implements OnInit {
 
     private list(): void {
 
-        this._citizenRequestService.GetCitizenRequestsForEmployee(this.page, this.pageSize, CitizenRequestType.Arbitrator).subscribe({
+        this._citizenRequestService.GetCitizenRequestsForEmployee(this.page, this.pageSize, CitizenRequestType.Arbitrator,false).subscribe({
             next: (res) => {
                 this.citizenRequestsLists = res?.data?.results;
                 console.log();
