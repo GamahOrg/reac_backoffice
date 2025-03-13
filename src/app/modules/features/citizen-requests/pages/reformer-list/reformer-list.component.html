@@ -1,6 +1,55 @@
 <app-breadcrumbs></app-breadcrumbs>
-
+<ng-container [formGroup]="filterForm">
+    <div class="grid-4">
+        <div>
+            <label class="mb-1 small fw-6 mt-6 required">{{translations.general.searchByReformerName |
+            translate}}</label>
+            <input formControlName="reformerName" class="form-control border-0 shadow-none" type="text">
+        </div>
+        <div>
+          <label class="mb-1 small fw-6 mt-6 required">{{translations.general.searchByReformerArea |
+            translate}}</label>
+          <div class="border flex-y-row rounded-2">
+            <select [ngModel]="selectedArea.id" class="form-select" formControlName="areaId">
+              <option [ngValue]=null selected disabled>{{translations.lawsuits.createEditLawsuit.enterRegion | translate}}
+              </option>
+              <option [ngValue]="area.id" *ngFor="let area of areasDropDownList">{{area.areaName}}</option>
+  
+            </select>
+          </div>
+          
+        </div>
+        <div>
+          <label class="mb-1 small fw-6 mt-6 required">{{translations.general.searchByReformerCity |
+            translate}}</label>
+          <div class="border flex-y-row rounded-2">
+            <select [ngModel]="selectedCity?.id" class="form-select" formControlName="cityId">
+              <option [ngValue]=null selected disabled>{{translations.lawsuits.createEditLawsuit.enterCity | translate}}
+              </option>
+              <option [ngValue]="city.id" *ngFor="let city of citiesDropDownList">{{city.cityName}}</option>
+            </select>
+          </div>
+          
+        </div>
+      </div>
+      <div class="grid-4 mt-5">
+        <button class="btn btn-primary" (click)="GetLitigationRequestForFullAllReformer()">{{translations.general.search |
+            translate}}</button>
+      <button class="btn btn-primary" (click)="ResetFilter()">{{translations.general.clearFilter |
+            translate}}</button>
+      </div>
+      
+</ng-container>
 @if (reformerList && reformerList.results && reformerList.results.length) {
+    <div class="options">
+        <p class="text">ترتيب حسب</p>
+        <select (change)="orderList($event)">
+            <option value="false">الأحدث</option>
+            <option value="true">الأقدم</option>
+        </select>
+    </div>
+    
+    
 <div class="table-wrapper mt-0 pt-0">
     <div class="table-responsive">
         <table class="table">
@@ -41,27 +90,16 @@
 </div>
 <div class="flex-between">
     <div class="op-6 v-small fw-5">
-        <span>{{translations.tables.from | translate}} </span>
-        <span>{{pagintationData.currentPage}} </span>
-        <span>{{translations.tables.to | translate}} </span>
-        <span>{{pagintationData.totalCount < pagintationData.pageSize
-              ?
-              pagintationData.totalCount
-              :
-              pagintationData.pageSize}}
-              </span>
-                <span>{{translations.tables.ofTotal | translate}} </span>
-                <span>{{(pageCount < pagintationData.totalCount
-                      )?
-                      pagintationData.totalCount
-                      :
-                      pageCount
-                      }}
-                      </span>
-                        <span>{{translations.tables.row | translate}} </span>
+      <span>{{translations.tables.from | translate}} </span>
+      <span>{{pagintationData.currentPage}} </span>
+      <span>{{translations.tables.to | translate}} </span>
+      <span>{{pagintationData.totalCount}} </span>
+      <span>{{translations.tables.ofTotal | translate}} </span>
+      <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+      <span>{{translations.tables.row | translate}} </span>
     </div>
     <app-pagination></app-pagination>
-</div>
+  </div>
 }
 
 @if((!reformerList.results) || reformerList.results.length==0){
@@ -115,8 +153,12 @@
                  *ngIf="controls.reformerId.touched && controls.reformerId.errors">
                 {{translations.formValidationError.required | translate}}
             </div>
-
-        </div>
+            <label class="small fw-6 mb-2 pt-2"> {{ translations.LitigationRequest.selectReason | translate }} </label>
+            <input class="form-control"  type="text" formControlName="reason" placeholder=" سبب تغيير المصلح"/>
+            <div style="color: #cd7474;" *ngIf="controls.reason.touched && controls.reason.errors?.['required']">
+                {{translations.formValidationError.required | translate}}</div>
+           
+    </div>
 
         <div class="modal-footer">
             <button type="button"

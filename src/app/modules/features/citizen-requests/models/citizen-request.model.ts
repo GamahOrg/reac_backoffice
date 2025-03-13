@@ -34,14 +34,15 @@ export interface CitizenRequestFullDataDto {
 
     id: string;
     citizenId: string;
-    fees: string;
     areaId?: string;
+    fees:string;
     isVolunteerApproval: boolean;
     academicDegreeName: string;
     experienceYears: number | null;
     arbitratorClassId: string | null;
     statusId: CitizenRequestStatus;
     brief: string | null;
+    cvFile:string| null;
     sysArbitratorClass: SysArbitratorClassDto | null;
     citizen: CitizenShortDto;
     sysArea: SysAreaDto | null;
@@ -50,6 +51,16 @@ export interface CitizenRequestFullDataDto {
     citizenRequestAcademicDegreeFiles: CitizenRequestAcademicDegreeFileFullDataDto[];
     citizenRequestExperienceCertificates: CitizenRequestExperienceCertificateFullDataDto[];
     citizenRequestNotes: CitizenRequestNoteCreateUpdateDto[];    
+    citizenRequestReconciliationCenterDegreeFiles: CitizenRequestReconciliationCenterDegreeFileFullDataDto[];
+    citizenRequestProgramRealEstateInstituteFiles:CitizenRequestRealStateFileFullDataDto[];
+    citizenRequestCVFiles:CitizenRequestCvDataDto[];
+    isRegisteredReconciliationCenter: boolean;
+    ispassedRealEstateProgram: boolean;
+    haveArbitrationxperience: boolean;
+    haveHostingExperience: boolean;
+    experiencedInHousingstatuses:string;
+    experiencedInArbitrationFields:string;
+    about:string;
 }
 
 export interface SysArbitratorClassDto {
@@ -105,11 +116,23 @@ export interface CitizenRequestFreelanceWorkDocumentFileFullDataDto {
     freelanceWorkDocumentFile: SysFileManagerCreateUpdateDto;
 }
 
+export interface CitizenRequestCvDataDto {
+    id: string;
+    cvFile: SysFileManagerCreateUpdateDto;
+}
 export interface CitizenRequestAcademicDegreeFileFullDataDto {
     id: string;
     academicDegreeFile: SysFileManagerCreateUpdateDto;
 }
 
+export interface CitizenRequestReconciliationCenterDegreeFileFullDataDto {
+    id: string;
+    reconciliationCenterFile: SysFileManagerCreateUpdateDto;
+}
+export interface CitizenRequestRealStateFileFullDataDto {
+    id: string;
+    programRealEstateDocumentFile: SysFileManagerCreateUpdateDto;
+}
 export interface CitizenRequestExperienceCertificateFullDataDto {
     id: string;
     certificateName: string;

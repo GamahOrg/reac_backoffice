@@ -79,7 +79,8 @@
             "termsConditions":"إعدادات الشروط والأحكام",
             "arbitirationFees":"قائمة رسوم التحكيم ",
             "arbitirationsettings":"إعدادات مرحلة التحكيم",
-            "dashbourd":"إحصائيات لوحة التحكم"
+            "dashbourd":" إحصائيات حالات وأنواع الدعوى ",
+            "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى"
         }
     },
     "actions": {
@@ -518,7 +519,17 @@
         "BadRating": "تقييم سيئ",
         "LateLitigationRequest": "دعوة متأخرة",
         "NonPaymentOfMembershipFees": "عدم سداد الرسوم",
-        "requestDetails": "تفاصيل الطلب"
+        "requestDetails": "تفاصيل الطلب",
+        "registeredWithConciliationCenter": "هل انت مصلح مسجل لدى مركز المصالحة في وزارة العدل؟ ",
+        "ReconciliationCenterDegreeFile": "شهادة تسجيل المصلح فى وزارة العدل",
+        "experiencedInArbitration": "هل لديك خبرة في التحكيم؟ في حال نعم يذكر في أي مجال من المجالات؟",
+        "experiencedInArbitrationFields": "مجالات التحكيم",
+        "passedTheRealEstateReformer": "هل اجتزت البرنامج التأهيلي للمصلح العقاري لدى المعهد العقاري؟",
+        "realEstateReformerFile": "مرفق الشهادة",
+        "experiencedInHousingPrograms": " هل لديك خبرة في الصلح في النزاعات الخاصة في برامج الإسكان؟ (ايجار، اتحاد ملاك، وافي، وساطة عقارية، أخرى)؟ ",
+        "experiencedInHousingProgramsStatuses": " حالات برامج الإسكان ",
+        "cvFile": "ارفاق السيره الذاتية",
+        "cvFiles":"مرفقات السيره الذاتية"
     },
     "extendLitigationRequest": {
         "extendLitigationRequest": "مد فترة الصلح",
@@ -703,7 +714,8 @@
         "reformerName": "اسم المصلح",
         "selectReformer": "اختار مصلح",
         "sessionLink": "رابط الجلسة",
-        "selectReviewer": "اختار مدقق"
+        "selectReviewer": "اختار مدقق",
+        "selectReason": "السبب "
     },
     "tasksRequestsList": {
         "None": "لم يتم الرد",
@@ -814,7 +826,7 @@
     "Reconciliation.ExtendRequest.Accepted":"نص إشعار للمُصلح بقرار تمديد فترة الصُلح",
     "Reconciliation.ExtendRequest.Added":"نص إشعار لمدير إدارة الصُلح بوجود طلب تمديد فترة الصُلح",
     "Reformer.Activate":" نص إشعار لمدير إدارة الصُلح بتفعيل حساب المُصلح",
-    "SLA.LitigationRequestFeesNotPaidReminderFirstPeriod":"الفترة المسموح بها سداد الرسوم الادارية (بالساعه)"
+    "SLA.LitigationRequestReformerAssigningRequestResponsePeriod":"مدة المسموح بها لارسال اشعار المصلح لاتخاذ قرار على المهمة (بالساعه)"
 },
 "arbitirationSettingsPage":{
     "SLA.ArbitratorMembershipFeesNotification":" إشعار دفع رسوم عضوية المحكم قبل انتهاء المده",

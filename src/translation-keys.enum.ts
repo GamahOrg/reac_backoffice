@@ -50,6 +50,11 @@ export namespace translations {
         name = "general.name",
         and = "general.and",
         errorSave = "general.errorSave",
+        search = "general.search",
+        searchByReformerName = "general.searchByReformerName",
+        searchByReformerArea = "general.searchByReformerArea",
+        searchByReformerCity = "general.searchByReformerCity",
+        clearFilter = "general.clearFilter",
     }
 
     export namespace layout {
@@ -116,7 +121,8 @@ export namespace translations {
             termsSettings='layout.sidebar.termsConditions',
             arbitirationFees='layout.sidebar.arbitirationFees',
             arbitirationsettings='layout.sidebar.arbitirationsettings',
-            dashbourd='layout.sidebar.dashbourd'
+            dashbourd='layout.sidebar.dashbourd',
+            dashbourdTypes='layout.sidebar.dashbourdTypes',
         }
     }
 
@@ -595,6 +601,16 @@ export namespace translations {
         LateLitigationRequest = "citizenRequest.LateLitigationRequest",
         NonPaymentOfMembershipFees = "citizenRequest.NonPaymentOfMembershipFees",
         requestDetails = "citizenRequest.requestDetails",
+        experiencedInArbitration="citizenRequest.experiencedInArbitration",
+        experiencedInArbitrationFields="citizenRequest.experiencedInArbitrationFields",
+        experiencedInHousingPrograms="citizenRequest.experiencedInHousingPrograms",
+        experiencedInHousingProgramsStatuses="citizenRequest.experiencedInHousingProgramsStatuses",
+        passedTheRealEstateReformer="citizenRequest.passedTheRealEstateReformer",
+        realEstateReformerFile="citizenRequest.realEstateReformerFile",
+        registeredWithConciliationCenter="citizenRequest.registeredWithConciliationCenter",
+        ReconciliationCenterDegreeFile="citizenRequest.ReconciliationCenterDegreeFile",
+        cvFiles="citizenRequest.cvFiles",
+        cvFile="citizenRequest.cvFile",
     }
 
     export enum ExtendLitigationRequest {
@@ -741,6 +757,7 @@ export namespace translations {
     export enum Reformerassigningrequestforall {
         requestCode = "RequestToExtendSettlementPeriod.requestCode",
         requestDate = "RequestToExtendSettlementPeriod.requestDate",
+        reformerAssigningDate = "RequestToExtendSettlementPeriod.reformerAssigningDate",
         firstPartyName = "RequestToExtendSettlementPeriod.firstPartyName",
         secondPartyName = "RequestToExtendSettlementPeriod.secondPartyName",
         requestTypeName = "RequestToExtendSettlementPeriod.requestTypeName",
@@ -808,6 +825,8 @@ export namespace translations {
         arbitratorName = "litigationRequest.arbitratorName",
         selectArbitrator = "litigationRequest.selectArbitrator",
         selectReviewer = "litigationRequest.selectReviewer",
+        selectReason = "litigationRequest.selectReason",
+
     }
 
     export enum SessionDetails{

@@ -4,6 +4,7 @@ export interface LitigationRequestMircoDtoReformer {
     id:string;
      requestCode:string;
     requestDate:Date;
+    reformerAssigningDate?: string | null;
     firstPartyName :string;
     secondPartyName :string;
     requestTypeName:string;

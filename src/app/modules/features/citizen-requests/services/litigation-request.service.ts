@@ -7,6 +7,7 @@ import { LitigationRequestMircoForRequestReformerDto, LitigationRequestMircoForR
 import { Configuration } from '@app/core/configurations/shared.config';
 import { AssignRequestPayload } from '../models/citizen.model';
 import { AssignEmployeePayload, LitigationRequestMircoForRequestReviewerDto } from '../models/employee.model';
+import { AssignReformersFilter } from '../models/assign-reformers-filter.model';
 
 @Injectable()
 export class LitigationRequestService {
@@ -26,11 +27,13 @@ export class LitigationRequestService {
     return this._httpClient.get<BaseResponse<LitigationRequestSessionDetailsDto>>(`${Configuration.APIs.OTP.getZoomMeetingDetails}`, { params: queryParams })
   }
 
-  GetLitigationRequestForFullAllReformer(pageIndex: number, pageSize: number): Observable<BaseResponse<Pagination<LitigationRequestMircoForRequestReformerDto[]>>> {
+  GetLitigationRequestForFullAllReformer(pageIndex: number, pageSize: number,ascending:boolean,filter?:AssignReformersFilter): Observable<BaseResponse<Pagination<LitigationRequestMircoForRequestReformerDto[]>>> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("pageIndex", pageIndex);
     queryParams = queryParams.append("pageSize", pageSize);
-    return this._httpClient.get<BaseResponse<Pagination<LitigationRequestMircoForRequestReformerDto[]>>>(`${Configuration.APIs.Reconciliation.GetLitigationRequestForFullAllReformer}`, { params: queryParams })
+    queryParams = queryParams.append("ascending", ascending);
+
+    return this._httpClient.post<BaseResponse<Pagination<LitigationRequestMircoForRequestReformerDto[]>>>(`${Configuration.APIs.Reconciliation.GetLitigationRequestForFullAllReformer}`,filter, { params: queryParams })
   }
   GetLitigationRequestForFullAllReviewer(pageIndex: number, pageSize: number): Observable<BaseResponse<Pagination<LitigationRequestMircoForRequestReviewerDto[]>>> {
     let queryParams = new HttpParams();

@@ -109,6 +109,7 @@ export class RequestDetailsComponent extends BaseComponent implements OnInit {
                 this.fillData(res.data)
                 this.citizenRequestFullDataDto = res.data;
                 this.statusId = res.data.statusId;
+                console.log( "dataaa",res.data);
             }
         })
     }

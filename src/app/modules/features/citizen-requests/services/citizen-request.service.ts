@@ -11,8 +11,8 @@ export class CitizenRequestService {
 
     constructor(private _httpClient: HttpClient) { }
 
-    GetCitizenRequestsForEmployee(pageIndex: number, pageSize: number,citizenRequestType:CitizenRequestType): Observable<BaseResponse<PagedResultBase<CitizenRequestShortDataDto>>> {
-        return this._httpClient.get<BaseResponse<PagedResultBase<CitizenRequestShortDataDto>>>(`${Configuration.APIs.citizenRequests.GetCitizenRequestsForEmployee}?pageIndex=${pageIndex}&pageSize=${pageSize}&citizenRequestType=${citizenRequestType}`)
+    GetCitizenRequestsForEmployee(pageIndex: number, pageSize: number,citizenRequestType:CitizenRequestType,ascending:boolean): Observable<BaseResponse<PagedResultBase<CitizenRequestShortDataDto>>> {
+        return this._httpClient.get<BaseResponse<PagedResultBase<CitizenRequestShortDataDto>>>(`${Configuration.APIs.citizenRequests.GetCitizenRequestsForEmployee}?pageIndex=${pageIndex}&pageSize=${pageSize}&citizenRequestType=${citizenRequestType}&ascending=${ascending}`)
     }
 
     getCitizenRequestById(requestId: string): Observable<BaseResponse<CitizenRequestFullDataDto>> {

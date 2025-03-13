@@ -30,10 +30,12 @@ export class RequestToExtendSettlementPeriodService {
     );
   }
 
-  GetLitigationRequestReformerAssigningRequestsAll(pageIndex: number, pageSize: number): Observable<Pagination<LitigationRequestMircoDtoReformer[] >> {
+  GetLitigationRequestReformerAssigningRequestsAll(pageIndex: number, pageSize: number,ascending:boolean): Observable<Pagination<LitigationRequestMircoDtoReformer[] >> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("pageIndex", pageIndex);
     queryParams = queryParams.append("pageSize", pageSize);
+    queryParams = queryParams.append("ascending", ascending);
+
     return this._httpClient.get<BaseResponse<Pagination<LitigationRequestMircoDtoReformer[]>>>(`${Configuration.APIs.Reconciliation.GetLitigationRequestReformerAssigningRequestsAll}`, { params: queryParams }).pipe(
       map((res: BaseResponse<Pagination<LitigationRequestMircoDtoReformer[]>>) => {
        if(res.isDone){

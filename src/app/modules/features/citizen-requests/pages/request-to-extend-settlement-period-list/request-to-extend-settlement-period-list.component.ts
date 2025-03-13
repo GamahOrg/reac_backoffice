@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LitigationRequestMircoDto } from '../../models/litigation-request-mirco-dto';
-import { Pagination } from '@app/shared/models/pagination.model';
-import { Subscription } from 'rxjs';
+import { pagination, Pagination } from '@app/shared/models/pagination.model';
+import { Subscription, takeUntil } from 'rxjs';
 import { RequestToExtendSettlementPeriodService } from '../../services/request-to-extend-settlement-period.service';
 import { PaginationService } from '@app/shared/services/pagination/pagination.service';
 import { BaseComponent } from '@app/shared/components/base/base.component';
@@ -18,12 +18,15 @@ import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.se
 export class RequestToExtendSettlementPeriodListComponent extends BaseComponent implements OnInit {
     reqList: Pagination<LitigationRequestMircoDto[]> = {} as Pagination<LitigationRequestMircoDto[]>;
     subscriptions: Subscription[] = [];
+   
     newPageNo: number = 1;
-    pagintationData = {
-        currentPage: 1,
-        pageSize: 10,
-        totalCount: 0,
-    }
+    pageCount: number = 0;
+    pagintationData: pagination = {
+      currentPage: 1,
+      // pageCount: 0,
+      pageSize: 10,
+      totalCount: 0,
+    };
     detailsRequestUrl: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.requestToExtendSettlementPeriodDetails}`
 
     constructor(
@@ -38,6 +41,7 @@ export class RequestToExtendSettlementPeriodListComponent extends BaseComponent 
          
         this.getLitigationRequestExtendPeriodForEmployee();
         this.updateBreadcrumb();
+        this.watchPaginationActions();
     }
     private updateBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
@@ -68,7 +72,43 @@ export class RequestToExtendSettlementPeriodListComponent extends BaseComponent 
         this.pagintationData.pageSize = pageSize
         this.pagintationData.totalCount = total
         this._paginationService.updatePaginationData(this.pagintationData);
-    }
+    
+      }
+
+    private watchPaginationActions(): void {
+        debugger;
+        this.watchPagechanged();
+        this.watchPaginationClicked();
+      }
+    
+      private watchPagechanged(): void {
+        this._paginationService.pageChanged
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((pageNo) => {
+            debugger;
+            this.newPageNo = pageNo;
+            this.loadNextPage(this.newPageNo);
+    
+          })
+      }
+    
+      private watchPaginationClicked(): void {
+        this._paginationService.pageClicked
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((nextPage: number) => {
+            debugger;
+            if (this.pagintationData.currentPage != nextPage) {
+              this.loadNextPage(nextPage);
+              this.pagintationData.currentPage = this.newPageNo;
+            }
+          })
+      }
+
+      private loadNextPage(nextPage: number): void {
+        debugger;
+        this.pagintationData.currentPage = nextPage;
+        this.getLitigationRequestExtendPeriodForEmployee()
+      }
     goToDetailsPage(requestId: string) {
         this.router.navigate([this.detailsRequestUrl, requestId]);
     }

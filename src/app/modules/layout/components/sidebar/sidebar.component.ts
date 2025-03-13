@@ -314,6 +314,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.Dashbourd,
                         },
                         // {
+                        //     id: 'dashbourd-litigationtypes',
+                        //     title: this.translate.instant(translations.layout.sidebar.dashbourdTypes),
+                        //     icon: 'assets/images/icons/sidebar/book.svg',
+                        //     url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.DashbourdTypes,
+                        // },
+                        // {
                         //     id: 'create-user',
                         //     title: this.translate.instant(translations.layout.sidebar.createEmployee),
                         //     icon: 'assets/images/icons/sidebar/book.svg',
