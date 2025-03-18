@@ -196,7 +196,7 @@ export namespace translations {
             CollectionOfArbitrationFeesRequestIsBeingSent = "lawsuits.lawsuitsList.CollectionOfArbitrationFeesRequestIsBeingSent",
             ArbitrationFeesHaveBeenCollected = "lawsuits.lawsuitsList.ArbitrationFeesHaveBeenCollected",
             LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend = "lawsuits.lawsuitsList.LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend",
-
+            AgreementRequestHasBeenAgree="lawsuits.lawsuitsList.AgreementRequestHasBeenAgree",
             lawsuitsList = "lawsuits.lawsuitsList.lawsuitsList",
             addLawsuit = "lawsuits.lawsuitsList.addLawsuit",
             searchByLawsuitNumberOrOpponentName = "lawsuits.lawsuitsList.searchByLawsuitNumberOrOpponentName",

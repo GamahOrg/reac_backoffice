@@ -20,6 +20,8 @@ export interface AuditngListItem {
     internalStatusId: number,
     litigationRequestContractTypeId: number,
     externalStatusId: number,
+    defendantAgreementRequestResponse:string,
+    plaintiffAgreementRequestResponse:string
 }
 
 export interface LawsuitDetails {

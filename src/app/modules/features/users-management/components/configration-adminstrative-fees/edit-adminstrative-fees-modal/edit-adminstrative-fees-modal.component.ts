@@ -139,6 +139,7 @@ export class EditAdminstrativeFeesModalComponent extends BaseComponent implement
         (response) => {
           console.log(response);
           if(response.isDone){
+             this.GetFeesById(this.itemId);
              this.showSuccess(this._translateService.instant(this.translations.general.successfullySave));
           
           }

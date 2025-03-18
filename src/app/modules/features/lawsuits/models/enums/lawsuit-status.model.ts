@@ -102,5 +102,7 @@ export enum LawsuitStatus {
     ///<summary>تم تحصيل رسوم التحكيم</summary>
     ArbitrationFeesHaveBeenCollected = 31,
     ///<summary>تم قبول الدعوى وجارى إرسال طلب تحصيل رسوم الصلح</summary>
-    LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend = 32
+    LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend = 32,
+     ///<summary> تم قبول طلب المشارطة</summary>
+    AgreementRequestHasBeenAgree = 35
 }

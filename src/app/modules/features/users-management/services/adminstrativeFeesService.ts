@@ -26,4 +26,7 @@ export class AdminstrativeFeesService {
     return this._httpClient.put<BaseResponse<any>>(Configuration.APIs.adminstrativeFees.updateFees+"?id="+FeesUpdate.id,FeesUpdate)
   }
   
+  DeleteFees(FeesUpdate:any):Observable<BaseResponse<any>>{
+    return this._httpClient.post<BaseResponse<any>>(Configuration.APIs.adminstrativeFees.deleteFees+"?id="+FeesUpdate.id,FeesUpdate)
+  }
 }

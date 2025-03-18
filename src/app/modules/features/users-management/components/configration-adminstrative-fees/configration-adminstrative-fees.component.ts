@@ -7,6 +7,7 @@ import { AdminstrativeFeesDto } from '../../models/AdminstrativeFeesDto';
 import { Configuration } from '@app/core/configurations/shared.config';
 import { ToastrNotificationService } from '@app/core/services/toastr-notification/toastr-notification.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-configration-adminstrative-fees',
@@ -57,44 +58,41 @@ navigateToFee(id: string) {
   });
 }
 
-// editItem(item: AdminstrativeFeesDto): void {
-//   this.selectedItem = { ...item };
-// }
+showConfirmDelete(fee: any): void {
 
+  // Show confirmation dialog using SweetAlert2
+  Swal.fire({
+    title: `  هل تريد حذف هذه الرسوم   ${fee.litigationAmount} ?`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'نعم, بالتاكيد',
+    cancelButtonText: 'الغاء',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // If confirmed, toggle the status
+      this.DeleteFee(fee);
+    }
+  });
+}
 
-// updateItem(updatedItem: AdminstrativeFeesDto): void {
-//   console.log("updatedItem :",updatedItem )
-//   updatedItem={... updatedItem,litigationAmount:`${updatedItem.fromAmount} - ${updatedItem.toAmount} \\ رسوم التسجيل ${updatedItem.fees}`}
-  
-//   this._configrationAdmistrationFeesService.UpdateFees(updatedItem).subscribe(
-//     (response) => {
-//          this.GetAllFees();
-//          this.showSuccess(this._translateService.instant(this.translations.general.successfullySave));
-     
-//     },
-//     (error: any) => {
-//       console.error('Error updating item:', error);
-     
-//     }
-//   );
-// }
-// private showSuccess(msg: string): void {
-//   this._toastrNotificationService.showSuccess(msg);
-// }
+DeleteFee(fee:any){
+  this._configrationAdmistrationFeesService.DeleteFees(fee)
+  .subscribe(res => {
+    console.log(res);
+    if(res.isDone){
+      this.showSuccess(this._translateService.instant(this.translations.general.successfullySave));
+      this.GetAllFees();
+    }
+  })
+}
 
-// @ViewChild('createElement') inputElement!: ElementRef;
-// isVisible:boolean=false;
-// openModal() {
-//   this.isVisible=!this.isVisible;
- 
-// }
-// updatevisible(toggle:any){
-//   debugger;
-//   this.isVisible=toggle;
-//   if (this.isVisible) {
-//     this.inputElement = null!; 
-//     this.GetAllFees(); 
-//   }
-// }
+private showSuccess(msg: string): void {
+  this._toastrNotificationService.showSuccess(msg);
+}
+
+private showError(msg: string): void {
+  this._toastrNotificationService.showError(msg);
+}
 
 }
