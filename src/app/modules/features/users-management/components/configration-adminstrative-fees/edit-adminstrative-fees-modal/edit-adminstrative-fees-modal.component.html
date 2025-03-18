@@ -50,6 +50,20 @@
                       </div>
                     </div>
               </div>
+              <!-- <div class="form-group  mt-5">
+                <label for="fees">{{translations.UsersManagement.AdminstrationFees.litigationAmount| translate}}</label>
+                <input type="text" class="form-control" id="litigationAmount" formControlName="litigationAmount" required>
+                <div *ngIf="feesForm.controls['litigationAmount'].errors && feesForm.controls['litigationAmount'].touched" class="text-danger">
+                    <div *ngIf="feesForm.controls['litigationAmount'].errors?.['required']">
+                      {{translations.formValidationError.required | translate}} 
+                    </div>
+                  </div>
+                  <div *ngIf="feesForm.controls['litigationAmount'].errors && feesForm.controls['litigationAmount'].touched" class="text-danger">
+                      <div *ngIf="feesForm.controls['litigationAmount'].errors?.['min']">
+                        {{translations.formValidationError.minlength | translate}}
+                      </div>
+                    </div>
+              </div> -->
               <div class="form-group mt-5">
                 <table class="table table-bordered">
                   <thead>

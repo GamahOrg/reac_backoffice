@@ -54,6 +54,8 @@
           <td>
             <span class="fw-4 small status-{{item.internalStatusId}}">
               {{lawsuitStatus[item.internalStatusId] | translate}}
+              <span *ngIf="item?.plaintiffAgreementRequestResponse=='Approve' && item?.defendantAgreementRequestResponse=='Approve'" >({{lawsuitStatus[35] | translate}})</span>
+
             </span>
           </td>
           <td>

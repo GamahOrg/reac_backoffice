@@ -67,6 +67,7 @@ export class LawsuitListComponent extends BaseComponent implements OnInit {
         [LawsuitStatus.CollectionOfArbitrationFeesRequestIsBeingSent]: this.translations.lawsuits.lawsuitsList.CollectionOfArbitrationFeesRequestIsBeingSent,
         [LawsuitStatus.ArbitrationFeesHaveBeenCollected]: this.translations.lawsuits.lawsuitsList.ArbitrationFeesHaveBeenCollected,
         [LawsuitStatus.LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend]: this.translations.lawsuits.lawsuitsList.LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend,
+        [LawsuitStatus.AgreementRequestHasBeenAgree]: this.translations.lawsuits.lawsuitsList.AgreementRequestHasBeenAgree,
 
 
   }

@@ -196,7 +196,7 @@
             "ExplanationResponsed": "تم الرد",
             "RejectionOfAgreementRequest": "تم رفض طلب المشارطة",
             "Cancelled": "ملغاة",
-
+            "AgreementRequestHasBeenAgree": "تم قبول طلب المشارطة",
             "CollectionOfLitigationFeesRequestIsBeingSent": "تم ارسال طلب دفع رسوم الدعوي",
             "LitigationFeesHaveBeenCollected": "تم دفع رسوم الدعوي",
             "CollectionOfReconciliationFeesRequestIsBeingSent": "تم ارسال طلب دفع رسوم الصلح",
@@ -962,7 +962,8 @@
     "Reconciliation.ExtendRequest.Added":"نص إشعار لمدير إدارة الصُلح بوجود طلب تمديد فترة الصُلح",
     "Reformer.Activate":" نص إشعار لمدير إدارة الصُلح بتفعيل حساب المُصلح",
     "SLA.LitigationRequestFeesNotPaidReminderFirstPeriod":"الفترة المسموح بها سداد الرسوم الادارية (بالساعه)",
-    "SLA.LitigationRequestReformerAssigningRequestResponsePeriod":"مدة المسموح بها لارسال اشعار المصلح لاتخاذ قرار على المهمة (بالساعه)"
+    "SLA.LitigationRequestReformerAssigningRequestResponsePeriod":"مدة المسموح بها لارسال اشعار المصلح لاتخاذ قرار على المهمة (بالساعه)",
+    "SLA.LitigationRequestExtendRequestReplyPeriod":"الفترة المسموح بها للرد علي طلب مد مدة الصلح (بالساعه)"
 },
 "arbitirationSettingsPage":{
     "SLA.ArbitratorMembershipFeesNotification":" إشعار دفع رسوم عضوية المحكم قبل انتهاء المده",
@@ -985,7 +986,12 @@
     "SLA.ArbitratorTaskRequest.Cancelled":"اشعار إلغاء طلب مهمة التحكيم كمحكم",
     "SLA.ArbitratorChairmanTaskRequest.Cancelled":" اشعار إلغاء طلب مهمة التحكيم كرئيس هيئة التحكيم",
     "SLA.LitigationRequestArbitratorAssigningRequestResponseFirstPeriod":" الفتره الاولى المسموح بها للرد على طلب الانضمام كمحكم (بالساعه) ",
-    "Arbitration.LitigationRequestArbitratorRecusalRequestPeriod":" الفترة المسموح بها لرد المحكم (بالساعه)"
+    "Arbitration.LitigationRequestArbitratorRecusalRequestPeriod":" الفترة المسموح بها لرد المحكم (بالساعه)",
+    "SLA.LitigationRequestArbitratorNominationListResponsePeriod":" الفترة الاولي المسموح بها للمدعي والمدعي عليه لأختيار المحكمين (بالساعه)",
+    "SLA.LitigationRequestArbitratorNominationListDecisionPeriod":" الفترة النهائية المسموح بها للمدعي والمدعي عليه لأختيار المحكمين (بالساعه)",
+    "SLA.AddLitigationRequestArbitratorNominationListPeriod":"فترة اخطار مدير ادارة التحكيم بأختيار قائمة مرشحين التحكيم (بالساعه)",
+    "Arbitration.Period":" فترة التحكيم (باليوم)",
+    "SLA.LitigationRequestExtendRequestReplyPeriod":"الفترة المسموح بها للرد علي طلب مد مدة التحكيم (بالساعه)"
 
 },
 "reviewSettingsPage":{

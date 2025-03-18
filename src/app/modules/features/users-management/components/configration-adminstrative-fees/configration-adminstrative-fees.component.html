@@ -46,10 +46,14 @@
               </td>
               <td scope="row">
                 <span style="font-size: .88rem;">  <a [routerLink]="['/users-management/update-admistrative-fees', fee.id]" class="btn btn-outline-primary">تعديل  </a></span>
+                <span class="p-2" style="font-size: .88rem;">
+                  <button (click)="showConfirmDelete(fee)"
+                  class="btn btn-sm btn-outline-danger rounded-2 v-small fw-5   w-fit gap-2 py-2" >
+                  <img src="assets/images/icons/trash.svg" alt="eye">
+                      حذف  
+                </button>
+                </span> 
               </td>
-        
-          
-          
         </tr>
         }
       </tbody>

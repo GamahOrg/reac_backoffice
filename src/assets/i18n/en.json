@@ -177,7 +177,8 @@
             "CharterRequestSent": "قيد المشارطة",
             "AcceptanceOfTheReconciliationReport": "تم قبول محضر الصلح",
             "RejectionOfTheReconciliationReport": "تم رفض محضر الصلح",
-            "ReconciliationWasMade": "تم الصلح"
+            "ReconciliationWasMade": "تم الصلح",
+            "AgreementRequestHasBeenAgree": "تم قبول طلب المشارطة"
         },
         "lawsuitDetails": {
             "administrativeFeesNotPaid": "لم يتم تسديد الرسوم الإدارية للدعوى بعد",

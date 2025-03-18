@@ -189,6 +189,7 @@ export const Configuration = {
       updateFees:"/api/SysLitigationRequestAmount/UpdateAsync",
       GetFeesById:"/api/SysLitigationRequestAmount/GetByIdAsync",
       createFees:"/api/SysLitigationRequestAmount/Create",
+      deleteFees:"/api/SysLitigationRequestAmount/Delete",
     },
     reconciliationFees:{
       getFees:"/api/SysSetting/GetReconciliationFeesSettings",
