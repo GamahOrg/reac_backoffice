@@ -991,7 +991,8 @@
     "SLA.LitigationRequestArbitratorNominationListDecisionPeriod":" الفترة النهائية المسموح بها للمدعي والمدعي عليه لأختيار المحكمين (بالساعه)",
     "SLA.AddLitigationRequestArbitratorNominationListPeriod":"فترة اخطار مدير ادارة التحكيم بأختيار قائمة مرشحين التحكيم (بالساعه)",
     "Arbitration.Period":" فترة التحكيم (باليوم)",
-    "SLA.LitigationRequestExtendRequestReplyPeriod":"الفترة المسموح بها للرد علي طلب مد مدة التحكيم (بالساعه)"
+    "SLA.LitigationRequestExtendRequestReplyPeriod":"الفترة المسموح بها للرد علي طلب مد مدة التحكيم (بالساعه)",
+    "SLA.AddLitigationRequestArbitrationSessionPeriod":"فترة اخطار المحكم بسرعة تحديد موعد للجلسة(بالساعه)"
 
 },
 "reviewSettingsPage":{
@@ -1012,7 +1013,10 @@
     "SLA.AssignLitigation.ReviewerAdmin":"نص اشعار مدقق جديد لتخطى المدقق السابق مدة التدقيق الفصوى",
     "SLA.AgreementCancelled":"نص اشعار بعدم الرد على طلب المشارطة للمدعى والمدعى عليه",
     "Review.Cancelled":"نص اشعار بإلغاء المهمة للمدقق و مدير التدقيق",
-    "Review.ReAssigned" :"نص اشعار باعاده تعيين مدقق لمدير التدقيق"
+    "Review.ReAssigned" :"نص اشعار باعاده تعيين مدقق لمدير التدقيق",
+    "LitigationRequest.Creation.Accept" :"نص اشعار بقبول تقديم دعوى للمدعى",
+    "LitigationRequest.Creation.Accept.Defendant" :"نص اشعار بتقديم دعوى للمدعى عليه"
+
 }
 
 

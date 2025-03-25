@@ -83,7 +83,7 @@ export class AdminstrativeFeesModalComponent extends BaseComponent implements On
   save(): void {
     if (this.feesForm.valid) {
                this.feesForm.patchValue({
-               litigationAmount: `${this.feesForm.get('fromAmount')?.value} - ${this.feesForm.get('toAmount')?.value} \\ رسوم التسجيل ${this.feesForm.get('fees')?.value}`
+               litigationAmount: `${this.feesForm.get('fromAmount')?.value} - ${this.feesForm.get('toAmount')?.value} \\ رسوم إدارية ${this.feesForm.get('fees')?.value}`
                                        });
       this._configrationAdmistrationFeesService.CreateFees(this.feesForm.value).subscribe(
         (response) => {
