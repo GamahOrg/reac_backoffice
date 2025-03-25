@@ -130,7 +130,7 @@ export class EditAdminstrativeFeesModalComponent extends BaseComponent implement
     if (this.feesForm.valid) {
       console.log("form value :",this.feesForm.value)
       this.feesForm.patchValue({
-        litigationAmount: `${this.feesForm.get('fromAmount')?.value} - ${this.feesForm.get('toAmount')?.value} \\ رسوم التسجيل ${this.feesForm.get('fees')?.value}`
+        litigationAmount: `${this.feesForm.get('fromAmount')?.value} - ${this.feesForm.get('toAmount')?.value} \\ رسوم إدارية ${this.feesForm.get('fees')?.value}`
                                 });
       // this.feesForm.patchValue({ id: this.selectedItem?.id ,litigationAmount:this.selectedItem?.litigationAmount });
       // this.onSave.emit(this.feesForm.value);
