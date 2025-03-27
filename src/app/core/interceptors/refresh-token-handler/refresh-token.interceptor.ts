@@ -58,14 +58,14 @@ export const refreshTokenInterceptor: HttpInterceptorFn = (req, next) => {
               }),
               catchError((error) => {
                 localStorage.clear();
-                _toastrNotificationService.showError('Unauthorized');
+                // _toastrNotificationService.showError('Unauthorized');
                 _router.navigate([Configuration.modules.auth]);
                 return throwError(() => 'Unauthorized');     
               })
             );
           }else{
             localStorage.clear();
-            _toastrNotificationService.showError('Unauthorized');
+            // _toastrNotificationService.showError('Unauthorized');
             _router.navigate([Configuration.modules.auth]);
             return throwError(() => 'Unauthorized');   
           }
@@ -130,7 +130,7 @@ function logout() {
   const _router = inject(Router);
 
   localStorage.clear();
-  _toastrNotificationService.showError('Unauthorized');
+  // _toastrNotificationService.showError('Unauthorized');
   _router.navigate([Configuration.modules.auth]);
   return throwError(() => 'Unauthorized');
 }
