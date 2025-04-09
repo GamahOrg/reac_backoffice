@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, inject, OnInit, TemplateRef } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrNotificationService } from '@app/core/services/toastr-notification/toastr-notification.service';
 import Swal from 'sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PaginationService } from '@app/shared/services/pagination/pagination.service';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -30,6 +32,7 @@ export class UsersListComponent extends BaseComponent implements OnInit {
     totalCount: 0,
   };
   searchForm!: FormGroup;
+  private _paginationService = inject(PaginationService);
 
 
   constructor(
@@ -47,7 +50,9 @@ export class UsersListComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
     this.setBreadcrumb()
-    this.GetAllEmployeeList()
+    this.GetAllEmployeeList();
+    this.watchPaginationActions();
+
   }
 
   initializeForm(): void {
@@ -68,8 +73,12 @@ export class UsersListComponent extends BaseComponent implements OnInit {
       // Implement search logic here
        this._usersManagementService.GetAllEmployee(this.pagintationData.currentPage,this.pagintationData.pageSize,searchCriteria)
     .subscribe((res:any) => {
-      if(res.isDone){
+      if(res.isDone && res.data){
         this.employeeList = res.data?.results;
+        this.setPaginationData(
+          res.data.pageSize,
+          res.data.totalCount
+        );
       }
     })
     }
@@ -151,4 +160,45 @@ GetEmployeeById(id:string,content: TemplateRef<any>){
   }
  
 } 
+
+
+private setPaginationData(pageSize: number, total: number): void {
+  this.pagintationData.pageSize = pageSize
+  this.pagintationData.totalCount = total
+  this._paginationService.updatePaginationData(this.pagintationData);
+}
+
+private watchPaginationActions(): void {
+  this.watchPagechanged();
+  this.watchPaginationClicked();
+}
+
+private watchPagechanged(): void {
+  this._paginationService.pageChanged
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((pageNo) => {
+      this.newPageNo = pageNo;
+    this.loadNextPage(this.newPageNo);
+
+    })
+}
+
+private watchPaginationClicked(): void {
+  this._paginationService.pageClicked
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((nextPage: number) => {
+      if (this.pagintationData.currentPage != nextPage) {
+        this.loadNextPage(nextPage);
+        this.pagintationData.currentPage = this.newPageNo;
+      }
+    })
+}
+
+private loadNextPage(nextPage: number): void {
+  this.pagintationData.currentPage = nextPage;
+  this.GetAllEmployeeList()
+}
+
+
+
 }
