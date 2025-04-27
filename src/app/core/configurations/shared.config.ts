@@ -19,8 +19,8 @@ export const Configuration = {
     },
     production: {
       production: true,
-      baseURL: "http://192.168.194.171:3333",
-      securityURl: "http://192.168.194.171:222",
+            baseURL: "https://reac-api.rega.gov.sa",
+            securityURl: "https://reac-sso.rega.gov.sa",
     },
   },
   APIs: {
