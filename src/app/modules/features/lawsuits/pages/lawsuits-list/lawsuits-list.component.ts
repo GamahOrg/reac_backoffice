@@ -151,6 +151,7 @@ export class LawsuitListComponent extends BaseComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((pageNo) => {
         this.newPageNo = pageNo;
+        this.loadNextPage(this.newPageNo);
       })
   }
 
