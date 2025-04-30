@@ -4,6 +4,8 @@ export const environment = {
   production: Configuration.environments.production.production,
   baseURL: Configuration.environments.production.baseURL,
   securityURl: Configuration.environments.production.securityURl,
+    refreshTokenURl: Configuration.environments.production.refreshTokenURl,
+
     // baseURL: "http://38.170.241.69:208",
     // securityURl: "http://38.170.241.69:207"
 };
