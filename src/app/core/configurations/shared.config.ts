@@ -15,12 +15,16 @@ export const Configuration = {
       production: true,
             baseURL: "https://dev-reac-api.rega.gov.sa",
             securityURl: "https://dev-reac-sso.rega.gov.sa",
+            refreshTokenURl: "https://dev-reac-sso.rega.gov.sa",
+
 
     },
     production: {
       production: true,
             baseURL: "https://reac-api.rega.gov.sa",
             securityURl: "https://reac-sso.rega.gov.sa",
+            refreshTokenURl: "https://reac-sso.rega.gov.sa",
+
     },
   },
   APIs: {
