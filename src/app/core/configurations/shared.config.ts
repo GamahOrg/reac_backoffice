@@ -13,8 +13,8 @@ export const Configuration = {
     },
     testingAndStaging: {
       production: true,
-            baseURL: "https://dev-reac-api.rega.gov.sa",
-            securityURl: "https://dev-reac-sso.rega.gov.sa",
+            baseURL: "https://staging-reac-api.rega.gov.sa",
+            securityURl: "https://staging-reac-sso.rega.gov.sa",
 
     },
     production: {
