@@ -50,7 +50,9 @@
                     <td>{{request.secondPartyName}}</td>
                     <td>{{request.reformerName}}</td>
                     <td>{{request.requestTypeName}}</td>
-                    <td>{{request.status}}</td>
+                    <td>{{request.status}} 
+                      
+                    </td>
                     <td>
                         {{
                         (request.reconciliationPeriod && request.reconciliationPeriod >= 0)
@@ -58,7 +60,9 @@
                         : '--'
                         }}
                       </td>
-                    <td>{{request.response ? (localization[request.response] | translate) : (translations.TasksRequestsList.None | translate)}}</td>
+                    <td>{{request.response ? (localization[request.response] | translate) : (translations.TasksRequestsList.None | translate)}}
+                        <div *ngIf="request.rejectReason">({{request.rejectReason}})</div>
+                    </td>
 
                     <!-- <td>{{request.isDone}}</td> -->
 

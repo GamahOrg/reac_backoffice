@@ -14,10 +14,21 @@ export class ArbitratorsDecisionsService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  GetArbitratorsDecisions(pageIndex: number, pageSize: number): Observable<BaseResponse<Pagination<ReformersDecisionsDto[]>>> {
+  GetArbitratorsDecisions(pageIndex: number, pageSize: number,searchCriteria:any): Observable<BaseResponse<Pagination<ReformersDecisionsDto[]>>> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("pageIndex", pageIndex);
     queryParams = queryParams.append("pageSize", pageSize);
+
+    if( searchCriteria.fullName!=''){
+      queryParams = queryParams.append("searchKey", searchCriteria.fullName.trim())
+    }
+    else if( searchCriteria.identityNumber!=''){
+      queryParams = queryParams.append("searchKey", searchCriteria.identityNumber.trim())
+    }
+    else if(searchCriteria.isActive != ''){
+      queryParams = queryParams.append("isActive", searchCriteria.isActive);
+    }
+
     return this._httpClient.get<BaseResponse<Pagination<ReformersDecisionsDto[]>>>(Configuration.APIs.Citizen.GetArbitratorsDecisions, { params: queryParams })
   }
 

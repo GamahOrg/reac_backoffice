@@ -36,6 +36,9 @@ export class ArbitratorDecisionDetailsComponent extends BaseComponent implements
     arbitratorDecisionDetails: ArbitratorDecisionDetailsResponseDto | null = null
     arbitratorDecisionsURL: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.stopAndReleaseArbitrator}/`
 
+
+    minDate!: Date;
+    
     private updateBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
             { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
@@ -47,10 +50,12 @@ export class ArbitratorDecisionDetailsComponent extends BaseComponent implements
 
     addDecision = this._formBuilder.group({
         citizenId: [""],
-        decisionDate: this._formBuilder.control<null | Date>(null, Validators.required),
+        decisionDate: this._formBuilder.control<null | Date>(null, [Validators.required]),
         stoppingReason: this._formBuilder.control<null | number>(null),
         lateLitigationRequestNumber: ['']
     })
+
+
     //getter
     get stoppingReason() {
         return StoppingReason
@@ -70,6 +75,7 @@ export class ArbitratorDecisionDetailsComponent extends BaseComponent implements
         [StoppingReason.NonPaymentOfMembershipFees]: this.translations.CitizenRequest.NonPaymentOfMembershipFees,
     }
     ngOnInit(): void {
+        this.minDate = new Date();
         this.updateBreadcrumb();
         this.observeActivatedRoute();
     }

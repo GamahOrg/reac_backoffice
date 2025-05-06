@@ -1,5 +1,7 @@
 <app-breadcrumbs></app-breadcrumbs>
 
+
+  
 <div class="form-wrapper" *ngIf="litigationRequestForReportDto?.allowAdd">
     <div class="accordion-card">
         <details open>
@@ -9,10 +11,63 @@
                 <p *ngIf="this.litigationRequestForReportDto?.listCount && +this.litigationRequestForReportDto?.listCount!>1" class="text-success">يجب اختار {{this.litigationRequestForReportDto?.listCount}} محكمين</p>
                 <p *ngIf="this.litigationRequestForReportDto?.listCount && +this.litigationRequestForReportDto?.listCount! ===1" class="text-success">يجب اختار {{this.litigationRequestForReportDto?.listCount}} محكم</p>
             </summary>
+                <div class="form-wrapper mt-4">
+                    <form [formGroup]="searchForm" (ngSubmit)="getArbitratorsFullLookup()" class="grid-4">
+                      <div class="form-field">
+                        <label class="small fw-3  mb-2">
+                          {{translations.general.name | translate}}
+                        </label>
+                        <input 
+                          type="text" 
+                          formControlName="fullName" 
+                          class="form-control span-2" 
+                          placeholder="{{translations.general.name | translate}}" 
+                        />
+                      </div>
+                  
+                      <div class="form-field">
+                        <label class="small fw-3  mb-2">
+                          {{translations.arbitrator.areaName | translate}}
+                        </label>
+                        <input 
+                          type="text" 
+                          formControlName="area" 
+                          class="form-control span-2" 
+                          placeholder="{{translations.arbitrator.areaName | translate}}" 
+                        />
+                      </div>
+                  
+                  
+                      <div class="form-field">
+                        <label class="small fw-3  mb-2">
+                          {{translations.arbitrator.arbitratorClass| translate}}
+                        </label>
+                        <input 
+                          type="text" 
+                          formControlName="arbitratorClass" 
+                          class="form-control span-2" 
+                          placeholder="{{ translations.arbitrator.arbitratorClass | translate}}" 
+                        />
+                      </div>
+                
+                  
+                      <div class="form-action fw-3">
+                        <button 
+                          type="submit" 
+                          
+                          class="btn  btn-xs  text-primary small  span-2 mt-6"
+                          [disabled]="searchForm.invalid"
+                        >
+                         بحث
+                        </button>
 
+                        <button class="btn small text-primary  span-2 mt-6 " (click)="resetFilter()">{{translations.actions.deleteAll | translate}}</button>
+                      </div>
+                    </form>
+                  </div>
             <div>
                 <ng-container [formGroup]="form">
-                    <div class="d-flex mt-4 justify-content-end">
+                    <div class="d-flex  justify-content-end">
                         <button type="button" class="btn btn-primary " (click)="AddLitigationRequestArbitratorsNominationList()">اضافة</button>
                     </div>
 

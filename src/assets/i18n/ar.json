@@ -125,6 +125,7 @@
         "logout": "تسجيل خروج",
         "assignArbitrator": "تعين محكم",
         "sendToPayFees":"ارسال الطلب لدفع الرسوم",
+        "sendToPayEditFees":"ارسال الطلب لدفع رسوم التعديل",
         "approveArbitrationFeesPaid":"تأكيد دفع رسوم التحكيم"
     },
     "tables": {
@@ -197,12 +198,12 @@
             "RejectionOfAgreementRequest": "تم رفض طلب المشارطة",
             "Cancelled": "ملغاة",
             "AgreementRequestHasBeenAgree": "تم قبول طلب المشارطة",
-            "CollectionOfLitigationFeesRequestIsBeingSent": "تم ارسال طلب دفع رسوم الدعوي",
-            "LitigationFeesHaveBeenCollected": "تم دفع رسوم الدعوي",
-            "CollectionOfReconciliationFeesRequestIsBeingSent": "تم ارسال طلب دفع رسوم الصلح",
-            "ReconciliationFeesHaveBeenCollected": "تم دفع رسوم الصلح",
-            "CollectionOfArbitrationFeesRequestIsBeingSent": "تم ارسال طلب دفع رسوم التحكيم",
-            "ArbitrationFeesHaveBeenCollected": "تم دفع رسوم التحكيم",
+            "CollectionOfLitigationFeesRequestIsBeingSent": "تم ارسال طلب تحصيل رسوم الدعوي",
+            "LitigationFeesHaveBeenCollected": "تم تحصيل رسوم الدعوي",
+            "CollectionOfReconciliationFeesRequestIsBeingSent": "تم ارسال طلب تحصيل رسوم الصلح",
+            "ReconciliationFeesHaveBeenCollected": "تم تحصيل رسوم الصلح",
+            "CollectionOfArbitrationFeesRequestIsBeingSent": "تم ارسال طلب تحصيل رسوم التحكيم",
+            "ArbitrationFeesHaveBeenCollected": "تم تحصيل رسوم التحكيم",
             "LitigationApprovedCollectionOfReconciliationFeesRequestIsBeingSend": "تم قبول الدعوى وجارى إرسال طلب تحصيل رسوم الصلح"
         },
         "lawsuitDetails": {
@@ -528,9 +529,13 @@
         "fullName": "الاسم بالكامل",
         "mobile": "الجوال",
         "email": "البريد الإلكتروني",
-        "requestsCount": "عدد الطلبات",
+        "requestsCount": "عدد الطلبات الحاليه",
+        "allrequestsCount": " عدد الطلبات",
+        "finishedrequestsCount": "عدد الطلبات المنتهية",
         "reformerStatus": "الحالة",
         "reformerStatusDate": "التاريخ",
+        "stoppedFromDate": "ايقاف من",
+        "stoppedToDate": "ايقاف الي",
         "arbitratorStatus": "الحالة",
         "arbitratorStatusDate": "التاريخ",
         "reformerDecisionDetails": "تفاصيل قرار المصلح",
@@ -549,6 +554,8 @@
         "NonPaymentOfMembershipFees": "عدم سداد الرسوم",
         "requestDetails": "تفاصيل الطلب",
         "sendToPayFeesMessageBody":"ارسال الطلب لدفع الرسوم",
+        "sendToPayEditFeesMessageBody":"ارسال الطلب لدفع رسوم تعديل الطلب",
+
         "registeredWithConciliationCenter": "هل انت مصلح مسجل لدى مركز المصالحة في وزارة العدل؟ ",
         "ReconciliationCenterDegreeFile": "شهادة تسجيل المصلح فى وزارة العدل",
         "experiencedInArbitration": "هل لديك خبرة في التحكيم؟ في حال نعم يذكر في أي مجال من المجالات؟",
@@ -559,6 +566,7 @@
         "experiencedInHousingProgramsStatuses": " حالات برامج الإسكان ",
         "cvFile": "ارفاق السيره الذاتية",
         "cvFiles":"مرفقات السيره الذاتية"
+
     },
     "extendLitigationRequest": {
         "extendLitigationRequest": "مد فترة الصلح",

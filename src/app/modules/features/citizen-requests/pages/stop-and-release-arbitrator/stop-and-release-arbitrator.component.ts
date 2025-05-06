@@ -9,6 +9,7 @@ import { Pagination, pagination } from '@app/shared/models/pagination.model';
 import { ReformersDecisionsDto } from '../../models/reformers-decisions-dto.model';
 import { takeUntil } from 'rxjs';
 import { BaseResponse } from '@app/core/models/base-response';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-stop-and-release-arbitrator',
@@ -32,6 +33,7 @@ export class StopAndReleaseArbitratorComponent extends BaseComponent implements 
     pageSize: 10,
     totalCount: 0,
   };
+  searchForm!: FormGroup;
   arbitratorsDecisions: Pagination<ReformersDecisionsDto[]> = {} as Pagination<ReformersDecisionsDto[]>;
   selectedArbitratorsDecision: ReformersDecisionsDto = {} as ReformersDecisionsDto;
   private updateBreadcrumb(): void {
@@ -40,15 +42,31 @@ export class StopAndReleaseArbitratorComponent extends BaseComponent implements 
       { label: this._translateService.instant(this.translations.layout.sidebar.stopAndReleaseArbitrator), link: Configuration.pages.citizenRequests.stopAndReleaseArbitrator }
     ])
   };
+  constructor(
+    private fb: FormBuilder,
+  ) {
+    super();
+
+  }
 
   ngOnInit(): void {
+    this.initializeForm();
     this.updateBreadcrumb();
     this.getArbitratorsDecisions();
     this.watchPaginationActions();
   }
 
-  private getArbitratorsDecisions() {
-    this._arbitratorsDecisionsService.GetArbitratorsDecisions(this.pagintationData.currentPage, this.pagintationData.pageSize)
+  initializeForm(): void {
+    this.searchForm = this.fb.group({
+      fullName: ['',],
+      identityNumber: [''],
+      isActive: [''],
+    });
+  }
+   getArbitratorsDecisions() {
+    const searchCriteria = this.searchForm.value;
+    console.log('Search criteria:', searchCriteria);
+    this._arbitratorsDecisionsService.GetArbitratorsDecisions(this.pagintationData.currentPage, this.pagintationData.pageSize,searchCriteria)
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: BaseResponse<Pagination<ReformersDecisionsDto[]>>) => {
         if (res.isDone && res.data) {
@@ -65,27 +83,29 @@ export class StopAndReleaseArbitratorComponent extends BaseComponent implements 
       this.arbitratorsDecisions.totalCount
     );
   }
+
+
   private setPaginationData(pageSize: number, total: number): void {
     this.pagintationData.pageSize = pageSize
     this.pagintationData.totalCount = total
     this._paginationService.updatePaginationData(this.pagintationData);
-    console.log("this.arbitratorsDecisions", this.arbitratorsDecisions);
-    console.log("this.pagintationData", this.pagintationData);
   }
-
+  
   private watchPaginationActions(): void {
     this.watchPagechanged();
     this.watchPaginationClicked();
   }
-
+  
   private watchPagechanged(): void {
     this._paginationService.pageChanged
       .pipe(takeUntil(this.destroy$))
       .subscribe((pageNo) => {
         this.newPageNo = pageNo;
+      this.loadNextPage(this.newPageNo);
+  
       })
   }
-
+  
   private watchPaginationClicked(): void {
     this._paginationService.pageClicked
       .pipe(takeUntil(this.destroy$))
@@ -96,7 +116,7 @@ export class StopAndReleaseArbitratorComponent extends BaseComponent implements 
         }
       })
   }
-
+  
   private loadNextPage(nextPage: number): void {
     this.pagintationData.currentPage = nextPage;
     this.getArbitratorsDecisions()

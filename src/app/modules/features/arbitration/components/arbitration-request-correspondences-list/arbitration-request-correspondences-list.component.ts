@@ -61,7 +61,7 @@ export class ArbitrationRequestCorrespondencesListComponent extends BaseComponen
                 link: '/'
             },
             {
-                label: this._translateService.instant(this.translations.layout.sidebar.assignarbitratorlist),
+                label: this._translateService.instant(this.translations.layout.sidebar.arbitrationRequestCorrespondences),
                 link: `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}`
             }
         ])
