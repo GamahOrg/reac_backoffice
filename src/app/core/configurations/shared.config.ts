@@ -93,7 +93,7 @@ export const Configuration = {
       GetLitigationRequestForArbitratorRecusalRequestForArbitratorByRequestId: "/api/Arbitration/GetLitigationRequestForArbitratorRecusalRequestForArbitratorByRequestId",
       AddArbitrationReportArbitratorRecusalForArbitrator: "/api/Arbitration/AddArbitrationReportArbitratorRecusalForArbitrator",
 
-      GetLitigationAcceptanceOrRejectDocumentData: "/api/LitigationRequest/GetLitigationAcceptanceOrRejectDocumentData",
+      GetLitigationAcceptanceOrRejectDocumentData: "/api/LitigationRequest/GetLitigationArbitrationTaskAcceptanceOrRejectDocumentData",
       AddLitigationRequestArbitratorsChairmandecision: "/api/Arbitration/AddLitigationRequestArbitratorsChairmandecision"
 
     },

@@ -212,10 +212,11 @@
             translate}}</label>
           <div class="border flex-y-row rounded-2">
             <input class="form-control border-0 shadow-none"
-                   type="date"
-                   placeholder="{{translations.actions.enter| translate}} {{translations.CitizenRequest.decisionDate| translate}}"
-                   formControlName="decisionDate"
-                   [ngClass]="{'is-invalid': showValidation && controls.decisionDate.errors}" />
+            type="date"
+            placeholder="{{translations.actions.enter| translate}} {{translations.CitizenRequest.decisionDate| translate}}"
+            formControlName="decisionDate" 
+            [min]="minDate | date:'yyyy-MM-dd'"
+            [ngClass]="{'is-invalid': showValidation && controls.decisionDate.errors}" />
           </div>
           <div class="invalid-feedback d-block"
                *ngIf="showValidation && controls.decisionDate.errors">

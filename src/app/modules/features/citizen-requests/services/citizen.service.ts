@@ -18,11 +18,23 @@ export class CitizenService {
     return this._httpClient.get<BaseResponse<CitizenReformer[]>>(`${Configuration.APIs.Citizen.GetReformersLookup}`, { params: queryParams })
   }
 
-  getArbitratorsFullLookup(citizenId: string, requestId: string): Observable<BaseResponse<CitizenFullLookupArbirator[]>> {
+  getArbitratorsFullLookup(citizenId: string, requestId: string , searchCriteria:any): Observable<BaseResponse<CitizenFullLookupArbirator[]>> {
     let queryParams = new HttpParams();
     if (citizenId && requestId)
       queryParams = queryParams.append("citizenId", citizenId);
-    queryParams = queryParams.append("requestId", requestId);
+      queryParams = queryParams.append("requestId", requestId);
+
+      if( searchCriteria?.fullName && searchCriteria?.fullName!=''){
+        queryParams = queryParams.append("fullName", searchCriteria.fullName?.trim())
+      }
+      else if( searchCriteria?.area && searchCriteria?.area!=''){
+        queryParams = queryParams.append("area", searchCriteria.area?.trim())
+      }
+      else if(searchCriteria?.arbitratorClass && searchCriteria?.arbitratorClass != ''){
+        queryParams = queryParams.append("arbitratorClass", searchCriteria.arbitratorClass?.trim());
+      }
+  
+
     return this._httpClient.get<BaseResponse<CitizenFullLookupArbirator[]>>(`${Configuration.APIs.Citizen.GetArbitratorsFullLookup}`, { params: queryParams })
   }
 

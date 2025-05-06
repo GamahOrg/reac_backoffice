@@ -12,6 +12,8 @@ export enum CitizenRequestAction {
     SendFromEdit = 6,
     SendToPayFees = 7,
     FeesPaid = 8,
+    SendToPayEditFees = 10,
+    EditFeesPaid = 11,
 }
 
 export enum CitizenRequestActionButton {

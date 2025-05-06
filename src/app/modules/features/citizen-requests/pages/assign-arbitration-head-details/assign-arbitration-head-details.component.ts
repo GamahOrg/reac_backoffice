@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DeterminearbitratorperiodService } from '../../services/determinearbitratorperiod.service';
 import { ToastrNotificationService } from '@app/core/services/toastr-notification/toastr-notification.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LawsuitDetailsItem } from '@app/modules/features/lawsuits/models/lawsuit-details.model';
 import { Configuration } from '@app/core/configurations/shared.config';
 import { CitizenService } from '../../services/citizen.service';
@@ -33,6 +33,7 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
     dataSource: any;
     arbitratorChairmanId: string = ""
     @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+    searchForm!: FormGroup;
     constructor(private activatedRoute: ActivatedRoute,
         private _translate: TranslateService,
         private _determinearbitratorperiodService: DeterminearbitratorperiodService,
@@ -55,6 +56,7 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
     }
 
     ngOnInit() {
+        this.initializeForm();
         this.setBreadcrumb()
 
         this._activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((res: Params) => {
@@ -66,6 +68,14 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
 
         this.getArbitratorsFullLookup()
     }
+
+    initializeForm(): void {
+        this.searchForm = this._formBuilder.group({
+          fullName: [''],
+          area: [''],
+          arbitratorClass: [''],
+        });
+      }
 
     private setBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
@@ -333,10 +343,17 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
 
     citizens: CitizenFullLookupArbirator[] = [];
     getArbitratorsFullLookup() {
-        this.citizenService.getArbitratorsFullLookup('', this.requestId as string).subscribe(res => {
+        const searchCriteria = this.searchForm.value;
+        console.log('Search criteria:', searchCriteria);
+        this.citizenService.getArbitratorsFullLookup('', this.requestId as string,searchCriteria).subscribe(res => {
             if (res.data)
                 this.citizens = res.data;
         })
+    }
+
+    resetFilter(){
+        this.searchForm.reset();
+        this.getArbitratorsFullLookup()
     }
     selectedBrief?: string | null = '';
     open(content: TemplateRef<any>, brief: string | null) {

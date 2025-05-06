@@ -61,6 +61,7 @@ export interface CitizenRequestFullDataDto {
     experiencedInHousingstatuses:string;
     experiencedInArbitrationFields:string;
     about:string;
+    isFeesPaid:boolean;
 }
 
 export interface SysArbitratorClassDto {

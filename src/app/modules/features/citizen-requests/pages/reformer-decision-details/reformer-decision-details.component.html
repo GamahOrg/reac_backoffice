@@ -131,6 +131,8 @@
               <tr>
                 <th scope="col">{{translations.CitizenRequest.reformerStatus | translate}}</th>
                 <th scope="col">{{translations.CitizenRequest.decisionDate | translate}}</th>
+                <th scope="col">{{translations.CitizenRequest.stoppedFromDate | translate}}</th>
+                <th scope="col">{{translations.CitizenRequest.stoppedToDate | translate}}</th>
                 <th scope="col">{{translations.ExtendLitigationRequest.reason | translate}}</th>
                 <th scope="col">{{translations.CitizenRequest.lateLitigationRequestNumber | translate}}</th>
               </tr>
@@ -140,6 +142,8 @@
               <tr>
                 <td>{{details.reformerStatus || "--"}}</td>
                 <td>{{(details.decisionDate| date: 'dd-MM-yyy') || "--"}}</td>
+                <td>{{(details.stoppedFromDate| date: 'dd-MM-yyy') || "--"}}</td>
+                <td>{{(details.stoppedToDate| date: 'dd-MM-yyy') || "--"}}</td>
                 <td>{{(stoppingReasonTranslation[details.stoppingReason] | translate)|| "--"}}</td>
                 <td>{{details.lateLitigationRequestNumber || "--"}}</td>
               </tr>

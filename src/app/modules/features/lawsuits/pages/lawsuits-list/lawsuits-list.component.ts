@@ -154,6 +154,7 @@ export class LawsuitListComponent extends BaseComponent implements OnInit {
         this.loadNextPage(this.newPageNo);
       })
   }
+ 
 
   private watchPaginationClicked(): void {
     this._paginationService.pageClicked
@@ -166,10 +167,11 @@ export class LawsuitListComponent extends BaseComponent implements OnInit {
       })
   }
 
+
   private loadNextPage(nextPage: number): void {
     this.pagintationData.currentPage = nextPage;
     this.AuditngList()
   }
-
+ 
 
 }
