@@ -88,7 +88,8 @@
     <h6 class="small fw-5">{{translations.CitizenRequest.isVolunteerApproval| translate}}</h6>
     <div class="flex-y-row gap-2">
       <h6 class="small op-7">
-        {{arbitratorDecisionDetails.isVolunteerApproval || '--'}}
+        <label *ngIf="arbitratorDecisionDetails.isVolunteerApproval">{{translations.actions.yes|translate}}</label>
+        <label *ngIf="!arbitratorDecisionDetails.isVolunteerApproval">{{translations.actions.no|translate}}</label>
       </h6>
     </div>
   </div>
