@@ -13,13 +13,13 @@ export const Configuration = {
     },
     testingAndStaging: {
       production: true,
-      baseURL: "http://192.168.194.171:3333",
-      securityURl: "http://192.168.194.171:222",
+      baseURL: "http://192.168.194.183:3333",
+      securityURl: "http://192.168.194.183:222",
     },
     production: {
       production: true,
-      baseURL: "http://192.168.194.171:3333",
-      securityURl: "http://192.168.194.171:222",
+      baseURL: "http://192.168.194.183:3333",
+      securityURl: "http://192.168.194.183:222",
     },
   },
   APIs: {
