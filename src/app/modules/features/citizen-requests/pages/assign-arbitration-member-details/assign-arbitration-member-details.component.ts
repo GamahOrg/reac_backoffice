@@ -16,7 +16,7 @@ import { takeUntil } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -372,7 +372,8 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
 
     }
 
-    AddLitigationRequestArbitratorsNominationList() {
+
+    showConfirmAddition(): void {
         if (this.selectedCitizens.length == 0) {
             this.toastrNotificationService.showError("لابد من إضافة أعضاء هيئة المحكمين")
             return;
@@ -382,6 +383,31 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
             this.toastrNotificationService.showError(`يجب اختيار ${this.litigationRequestForReportDto?.listCount} أعضاء هيئة المحكمين`)
             return;
         }
+      Swal.fire({
+        title: ` هل أنت متأكد من إرسال طلب الترشيح؟`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'نعم, بالتاكيد',
+        cancelButtonText: 'الغاء',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // If confirmed, toggle the status
+          this.AddLitigationRequestArbitratorsNominationList();
+        }
+      });
+    }
+
+    AddLitigationRequestArbitratorsNominationList() {
+        // if (this.selectedCitizens.length == 0) {
+        //     this.toastrNotificationService.showError("لابد من إضافة أعضاء هيئة المحكمين")
+        //     return;
+        // }
+
+        // if (this.selectedCitizens.length != this.litigationRequestForReportDto?.listCount) {
+        //     this.toastrNotificationService.showError(`يجب اختيار ${this.litigationRequestForReportDto?.listCount} أعضاء هيئة المحكمين`)
+        //     return;
+        // }
 
         this._determinearbitratorperiodService.AddLitigationRequestArbitratorsNominationList({
             requestId: this.litigationRequestForReportDto?.litigationRequestShortDto?.id,

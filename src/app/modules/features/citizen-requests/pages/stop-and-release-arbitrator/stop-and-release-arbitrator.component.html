@@ -116,7 +116,7 @@
     <span>{{translations.tables.to | translate}} </span>
     <span>{{pagintationData.totalCount}} </span>
     <span>{{translations.tables.ofTotal | translate}} </span>
-    <span>{{pageCount}} </span>
+    <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
     <span>{{translations.tables.row | translate}} </span>
   </div>
   <app-pagination></app-pagination>
