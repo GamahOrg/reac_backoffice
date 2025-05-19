@@ -43,19 +43,19 @@
 </div>
 
 @if (sessionsList && sessionsList.length) {
-    <div class="flex-between">
-        <div class="op-6 v-small fw-5">
-            <span>{{translations.tables.from | translate}} </span>
-            <span>{{page}} </span>
-            <span>{{translations.tables.to | translate}} </span>
-            <span>6 </span>
-            <span>{{translations.tables.ofTotal | translate}} </span>
-            <span>{{collectionSize}} </span>
-            <span>{{translations.tables.row | translate}} </span>
-        </div>
-
-        <app-pagination></app-pagination>
+  <div class="flex-between">
+    <div class="op-6 v-small fw-5">
+        <span>{{translations.tables.from | translate}} </span>
+        <span>{{page}} </span>
+        <span>{{translations.tables.to | translate}} </span>
+        <span>{{ page * pagintationData.pageSize}} </span>
+        <span>{{translations.tables.ofTotal | translate}} </span>
+        <span>{{collectionSize}} </span>
+        <span>{{translations.tables.row | translate}} </span>
     </div>
+
+    <app-pagination></app-pagination>
+</div>
 }
 
 <ng-template #sessionModal let-modal>

@@ -1,10 +1,65 @@
 <app-breadcrumbs></app-breadcrumbs>
 
+<div class="form-wrapper">
+  <form [formGroup]="searchForm" (ngSubmit)="getArbitratorsDecisions()" class="grid-4">
+    <div class="form-field">
+      <label class="small fw-3 required mb-2">
+        {{translations.general.name | translate}}
+      </label>
+      <input 
+        type="text" 
+        formControlName="fullName" 
+        class="form-control span-2" 
+        placeholder="{{translations.general.name | translate}}" 
+      />
+    </div>
+
+    <div class="form-field">
+      <label class="small fw-3 required mb-2">
+        {{translations.UsersManagement.Employee.identityNumber | translate}}
+      </label>
+      <input 
+        type="text" 
+        formControlName="identityNumber" 
+        class="form-control span-2" 
+        placeholder="{{translations.UsersManagement.Employee.identityNumber | translate}}" 
+      />
+    </div>
+
+
+
+    <div class="form-field">
+      <label class="small fw-3 required mb-2">
+        {{translations.UsersManagement.Employee.status | translate}}
+      </label>
+      <select 
+        formControlName="isActive" 
+        class="form-select span-2"
+      >
+        <option value="">{{"الكل"}}</option>
+        <option value="true">معتمد</option>
+        <option value="false">موقوف</option>
+      </select>
+   
+    </div>
+
+    <div class="form-action fw-3">
+      <button 
+        type="submit" 
+        
+        class="btn btn-primary py-3 px-9 span-2 mt-6 ml-6"
+        [disabled]="searchForm.invalid"
+      >
+       بحث
+      </button>
+    </div>
+  </form>
+</div>
 
 
 
 @if (arbitratorsDecisions &&arbitratorsDecisions.results&& arbitratorsDecisions.results.length) {
-<div class="table-wrapper">
+<div class="table-wrapper mt-5">
   <div class="table-responsive">
     <table class="table">
       <thead>
@@ -15,6 +70,8 @@
           <th scope="col">{{translations.CitizenRequest.email | translate}}</th>
           <th scope="col">{{translations.CitizenRequest.experienceYears | translate}}</th>
           <th scope="col">{{translations.CitizenRequest.arbitratorClass | translate}}</th>
+          <th scope="col">{{translations.CitizenRequest.allrequestsCount | translate}}</th>
+          <th scope="col">{{translations.CitizenRequest.finishedrequestsCount | translate}}</th>
           <th scope="col">{{translations.CitizenRequest.requestsCount | translate}}</th>
           <th scope="col">{{translations.CitizenRequest.arbitratorStatus | translate}}</th>
           <th scope="col">{{translations.CitizenRequest.arbitratorStatusDate | translate}}</th>
@@ -31,6 +88,8 @@
           <td>{{decisions.email || "--"}}</td>
           <td>{{decisions.experienceYears || "--"}}</td>
           <td>{{decisions.arbitratorClass || "--"}}</td>
+          <td>{{decisions.allRequestsCount || "--"}}</td>
+          <td>{{decisions.finishedRequestsCount || "--"}}</td>
           <td>{{decisions.requestsCount || "--"}}</td>
           <td>{{decisions.arbitratorStatus || "--"}}</td>
           <td>{{decisions.arbitratorStatusDate | date }}</td>
@@ -57,7 +116,7 @@
     <span>{{translations.tables.to | translate}} </span>
     <span>{{pagintationData.totalCount}} </span>
     <span>{{translations.tables.ofTotal | translate}} </span>
-    <span>{{pageCount}} </span>
+    <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
     <span>{{translations.tables.row | translate}} </span>
   </div>
   <app-pagination></app-pagination>

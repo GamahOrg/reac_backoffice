@@ -163,6 +163,7 @@ export namespace translations {
         logout = "actions.logout",
         assignArbitrator = "actions.assignArbitrator",
         sendToPayFees= "actions.sendToPayFees",
+        sendToPayEditFees= "actions.sendToPayEditFees",
         approveArbitrationFeesPaid= "actions.approveArbitrationFeesPaid"
     }
 
@@ -569,6 +570,7 @@ export namespace translations {
         acceptHeaderTitle = "citizenRequest.acceptHeaderTitle",
         acceptWithoutFeesMessageBody = "citizenRequest.acceptWithoutFeesMessageBody",
         sendToPayFeesMessageBody = "citizenRequest.sendToPayFeesMessageBody",
+        sendToPayEditFeesMessageBody= "citizenRequest.sendToPayEditFeesMessageBody",
         acceptWithFeesMessageBody = "citizenRequest.acceptWithFeesMessageBody",
         rejectHeaderTitle = "citizenRequest.rejectHeaderTitle",
         sendForEditHeaderTitle = "citizenRequest.sendForEditHeaderTitle",
@@ -582,8 +584,13 @@ export namespace translations {
         mobile = "citizenRequest.mobile",
         email = "citizenRequest.email",
         requestsCount = "citizenRequest.requestsCount",
+        allrequestsCount = "citizenRequest.allrequestsCount",
+        finishedrequestsCount = "citizenRequest.finishedrequestsCount",
+
         reformerStatus = "citizenRequest.reformerStatus",
         reformerStatusDate = "citizenRequest.reformerStatusDate",
+        stoppedFromDate = "citizenRequest.stoppedFromDate",
+        stoppedToDate = "citizenRequest.stoppedToDate",
         arbitratorStatus = "citizenRequest.arbitratorStatus",
         arbitratorStatusDate = "citizenRequest.arbitratorStatusDate",
         reformerDecisionDetails = "citizenRequest.reformerDecisionDetails",

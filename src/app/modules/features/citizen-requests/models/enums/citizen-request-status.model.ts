@@ -8,4 +8,5 @@ export enum CitizenRequestStatus {
     SentFromEdit = 7,
     SendToPayFees = 8,
     FeesPaid = 9,
+    FeesEditPaid = 11
 }

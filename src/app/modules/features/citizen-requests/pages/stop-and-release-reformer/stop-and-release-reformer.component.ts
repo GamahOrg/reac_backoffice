@@ -10,6 +10,7 @@ import { Pagination, pagination } from '@app/shared/models/pagination.model';
 import { ReformersDecisionsDto } from '../../models/reformers-decisions-dto.model';
 import { takeUntil } from 'rxjs';
 import { BaseResponse } from '@app/core/models/base-response';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-stop-and-release-reformer',
@@ -33,6 +34,7 @@ export class StopAndReleaseReformerComponent extends BaseComponent implements On
     pageSize: 10,
     totalCount: 0,
   };
+  searchForm!: FormGroup;
   reformersDecisions: Pagination<ReformersDecisionsDto[]> = {} as Pagination<ReformersDecisionsDto[]>;
   selectedReformersDecision: ReformersDecisionsDto = {} as ReformersDecisionsDto;
 
@@ -43,14 +45,31 @@ export class StopAndReleaseReformerComponent extends BaseComponent implements On
     ])
   }
 
+  constructor(
+    private fb: FormBuilder,
+  ) {
+    super();
+
+  }
+
   ngOnInit(): void {
+    this.initializeForm();
     this.updateBreadcrumb();
     this.getReformersDecisions();
     this.watchPaginationActions();
   }
 
-  private getReformersDecisions() {
-    this._reformersDecisionsService.GetReformersDecisions(this.pagintationData.currentPage, this.pagintationData.pageSize)
+  initializeForm(): void {
+    this.searchForm = this.fb.group({
+      fullName: ['',],
+      identityNumber: [''],
+      isActive: [''],
+    });
+  }
+   getReformersDecisions() {
+    const searchCriteria = this.searchForm.value;
+    console.log('Search criteria:', searchCriteria);
+    this._reformersDecisionsService.GetReformersDecisions(this.pagintationData.currentPage, this.pagintationData.pageSize,searchCriteria)
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: BaseResponse<Pagination<ReformersDecisionsDto[]>>) => {
         if (res.isDone && res.data) {
