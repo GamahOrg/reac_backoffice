@@ -108,7 +108,7 @@ export class TypesStatusDashbourdComponent  implements OnInit {
       fromDate :startDate,
       toDate:endDate
     }
-    this._statisticDashbourdService.getAllLitigationByTypesStatusStatistics(Request).subscribe(
+    this._statisticDashbourdService.getAllLitigationStatistics(Request).subscribe(
       (response) => {
          console.log(response);
        this.LitigationStatisticsData=response.data?.LitigationStatisticsForAllStages;

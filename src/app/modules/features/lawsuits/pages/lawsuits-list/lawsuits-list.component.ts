@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { pagination, Pagination } from "@app/shared/models/pagination.model";
 import { takeUntil } from "rxjs";
 import { BaseResponse } from "@app/core/models/base-response";
+import { FilterVisibility } from "@app/shared/components/filter/components/filter/filter.component";
 
 @Component({
   selector: 'app-lawsuits-list',
@@ -19,6 +20,10 @@ import { BaseResponse } from "@app/core/models/base-response";
   styleUrl: './lawsuits-list.component.scss'
 })
 export class LawsuitListComponent extends BaseComponent implements OnInit {
+
+
+
+
   auditngForm!: FormGroup;
   // collectionSize!: number;
 

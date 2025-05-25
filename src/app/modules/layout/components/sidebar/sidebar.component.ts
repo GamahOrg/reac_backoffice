@@ -63,6 +63,34 @@ export class SidebarComponent extends BaseComponent implements OnInit {
 
 
         if (this.departmentType == DepartmentType.Review) {
+
+            this.menuItems
+                
+                .push(
+                    {
+                        id: 'reports-collapse',
+                        title: this.translate.instant(translations.layout.sidebar.reports),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        children: [
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.listOfLitigationReviewReport),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.listReviewReport,
+                            },
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.litigationStatisticsReviewReport),
+                                // icon: 'assets/images/icons/sidebar/menu.svg',
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.statisticsReviewReport,
+                            }
+    
+                        ]
+                    },
+                );
+
+
             debugger;
             if(this.isAdmin === "true"){
                 this.menuItems
@@ -85,6 +113,13 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 // icon: 'assets/images/icons/sidebar/menu.svg',
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.reviewerList,
+                            },
+                            {
+                                id: 'Review-Report',
+                                title: this.translate.instant(translations.layout.sidebar.ReviewCountsReport),
+                                // icon: 'assets/images/icons/sidebar/menu.svg',
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.statisticsReviewReport,
                             }
     
                         ]
@@ -104,13 +139,13 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
                             },
-                            {
-                                id: 'claims-link',
-                                title: this.translate.instant(translations.layout.sidebar.modificationList),
-                                // icon: 'assets/images/icons/sidebar/menu.svg',
-                                icon: 'assets/images/icons/sidebar/book.svg',
-                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationModificationRequests,
-                            }
+                            // {
+                            //     id: 'claims-link',
+                            //     title: this.translate.instant(translations.layout.sidebar.modificationList),
+                            //     // icon: 'assets/images/icons/sidebar/menu.svg',
+                            //     icon: 'assets/images/icons/sidebar/book.svg',
+                            //     url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationModificationRequests,
+                            // }
     
                         ]
                     },
@@ -313,12 +348,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.Dashbourd,
                         },
-                        // {
-                        //     id: 'dashbourd-litigationtypes',
-                        //     title: this.translate.instant(translations.layout.sidebar.dashbourdTypes),
-                        //     icon: 'assets/images/icons/sidebar/book.svg',
-                        //     url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.DashbourdTypes,
-                        // },
+                        {
+                            id: 'dashbourd-litigationtypes',
+                            title: this.translate.instant(translations.layout.sidebar.dashbourdTypes),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.DashbourdTypes,
+                        },
                         // {
                         //     id: 'create-user',
                         //     title: this.translate.instant(translations.layout.sidebar.createEmployee),
