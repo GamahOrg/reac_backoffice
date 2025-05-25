@@ -69,6 +69,7 @@
             "assignArbitrationHeadList": "تعيين رئيس هيئة التحكيم",
             "arbitratorRecusalRequests": "طلبات رد المحكمين",
             "reports": "التقارير",
+            "listOfLitigationReviewReport": "تقرير قائمة الدعاوى في مرحلة التدقيق",
             "litigationStatisticsReviewReport": "تقرير أعداد الدعاوى في مرحلة التدقيق",
             "litigationStatisticsReformerReport": "تقرير أعداد الدعاوى في مرحلة الصلح",
             "vacationRequest" : "تقديم طلبات الاجازة" ,
@@ -85,7 +86,8 @@
             "arbitirationFees":"قائمة رسوم التحكيم ",
             "arbitirationsettings":"إعدادات مرحلة التحكيم",
             "dashbourd":" إحصائيات حالات وأنواع الدعوى ",
-            "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى"
+            "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى",
+            "ReviewCountsReport":"تقرير أعداد الدعاوى في مرحلة التدقيق"
         }
     },
     "actions": {
@@ -831,7 +833,38 @@
         "wafiRatio" : "نسبة دعاوى وافي",
         "otherServicesRatio" : "نسبة دعاوى اخري",
         "rentRatio" : "نسبة دعاوى ايجار",
-        "propertiesRatio" : "نسبة دعاوى ملاك"
+        "propertiesRatio" : "نسبة دعاوى ملاك",
+
+        "employeeName" : "اسم المدقق",
+        "createdOn" : "تاريخ تقديم الدعوى",
+        "requestCode" : "رقم الدعوى",
+        "contractAddress" : "عنوان الدعوى",
+        "litigationAmount" : "مبلغ النزاع",
+        "areaName" : "اسم المنطقة",
+        "cityName" : "اسم المدينة",
+        "categoryName" : "نوع الدعوى",
+        "requestStatus" : "حالة الدعوى",
+        "firstParty" : "المدعي",
+        "secondParty" : "المدعي عليه"
+
+
+    },
+
+    "reportsFilter" :{
+        "fromDate" : "من تاريخ",
+        "toDate" : "الي تاريخ",
+        "employeeName" : "اسم المدقق",
+        "requestCode" : "رقم الدعوى",
+        "contractAddress" : "عنوان الدعوى",
+        "litigationAmount" : "مبلغ النزاع",
+        "areaName" : "اسم المنطقة",
+        "cityName" : "اسم المدينة",
+        "categoryName" : "نوع الدعوى",
+        "requestStatus" : "حالة الدعوى",
+        "firstParty" : "المدعي",
+        "secondParty" : "المدعي عليه",
+        "reformers" : "المصلحون",
+        "arbitrators" : "المحكمون"
     },
 
     "LitigationRequestCorrespondences":{

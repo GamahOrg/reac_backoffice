@@ -6,12 +6,10 @@ export const Configuration = {
   environments: {
     development: {
       production: false,
-      baseURL: "https://dev-reac-api.rega.gov.sa",
-      securityURl: "https://dev-reac-sso.rega.gov.sa",
-      refreshTokenURl: "https://dev-reac-sso.rega.gov.sa",
-
-      // securityURl: "http://192.168.194.171:222",
-      // baseURL: "http://192.168.194.171:3333",
+      baseURL: "https://localhost:7156",
+      securityURl: "http://localhost:7144",
+      // securityURl: "http://192.168.194.183:222",
+      // baseURL: "http://192.168.194.183:3333",
     },
     testingAndStaging: {
       production: true,
@@ -26,6 +24,9 @@ export const Configuration = {
     },
   },
   APIs: {
+    SysLitigationRequestAmount: {
+      Get: "/api/SysLitigationRequestAmount/Get",
+   },
     LitigationRequestNote: {
       GetLitigationRequestNotesForBackoffice: "/api/LitigationRequestNote/GetLitigationRequestNotesForBackoffice",
       getNoteById: "/api/LitigationRequestNote/GetLitigationNotes"
@@ -152,8 +153,10 @@ export const Configuration = {
       GetArbitratorsDecisions: "/api/Citizen/GetArbitratorsDecisions",
       GetArbitratorsDecisionsByCitizenId: "/api/Citizen/GetArbitratorsDecisionsByCitizenId",
       GetReformersLookup: "/api/Citizen/GetReformersLookup",
+      GetReformersLookupForFilter: "/api/Citizen/GetReformersLookupForFilter",
       GetArbitratorsFullLookup: "/api/Citizen/GetArbitratorsFullLookup",
       GetArbitratorsLookup: "/api/Citizen/GetArbitratorsLookup",
+      GetArbitratorsLookupForFilter: "/api/Citizen/GetArbitratorsLookupForFilter",
     },
     Reports: {
       GetLitigationStatisticsMainReportResult: "/api/Reports/GetLitigationStatisticsReviewReport",
@@ -171,6 +174,12 @@ export const Configuration = {
     SysArea: {
       Get: "/api/SysArea/Get"
     },
+    SysCategories: {
+      GetLitigationRequestCategories: "/api/SysLitigationRequestCategory/Get"
+    },
+    SysStatuses: {
+      GetLitigationRequestStatus: "/api/SysLitigationRequestStatus/Get"
+    },
     profile: {
       ProcessVacationRequest: "/api/SysVacationRequest/ProcessVacationRequestAsync",
       createVacationRequest: "/api/SysVacationRequest/CreateVacationAsync",
@@ -182,6 +191,8 @@ export const Configuration = {
     usersManagement:{
       CreateEmployee:"/api/SysEmployee/CreateEmployee",
       getAllEmployee:"/api/SysEmployee/List",
+      getAllEmployeeLookup:"/api/SysEmployee/Get",
+      getAllEmployeeByDepartmentTypeLookup:"/api/SysEmployee/GetEmployeeByDepartmentType",
       getAllDepartmentsLookup:"/api/SysDepartment/Get",
       UpdateEmployeeStatus:"/api/SysEmployee/UpdateEmployeeStatus",
       updateEmployee:"/api/SysEmployee/UpdateEmployee",
@@ -217,7 +228,9 @@ export const Configuration = {
     },
     dashbourd:{
       getStatistics:"/api/Reports/GetLitigationStatisticsForAllStages",
-      DetailsForAllStages:"/api/Reports/GetLitigationStatisticsDetailsForAllStages"
+      DetailsForAllStages:"/api/Reports/GetLitigationStatisticsDetailsForAllStages",
+      GetListOfLitigationReviewReport:"/api/Reports/GetListOfLitigationReviewReport",
+      GetLitigationStatisticsReviewReports:"/api/Reports/GetLitigationStatisticsReviewReport",
     },
   },
   modules: {
@@ -291,7 +304,9 @@ export const Configuration = {
     reports: {
       statisticsReview: 'statistics-review',
       statisticsReformer: 'statistics-reformer',
-      statisticsArbitration: 'statistics-arbitration'
+      statisticsArbitration: 'statistics-arbitration',
+      listReviewReport: 'list-review-report',
+      statisticsReviewReport: 'statistics-review-report',
     },
     profile: {
       vacationRequest: 'vacation-request',

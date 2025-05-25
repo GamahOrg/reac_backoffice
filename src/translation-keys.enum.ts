@@ -107,6 +107,7 @@ export namespace translations {
             reports = 'layout.sidebar.reports',
             litigationStatisticsReviewReport = 'layout.sidebar.litigationStatisticsReviewReport',
             litigationStatisticsReformerReport = 'layout.sidebar.litigationStatisticsReformerReport',
+            listOfLitigationReviewReport = 'layout.sidebar.listOfLitigationReviewReport',
             vacationRequest = 'layout.sidebar.vacationRequest',
             vacationRequestReply = 'layout.sidebar.vacationRequestReply',
             employeeList='layout.sidebar.employeeList',
@@ -123,6 +124,7 @@ export namespace translations {
             arbitirationsettings='layout.sidebar.arbitirationsettings',
             dashbourd='layout.sidebar.dashbourd',
             dashbourdTypes='layout.sidebar.dashbourdTypes',
+            ReviewCountsReport='layout.sidebar.ReviewCountsReport',
         }
     }
 
@@ -887,6 +889,37 @@ export namespace translations {
         otherServicesRatio = "reports.otherServicesRatio",
         rentRatio = "reports.rentRatio",
         propertiesRatio = "reports.propertiesRatio",
+
+        employeeName = "reports.employeeName",
+        employeeId = "reports.employeeId",
+        createdOn = "reports.createdOn",
+        requestCode = "reports.requestCode",
+        contractAddress = "reports.contractAddress",
+        litigationAmount = "reports.litigationAmount",
+        areaName = "reports.areaName",
+        cityName = "reports.cityName",
+        categoryName = "reports.categoryName",
+        requestStatus = "reports.requestStatus",
+        firstParty = "reports.firstParty",
+        secondParty = "reports.secondParty",
+    }
+
+    export enum ReportsFilter{
+        fromDate = "reportsFilter.fromDate",
+        toDate = "reportsFilter.toDate",
+        requestCode = "reportsFilter.requestCode",
+        requestType = "reportsFilter.requestType",
+        requestStatus = "reportsFilter.requestStatus",
+        areaName = "reportsFilter.areaName",
+        cityName = "reportsFilter.cityName",
+        categoryName = "reportsFilter.categoryName",
+        firstParty = "reportsFilter.firstParty",
+        secondParty = "reportsFilter.secondParty",
+        employeeName = "reportsFilter.employeeName",
+        reformers = "reportsFilter.reformers",
+        arbitrators = "reportsFilter.arbitrators",
+        litigationAmount = "reportsFilter.litigationAmount",
+        
     }
 
     export enum LitigationRequestCorrespondences{

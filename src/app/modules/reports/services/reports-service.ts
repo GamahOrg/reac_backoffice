@@ -6,6 +6,8 @@ import { Pagination } from '@app/shared/models/pagination.model';
 import { Observable } from 'rxjs';
 import { GetLitigationStatisticsMainReportResult } from '../models/litigation-statistics-review/litigation-statistics-review.model';
 import { ReportFilter } from '../models/report-filter-request/report-filter-request.model';
+import { DashbourdRequestDto } from '../models/litigation-dashbourd-review/DashbourdRequestDto';
+import { ListReviewReportModel } from '../models/list-review-report/list-review-report.model';
 
 @Injectable()
 export class ReportsService {
@@ -24,4 +26,13 @@ export class ReportsService {
     
     return this._httpClient.post<BaseResponse<GetLitigationStatisticsMainReportResult[]>>(Configuration.APIs.Reports.GetLitigationStatisticsArbitrationReport, input)
   }
+
+  getAllLitigationStatistics(requestDto:any): Observable<BaseResponse<any>> {
+    return this._httpClient.post<BaseResponse<any>>(`${Configuration.APIs.dashbourd.GetLitigationStatisticsReviewReports}`,requestDto)
+  }
+
+  getListOfLitigationReviewReport(requestDto:any): Observable<BaseResponse<Pagination<ListReviewReportModel[]>>> {
+    return this._httpClient.post<BaseResponse<Pagination<ListReviewReportModel[]>>>(`${Configuration.APIs.dashbourd.GetListOfLitigationReviewReport}`,requestDto)
+  }
+
 }

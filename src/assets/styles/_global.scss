@@ -438,6 +438,49 @@ details {
     }
 }
 
+/******** controls ********/
+
+.ng-dropdown-panel {
+    right: 50% !important;
+    translate: 50% 0 !important;
+    top: 110% !important;
+
+    width: 100% !important;
+    border: 1px solid #ddd;
+    padding: 8px !important;
+}
+
+.ng-select-container {
+    align-items: center;
+
+    .ng-value-container {
+        gap: 8px;
+    }
+
+    .ng-clear-wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+
+        background-color: var(--danger);
+        border-radius: 50%;
+        margin-inline-end: 17px;
+
+        width: 12px !important;
+        height: 12px;
+
+        .ng-clear {
+            color: var(--white);
+        }
+    }
+
+    .ng-value-icon {
+        margin-inline-end: 5px;
+        scale: 1.3;
+        display: inline-block;
+    }
+}
+
 // date time picker
 .cdk-overlay-container {
     z-index: 1100;

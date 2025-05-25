@@ -10,6 +10,10 @@ import { PaginationService } from './services/pagination/pagination.service';
 // import { ModalService } from '@app/shared/services/modal/modal.service';
 // import { ModalComponent } from './components/modal/modal.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterComponent } from './components/filter/components/filter/filter.component';
+import { LookupsService } from './services/lookups/lookups.service';
+import { NgSelectModule } from '@ng-select/ng-select';
 // import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
 
 export const MY_MOMENT_FORMATS = {
@@ -23,15 +27,23 @@ export const MY_MOMENT_FORMATS = {
   };
 
 @NgModule({
-    declarations: [],
+    declarations: [
+        FilterComponent
+    ],
     imports: [
         CommonModule,
         NgbModalModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgSelectModule,
+        TranslateModule
         // ModalComponent
         // AngularMaterialModule
     ],
     exports: [
         TranslateModule,
+        FormsModule,
+        FilterComponent,
         // AngularMaterialModule
     ],
     providers: [
@@ -40,6 +52,7 @@ export const MY_MOMENT_FORMATS = {
         FileUploaderService,
         BreadcrumbService,
         PaginationService,
+        LookupsService
         // ModalService
     ],
 })

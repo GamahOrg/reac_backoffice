@@ -80,7 +80,8 @@
             "arbitirationFees":"قائمة رسوم التحكيم ",
             "arbitirationsettings":"إعدادات مرحلة التحكيم",
             "dashbourd":" إحصائيات حالات وأنواع الدعوى ",
-            "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى"
+            "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى",
+            "ReviewCountsReport":"تقرير أعداد الدعاوى في مرحلة التدقيق"
         }
     },
     "actions": {
