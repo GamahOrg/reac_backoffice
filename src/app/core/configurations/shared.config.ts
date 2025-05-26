@@ -6,10 +6,8 @@ export const Configuration = {
   environments: {
     development: {
       production: false,
-      baseURL: "https://localhost:7156",
-      securityURl: "http://localhost:7144",
-      // securityURl: "http://192.168.194.183:222",
-      // baseURL: "http://192.168.194.183:3333",
+            baseURL: "https://dev-reac-api.rega.gov.sa",
+            securityURl: "https://dev-reac-sso.rega.gov.sa",
     },
     testingAndStaging: {
       production: true,
