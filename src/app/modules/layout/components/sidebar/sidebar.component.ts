@@ -126,7 +126,6 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                     },
                 );
             }else{
-
                 this.menuItems.push(
                     {
                         id: 'review-collapse',
