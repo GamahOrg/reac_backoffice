@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
-import { Pagination } from '@app/shared/models/pagination.model';
+import { pagination, Pagination } from '@app/shared/models/pagination.model';
 import { LitigationRequestMircoDto } from '../../models/litigation-request-mirco-dto';
 import { Router } from '@angular/router';
 import { PaginationService } from '@app/shared/services/pagination/pagination.service';
@@ -18,12 +18,14 @@ import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.se
 export class RequestToExtendArbitrationPeriodListComponent extends BaseComponent implements OnInit {
     reqList: Pagination<LitigationRequestMircoDto[]> = {} as Pagination<LitigationRequestMircoDto[]>;
     subscriptions: Subscription[] = [];
-    newPageNo: number = 1;
-    pagintationData = {
-        currentPage: 1,
-        pageSize: 10,
-        totalCount: 0,
-    }
+  newPageNo: number = 1;
+  pageCount: number = 0;
+  pagintationData: pagination = {
+    currentPage: 1,
+    // pageCount: 0,
+    pageSize: 10,
+    totalCount: 0,
+  };
     detailsRequestUrl: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.requestToExtendArbitrationPeriodDetails}`
 
     constructor(

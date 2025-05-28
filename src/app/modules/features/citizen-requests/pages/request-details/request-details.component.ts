@@ -224,6 +224,14 @@ export class RequestDetailsComponent extends BaseComponent implements OnInit {
         this.execute(modal, citizenRequestActionModel);
     }
 
+    onSendToPayEditFees(modal: any) {
+        let citizenRequestActionModel = {
+            citizenRequestAction: CitizenRequestAction.SendToPayEditFees,
+            requestId: this.citizenRequestFullDataDto?.id
+        } as CitizenRequestActionModel;
+
+        this.execute(modal, citizenRequestActionModel);
+    }
 
     onAccept(modal: any) {
         let citizenRequestActionModel = {

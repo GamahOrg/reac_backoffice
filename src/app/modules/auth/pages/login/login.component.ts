@@ -84,7 +84,7 @@ export class LoginComponent extends BaseComponent {
                 else if(res.data?.departmentType == DepartmentType.SystemManagement){
                   app.navigateToHomeModule()
                 }
-              }, 9000, this, res);
+              }, 18000, this, res);
 
 
 

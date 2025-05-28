@@ -340,7 +340,7 @@ export class LitigationRequestForArbitratorSelectionDurationDetailsComponent ext
     forkJoin(
       {
         GetLitigationRequestForAddArbitratorSelectionDuration : this._determinearbitratorperiodService.getLitigationRequestForAddArbitratorSelectionDurationByRequestId(requestId),
-        GetSelectionDurationValue: this._sysSettingsService.GetSystemSettingsByKey("Configurable.ArbitratorsCountSelectDuration")
+        // GetSelectionDurationValue: this._sysSettingsService.GetSystemSettingsByKey("Configurable.ArbitratorsCountSelectDuration")
       }
     ).pipe(takeUntil(this.destroy$)).subscribe(res => {
        debugger;
@@ -350,11 +350,11 @@ export class LitigationRequestForArbitratorSelectionDurationDetailsComponent ext
         this.fillfirstPartyData()
         this.fillsecondPartyData()
       }
-      if(res.GetSelectionDurationValue.data){
-        this.sysSettings = res.GetSelectionDurationValue.data as SysSettings
-        this.form.controls.arbitratorSelectionDuration.setValue(parseInt(this.sysSettings.value))
+      // if(res.GetSelectionDurationValue.data){
+      //   this.sysSettings = res.GetSelectionDurationValue.data as SysSettings
+      //   this.form.controls.arbitratorSelectionDuration.setValue(parseInt(this.sysSettings.value))
 
-      }
+      // }
     }
     )
   };

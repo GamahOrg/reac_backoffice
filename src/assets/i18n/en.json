@@ -115,7 +115,8 @@
         "startSession": "بدأ الجلسة",
         "procedures": "الاجراءات",
         "assign": "تعيين",
-        "logout": "تسجيل خروج"
+        "logout": "تسجيل خروج",
+        "sendToPayEditFees":"ارسال الطلب لدفع رسوم التعديل"
     },
     "tables": {
         "from": "من",
@@ -501,7 +502,9 @@
         "fullName": "الاسم بالكامل",
         "mobile": "الجوال",
         "email": "البريد الإلكتروني",
-        "requestsCount": "عدد الطلبات",
+        "requestsCount": "عدد الطلبات الحاليه",
+        "allrequestsCount": " عدد الطلبات",
+        "finishedrequestsCount": "عدد الطلبات المنتهية",
         "reformerStatus": "الحالة",
         "reformerStatusDate": "التاريخ",
         "arbitratorStatus": "الحالة",

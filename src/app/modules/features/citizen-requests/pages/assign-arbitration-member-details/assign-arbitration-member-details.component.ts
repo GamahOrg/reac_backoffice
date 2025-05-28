@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DeterminearbitratorperiodService } from '../../services/determinearbitratorperiod.service';
 import { ToastrNotificationService } from '@app/core/services/toastr-notification/toastr-notification.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LawsuitDetailsItem } from '@app/modules/features/lawsuits/models/lawsuit-details.model';
 import { Configuration } from '@app/core/configurations/shared.config';
 import { CitizenService } from '../../services/citizen.service';
@@ -16,7 +16,7 @@ import { takeUntil } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -31,7 +31,7 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
     displayedColumns: string[] = ['plaintiffPriority', 'defendantPriority', 'identityNumber', 'fullName','requestsCount',
         'experienceYears','arbitratorClass','mobile','email','status','brief'];
   dataSource :any;
-
+  searchForm!: FormGroup;
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
     constructor(private activatedRoute: ActivatedRoute,
         private _translate: TranslateService,
@@ -55,6 +55,7 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
     }
 
     ngOnInit() {
+        this.initializeForm();
         this.setBreadcrumb()
 
         this._activatedRoute.params.pipe(takeUntil(this.destroy$)).subscribe((res: Params) => {
@@ -67,6 +68,13 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
         this.getArbitratorsFullLookup();
     }
 
+    initializeForm(): void {
+        this.searchForm = this._formBuilder.group({
+          fullName: [''],
+          area: [''],
+          arbitratorClass: [''],
+        });
+      }
     private setBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
             { label: this._translate.instant(this.translations.layout.sidebar.home), link: '/' },
@@ -333,10 +341,17 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
 
     citizens: CitizenFullLookupArbirator[] = [];
     getArbitratorsFullLookup() {
-        if (this.requestId) this.citizenService.getArbitratorsFullLookup('', this.requestId).subscribe(res => {
+        const searchCriteria = this.searchForm.value;
+        console.log('Search criteria:', searchCriteria);
+        if (this.requestId) this.citizenService.getArbitratorsFullLookup('', this.requestId,searchCriteria).subscribe(res => {
             if (res.data)
                 this.citizens = res.data;
         })
+    }
+
+    resetFilter(){
+        this.searchForm.reset();
+        this.getArbitratorsFullLookup()
     }
     selectedBrief?: string | null = '';
     open(content: TemplateRef<any>, brief: string | null) {
@@ -357,7 +372,8 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
 
     }
 
-    AddLitigationRequestArbitratorsNominationList() {
+
+    showConfirmAddition(): void {
         if (this.selectedCitizens.length == 0) {
             this.toastrNotificationService.showError("لابد من إضافة أعضاء هيئة المحكمين")
             return;
@@ -367,6 +383,31 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
             this.toastrNotificationService.showError(`يجب اختيار ${this.litigationRequestForReportDto?.listCount} أعضاء هيئة المحكمين`)
             return;
         }
+      Swal.fire({
+        title: ` هل أنت متأكد من إرسال طلب الترشيح؟`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'نعم, بالتاكيد',
+        cancelButtonText: 'الغاء',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // If confirmed, toggle the status
+          this.AddLitigationRequestArbitratorsNominationList();
+        }
+      });
+    }
+
+    AddLitigationRequestArbitratorsNominationList() {
+        // if (this.selectedCitizens.length == 0) {
+        //     this.toastrNotificationService.showError("لابد من إضافة أعضاء هيئة المحكمين")
+        //     return;
+        // }
+
+        // if (this.selectedCitizens.length != this.litigationRequestForReportDto?.listCount) {
+        //     this.toastrNotificationService.showError(`يجب اختيار ${this.litigationRequestForReportDto?.listCount} أعضاء هيئة المحكمين`)
+        //     return;
+        // }
 
         this._determinearbitratorperiodService.AddLitigationRequestArbitratorsNominationList({
             requestId: this.litigationRequestForReportDto?.litigationRequestShortDto?.id,
