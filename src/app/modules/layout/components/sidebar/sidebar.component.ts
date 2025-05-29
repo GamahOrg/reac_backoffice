@@ -64,8 +64,8 @@ export class SidebarComponent extends BaseComponent implements OnInit {
 
         if (this.departmentType == DepartmentType.Review) {
 
+            // Reports Section
             this.menuItems
-                
                 .push(
                     {
                         id: 'reports-collapse',
@@ -81,11 +81,16 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             {
                                 id: 'claims-link',
                                 title: this.translate.instant(translations.layout.sidebar.litigationStatisticsReviewReport),
-                                // icon: 'assets/images/icons/sidebar/menu.svg',
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.statisticsReviewReport,
-                            }
-    
+                            },
+                            {
+                                id: 'Reviewers-Report',
+                                title: this.translate.instant(translations.layout.sidebar.ReviewersReport),
+                                // icon: 'assets/images/icons/sidebar/menu.svg',
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.ReviewersReport,
+                            },
                         ]
                     },
                 );
@@ -113,19 +118,15 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 // icon: 'assets/images/icons/sidebar/menu.svg',
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.reviewerList,
-                            },
-                            {
-                                id: 'Review-Report',
-                                title: this.translate.instant(translations.layout.sidebar.ReviewCountsReport),
-                                // icon: 'assets/images/icons/sidebar/menu.svg',
-                                icon: 'assets/images/icons/sidebar/book.svg',
-                                url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.statisticsReviewReport,
                             }
     
+                           
                         ]
                     },
+             
                 );
             }else{
+
                 this.menuItems.push(
                     {
                         id: 'review-collapse',
@@ -154,19 +155,15 @@ export class SidebarComponent extends BaseComponent implements OnInit {
             
             
         } else if (this.departmentType == DepartmentType.Reconciliation) {
+            
+            
             this.menuItems.push(
                 {
                     id: 'reformation-collapse',
                     title: this.translate.instant(translations.layout.sidebar.reformation),
                     icon: 'assets/images/icons/home/hands.svg',
                     children: [
-                        // {
-                        //     id: 'claims-link',
-                        //     title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
-                        //     // icon: 'assets/images/icons/sidebar/menu.svg',
-                        //     icon: 'assets/images/icons/sidebar/book.svg',
-                        //     url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.AuditngListReconciliation,
-                        // },
+                        
                         {
                             id: 'stop-and-release-reformer',
                             title: this.translate.instant(translations.layout.sidebar.reformationLawsuitsList),
@@ -221,6 +218,33 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                         // },
 
                     ]
+                },
+                {
+                        id: 'reports-collapse',
+                        title: this.translate.instant(translations.layout.sidebar.reports),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        children: [
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.listOfLitigationReformerReport),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.listReformerReport,
+                            },
+                            {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.litigationStatisticsReformerReport),
+                            // icon: 'assets/images/icons/sidebar/menu.svg',
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.StatiscsReformerReport,
+                        },
+                        {
+                            id: 'Reformers-Report',
+                            title: this.translate.instant(translations.layout.sidebar.ReformersReport),
+                            // icon: 'assets/images/icons/sidebar/menu.svg',
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.ReformersReport,
+                        },
+                        ]
                 },
             );
         } else if (this.departmentType == DepartmentType.Arbitration) {
@@ -332,6 +356,36 @@ export class SidebarComponent extends BaseComponent implements OnInit {
 
                     ]
                 },
+                {
+                        id: 'reports-collapse',
+                        title: this.translate.instant(translations.layout.sidebar.reports),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        children: [
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.listOfLitigationArbitratorReport),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.listArbitratorReport,
+                            },
+                            {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.litigationStatisticsِArbitirationReport),
+                            // icon: 'assets/images/icons/sidebar/menu.svg',
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.StatiscsArbitirationReport,
+                        },
+                        {
+                            id: 'Arbitrations-Report',
+                            title: this.translate.instant(translations.layout.sidebar.ArbitrationsReport),
+                            // icon: 'assets/images/icons/sidebar/menu.svg',
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.ArbitratorsReport,
+                        },
+                        ]
+                }
+                
+                
+
             );
         }else if (this.departmentType == DepartmentType.SystemManagement){
             // Management Section
@@ -437,6 +491,26 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                   
                     ]
                 },
+                {
+                        id: 'reports-collapse',
+                        title: this.translate.instant(translations.layout.sidebar.reports),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        children: [
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.listOfLitigationForAdminReport),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.ListOfLitigationForAdminReport,
+                            },
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.allStagesStatisiticsForAdminReport),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.AllStagesStatisiticsForAdminReport,
+                            }
+    
+                        ]
+                    },
             );
 
         }

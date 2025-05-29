@@ -32,6 +32,10 @@ export class StatisticsReviewReportComponent  extends BaseComponent implements O
       litigationRequestCategoryIds: true,
       litigationRequestStatusIds: false,
       litigationRequestAmountId: true,
+      litigationRequestStageIds: false,
+      reviewerName: false,
+      reviewerStatus: false,
+      
     };
   
     onFilterChange(values: any) {
@@ -48,7 +52,7 @@ export class StatisticsReviewReportComponent  extends BaseComponent implements O
         litigationRequestAmountId: values.litigationRequestAmountId,
       };
   
-      this._reportsService.getAllLitigationStatistics(request).subscribe(
+      this._reportsService.getAllLitigationReviewStatistics(request).subscribe(
         (response: any) => {
           this.LitigationStatisticsData = response.data;
           this.fetchLitigationStatistics();
@@ -169,7 +173,7 @@ export class StatisticsReviewReportComponent  extends BaseComponent implements O
 
   filterDataByDateRange(): void {
     const request: DashbourdRequestDto = {isAdmin: this.isAdmin};
-    this._reportsService.getAllLitigationStatistics(request).subscribe(
+    this._reportsService.getAllLitigationReviewStatistics(request).subscribe(
       (response: any) => {
         this.LitigationStatisticsData = response.data;
         this.fetchLitigationStatistics();

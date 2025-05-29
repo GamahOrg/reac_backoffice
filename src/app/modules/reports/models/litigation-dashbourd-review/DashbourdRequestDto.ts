@@ -5,9 +5,12 @@ export interface DashbourdRequestDto {
     areaIds?: string[] | null; 
     citiesIds?: string[] | null; 
     employeeIds?: string[] | null; 
+    reformersIds?: string[] | null; 
+    arbitratorsIds?: string[] | null; 
     litigationRequestCategoryIds?: string[] | null;  
     isAdmin?: boolean | null;
     litigationRequestStatusIds?: string[] | null; 
+    litigationRequestStageIds?: string[] | null; 
     litigationRequestAmountId?: string | null;  
     skip?: number;
     take?: number;
@@ -27,3 +30,12 @@ export interface DashbourdRequestDto {
             ReconciliationAndArbitration = 3
         
         }
+
+        export interface FilterRequestDto {
+            reviewerName?: string | null;  
+            reviewerStatus?: string | null;  
+            isAdmin?: boolean | null;
+        
+            skip?: number;
+            take?: number;
+            }

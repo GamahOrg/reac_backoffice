@@ -229,7 +229,17 @@ export const Configuration = {
       getStatistics:"/api/Reports/GetLitigationStatisticsForAllStages",
       DetailsForAllStages:"/api/Reports/GetLitigationStatisticsDetailsForAllStages",
       GetListOfLitigationReviewReport:"/api/Reports/GetListOfLitigationReviewReport",
+      GetListOfLitigationReformerReport:"/api/Reports/GetListOfLitigationReformerReport",
+      GetListOfLitigationArbitrationReport:"/api/Reports/GetListOfLitigationArbitrationReport",
+      GetListOfLitigationForAdminReport:"/api/Reports/GetListOfLitigationForAdminReport",
       GetLitigationStatisticsReviewReports:"/api/Reports/GetLitigationStatisticsReviewReport",
+      GetLitigationStatisticsReformerReports:"/api/Reports/GetLitigationStatisticsReconciliationReport",
+      GetLitigationStatisticsArbitrationReports:"/api/Reports/GetLitigationStatisticsArbitrationsReport",
+      GetLitigationStatisticsForAdminReport:"/api/Reports/GetLitigationStatisticsForAdminReport",
+      GetReviewersReport:"/api/Reports/GetReviewersReport",
+      GetReformersReport:"/api/Reports/GetReformersReport",
+      GetArbitratorsReport:"/api/Reports/GetArbitratorsReport",
+
     },
   },
   modules: {
@@ -305,7 +315,14 @@ export const Configuration = {
       statisticsReformer: 'statistics-reformer',
       statisticsArbitration: 'statistics-arbitration',
       listReviewReport: 'list-review-report',
+      listReformerReport: 'list-reformer-report',
+      listArbitratorReport: 'list-arbitrator-report',
       statisticsReviewReport: 'statistics-review-report',
+      StatiscsReformerReport: 'statistics-reformer-report',
+      StatiscsArbitirationReport: 'statistics-arbitration-report',
+      ReviewersReport: 'reviewers-report',
+      ReformersReport: 'reformers-report',
+      ArbitratorsReport: 'arbitrators-report',
     },
     profile: {
       vacationRequest: 'vacation-request',
@@ -327,7 +344,10 @@ export const Configuration = {
       TermsSettings:'terms-settings',
       HomePage:'home',
       Dashbourd:'dashbourd',
-      DashbourdTypes:'dashbourd-litigationtypes'
+      DashbourdTypes:'dashbourd-litigationtypes',
+
+      ListOfLitigationForAdminReport:'list-admin-report',
+      AllStagesStatisiticsForAdminReport:'all-stages-statistics',
     }
   },
   validators: {

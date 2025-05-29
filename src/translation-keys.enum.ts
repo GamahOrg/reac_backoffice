@@ -107,7 +107,12 @@ export namespace translations {
             reports = 'layout.sidebar.reports',
             litigationStatisticsReviewReport = 'layout.sidebar.litigationStatisticsReviewReport',
             litigationStatisticsReformerReport = 'layout.sidebar.litigationStatisticsReformerReport',
+            litigationStatisticsِArbitirationReport = 'layout.sidebar.litigationStatisticsِArbitirationReport',
             listOfLitigationReviewReport = 'layout.sidebar.listOfLitigationReviewReport',
+            listOfLitigationReformerReport = 'layout.sidebar.listOfLitigationReformerReport',
+            listOfLitigationArbitratorReport = 'layout.sidebar.listOfLitigationArbitratorReport',
+            listOfLitigationForAdminReport = 'layout.sidebar.listOfLitigationForAdminReport',
+            allStagesStatisiticsForAdminReport = 'layout.sidebar.allStagesStatisiticsForAdminReport',
             vacationRequest = 'layout.sidebar.vacationRequest',
             vacationRequestReply = 'layout.sidebar.vacationRequestReply',
             employeeList='layout.sidebar.employeeList',
@@ -125,6 +130,9 @@ export namespace translations {
             dashbourd='layout.sidebar.dashbourd',
             dashbourdTypes='layout.sidebar.dashbourdTypes',
             ReviewCountsReport='layout.sidebar.ReviewCountsReport',
+            ReviewersReport='layout.sidebar.ReviewersReport',
+            ReformersReport='layout.sidebar.ReformersReport',
+            ArbitrationsReport='layout.sidebar.ArbitrationsReport',
         }
     }
 
@@ -873,6 +881,7 @@ export namespace translations {
     }
 
     export enum Reports{
+        requestStage = "reports.requestStage",
         totalLitigationCount = "reports.totalLitigationCount",
         notFinishedCount = "reports.notFinishedCount",
         finishedCount = "reports.finishedCount",
@@ -891,6 +900,9 @@ export namespace translations {
         propertiesRatio = "reports.propertiesRatio",
 
         employeeName = "reports.employeeName",
+        reformerName = "reports.reformerName",
+        arbitratorChairmanName = "reports.arbitratorChairmanName",
+        arbitratorName = "reports.arbitratorName",
         employeeId = "reports.employeeId",
         createdOn = "reports.createdOn",
         requestCode = "reports.requestCode",
@@ -902,14 +914,20 @@ export namespace translations {
         requestStatus = "reports.requestStatus",
         firstParty = "reports.firstParty",
         secondParty = "reports.secondParty",
+        totalReviewDueDateCount="reports.totalReviewDueDateCount",
+        totalReviewDueDateRatio = "reports.totalReviewDueDateRatio",
+        employeeStatus = "reports.employeeStatus"
     }
 
     export enum ReportsFilter{
         fromDate = "reportsFilter.fromDate",
         toDate = "reportsFilter.toDate",
         requestCode = "reportsFilter.requestCode",
+        reviewerName = "reportsFilter.reviewerName",
+        reviewerStatus = "reportsFilter.reviewerStatus",
         requestType = "reportsFilter.requestType",
         requestStatus = "reportsFilter.requestStatus",
+        requestStage = "reportsFilter.requestStage",
         areaName = "reportsFilter.areaName",
         cityName = "reportsFilter.cityName",
         categoryName = "reportsFilter.categoryName",
@@ -919,6 +937,7 @@ export namespace translations {
         reformers = "reportsFilter.reformers",
         arbitrators = "reportsFilter.arbitrators",
         litigationAmount = "reportsFilter.litigationAmount",
+        ExperienceYears = "reportsFilter.experienceYears",
         
     }
 

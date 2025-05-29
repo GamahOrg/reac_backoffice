@@ -31,19 +31,6 @@ export class StatisticsReviewComponent extends BaseComponent implements OnInit {
     // this.getReportData();
   }
 
-  getReportData(){
-    debugger;
-  //   this._reportsService.GetLitigationStatisticsMainReportResult(this.input)
-  //   .subscribe({
-  //     next: (res) => {
-  //       debugger;
-  //         console.log(res);
-
-  //         this.reportData = res?.data?.[0];
-
-  //     }
-  // })
-  }
 
   
 
