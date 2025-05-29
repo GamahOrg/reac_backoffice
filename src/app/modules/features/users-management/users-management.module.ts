@@ -32,6 +32,9 @@ import { StatisticDashbourdService } from './services/statisticDashbourdService'
 import { EditUserComponent } from './components/users-list/edit-user/edit-user.component';
 import { TypesStatusDashbourdComponent } from './components/statistic-dashbourd/types-status-dashbourd/types-status-dashbourd.component';
 import { LitigationStatisticsChartComponent } from './components/statistic-dashbourd/litigation-statistics-chart/litigation-statistics-chart.component';
+import { ReportsService } from '@app/modules/reports/services/reports-service';
+import { ListAdminReportComponent } from './components/list-dashboard/list-admin-report.component';
+import { AllStagesStatisticsComponent } from './components/statistic-dashbourd/all-stages-statistics/all-stages-statistics/all-stages-statistics.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,9 @@ import { LitigationStatisticsChartComponent } from './components/statistic-dashb
     ConfigratoinReviewSettingsComponent,
     StatisticDashbourdComponent,
     LitigationStatisticsChartComponent,
-    TypesStatusDashbourdComponent
+    TypesStatusDashbourdComponent,
+    ListAdminReportComponent,
+    AllStagesStatisticsComponent
   ],
   imports: [
     CommonModule,
@@ -71,6 +76,7 @@ import { LitigationStatisticsChartComponent } from './components/statistic-dashb
      ArbitirationFeesService,
      ReviewSettingService,
      StatisticDashbourdService,
+     ReportsService,
   { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }
 
   ]

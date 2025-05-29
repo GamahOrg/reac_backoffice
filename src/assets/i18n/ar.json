@@ -70,8 +70,13 @@
             "arbitratorRecusalRequests": "طلبات رد المحكمين",
             "reports": "التقارير",
             "listOfLitigationReviewReport": "تقرير قائمة الدعاوى في مرحلة التدقيق",
+            "listOfLitigationReformerReport": "تقرير قائمة الدعاوى في مرحلة الصلح",
+            "listOfLitigationArbitratorReport": "تقرير قائمة الدعاوى في مرحلة التحكيم",
+            "listOfLitigationForAdminReport": "تقرير قائمة الدعاوى",
+            "allStagesStatisiticsForAdminReport": "تقرير أعداد الدعاوى",
             "litigationStatisticsReviewReport": "تقرير أعداد الدعاوى في مرحلة التدقيق",
             "litigationStatisticsReformerReport": "تقرير أعداد الدعاوى في مرحلة الصلح",
+            "litigationStatisticsِArbitirationReport": "تقرير أعداد الدعاوى في مرحلة التحكيم",
             "vacationRequest" : "تقديم طلبات الاجازة" ,
             "vacationRequestReply" : "طلبات الاجازة المستقبلة" ,
             "employeeList": "قائمة الموظفين",
@@ -87,7 +92,11 @@
             "arbitirationsettings":"إعدادات مرحلة التحكيم",
             "dashbourd":" إحصائيات حالات وأنواع الدعوى ",
             "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى",
-            "ReviewCountsReport":"تقرير أعداد الدعاوى في مرحلة التدقيق"
+            "ReviewCountsReport":"تقرير أعداد الدعاوى في مرحلة التدقيق",
+            "ReviewersReport":"تقرير المدقق",
+            "ReformersReport":"تقرير المصلح",
+            "ArbitrationsReport":"تقرير المحكم"
+
         }
     },
     "actions": {
@@ -818,6 +827,7 @@
     },
 
     "reports":{
+        "requestStage": "الأدارة",
         "totalLitigationCount" : "عدد الدعاوى الكلية",
         "notFinishedCount" : "عدد الدعاوى الحالية",
         "finishedCount" : "عدد الدعاوى المنتهية",
@@ -827,6 +837,8 @@
         "rentCount" : "عدد دعاوى ايجار",
         "propertiesCount" : "عدد دعاوى ملاك",
 
+        "totalReviewDueDateCount" : "نسبة الدعاوى المتأخرة",
+        "totalReviewDueDateRatio" : "نسبة الدعاوى المتأخرة",
         "notFinishedRatio" : "نسبة الدعاوى الحالية",
         "finishedRatio" : "نسبة الدعاوى المنتهية",
         "realEstateBrokerageRatio" : "نسبة دعاوى وساطة",
@@ -836,6 +848,9 @@
         "propertiesRatio" : "نسبة دعاوى ملاك",
 
         "employeeName" : "اسم المدقق",
+        "reformerName" : "اسم المصلح",
+        "arbitratorName" : "اسم المحكم",
+        "arbitratorChairmanName" : "اسم رئيس هيئة التحكيم",
         "createdOn" : "تاريخ تقديم الدعوى",
         "requestCode" : "رقم الدعوى",
         "contractAddress" : "عنوان الدعوى",
@@ -845,8 +860,9 @@
         "categoryName" : "نوع الدعوى",
         "requestStatus" : "حالة الدعوى",
         "firstParty" : "المدعي",
-        "secondParty" : "المدعي عليه"
-
+        "secondParty" : "المدعي عليه",
+        "employeeStatus": "الحالة "
+ 
 
     },
 
@@ -855,6 +871,7 @@
         "toDate" : "الي تاريخ",
         "employeeName" : "اسم المدقق",
         "requestCode" : "رقم الدعوى",
+        "requestStage" : "الأدارة",
         "contractAddress" : "عنوان الدعوى",
         "litigationAmount" : "مبلغ النزاع",
         "areaName" : "اسم المنطقة",
@@ -864,7 +881,10 @@
         "firstParty" : "المدعي",
         "secondParty" : "المدعي عليه",
         "reformers" : "المصلحون",
-        "arbitrators" : "المحكمون"
+        "arbitrators" : "المحكمون",
+        "reviewerName":"اسم المدقق",
+        "reviewerStatus":"حالة المدقق",
+        "experienceYears":"عدد سنوات الخبرة"
     },
 
     "LitigationRequestCorrespondences":{

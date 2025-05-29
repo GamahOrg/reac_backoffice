@@ -13,6 +13,8 @@ import { LookupsService } from '@app/shared/services/lookups/lookups.service';
 import { take, takeUntil } from 'rxjs';
 
 export interface FilterVisibility {
+  reviewerName: boolean;
+  reviewerStatus: boolean;
   requestCode: boolean;
   employee: boolean;
   reformers: boolean;
@@ -24,6 +26,8 @@ export interface FilterVisibility {
   litigationRequestCategoryIds: boolean;
   litigationRequestStatusIds: boolean;
   litigationRequestAmountId: boolean;
+  litigationRequestStageIds: boolean;
+  experienceYears?: boolean;
 }
 
 @Component({
@@ -44,7 +48,11 @@ export class FilterComponent extends BaseComponent implements OnInit {
     litigationRequestCategoryIds: false,
     litigationRequestStatusIds: false,
     litigationRequestAmountId: false,
+    litigationRequestStageIds: false,
 
+    reviewerName: false,
+    reviewerStatus: false,
+    experienceYears: false
   };
   selectedArea!: AreaResponse
   areaOptions: AreaResponse[] = [];
@@ -54,11 +62,19 @@ export class FilterComponent extends BaseComponent implements OnInit {
   litigationRequestAmountOptions: LitigationAmountResponse[] = [];
   litigationRequestStatusOptions: LitigationStatusResponse[] = [];
   employeeOptions: EmployeeLookupResponse[] = [];
+  litigationStageOptions: { id: number; name: string }[] = [
+    { id: 1, name: 'التدقيق' },
+    { id: 2, name: 'الصلح' }, 
+    { id: 3, name: 'التحكيم' }, 
+  ];
   reformersOptions: CitizenReformer[] = [];
   arbitratorsOptions: ArbitratorsLookupDto[] = [];
   @Output() filterChange = new EventEmitter<any>();
 
   filterForm: FormGroup = this.fb.group({
+    reviewerName: [null], // string
+    reviewerStatus: [null],
+    experienceYears: [null], // string
     requestCode: [null], // string
     fromDate: [null], // Date or string
     toDate: [null], // Date or string
@@ -69,6 +85,7 @@ export class FilterComponent extends BaseComponent implements OnInit {
     employeeIds: [[]], // array of ids
     reformersIds: [[]], // array of ids
     arbitratorsIds: [[]], // array of ids
+    litigationRequestStageIds: [[]], // array of ids
     litigationRequestAmountId: [null], // array of ids
     skip: [null], // number
     take: [null], // number
@@ -88,7 +105,6 @@ export class FilterComponent extends BaseComponent implements OnInit {
     // this.filterForm.valueChanges.subscribe(val => {
     //   this.filterChange.emit(val);
     // });
-
     if (this.visibleFilters.employee) {
       this.fetchEmployeeOptions();
     }
@@ -128,6 +144,14 @@ export class FilterComponent extends BaseComponent implements OnInit {
     })
   }
 
+  fetchStagesOptions() {
+    this._lookupService.GetAllEmployeeByDepartmentType(1).subscribe((response) => {
+      if (response?.data) {
+        this.employeeOptions = response.data;
+      }
+    }, (error) => {
+    })
+  }
   fetchEmployeeOptions() {
     this._lookupService.GetAllEmployeeByDepartmentType(1).subscribe((response) => {
       if (response?.data) {

@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-list-review',
+  selector: 'app-list-review-report',
   templateUrl: './list-review-report.component.html',
   styleUrl: './list-review-report.component.scss'
 })
@@ -49,6 +49,9 @@ export class ListReviewReportComponent extends BaseComponent implements OnInit  
         litigationRequestCategoryIds: true,
         litigationRequestStatusIds: true,
         litigationRequestAmountId: true,
+        litigationRequestStageIds: false,
+        reviewerName: false,
+        reviewerStatus: false 
       };
     
 /**

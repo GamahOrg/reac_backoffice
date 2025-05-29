@@ -6,6 +6,13 @@ import { StatisticsReformerComponent } from './components/litigation/statistics-
 import { StatisticsArbitrationComponent } from './components/litigation/statistics-arbitration/statistics-arbitration.component';
 import {  StatisticsReviewReportComponent } from './components/litigation/statistics-review-report/statistics-review-report.component';
 import { ListReviewReportComponent } from './components/litigation/list-review-report/list-review-report.component';
+import { ListReformerReportComponent } from './components/litigation/list-reformer-report/list-reformer-report.component';
+import { ListArbitratorReportComponent } from './components/litigation/list-arbitrator-report/list-arbitrator-report.component';
+import { StatisticsReformerReportComponent } from './components/litigation/statistics-reformer-report/statistics-reformer-report.component';
+import { StatisticsArbitrationReportComponent } from './components/litigation/statistics-arbitration-report/statistics-arbitration-report.component';
+import { ReviewersReportComponent } from './components/litigation/reviewers-report/reviewers-report.component';
+import { ReformersReportComponent } from './components/litigation/reformers-report/reformers-report.component';
+import { ArbitratorsReportComponent } from './components/litigation/arbitrators-report/arbitrators-report.component';
 
 const routes: Routes = [
   {
@@ -22,6 +29,14 @@ const routes: Routes = [
     component: StatisticsReformerComponent,
   },
   {
+    path: Configuration.pages.reports.StatiscsReformerReport,
+    component: StatisticsReformerReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.StatiscsArbitirationReport,
+    component: StatisticsArbitrationReportComponent,
+  },
+  {
     path: Configuration.pages.reports.statisticsArbitration,
     component: StatisticsArbitrationComponent,
   },
@@ -33,6 +48,28 @@ const routes: Routes = [
     path: Configuration.pages.reports.listReviewReport,
     component: ListReviewReportComponent,
   },
+  {
+    path: Configuration.pages.reports.listReformerReport,
+    component: ListReformerReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.listArbitratorReport,
+    component: ListArbitratorReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.ReviewersReport,
+    component: ReviewersReportComponent,
+  },
+    
+  {
+    path: Configuration.pages.reports.ReformersReport,
+    component: ReformersReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.ArbitratorsReport,
+    component: ArbitratorsReportComponent,
+  },
+
 ];
 
 @NgModule({

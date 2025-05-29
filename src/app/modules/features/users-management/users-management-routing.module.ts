@@ -16,6 +16,8 @@ import { ConfigratoinReviewSettingsComponent } from './components/configratoin-r
 import { StatisticDashbourdComponent } from './components/statistic-dashbourd/statistic-dashbourd.component';
 import { EditUserComponent } from './components/users-list/edit-user/edit-user.component';
 import { TypesStatusDashbourdComponent } from './components/statistic-dashbourd/types-status-dashbourd/types-status-dashbourd.component';
+import { ListAdminReportComponent } from './components/list-dashboard/list-admin-report.component';
+import { AllStagesStatisticsComponent } from './components/statistic-dashbourd/all-stages-statistics/all-stages-statistics/all-stages-statistics.component';
 
 const routes: Routes = [
   
@@ -79,6 +81,14 @@ const routes: Routes = [
   {
     path: Configuration.pages.usersManagement.DashbourdTypes,
     component: TypesStatusDashbourdComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.ListOfLitigationForAdminReport,
+    component: ListAdminReportComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.AllStagesStatisiticsForAdminReport,
+    component: AllStagesStatisticsComponent,
   },
   
 ];

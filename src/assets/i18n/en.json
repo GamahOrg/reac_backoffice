@@ -66,6 +66,7 @@
             "reports": "التقارير",
             "litigationStatisticsReviewReport": "تقرير أعداد الدعاوى في مرحلة التدقيق",
             "litigationStatisticsReformerReport": "تقرير أعداد الدعاوى في مرحلة الصلح",
+            "litigationStatisticsِArbitirationReport": "تقرير أعداد الدعاوى في مرحلة التحكيم",
             "vacationRequest" : "تقديم طلبات الاجازة" ,
             "vacationRequestReply" : "طلبات الاجازة المستقبلة" ,
             "employeeList": "قائمة الموظفين",
@@ -81,7 +82,11 @@
             "arbitirationsettings":"إعدادات مرحلة التحكيم",
             "dashbourd":" إحصائيات حالات وأنواع الدعوى ",
             "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى",
-            "ReviewCountsReport":"تقرير أعداد الدعاوى في مرحلة التدقيق"
+            "ReviewCountsReport":"تقرير أعداد الدعاوى في مرحلة التدقيق",
+            "ReviewersReport":"تقرير المدقق",
+              "ReformersReport":"تقرير المصلح",
+            "ArbitrationsReport":"تقرير المحكم"
+            
         }
     },
     "actions": {

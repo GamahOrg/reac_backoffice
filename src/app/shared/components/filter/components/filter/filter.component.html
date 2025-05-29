@@ -1,5 +1,23 @@
 <form [formGroup]="filterForm" class="filter-component" (ngSubmit)="onSubmit()">
   <div class="grid-4">
+
+    <div *ngIf="isVisible('reviewerName')">
+      <label for="reviewerName">{{translations.ReportsFilter.reviewerName | translate}}</label>
+      <input type="text" id="reviewerName" class="form-control border-0 shadow-none" formControlName="reviewerName" />
+    </div>
+    <div *ngIf="isVisible('reviewerStatus')">
+      <label for="reviewerStatus">{{translations.ReportsFilter.reviewerStatus | translate}}</label>
+      <ng-select id="reviewerStatus" class="form-select" formControlName="reviewerStatus" >
+        <ng-option [value]="1">مفعل</ng-option>
+        <ng-option [value]="0">غير مفعل</ng-option>
+      </ng-select>
+      
+    </div>
+    <div *ngIf="isVisible('experienceYears')">
+      <label for="ExperienceYears">{{translations.ReportsFilter.ExperienceYears | translate}}</label>
+      <input type="number" id="experienceYears" class="form-control border-0 shadow-none" formControlName="experienceYears" />
+    </div>
+
     <div *ngIf="isVisible('requestCode')">
       <label for="requestCode">{{translations.ReportsFilter.requestCode | translate}}</label>
       <input type="text" id="requestCode" class="form-control border-0 shadow-none" formControlName="requestCode" />
@@ -39,7 +57,7 @@
       </div>
     </div>
     <div *ngIf="isVisible('employee')">
-            <label for="requestCode">{{translations.ReportsFilter.employeeName | translate}}</label>
+      <label for="requestCode">{{translations.ReportsFilter.employeeName | translate}}</label>
       <div class="d-flex align-items-center">
         <ng-select id="employeeIds" class="form-select" formControlName="employeeIds" [multiple]="true">
           <ng-option *ngFor="let employee of employeeOptions" [value]="employee.id">{{ employee.employeeName }}</ng-option>
@@ -81,6 +99,15 @@
       <div class="d-flex align-items-center">
         <ng-select id="litigationRequestStatusIds" class="form-select" formControlName="litigationRequestStatusIds" [multiple]="true">
           <ng-option *ngFor="let status of litigationRequestStatusOptions" [value]="status.id">{{ status.requestStatus }}</ng-option>
+        </ng-select>
+        
+      </div>
+    </div>
+    <div *ngIf="isVisible('litigationRequestStageIds')">
+            <label for="requestCode">{{translations.ReportsFilter.requestStage | translate}}</label>
+      <div class="d-flex align-items-center">
+        <ng-select id="litigationRequestStageIds" class="form-select" formControlName="litigationRequestStageIds" [multiple]="true">
+          <ng-option *ngFor="let requestStage of litigationStageOptions" [value]="requestStage.id">{{ requestStage.name }}</ng-option>
         </ng-select>
         
       </div>
