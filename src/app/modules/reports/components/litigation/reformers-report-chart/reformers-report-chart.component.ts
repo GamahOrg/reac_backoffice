@@ -30,6 +30,12 @@ export class ReformersReportChartComponent {
     if (this.chart) {
       this.updateChart();
     }
+    if (this.inputData.length === 0) {
+      this.chart?.destroy();
+      this.chart = null;
+    }else{
+      this.updateChart();
+    }
   }
   
   createChart() {
