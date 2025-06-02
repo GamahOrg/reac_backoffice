@@ -90,12 +90,14 @@
             "termsConditions":"إعدادات الشروط والأحكام",
             "arbitirationFees":"قائمة رسوم التحكيم ",
             "arbitirationsettings":"إعدادات مرحلة التحكيم",
-            "dashbourd":" إحصائيات حالات وأنواع الدعوى ",
+            "dashbourd":" إحصائيات ",
             "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى",
             "ReviewCountsReport":"تقرير أعداد الدعاوى في مرحلة التدقيق",
             "ReviewersReport":"تقرير المدقق",
             "ReformersReport":"تقرير المصلح",
-            "ArbitrationsReport":"تقرير المحكم"
+            "ArbitrationsReport":"تقرير المحكم",
+            "reviewDashbourd":"إحصائيات حالات وأنواع الدعوى",
+            "allPersonasStatisticsForAdminReport":"تقرير المدقق والمصلح والمحكم"
 
         }
     },
@@ -848,6 +850,7 @@
         "propertiesRatio" : "نسبة دعاوى ملاك",
 
         "employeeName" : "اسم المدقق",
+        "personnelName" : "الاسم بالكامل",
         "reformerName" : "اسم المصلح",
         "arbitratorName" : "اسم المحكم",
         "arbitratorChairmanName" : "اسم رئيس هيئة التحكيم",
@@ -861,7 +864,8 @@
         "requestStatus" : "حالة الدعوى",
         "firstParty" : "المدعي",
         "secondParty" : "المدعي عليه",
-        "employeeStatus": "الحالة "
+        "employeeStatus": "الحالة ",
+        "department": "الإدارة"
  
 
     },
@@ -882,8 +886,10 @@
         "secondParty" : "المدعي عليه",
         "reformers" : "المصلحون",
         "arbitrators" : "المحكمون",
+        "arbitratorsClass" : "فئة المحكم",
         "reviewerName":"اسم المدقق",
         "reviewerStatus":"حالة المدقق",
+        "status":"الحالة",
         "experienceYears":"عدد سنوات الخبرة"
     },
 

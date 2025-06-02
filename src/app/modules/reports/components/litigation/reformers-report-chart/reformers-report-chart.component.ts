@@ -24,6 +24,7 @@ export class ReformersReportChartComponent {
       this.createChart();
       this.updateChart();
     }
+   
   }
   
   ngOnChanges() {
@@ -55,12 +56,7 @@ export class ReformersReportChartComponent {
   
   updateChart() {
     this.createChart();
-    if (this.inputData.length === 0) {
-      this.chart?.destroy();
-      this.chart = null;
-    }else{
-      this.updateChart();
-    }
+    
   }
   
   getChartConfiguration(): ChartConfiguration {

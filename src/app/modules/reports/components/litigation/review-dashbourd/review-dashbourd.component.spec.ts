@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReviewDashbourdComponent } from './statistics-review-report.component';
+import { ReviewDashbourdComponent } from './review-dashbourd.component';
 
 describe('ReviewDashbourdComponent', () => {
   let component: ReviewDashbourdComponent;

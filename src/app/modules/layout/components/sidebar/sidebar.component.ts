@@ -93,6 +93,21 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             },
                         ]
                     },
+                    {
+                        id: 'reports-collapse',
+                        title: this.translate.instant(translations.layout.sidebar.dashbourd),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        children: [
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.ReviewDashbourd),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.ReviewDashbourd,
+                            },
+                     
+                        
+                        ]
+                }
                 );
 
 
@@ -246,6 +261,21 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                         },
                         ]
                 },
+                {
+                    id: 'reports-collapse',
+                    title: this.translate.instant(translations.layout.sidebar.dashbourd),
+                    icon: 'assets/images/icons/sidebar/book.svg',
+                    children: [
+                        {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.ReviewDashbourd),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.ReformerDashbourd,
+                        },
+                    
+                    ]
+            }
+               
             );
         } else if (this.departmentType == DepartmentType.Arbitration) {
             this.menuItems.push(
@@ -381,8 +411,10 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.ArbitratorsReport,
                         },
+                        
                         ]
-                }
+                },
+                
                 
                 
 
@@ -507,6 +539,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 title: this.translate.instant(translations.layout.sidebar.allStagesStatisiticsForAdminReport),
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.AllStagesStatisiticsForAdminReport,
+                            },
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.allPersonasStatisticsForAdminReport),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.AllPersonasForAdminReport,
                             }
     
                         ]

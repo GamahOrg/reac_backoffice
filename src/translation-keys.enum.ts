@@ -113,6 +113,7 @@ export namespace translations {
             listOfLitigationArbitratorReport = 'layout.sidebar.listOfLitigationArbitratorReport',
             listOfLitigationForAdminReport = 'layout.sidebar.listOfLitigationForAdminReport',
             allStagesStatisiticsForAdminReport = 'layout.sidebar.allStagesStatisiticsForAdminReport',
+            allPersonasStatisticsForAdminReport = 'layout.sidebar.allPersonasStatisticsForAdminReport',
             vacationRequest = 'layout.sidebar.vacationRequest',
             vacationRequestReply = 'layout.sidebar.vacationRequestReply',
             employeeList='layout.sidebar.employeeList',
@@ -133,6 +134,8 @@ export namespace translations {
             ReviewersReport='layout.sidebar.ReviewersReport',
             ReformersReport='layout.sidebar.ReformersReport',
             ArbitrationsReport='layout.sidebar.ArbitrationsReport',
+            ReviewDashbourd='layout.sidebar.reviewDashbourd',
+
         }
     }
 
@@ -900,6 +903,7 @@ export namespace translations {
         propertiesRatio = "reports.propertiesRatio",
 
         employeeName = "reports.employeeName",
+        personnelName = "reports.personnelName",
         reformerName = "reports.reformerName",
         arbitratorChairmanName = "reports.arbitratorChairmanName",
         arbitratorName = "reports.arbitratorName",
@@ -916,7 +920,8 @@ export namespace translations {
         secondParty = "reports.secondParty",
         totalReviewDueDateCount="reports.totalReviewDueDateCount",
         totalReviewDueDateRatio = "reports.totalReviewDueDateRatio",
-        employeeStatus = "reports.employeeStatus"
+        employeeStatus = "reports.employeeStatus",
+        department = "reports.department"
     }
 
     export enum ReportsFilter{
@@ -925,6 +930,7 @@ export namespace translations {
         requestCode = "reportsFilter.requestCode",
         reviewerName = "reportsFilter.reviewerName",
         reviewerStatus = "reportsFilter.reviewerStatus",
+        status = "reportsFilter.status",
         requestType = "reportsFilter.requestType",
         requestStatus = "reportsFilter.requestStatus",
         requestStage = "reportsFilter.requestStage",
@@ -936,6 +942,7 @@ export namespace translations {
         employeeName = "reportsFilter.employeeName",
         reformers = "reportsFilter.reformers",
         arbitrators = "reportsFilter.arbitrators",
+        arbitratorsClass = "reportsFilter.arbitratorsClass",
         litigationAmount = "reportsFilter.litigationAmount",
         ExperienceYears = "reportsFilter.experienceYears",
         

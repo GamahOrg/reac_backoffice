@@ -1,4 +1,5 @@
 import { AssignedArbitrationRequestsDocumnetsComponent } from "@app/modules/features/arbitration/pages/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets/assigned-arbitration-requests-documnets.component";
+import { ReviewDashbourdComponent } from "@app/modules/reports/components/litigation/review-dashbourd/review-dashbourd.component";
 
 export const Configuration = {
   languages: ['ar', 'en'],
@@ -141,6 +142,7 @@ export const Configuration = {
     ArbitratorClass: {
       GetArbitratorClasses: '/api/SysArbitratorClass/GetArbitratorClasses',
       GetArbitratorClass: '/api/SysArbitratorClass/GetArbitratorClass',
+      GetArbitratorClassOptions: '/api/SysArbitratorClass/Get',
     },
     Citizen: {
       AddArbitratorFreeUpDecision: "/api/Citizen/AddArbitratorFreeUpDecision",
@@ -239,6 +241,9 @@ export const Configuration = {
       GetReviewersReport:"/api/Reports/GetReviewersReport",
       GetReformersReport:"/api/Reports/GetReformersReport",
       GetArbitratorsReport:"/api/Reports/GetArbitratorsReport",
+      GetReviewDashbourdReport:"/api/Reports/GetReviewDashbourdReport",
+      GetReconciliationDashbourdReport:"/api/Reports/GetReconciliationDashbourdReport",
+      GetAllPersonasReport:"/api/Reports/GetReviewrsReformersArbitratorsReport",
 
     },
   },
@@ -323,6 +328,10 @@ export const Configuration = {
       ReviewersReport: 'reviewers-report',
       ReformersReport: 'reformers-report',
       ArbitratorsReport: 'arbitrators-report',
+      ReviewDashbourd: 'review-dashbourd',
+      ReformerDashbourd: 'reformer-dashbourd',
+      ArbitratorDashbourd: 'arbitrator-dashbourd',
+
     },
     profile: {
       vacationRequest: 'vacation-request',
@@ -348,6 +357,7 @@ export const Configuration = {
 
       ListOfLitigationForAdminReport:'list-admin-report',
       AllStagesStatisiticsForAdminReport:'all-stages-statistics',
+      AllPersonasForAdminReport:'all-personas-report',
     }
   },
   validators: {

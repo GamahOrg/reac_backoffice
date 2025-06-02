@@ -7,6 +7,7 @@ import { AreaResponse } from '@app/modules/features/citizen-requests/models/area
 import { CitizenReformer } from '@app/modules/features/citizen-requests/models/citizen.model';
 import { CityResponse } from '@app/modules/features/citizen-requests/models/city-response.model';
 import { EmployeeDto } from '@app/modules/features/users-management/models/employeeDto';
+import { ArbitratorClassLookupResponse } from '@app/shared/models/arbitratorclass.lookup';
 import { EmployeeLookupResponse } from '@app/shared/models/employee.lookup.model';
 import { LitigationAmountResponse } from '@app/shared/models/litigation.Amount.model';
 import { LitigationCategoryResponse } from '@app/shared/models/litigation.categories.model';
@@ -52,6 +53,10 @@ export class LookupsService {
     getAllArbitrators(): Observable<BaseResponse<ArbitratorsLookupDto[]>> {
         
       return this._httpClient.get<BaseResponse<ArbitratorsLookupDto[]>>(Configuration.APIs.Citizen.GetArbitratorsLookupForFilter)
+    }
+    getAllArbitratorClasses(): Observable<BaseResponse<ArbitratorClassLookupResponse[]>> {
+        
+      return this._httpClient.get<BaseResponse<ArbitratorClassLookupResponse[]>>(Configuration.APIs.ArbitratorClass.GetArbitratorClassOptions)
     }
 
 }

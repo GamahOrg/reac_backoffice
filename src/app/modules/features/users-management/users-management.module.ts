@@ -35,6 +35,7 @@ import { LitigationStatisticsChartComponent } from './components/statistic-dashb
 import { ReportsService } from '@app/modules/reports/services/reports-service';
 import { ListAdminReportComponent } from './components/list-dashboard/list-admin-report.component';
 import { AllStagesStatisticsComponent } from './components/statistic-dashbourd/all-stages-statistics/all-stages-statistics/all-stages-statistics.component';
+import { ReviewersreformersarbitratorsreportComponent } from './components/statistic-dashbourd/reviewersreformersarbitratorsreport/reviewersreformersarbitratorsreport.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AllStagesStatisticsComponent } from './components/statistic-dashbourd/a
     LitigationStatisticsChartComponent,
     TypesStatusDashbourdComponent,
     ListAdminReportComponent,
-    AllStagesStatisticsComponent
+    AllStagesStatisticsComponent,
+    ReviewersreformersarbitratorsreportComponent,
   ],
   imports: [
     CommonModule,
@@ -65,7 +67,7 @@ import { AllStagesStatisticsComponent } from './components/statistic-dashbourd/a
     ReactiveFormsModule,
     OwlDateTimeModule, OwlNativeDateTimeModule, OwlDateTimeModule,
     BreadcrumbsComponent,
-    NgChartsModule
+    NgChartsModule,
 ],
   providers:[
      UsersManagementService,

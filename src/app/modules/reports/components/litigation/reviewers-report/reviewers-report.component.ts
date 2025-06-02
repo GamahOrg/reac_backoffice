@@ -48,7 +48,7 @@ export class ReviewersReportComponent extends BaseComponent implements OnInit {
         citiesIds: false,
         litigationRequestCategoryIds: false,
         litigationRequestStatusIds: false,
-        litigationRequestAmountId: false,
+    litigationRequestAmountId: false,
     litigationRequestStageIds: false,
         reviewerName: true, 
         reviewerStatus: true
