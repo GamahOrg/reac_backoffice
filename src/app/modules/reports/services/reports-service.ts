@@ -69,4 +69,16 @@ export class ReportsService {
   getListOfArbitratorsReport(requestDto:any): Observable<BaseResponse<Pagination<ListArbitratorsReportResult[]>>> {
     return this._httpClient.post<BaseResponse<Pagination<ListArbitratorsReportResult[]>>>(`${Configuration.APIs.dashbourd.GetArbitratorsReport}`,requestDto)
   }
+
+  getReviewDashbourdStatistics(requestDto:any): Observable<BaseResponse<any>> {
+    return this._httpClient.post<BaseResponse<any>>(`${Configuration.APIs.dashbourd.GetReviewDashbourdReport}`,requestDto)
+  }
+
+  getReformerDashbourdStatistics(requestDto:any): Observable<BaseResponse<any>> {
+    return this._httpClient.post<BaseResponse<any>>(`${Configuration.APIs.dashbourd.GetReconciliationDashbourdReport}`,requestDto)
+  }
+  
+  getAllPersonasReport(requestDto:any): Observable<BaseResponse<Pagination<ListArbitratorsReportResult[]>>> {
+    return this._httpClient.post<BaseResponse<Pagination<ListArbitratorsReportResult[]>>>(`${Configuration.APIs.dashbourd.GetAllPersonasReport}`,requestDto)
+  }
 }

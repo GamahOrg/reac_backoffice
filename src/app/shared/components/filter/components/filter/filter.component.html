@@ -6,7 +6,7 @@
       <input type="text" id="reviewerName" class="form-control border-0 shadow-none" formControlName="reviewerName" />
     </div>
     <div *ngIf="isVisible('reviewerStatus')">
-      <label for="reviewerStatus">{{translations.ReportsFilter.reviewerStatus | translate}}</label>
+      <label for="reviewerStatus">{{translations.ReportsFilter.status | translate}}</label>
       <ng-select id="reviewerStatus" class="form-select" formControlName="reviewerStatus" >
         <ng-option [value]="1">مفعل</ng-option>
         <ng-option [value]="0">غير مفعل</ng-option>
@@ -24,7 +24,7 @@
     </div>
   
     <div *ngIf="isVisible('fromDate')">
-      <label for="requestCode">{{translations.ReportsFilter.toDate | translate}}</label>
+      <label for="requestCode">{{translations.ReportsFilter.fromDate | translate}}</label>
       <input type="date" id="fromDate" class="form-control border-0 shadow-none" formControlName="fromDate" />
     </div>
   
@@ -79,6 +79,15 @@
       <div class="d-flex align-items-center">
         <ng-select id="arbitratorsIds" class="form-select" formControlName="arbitratorsIds" [multiple]="true">
           <ng-option *ngFor="let arbitrator of arbitratorsOptions" [value]="arbitrator.id">{{ arbitrator.fullName }}</ng-option>
+        </ng-select>
+        
+      </div>
+    </div>
+    <div *ngIf="isVisible('arbitratorClass')">
+            <label for="arbitratorClassIds">{{translations.ReportsFilter.arbitratorsClass | translate}}</label>
+      <div class="d-flex align-items-center">
+        <ng-select id="arbitratorClassIds" class="form-select" formControlName="arbitratorClassIds" [multiple]="true">
+          <ng-option *ngFor="let arbitratorClass of arbitratorClassOptions" [value]="arbitratorClass.id">{{ arbitratorClass.arbitratorClassName }}</ng-option>
         </ng-select>
         
       </div>

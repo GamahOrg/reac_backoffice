@@ -13,6 +13,8 @@ import { StatisticsArbitrationReportComponent } from './components/litigation/st
 import { ReviewersReportComponent } from './components/litigation/reviewers-report/reviewers-report.component';
 import { ReformersReportComponent } from './components/litigation/reformers-report/reformers-report.component';
 import { ArbitratorsReportComponent } from './components/litigation/arbitrators-report/arbitrators-report.component';
+import { ReviewDashbourdComponent } from './components/litigation/review-dashbourd/review-dashbourd.component';
+import { ReconcilationDashbourdComponent } from './components/litigation/reconcilation-dashbourd/reconcilation-dashbourd.component';
 
 const routes: Routes = [
   {
@@ -68,6 +70,14 @@ const routes: Routes = [
   {
     path: Configuration.pages.reports.ArbitratorsReport,
     component: ArbitratorsReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.ReviewDashbourd,
+    component: ReviewDashbourdComponent,
+  },
+  {
+    path: Configuration.pages.reports.ReformerDashbourd,
+    component: ReconcilationDashbourdComponent,
   },
 
 ];

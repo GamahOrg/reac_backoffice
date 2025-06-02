@@ -5,6 +5,7 @@ import { AreaResponse } from '@app/modules/features/citizen-requests/models/area
 import { CitizenReformer } from '@app/modules/features/citizen-requests/models/citizen.model';
 import { CityResponse } from '@app/modules/features/citizen-requests/models/city-response.model';
 import { BaseComponent } from '@app/shared/components/base/base.component';
+import { ArbitratorClassLookupResponse } from '@app/shared/models/arbitratorclass.lookup';
 import { EmployeeLookupResponse } from '@app/shared/models/employee.lookup.model';
 import { LitigationAmountResponse } from '@app/shared/models/litigation.Amount.model';
 import { LitigationCategoryResponse } from '@app/shared/models/litigation.categories.model';
@@ -28,6 +29,7 @@ export interface FilterVisibility {
   litigationRequestAmountId: boolean;
   litigationRequestStageIds: boolean;
   experienceYears?: boolean;
+  arbitratorClass?: boolean; // Assuming this is a typo and should be part of the visible filters
 }
 
 @Component({
@@ -52,7 +54,9 @@ export class FilterComponent extends BaseComponent implements OnInit {
 
     reviewerName: false,
     reviewerStatus: false,
-    experienceYears: false
+    experienceYears: false,
+
+    arbitratorClass: false, // Assuming this is a typo and should be part of the visible filters
   };
   selectedArea!: AreaResponse
   areaOptions: AreaResponse[] = [];
@@ -62,6 +66,7 @@ export class FilterComponent extends BaseComponent implements OnInit {
   litigationRequestAmountOptions: LitigationAmountResponse[] = [];
   litigationRequestStatusOptions: LitigationStatusResponse[] = [];
   employeeOptions: EmployeeLookupResponse[] = [];
+  arbitratorClassOptions: ArbitratorClassLookupResponse[] = [];
   litigationStageOptions: { id: number; name: string }[] = [
     { id: 1, name: 'التدقيق' },
     { id: 2, name: 'الصلح' }, 
@@ -85,6 +90,7 @@ export class FilterComponent extends BaseComponent implements OnInit {
     employeeIds: [[]], // array of ids
     reformersIds: [[]], // array of ids
     arbitratorsIds: [[]], // array of ids
+    arbitratorClassIds: [[]], // array of ids
     litigationRequestStageIds: [[]], // array of ids
     litigationRequestAmountId: [null], // array of ids
     skip: [null], // number
@@ -105,6 +111,9 @@ export class FilterComponent extends BaseComponent implements OnInit {
     // this.filterForm.valueChanges.subscribe(val => {
     //   this.filterChange.emit(val);
     // });
+    if (this.visibleFilters.arbitratorClass) {
+      this.fetchArbitratorClassOptions();
+    }
     if (this.visibleFilters.employee) {
       this.fetchEmployeeOptions();
     }
@@ -156,6 +165,14 @@ export class FilterComponent extends BaseComponent implements OnInit {
     this._lookupService.GetAllEmployeeByDepartmentType(1).subscribe((response) => {
       if (response?.data) {
         this.employeeOptions = response.data;
+      }
+    }, (error) => {
+    })
+  }
+  fetchArbitratorClassOptions() {
+    this._lookupService.getAllArbitratorClasses().subscribe((response) => {
+      if (response?.data) {
+        this.arbitratorClassOptions = response.data;
       }
     }, (error) => {
     })

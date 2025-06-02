@@ -47,7 +47,7 @@ private _paginationService = inject(PaginationService);
         litigationRequestCategoryIds: false,
         litigationRequestStatusIds: false,
         litigationRequestAmountId: false,
-    litigationRequestStageIds: false,
+        litigationRequestStageIds: false,
         reviewerName: true, 
         reviewerStatus: true,
         experienceYears: true

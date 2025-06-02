@@ -18,6 +18,7 @@ import { EditUserComponent } from './components/users-list/edit-user/edit-user.c
 import { TypesStatusDashbourdComponent } from './components/statistic-dashbourd/types-status-dashbourd/types-status-dashbourd.component';
 import { ListAdminReportComponent } from './components/list-dashboard/list-admin-report.component';
 import { AllStagesStatisticsComponent } from './components/statistic-dashbourd/all-stages-statistics/all-stages-statistics/all-stages-statistics.component';
+import { ReviewersreformersarbitratorsreportComponent } from './components/statistic-dashbourd/reviewersreformersarbitratorsreport/reviewersreformersarbitratorsreport.component';
 
 const routes: Routes = [
   
@@ -89,6 +90,10 @@ const routes: Routes = [
   {
     path: Configuration.pages.usersManagement.AllStagesStatisiticsForAdminReport,
     component: AllStagesStatisticsComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.AllPersonasForAdminReport,
+    component: ReviewersreformersarbitratorsreportComponent,
   },
   
 ];
