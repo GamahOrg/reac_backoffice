@@ -15,6 +15,7 @@ import { ReformersReportComponent } from './components/litigation/reformers-repo
 import { ArbitratorsReportComponent } from './components/litigation/arbitrators-report/arbitrators-report.component';
 import { ReviewDashbourdComponent } from './components/litigation/review-dashbourd/review-dashbourd.component';
 import { ReconcilationDashbourdComponent } from './components/litigation/reconcilation-dashbourd/reconcilation-dashbourd.component';
+import { ArbitrationDashbourdComponent } from './components/litigation/arbitration-dashbourd/arbitration-dashbourd.component';
 
 const routes: Routes = [
   {
@@ -79,7 +80,11 @@ const routes: Routes = [
     path: Configuration.pages.reports.ReformerDashbourd,
     component: ReconcilationDashbourdComponent,
   },
-
+  {
+    path: Configuration.pages.reports.ArbitratorDashbourd,
+    component: ArbitrationDashbourdComponent,
+  },
+  
 ];
 
 @NgModule({

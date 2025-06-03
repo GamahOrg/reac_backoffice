@@ -27,6 +27,7 @@ import { ArbitratorsReportChartComponent } from './components/litigation/arbitra
 import { ReviewersReportChartComponent } from './components/litigation/reviewers-report-chart/reviewers-report-chart.component';
 import { ReviewDashbourdComponent } from './components/litigation/review-dashbourd/review-dashbourd.component';
 import { ReconcilationDashbourdComponent } from './components/litigation/reconcilation-dashbourd/reconcilation-dashbourd.component';
+import { ArbitrationDashbourdComponent } from './components/litigation/arbitration-dashbourd/arbitration-dashbourd.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { ReconcilationDashbourdComponent } from './components/litigation/reconci
     ArbitratorsReportChartComponent,
     ReviewersReportChartComponent,
     ReviewDashbourdComponent,
-    ReconcilationDashbourdComponent
+    ReconcilationDashbourdComponent,
+    ArbitrationDashbourdComponent
   ],
   imports: [
     CommonModule,

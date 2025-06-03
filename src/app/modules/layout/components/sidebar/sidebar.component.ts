@@ -414,7 +414,20 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                         
                         ]
                 },
-                
+                {
+                    id: 'reports-collapse',
+                    title: this.translate.instant(translations.layout.sidebar.dashbourd),
+                    icon: 'assets/images/icons/sidebar/book.svg',
+                    children: [
+                        {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.ReviewDashbourd),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.ArbitratorDashbourd,
+                        },
+                    
+                    ]
+            }
                 
                 
 
