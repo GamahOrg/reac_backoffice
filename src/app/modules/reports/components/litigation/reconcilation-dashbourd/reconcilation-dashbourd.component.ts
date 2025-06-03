@@ -183,7 +183,7 @@ constructor(
       data: {
         labels: [this.statusLabels.finished, this.statusLabels.notFinished,this.statusLabels.dueDate],
         datasets: [{
-          data: [this.statisticsData.finishedCount, this.statisticsData.notFinishedCount, this.statisticsData.TotalReviewDueDateCount],
+          data: [this.statisticsData.finishedCount, this.statisticsData.notFinishedCount, this.statisticsData.dueDateReconciliationCount],
           backgroundColor: [this.colors.status[0], this.colors.status[1],this.colors.status[2]],
           borderWidth: 2,
           borderColor: '#fff'

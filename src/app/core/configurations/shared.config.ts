@@ -242,6 +242,7 @@ export const Configuration = {
       GetArbitratorsReport:"/api/Reports/GetArbitratorsReport",
       GetReviewDashbourdReport:"/api/Reports/GetReviewDashbourdReport",
       GetReconciliationDashbourdReport:"/api/Reports/GetReconciliationDashbourdReport",
+      GetArbitrationDashbourdReport:"/api/Reports/GetArbitrationDashbourdReport",
       GetAllPersonasReport:"/api/Reports/GetReviewrsReformersArbitratorsReport",
 
     },
