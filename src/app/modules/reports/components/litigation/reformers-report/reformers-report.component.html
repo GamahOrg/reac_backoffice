@@ -1,4 +1,3 @@
-
 <app-breadcrumbs></app-breadcrumbs>
 
 <app-filter (filterChange)="onFilterChange($event)" [visibleFilters]="filterVisibility"></app-filter>
@@ -6,42 +5,44 @@
 <app-reformers-report-chart [inputData]="listReformersReport"></app-reformers-report-chart>
 
 <div class="table-wrapper">
-    <div class="table-responsive">
-
-<table class="table">
-    <thead>
-      <tr>
-       
-        <th scope="col">{{translations.Reports.reformerName | translate}}</th>
-        <th scope="col">{{translations.Reports.employeeStatus | translate}}</th>
-        <th scope="col">{{translations.Reports.totalLitigationCount | translate}}</th>
-        <th scope="col">{{translations.Reports.notFinishedCount | translate}}</th>
-        <th scope="col">{{translations.Reports.finishedCount | translate}}</th>
-        <th scope="col">{{translations.Reports.totalReviewDueDateCount | translate}}</th>
-        <th scope="col">{{translations.Reports.notFinishedRatio | translate}}</th>
-        <th scope="col">{{translations.Reports.finishedRatio | translate}}</th>
-        <th scope="col">{{translations.Reports.totalReviewDueDateRatio | translate}}</th>
-       
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of listReformersReport; let i = index">
-        <td >{{ item.reformerName }}</td>
-        <td >{{ item.reformerStatus }}</td>
-        <td >{{ item.totalLitigationCount }}</td>
-        <td >{{ item.notFinishedCount }}</td>
-        <td >{{ item.finishedCount }}</td>
-        <td >{{ item.dueDateCount }}</td>
-        <td >{{ item.notFinishedRatio }}</td>
-        <td >{{ item.finishedRatio }}</td>
-        <td >{{ item.dueDateRatio }}</td>
-      </tr>
-    </tbody>
-  </table>
-
+    <div class="mt-5">
+        <button class="btn btn-primary" (click)="exportToExcel()">
+            <i class="fas fa-file-excel me-2"></i>
+            {{translations.general.exportToExcel | translate}}
+        </button>
     </div>
-
-
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+              <tr>
+               
+                <th scope="col">{{translations.Reports.reformerName | translate}}</th>
+                <th scope="col">{{translations.Reports.employeeStatus | translate}}</th>
+                <th scope="col">{{translations.Reports.totalLitigationCount | translate}}</th>
+                <th scope="col">{{translations.Reports.notFinishedCount | translate}}</th>
+                <th scope="col">{{translations.Reports.finishedCount | translate}}</th>
+                <th scope="col">{{translations.Reports.totalReviewDueDateCount | translate}}</th>
+                <th scope="col">{{translations.Reports.notFinishedRatio | translate}}</th>
+                <th scope="col">{{translations.Reports.finishedRatio | translate}}</th>
+                <th scope="col">{{translations.Reports.totalReviewDueDateRatio | translate}}</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of listReformersReport; let i = index">
+                <td >{{ item.reformerName }}</td>
+                <td >{{ item.reformerStatus }}</td>
+                <td >{{ item.totalLitigationCount }}</td>
+                <td >{{ item.notFinishedCount }}</td>
+                <td >{{ item.finishedCount }}</td>
+                <td >{{ item.dueDateCount }}</td>
+                <td >{{ item.notFinishedRatio }}</td>
+                <td >{{ item.finishedRatio }}</td>
+                <td >{{ item.dueDateRatio }}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
 </div>
 
 
@@ -63,3 +64,4 @@
       </div>
       <app-pagination></app-pagination>
     </div>
+

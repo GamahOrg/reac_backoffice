@@ -6,6 +6,7 @@
     "general": {
         "successfullySave": "تم الحفظ بنجاح",
         "uploadAttachments": "برجاء رفع المرفقات",
+        "exportToExcel": "استخراج التقرير كملف Excel",
         "successfully": "بنجاح",
         "allRequiredFieldsMustBeFilled": "يجب إدخال جميع الحقول المطلوبة",
         "fileNameError": "لا يمكن رفع الملف المسمي بأسم",

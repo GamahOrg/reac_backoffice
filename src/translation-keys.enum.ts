@@ -39,6 +39,7 @@ export namespace translations {
     export enum general {
         successfullySave = "general.successfullySave",
         uploadAttachments = "general.uploadAttachments",
+        exportToExcel = "general.exportToExcel",
         successfully = "general.successfully",
         allRequiredFieldsMustBeFilled = "general.allRequiredFieldsMustBeFilled",
         fileNameError = "general.fileNameError",

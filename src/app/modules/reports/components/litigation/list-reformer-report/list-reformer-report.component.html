@@ -2,9 +2,15 @@
 <!-- Table to display listReviewReport data -->
 
 <div class="table-wrapper">
+    <div class="mt-5">
+        <button class="btn btn-primary" (click)="exportToExcel()">
+            <i class="fas fa-file-excel me-2"></i>
+            {{translations.general.exportToExcel | translate}}
+        </button>
+    </div>
     <div class="table-responsive">
 
-<table class="table">
+<table id="excel-table" class="table">
     <thead>
       <tr>
         <th scope="col">{{translations.Reports.requestCode | translate}}</th>
@@ -62,3 +68,4 @@
       </div>
       <app-pagination></app-pagination>
     </div>
+

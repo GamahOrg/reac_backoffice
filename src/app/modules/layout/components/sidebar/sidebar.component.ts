@@ -83,14 +83,8 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 title: this.translate.instant(translations.layout.sidebar.litigationStatisticsReviewReport),
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.statisticsReviewReport,
-                            },
-                            {
-                                id: 'Reviewers-Report',
-                                title: this.translate.instant(translations.layout.sidebar.ReviewersReport),
-                                // icon: 'assets/images/icons/sidebar/menu.svg',
-                                icon: 'assets/images/icons/sidebar/book.svg',
-                                url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.ReviewersReport,
-                            },
+                            }
+                            
                         ]
                     },
                     {
@@ -111,10 +105,30 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                 );
 
 
-            debugger;
-            if(this.isAdmin === "true"){
-                this.menuItems
+        if(this.isAdmin === "true"){
+
+                // Find the 'reports-collapse' menu item
+            const reportsMenu = this.menuItems.find(item => item.id === 'reports-collapse');
+            if (reportsMenu) {
+            // Ensure children array exists
+            if (!reportsMenu.children) {
+              reportsMenu.children = [];
+            }
+        
+            // Conditionally add a child item
+                reportsMenu.children.push(
                 
+                  {
+                      id: 'Reviewers-Report',
+                      title: this.translate.instant(translations.layout.sidebar.ReviewersReport),
+                      // icon: 'assets/images/icons/sidebar/menu.svg',
+                      icon: 'assets/images/icons/sidebar/book.svg',
+                      url: '/' + Configuration.modules.reports + '/' + Configuration.pages.reports.ReviewersReport,
+                  },
+                );
+
+
+                this.menuItems
                 .push(
                     {
                         id: 'review-collapse',
@@ -166,6 +180,7 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                     },
                 );
             }
+        }
 
             
             

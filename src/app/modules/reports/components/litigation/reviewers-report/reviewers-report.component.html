@@ -1,4 +1,3 @@
-
 <app-breadcrumbs></app-breadcrumbs>
 
 <app-filter (filterChange)="onFilterChange($event)" [visibleFilters]="filterVisibility"></app-filter>
@@ -6,6 +5,12 @@
 <app-reviewers-report-chart [inputData]="listReviewersReport"></app-reviewers-report-chart>
 
 <div class="table-wrapper">
+    <div class="mt-5">
+        <button class="btn btn-primary" (click)="exportToExcel()">
+            <i class="fas fa-file-excel me-2"></i>
+            {{translations.general.exportToExcel | translate}}
+        </button>
+    </div>
     <div class="table-responsive">
 
 <table class="table">
@@ -63,3 +68,5 @@
       </div>
       <app-pagination></app-pagination>
     </div>
+
+

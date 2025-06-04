@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import * as XLSX from 'xlsx';
 import { Configuration } from '@app/core/configurations/shared.config';
 import { StorageService } from '@app/core/services/storage-service/storage.service';
 import { pagination } from '@app/shared/models/pagination.model';
@@ -34,6 +35,8 @@ export class ListArbitratorReportComponent extends BaseComponent implements OnIn
   isAdmin: boolean=false;
 
   listArbitratorReport: ListArbitratorReportModel[] = [];
+
+  listArbitratorReportForExcel: ListArbitratorReportModel[] = []; // Add this line
 
   filterRequest: DashbourdRequestDto | undefined ;
 
@@ -172,4 +175,67 @@ ngOnInit(): void {
 
         }
 
+        exportToExcel(): void {
+          this.filterRequest!.skip = 0;
+          this.filterRequest!.take = 1000000;
+
+          this._reportsService.getListOfLitigationArbitrationReport(this.filterRequest!).subscribe(
+              (response: any) => {
+                  this.listArbitratorReportForExcel = response.data.results as ListArbitratorReportModel[];
+                  
+                  if (this.listArbitratorReportForExcel.length > 0) {
+                      // Prepare headers
+                      const headers = [
+                          this._translateService.instant(this.translations.Reports.requestCode),
+                          this._translateService.instant(this.translations.Reports.createdOn),
+                          this._translateService.instant(this.translations.Reports.areaName),
+                          this._translateService.instant(this.translations.Reports.cityName),
+                          this._translateService.instant(this.translations.Reports.categoryName),
+                          this._translateService.instant(this.translations.Reports.firstParty),
+                          this._translateService.instant(this.translations.Reports.secondParty),
+                          this._translateService.instant(this.translations.Reports.arbitratorChairmanName),
+                          this._translateService.instant(this.translations.Reports.arbitratorName),
+                          this._translateService.instant(this.translations.Reports.requestStatus),
+                          this._translateService.instant(this.translations.Reports.litigationAmount),
+                          this._translateService.instant(this.translations.Reports.contractAddress)
+                      ];
+
+                      // Prepare data rows
+                      const data = this.listArbitratorReportForExcel.map(item => [
+                          item.requestCode,
+                          item.createdOn ? new Date(item.createdOn).toLocaleDateString() : '',
+                          item.areaName,
+                          item.cityName,
+                          item.categoryName,
+                          item.firstParty,
+                          item.secondParty,
+                          item.arbitratorChairmanName,
+                          item.arbitratorsFullNames,
+                          item.requestStatus,
+                          item.litigationAmount,
+                          item.contractAddress
+                      ]);
+
+                      // Create worksheet
+                      const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([headers, ...data]);
+
+                      // Set column widths
+                      const colWidths = headers.map(() => ({ width: 20 }));
+                      ws['!cols'] = colWidths;
+
+                      // Create workbook and add worksheet
+                      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+                      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+                      // Save file
+                      XLSX.writeFile(wb, 'تقرير قائمة الدعاوى في مرحلة التحكيم.xlsx');
+                  } else {
+                      console.warn('No data available for export');
+                  }
+              },
+              (error: any) => {
+                  console.error('Error exporting data:', error);
+              }
+          );
+        }
 }

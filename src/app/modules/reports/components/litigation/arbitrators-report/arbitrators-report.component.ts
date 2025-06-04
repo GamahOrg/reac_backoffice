@@ -10,6 +10,7 @@ import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.se
 import { PaginationService } from '@app/shared/services/pagination/pagination.service';
 import { TranslateService } from '@ngx-translate/core';
 import { takeUntil } from 'rxjs';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-arbitrators-report',
@@ -32,6 +33,7 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
   isAdmin: boolean = false;
 
   listArbitratorReport: ListArbitratorsReportResult[] = [];
+  listArbitratorReportForExcel: ListArbitratorsReportResult[] = []; // Add this line
 
   filterRequest: FilterArbitratorRequestDto | undefined;
 
@@ -163,4 +165,53 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
 
   }
 
+  exportToExcel(): void {
+    this.filterRequest!.skip = 0;
+    this.filterRequest!.take = 1000000;
+
+    this._reportsService.getListOfArbitratorsReport(this.filterRequest!).subscribe(
+        (response: any) => {
+            this.listArbitratorReportForExcel = response.data.results as ListArbitratorsReportResult[];
+            
+            if (this.listArbitratorReportForExcel.length > 0) {
+                const headers = [
+                    this._translateService.instant(this.translations.Reports.arbitratorName),
+                    this._translateService.instant(this.translations.Reports.employeeStatus),
+                    this._translateService.instant(this.translations.Reports.totalLitigationCount),
+                    this._translateService.instant(this.translations.Reports.notFinishedCount),
+                    this._translateService.instant(this.translations.Reports.finishedCount),
+                    this._translateService.instant(this.translations.Reports.totalReviewDueDateCount),
+                    this._translateService.instant(this.translations.Reports.notFinishedRatio),
+                    this._translateService.instant(this.translations.Reports.finishedRatio),
+                    this._translateService.instant(this.translations.Reports.totalReviewDueDateRatio)
+                ];
+
+                const data = this.listArbitratorReportForExcel.map(item => [
+                    item.arbitratorName,
+                    item.arbitratorStatus,
+                    item.totalLitigationCount,
+                    item.notFinishedCount,
+                    item.finishedCount,
+                    item.dueDateCount,
+                    item.notFinishedRatio,
+                    item.finishedRatio,
+                    item.dueDateRatio
+                ]);
+
+                const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([headers, ...data]);
+                const colWidths = headers.map(() => ({ width: 20 }));
+                ws['!cols'] = colWidths;
+
+                const wb: XLSX.WorkBook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+                XLSX.writeFile(wb, 'تقرير المحكمين.xlsx');
+            } else {
+                console.warn('No data available for export');
+            }
+        },
+        (error: any) => {
+            console.error('Error exporting data:', error);
+        }
+    );
+  }
 }
