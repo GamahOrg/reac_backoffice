@@ -11,6 +11,7 @@ import { ReportsService } from '@app/modules/reports/services/reports-service';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { FilterVisibility } from '@app/shared/components/filter/components/filter/filter.component';
 import { ListAdminReportModel } from '../../models/ListAdminReportModel';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-list-admin-report',
@@ -34,6 +35,8 @@ export class ListAdminReportComponent extends BaseComponent implements OnInit  {
   isAdmin: boolean=false;
 
   listAdminReport: ListAdminReportModel[] = [];
+
+  listAdminReportForExcel: ListAdminReportModel[] = []; // Add this line
 
   filterRequest: DashbourdRequestDto | undefined ;
 
@@ -174,4 +177,57 @@ ngOnInit(): void {
 
         }
 
+        exportToExcel(): void {
+          this.filterRequest!.skip = 0;
+          this.filterRequest!.take = 1000000;
+  
+          this._reportsService.getListOfLitigationForAdminReport(this.filterRequest!).subscribe(
+              (response: any) => {
+                  this.listAdminReportForExcel = response.data.results as ListAdminReportModel[];
+                  
+                  if (this.listAdminReportForExcel.length > 0) {
+                      const headers = [
+                          this._translateService.instant(this.translations.Reports.requestCode),
+                          this._translateService.instant(this.translations.Reports.createdOn),
+                          this._translateService.instant(this.translations.Reports.areaName),
+                          this._translateService.instant(this.translations.Reports.cityName),
+                          this._translateService.instant(this.translations.Reports.categoryName),
+                          this._translateService.instant(this.translations.Reports.firstParty),
+                          this._translateService.instant(this.translations.Reports.secondParty),
+                          this._translateService.instant(this.translations.Reports.employeeName),
+                          this._translateService.instant(this.translations.Reports.requestStatus),
+                          this._translateService.instant(this.translations.Reports.litigationAmount),
+                          this._translateService.instant(this.translations.Reports.contractAddress)
+                      ];
+  
+                      const data = this.listAdminReportForExcel.map(item => [
+                          item.requestCode,
+                          item.createdOn ? new Date(item.createdOn).toLocaleDateString() : '',
+                          item.areaName,
+                          item.cityName,
+                          item.categoryName,
+                          item.firstParty,
+                          item.secondParty,
+                          item.employeeName,
+                          item.requestStatus,
+                          item.litigationAmount,
+                          item.contractAddress
+                      ]);
+  
+                      const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([headers, ...data]);
+                      const colWidths = headers.map(() => ({ width: 20 }));
+                      ws['!cols'] = colWidths;
+  
+                      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+                      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+                      XLSX.writeFile(wb, 'تقرير قائمة الدعاوى.xlsx');
+                  } else {
+                      console.warn('No data available for export');
+                  }
+              },
+              (error: any) => {
+                  console.error('Error exporting data:', error);
+              }
+          );
+      }
 }

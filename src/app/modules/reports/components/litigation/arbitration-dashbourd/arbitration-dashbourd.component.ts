@@ -6,7 +6,7 @@ import { ReportsService } from '@app/modules/reports/services/reports-service';
 import { FilterVisibility } from '@app/shared/components/filter/components/filter/filter.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Chart, ChartType } from 'chart.js';
-
+declare let html2pdf: any;
 @Component({
   selector: 'app-arbitration-dashbourd',
   templateUrl: './arbitration-dashbourd.component.html',
@@ -360,5 +360,63 @@ constructor(
 
   ngOnDestroy() {
     this.destroyCharts();
+  }
+
+  @ViewChild('pdfContent') pdfContent!: ElementRef;
+  downloadPDF() {
+    const element = this.pdfContent.nativeElement;
+    const clonedElement = element.cloneNode(true) as HTMLElement;
+    clonedElement.style.setProperty('display', 'block');
+    clonedElement.style.width ='287mm';
+    
+    // clonedElement.style.width = '1120px';
+    clonedElement.style.transform = 'scale(0.88)';
+    // Convert all canvas elements to images
+    const canvases = this.pdfContent.nativeElement.querySelectorAll('canvas');
+    const clonedCanvases = clonedElement.querySelectorAll('canvas');
+  
+    canvases.forEach((canvas:any, index:any) => {
+      const img = document.createElement('img');
+      img.src = canvas.toDataURL('image/png');
+      img.style.width = canvas.style.width;
+      img.style.height = canvas.style.height;
+  
+      const clonedCanvas = clonedCanvases[index];
+      clonedCanvas.parentNode?.replaceChild(img, clonedCanvas);
+    });
+  
+    const formattedDate = new Date().toISOString().split('T')[0]; // "2025-06-04"
+    const fileName = `لوحة_مؤشرات_ مدير_إدارة_التحكيم_${formattedDate}.pdf`;
+    const options = {
+      margin: [0,0, 0, 0],
+      filename: fileName,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: {
+        scale: 1,
+        useCORS: true,
+        allowTaint: true,
+        logging: false,
+        scrollY: 0 // avoid scroll offset
+      },
+      jsPDF: {
+        unit: 'mm',
+        format: 'a4',
+        orientation: 'landscape'
+      },
+      pagebreak: {
+        mode: ['css', 'legacy'],
+        before: '.break-before',
+        after: '.break-after',
+        avoid: ['.chart-section, .card']
+      }
+    };
+  
+    html2pdf()
+      .from(clonedElement)
+      .set(options)
+      .save()
+      .then(() => {
+        clonedElement.remove(); // Clean up after download
+      });
   }
 }

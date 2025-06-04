@@ -36,7 +36,7 @@ export const MY_MOMENT_FORMATS = {
         FormsModule,
         ReactiveFormsModule,
         NgSelectModule,
-        TranslateModule
+        TranslateModule,
         // ModalComponent
         // AngularMaterialModule
     ],

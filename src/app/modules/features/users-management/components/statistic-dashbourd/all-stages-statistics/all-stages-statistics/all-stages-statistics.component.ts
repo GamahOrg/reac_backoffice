@@ -11,6 +11,7 @@ import { FilterVisibility } from '@app/shared/components/filter/components/filte
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ChartData, ChartType, ChartOptions } from 'chart.js';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-all-stages-statistics',
@@ -18,6 +19,10 @@ import { ChartData, ChartType, ChartOptions } from 'chart.js';
   styleUrl: './all-stages-statistics.component.scss'
 })
 export class AllStagesStatisticsComponent extends BaseComponent implements OnInit {
+
+  request: DashbourdRequestDto | undefined;
+  
+
 filterVisibility: FilterVisibility = {
   employee: false,
   reformers: false,
@@ -39,7 +44,7 @@ filterVisibility: FilterVisibility = {
       console.log('Filter values:', values);
       debugger;
       // You can now use these values to fetch data or perform other actions
-      const request: DashbourdRequestDto = {
+      this.request = {
         fromDate: values.fromDate != null ?new Date(values.fromDate).toISOString().split('T')[0]:null,
         toDate:values.toDate != null ?new Date(values.toDate).toISOString().split('T')[0]:null,
         areaIds: values.areaIds,
@@ -50,7 +55,7 @@ filterVisibility: FilterVisibility = {
         litigationRequestStageIds: values.litigationRequestStageIds
       };
   
-      this._reportsService.getLitigationStatisticsForAdminReport(request).subscribe(
+      this._reportsService.getLitigationStatisticsForAdminReport(this.request).subscribe(
         (response: any) => {
           this.LitigationStatisticsData = response.data;
           this.fetchLitigationStatistics();
@@ -94,6 +99,7 @@ filterVisibility: FilterVisibility = {
 
     filterForm!: FormGroup;
     LitigationStatisticsData?: any;
+    LitigationStatisticsDataForExcel?: any;
     reviewStatisticsData?: any;
     reconciliationStatisticsData?: any;
     arbitrationStatisticsData?: any;
@@ -318,4 +324,13 @@ filterVisibility: FilterVisibility = {
         { label: this._translateService.instant(this.translations.layout.sidebar.reports) }
     ])
 }
+
+exportToExcel(): void {
+  const element = document.getElementById('excel-table');
+  const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+             
+  const wb: XLSX.WorkBook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  XLSX.writeFile(wb, 'تقرير اعداد الدعاوي.xlsx');
+  }
 }

@@ -10,6 +10,7 @@ import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.se
 import { PaginationService } from '@app/shared/services/pagination/pagination.service';
 import { TranslateService } from '@ngx-translate/core';
 import { takeUntil } from 'rxjs';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-reformers-report',
@@ -32,6 +33,8 @@ private _paginationService = inject(PaginationService);
   isAdmin: boolean=false;
 
   listReformersReport: ListReformersReportResult[] = [];
+
+  listReformersReportForExcel: ListReformersReportResult[] = []; // Add this line
 
   filterRequest: FilterReformerRequestDto | undefined ;
 
@@ -161,4 +164,53 @@ ngOnInit(): void {
 
         }
 
+        exportToExcel(): void {
+          this.filterRequest!.skip = 0;
+          this.filterRequest!.take = 1000000;
+
+          this._reportsService.getListOfReformersReport(this.filterRequest!).subscribe(
+              (response: any) => {
+                  this.listReformersReportForExcel = response.data.results as ListReformersReportResult[];
+                  
+                  if (this.listReformersReportForExcel.length > 0) {
+                      const headers = [
+                          this._translateService.instant(this.translations.Reports.reformerName),
+                          this._translateService.instant(this.translations.Reports.employeeStatus),
+                          this._translateService.instant(this.translations.Reports.totalLitigationCount),
+                          this._translateService.instant(this.translations.Reports.notFinishedCount),
+                          this._translateService.instant(this.translations.Reports.finishedCount),
+                          this._translateService.instant(this.translations.Reports.totalReviewDueDateCount),
+                          this._translateService.instant(this.translations.Reports.notFinishedRatio),
+                          this._translateService.instant(this.translations.Reports.finishedRatio),
+                          this._translateService.instant(this.translations.Reports.totalReviewDueDateRatio)
+                      ];
+
+                      const data = this.listReformersReportForExcel.map(item => [
+                          item.reformerName,
+                          item.reformerStatus,
+                          item.totalLitigationCount,
+                          item.notFinishedCount,
+                          item.finishedCount,
+                          item.dueDateCount,
+                          item.notFinishedRatio,
+                          item.finishedRatio,
+                          item.dueDateRatio
+                      ]);
+
+                      const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([headers, ...data]);
+                      const colWidths = headers.map(() => ({ width: 20 }));
+                      ws['!cols'] = colWidths;
+
+                      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+                      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+                      XLSX.writeFile(wb, 'تقرير المصلحين.xlsx');
+                  } else {
+                      console.warn('No data available for export');
+                  }
+              },
+              (error: any) => {
+                  console.error('Error exporting data:', error);
+              }
+          );
+        }
 }

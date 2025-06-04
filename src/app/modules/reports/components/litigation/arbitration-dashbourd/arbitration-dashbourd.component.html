@@ -1,6 +1,6 @@
 
 
-<div class="chart-container">
+<div class="chart-container" id="pdfContent" #pdfContent>
     <h2>لوحة تحكم مدير إدارة التحكيم</h2>
     <app-filter (filterChange)="onFilterChange($event)" [visibleFilters]="filterVisibility"></app-filter>
     
@@ -20,6 +20,9 @@
         <option value="type">حسب النوع</option>
         <option value="detailed">تفصيلي لكل نوع</option>
       </select>
+      <button class="download-btn" (click)="downloadPDF()">
+        تحميل PDF
+    </button>
     </div>
     
     <!-- Main Dashboard Layout -->
@@ -77,31 +80,31 @@
     <!-- Data Summary -->
     <div class="data-summary">
       <div class="summary-cards">
-        <div class="card">
+        <div class="chart-section">
           <h4>وساطة عقارية</h4>
           <p>{{statisticsData?.realEstateBrokerageCount || 0}}</p>
           <small>منتهية: {{statisticsData?.realEstateBrokerageFinishedCount || 0}} | غير منتهية: {{statisticsData?.realEstateBrokerageNotFinishedCount || 0}}</small>
         </div>
         
-        <div class="card">
+        <div class="chart-section">
           <h4>وافي</h4>
           <p>{{statisticsData?.wafiCount || 0}}</p>
           <small>منتهية: {{statisticsData?.wafiFinishedCount || 0}} | غير منتهية: {{statisticsData?.wafiNotFinishedCount || 0}}</small>
         </div>
         
-        <div class="card">
+        <div class="chart-section">
           <h4>خدمات أخرى</h4>
           <p>{{statisticsData?.otherServicesCount || 0}}</p>
           <small>منتهية: {{statisticsData?.otherServicesFinishedCount || 0}} | غير منتهية: {{statisticsData?.otherServicesNotFinishedCount || 0}}</small>
         </div>
         
-        <div class="card">
+        <div class="chart-section">
           <h4>إيجار</h4>
           <p>{{statisticsData?.rentCount || 0}}</p>
           <small>منتهية: {{statisticsData?.rentFinishedCount || 0}} | غير منتهية: {{statisticsData?.rentNotFinishedCount || 0}}</small>
         </div>
         
-        <div class="card">
+        <div class="chart-section">
           <h4>عقارات</h4>
           <p>{{statisticsData?.propertiesCount || 0}}</p>
           <small>منتهية: {{statisticsData?.propertiesFinishedCount || 0}} | غير منتهية: {{statisticsData?.propertiesNotFinishedCount || 0}}</small>

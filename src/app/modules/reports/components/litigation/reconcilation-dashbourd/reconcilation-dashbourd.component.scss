@@ -148,3 +148,145 @@
       align-items: stretch;
     }
   }
+
+
+   /// 
+/// avoid page breaks inside elements
+/// /* Force page break before element */
+.page-break-before {
+    page-break-before: always;
+  }
+  
+  /* Force page break after element */
+  .page-break-after {
+    page-break-after: always;
+  }
+  
+  /* Avoid breaking element across pages */
+  .avoid-break {
+    page-break-inside: avoid;
+  }
+  
+  /* Ensure tables and large elements don't break awkwardly */
+  table, img, div,tr,td,h6 {
+    page-break-inside: avoid;
+  }
+  
+  .avoid-page-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  /* Force break before element */
+  .page-break-before {
+    break-before: always;
+    page-break-before: always;
+  }
+  
+  /* Force break after element */
+  .page-break-after {
+    break-after: always;
+    page-break-after: always;
+  }
+  /* Page margins */
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+  
+  .download-btn {
+    background-color: #1976d2;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  //////////////////////
+  /// 
+  /* Prevent page break inside an element */
+  #pdfContent {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+  
+  .avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  /* Optional: Ensure full element shows before breaking */
+  .page-break-before {
+    page-break-before: always;
+    break-before: always;
+  }
+  
+  .page-break-after {
+    page-break-after: always;
+    break-after: always;
+  }
+  
+  .page-break {
+    page-break-before: always;
+    break-before: always;
+  }
+  
+  .break-after {
+    page-break-after: always;  /* For older browsers */
+    break-after: page;         /* Modern CSS spec */
+  }
+  
+  .dashboard-layout,
+  .data-summary {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .chart-section,
+  .total-card,
+  .summary-cards .card {
+    width: 100% !important;
+    box-sizing: border-box;
+    page-break-inside: avoid;
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+  
+  .chart-section,
+  .card {
+    break-inside: avoid; /* for modern browsers */
+    page-break-inside: avoid; /* for legacy support */
+  }
+  
+  @media print {
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .dashboard-layout,
+    .data-summary {
+      width: 100vw !important;
+    }
+  
+    .chart-section,
+    .card {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  }
