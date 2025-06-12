@@ -84,7 +84,7 @@ export class ReviewersReportChartComponent {
             }
           },
           legend: {
-            display: true,
+            display: false,
             position: 'top'
           }
         },

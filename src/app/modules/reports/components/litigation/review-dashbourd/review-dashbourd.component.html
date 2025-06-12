@@ -16,9 +16,10 @@
       
       <label for="dataView">عرض البيانات:</label>
       <select id="dataView" [(ngModel)]="selectedDataView" (change)="updateChart()">
+        <option value="all"> الكل</option>
         <option value="status">حسب الحالة</option>
         <option value="type">حسب النوع</option>
-        <option value="detailed">تفصيلي لكل نوع</option>
+        <!-- <option value="detailed">تفصيلي لكل نوع</option> -->
       </select>
       <button class="download-btn" (click)="downloadPDF()">
         تحميل PDF

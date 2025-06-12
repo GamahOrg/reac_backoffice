@@ -1,3 +1,4 @@
+import { tabError } from '../../../../shared/models/tabs.model';
 export interface LitigationStatisticsDashbourd {
     totalLitigationCount: number;
     notFinishedCount: number;
@@ -56,4 +57,13 @@ export interface LitigationStatisticsDashbourd {
 
     TotalReviewDueDateCount: number;
     TotalReviewDueDateRatio: number;
+
+    reconciliationWasMadeCount: number;
+    waiverOfRightCount: number;
+    waiverOfTheLawsuitCount: number;
+    lackOfReconciliationCount: number;
+    theReconciliationOnTradyPatformCount: number;
+
+
+
   }

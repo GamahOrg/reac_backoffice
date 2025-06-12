@@ -31,9 +31,18 @@
  
 
 <div class="form-wrapper">     (حسب النوع)</div>
-<div class="container-fluid">
+  <div class="container-fluid">
     <canvas baseChart
             [data]="typeChartData"
+            [options]="chartOptions"
+            [type]="chartType"
+            [legend]="chartLegend">
+    </canvas>
+  </div>
+<div class="form-wrapper">     المنتهية حسب الحالة</div>
+  <div class="container-fluid">
+    <canvas baseChart
+            [data]="statusChartData"
             [options]="chartOptions"
             [type]="chartType"
             [legend]="chartLegend">

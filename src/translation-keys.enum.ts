@@ -136,7 +136,8 @@ export namespace translations {
             ReformersReport='layout.sidebar.ReformersReport',
             ArbitrationsReport='layout.sidebar.ArbitrationsReport',
             ReviewDashbourd='layout.sidebar.reviewDashbourd',
-
+            AdminDashbourd='layout.sidebar.adminDashbourd',
+            ProvidersDashbourd='layout.sidebar.providersDashbourd',
         }
     }
 

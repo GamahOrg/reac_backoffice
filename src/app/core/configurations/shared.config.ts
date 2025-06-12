@@ -245,6 +245,7 @@ export const Configuration = {
       GetReconciliationDashbourdReport:"/api/Reports/GetReconciliationDashbourdReport",
       GetArbitrationDashbourdReport:"/api/Reports/GetArbitrationDashbourdReport",
       GetAllPersonasReport:"/api/Reports/GetReviewrsReformersArbitratorsReport",
+      GetReviewrsReformersArbitratorsStatisticsReport: "/api/Reports/GetReviewrsReformersArbitratorsStatisticsReport",
 
     },
   },
@@ -355,7 +356,7 @@ export const Configuration = {
       HomePage:'home',
       Dashbourd:'dashbourd',
       DashbourdTypes:'dashbourd-litigationtypes',
-
+      DashbourdProviders:'dashbourd-Providers',
       ListOfLitigationForAdminReport:'list-admin-report',
       AllStagesStatisiticsForAdminReport:'all-stages-statistics',
       AllPersonasForAdminReport:'all-personas-report',

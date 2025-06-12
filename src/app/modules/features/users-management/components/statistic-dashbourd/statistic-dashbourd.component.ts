@@ -61,6 +61,10 @@ export class StatisticDashbourdComponent implements OnInit {
     labels: ['مرحلة التدقيق', 'مرحلة الصلح', 'مرحلة التحكيم'],
     datasets: []
   };
+  public statusChartData: ChartData<'bar'> = {
+    labels: ['تم الصلح في منصة تراضي','تنازل المدعي عن الدعوي', 'تنازل المدعي عن الحق','عدم الصلح', 'تم الصلح'],
+    datasets: []
+  };
   getLitigationStatisticsByType(item:any): void {
   // New Chart Data for the Second Chart
 this.typeChartData = {
@@ -90,6 +94,16 @@ this.typeChartData = {
       label: 'أخرى',
       data: [item[0].totalReviewOtherServicesCount, item[0].totalReconciliationOtherServicesCount, item[0].totalArbitrationOtherServicesCount],
       backgroundColor: '#c29ce0'
+    }
+  ]
+};
+this.statusChartData = {
+  labels: ['تم الصلح في منصة تراضي','تنازل المدعي عن الدعوي', 'تنازل المدعي عن الحق','عدم الصلح', 'تم الصلح'],
+  datasets: [
+    {
+      label: 'منتهية',
+      data: [item[0].reconciliationWasMadeCount, item[0].lackOfReconciliationCount, item[0].waiverOfRightCount, item[0].waiverOfTheLawSuitCount, item[0].theReconciliationOnTradyPatformCount],
+      backgroundColor: '#00c9e6'
     }
   ]
 };
