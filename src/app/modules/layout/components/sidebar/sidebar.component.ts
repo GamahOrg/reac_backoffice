@@ -455,18 +455,7 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                     title: this.translate.instant(translations.layout.sidebar.management),
                     icon: 'assets/images/icons/sidebar/book.svg',
                     children: [
-                        {
-                            id: 'dashbourd',
-                            title: this.translate.instant(translations.layout.sidebar.dashbourd),
-                            icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.Dashbourd,
-                        },
-                        {
-                            id: 'dashbourd-litigationtypes',
-                            title: this.translate.instant(translations.layout.sidebar.dashbourdTypes),
-                            icon: 'assets/images/icons/sidebar/book.svg',
-                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.DashbourdTypes,
-                        },
+                        
                         // {
                         //     id: 'create-user',
                         //     title: this.translate.instant(translations.layout.sidebar.createEmployee),
@@ -577,6 +566,31 @@ export class SidebarComponent extends BaseComponent implements OnInit {
     
                         ]
                     },
+                    {
+                        id: 'reports-collapse',
+                        title: this.translate.instant(translations.layout.sidebar.dashbourd),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        children: [
+                            {
+                                id: 'dashbourd',
+                                title: this.translate.instant(translations.layout.sidebar.AdminDashbourd),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.Dashbourd,
+                            },
+                            {
+                                id: 'dashbourd-litigationtypes',
+                                title: this.translate.instant(translations.layout.sidebar.dashbourdTypes),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.DashbourdTypes,
+                            },
+                            {
+                                id: 'dashbourd-providers',
+                                title: this.translate.instant(translations.layout.sidebar.ProvidersDashbourd),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.DashbourdProviders,
+                            },
+                        ]
+                }
             );
 
         }

@@ -92,14 +92,16 @@
             "arbitirationFees":"قائمة رسوم التحكيم ",
             "arbitirationsettings":"إعدادات مرحلة التحكيم",
             "dashbourd":" إحصائيات ",
+            "adminDashbourd":"إحصائيات الدعاوى",
             "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى",
             "ReviewCountsReport":"تقرير أعداد الدعاوى في مرحلة التدقيق",
             "ReviewersReport":"تقرير المدقق",
             "ReformersReport":"تقرير المصلح",
             "ArbitrationsReport":"تقرير المحكم",
             "reviewDashbourd":"إحصائيات حالات وأنواع الدعوى",
-            "allPersonasStatisticsForAdminReport":"تقرير المدقق والمصلح والمحكم"
-
+            "allPersonasStatisticsForAdminReport":"تقرير المدقق والمصلح والمحكم",
+            "providersDashbourd":"إحصائيات مقدمي الخدمة"
+           
         }
     },
     "actions": {

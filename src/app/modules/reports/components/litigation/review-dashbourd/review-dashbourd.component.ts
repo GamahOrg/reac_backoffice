@@ -23,7 +23,7 @@ export class ReviewDashbourdComponent  implements OnInit, AfterViewInit  {
   @ViewChild('finishedChart') finishedChartRef!: ElementRef<HTMLCanvasElement>;
   
   selectedChartType: ChartType = 'doughnut';
-  selectedDataView: string = 'status';
+  selectedDataView: string = 'all';
   
   statisticsData: LitigationStatisticsDashbourd | null = null;
     private _breadcrumbService = inject(BreadcrumbService);
@@ -135,7 +135,11 @@ constructor(
   initializeCharts() {
     if (this.selectedDataView === 'status') {
       this.createStatusChart();
-    } else {
+    } 
+    else if (this.selectedDataView === 'all') {
+      this.initializeInitCharts();
+    }
+    else {
       this.createTypeChart();
       this.createReviewChart();
       this.createOverdueChart();

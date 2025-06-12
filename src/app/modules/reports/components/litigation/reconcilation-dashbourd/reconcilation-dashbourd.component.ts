@@ -19,9 +19,11 @@ export class ReconcilationDashbourdComponent  implements OnInit, AfterViewInit {
   @ViewChild('reviewChart') reviewChartRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('overdueChart') overdueChartRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('finishedChart') finishedChartRef!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('finishedStatusChart') finishedStatusChartRef!: ElementRef<HTMLCanvasElement>;
+
   
   selectedChartType: ChartType = 'doughnut';
-  selectedDataView: string = 'status';
+  selectedDataView: string = 'all';
   
   statisticsData: LitigationStatisticsDashbourd | null = null;
     private _breadcrumbService = inject(BreadcrumbService);
@@ -58,6 +60,8 @@ constructor(
   private reviewChart?: any;
   private overdueChart?: any;
   private finishedChart?: any;
+  private finishedStatusChart?: any;
+
   
   // Arabic labels for contract types
   contractTypeLabels = {
@@ -66,6 +70,14 @@ constructor(
     otherServices: 'خدمات أخرى',
     rent: 'إيجار',
     properties: 'عقارات'
+  };
+
+  finshedStatusTypeLabels = {
+    ReconciliationWasMadeCount: ' تم الصلح',
+    WaiverOfRightCount: 'تنازل المدعي عن حقه',
+    WaiverOfTheLawsuitCount: ' تنازل المدعي عن الدعوى',
+    LackOfReconciliationCount: 'عدم الصلح',
+    TheReconciliationOnTradyPatformCount: 'تم الصلح في منصة تراضي'
   };
   
   // Arabic labels for status
@@ -129,15 +141,22 @@ constructor(
       this.createReviewChart();
       this.createOverdueChart();
       this.createFinishedChart();
+      this.createFinishedStatusChart();
+      
   }
   initializeCharts() {
     if (this.selectedDataView === 'status') {
       this.createStatusChart();
-    } else {
+    }
+    else if (this.selectedDataView === 'all') {
+      this.initializeInitCharts();
+    }
+    else {
       this.createTypeChart();
       this.createReviewChart();
       this.createOverdueChart();
       this.createFinishedChart();
+      this.createFinishedStatusChart();
     }
   }
   
@@ -300,6 +319,33 @@ constructor(
       options: this.getChartOptions()
     });
   }
+
+  createFinishedStatusChart() {
+    if (!this.statisticsData) return;
+    
+    const ctx = this.finishedStatusChartRef.nativeElement.getContext('2d');
+    if (!ctx) return;
+  
+    this.finishedStatusChart = new Chart(ctx, {
+      type: this.selectedChartType,
+      data: {
+        labels: Object.values(this.finshedStatusTypeLabels),
+        datasets: [{
+          data: [
+            this.statisticsData.reconciliationWasMadeCount,
+            this.statisticsData.waiverOfRightCount,
+            this.statisticsData.waiverOfTheLawsuitCount,
+            this.statisticsData.lackOfReconciliationCount,
+            this.statisticsData.theReconciliationOnTradyPatformCount
+          ],
+          backgroundColor: this.colors.primary,
+          borderWidth: 2,
+          borderColor: '#fff'
+        }]
+      },
+      options: this.getChartOptions()
+    });
+  }
   
   updateChart() {
     // Destroy existing charts and recreate with new settings
@@ -329,6 +375,10 @@ constructor(
     if (this.finishedChart) {
       this.finishedChart.destroy();
       this.finishedChart = undefined;
+    }
+    if (this.finishedStatusChart) {
+      this.finishedStatusChart.destroy();
+      this.finishedStatusChart = undefined;
     }
   }
   

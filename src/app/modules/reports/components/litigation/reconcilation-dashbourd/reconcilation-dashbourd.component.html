@@ -16,9 +16,10 @@
       
       <label for="dataView">عرض البيانات:</label>
       <select id="dataView" [(ngModel)]="selectedDataView" (change)="updateChart()">
+        <option value="all"> الكل</option>
         <option value="status">حسب الحالة</option>
         <option value="type">حسب النوع</option>
-        <option value="detailed">تفصيلي لكل نوع</option>
+        <!-- <option value="detailed">تفصيلي لكل نوع</option> -->
       </select>
       <button class="download-btn" (click)="downloadPDF()">
         تحميل PDF
@@ -74,6 +75,15 @@
           </div>
           <canvas #finishedChart></canvas>
         </div>
+
+        <div class="chart-section">
+            <h4>  الدعاوى المنتهية حسب الحاله</h4>
+            <div class="sub-info">
+              <span>عددها: {{getFinishedCount()}}</span>
+              <span>النسبة: {{getFinishedPercentage()}}%</span>
+            </div>
+            <canvas #finishedStatusChart></canvas>
+          </div>
       </div>
     </div>
     
