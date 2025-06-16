@@ -200,6 +200,11 @@ export class ArbitratorsReportChartComponent {
    ///download chart as pdf 
       @ViewChild('pdfContent') pdfContent!: ElementRef;
       downloadPDF() {
+        const downloadButton = document.getElementById('downloadPDFBtn');
+        if (downloadButton) {
+            downloadButton.style.display = 'none';
+        }
+
         const element = this.pdfContent.nativeElement;
         const clonedElement = element.cloneNode(true) as HTMLElement;
         clonedElement.style.setProperty('display', 'block');
@@ -246,11 +251,14 @@ export class ArbitratorsReportChartComponent {
         };
       
         html2pdf()
-          .from(clonedElement)
-          .set(options)
-          .save()
-          .then(() => {
-            clonedElement.remove(); // Clean up after download
-          });
+            .from(clonedElement)
+            .set(options)
+            .save()
+            .then(() => {
+                if (downloadButton) {
+                    downloadButton.style.display = 'block';
+                }
+                clonedElement.remove();
+            });
       }
 }

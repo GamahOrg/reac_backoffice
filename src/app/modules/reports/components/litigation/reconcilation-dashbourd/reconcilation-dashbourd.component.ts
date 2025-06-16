@@ -416,59 +416,68 @@ constructor(
 
    @ViewChild('pdfContent') pdfContent!: ElementRef;
     downloadPDF() {
+      // Get reference to the download button
+      const downloadButton = document.getElementById('downloadPDFBtn');
+      if (downloadButton) {
+          downloadButton.style.display = 'none';
+      }
+
       const element = this.pdfContent.nativeElement;
       const clonedElement = element.cloneNode(true) as HTMLElement;
       clonedElement.style.setProperty('display', 'block');
-      clonedElement.style.width ='287mm';
-      
-      // clonedElement.style.width = '1120px';
+      clonedElement.style.width = '287mm';
       clonedElement.style.transform = 'scale(0.88)';
-      // Convert all canvas elements to images
+
+      // Convert canvases to images
       const canvases = this.pdfContent.nativeElement.querySelectorAll('canvas');
       const clonedCanvases = clonedElement.querySelectorAll('canvas');
-    
-      canvases.forEach((canvas:any, index:any) => {
-        const img = document.createElement('img');
-        img.src = canvas.toDataURL('image/png');
-        img.style.width = canvas.style.width;
-        img.style.height = canvas.style.height;
-    
-        const clonedCanvas = clonedCanvases[index];
-        clonedCanvas.parentNode?.replaceChild(img, clonedCanvas);
+
+      canvases.forEach((canvas: any, index: any) => {
+          const img = document.createElement('img');
+          img.src = canvas.toDataURL('image/png');
+          img.style.width = canvas.style.width;
+          img.style.height = canvas.style.height;
+
+          const clonedCanvas = clonedCanvases[index];
+          clonedCanvas.parentNode?.replaceChild(img, clonedCanvas);
       });
-    
-      const formattedDate = new Date().toISOString().split('T')[0]; // "2025-06-04"
-        const fileName = `لوحة_مؤشرات_ مدير_إدارة_الصلح_${formattedDate}.pdf`;
+
+      const formattedDate = new Date().toISOString().split('T')[0];
+      const fileName = `لوحة_مؤشرات_مدير_إدارة_الصلح_${formattedDate}.pdf`;
       const options = {
-        margin: [0,0, 0, 0],
-        filename: fileName,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-          scale: 1,
-          useCORS: true,
-          allowTaint: true,
-          logging: false,
-          scrollY: 0 // avoid scroll offset
-        },
-        jsPDF: {
-          unit: 'mm',
-          format: 'a4',
-          orientation: 'landscape'
-        },
-        pagebreak: {
-          mode: ['css', 'legacy'],
-          before: '.break-before',
-          after: '.break-after',
-          avoid: ['.chart-section, .card']
-        }
+          margin: [0,0, 0, 0],
+          filename: fileName,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: {
+              scale: 1,
+              useCORS: true,
+              allowTaint: true,
+              logging: false,
+              scrollY: 0
+          },
+          jsPDF: {
+              unit: 'mm',
+              format: 'a4',
+              orientation: 'landscape'
+          },
+          pagebreak: {
+              mode: ['css', 'legacy'],
+              before: '.break-before',
+              after: '.break-after',
+              avoid: ['.chart-section, .card']
+          }
       };
-    
+
       html2pdf()
-        .from(clonedElement)
-        .set(options)
-        .save()
-        .then(() => {
-          clonedElement.remove(); // Clean up after download
-        });
+          .from(clonedElement)
+          .set(options)
+          .save()
+          .then(() => {
+              // Show the button again and clean up
+              if (downloadButton) {
+                  downloadButton.style.display = 'block';
+              }
+              clonedElement.remove();
+          });
     }
 }

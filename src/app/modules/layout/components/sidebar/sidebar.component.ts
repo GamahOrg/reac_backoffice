@@ -180,7 +180,32 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                     },
                 );
             }
-        }
+        }else{
+
+                this.menuItems.push(
+                    {
+                        id: 'review-collapse',
+                        title: this.translate.instant(translations.layout.sidebar.review),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        children: [
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
+                            },
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.modificationList),
+                                // icon: 'assets/images/icons/sidebar/menu.svg',
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationModificationRequests,
+                            }
+    
+                        ]
+                    },
+                );
+            }
 
             
             
