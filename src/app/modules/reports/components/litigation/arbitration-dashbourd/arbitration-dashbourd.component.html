@@ -1,8 +1,6 @@
-
-
+<app-filter (filterChange)="onFilterChange($event)" [visibleFilters]="filterVisibility"></app-filter>
 <div class="chart-container" id="pdfContent" #pdfContent>
     <h2>لوحة تحكم مدير إدارة التحكيم</h2>
-    <app-filter (filterChange)="onFilterChange($event)" [visibleFilters]="filterVisibility"></app-filter>
     
     <!-- Chart Type Selector -->
     <div class="chart-controls">
@@ -21,7 +19,7 @@
         <option value="type">حسب النوع</option>
         <!-- <option value="detailed">تفصيلي لكل نوع</option> -->
       </select>
-      <button class="download-btn" (click)="downloadPDF()">
+      <button id="downloadPDFBtn" class="download-btn" (click)="downloadPDF()">
         تحميل PDF
     </button>
     </div>
