@@ -12,7 +12,7 @@ import { takeUntil } from 'rxjs';
 import { ReviewReformerArbitratorDto, ReviewReformerArbitratorFilterDto } from '../../../models/review-reformer-arbitratorDto';
 import { Chart, ChartConfiguration, ChartType } from 'chart.js';
 import * as XLSX from 'xlsx';
-
+declare let html2pdf: any;
 @Component({
   selector: 'app-reviewersreformersarbitratorsreport',
   templateUrl: './reviewersreformersarbitratorsreport.component.html',
@@ -114,7 +114,7 @@ export class ReviewersreformersarbitratorsreportComponent extends BaseComponent 
     private updateBreadcrumb(): void {
       this._breadcrumbService.updateBreadcrumbListContent([
         { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
-        { label: this._translateService.instant(this.translations.layout.sidebar.ArbitrationsReport) }
+        { label: this._translateService.instant(this.translations.layout.sidebar.allPersonasStatisticsForAdminReport) }
       ])
     };
   
@@ -405,4 +405,61 @@ getChartConfiguration(): ChartConfiguration {
         }
     );
   }
+
+   ///download chart as pdf 
+      @ViewChild('pdfContent') pdfContent!: ElementRef;
+      downloadPDF() {
+        const element = this.pdfContent.nativeElement;
+        const clonedElement = element.cloneNode(true) as HTMLElement;
+        clonedElement.style.setProperty('display', 'block');
+        clonedElement.style.width ='265mm';
+        
+        // clonedElement.style.width = '1120px';
+        clonedElement.style.transform = 'scale(0.77)';
+        // Convert all canvas elements to images
+        const canvases = this.pdfContent.nativeElement.querySelectorAll('canvas');
+        const clonedCanvases = clonedElement.querySelectorAll('canvas');
+      
+        canvases.forEach((canvas:any, index:any) => {
+          const img = document.createElement('img');
+          img.src = canvas.toDataURL('image/png');
+          img.style.width = canvas.style.width;
+          img.style.height = canvas.style.height;
+      
+          const clonedCanvas = clonedCanvases[index];
+          clonedCanvas.parentNode?.replaceChild(img, clonedCanvas);
+        });
+        const formattedDate = new Date().toISOString().split('T')[0]; // "2025-06-04"
+        const fileName = `لوحة_ إحصائيات_المدققين_المصلحين_المحكمين_${formattedDate}.pdf`;
+      
+        const options = {
+          margin: [0,0, 0, 0],
+          filename: fileName,
+          image: { type: 'jpeg', quality: 0.99 },
+          html2canvas: {
+            scale: 1,
+            useCORS: true,
+            allowTaint: true,
+            logging: false,
+            scrollY: 0 // avoid scroll offset
+          },
+          jsPDF: {
+            unit: 'mm',
+            format: 'a4',
+            orientation: 'landscape'
+          },
+          pagebreak: {
+            mode: ['css', 'legacy'],
+           
+          }
+        };
+      
+        html2pdf()
+          .from(clonedElement)
+          .set(options)
+          .save()
+          .then(() => {
+            clonedElement.remove(); // Clean up after download
+          });
+      }
 }

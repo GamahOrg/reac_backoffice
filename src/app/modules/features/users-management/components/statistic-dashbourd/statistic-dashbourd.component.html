@@ -17,6 +17,15 @@
         
       </div>
     </form>
+    <div class="row ">
+      <div class="col-11"></div>
+      <div class="col-1">
+    <button class="download-btn" (click)="downloadPDF()">
+      تحميل PDF
+  </button>
+</div>
+</div>
+<div class="row" #pdfContent>
     <div class="form-wrapper">     (حسب الحاله)</div>
     
     <div class="container-fluid ">
@@ -48,4 +57,5 @@
             [legend]="chartLegend">
     </canvas>
   </div>
+</div>
 </div>
