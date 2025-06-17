@@ -1,5 +1,17 @@
 <div class="form-wrapper">    إحصائيات  مقدمين الخدمة   </div>
+<div class="row ">
+    <div class="col-11"></div>
+    <div class="col-1">
+  <button class="download-btn" (click)="downloadPDF()">
+    تحميل PDF
+</button>
+</div>
+</div>
+<div class="row" #pdfContent>
+    <div class="chart-container">
 <app-litigation-statistics-chart 
 [chartData]="ProviderChartData" 
-chartTitle="">
+chartTitle="إحصائيات  مقدمى الخدمة">
 </app-litigation-statistics-chart>
+</div>
+</div>

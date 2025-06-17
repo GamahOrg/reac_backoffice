@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { StatisticDashbourdService } from '../../../services/statisticDashbourdService';
 import { ChartData } from 'chart.js';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DashbourdRequestDto } from '../../../models/dashbourdRequestDto';
-
+declare let html2pdf: any;
 @Component({
   selector: 'app-types-status-dashbourd',
   templateUrl: './types-status-dashbourd.component.html',
@@ -25,7 +25,7 @@ export class TypesStatusDashbourdComponent  implements OnInit {
   
     // Calculate the date 7 days before today
     const sevenDaysBefore = new Date();
-    sevenDaysBefore.setDate(today.getDate() - 7);
+    sevenDaysBefore.setDate(today.getDate() - 29);
     today.setDate(today.getDate() +1);
     const todayFormatted = today.toISOString().split('T')[0];
     const sevenDaysBeforeFormatted = sevenDaysBefore.toISOString().split('T')[0];
@@ -108,7 +108,7 @@ export class TypesStatusDashbourdComponent  implements OnInit {
       fromDate :startDate,
       toDate:endDate
     }
-    this._statisticDashbourdService.getAllLitigationStatistics(Request).subscribe(
+    this._statisticDashbourdService.getAllLitigationByTypesStatusStatistics(Request).subscribe(
       (response) => {
          console.log(response);
        this.LitigationStatisticsData=response.data?.LitigationStatisticsForAllStages;
@@ -122,4 +122,61 @@ export class TypesStatusDashbourdComponent  implements OnInit {
     );
    
   }
+
+  ///download chart as pdf 
+    @ViewChild('pdfContent') pdfContent!: ElementRef;
+    downloadPDF() {
+      const element = this.pdfContent.nativeElement;
+      const clonedElement = element.cloneNode(true) as HTMLElement;
+      clonedElement.style.setProperty('display', 'block');
+      clonedElement.style.width ='287mm';
+      
+      // clonedElement.style.width = '1120px';
+      clonedElement.style.transform = 'scale(0.88)';
+      // Convert all canvas elements to images
+      const canvases = this.pdfContent.nativeElement.querySelectorAll('canvas');
+      const clonedCanvases = clonedElement.querySelectorAll('canvas');
+    
+      canvases.forEach((canvas:any, index:any) => {
+        const img = document.createElement('img');
+        img.src = canvas.toDataURL('image/png');
+        img.style.width = canvas.style.width;
+        img.style.height = canvas.style.height;
+    
+        const clonedCanvas = clonedCanvases[index];
+        clonedCanvas.parentNode?.replaceChild(img, clonedCanvas);
+      });
+      const formattedDate = new Date().toISOString().split('T')[0]; // "2025-06-04"
+      const fileName = `لوحة_ إحصائيات_تفاصيل_حالات_وأنواع_الدعوى${formattedDate}.pdf`;
+    
+      const options = {
+        margin: [0,0, 0, 0],
+        filename: fileName,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 1,
+          useCORS: true,
+          allowTaint: true,
+          logging: false,
+          scrollY: 0 // avoid scroll offset
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: 'a4',
+          orientation: 'landscape'
+        },
+        pagebreak: {
+          mode: ['css', 'legacy'],
+         
+        }
+      };
+    
+      html2pdf()
+        .from(clonedElement)
+        .set(options)
+        .save()
+        .then(() => {
+          clonedElement.remove(); // Clean up after download
+        });
+    }
 }
