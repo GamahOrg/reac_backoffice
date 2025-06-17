@@ -36,8 +36,7 @@
     height: 400px;
     margin-bottom: 30px;
     background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+   
     padding: 20px;
   }
   
@@ -78,4 +77,76 @@
   h2, h3 {
     color: #2c3e50;
     margin-bottom: 20px;
+  }
+
+  .chart-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+  }
+  
+  .chart-section h4 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  /// 
+/// avoid page breaks inside elements
+/// /* Force page break before element */
+.page-break-before {
+    page-break-before: always;
+  }
+  
+  /* Force page break after element */
+  .page-break-after {
+    page-break-after: always;
+  }
+  
+  /* Avoid breaking element across pages */
+  .avoid-break {
+    page-break-inside: avoid;
+  }
+  
+  /* Ensure tables and large elements don't break awkwardly */
+  table, img, div,tr,td,h6 {
+    page-break-inside: avoid;
+  }
+  
+  .avoid-page-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  /* Force break before element */
+  .page-break-before {
+    break-before: always;
+    page-break-before: always;
+  }
+  
+  /* Force break after element */
+  .page-break-after {
+    break-after: always;
+    page-break-after: always;
+  }
+  /* Page margins */
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+  
+  .download-btn {
+    background-color: #1976d2;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  .card{
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    text-align: right;
   }
