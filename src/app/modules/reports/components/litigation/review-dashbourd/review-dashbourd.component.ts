@@ -28,6 +28,7 @@ export class ReviewDashbourdComponent  implements OnInit, AfterViewInit  {
     private _breadcrumbService = inject(BreadcrumbService);
   filterRequest: DashbourdRequestDto | undefined ;
   isAdmin: boolean=false;
+  pageTitle: string = '';
     filterVisibility: FilterVisibility = {
           employee: false,
           reformers: false,
@@ -50,8 +51,9 @@ constructor(
      private translations: TranslateService,
       private _storageService :StorageService,
   ) {
+    debugger;
     this.isAdmin = this._storageService.getUserType()=='true' ? true : false;
-
+    this.pageTitle = this.isAdmin ? 'لوحة تحكم مدير إدارة التدقيق' : 'لوحة تحكم موظف التدقيق';
   }
 
   private statusChart?: any;

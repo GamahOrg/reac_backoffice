@@ -33,9 +33,11 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
   isAdmin: boolean = false;
 
   listArbitratorReport: ListArbitratorsReportResult[] = [];
+  listArbitratorDashbourd: ListArbitratorsReportResult[] = [];
   listArbitratorReportForExcel: ListArbitratorsReportResult[] = []; // Add this line
 
   filterRequest: FilterArbitratorRequestDto | undefined;
+  filterDashbourd: FilterArbitratorRequestDto | undefined;
 
   filterVisibility: FilterVisibility = {
     employee: false,
@@ -79,11 +81,20 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
       skip: this.pagintationData.currentPage - 1,
       take: this.pagintationData.pageSize
     };
+    this.filterDashbourd = {
+      arbitratorName: null,
+      arbitratorStatus: null,
+      experienceYears: null,
+      isAdmin: this.isAdmin,
+      skip:0,
+      take:100
+    };
 
     this.updateBreadcrumb();
 
     this.getReformersReport(this.filterRequest);
     this.watchPaginationActions();
+    this.getReformersDashbourd(this.filterDashbourd);
   }
 
   private updateBreadcrumb(): void {
@@ -106,7 +117,17 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
       take: this.pagintationData.pageSize
     };
 
+    this.filterDashbourd = {
+      arbitratorName: values.reviewerName,
+      arbitratorStatus: values.reviewerStatus,
+      experienceYears: values.experienceYears,
+      isAdmin: this.isAdmin,
+      skip: 0,
+      take:100
+    };
+
     this.getReformersReport(this.filterRequest);
+    this.getReformersDashbourd(this.filterDashbourd);
   }
 
   getReformersReport(request: any): void {
@@ -125,7 +146,18 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
       }
     );
   }
-
+  
+  getReformersDashbourd(request: any): void {
+    this._reportsService.getListOfArbitratorsReport(request).subscribe(
+      (response: any) => {
+        this.listArbitratorDashbourd = response.data.results as ListArbitratorsReportResult[];
+       
+      },
+      (error: any) => {
+        console.error('Error loading data:', error);
+      }
+    );
+  }
   private setPaginationData(pageSize: number, total: number): void {
     this.pagintationData.pageSize = pageSize
     this.pagintationData.totalCount = total
