@@ -35,9 +35,11 @@ export class ReviewersReportComponent extends BaseComponent implements OnInit {
   isAdmin: boolean=false;
 
   listReviewersReport: ListReviewersReportResult[] = [];
+  listReviewersDashbourd: ListReviewersReportResult[] = [];
   listReviewersReportForExcel: ListReviewersReportResult[] = []; // Add this line
 
   filterRequest: FilterRequestDto | undefined ;
+  filterDashbourd: FilterRequestDto | undefined ;
 
   filterVisibility: FilterVisibility = {
         employee: false,
@@ -80,8 +82,17 @@ ngOnInit(): void {
     take: this.pagintationData.pageSize
   }; 
 
+  this.filterDashbourd = {
+    reviewerName: null,
+    reviewerStatus: null,
+    isAdmin: this.isAdmin,
+    skip: 0,
+    take: 100
+  }; 
+
   this.updateBreadcrumb();
   
+  this.getReviewersDashbourd(this.filterDashbourd);
   this.getReviewersReport(this.filterRequest);
   this.watchPaginationActions();
 }
@@ -104,8 +115,16 @@ ngOnInit(): void {
           skip: (this.pagintationData.currentPage - 1) * this.pagintationData.pageSize,
           take: this.pagintationData.pageSize
         };
+        this.filterDashbourd = {
+          reviewerName: values.reviewerName,
+          reviewerStatus: values.reviewerStatus,
+          isAdmin: this.isAdmin,
+          skip: 0,
+          take: 100
+        };
     
         this.getReviewersReport(this.filterRequest);
+        this.getReviewersDashbourd(this.filterDashbourd); 
       }
 
       getReviewersReport(request: DashbourdRequestDto): void {
@@ -125,6 +144,18 @@ ngOnInit(): void {
         );
       }
 
+      
+      getReviewersDashbourd(request: DashbourdRequestDto): void {
+        this._reportsService.getListOfReviewersReport(request).subscribe(
+          (response: any) => {
+            this.listReviewersDashbourd = response.data.results as ListReviewersReportResult[];
+            
+          },
+          (error: any) => {
+            console.error('Error loading data:', error);
+          }
+        );
+      }
       private setPaginationData(pageSize: number, total: number): void {
           this.pagintationData.pageSize = pageSize
           this.pagintationData.totalCount = total

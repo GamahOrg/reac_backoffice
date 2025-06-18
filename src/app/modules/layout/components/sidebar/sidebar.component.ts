@@ -64,6 +64,64 @@ export class SidebarComponent extends BaseComponent implements OnInit {
 
         if (this.departmentType == DepartmentType.Review) {
 
+        if(this.isAdmin === "true"){
+
+            this.menuItems
+                .push(
+                    {
+                        id: 'review-collapse',
+                        title: this.translate.instant(translations.layout.sidebar.review),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        children: [
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
+                            },
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.assignReviewers),
+                                // icon: 'assets/images/icons/sidebar/menu.svg',
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.reviewerList,
+                            }
+    
+                           
+                        ]
+                    },
+             
+                );
+
+
+                
+        }else{
+
+                this.menuItems.push(
+                    {
+                        id: 'review-collapse',
+                        title: this.translate.instant(translations.layout.sidebar.review),
+                        icon: 'assets/images/icons/sidebar/book.svg',
+                        children: [
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
+                            },
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.modificationList),
+                                // icon: 'assets/images/icons/sidebar/menu.svg',
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationModificationRequests,
+                            }
+    
+                        ]
+                    },
+                );
+            }
+
             // Reports Section
             this.menuItems
                 .push(
@@ -103,11 +161,9 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                         ]
                 }
                 );
-
-
-        if(this.isAdmin === "true"){
-
-                // Find the 'reports-collapse' menu item
+            
+                if(this.isAdmin === "true"){
+// Find the 'reports-collapse' menu item
             const reportsMenu = this.menuItems.find(item => item.id === 'reports-collapse');
             if (reportsMenu) {
             // Ensure children array exists
@@ -127,88 +183,11 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                   },
                 );
 
-
-                this.menuItems
-                .push(
-                    {
-                        id: 'review-collapse',
-                        title: this.translate.instant(translations.layout.sidebar.review),
-                        icon: 'assets/images/icons/sidebar/book.svg',
-                        children: [
-                            {
-                                id: 'claims-link',
-                                title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
-                                icon: 'assets/images/icons/sidebar/book.svg',
-                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
-                            },
-                            {
-                                id: 'claims-link',
-                                title: this.translate.instant(translations.layout.sidebar.assignReviewers),
-                                // icon: 'assets/images/icons/sidebar/menu.svg',
-                                icon: 'assets/images/icons/sidebar/book.svg',
-                                url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.reviewerList,
-                            }
-    
-                           
-                        ]
-                    },
-             
-                );
-            }else{
-
-                this.menuItems.push(
-                    {
-                        id: 'review-collapse',
-                        title: this.translate.instant(translations.layout.sidebar.review),
-                        icon: 'assets/images/icons/sidebar/book.svg',
-                        children: [
-                            {
-                                id: 'claims-link',
-                                title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
-                                icon: 'assets/images/icons/sidebar/book.svg',
-                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
-                            },
-                            // {
-                            //     id: 'claims-link',
-                            //     title: this.translate.instant(translations.layout.sidebar.modificationList),
-                            //     // icon: 'assets/images/icons/sidebar/menu.svg',
-                            //     icon: 'assets/images/icons/sidebar/book.svg',
-                            //     url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationModificationRequests,
-                            // }
-    
-                        ]
-                    },
-                );
             }
-        }else{
+                }
+                
 
-                this.menuItems.push(
-                    {
-                        id: 'review-collapse',
-                        title: this.translate.instant(translations.layout.sidebar.review),
-                        icon: 'assets/images/icons/sidebar/book.svg',
-                        children: [
-                            {
-                                id: 'claims-link',
-                                title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
-                                icon: 'assets/images/icons/sidebar/book.svg',
-                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
-                            },
-                            {
-                                id: 'claims-link',
-                                title: this.translate.instant(translations.layout.sidebar.modificationList),
-                                // icon: 'assets/images/icons/sidebar/menu.svg',
-                                icon: 'assets/images/icons/sidebar/book.svg',
-                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationModificationRequests,
-                            }
-    
-                        ]
-                    },
-                );
-            }
 
-            
-            
         } else if (this.departmentType == DepartmentType.Reconciliation) {
             
             

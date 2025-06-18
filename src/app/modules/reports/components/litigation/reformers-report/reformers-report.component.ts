@@ -33,10 +33,12 @@ private _paginationService = inject(PaginationService);
   isAdmin: boolean=false;
 
   listReformersReport: ListReformersReportResult[] = [];
+  listReformersDashbourds: ListReformersReportResult[] = [];
 
   listReformersReportForExcel: ListReformersReportResult[] = []; // Add this line
 
   filterRequest: FilterReformerRequestDto | undefined ;
+  filterDashbourdRequest: FilterReformerRequestDto | undefined ;
 
   filterVisibility: FilterVisibility = {
         employee: false,
@@ -79,9 +81,17 @@ ngOnInit(): void {
     skip: this.pagintationData.currentPage - 1,
     take: this.pagintationData.pageSize
   }; 
+  this.filterDashbourdRequest = {
+    reformerName: null,
+    reformerStatus: null,
+    isAdmin: this.isAdmin,
+    skip: 0,
+    take: 100 // Fetch all records for the dashboard
+  };
 
   this.updateBreadcrumb();
   
+  this.getReformersForDashbourd(this.filterDashbourdRequest);
   this.getReformersReport(this.filterRequest);
   this.watchPaginationActions();
 }
@@ -96,6 +106,13 @@ ngOnInit(): void {
 
       onFilterChange(values: any) {
         debugger;
+        this.filterDashbourdRequest = {
+          reformerName: values.reviewerName,
+          reformerStatus: values.reviewerStatus,
+          isAdmin: this.isAdmin,
+          skip: 0,
+          take: 100 // Fetch all records for the dashboard
+        };
         // You can now use these values to fetch data or perform other actions
         this.filterRequest = {
           reformerName: values.reviewerName,
@@ -106,6 +123,7 @@ ngOnInit(): void {
         };
     
         this.getReformersReport(this.filterRequest);
+        this.getReformersForDashbourd(this.filterDashbourdRequest);
       }
 
       getReformersReport(request: DashbourdRequestDto): void {
@@ -118,6 +136,20 @@ ngOnInit(): void {
               response.data.pageSize,
               response.data.totalCount
             );
+          },
+          (error: any) => {
+            console.error('Error loading data:', error);
+          }
+        );
+      }
+
+      getReformersForDashbourd(request: DashbourdRequestDto): void {
+
+    
+        this._reportsService.getListOfReformersReport(request).subscribe(
+          (response: any) => {
+            this.listReformersDashbourds = response.data.results as ListReformersReportResult[];
+           
           },
           (error: any) => {
             console.error('Error loading data:', error);
