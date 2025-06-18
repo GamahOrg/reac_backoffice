@@ -2,7 +2,7 @@
 
 <app-filter (filterChange)="onFilterChange($event)" [visibleFilters]="filterVisibility"></app-filter>
 <div class="chart-container" id="pdfContent" #pdfContent>
-    <h2>لوحة تحكم مدير إدارة التدقيق</h2>
+    <h2>{{this.pageTitle}}</h2>
     
     <!-- Chart Type Selector -->
     <div class="chart-controls">
