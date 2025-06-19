@@ -17,6 +17,15 @@
         
       </div>
     </form>
+    <div class="row ">
+      <div class="col-11"></div>
+      <div class="col-1">
+    <button class="download-btn" (click)="downloadPDF()">
+      تحميل PDF
+  </button>
+</div>
+</div>
+<div class="row" #pdfContent>
     <div class="form-wrapper">     (حسب الحاله)</div>
     
     <div class="container-fluid ">
@@ -31,7 +40,7 @@
  
 
 <div class="form-wrapper">     (حسب النوع)</div>
-<div class="container-fluid">
+  <div class="container-fluid">
     <canvas baseChart
             [data]="typeChartData"
             [options]="chartOptions"
@@ -39,4 +48,14 @@
             [legend]="chartLegend">
     </canvas>
   </div>
+<div class="form-wrapper">     المنتهية حسب الحالة</div>
+  <div class="container-fluid">
+    <canvas baseChart
+            [data]="statusChartData"
+            [options]="chartOptions"
+            [type]="chartType"
+            [legend]="chartLegend">
+    </canvas>
+  </div>
+</div>
 </div>

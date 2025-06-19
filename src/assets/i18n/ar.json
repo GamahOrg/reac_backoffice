@@ -6,6 +6,7 @@
     "general": {
         "successfullySave": "تم الحفظ بنجاح",
         "uploadAttachments": "برجاء رفع المرفقات",
+        "exportToExcel": "استخراج التقرير كملف Excel",
         "successfully": "بنجاح",
         "allRequiredFieldsMustBeFilled": "يجب إدخال جميع الحقول المطلوبة",
         "fileNameError": "لا يمكن رفع الملف المسمي بأسم",
@@ -69,8 +70,14 @@
             "assignArbitrationHeadList": "تعيين رئيس هيئة التحكيم",
             "arbitratorRecusalRequests": "طلبات رد المحكمين",
             "reports": "التقارير",
+            "listOfLitigationReviewReport": "تقرير قائمة الدعاوى في مرحلة التدقيق",
+            "listOfLitigationReformerReport": "تقرير قائمة الدعاوى في مرحلة الصلح",
+            "listOfLitigationArbitratorReport": "تقرير قائمة الدعاوى في مرحلة التحكيم",
+            "listOfLitigationForAdminReport": "تقرير قائمة الدعاوى",
+            "allStagesStatisiticsForAdminReport": "تقرير أعداد الدعاوى",
             "litigationStatisticsReviewReport": "تقرير أعداد الدعاوى في مرحلة التدقيق",
             "litigationStatisticsReformerReport": "تقرير أعداد الدعاوى في مرحلة الصلح",
+            "litigationStatisticsِArbitirationReport": "تقرير أعداد الدعاوى في مرحلة التحكيم",
             "vacationRequest" : "تقديم طلبات الاجازة" ,
             "vacationRequestReply" : "طلبات الاجازة المستقبلة" ,
             "employeeList": "قائمة الموظفين",
@@ -84,8 +91,17 @@
             "termsConditions":"إعدادات الشروط والأحكام",
             "arbitirationFees":"قائمة رسوم التحكيم ",
             "arbitirationsettings":"إعدادات مرحلة التحكيم",
-            "dashbourd":" إحصائيات حالات وأنواع الدعوى ",
-            "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى"
+            "dashbourd":" إحصائيات ",
+            "adminDashbourd":"إحصائيات الدعاوى",
+            "dashbourdTypes":"إحصائيات تفاصيل حالات وأنواع الدعوى",
+            "ReviewCountsReport":"تقرير أعداد الدعاوى في مرحلة التدقيق",
+            "ReviewersReport":"تقرير المدقق",
+            "ReformersReport":"تقرير المصلح",
+            "ArbitrationsReport":"تقرير المحكم",
+            "reviewDashbourd":"إحصائيات حالات وأنواع الدعوى",
+            "allPersonasStatisticsForAdminReport":"تقرير المدقق والمصلح والمحكم",
+            "providersDashbourd":"إحصائيات مقدمي الخدمة"
+           
         }
     },
     "actions": {
@@ -816,6 +832,7 @@
     },
 
     "reports":{
+        "requestStage": "الأدارة",
         "totalLitigationCount" : "عدد الدعاوى الكلية",
         "notFinishedCount" : "عدد الدعاوى الحالية",
         "finishedCount" : "عدد الدعاوى المنتهية",
@@ -825,13 +842,58 @@
         "rentCount" : "عدد دعاوى ايجار",
         "propertiesCount" : "عدد دعاوى ملاك",
 
+        "totalReviewDueDateCount" : "نسبة الدعاوى المتأخرة",
+        "totalReviewDueDateRatio" : "نسبة الدعاوى المتأخرة",
         "notFinishedRatio" : "نسبة الدعاوى الحالية",
         "finishedRatio" : "نسبة الدعاوى المنتهية",
         "realEstateBrokerageRatio" : "نسبة دعاوى وساطة",
         "wafiRatio" : "نسبة دعاوى وافي",
         "otherServicesRatio" : "نسبة دعاوى اخري",
         "rentRatio" : "نسبة دعاوى ايجار",
-        "propertiesRatio" : "نسبة دعاوى ملاك"
+        "propertiesRatio" : "نسبة دعاوى ملاك",
+
+        "employeeName" : "اسم المدقق",
+        "personnelName" : "الاسم بالكامل",
+        "reformerName" : "اسم المصلح",
+        "arbitratorName" : "اسم المحكم",
+        "arbitratorChairmanName" : "اسم رئيس هيئة التحكيم",
+        "createdOn" : "تاريخ تقديم الدعوى",
+        "requestCode" : "رقم الدعوى",
+        "contractAddress" : "عنوان الدعوى",
+        "litigationAmount" : "مبلغ النزاع",
+        "areaName" : "اسم المنطقة",
+        "cityName" : "اسم المدينة",
+        "categoryName" : "نوع الدعوى",
+        "requestStatus" : "حالة الدعوى",
+        "firstParty" : "المدعي",
+        "secondParty" : "المدعي عليه",
+        "employeeStatus": "الحالة ",
+        "department": "الإدارة"
+ 
+
+    },
+
+    "reportsFilter" :{
+        "fromDate" : "من تاريخ",
+        "toDate" : "الي تاريخ",
+        "employeeName" : "اسم المدقق",
+        "requestCode" : "رقم الدعوى",
+        "requestStage" : "الأدارة",
+        "contractAddress" : "عنوان الدعوى",
+        "litigationAmount" : "مبلغ النزاع",
+        "areaName" : "اسم المنطقة",
+        "cityName" : "اسم المدينة",
+        "categoryName" : "نوع الدعوى",
+        "requestStatus" : "حالة الدعوى",
+        "firstParty" : "المدعي",
+        "secondParty" : "المدعي عليه",
+        "reformers" : "المصلحون",
+        "arbitrators" : "المحكمون",
+        "arbitratorsClass" : "فئة المحكم",
+        "reviewerName":"اسم المدقق",
+        "reviewerStatus":"حالة المدقق",
+        "status":"الحالة",
+        "experienceYears":"عدد سنوات الخبرة"
     },
 
     "LitigationRequestCorrespondences":{

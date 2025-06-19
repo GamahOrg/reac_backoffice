@@ -16,6 +16,10 @@ import { ConfigratoinReviewSettingsComponent } from './components/configratoin-r
 import { StatisticDashbourdComponent } from './components/statistic-dashbourd/statistic-dashbourd.component';
 import { EditUserComponent } from './components/users-list/edit-user/edit-user.component';
 import { TypesStatusDashbourdComponent } from './components/statistic-dashbourd/types-status-dashbourd/types-status-dashbourd.component';
+import { ListAdminReportComponent } from './components/list-dashboard/list-admin-report.component';
+import { AllStagesStatisticsComponent } from './components/statistic-dashbourd/all-stages-statistics/all-stages-statistics/all-stages-statistics.component';
+import { ReviewersreformersarbitratorsreportComponent } from './components/statistic-dashbourd/reviewersreformersarbitratorsreport/reviewersreformersarbitratorsreport.component';
+import { ServiceProviderDashbourdComponent } from './components/statistic-dashbourd/service-provider-dashbourd/service-provider-dashbourd.component';
 
 const routes: Routes = [
   
@@ -79,6 +83,22 @@ const routes: Routes = [
   {
     path: Configuration.pages.usersManagement.DashbourdTypes,
     component: TypesStatusDashbourdComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.ListOfLitigationForAdminReport,
+    component: ListAdminReportComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.AllStagesStatisiticsForAdminReport,
+    component: AllStagesStatisticsComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.AllPersonasForAdminReport,
+    component: ReviewersreformersarbitratorsreportComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.DashbourdProviders,
+    component: ServiceProviderDashbourdComponent,
   },
   
 ];

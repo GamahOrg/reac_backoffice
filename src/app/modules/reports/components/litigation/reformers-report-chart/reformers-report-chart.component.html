@@ -1,0 +1,47 @@
+<div class="chart-container" id="pdfContent" #pdfContent>
+    <h2>لوحة إحصائيات  المصلحين</h2>
+    
+    <!-- Chart Type Selector -->
+    <div class="chart-controls">
+      <label for="chartType">نوع الرسم البياني:</label>
+      <select id="chartType" [(ngModel)]="selectedChartType" (change)="updateChart()">
+        <option value="bar">رسم بياني عمودي</option>
+        <option value="pie">رسم دائري</option>
+        <option value="doughnut">رسم دائري مجوف</option>
+        <option value="radar">رسم شبكي</option>
+      </select>
+      
+      <label for="dataView">عرض البيانات:</label>
+      <select id="dataView" [(ngModel)]="selectedDataView" (change)="updateChart()">
+        <option value="litigation">عدد الدعاوى</option>
+        <option value="ratios">نسب الإنجاز</option>
+        <option value="experience">الخبرة مقابل إجمالي القضايا</option>
+      </select>
+      <button id="downloadPDFBtn" class="btn btn-primary" (click)="downloadPDF()">
+    تحميل PDF
+</button>
+    </div>
+    
+    <!-- Chart Canvas -->
+    <div class="chart-wrapper">
+      <canvas #chartCanvas></canvas>
+    </div>
+    
+    <!-- Data Summary -->
+    <div class="data-summary">
+      <div class="summary-cards">
+        <div class="chart-section">
+          <h4>إجمالي المصلحين</h4>
+          <p>{{inputData.length}}</p>
+        </div>
+        <div class="chart-section">
+          <h4>إجمالي القضايا</h4>
+          <p>{{getTotalCases()}}</p>
+        </div>
+        <div class="chart-section">
+          <h4>متوسط معدل الإنجاز</h4>
+          <p>{{getAverageCompletionRate()}}%</p>
+        </div>
+      </div>
+    </div>
+  </div>

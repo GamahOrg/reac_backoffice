@@ -1,0 +1,115 @@
+
+
+<app-filter (filterChange)="onFilterChange($event)" [visibleFilters]="filterVisibility"></app-filter>
+<div class="chart-container" id="pdfContent" #pdfContent>
+    <h2>{{this.pageTitle}}</h2>
+    
+    <!-- Chart Type Selector -->
+    <div class="chart-controls">
+      <label for="chartType">نوع الرسم البياني:</label>
+      <select id="chartType" [(ngModel)]="selectedChartType" (change)="updateChart()">
+        <option value="bar">رسم بياني عمودي</option>
+        <option value="pie">رسم دائري</option>
+        <option value="doughnut">رسم دائري مجوف</option>
+        <option value="radar">رسم شبكي</option>
+      </select>
+      
+      <label for="dataView">عرض البيانات:</label>
+      <select id="dataView" [(ngModel)]="selectedDataView" (change)="updateChart()">
+        <option value="all"> الكل</option>
+        <option value="status">حسب الحالة</option>
+        <option value="type">حسب النوع</option>
+        <!-- <option value="detailed">تفصيلي لكل نوع</option> -->
+      </select>
+      <button id="downloadPDF" class="download-btn" (click)="downloadPDF()">
+        تحميل PDF
+    </button>
+    </div>
+    
+    <!-- Main Dashboard Layout -->
+    <div class="dashboard-layout">
+      <!-- Total Count Card -->
+      <div class="total-card">
+        <h3>إجمالي عدد الدعاوى</h3>
+        <div class="total-number">{{statisticsData?.totalLitigationCount || 0}}</div>
+      </div>
+      
+      <!-- Status Charts -->
+      <div class="status-charts">
+        <div class="chart-section">
+          <h4>حسب الحالة</h4>
+          <canvas #statusChart></canvas>
+        </div>
+        
+        <div class="chart-section">
+          <h4>حسب النوع</h4>
+          <canvas #typeChart></canvas>
+        </div>
+      </div>
+      
+      <!-- Detailed Charts by Type -->
+      <div class="detailed-charts">
+        <div class="chart-section">
+          <h4>الدعاوى قيد الدراسه</h4>
+          <div class="sub-info">
+            <span>عددها: {{getReviewCount()}}</span>
+            <span>النسبة: {{getReviewPercentage()}}%</span>
+          </div>
+          <canvas #reviewChart></canvas>
+        </div>
+        
+        <div class="chart-section">
+          <h4>الدعاوى المتأخرة</h4>
+          <div class="sub-info">
+            <span>عددها: {{getOverdueCount()}}</span>
+            <span>النسبة: {{getOverduePercentage()}}%</span>
+          </div>
+          <canvas #overdueChart></canvas>
+        </div>
+        
+        <div class="chart-section">
+          <h4>الدعاوى المنتهية</h4>
+          <div class="sub-info">
+            <span>عددها: {{getFinishedCount()}}</span>
+            <span>النسبة: {{getFinishedPercentage()}}%</span>
+          </div>
+          <canvas #finishedChart></canvas>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Data Summary -->
+    <div class="data-summary">
+      <div class="summary-cards">
+        <div class="chart-section">
+          <h4>وساطة عقارية</h4>
+          <p>{{statisticsData?.realEstateBrokerageCount || 0}}</p>
+          <small>منتهية: {{statisticsData?.realEstateBrokerageFinishedCount || 0}} | غير منتهية: {{statisticsData?.realEstateBrokerageNotFinishedCount || 0}}</small>
+        </div>
+        
+        <div class="chart-section">
+          <h4>وافي</h4>
+          <p>{{statisticsData?.wafiCount || 0}}</p>
+          <small>منتهية: {{statisticsData?.wafiFinishedCount || 0}} | غير منتهية: {{statisticsData?.wafiNotFinishedCount || 0}}</small>
+        </div>
+        
+        <div class="chart-section">
+          <h4>خدمات أخرى</h4>
+          <p>{{statisticsData?.otherServicesCount || 0}}</p>
+          <small>منتهية: {{statisticsData?.otherServicesFinishedCount || 0}} | غير منتهية: {{statisticsData?.otherServicesNotFinishedCount || 0}}</small>
+        </div>
+        
+        <div class="chart-section">
+          <h4>إيجار</h4>
+          <p>{{statisticsData?.rentCount || 0}}</p>
+          <small>منتهية: {{statisticsData?.rentFinishedCount || 0}} | غير منتهية: {{statisticsData?.rentNotFinishedCount || 0}}</small>
+        </div>
+        
+        <div class="chart-section">
+          <h4>عقارات</h4>
+          <p>{{statisticsData?.propertiesCount || 0}}</p>
+          <small>منتهية: {{statisticsData?.propertiesFinishedCount || 0}} | غير منتهية: {{statisticsData?.propertiesNotFinishedCount || 0}}</small>
+        </div>
+      </div>
+    </div>
+  </div>

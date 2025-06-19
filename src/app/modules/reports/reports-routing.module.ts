@@ -4,6 +4,18 @@ import { Configuration } from '@app/core/configurations/shared.config';
 import { StatisticsReviewComponent } from './components/litigation/statistics-review/statistics-review.component';
 import { StatisticsReformerComponent } from './components/litigation/statistics-reformer/statistics-reformer.component';
 import { StatisticsArbitrationComponent } from './components/litigation/statistics-arbitration/statistics-arbitration.component';
+import {  StatisticsReviewReportComponent } from './components/litigation/statistics-review-report/statistics-review-report.component';
+import { ListReviewReportComponent } from './components/litigation/list-review-report/list-review-report.component';
+import { ListReformerReportComponent } from './components/litigation/list-reformer-report/list-reformer-report.component';
+import { ListArbitratorReportComponent } from './components/litigation/list-arbitrator-report/list-arbitrator-report.component';
+import { StatisticsReformerReportComponent } from './components/litigation/statistics-reformer-report/statistics-reformer-report.component';
+import { StatisticsArbitrationReportComponent } from './components/litigation/statistics-arbitration-report/statistics-arbitration-report.component';
+import { ReviewersReportComponent } from './components/litigation/reviewers-report/reviewers-report.component';
+import { ReformersReportComponent } from './components/litigation/reformers-report/reformers-report.component';
+import { ArbitratorsReportComponent } from './components/litigation/arbitrators-report/arbitrators-report.component';
+import { ReviewDashbourdComponent } from './components/litigation/review-dashbourd/review-dashbourd.component';
+import { ReconcilationDashbourdComponent } from './components/litigation/reconcilation-dashbourd/reconcilation-dashbourd.component';
+import { ArbitrationDashbourdComponent } from './components/litigation/arbitration-dashbourd/arbitration-dashbourd.component';
 
 const routes: Routes = [
   {
@@ -20,9 +32,59 @@ const routes: Routes = [
     component: StatisticsReformerComponent,
   },
   {
+    path: Configuration.pages.reports.StatiscsReformerReport,
+    component: StatisticsReformerReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.StatiscsArbitirationReport,
+    component: StatisticsArbitrationReportComponent,
+  },
+  {
     path: Configuration.pages.reports.statisticsArbitration,
     component: StatisticsArbitrationComponent,
   },
+  {
+    path: Configuration.pages.reports.statisticsReviewReport,
+    component: StatisticsReviewReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.listReviewReport,
+    component: ListReviewReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.listReformerReport,
+    component: ListReformerReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.listArbitratorReport,
+    component: ListArbitratorReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.ReviewersReport,
+    component: ReviewersReportComponent,
+  },
+    
+  {
+    path: Configuration.pages.reports.ReformersReport,
+    component: ReformersReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.ArbitratorsReport,
+    component: ArbitratorsReportComponent,
+  },
+  {
+    path: Configuration.pages.reports.ReviewDashbourd,
+    component: ReviewDashbourdComponent,
+  },
+  {
+    path: Configuration.pages.reports.ReformerDashbourd,
+    component: ReconcilationDashbourdComponent,
+  },
+  {
+    path: Configuration.pages.reports.ArbitratorDashbourd,
+    component: ArbitrationDashbourdComponent,
+  },
+  
 ];
 
 @NgModule({

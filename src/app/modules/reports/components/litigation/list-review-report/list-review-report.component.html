@@ -1,0 +1,71 @@
+<app-filter (filterChange)="onFilterChange($event)" [visibleFilters]="filterVisibility"></app-filter>
+<!-- Table to display listReviewReport data -->
+
+<div class="table-wrapper">
+  <div class="mt-5">
+        <button class="btn btn-primary" (click)="exportToExcel()">
+            <i class="fas fa-file-excel me-2"></i>
+            {{translations.general.exportToExcel | translate}}
+        </button>
+    </div>
+    <div class="table-responsive">
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">{{translations.Reports.requestCode | translate}}</th>
+        <th scope="col">{{translations.Reports.createdOn | translate}}</th>
+        <th scope="col">{{translations.Reports.areaName | translate}}</th>
+        <th scope="col">{{translations.Reports.cityName | translate}}</th>
+        <th scope="col">{{translations.Reports.categoryName | translate}}</th>
+        <th scope="col">{{translations.Reports.firstParty | translate}}</th>
+        <th scope="col">{{translations.Reports.secondParty | translate}}</th>
+        <th scope="col">{{translations.Reports.employeeName | translate}}</th>
+        <th scope="col">{{translations.Reports.requestStatus | translate}}</th>
+        <th scope="col">{{translations.Reports.litigationAmount | translate}}</th>
+        <th scope="col">{{translations.Reports.contractAddress | translate}}</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listReviewReport; let i = index">
+        <td >{{ item.requestCode }}</td>
+        <td >{{ item.createdOn | date }}</td>
+        <td >{{ item.areaName }}</td>
+        <td >{{ item.cityName }}</td>
+        <td >{{ item.categoryName }}</td>
+        <td >{{ item.firstParty }}</td>
+        <td >{{ item.secondParty }}</td>
+        <td >{{ item.employeeName }}</td>
+        <td >{{ item.requestStatus }}</td>
+        <td >{{ item.litigationAmount }}</td>
+        <td >{{ item.contractAddress }}</td>
+      </tr>
+    </tbody>
+</table>
+
+    </div>
+
+
+</div>
+
+
+  
+
+<div *ngIf="listReviewReport && listReviewReport.length === 0" class="mt-3">
+  No data found.
+</div>
+
+<div class="flex-between">
+      <div class="op-6 v-small fw-5">
+        <span>{{translations.tables.from | translate}} </span>
+        <span>{{pagintationData.currentPage}} </span>
+        <span>{{translations.tables.to | translate}} </span>
+        <span>{{pagintationData.totalCount}} </span>
+        <span>{{translations.tables.ofTotal | translate}} </span>
+        <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+        <span>{{translations.tables.row | translate}} </span>
+      </div>
+      <app-pagination></app-pagination>
+</div>
+

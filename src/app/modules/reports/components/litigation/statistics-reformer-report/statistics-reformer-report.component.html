@@ -1,0 +1,56 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+   
+<app-filter (filterChange)="onFilterChange($event)" [visibleFilters]="filterVisibility"></app-filter>
+
+  <div class="row">
+    <div class="col-md-6">
+    
+  <!-- <div class="chart-container"> -->
+    <!-- <div class="chart-wrapper"> -->
+      <div class="form-wrapper">     (حسب الحاله)</div>
+      <div class="container-fluid ">
+               <canvas baseChart
+              [data]="statusPieChartData"
+              [labels]="statusPieChartData.labels"
+            
+              [options]="chartOptions"
+              [type]="pieChartType"
+              [legend]="chartLegend">
+                </canvas>
+    <!-- </div> -->
+  </div>
+</div>
+
+  <div class="col-md-6">
+    <!-- <div class="chart-wrapper"> -->
+      <div class="form-wrapper">     (حسب النوع)</div>
+      <div >
+          <canvas baseChart
+                  [data]="typePieChartData"
+                  [labels]="typePieChartData.labels" 
+                  [options]="chartOptions"
+                  [type]="pieChartType"
+                  [legend]="chartLegend">
+          </canvas>
+        </div>
+    </div>
+
+
+    <!-- <div class="col-md-2">
+      <div class="form-wrapper">     اجمالى عدد الدعاوى </div>
+    <div class="container-fluid ">
+      <canvas baseChart
+      [data]="labelSumData"
+      [labels]="labelSumData.labels"
+    
+      [options]="chartOptions"
+      [type]="doughnutChartType"
+      [legend]="chartLegend">
+        </canvas>
+      </div>
+    </div> -->
+  </div>
+
+  
+  <app-statistics-reformer [reportData]="this.LitigationStatisticsData?.[0]"></app-statistics-reformer>

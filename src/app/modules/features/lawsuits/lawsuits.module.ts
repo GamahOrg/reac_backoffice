@@ -39,6 +39,7 @@ import { LitigationRequestCorrespondenceDetailsComponent } from './components/li
 import { LitigationRequestNotesListComponent } from './pages/litigation-request-notes-list/litigation-request-notes-list.component';
 import { LitigationRequestNotesService } from './services/litigation-request-notes/litigation-request-notes.service';
 import { ModificationRequestsComponent } from './components/modification-requests/modification-requests.component';
+import { FilterComponent } from '@app/shared/components/filter/components/filter/filter.component';
 
 @NgModule({
     declarations: [
@@ -84,7 +85,7 @@ import { ModificationRequestsComponent } from './components/modification-request
         BreadcrumbsComponent,
         AccordionComponent,
         AngularMaterialModule,
-        ModificationReturnComponent
+        ModificationReturnComponent,
         // NgbPaginationModule,
     ],
     exports: [AccordionComponent]

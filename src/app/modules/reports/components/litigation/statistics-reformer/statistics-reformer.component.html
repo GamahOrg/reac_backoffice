@@ -1,8 +1,13 @@
-<app-breadcrumbs></app-breadcrumbs>
 
 <div class="table-wrapper mt-0 pt-0">
+    <div class="mt-5">
+        <button class="btn btn-primary" (click)="exportToExcel()">
+            <i class="fas fa-file-excel me-2"></i>
+            {{translations.general.exportToExcel | translate}}
+        </button>
+    </div>
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table id="excel-table" class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">{{translations.Reports.totalLitigationCount | translate}}</th>
@@ -27,19 +32,19 @@
                 <tr>
                     <td>{{this.reportData?.totalLitigationCount}}</td>
                     <td>{{this.reportData?.finishedCount}}</td>
-                    <td>{{this.reportData?.finishedRatio}}</td>
+                    <td>{{this.reportData?.finishedRatio}}%</td>
                     <td>{{this.reportData?.notFinishedCount}}</td>
-                    <td>{{this.reportData?.notFinishedRatio}}</td>
+                    <td>{{this.reportData?.notFinishedRatio}}%</td>
                     <td>{{this.reportData?.otherServicesCount}}</td>
-                    <td>{{this.reportData?.otherServicesRatio}}</td>
+                    <td>{{this.reportData?.otherServicesRatio}}%</td>
                     <td>{{this.reportData?.propertiesCount}}</td>
-                    <td>{{this.reportData?.propertiesRatio}}</td>
+                    <td>{{this.reportData?.propertiesRatio}}%</td>
                     <td>{{this.reportData?.realEstateBrokerageCount}}</td>
-                    <td>{{this.reportData?.realEstateBrokerageRatio}}</td>
+                    <td>{{this.reportData?.realEstateBrokerageRatio}}%</td>
                     <td>{{this.reportData?.rentCount}}</td>
-                    <td>{{this.reportData?.rentRatio}}</td>
+                    <td>{{this.reportData?.rentRatio}}%</td>
                     <td>{{this.reportData?.wafiCount}}</td>
-                    <td>{{this.reportData?.wafiRatio}}</td>
+                    <td>{{this.reportData?.wafiRatio}}%</td>
                     
                 </tr>
             </tbody>
