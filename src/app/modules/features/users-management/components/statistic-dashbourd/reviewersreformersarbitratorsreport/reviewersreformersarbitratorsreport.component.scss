@@ -1,0 +1,152 @@
+@import "assets/styles/controls.scss";
+@import "assets/styles/tables.scss";
+
+.chart-container {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+  }
+  
+  .chart-controls {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  
+  .chart-controls label {
+    font-weight: bold;
+    margin-left: 8px;
+    margin-right: 0;
+  }
+  
+  .chart-controls select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    direction: rtl;
+  }
+  
+  .chart-wrapper {
+    position: relative;
+    height: 400px;
+    margin-bottom: 30px;
+    background: #fff;
+   
+    padding: 20px;
+  }
+  
+  .data-summary {
+    margin-top: 30px;
+  }
+  
+  .summary-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    text-align: center;
+    min-width: 150px;
+  }
+  
+  .card h4 {
+    margin: 0 0 10px 0;
+    color: #495057;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .card p {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  h2, h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+
+  .chart-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+  }
+  
+  .chart-section h4 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  /// 
+/// avoid page breaks inside elements
+/// /* Force page break before element */
+.page-break-before {
+    page-break-before: always;
+  }
+  
+  /* Force page break after element */
+  .page-break-after {
+    page-break-after: always;
+  }
+  
+  /* Avoid breaking element across pages */
+  .avoid-break {
+    page-break-inside: avoid;
+  }
+  
+  /* Ensure tables and large elements don't break awkwardly */
+  table, img, div,tr,td,h6 {
+    page-break-inside: avoid;
+  }
+  
+  .avoid-page-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  /* Force break before element */
+  .page-break-before {
+    break-before: always;
+    page-break-before: always;
+  }
+  
+  /* Force break after element */
+  .page-break-after {
+    break-after: always;
+    page-break-after: always;
+  }
+  /* Page margins */
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+  
+  .download-btn {
+    background-color: #1976d2;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  .card{
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    text-align: right;
+  }

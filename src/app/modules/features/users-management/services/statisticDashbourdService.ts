@@ -20,4 +20,12 @@ export class StatisticDashbourdService {
   getAllLitigationByTypesStatusStatistics(requestDto:DashbourdRequestDto): Observable<BaseResponse<any>> {
     return this._httpClient.post<BaseResponse<any>>(`${Configuration.APIs.dashbourd.DetailsForAllStages}`,requestDto)
   }
+
+  getAllLitigationStatistics(requestDto:DashbourdRequestDto): Observable<BaseResponse<any>> {
+    return this._httpClient.post<BaseResponse<any>>(`${Configuration.APIs.dashbourd.GetLitigationStatisticsReviewReports}`,requestDto)
+  }
+
+  GetReviewrsReformersArbitratorsStatisticsReport(): Observable<BaseResponse<any>> {
+    return this._httpClient.get<BaseResponse<any>>(`${Configuration.APIs.dashbourd.GetReviewrsReformersArbitratorsStatisticsReport}`)
+  }
 }

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ChartOptions, ChartData, ChartDataset } from 'chart.js';
 import { ChartType } from 'chart.js';
 import { StatisticDashbourdService } from '../../services/statisticDashbourdService';
 import { DashbourdRequestDto } from '../../models/dashbourdRequestDto';
-
+declare let html2pdf: any;
 @Component({
   selector: 'app-statistic-dashbourd',
   templateUrl: './statistic-dashbourd.component.html',
@@ -37,7 +37,7 @@ export class StatisticDashbourdComponent implements OnInit {
   
     // Calculate the date 7 days before today
     const sevenDaysBefore = new Date();
-    sevenDaysBefore.setDate(today.getDate() - 7);
+    sevenDaysBefore.setDate(today.getDate() - 29);
     today.setDate(today.getDate() +1);
     const todayFormatted = today.toISOString().split('T')[0];
     const sevenDaysBeforeFormatted = sevenDaysBefore.toISOString().split('T')[0];
@@ -59,6 +59,10 @@ export class StatisticDashbourdComponent implements OnInit {
   };
   public typeChartData: ChartData<'bar'> = {
     labels: ['مرحلة التدقيق', 'مرحلة الصلح', 'مرحلة التحكيم'],
+    datasets: []
+  };
+  public statusChartData: ChartData<'bar'> = {
+    labels: ['تم الصلح في منصة تراضي','تنازل المدعي عن الدعوي', 'تنازل المدعي عن الحق','عدم الصلح', 'تم الصلح'],
     datasets: []
   };
   getLitigationStatisticsByType(item:any): void {
@@ -90,6 +94,16 @@ this.typeChartData = {
       label: 'أخرى',
       data: [item[0].totalReviewOtherServicesCount, item[0].totalReconciliationOtherServicesCount, item[0].totalArbitrationOtherServicesCount],
       backgroundColor: '#c29ce0'
+    }
+  ]
+};
+this.statusChartData = {
+  labels: ['تم الصلح في منصة تراضي','تنازل المدعي عن الدعوي', 'تنازل المدعي عن الحق','عدم الصلح', 'تم الصلح'],
+  datasets: [
+    {
+      label: 'منتهية',
+      data: [item[0].theReconciliationOnTradyPatformCount,item[0].waiverOfTheLawSuitCount , item[0].waiverOfRightCount,item[0].lackOfReconciliationCount ,item[0].reconciliationWasMadeCount ],
+      backgroundColor: '#00c9e6'
     }
   ]
 };
@@ -160,5 +174,62 @@ this.typeChartData = {
     );
    
   }
+
+    ///download chart as pdf 
+      @ViewChild('pdfContent') pdfContent!: ElementRef;
+      downloadPDF() {
+        const element = this.pdfContent.nativeElement;
+        const clonedElement = element.cloneNode(true) as HTMLElement;
+        clonedElement.style.setProperty('display', 'block');
+        clonedElement.style.width ='220mm';
+        
+        // clonedElement.style.width = '1120px';
+        clonedElement.style.transform = 'scale(0.74)';
+        // Convert all canvas elements to images
+        const canvases = this.pdfContent.nativeElement.querySelectorAll('canvas');
+        const clonedCanvases = clonedElement.querySelectorAll('canvas');
+      
+        canvases.forEach((canvas:any, index:any) => {
+          const img = document.createElement('img');
+          img.src = canvas.toDataURL('image/png');
+          img.style.width = canvas.style.width;
+          img.style.height = canvas.style.height;
+      
+          const clonedCanvas = clonedCanvases[index];
+          clonedCanvas.parentNode?.replaceChild(img, clonedCanvas);
+        });
+        const formattedDate = new Date().toISOString().split('T')[0]; // "2025-06-04"
+        const fileName = `لوحة_ إحصائيات_تفاصيل_حالات_وأنواع_الدعوى${formattedDate}.pdf`;
+      
+        const options = {
+          margin: [0,0, 0, 0],
+          filename: fileName,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: {
+            scale: 1,
+            useCORS: true,
+            allowTaint: true,
+            logging: false,
+            scrollY: 0 // avoid scroll offset
+          },
+          jsPDF: {
+            unit: 'mm',
+            format: 'a4',
+            orientation: 'landscape'
+          },
+          pagebreak: {
+            mode: ['css', 'legacy'],
+           
+          }
+        };
+      
+        html2pdf()
+          .from(clonedElement)
+          .set(options)
+          .save()
+          .then(() => {
+            clonedElement.remove(); // Clean up after download
+          });
+      }
 }
 

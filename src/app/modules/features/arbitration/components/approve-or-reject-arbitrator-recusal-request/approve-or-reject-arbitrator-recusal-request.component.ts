@@ -82,11 +82,12 @@ export class ApproveOrRejectArbitratorRecusalRequestComponent extends BaseCompon
        ;
       if(res.GetArbitratorRecusalData.isDone && res.GetArbitratorRecusalData.data){
           this.litigationRequestForSessionDto = res.GetArbitratorRecusalData?.data;
-          if(res.GetArbitratorRecusalData.data.request.approveRejectStatus != null){
-            this.showAction = res.GetArbitratorRecusalData?.data?.request.approveRejectStatus == 1 ? false : true;
-          }else{
-            this.showAction = true;
-          }
+        //   if(res.GetArbitratorRecusalData.data.request.approveRejectStatus != null){
+        //     this.showAction = res.GetArbitratorRecusalData?.data?.request.approveRejectStatus == 1 ? false : true;
+        //   }else{
+        //     this.showAction = true;
+        //   }
+        this.showAction = res.GetArbitratorRecusalData?.data?.allowAdd;
         this.fillData()
         this.fillfirstPartyData()
         this.fillsecondPartyData()
@@ -347,11 +348,12 @@ sendStatus(modal: any, litigationRequestArbitratorRecusalRequestStatus: ApproveR
         this.showAction = false;
         if(res.isDone && res.data){
             this.litigationRequestForSessionDto = res?.data;
-            if(res.data.request.approveRejectStatus != null){
-              this.showAction = res?.data?.request.approveRejectStatus == 1 ? false : true;
-            }else{
-              this.showAction = true;
-            }
+            // if(res.data.request.approveRejectStatus != null){
+            //   this.showAction = res?.data?.request.approveRejectStatus == 1 ? false : true;
+            // }else{
+            //   this.showAction = true;
+            // }
+            this.showAction = res?.data?.allowAdd;
           this.fillData()
           this.fillfirstPartyData()
           this.fillsecondPartyData()

@@ -36,21 +36,21 @@
                             "src/assets/styles/bootstrap.scss",
                             "src/assets/styles/styles.scss"
                         ],
-                        "scripts": []
+                        "scripts": ["./node_modules/html2pdf.js/dist/html2pdf.bundle.min.js"]
                     },
                     "configurations": {
                         "production": {
                             "budgets": [
-                                {
-                                    "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
-                                },
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "1mb"
-                                }
+                              {
+                                "type": "initial",
+                                "maximumWarning": "4mb",
+                                "maximumError": "5mb"
+                              },
+                              {
+                                "type": "anyComponentStyle",
+                                "maximumWarning": "4mb",
+                                "maximumError": "5mb"
+                              }
                             ],
                             "optimization": true,
                             "extractLicenses": false,
