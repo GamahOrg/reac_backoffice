@@ -124,7 +124,9 @@ isActive:employee.isActive
   // Update the status in the backend
   this._usersManagementService.UpdateEmployeeStatus(employeeStatusUpdate).subscribe(
     response => {
-      this.showSuccess(this._translateService.instant(this.translations.general.successfullySave));
+      if(response.isDone){
+        this.showSuccess(this._translateService.instant(this.translations.general.successfullySave));
+      }
       this.GetAllEmployeeList();
     },
     error => {

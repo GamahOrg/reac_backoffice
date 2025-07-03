@@ -1066,7 +1066,7 @@
 
 },
 "reviewSettingsPage":{
-    "SLA.SecondAgreementRequestForForRequest":"  الفترة الثانيه المسموح بها للرد على طلب المشارطة (بالساعه)",
+    "SLA.SecondAgreementRequestForForRequest":"المدة الزمنية لارسال اشعار بإلغاء الدعوة تلقائيًا حال عدم الرد على طلب المشارطة (بالساعة) من وقت انشاء الدعوة ",
     "Review.Period":" المده المسموح بها للتدقيق (باليوم)", 
     "LitigationRequest.Reject.Agreement":"نص اشعار بقبول / رفض  لطلب المشارطة ",
     "Workflow.Condition.Review":"اشعار بارسال طلب المشارطة لمدير التدقيق",
@@ -1077,10 +1077,10 @@
     "SLA.AssignLitigation.NewReviewerEmployee":" نص اشعار بارسال الدعوة مرة اخرى بعد سحبها للمدقق الجديد ",
     "Arbitrators.Count.Added.AfterAgreement":" نص اشعار لإنتهاء من تحديد عدد المحكمين النهائي للمدقق",
     "LitigationRequest.Accept.Agreement":"نص اشعار بالموافقه على طلب المشارطة للمدعى و المدعى عليه ",
-    "SLA.ReminderForReviewerManager":"المده المسموح بها بعدم تدقيق الدعوة  لارسال اشعارات للمدقق ومدير اداره التدقيق (بالساعه) ",
+    "SLA.ReminderForReviewerManager":"سيتم سحب الدعوة تلقائيًا في حال عدم اتخاذ إجراء من المدقق بعد المدة المحددة  (بالساعه) ",
     "SLA.ReminderForReviewer":" المده المسموح بها  بارسال اشعار تنبيه للمدقق (بالساعه)",
     "SLA.WithdrewLitigation.OldReviewerEmployee":" نص اشعار بتخطى مدة التدقيق لمدير التدقيق",
-    "SLA.FirstAgreementRequestForRequest":"  الفترة الاولى المسموح بها للرد على طلب المشارطة (بالساعه)",
+    "SLA.FirstAgreementRequestForRequest":" المدة الزمنية لارسال اشعار بسرعة الرد علي طلب المشارطة (بالساعة) من وقت انشاء الدعوة",
     "SLA.AssignLitigation.ReviewerAdmin":" نص اشعار مدقق جديد لتخطى المدقق السابق مدة التدقيق القصوى لمدير التدقيق",
     "SLA.AgreementCancelled2":"نص اشعار بعدم الرد على طلب المشارطة للمدعى والمدعى عليه",
     "SLA.AgreementCancelled":"في حالة نوع الدعوي تحكيم نص اشعار بعدم الرد على طلب المشارطة لمدير ادارة التدقيق",
