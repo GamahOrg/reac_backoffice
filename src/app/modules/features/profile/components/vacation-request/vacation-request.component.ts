@@ -28,7 +28,12 @@ export class VacationRequestComponent extends BaseComponent implements OnInit {
   };
   private _formBuilder =  inject(FormBuilder)
   private _modalService = inject(NgbModal);
-
+  public dimBeforeTodayFilter = (d: Date | null): boolean => {
+        const day = d!.getDay();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Set to midnight to ignore time
+        return today <= d!;
+    }
 
   createVacationForm = this._formBuilder.group({
     startDate: new FormControl<string | null>(null, [Validators.required]),

@@ -97,14 +97,14 @@
                             {{(translations.Profile.vacationRequests.startDate| translate)}}
                         </p>
                         <input formControlName="startDate" useValueAsDate [owlDateTime]="fromdatepicker" [owlDateTimeTrigger]="fromdatepicker"
-                            [placeholder]="translations.Profile.vacationRequests.startDate | translate" class="form-control"
+                            [placeholder]="translations.Profile.vacationRequests.startDate | translate" class="form-control" [owlDateTimeFilter]="dimBeforeTodayFilter"
                             [class.is-invalid]="createVacationFormControls.startDate.invalid && createVacationFormControls.startDate.touched">
     
                         <p class="dateValue">
                             {{(translations.Profile.vacationRequests.endDate | translate)}}
                         </p>
                         <input formControlName="endDate" useValueAsDate [owlDateTime]="todatepicker" [owlDateTimeTrigger]="todatepicker"
-                            [placeholder]="translations.Profile.vacationRequests.endDate | translate" class="form-control"
+                            [placeholder]="translations.Profile.vacationRequests.endDate | translate" class="form-control" [owlDateTimeFilter]="dimBeforeTodayFilter"
                             [class.is-invalid]="createVacationFormControls.endDate.invalid && createVacationFormControls.endDate.touched">
                         <owl-date-time  #fromdatepicker></owl-date-time>
                         <owl-date-time  #todatepicker></owl-date-time>
