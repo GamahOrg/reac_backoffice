@@ -161,6 +161,7 @@
         {{ translations.LitigationRequest.applyActionMessageBody | translate }}
 
         <textarea
+            [maxlength]="300"
             class="form-control"
             rows="7"
             placeholder="{{translations.LitigationRequest.rejectionReasons | translate}}"
