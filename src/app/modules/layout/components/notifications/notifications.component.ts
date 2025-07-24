@@ -94,6 +94,8 @@ private watchPagechanged(): void {
     .subscribe((pageNo) => {
       debugger;
       this.newPageNo = pageNo;
+        this.loadNextPage(this.newPageNo);
+
     })
 }
 
