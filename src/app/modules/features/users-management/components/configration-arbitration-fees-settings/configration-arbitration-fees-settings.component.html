@@ -1,61 +1,56 @@
-
 <app-breadcrumbs></app-breadcrumbs>
 <form [formGroup]="form">
+  <section class="d-flex flex-column gap-3">
     <h3 class="section-title">رسوم التسجيل </h3>
 
-    <div class="row mt-5">
-    <div *ngFor="let item of data; let i = index">
-      <div  *ngIf="item.key.includes('Registeration')" class="form-group col-6">
-        <label [for]="item.id">{{ item.key | translate }}</label>
-        <input 
-          type="text" 
-          class="form-control" 
-          [formControlName]="item.id" 
-          id="{{item.id}}" 
-          [placeholder]="'Enter ' + (item.key | translate)" />
-      </div>
-        <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
-        <div *ngIf="form.controls[item.id].errors?.['required']">
-          {{translations.formValidationError.required | translate}} 
+    <div class="row row-gap-4">
+      <ng-container *ngFor="let item of data; let i = index">
+        <div class="col-xl-6" *ngIf="item.key.includes('Registeration')">
+          <div class="form-group">
+            <label [for]="item.id">{{ item.key | translate }}</label>
+            <input type="text" class="form-control" [formControlName]="item.id" id="{{item.id}}" [placeholder]="'Enter ' + (item.key | translate)" />
+          </div>
+          <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
+            <div *ngIf="form.controls[item.id].errors?.['required']">
+              {{translations.formValidationError.required | translate}}
+            </div>
+          </div>
+          <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
+            <div *ngIf="form.controls[item.id].errors?.['min']">
+              {{translations.formValidationError.minlength | translate}}
+            </div>
+          </div>
         </div>
-      </div>
-      <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
-        <div *ngIf="form.controls[item.id].errors?.['min']">
-          {{translations.formValidationError.minlength | translate}}
-        </div>
-      </div>
-      
-  </div>
-</div>
-<br>
-  <h3 class="section-title">رسوم العضوية </h3>
-  <div class="row mt-5">
-  <div *ngFor="let item of data; let i = index">
-    <div  *ngIf="item.key.includes('Membership')" class="form-group col-6">
-      <label [for]="item.id">{{ item.key | translate }}</label>
-      <input 
-        type="text" 
-        class="form-control" 
-        [formControlName]="item.id" 
-        id="{{item.id}}" 
-        [placeholder]="'Enter ' + (item.key | translate)" />
+      </ng-container>
     </div>
-      <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
-      <div *ngIf="form.controls[item.id].errors?.['required']">
-        {{translations.formValidationError.required | translate}} 
-      </div>
-    </div>
-    <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="text-danger">
-      <div *ngIf="form.controls[item.id].errors?.['min']">
-        {{translations.formValidationError.minlength | translate}}
-      </div>
-    </div>
-    
-</div>
-</div>
+  </section>
 
-    <div class="p-5">
-    <button [disabled]="form.invalid"  (click)="save()" class="btn btn-primary">تعديل</button>
+  <section class="d-flex flex-column gap-3 mt-5">
+    <h3 class="section-title">رسوم العضوية </h3>
+
+    <div class="row mt-5">
+      <ng-container *ngFor="let item of data; let i = index">
+        <div class="col-xl-6" *ngIf="item.key.includes('Membership')">
+          <div class="form-group">
+            <label [for]="item.id">{{ item.key | translate }}</label>
+            <input type="text" class="form-control" [formControlName]="item.id" id="{{item.id}}" [placeholder]="'Enter ' + (item.key | translate)" />
+          </div>
+          <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="invalid-feedback d-block">
+            <div *ngIf="form.controls[item.id].errors?.['required']">
+              {{translations.formValidationError.required | translate}}
+            </div>
+          </div>
+          <div *ngIf="form.controls[item.id].errors && form.controls[item.id].touched" class="invalid-feedback d-block">
+            <div *ngIf="form.controls[item.id].errors?.['min']">
+              {{translations.formValidationError.minlength | translate}}
+            </div>
+          </div>
+        </div>
+      </ng-container>
     </div>
-  </form>
-  
+
+    <div class="d-flex justify-content-end">
+      <button [disabled]="form.invalid" (click)="save()" class="btn btn-primary px-xl-4">تعديل</button>
+    </div>
+  </section>
+</form>

@@ -1,61 +1,46 @@
-<div class="form-wrapper">    إحصائيات حالات وأنواع الدعوى </div>
+<div class="form-wrapper"> إحصائيات حالات وأنواع الدعوى </div>
 
-<div class="chart-container mt-5">
-    <form [formGroup]="filterForm" (ngSubmit)="applyFilter()">
-    <div class=" row">
-        <div class="col-md-3">
-          <label for="startDate">من تاريخ:</label>
-          <input type="date"  class="form-control" formControlName="startDate" placeholder="تاريخ البداية">
-        </div>
-        <div class="col-md-3">
-          <label for="endDate">إلى تاريخ:</label>
-          <input type="date" class="form-control" formControlName="endDate" placeholder="تاريخ النهاية">
-        </div>
-        <div class="col-md-2">
-            <button class="btn btn-primary mt-6 pt-2" type="submit">تطبيق </button>
-        </div>
-        
+<div class="mt-5">
+  <form [formGroup]="filterForm" (ngSubmit)="applyFilter()">
+    <div class="row row-gap-4">
+      <div class="col-xl-3">
+        <label for="startDate" class="form-label">من تاريخ:</label>
+        <input type="date" class="form-control" formControlName="startDate" placeholder="تاريخ البداية">
       </div>
-    </form>
-    <div class="row ">
-      <div class="col-11"></div>
-      <div class="col-1">
-    <button class="download-btn" (click)="downloadPDF()">
-      تحميل PDF
-  </button>
-</div>
-</div>
-<div class="row" #pdfContent>
-    <div class="form-wrapper">     (حسب الحاله)</div>
-    
-    <div class="container-fluid ">
-             <canvas baseChart
-            [data]="totalChartData"
-            [labels]="labels"
-            [options]="chartOptions"
-            [type]="chartType"
-            [legend]="chartLegend">
-              </canvas>
-  </div>
- 
 
-<div class="form-wrapper">     (حسب النوع)</div>
-  <div class="container-fluid">
-    <canvas baseChart
-            [data]="typeChartData"
-            [options]="chartOptions"
-            [type]="chartType"
-            [legend]="chartLegend">
-    </canvas>
-  </div>
-<div class="form-wrapper">     المنتهية حسب الحالة</div>
-  <div class="container-fluid">
-    <canvas baseChart
-            [data]="statusChartData"
-            [options]="chartOptions"
-            [type]="chartType"
-            [legend]="chartLegend">
-    </canvas>
-  </div>
+      <div class="col-xl-3">
+        <label for="endDate" class="form-label">إلى تاريخ:</label>
+        <input type="date" class="form-control" formControlName="endDate" placeholder="تاريخ النهاية">
+      </div>
+
+      <div class="col-xl-auto">
+        <div class="d-flex align-items-end h-100">
+          <button class="btn btn-primary" type="submit">تطبيق </button>
+        </div>
+      </div>
+
+      <div class="col-xl-auto">
+        <div class="d-flex align-items-end h-100">
+          <button id="downloadPDFBtn" class="btn btn-primary" (click)="downloadPDF()">تحميل PDF</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
+
+<div class="chart-container mt-5" #pdfContent>
+  <div class="form-wrapper"> (حسب الحاله)</div>
+  <div class="w-100">
+    <canvas baseChart [data]="totalChartData" [labels]="labels" [options]="chartOptions" [type]="chartType" [legend]="chartLegend"></canvas>
+  </div>
+
+  <div class="form-wrapper"> (حسب النوع)</div>
+  <div class="w-100">
+    <canvas baseChart [data]="typeChartData" [options]="chartOptions" [type]="chartType" [legend]="chartLegend"></canvas>
+  </div>
+
+  <div class="form-wrapper"> المنتهية حسب الحالة</div>
+  <div class="w-100">
+    <canvas baseChart [data]="statusChartData" [options]="chartOptions" [type]="chartType" [legend]="chartLegend"></canvas>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 
 <div class="form-wrapper">
-    <summary class="flex-y-row gap-2 border-bottom pb-5">
+    <summary class="flex-y-row gap-2">
         <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
         <h6 class="small fw-6 op-7">{{ translations.LitigationRequestCorrespondences.correspondences| translate }} </h6>
     </summary>
@@ -26,7 +26,7 @@
                     <td>{{correspondence.citizen.fullName}}</td>
                     <td>
                     <div>
-                     <div class="form-group mb-4">
+                     <div class="form-group">
                        <div class="value"
                             *ngFor="let file of correspondence.litigationRequestCorrespondenceFiles">
                          <span class="icon material-icons-outlined">content_copy</span>
@@ -39,14 +39,14 @@
                    </div></td>
                    <!-- <td>
                     <button
-                    class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" type="button"
+                    class="btn btn-sm btn-light" type="button"
                     (click)="openEditNoteModal(editNotesModal,note)">
                         تعديل
                     </button>
                    </td> -->
                    <td>
                     <button
-                    class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" type="button"
+                    class="btn btn-sm btn-light" type="button"
                     (click)="openCorrespondenceReplyListModal(correspondenceReplyListModal,correspondence)">
                         عرض الردود
                     </button>
@@ -61,7 +61,7 @@
 <div class="form-wrapper">
     <div class="accordion-card">
         <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
+            <summary class="flex-y-row gap-2">
                 <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                 <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.firstPartyData| translate }} </h6>
             </summary>
@@ -81,7 +81,7 @@
 <div class="form-wrapper">
     <div class="accordion-card">
         <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
+            <summary class="flex-y-row gap-2">
                 <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                 <h6 class="small fw-6 op-7"> {{ translations.LitigationRequest.secondPartyData| translate }}</h6>
             </summary>
@@ -102,7 +102,7 @@
 <div class="form-wrapper">
     <div class="accordion-card">
         <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
+            <summary class="flex-y-row gap-2">
                 <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                 <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.litigationData| translate }} </h6>
             </summary>
@@ -123,7 +123,7 @@
   <ng-template #correspondenceReplyListModal let-modal>
     <div class="modal-header">
       <h4> ردود المراسلة</h4>
-      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
     </div>
   
       <div class="modal-body">
@@ -147,7 +147,7 @@
                             <td>{{reply?.citizen?.fullName}}</td>
                             <td>
                             <div>
-                             <div class="form-group mb-4">
+                             <div class="form-group">
                                <div class="value"
                                     *ngFor="let file of reply.litigationRequestCorrespondenceReplyFiles">
                                  <span class="icon material-icons-outlined">content_copy</span>
@@ -177,7 +177,7 @@
 <!-- <ng-template #editNotesModal let-modal>
     <div class="modal-header">
       <h4>تعديل الملاحظة</h4>
-      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
     </div>
   
       <div class="modal-body">
@@ -188,7 +188,7 @@
         <div class="key">الملاحظة</div>
 
       <textarea class="form-control" formControlName="notes" name="notes" id="notes"></textarea>
-      <div class="form-group mb-4">
+      <div class="form-group">
         <div class="key"> رفع الملفات</div>
 
         <app-file-uploader [data]="multiFileUploaderData"

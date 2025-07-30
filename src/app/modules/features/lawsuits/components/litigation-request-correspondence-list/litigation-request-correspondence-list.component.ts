@@ -86,7 +86,7 @@ export class LitigationRequestCorrespondenceListComponent extends BaseComponent 
       }
 
     private watchPaginationActions(): void {
-        debugger;
+        
         this.watchPagechanged();
         this.watchPaginationClicked();
       }
@@ -113,7 +113,7 @@ export class LitigationRequestCorrespondenceListComponent extends BaseComponent 
       }
 
       private loadNextPage(nextPage: number): void {
-        debugger;
+        
         this.pagintationData.currentPage = nextPage;
         this.GetLitigationRequestReformerAssigningRequests()
       }

@@ -4,10 +4,10 @@
           <h5 class="modal-title"> انشاء رسوم اداريه </h5>
            <button type="button" class="close-btn" aria-label="Close" (click)="closeModal()"></button>
         </div> -->
-        <div class="modal-body " class="mt-5">
+        <div class="modal-body mt-5">
           <form  [formGroup]="feesForm" (ngSubmit)="save()">
        
-            <div class="form-group mt-5">
+            <div class="form-group">
               <label for="fromAmount">{{translations.UsersManagement.AdminstrationFees.fromAmount| translate}}</label>
               <input type="number" min="0" class="form-control" id="fromAmount" formControlName="fromAmount" required>
               <div *ngIf="feesForm.controls['fromAmount'].errors && feesForm.controls['fromAmount'].touched" class="text-danger">
@@ -21,7 +21,7 @@
                   </div>
                 </div>
             </div>
-            <div class="form-group  mt-5">
+            <div class="form-group">
               <label for="toAmount">{{translations.UsersManagement.AdminstrationFees.toAmount| translate}}</label>
               <input type="number"   min="1" class="form-control" id="toAmount" formControlName="toAmount" required>
               <div *ngIf="feesForm.controls['toAmount'].errors && feesForm.controls['toAmount'].touched" class="text-danger">
@@ -35,7 +35,7 @@
                   </div>
                 </div>
             </div>
-            <div class="form-group  mt-5">
+            <div class="form-group">
                 <label for="fees">{{translations.UsersManagement.AdminstrationFees.fees| translate}}</label>
                 <input type="number"  min="1" class="form-control" id="fees" formControlName="fees" required>
                 <div *ngIf="feesForm.controls['fees'].errors && feesForm.controls['fees'].touched" class="text-danger">
@@ -50,7 +50,7 @@
                     </div>
               </div>
                <!-- Table for additional fields -->
-          <div class="form-group mt-5">
+          <div class="form-group">
             <table class="table table-bordered">
               <thead>
                 <tr>

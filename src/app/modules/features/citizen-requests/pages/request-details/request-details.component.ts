@@ -19,7 +19,7 @@ import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.se
 @Component({
     selector: 'app-request-details',
     templateUrl: './request-details.component.html',
-    styleUrls: ['./request-details.component.css']
+    styleUrls: ['./request-details.component.scss']
 })
 export class RequestDetailsComponent extends BaseComponent implements OnInit {
     arbitratorClass?: SysArbitratorClassDto;

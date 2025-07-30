@@ -1,78 +1,56 @@
 <app-breadcrumbs></app-breadcrumbs>
+<div class="table-wrapper mt-5">
 
-<div class="flex-y-row flex-wrap flex-lg-nowrap gap-3">
-  
-    <button [routerLink]="['/users-management/create-user']"
-       class="btn btn-primary fw-5 py-2 flex-y-row text-nowrap px-8">
-      <img src="assets/images/icons/add.svg"
-           class="me-2"
-           alt="add.svg">
+  <div class="table-filter">
+    <button [routerLink]="['/users-management/create-user']" class="btn btn-primary">
+      <i class="hgi hgi-stroke hgi-add-01"></i>
       {{translations.UsersManagement.Employee.createEmployee | translate}}
     </button>
   </div>
 
-
   <div class="form-wrapper">
     <form [formGroup]="searchForm" (ngSubmit)="GetAllEmployeeList()" class="grid-4">
-      <div class="form-field">
+      <div class="form-group">
         <label class="small fw-3 required mb-2">
           {{translations.UsersManagement.Employee.employeeName | translate}}
         </label>
-        <input 
-          type="text" 
-          formControlName="name" 
-          class="form-control span-2" 
-          placeholder="{{translations.UsersManagement.Employee.employeeName | translate}}" 
-        />
+        <input type="text" formControlName="name" class="form-control span-2" placeholder="{{translations.UsersManagement.Employee.employeeName | translate}}" />
         <!-- <div *ngIf="searchForm.controls['name'].errors && searchForm.controls['name'].touched" class="text-danger">
           <div *ngIf="searchForm.controls['name'].errors?.['required']">
             {{translations.formValidationError.required | translate}}
           </div>
         </div> -->
       </div>
-  
-      <div class="form-field">
+
+      <div class="form-group">
         <label class="small fw-3 required mb-2">
           {{translations.UsersManagement.Employee.mobile | translate}}
         </label>
-        <input 
-          type="text" 
-          formControlName="mobile" 
-          class="form-control span-2" 
-          placeholder="{{translations.UsersManagement.Employee.mobile | translate}}" 
-        />
+        <input type="text" formControlName="mobile" class="form-control span-2" placeholder="{{translations.UsersManagement.Employee.mobile | translate}}" />
         <!-- <div *ngIf="searchForm.controls['mobile'].errors && searchForm.controls['mobile'].touched" class="text-danger">
           <div *ngIf="searchForm.controls['mobile'].errors?.['required']">
             {{translations.formValidationError.required | translate}}
           </div>
         </div> -->
       </div>
-  
-      <div class="form-field">
+
+      <div class="form-group">
         <label class="small fw-3 required mb-2">
           {{translations.UsersManagement.Employee.department | translate}}
         </label>
-        <input 
-          type="text" 
-          formControlName="department" 
-          class="form-control span-2" 
-          placeholder="{{translations.UsersManagement.Employee.department | translate}}" 
-        />
+        <input type="text" formControlName="department" class="form-control span-2" placeholder="{{translations.UsersManagement.Employee.department | translate}}" />
         <!-- <div *ngIf="searchForm.controls['department'].errors && searchForm.controls['department'].touched" class="text-danger">
           <div *ngIf="searchForm.controls['department'].errors?.['required']">
             {{translations.formValidationError.required | translate}}
           </div>
         </div> -->
       </div>
-  
-      <div class="form-field">
+
+      <div class="form-group">
         <label class="small fw-3 required mb-2">
           {{translations.UsersManagement.Employee.status | translate}}
         </label>
-        <select 
-          formControlName="isActive" 
-          class="form-select span-2"
-        >
+        <select formControlName="isActive" class="form-select span-2">
           <option value="">{{"الكل"}}</option>
           <option value="true">{{translations.UsersManagement.Employee.active | translate}}</option>
           <option value="false">{{translations.UsersManagement.Employee.inActive | translate}}</option>
@@ -83,8 +61,8 @@
           </div>
         </div> -->
       </div>
-  
-      <!-- <div class="form-field">
+
+      <!-- <div class="form-group">
         <label class="small fw-3 required mb-2">
           {{translations.UsersManagement.Employee.dateFrom | translate}}
         </label>
@@ -94,20 +72,20 @@
           class="form-control span-2"
         />
         <!-- <div class="border flex-y-row rounded-2">
-            <input class="form-control border-0 shadow-none"
+            <input class="form-control"
                    type="date" [ngModel] ="dt | date:'yyyy-MM-dd'"
                  
                    formControlName="dateFrom"
                     />
           </div> -->
-        <!-- <div *ngIf="searchForm.controls['dateFrom'].errors && searchForm.controls['dateFrom'].touched" class="text-danger">
+      <!-- <div *ngIf="searchForm.controls['dateFrom'].errors && searchForm.controls['dateFrom'].touched" class="text-danger">
           <div *ngIf="searchForm.controls['dateFrom'].errors?.['required']">
             {{translations.formValidationError.required | translate}}
           </div>
         </div>
       </div>
   
-      <div class="form-field">
+      <div class="form-group">
         <label class="small fw-3 required mb-2">
           {{translations.UsersManagement.Employee.dateTo | translate}}
         </label>
@@ -122,31 +100,19 @@
           </div>
         </div> 
       </div> -->
-  
+
       <div class="form-action fw-3">
-        <button 
-          type="submit" 
-          
-          class="btn btn-primary py-3 px-9 span-2 mt-6 ml-6"
-          [disabled]="searchForm.invalid"
-        >
-         بحث
+        <button type="submit" class="btn btn-primary" [disabled]="searchForm.invalid">
+          بحث
         </button>
       </div>
     </form>
   </div>
-  
 
-<div class="table-wrapper mt-5">
-
-
-
-  <!-- table -->
   <div *ngIf="employeeList?.length != 0" class="table-responsive">
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <tr>
-          
           <th scope="col">{{translations.UsersManagement.Employee.employeeName| translate}}</th>
           <th scope="col">{{translations.UsersManagement.Employee.mobile | translate}}</th>
           <th scope="col">{{translations.UsersManagement.Employee.department | translate}}</th>
@@ -158,7 +124,7 @@
         @for (employee of employeeList; track $index) {
         <tr>
           <td scope="row">
-            <span style="font-size: .88rem;">{{ employee.employeeName  }}</span>
+            <span style="font-size: .88rem;">{{ employee.employeeName }}</span>
           </td>
           <td scope="row">
             <span style="font-size: .88rem;">{{ employee.mobile }}</span>
@@ -167,34 +133,41 @@
             <span style="font-size: .88rem;">{{ employee.departmentName || '--' }}</span>
           </td>
           <td scope="row">
-            <span style="font-size: .88rem;">{{ employee.isActive == true ?  ' مفعل' : employee.isActive == false ? 'غير مفعل' : '--'  }} </span>
-            <img *ngIf="employee.isActive" src="assets/images/icons/checkbox.svg"  style="    width: 16px;" alt="attachment">
-            <img *ngIf="!employee.isActive" src="assets/images/icons/close-circle.svg"  alt="attachment">
-
+            @if (employee.isActive == true) {
+            <span class="d-flex align-items-center gap-1 text-success">
+              {{ 'مفعل' }}
+              <i class="hgi hgi-stroke hgi-checkmark-circle-02"></i>
+            </span>
+            } @else if (employee.isActive == false) {
+            <span class="d-flex align-items-center gap-1 text-danger">
+              {{ 'غير مفعل' }}
+              <i class="hgi hgi-stroke hgi-cancel-circle"></i>
+            </span>
+            } @else {
+            {{'--'}}
+            }
           </td>
           <td scope="row">
-            <span style="font-size: .88rem;padding-left: 15px;">
-              <button (click)="OpenDetails(employee,InfoModal)"
-              class="btn btn-sm rounded-2 v-small fw-5  w-fit gap-2 py-2" style="background: #F6F6F6; color: black;">
-              <img src="assets/images/icons/eye.svg" alt="eye">
-              تفاصيل
-            </button>
-            </span>
-            <span style="font-size: .88rem; padding-left: 15px;">  <a [routerLink]="['/users-management/update-user', employee.id]" class="btn btn btn-sm btn-outline-primary">تعديل  </a></span>
-            <span style="font-size: .88rem;padding-left: 15px; ">  <button (click)="showConfirmDialog(employee)" 
-            class="btn btn-sm"
-            [ngClass]="{'btn-danger': employee.isActive, 'btn-primary': !employee.isActive}">
-            {{ employee.isActive ? 'تعطيل' : 'تفعيل' }}
-            </button></span>
-         
+            <div class="d-flex align-items-center gap-2">
+              <button (click)="OpenDetails(employee,InfoModal)" class="btn btn-sm btn-outline-primary">
+                <img src="assets/images/icons/eye.svg" alt="eye">
+                تفاصيل
+              </button>
+
+              <a [routerLink]="['/users-management/update-user', employee.id]" class="btn btn-sm btn-outline-primary">تعديل </a>
+
+              <button (click)="showConfirmDialog(employee)" class="btn btn-sm" [ngClass]="{'btn-danger': employee.isActive, 'btn-primary': !employee.isActive}">
+                {{ employee.isActive ? 'تعطيل' : 'تفعيل' }}
+              </button>
+            </div>
           </td>
-          
         </tr>
         }
       </tbody>
     </table>
   </div>
 </div>
+
 <div class="flex-between">
   <div class="op-6 v-small fw-5">
     <span>{{translations.tables.from | translate}} </span>
@@ -208,12 +181,9 @@
   <app-pagination></app-pagination>
 </div>
 
-
-
 @if((!employeeList) || employeeList.length==0){
 <div class="flex-center flex-column">
-  <img src="assets/images/no-data.svg"
-       alt="no-data">
+  <img src="assets/images/no-data.svg" alt="no-data">
   <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.UsersManagement.Employee.noEmployees| translate}}</h4>
 </div>
 }
@@ -221,15 +191,15 @@
 <ng-template #InfoModal let-modal>
   <div class="modal-header">
     <h5 class="modal-title fw-6"> بيانات الموظف</h5>
-    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
   </div>
   <div class="modal-body pt-0">
-    <table class="styled-table"> 
+    <table class="styled-table">
       <tr>
         <td class="label-cell"> {{translations.UsersManagement.Employee.employeeName | translate}} : </td>
         <td> {{selectedItem.employeeName}}</td>
       </tr>
-      <tr> 
+      <tr>
         <td class="label-cell"> {{translations.UsersManagement.Employee.identityNumber | translate}} :</td>
         <td> {{selectedItem.identityNumber}}</td>
       </tr>
@@ -249,11 +219,11 @@
       </tr>
     </table>
 
-    </div>
+  </div>
 
-    <div class="modal-footer">
+  <div class="modal-footer">
 
-      <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate}}</button>
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate}}</button>
 
-    </div>
+  </div>
 </ng-template>

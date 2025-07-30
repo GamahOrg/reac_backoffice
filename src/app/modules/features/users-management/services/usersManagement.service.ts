@@ -21,7 +21,7 @@ export class UsersManagementService {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("pageIndex", pageIndex);
     queryParams = queryParams.append("pageSize", pageSize);
-    debugger;
+    
  
    if( searchCriteria.name!=''){
       queryParams = queryParams.append("searchKey", searchCriteria.name.trim())
