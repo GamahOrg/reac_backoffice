@@ -98,7 +98,7 @@ multiFileUploaderData: FileUploader = {
 } as FileUploader;
 
 public onFilesUploaded(fileData: any): void {
-    debugger;
+    
     this.notesFileId = fileData.eventRes.data[0].id
     // fileData.eventRes.data.forEach((file: any) => 
     //   this.litigationRequestArbitrationReportExplanationRequestCreate.
@@ -355,7 +355,7 @@ get editNotesControls() {
 }
 
 addNote(modal: any){
-    debugger;
+    
     if(this.notesForm.valid){
     
         let model = {
@@ -368,7 +368,7 @@ addNote(modal: any){
         
         this._litigationRequestNotesService.AddLitigationNote(model)
         .subscribe(result => {
-            debugger;
+            
             if (result.isDone) {
                 this.LitigationRequestForNotes!.notes = result?.data
                 modal.dismiss()
@@ -380,7 +380,7 @@ addNote(modal: any){
 }
 
 editNote(modal: any){
-    debugger;
+    
     if(this.editNotesForm.valid){
     
         let model = {
@@ -393,7 +393,7 @@ editNote(modal: any){
         
         this._litigationRequestNotesService.EditLitigationNote(model)
         .subscribe(result => {
-            debugger;
+            
             if (result.isDone) {
                 this.LitigationRequestForNotes!.notes = result?.data
                 modal.dismiss()
@@ -405,7 +405,7 @@ editNote(modal: any){
 }
 
 openEditNoteModal(modal: TemplateRef<any>,note: LitigationRequestNotesDto) {
-    debugger;
+    
     this.editNotesForm.patchValue(
         {
             id: note.id,

@@ -1,209 +1,128 @@
 <app-breadcrumbs></app-breadcrumbs>
 
-<div class="filter-container">
-   
 <app-filter (filterChange)="onFilterChange($event)" [visibleFilters]="filterVisibility"></app-filter>
+
+<div class="row mt-5" *ngIf="reviewStatisticsData">
+  <label for="review">{{this.reviewStatisticsData?.litigationRequestStage}}</label>
+  <div class="col-md-6">
+    <div class="form-wrapper"> (حسب الحاله)</div>
+    <div class="w-100">
+      <canvas baseChart [data]="reviewStatusPieChartData" [labels]="reviewStatusPieChartData.labels" [options]="chartOptions" [type]="pieChartType" [legend]="chartLegend"></canvas>
+    </div>
   </div>
 
-  <div class="row" *ngIf="reviewStatisticsData">
-    <label for="review">{{this.reviewStatisticsData?.litigationRequestStage}}</label>
-    <div class="col-md-5">
-    
-  <!-- <div class="chart-container"> -->
-    <!-- <div class="chart-wrapper"> -->
-      <div class="form-wrapper">     (حسب الحاله)</div>
-      <div class="container-fluid ">
-               <canvas baseChart
-              [data]="reviewStatusPieChartData"
-              [labels]="reviewStatusPieChartData.labels"
-            
-              [options]="chartOptions"
-              [type]="pieChartType"
-              [legend]="chartLegend">
-                </canvas>
-    <!-- </div> -->
+  <div class="col-md-6">
+    <div class="form-wrapper"> (حسب النوع)</div>
+    <div class="w-100">
+      <canvas baseChart [data]="reviewTypePieChartData" [labels]="reviewTypePieChartData.labels" [options]="chartOptions" [type]="pieChartType" [legend]="chartLegend"></canvas>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="form-wrapper"> اجمالى عدد الدعاوى </div>
+    <div class="w-100">
+      <canvas baseChart [data]="reviewLabelSumData" [labels]="reviewLabelSumData.labels" [options]="chartOptions" [type]="doughnutChartType" [legend]="chartLegend"></canvas>
+    </div>
   </div>
 </div>
 
-  <div class="col-md-5">
-    <!-- <div class="chart-wrapper"> -->
-      <div class="form-wrapper">     (حسب النوع)</div>
-      <div >
-          <canvas baseChart
-                  [data]="reviewTypePieChartData"
-                  [labels]="reviewTypePieChartData.labels" 
-                  [options]="chartOptions"
-                  [type]="pieChartType"
-                  [legend]="chartLegend">
-          </canvas>
-        </div>
+<div class="row" *ngIf="reconciliationStatisticsData">
+  <label for="review">{{this.reconciliationStatisticsData?.litigationRequestStage}}</label>
+  <div class="col-md-6">
+    <div class="form-wrapper"> (حسب الحاله)</div>
+    <div class="w-100">
+      <canvas baseChart [data]="reconciliationStatusPieChartData" [labels]="reconciliationStatusPieChartData.labels" [options]="chartOptions" [type]="pieChartType" [legend]="chartLegend"></canvas>
     </div>
-    <div class="col-md-2">
-      <div class="form-wrapper">     اجمالى عدد الدعاوى </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-wrapper"> (حسب النوع)</div>
+    <div class="w-100">
+      <canvas baseChart [data]="reconciliationTypePieChartData" [labels]="reconciliationTypePieChartData.labels" [options]="chartOptions" [type]="pieChartType" [legend]="chartLegend"></canvas>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="form-wrapper"> اجمالى عدد الدعاوى </div>
     <div class="container-fluid ">
-      <canvas baseChart
-      [data]="reviewLabelSumData"
-      [labels]="reviewLabelSumData.labels"
-    
-      [options]="chartOptions"
-      [type]="doughnutChartType"
-      [legend]="chartLegend">
-        </canvas>
-      </div>
+      <canvas baseChart [data]="reconciliationLabelSumData" [labels]="reconciliationLabelSumData.labels" [options]="chartOptions" [type]="doughnutChartType" [legend]="chartLegend"></canvas>
     </div>
-  </div>
-
-  <div class="row" *ngIf="reconciliationStatisticsData" >
-    <label for="review">{{this.reconciliationStatisticsData?.litigationRequestStage}}</label>
-    <div class="col-md-5">
-    
-  <!-- <div class="chart-container"> -->
-    <!-- <div class="chart-wrapper"> -->
-      <div class="form-wrapper">     (حسب الحاله)</div>
-      <div class="container-fluid ">
-               <canvas baseChart
-              [data]="reconciliationStatusPieChartData"
-              [labels]="reconciliationStatusPieChartData.labels"
-            
-              [options]="chartOptions"
-              [type]="pieChartType"
-              [legend]="chartLegend">
-                </canvas>
-    <!-- </div> -->
   </div>
 </div>
 
-  <div class="col-md-5">
-    <!-- <div class="chart-wrapper"> -->
-      <div class="form-wrapper">     (حسب النوع)</div>
-      <div >
-          <canvas baseChart
-                  [data]="reconciliationTypePieChartData"
-                  [labels]="reconciliationTypePieChartData.labels" 
-                  [options]="chartOptions"
-                  [type]="pieChartType"
-                  [legend]="chartLegend">
-          </canvas>
-        </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-wrapper">     اجمالى عدد الدعاوى </div>
+<div class="row" *ngIf="arbitrationStatisticsData">
+  <label for="review">{{this.arbitrationStatisticsData?.litigationRequestStage}}</label>
+
+  <div class="col-md-6">
+    <div class="form-wrapper"> (حسب الحاله)</div>
     <div class="container-fluid ">
-      <canvas baseChart
-      [data]="reconciliationLabelSumData"
-      [labels]="reconciliationLabelSumData.labels"
-    
-      [options]="chartOptions"
-      [type]="doughnutChartType"
-      [legend]="chartLegend">
-        </canvas>
-      </div>
+      <canvas baseChart [data]="arbitrationStatusPieChartData" [labels]="arbitrationStatusPieChartData.labels" [options]="chartOptions" [type]="pieChartType" [legend]="chartLegend"></canvas>
+      <!-- </div> -->
     </div>
   </div>
 
-  <div class="row" *ngIf="arbitrationStatisticsData">
-    <label for="review">{{this.arbitrationStatisticsData?.litigationRequestStage}}</label>
-
-    <div class="col-md-5">
-    
-  <!-- <div class="chart-container"> -->
-    <!-- <div class="chart-wrapper"> -->
-      <div class="form-wrapper">     (حسب الحاله)</div>
-      <div class="container-fluid ">
-               <canvas baseChart
-              [data]="arbitrationStatusPieChartData"
-              [labels]="arbitrationStatusPieChartData.labels"
-            
-              [options]="chartOptions"
-              [type]="pieChartType"
-              [legend]="chartLegend">
-                </canvas>
-    <!-- </div> -->
-  </div>
-</div>
-
-  <div class="col-md-5">
-    <!-- <div class="chart-wrapper"> -->
-      <div class="form-wrapper">     (حسب النوع)</div>
-      <div >
-          <canvas baseChart
-                  [data]="arbitrationTypePieChartData"
-                  [labels]="arbitrationTypePieChartData.labels" 
-                  [options]="chartOptions"
-                  [type]="pieChartType"
-                  [legend]="chartLegend">
-          </canvas>
-        </div>
+  <div class="col-md-6">
+    <div class="form-wrapper"> (حسب النوع)</div>
+    <div class="w-100">
+      <canvas baseChart [data]="arbitrationTypePieChartData" [labels]="arbitrationTypePieChartData.labels" [options]="chartOptions" [type]="pieChartType" [legend]="chartLegend"></canvas>
     </div>
-    <div class="col-md-2">
-      <div class="form-wrapper">     اجمالى عدد الدعاوى </div>
+  </div>
+  <div class="col-md-2">
+    <div class="form-wrapper"> اجمالى عدد الدعاوى </div>
     <div class="container-fluid ">
-      <canvas baseChart
-      [data]="arbitrationLabelSumData"
-      [labels]="arbitrationLabelSumData.labels"
-    
-      [options]="chartOptions"
-      [type]="doughnutChartType"
-      [legend]="chartLegend">
-        </canvas>
-      </div>
+      <canvas baseChart [data]="arbitrationLabelSumData" [labels]="arbitrationLabelSumData.labels" [options]="chartOptions" [type]="doughnutChartType" [legend]="chartLegend"></canvas>
     </div>
   </div>
-
-
-
-  <div class="table-wrapper mt-0 pt-0">
-    <div class="mt-5">
-        <button class="btn btn-primary" (click)="exportToExcel()">
-            <i class="fas fa-file-excel me-2"></i>
-            {{translations.general.exportToExcel | translate}}
-        </button>
-    </div>
-    <div class="table-responsive">
-        <table id="excel-table" class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">{{translations.Reports.requestStage | translate}}</th>
-                    <th scope="col">{{translations.Reports.totalLitigationCount | translate}}</th>
-                    <th scope="col">{{translations.Reports.finishedCount | translate}}</th>
-                    <th scope="col">{{translations.Reports.finishedRatio | translate}}</th>
-                    <th scope="col">{{translations.Reports.notFinishedCount | translate}}</th>
-                    <th scope="col">{{translations.Reports.notFinishedRatio | translate}}</th>
-                    <th scope="col">{{translations.Reports.otherServicesCount | translate}}</th>
-                    <th scope="col">{{translations.Reports.otherServicesRatio | translate}}</th>
-                    <th scope="col">{{translations.Reports.propertiesCount | translate}}</th>
-                    <th scope="col">{{translations.Reports.propertiesRatio | translate}}</th>
-                    <th scope="col">{{translations.Reports.realEstateBrokerageCount | translate}}</th>
-                    <th scope="col">{{translations.Reports.realEstateBrokerageRatio | translate}}</th>
-                    <th scope="col">{{translations.Reports.rentCount | translate}}</th>
-                    <th scope="col">{{translations.Reports.rentRatio | translate}}</th>
-                    <th scope="col">{{translations.Reports.wafiCount | translate}}</th>
-                    <th scope="col">{{translations.Reports.wafiRatio | translate}}</th>
-                    
-                </tr>
-            </thead>
-            <tbody *ngFor="let item of this.LitigationStatisticsData">
-                <tr>
-                    <td>{{item?.litigationRequestStage}}</td>
-                    <td>{{item?.totalLitigationCount}}</td>
-                    <td>{{item?.finishedCount}}</td>
-                    <td>{{item?.finishedRatio}}%</td>
-                    <td>{{item?.notFinishedCount}}</td>
-                    <td>{{item?.notFinishedRatio}}%</td>
-                    <td>{{item?.otherServicesCount}}</td>
-                    <td>{{item?.otherServicesRatio}}%</td>
-                    <td>{{item?.propertiesCount}}</td>
-                    <td>{{item?.propertiesRatio}}%</td>
-                    <td>{{item?.realEstateBrokerageCount}}</td>
-                    <td>{{item?.realEstateBrokerageRatio}}%</td>
-                    <td>{{item?.rentCount}}</td>
-                    <td>{{item?.rentRatio}}%</td>
-                    <td>{{item?.wafiCount}}</td>
-                    <td>{{item?.wafiRatio}}%</td>
-                    
-                </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
 
+<div class="mt-5">
+  <button class="btn btn-primary" (click)="exportToExcel()">
+    <i class="fas fa-file-excel me-2"></i>
+    {{translations.general.exportToExcel | translate}}
+  </button>
+</div>
+
+<div class="table-wrapper mt-4">
+  <div class="table-responsive">
+    <table id="excel-table" class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">{{translations.Reports.requestStage | translate}}</th>
+          <th scope="col">{{translations.Reports.totalLitigationCount | translate}}</th>
+          <th scope="col">{{translations.Reports.finishedCount | translate}}</th>
+          <th scope="col">{{translations.Reports.finishedRatio | translate}}</th>
+          <th scope="col">{{translations.Reports.notFinishedCount | translate}}</th>
+          <th scope="col">{{translations.Reports.notFinishedRatio | translate}}</th>
+          <th scope="col">{{translations.Reports.otherServicesCount | translate}}</th>
+          <th scope="col">{{translations.Reports.otherServicesRatio | translate}}</th>
+          <th scope="col">{{translations.Reports.propertiesCount | translate}}</th>
+          <th scope="col">{{translations.Reports.propertiesRatio | translate}}</th>
+          <th scope="col">{{translations.Reports.realEstateBrokerageCount | translate}}</th>
+          <th scope="col">{{translations.Reports.realEstateBrokerageRatio | translate}}</th>
+          <th scope="col">{{translations.Reports.rentCount | translate}}</th>
+          <th scope="col">{{translations.Reports.rentRatio | translate}}</th>
+          <th scope="col">{{translations.Reports.wafiCount | translate}}</th>
+          <th scope="col">{{translations.Reports.wafiRatio | translate}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of this.LitigationStatisticsData">
+        <tr>
+          <td>{{item?.litigationRequestStage}}</td>
+          <td>{{item?.totalLitigationCount}}</td>
+          <td>{{item?.finishedCount}}</td>
+          <td>{{item?.finishedRatio}}%</td>
+          <td>{{item?.notFinishedCount}}</td>
+          <td>{{item?.notFinishedRatio}}%</td>
+          <td>{{item?.otherServicesCount}}</td>
+          <td>{{item?.otherServicesRatio}}%</td>
+          <td>{{item?.propertiesCount}}</td>
+          <td>{{item?.propertiesRatio}}%</td>
+          <td>{{item?.realEstateBrokerageCount}}</td>
+          <td>{{item?.realEstateBrokerageRatio}}%</td>
+          <td>{{item?.rentCount}}</td>
+          <td>{{item?.rentRatio}}%</td>
+          <td>{{item?.wafiCount}}</td>
+          <td>{{item?.wafiRatio}}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

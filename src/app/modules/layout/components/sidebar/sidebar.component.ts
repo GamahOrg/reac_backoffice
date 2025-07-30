@@ -31,7 +31,7 @@ export class SidebarComponent extends BaseComponent implements OnInit {
     }
     private getDepartmentType(): void {
         this.departmentType = Number(this._storageService.getDepartmentType());
-        debugger;
+        
 
         this.isAdmin = this._storageService.getUserType();
         
@@ -108,14 +108,15 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
-                            },
-                            {
-                                id: 'claims-link',
-                                title: this.translate.instant(translations.layout.sidebar.modificationList),
-                                // icon: 'assets/images/icons/sidebar/menu.svg',
-                                icon: 'assets/images/icons/sidebar/book.svg',
-                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationModificationRequests,
                             }
+                            // ,
+                            // {
+                            //     id: 'claims-link',
+                            //     title: this.translate.instant(translations.layout.sidebar.modificationList),
+                            //     // icon: 'assets/images/icons/sidebar/menu.svg',
+                            //     icon: 'assets/images/icons/sidebar/book.svg',
+                            //     url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationModificationRequests,
+                            // }
     
                         ]
                     },

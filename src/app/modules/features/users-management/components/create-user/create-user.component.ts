@@ -57,9 +57,9 @@ export class CreateUserComponent extends BaseComponent implements OnInit {
 
 
   onSubmit(): void {
-    debugger;
+    
     if (this.employeeForm.valid) {
-      debugger;
+      
       const employeeData: CreateEmployeeDto = this.employeeForm.value;
       console.log('Employee Data:', employeeData);
       const targetObject : targetEmployeeDto = {
@@ -72,11 +72,11 @@ export class CreateUserComponent extends BaseComponent implements OnInit {
             isAdmin : employeeData.roleId == "1" ? false:true,
             isActive: this.employeeForm.controls['isActive']?.value == true ? true:false
       };
-      debugger;
+      
       this._usersManagementService.CreateEmploee(targetObject)
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: BaseResponse<any>) => {
-        debugger;
+        
         console.log(res);
           if (res.isDone) {
               this.showSuccess(this._translateService.instant(this.translations.general.successfullySave));

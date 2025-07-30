@@ -1,10 +1,14 @@
-<div class="main-layout">
+<div class="row g-0">
+  <div class="col-xl-3 col-xxl-2">
     <app-sidebar></app-sidebar>
-    <div class="main-content">
-        <app-header></app-header>
-        <main>
-            <!-- the real content of the page that changes according to router URL change -->
-            <router-outlet class="m-0"></router-outlet>
-        </main>
+  </div>
+
+  <div class="col-xl-9 col-xxl-10">
+    <div class="main-content d-flex flex-column gap-4">
+      <app-header></app-header>
+      <main class="flex-fill">
+        <router-outlet></router-outlet>
+      </main>
     </div>
+  </div>
 </div>

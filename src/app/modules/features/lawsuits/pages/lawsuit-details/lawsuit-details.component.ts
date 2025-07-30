@@ -218,7 +218,7 @@ export class LawsuitDetailsComponent extends BaseComponent {
     }
 
     public updateIsLawsuitDetails(value: boolean): void {
-        debugger;
+        
         if( !value && this.buttonActions && this.buttonActions.workFlowStepEventShortDtos.length == 0){
             this.isLawsuitDetails = true;
         }else{
@@ -230,7 +230,7 @@ export class LawsuitDetailsComponent extends BaseComponent {
     private GetWorkflowStepEventsForEmployee(requestId :any) {
         this._lawsuitReviewService.GetWorkflowStepEventsForEmployee(requestId).pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<GetWorkflowStepEventsForEmployeeDto>) => {
             if (res.data && res.isDone){
-                debugger;
+                
                 this.buttonActions = res.data
 
             }

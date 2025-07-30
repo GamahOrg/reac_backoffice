@@ -2,7 +2,7 @@
 <app-breadcrumbs></app-breadcrumbs>
 <form [formGroup]="form">
     <div class="row mt-5" *ngFor="let item of data; let i = index">
-      <div class="form-group col-6">
+      <div class="form-group">
         <label [for]="item.id">{{ ("reviewSettingsPage."+item.key) | translate }}</label>
         <input 
           type="text" 

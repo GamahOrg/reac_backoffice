@@ -1,5 +1,5 @@
 <div>
-  <summary class="flex-y-row gap-2 border-bottom pb-5">
+  <summary class="flex-y-row gap-2">
     <h6 class="small fw-6">{{translations.lawsuits.lawsuitDetails.lawsuitReviewResult | translate}}</h6>
   </summary>
 
@@ -68,7 +68,7 @@
     <textarea id="subject-description"
               name="subject"
               [maxlength]="100"
-              class="form-control border-0 shadow-none"
+              class="form-control"
               style="outline: 0;"
               rows="1"
               placeholder="{{translations.lawsuits.lawsuitDetails.enterPurposeOfRequestedModification | translate}}"
@@ -84,7 +84,7 @@
       <textarea id="notes-description"
                 name="notes"
                 [maxlength]="1000"
-                class="form-control border-0 shadow-none"
+                class="form-control"
                 style="outline: 0;"
                 rows="5"
                 placeholder="{{translations.lawsuits.lawsuitDetails.writeDetailedRequestedModification | translate}}"

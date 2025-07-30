@@ -55,7 +55,7 @@ export class VacationRequestsReplyComponent extends BaseComponent implements OnI
   }
 
   acceptVacation(requestId: string){
-    debugger;
+    
     this._vacationRequestService.ProcessVacation(requestId,true)
     .subscribe(res => {
       if(res.isDone){
@@ -67,7 +67,7 @@ export class VacationRequestsReplyComponent extends BaseComponent implements OnI
   }
 
   rejectVacation(requestId: string){
-    debugger;
+    
 
     this._vacationRequestService.ProcessVacation(requestId,false)
     .subscribe(res => {

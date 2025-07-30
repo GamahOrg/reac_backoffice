@@ -131,7 +131,7 @@ export class LawsuitListComponent extends BaseComponent implements OnInit {
 
   //private methods
   private updateRequestList(TypeListView: Pagination<AuditngListItem[]>): void {
-    debugger;
+    
     this.auditngList = TypeListView;
 
     this.setPaginationData(

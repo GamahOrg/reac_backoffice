@@ -1,0 +1,142 @@
+@import "bs/variables";
+@import "bootstrap/scss/bootstrap";
+@import "bs/buttons";
+@import "bs/dropdown";
+@import "bs/forms";
+@import "bs/breadcrumb";
+@import "bs/pagination";
+@import "bs/modals";
+
+@for $i from 1 through 12 {
+  .m-#{$i} {
+    margin: #{$i * 0.25}rem !important;
+  }
+
+  .mt-#{$i} {
+    margin-top: #{$i * 0.25}rem !important;
+  }
+
+  .mt-n#{$i} {
+    margin-top: -#{$i * 0.25}rem !important;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: #{$i * 0.25}rem !important;
+  }
+
+  .my-#{$i} {
+    margin-block: #{$i * 0.25}rem !important;
+  }
+
+  .mb-n#{$i} {
+    margin-bottom: -#{$i * 0.25}rem !important;
+  }
+
+  .ms-#{$i} {
+    margin-inline-start: #{$i * 0.25}rem !important;
+  }
+
+  .me-#{$i} {
+    margin-inline-end: #{$i * 0.25}rem !important;
+  }
+
+  .mx-#{$i} {
+    margin-inline: #{$i * 0.25}rem !important;
+  }
+
+  .ms-n#{$i} {
+    margin-inline-start: -#{$i * 0.25}rem !important;
+  }
+
+  .me-n#{$i} {
+    margin-inline-end: -#{$i * 0.25}rem !important;
+  }
+}
+
+@for $i from 1 through 6 {
+  .p-#{$i} {
+    padding: #{$i * 0.25}rem !important;
+  }
+
+  .pt-#{$i} {
+    padding-top: #{$i * 0.25}rem !important;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: #{$i * 0.25}rem !important;
+  }
+
+  .ps-#{$i} {
+    padding-inline-start: #{$i * 0.25}rem !important;
+  }
+
+  .pe-#{$i} {
+    padding-inline-end: #{$i * 0.25}rem !important;
+  }
+
+  .px-#{$i} {
+    padding-inline: #{$i * 0.25}rem !important;
+  }
+
+  .py-#{$i} {
+    padding-block: #{$i * 0.25}rem !important;
+  }
+}
+
+@for $i from 5 through 12 {
+  .p-#{$i} {
+    padding: clamp(0.7rem, 3.2vw, #{$i * 0.25}rem) !important;
+  }
+
+  .pt-#{$i} {
+    padding-top: clamp(0.7rem, 3.2vw, #{$i * 0.25}rem) !important;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: clamp(0.7rem, 3.2vw, #{$i * 0.25}rem) !important;
+  }
+
+  .ps-#{$i} {
+    padding-left: 0 !important;
+    padding-inline-start: 3.2vw,
+    clamp(0.7rem, #{$i * 0.25}rem) !important;
+  }
+
+  .pe-#{$i} {
+    padding-right: 0 !important;
+    padding-inline-end: 3.2vw,
+    clamp(0.7rem, #{$i * 0.25}rem) !important;
+  }
+
+  .px-#{$i} {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-inline: clamp(0.7rem, 3.2vw, #{$i * 0.25}rem) !important;
+  }
+
+  .py-#{$i} {
+    padding-block: clamp(0.7rem, 3.2vw, #{$i * 0.25}rem) !important;
+  }
+}
+
+.ms-auto,
+.me-auto {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.ms-auto {
+  margin-inline-start: auto !important;
+}
+
+.me-auto {
+  margin-inline-end: auto !important;
+}
+
+.text-start {
+  text-align: start !important;
+}
+
+.text-end {
+  text-align: end !important;
+}

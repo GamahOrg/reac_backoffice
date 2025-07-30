@@ -106,7 +106,7 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
 
 
   onFilterChange(values: any) {
-    debugger;
+    
     // You can now use these values to fetch data or perform other actions
     this.filterRequest = {
       arbitratorName: values.reviewerName,
@@ -173,7 +173,7 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
     this._paginationService.pageChanged
       .pipe(takeUntil(this.destroy$))
       .subscribe((pageNo) => {
-        debugger;
+        
         this.loadNextPage(pageNo);
         this.newPageNo = pageNo;
       })
@@ -183,7 +183,7 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
     this._paginationService.pageClicked
       .pipe(takeUntil(this.destroy$))
       .subscribe((nextPage: number) => {
-        debugger;
+        
         if (this.pagintationData.currentPage != nextPage) {
           this.loadNextPage(nextPage);
           this.pagintationData.currentPage = this.newPageNo;

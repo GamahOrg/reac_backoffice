@@ -80,7 +80,7 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
     GetDistributionModeForReconciliation(){
       this._systemSettingsService.GetDistributionModeByDepartmentType(DepartmentType.Reconciliation)
       .subscribe(res => {
-        debugger;
+        
         if(res.isDone){
           if(res.data == DepartmentDistributionMode.AutoDistribution){
             this.isAutoDistribution = true;
@@ -93,13 +93,13 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
     }
     
     ToggleAutoDistributionOnAndOff(){
-      debugger;
+      
       this.isAutoDistribution = !this.isAutoDistribution;
 
       let status = this.isAutoDistribution == true ? DepartmentDistributionMode.AutoDistribution : DepartmentDistributionMode.ManualDistribution;
       this._systemSettingsService.ToggleAutoDistributionOnAndOff(DepartmentType.Reconciliation,status)
       .subscribe(res => {
-        debugger;
+        
         if(res.isDone){
           if(res.data == DepartmentDistributionMode.AutoDistribution){
             this.isAutoDistribution = true;
@@ -134,7 +134,7 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
       }
 
     private watchPaginationActions(): void {
-        debugger;
+        
         this.watchPagechanged();
         this.watchPaginationClicked();
       }
@@ -143,7 +143,7 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
         this._paginationService.pageChanged
           .pipe(takeUntil(this.destroy$))
           .subscribe((pageNo) => {
-            debugger;
+            
             this.newPageNo = pageNo;
             this.loadNextPage(this.newPageNo);
     
@@ -154,7 +154,7 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
         this._paginationService.pageClicked
           .pipe(takeUntil(this.destroy$))
           .subscribe((nextPage: number) => {
-            debugger;
+            
             if (this.pagintationData.currentPage != nextPage) {
               this.loadNextPage(nextPage);
               this.pagintationData.currentPage = this.newPageNo;
@@ -163,7 +163,7 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
       }
 
       private loadNextPage(nextPage: number): void {
-        debugger;
+        
         this.pagintationData.currentPage = nextPage;
         this.GetLitigationRequestReformerAssigningRequests()
       }

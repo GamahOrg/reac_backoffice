@@ -125,7 +125,7 @@
                                 {{ (item.assignedOn | date: 'dd/MM/yyy') || '--' }}
                             </td>
                             <td>
-                                <span class="fw-4 small status-{{item.internalStatusId}}">
+                                <span class="status-{{item.internalStatusId}}">
                                     {{lawsuitStatus[item.internalStatusId] | translate}}
                                 </span>
                             </td>
@@ -137,7 +137,7 @@
                                 }}
                             </td>
                             <td>
-                                <a [routerLink]="'/Lawsuits/lawsuit-details/' + item.id" class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;">
+                                <a [routerLink]="'/Lawsuits/lawsuit-details/' + item.id" class="btn btn-sm btn-light">
                                     <img src="assets/images/icons/eye.svg" alt="eye">
                                     {{translations.actions.view| translate}}
                                 </a>

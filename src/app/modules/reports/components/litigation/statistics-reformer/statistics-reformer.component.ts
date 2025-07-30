@@ -28,6 +28,7 @@ export class StatisticsReformerComponent extends BaseComponent implements OnInit
   
   }
 
+ 
 exportToExcel(): void {
     const element = document.getElementById('excel-table');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
