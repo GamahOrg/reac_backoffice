@@ -101,7 +101,7 @@ GetLitigationModificationRequests(): void {
 private GetWorkflowStepEventsForEmployee(requestId : string) {
         this._lawsuitReviewService.GetWorkflowStepEventsForEmployee(requestId).pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<GetWorkflowStepEventsForEmployeeDto>) => {
             if (res.data && res.isDone){
-                debugger;
+                
                 this.buttonActions = res.data
                 
             }
@@ -111,7 +111,7 @@ private GetWorkflowStepEventsForEmployee(requestId : string) {
 
 showConfirmApproveDialog(employee: any): void {
 
-debugger;
+
 
   this.GetWorkflowStepEventsForEmployee(employee.litigationRequestId);
 
@@ -165,7 +165,7 @@ public create(request : any): void {
       notes: "تعديل الدعوي بناءا علي طلب مقدم الطلب",
       uploadedFilesIds: []
   }
-  debugger;
+  
  
   this._lawsuitReviewService.create(this.lawsuitReiewRequest).pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<any>) => {
       if (res.isDone) {

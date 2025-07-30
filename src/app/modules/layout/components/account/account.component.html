@@ -1,3 +1,13 @@
-<a href="" class="btn">
-    <img src="https://picsum.photos/id/11/1000" class="rounded-circle" width="40" alt="user icon">
-</a>
+<div ngbDropdown>
+  <span ngbDropdownToggle class="no-caret cursor-pointer">
+    <!-- <img src="https://picsum.photos/id/11/1000" alt="user image"> -->
+
+    <span class="icon">
+      <i class="hgi hgi-stroke hgi-user-circle-02"></i>
+    </span>
+  </span>
+
+  <div ngbDropdownMenu>
+    <button ngbDropdownItem (click)="logout()">{{ translations.actions.logout| translate }}</button>
+  </div>
+</div>

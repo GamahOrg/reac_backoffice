@@ -61,7 +61,7 @@ export class LawsuitReviewComponent extends BaseComponent implements OnInit {
     private GetWorkflowStepEventsForEmployee() {
         this._lawsuitReviewService.GetWorkflowStepEventsForEmployee(this.requestId).pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<GetWorkflowStepEventsForEmployeeDto>) => {
             if (res.data && res.isDone){
-                debugger;
+                
                 this.buttonActions = res.data
                 
             }
@@ -96,10 +96,10 @@ export class LawsuitReviewComponent extends BaseComponent implements OnInit {
             notes: this.notes,
             uploadedFilesIds: this.workFlowProcessingLogFiles
         }
-        debugger;
+        
         this.isReviewSubmitted = true;
         if(!this.actionData.allowNotes ||  (this.actionData.allowNotes && this.notes.length !== 0)){
-            debugger;
+            
         this._lawsuitReviewService.create(this.lawsuitReiewRequest).pipe(takeUntil(this.destroy$)).subscribe((res: BaseResponse<any>) => {
             if (res.isDone) {
                 this._toastrNotificationService.showSuccess(this._translateService.instant(this.translations.actions.done) + ' ' + this.actionData.eventName + ' ' + this._translateService.instant(this.translations.general.successfully));
@@ -124,7 +124,7 @@ export class LawsuitReviewComponent extends BaseComponent implements OnInit {
     }
 
     public updateActionData(button: WorkFlowStepEventShortDtos) {
-        debugger;
+        
         this.actionData = button;
         console.log("this.actionData", this.actionData)
     }

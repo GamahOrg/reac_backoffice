@@ -42,7 +42,7 @@ filterVisibility: FilterVisibility = {
   
     onFilterChange(values: any) {
       console.log('Filter values:', values);
-      debugger;
+      
       // You can now use these values to fetch data or perform other actions
       this.request = {
         fromDate: values.fromDate != null ?new Date(values.fromDate).toISOString().split('T')[0]:null,
@@ -129,7 +129,7 @@ filterVisibility: FilterVisibility = {
 
   fetchLitigationStatistics(): void {
 
-    debugger;
+    
 
     this.reviewStatisticsData = this.LitigationStatisticsData.find((item: any) => item.litigationRequestStage === "التدقيق");
     this.reconciliationStatisticsData = this.LitigationStatisticsData?.find((item: any) => item.litigationRequestStage === "الصلح");

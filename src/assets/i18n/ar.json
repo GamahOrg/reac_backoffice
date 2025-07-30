@@ -1021,7 +1021,7 @@
 "reconciliationSettingsPage":{
     "SLA.LitigationRequestReconciliationReportDecisionPeriod":"الفترة المسموح بها للرد علي محضر الصلح  ويتم اخطار المصلح بعدها (بالساعه)",
     "SLA.LitigationRequestReformerAssigningRequestDecisionPeriod":" الفترة المسموح بها لقبول أو رفض مهمة الصُلح (بالساعه) ",
-    "SLA.LitigationRequestReconciliationReportResponsePeriod":"مدة تذكير للمدعي/المدعي عليه بالرد على محضر الصُلح (بالساعه)",
+    "SLA.LitigationRequestReconciliationReportResponsePeriod":"مدة الرد على محضر الصلح للمدعي والمدعى عليه(بالساعه)",
     "SLA.ReformerReminderForReconciliationSecondPeriod":"مدة تذكير للمُصلح (بالساعه)",
     "Reconciliation.ExtendRequest.Rejected":"نص إشعار للمُصلح بقرار عدم الموافقة على تمديد فترة الصُلح",
     "Reconciliation.ReformerMaxSessionsCountPerDay":"عدد الجلسات المتاحة للمُصلح في اليوم الواحد",
@@ -1032,19 +1032,21 @@
     "Reconciliation.ExtendRequest.Added":"نص إشعار لمدير إدارة الصُلح بوجود طلب تمديد فترة الصُلح",
     "Reformer.Activate":" نص إشعار لمدير إدارة الصُلح بتفعيل حساب المُصلح",
     "SLA.LitigationRequestFeesNotPaidReminderFirstPeriod":"الفترة المسموح بها سداد الرسوم الادارية (بالساعه)",
-    "SLA.LitigationRequestReformerAssigningRequestResponsePeriod":"مدة المسموح بها لارسال اشعار المصلح لاتخاذ قرار على المهمة (بالساعه)",
-    "SLA.LitigationRequestExtendRequestReplyPeriod":"الفترة المسموح بها للرد علي طلب مد مدة الصلح (بالساعه)"
+    "SLA.LitigationRequestReformerAssigningRequestResponsePeriod":"المدة المسموح بها لقبول أو رفض الدعوى من المصلح (بالساعه)",
+    "SLA.LitigationRequestExtendRequestReplyPeriod":"الفترة المسموح بها لمدير الصلح للرد على طلب تمديد مدة الصلح  (بالساعه)",
+    "SLA.LitigationRequestReconciliationFeesNotPaidReminderFirstPeriod":"مدة سداد رسوم المصالحة (بالساعه)"
 },
 "arbitirationSettingsPage":{
     "SLA.ArbitratorMembershipFeesNotification":" إشعار دفع رسوم عضوية المحكم قبل انتهاء المده",
+    "SLA.LitigationRequestArbitrationFeesNotPaidReminderFirstPeriod":"الفترة المسموح بها سداد رسوم التحكيم (بالساعه)",
     "SLA.ArbitratorRegisterationFeesFirstNotificationPeriod":"  فترة الإخطار الاولى لدفع رسوم التسجيل (بالساعه) ",
     "SLA.ArbitratorsCount.FinalWarning.Defendant":"اشعار نهائى للمدعى عليه لاختيار عدد المحكمين ",
-    "SLA.LitigationRequestArbitratorCountSelectionDecisionPeriod":" الفتره النهائيه المسموح بها لاختيار  عدد المحكمين (بالساعه)",
+    "SLA.LitigationRequestArbitratorCountSelectionDecisionPeriod":" الفتره النهائيه المسموح بها لاختيار  عدد المحكمين للمدعي والمدعي عليه (بالساعه)",
     "SLA.ArbitratorRegisterationFeesNotification":"إشعار بسداد رسوم تسجيل المحكمين",
     "SLA.ArbitratorMembershipFeesPeriod":" الفتره المسموح بها لدفع رسوم عضوية المحكم (بالساعه)",
     "SLA.ArbitratorMembershipRenewalFeesNotification":" إشعار برسوم تجديد عضوية المحكم",
     "SLA.ArbitratorsCount.FinalWarning.Both":"الاشعار النهائي لمدير التحكيم يفيد بانه المدعى والمدعى عليه لم يتم تحديد عدد المحكمين",
-    "SLA.LitigationRequestArbitratorCountSelectionResponsePeriod":"  الفتره الاولى المسموح بها لاختيار عدد المحكمين (بالساعه) ",
+    "SLA.LitigationRequestArbitratorCountSelectionResponsePeriod":" للمدعى و المدعي عليه الفتره الاولى المسموح بها لاختيار عدد المحكمين (بالساعه) ",
     "SLA.ArbitratorsCount.FirstWarning":"نص إشعار اول لسرعه اختيار عدد المحكمين",
     "SLA.ArbitratorsCount.SecondWarning":"نص إشعار ثان لسرعه اختيار عدد المحكمين",
     "SLA.ArbitratorRegisterationFeesPeriod":" الفترة المسموح بها لدفع رسوم تسجيل المحكم (بالساعه)",
@@ -1083,9 +1085,9 @@
     "Arbitrators.Count.Added.AfterAgreement":" نص اشعار لإنتهاء من تحديد عدد المحكمين النهائي للمدقق",
     "LitigationRequest.Accept.Agreement":"نص اشعار بالموافقه على طلب المشارطة للمدعى و المدعى عليه ",
     "SLA.ReminderForReviewerManager":"سيتم سحب الدعوة تلقائيًا في حال عدم اتخاذ إجراء من المدقق بعد المدة المحددة  (بالساعه) ",
-    "SLA.ReminderForReviewer":" المده المسموح بها  بارسال اشعار تنبيه للمدقق (بالساعه)",
+    "SLA.ReminderForReviewer":"المدة المسموح بها بتنبيه المدقق بسرعة تدقيق الدعوى (بالساعه)",
     "SLA.WithdrewLitigation.OldReviewerEmployee":" نص اشعار بتخطى مدة التدقيق لمدير التدقيق",
-    "SLA.FirstAgreementRequestForRequest":" المدة الزمنية لارسال اشعار بسرعة الرد علي طلب المشارطة (بالساعة) من وقت انشاء الدعوة",
+    "SLA.FirstAgreementRequestForRequest":"مدة رد المدعي والمدعى عليه على طلب مشارطة التحكيم (بالساعة) للفترة الاولى",
     "SLA.AssignLitigation.ReviewerAdmin":" نص اشعار مدقق جديد لتخطى المدقق السابق مدة التدقيق القصوى لمدير التدقيق",
     "SLA.AgreementCancelled2":"نص اشعار بعدم الرد على طلب المشارطة للمدعى والمدعى عليه",
     "SLA.AgreementCancelled":"في حالة نوع الدعوي تحكيم نص اشعار بعدم الرد على طلب المشارطة لمدير ادارة التدقيق",
@@ -1093,7 +1095,8 @@
     "Review.Cancelled":"نص اشعار بإلغاء المهمة للمدقق و مدير التدقيق",
     "Review.ReAssigned" :"نص اشعار باعاده تعيين مدقق لمدير التدقيق",
     "LitigationRequest.Creation.Accept" :"نص اشعار بقبول تقديم دعوى للمدعى",
-    "LitigationRequest.Creation.Accept.Defendant" :"نص اشعار بتقديم دعوى للمدعى عليه"
+    "LitigationRequest.Creation.Accept.Defendant" :"نص اشعار بتقديم دعوى للمدعى عليه",
+    "SLA.LitigationRequestFeesNotPaidReminderFirstPeriod": "مدة سداد الرسوم الإدارية  (بالساعه)"
 
 }
 

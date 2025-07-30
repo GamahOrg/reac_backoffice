@@ -48,7 +48,7 @@ export class ChangePasswordComponent extends BaseComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger;
+    
     if(this.changePasswordForm.valid){
       let model = {
         oldPassword : this.changePasswordForm.controls['oldPassword'].value,

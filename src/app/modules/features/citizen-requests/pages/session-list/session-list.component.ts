@@ -90,7 +90,7 @@ export class SessionListComponent extends BaseComponent implements OnInit {
         
         this.litigationRequestService.GetLitigationRequestSessionDetails(meetingId!).subscribe({
             next: (res) => {
-                debugger;
+                
                 if(res.isDone){
                     this.sessionDetails = res.data
                     this.sessionDetails?.participants.forEach(participant => {

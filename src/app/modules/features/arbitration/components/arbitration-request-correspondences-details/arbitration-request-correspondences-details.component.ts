@@ -69,7 +69,7 @@ private forkJoinAllLookups(id:string): void {
       GetArbitrationCorrespondencesById: this._arbitrationRequestCorrespondencesService.GetArbitrationCorrespondencesById(id,[2,3])
     }
   ).pipe(takeUntil(this.destroy$)).subscribe(res => {
-    debugger;
+    
       this.LitigationRequestForCorrespondences = res.GetArbitrationCorrespondencesById.data;
       this.fillData()
       this.fillfirstPartyData()
@@ -100,7 +100,7 @@ multiFileUploaderData: FileUploader = {
 } as FileUploader;
 
 public onFilesUploaded(fileData: any): void {
-    debugger;
+    
     this.correspondencesFileId = fileData.eventRes.data[0].id
     // fileData.eventRes.data.forEach((file: any) => 
     //   this.litigationRequestArbitrationReportExplanationRequestCreate.
@@ -355,7 +355,7 @@ get correspondencesControls() {
 
 
 addCorrespondence(modal: any){
-    debugger;
+    
     if(this.correspondencesForm.valid){
     
         let model = {
@@ -369,7 +369,7 @@ addCorrespondence(modal: any){
         
         this._arbitrationRequestCorrespondencesService.AddArbitrationCorrespondences(model)
         .subscribe(result => {
-            debugger;
+            
             if (result.isDone) {
                 this.LitigationRequestForCorrespondences!.correspondences = result?.data
                 modal.dismiss()
@@ -382,7 +382,7 @@ addCorrespondence(modal: any){
 
 
 openCorrespondenceReplyListModal(modal: TemplateRef<any>,correspondence: LitigationRequestCorrespondencesDto) {
-    debugger;
+    
     this.replyModalData = correspondence.litigationRequestCorrespondenceReply;
     this.modalService.open(modal);
 

@@ -1,50 +1,44 @@
-<button class="btn toggle-side-btn" (click)="toggleCollapse()">
-    <i class="material-icons" [class.collapsed]="isCollapsed"> chevron_right </i>
-</button>
+<aside class="side-menu d-flex flex-column gap-3" [ngClass]="{'expanded': !isCollapsed, 'collapsed': isCollapsed}">
+  <span class="sidebar-toggle" (click)="toggleCollapse()">
+    <i class="hgi hgi-stroke" [ngClass]="{'hgi-menu-square': isCollapsed, 'hgi-cancel-01': !isCollapsed}"></i>
+  </span>
 
-<aside
-    class="side-menu"
-    [class.collapsed]="isCollapsed"
-    [class.expanded]="!isCollapsed">
-    <div class="logo p-5 border-bottom mb-5">
-        <img src="assets/images/logo.svg" class="white-img" width="170" alt="logo.svg">
-    </div>
+  <div class="logo">
+    <img src="assets/images/logo.svg" class="white-img d-block mx-auto img-fluid" alt="logo.svg">
+  </div>
 
-    <ul class="items-list">
+  <div class="user-info d-flex align-items-center justify-content-start gap-2">
+    <img src="https://picsum.photos/id/11/1000" class="user-img" alt="">
+    <span class="user-name">سالم بن حمد الدوسري</span>
+  </div>
 
-        <ng-container *ngFor="let item of menuItems">
-            <ng-container *ngIf="item && !item.children">
-                <a
-                    class="side-menu-item mx-4"
-                    [routerLink]="item.url"
-                    [routerLinkActive]="'active'"
-                    [routerLinkActiveOptions]="{ exact: true }">
-                    <img [src]="item.icon" class="link-icon" width="22" alt="icon">
-                    <span class="item-text link"> {{ item.title | translate }} </span>
-                </a>
-            </ng-container>
-            
-            <ng-container *ngIf="item && item.children">
-                <details>
-                    <summary class="side-menu-item text-white mx-4">
-                        <img [src]="item.icon" class="link-icon" width="22" alt="icon">
-                        {{item.title | translate}}
-                        <img src="assets/images/icons/sidebar/arrow-down.svg" alt="arrow-down" class="arrow ms-auto">
-                    </summary>
-                    <ul class="child-list">
-                        <ng-container *ngFor="let child of item.children">
-                            <li>
-                                <a
-                                    class="text-white mx-4 v-small"
-                                    [routerLink]="child.url"
-                                    [routerLinkActive]="'active fw-7'">
-                                    {{ child.title | translate }}
-                                </a>
-                            </li>
-                        </ng-container>
-                    </ul>
-                </details>
-            </ng-container>
-        </ng-container>
-    </ul>
+  <div class="items-list">
+    @for(item of menuItems; track item; let idx = $index) {
+    @if (item && item.children?.length === 0) {
+    <a class="side-menu-item" [routerLink]="item.url" [routerLinkActive]="'fw-bold'" [routerLinkActiveOptions]="{ exact: true }">
+      <img [src]="item.icon" class="link-icon" width="22" alt="icon">
+      <span class="item-text"> {{ item.title | translate }} </span>
+    </a>
+    }
+
+    @if (item && item.children?.length !== 0) {
+    <details>
+      <summary class="side-menu-item">
+        <img [src]="item.icon" class="link-icon" width="22" alt="icon">
+        {{item.title | translate}}
+      </summary>
+
+      <div class="child-list">
+        @for (child of item.children; track $index) {
+        <div class="child-item" [routerLinkActive]="'active'">
+          <a [routerLink]="child.url" [routerLinkActive]="'fw-bold'" class="link">
+            {{ child.title | translate }}
+          </a>
+        </div>
+        }
+      </div>
+    </details>
+    }
+    }
+  </div>
 </aside>

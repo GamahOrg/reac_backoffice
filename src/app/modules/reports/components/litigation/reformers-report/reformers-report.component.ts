@@ -105,7 +105,7 @@ ngOnInit(): void {
 
 
       onFilterChange(values: any) {
-        debugger;
+        
         this.filterDashbourdRequest = {
           reformerName: values.reviewerName,
           reformerStatus: values.reviewerStatus,
@@ -172,7 +172,7 @@ ngOnInit(): void {
           this._paginationService.pageChanged
             .pipe(takeUntil(this.destroy$))
             .subscribe((pageNo) => {
-              debugger;
+              
               this.loadNextPage(pageNo);
               this.newPageNo = pageNo;
             })
@@ -182,7 +182,7 @@ ngOnInit(): void {
           this._paginationService.pageClicked
             .pipe(takeUntil(this.destroy$))
             .subscribe((nextPage: number) => {
-              debugger;
+              
               if (this.pagintationData.currentPage != nextPage) {
                 this.loadNextPage(nextPage);
                 this.pagintationData.currentPage = this.newPageNo;

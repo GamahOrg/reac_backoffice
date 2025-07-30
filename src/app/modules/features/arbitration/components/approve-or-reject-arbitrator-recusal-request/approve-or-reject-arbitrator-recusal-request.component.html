@@ -15,7 +15,7 @@
 
 <ng-template #acceptModal let-modal>
     <div class="modal-header">
-      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
     </div>
   
     <div class="modal-body pt-0">
@@ -36,7 +36,7 @@
   
   <ng-template #rejectModal let-modal>
     <div class="modal-header">
-      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
     </div>
   
     <div class="modal-body pt-0">
@@ -55,7 +55,7 @@
   </ng-template>
 
 <div class="form-wrapper" >
-    <summary class="flex-y-row gap-2 border-bottom pb-5">
+    <summary class="flex-y-row gap-2">
         <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
         <h6 class="small fw-6 op-7">{{translations.ArbitratorRecusalRequest.arbitratorRecusalRequest| translate}} </h6>
     </summary>
@@ -112,7 +112,7 @@
 <div class="form-wrapper">
     <div class="accordion-card">
         <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
+            <summary class="flex-y-row gap-2">
                 <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                 <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.firstPartyData| translate }} </h6>
             </summary>
@@ -140,7 +140,7 @@
 <div class="form-wrapper">
     <div class="accordion-card">
         <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
+            <summary class="flex-y-row gap-2">
                 <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                 <h6 class="small fw-6 op-7"> {{ translations.LitigationRequest.secondPartyData| translate }}</h6>
             </summary>
@@ -168,7 +168,7 @@
 <div class="form-wrapper">
     <div class="accordion-card">
         <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
+            <summary class="flex-y-row gap-2">
                 <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                 <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.litigationData| translate }} </h6>
             </summary>

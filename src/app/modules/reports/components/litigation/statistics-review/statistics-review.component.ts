@@ -32,6 +32,19 @@ export class StatisticsReviewComponent extends BaseComponent implements OnInit {
     // this.getReportData();
   }
 
+  getReportData(){
+    
+    this._reportsService.GetLitigationStatisticsMainReportResult(this.input)
+    .subscribe({
+      next: (res) => {
+        
+          console.log(res);
+
+          this.reportData = res?.data?.[0];
+
+      }
+  })
+}
   exportToExcel(): void {
     const element = document.getElementById('excel-table');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);

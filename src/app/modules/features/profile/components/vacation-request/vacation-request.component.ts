@@ -70,7 +70,7 @@ export class VacationRequestComponent extends BaseComponent implements OnInit {
 
   createVacation(){
 
-    debugger;
+    
     this.createVacationSubmitted = true;
 
     if(this.createVacationForm.valid){

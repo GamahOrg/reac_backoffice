@@ -243,7 +243,7 @@ export class FilterComponent extends BaseComponent implements OnInit {
     };
 
     private filterCity(areaId: string): void {
-debugger
+
 const selectedAreaIds: string[] = (this.controls['areaIds'].value as string[]) ?? [];
 
 this.citiesDropDownList = this.citiesOptions.filter(city =>
