@@ -62,6 +62,9 @@ export interface CitizenRequestFullDataDto {
     experiencedInArbitrationFields:string;
     about:string;
     isFeesPaid:boolean;
+    experiencedInFreelanceArbitration: number | null;
+    isregisteredWithBachelorShareaaDegree: boolean;
+    haveExperiencedInFreelanceArbitration : boolean;
 }
 
 export interface SysArbitratorClassDto {
