@@ -48,10 +48,10 @@
     </div>
   </div>
 
-  <div class="form-wrapper" style="margin-bottom: 10px;" *ngIf="isArbitrator!=true">
+  <div class="form-wrapper" style="margin-bottom: 10px;" *ngIf="isArbitrator==true">
     <div class="accordion-card my-5">
       <label class="mb-1 small fw-6 mt-6 "> {{
-        translations.CitizenRequest.registeredWithConciliationCenter | translate }} </label>
+        translations.CitizenRequest.registeredWithBachelorDegreeCenter | translate }} </label>
 
       <div>
         <label class="form-control" style="background-color: #8080803b;">
@@ -65,7 +65,7 @@
                 <summary class="flex-y-row gap-2">
                   <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                   <h6 class="small fw-6 op-7 me-5"> {{
-                    translations.CitizenRequest.ReconciliationCenterDegreeFile | translate }} </h6>
+                    translations.CitizenRequest.realEstateReformerFile | translate }} </h6>
                 </summary>
 
                 <div class="grid-3 mt-5">
@@ -116,7 +116,7 @@
         </div>
       </div>
 
-      <label class="mb-1 small fw-6 mt-6 required"> {{ translations.CitizenRequest.experiencedInHousingPrograms |
+      <!-- <label class="mb-1 small fw-6 mt-6 required"> {{ translations.CitizenRequest.experiencedInHousingPrograms |
         translate }} </label>
       <div>
         <label class="form-control" style="background-color: #8080803b;">
@@ -142,50 +142,113 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
+      <label class="form-label required"> {{ translations.CitizenRequest.registeredWithBachelorShareaaDegree |
+        translate }} </label>
+        <div>
+          <label class="form-control" style="background-color: #8080803b;">
+      <span *ngIf="citizenRequestFullDataDto?.isregisteredWithBachelorShareaaDegree == true">{{translations.actions.yes | translate}}</span>
+      <span *ngIf="citizenRequestFullDataDto?.isregisteredWithBachelorShareaaDegree != true">{{translations.actions.no | translate}}</span>
+      </label>
     </div>
 
-    <label class="mb-1 small fw-6 mt-6 required"> {{ translations.CitizenRequest.passedTheRealEstateReformer |
+    <label class="form-label required"> {{ translations.CitizenRequest.experiencedInInstitutionalArbitration |
       translate }} </label>
-    <div>
-      <label class="form-control" style="background-color: #8080803b;">
-        <span *ngIf="citizenRequestFullDataDto?.ispassedRealEstateProgram == true">{{translations.actions.yes | translate}}</span>
-        <span *ngIf="citizenRequestFullDataDto?.ispassedRealEstateProgram != true">{{translations.actions.no | translate}}</span>
-      </label>
-      <div *ngIf="citizenRequestFullDataDto?.ispassedRealEstateProgram == true">
-        <div>
-          <div class="accordion-card my-5">
-            <details open>
-              <summary class="flex-y-row gap-2">
-                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
-                <h6 class="small fw-6 op-7 me-5"> {{
-                  translations.CitizenRequest.realEstateReformerFile | translate }} </h6>
-              </summary>
+      <div>
+        <label class="form-control" style="background-color: #8080803b;">
+<span *ngIf="citizenRequestFullDataDto?.haveHostingExperience == true">{{translations.actions.yes | translate}}</span>
+<span *ngIf="citizenRequestFullDataDto?.haveHostingExperience != true">{{translations.actions.no | translate}}</span>
+</label>
+<div *ngIf="citizenRequestFullDataDto?.haveHostingExperience == true">
+<div >
+  <div class="accordion-card my-5">
+    <details open>
+      <summary>
+        
+        <h6 class="small fw-6 op-7 me-5"> {{
+          translations.CitizenRequest.experiencedInInstitutionalArbitrationIssuesCount | translate }} </h6>
+      </summary>
 
-              <div class="grid-3 mt-5">
-                <div>
-                  <h6 class="small fw-5">{{ translations.CitizenRequest.attachment | translate }}</h6>
-                  <div class="flex-y-row gap-2" *ngFor="let item of citizenRequestFullDataDto?.citizenRequestProgramRealEstateInstituteFiles;let index = index">
-                    <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
-                    <h6 class="small op-7" *ngIf="item.programRealEstateDocumentFile">{{item.programRealEstateDocumentFile.fileDescription}}</h6>
-                    <a *ngIf="item.programRealEstateDocumentFile" target="_blank" [href]="baseUrl+item.programRealEstateDocumentFile.filePath" class="ms-4">
-                      <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
-                    </a>
-                    <h6 class="small op-7" *ngIf="item.programRealEstateDocumentFile==null">{{item.id}}</h6>
-                    <a *ngIf="item.programRealEstateDocumentFile==null" target="_blank" [href]="baseUrl+item.id" class="ms-4">
-                      <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </details>
+      <div class="grid-3 mt-4">
+          <div>
+            <h6 class="small op-7">{{citizenRequestFullDataDto?.experiencedInHousingstatuses}}</h6>
           </div>
-        </div>
-
       </div>
+    </details>
+  </div>
+</div>
+</div>
+</div>
+<label class="form-label "> {{
+  translations.CitizenRequest.experiencedInFreelanceArbitration | translate }} </label>
+
+  <div>
+          <label class="form-control" style="background-color: #8080803b;">
+  <span *ngIf="citizenRequestFullDataDto?.haveExperiencedInFreelanceArbitration == true">{{translations.actions.yes | translate}}</span>
+  <span *ngIf="citizenRequestFullDataDto?.haveExperiencedInFreelanceArbitration != true">{{translations.actions.no | translate}}</span>
+</label>
+ <div *ngIf="citizenRequestFullDataDto?.haveExperiencedInFreelanceArbitration == true">
+  <div >
+    <div class="accordion-card my-5">
+      <details open>
+        <summary>
+          
+          <h6 class="small fw-6 op-7 me-5"> {{
+            translations.CitizenRequest.experiencedInInstitutionalArbitrationIssuesCount | translate }} </h6>
+        </summary>
+        <div class="grid-3 mt-4">
+            <div>
+              <h6 class="small op-7">{{citizenRequestFullDataDto?.experiencedInFreelanceArbitration}}</h6>
+            </div>
+          </div>
+
+      </details>
     </div>
   </div>
+     
+  </div>
+</div>
+
+<label class="form-label required"> {{ translations.CitizenRequest.experiencedInHousingProgramsForArbitiration |
+  translate }} </label>
+  <div>
+    <label class="form-control" style="background-color: #8080803b;">
+<span *ngIf="citizenRequestFullDataDto?.ispassedRealEstateProgram == true">{{translations.actions.yes | translate}}</span>
+<span *ngIf="citizenRequestFullDataDto?.ispassedRealEstateProgram != true">{{translations.actions.no | translate}}</span>
+</label>
+<div *ngIf="citizenRequestFullDataDto?.ispassedRealEstateProgram == true">
+<div >
+<div class="accordion-card my-5">
+<details open>
+  <summary>
+    
+    <h6 class="small fw-6 op-7 me-5"> {{
+      translations.CitizenRequest.realEstateReformerFile | translate }} </h6>
+  </summary>
+
+  <div class="grid-3 mt-4">
+      <div>
+        <h6 class="small fw-5">{{ translations.CitizenRequest.attachment | translate }}</h6>
+        <div class="flex-y-row gap-2" *ngFor="let item of citizenRequestFullDataDto?.citizenRequestProgramRealEstateInstituteFiles;let index = index">
+          <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
+          <h6 class="small op-7">{{item.programRealEstateDocumentFile.fileDescription}}</h6>
+          <a  target="_blank" [href]="baseUrl+item.programRealEstateDocumentFile.filePath" class="ms-4">
+            <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
+          </a>
+        </div>
+      </div>
+  </div>
+</details>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+ 
+</div>
 
 
   <div class="form-wrapper">
