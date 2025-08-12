@@ -27,15 +27,16 @@
                         <td>{{request.status}}</td>
                         <td>{{request.arbitratorsSelectionDuration}}</td>
 
-                        <td>
+                        <td class="row">
 
-                            <button class="btn btn-sm btn-light" (click)="goToDetailsPage(request.id)">
+                            <button class="col-6 btn btn-sm btn-light" (click)="goToDetailsPage(request.id)">
                                 <img src="assets/images/icons/eye.svg" alt="eye">
                                 {{translations.actions.view| translate}}
                             </button>
 
+                            <button class=" col-6 btn btn-sm btn-primary" (click)="navigateToEditOrDetails(request.id)">{{ translations.actions.viewDetails | translate }}</button>
                         </td>
-
+                    
                     </tr>
                     }
                 </tbody>

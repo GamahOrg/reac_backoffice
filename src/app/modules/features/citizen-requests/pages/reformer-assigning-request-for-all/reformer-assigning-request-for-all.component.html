@@ -37,6 +37,7 @@
               | translate}}</span>
           </th>
           <th scope="col">{{translations.LitigationRequest.response | translate}}</th>
+                    <th scope="col">{{translations.lawsuits.lawsuitsList.actions| translate}}</th>
           <!-- <th scope="col">{{translations.Reformerassigningrequestforall.isDone | translate}}</th> -->
         </tr>
       </thead>
@@ -63,9 +64,10 @@
           <td>{{request.response ? (localization[request.response] | translate) : (translations.TasksRequestsList.None | translate)}}
             <div *ngIf="request.rejectReason">({{request.rejectReason}})</div>
           </td>
+                    <td>
 
-          <!-- <td>{{request.isDone}}</td> -->
-
+              <button class="btn btn-sm btn-primary" (click)="navigateToEditOrDetails(request.requestId)">{{ translations.actions.viewDetails | translate }}</button>
+                    </td>
         </tr>
         }
       </tbody>
