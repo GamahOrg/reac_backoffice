@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { LitigationRequestMircoDtoReformer } from '../../models/litigation-request-mirco-dto-reformer';
 import { pagination, Pagination } from '@app/shared/models/pagination.model';
 import { Subscription, takeUntil } from 'rxjs';
@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LitigationRequestReformerAssigningRequestStatus } from '../../models/enums/litigation-request-reformer-assigning-request-status';
 import { SystemSettingsService } from '@app/shared/services/system-settings/system-settings.service';
 import { DepartmentDistributionMode, DepartmentType } from '@app/core/models/enums/department-type.model';
+import { Configuration } from '@app/core/configurations/shared.config';
 
 @Component({
     selector: 'app-reformer-assigning-request-for-all',
@@ -21,6 +22,9 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
     reqList: Pagination<LitigationRequestMircoDtoReformer[]> = {} as Pagination<LitigationRequestMircoDtoReformer[]>;
     isAutoDistribution: boolean = false;
     subscriptions: Subscription[] = [];
+    private _router = inject(Router);    
+    
+    
     localization = {
         ///<summary>لم يتم الرد</summary>
         [LitigationRequestReformerAssigningRequestStatus.None]: this.translations.TasksRequestsList.None,
@@ -180,5 +184,14 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
         this.ascending=false;
         this.GetLitigationRequestReformerAssigningRequests();
       }
+    }
+    lawsuitFullDetailsURL: string = '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitFullDetails
+
+     public navigateToEditOrDetails(lawsuitId: string | undefined) {
+         
+             
+        this._router.navigate([this.lawsuitFullDetailsURL, lawsuitId]);
+
+       
     }
 }
