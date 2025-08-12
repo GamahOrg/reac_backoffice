@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Configuration } from '@app/core/configurations/shared.config';
 import { Observable, map, of } from 'rxjs';
@@ -11,6 +11,12 @@ export class LawsuitRequestDetailsService {
   litigationDetails: WritableSignal<any | null> = signal(null);
 
   constructor(private _httpClient: HttpClient) { }
+  
+ GetLitigationFullDetailsById(litigationId: string): Observable<BaseResponse<LawsuitItemDetails>> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("litigationId", litigationId);
+    return this._httpClient.get<BaseResponse<LawsuitItemDetails>>(`${Configuration.APIs.LitigationRequest.GetLitigationFullDetailsById}`, { params: queryParams })
+  }  
 
   GetLitigationById(body: {litigationId: string}): Observable<BaseResponse<any>> {
     return this._httpClient.get<BaseResponse<LawsuitItemDetails>>(`${Configuration.APIs.LitigationRequest.GetLitigationById}`, { params: createQuery(body) })

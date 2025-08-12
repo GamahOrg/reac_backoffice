@@ -9,6 +9,7 @@ import { GetArbitratorsCountResponseDto } from '../../models/get-arbitrators-cou
 import { takeUntil } from 'rxjs';
 import { BaseResponse } from '@app/core/models/base-response';
 import { PaginationService } from '@app/shared/services/pagination/pagination.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-arbitrator-count-list',
@@ -20,6 +21,7 @@ export class ArbitratorCountListComponent extends BaseComponent implements OnIni
   private _translateService = inject(TranslateService);
   private _arbitratorCountListService = inject(ArbitratorCountListService);
   private _paginationService = inject(PaginationService);
+  private _router = inject(Router);    
 
   newPageNo: number = 1;
   pageCount: number = 0;
@@ -96,4 +98,14 @@ export class ArbitratorCountListComponent extends BaseComponent implements OnIni
     this.pagintationData.currentPage = nextPage;
     this.GetLitigationRequestForAddArbitratorsCount()
   }
+
+  lawsuitFullDetailsURL: string = '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitFullDetails
+
+     public navigateToEditOrDetails(lawsuitId: string | undefined) {
+         
+             
+        this._router.navigate([this.lawsuitFullDetailsURL, lawsuitId]);
+
+       
+    }
 }
