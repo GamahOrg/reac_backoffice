@@ -185,7 +185,7 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
     }
 
     sendReformerRequest(modal: any) {
-        debugger;
+        
         this.assignRequestForm.markAllAsTouched()
         if (this.assignRequestForm.valid) {
 
@@ -229,7 +229,7 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
     };
 
     private filterCity(areaId: string): void {
-        debugger;
+        
         this.selectedArea = this.areasDropDownList.find(area => area.id == areaId) as AreaResponse;
         if (this.selectedArea.id) {
             this.citiesDropDownList = this.allCitiesDropDownList.filter(city => city.areaId == this.selectedArea.id)

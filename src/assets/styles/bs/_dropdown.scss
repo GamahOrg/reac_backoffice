@@ -1,0 +1,36 @@
+.dropdown {
+  .btn {
+    &::after {
+      margin: 0;
+      margin-inline-start: 0.5rem;
+    }
+  }
+
+  .dropdown-toggle {
+    &.no-caret {
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  .dropdown-item {
+
+    &:first-of-type,
+    &:last-of-type {
+      border-radius: inherit;
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    text-align: start;
+    padding-block: 0;
+
+    &[data-bs-popper] {
+      @media (min-width: 992px) {
+        margin-top: 0;
+      }
+    }
+  }
+}

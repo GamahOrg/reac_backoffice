@@ -1,0 +1,32 @@
+.modal {
+  --bs-modal-header-padding: 1.5rem 1.25rem .75rem;
+  --bs-modal-header-border-width: 0;
+  --bs-modal-padding: 2rem;
+
+  .modal-header {
+    padding: 1.25rem;
+    
+    .modal-title {
+      font-weight: 600;
+    }
+
+    .close-btn {
+      margin-inline-start: auto;
+      padding: 0;
+      font-size: 1.5rem;
+      color: rgba(#A5AEB1, .75);
+      border: none;
+      background: none;
+      outline: none;
+
+      &:hover {
+        color: #A5AEB1;
+      }
+    }
+  }
+
+  .modal-footer {
+    padding: 1.25rem 2rem;
+    box-shadow: 0px -4px 10.6px 0px rgba(#D2D2D2, .25);
+  }
+}

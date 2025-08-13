@@ -336,14 +336,14 @@ export class LitigationRequestForArbitratorSelectionDurationDetailsComponent ext
   }
 
   private forkJoinAllLookups(requestId: string): void {
-    debugger;
+    
     forkJoin(
       {
         GetLitigationRequestForAddArbitratorSelectionDuration : this._determinearbitratorperiodService.getLitigationRequestForAddArbitratorSelectionDurationByRequestId(requestId),
         // GetSelectionDurationValue: this._sysSettingsService.GetSystemSettingsByKey("Configurable.ArbitratorsCountSelectDuration")
       }
     ).pipe(takeUntil(this.destroy$)).subscribe(res => {
-       debugger;
+       
       if(res.GetLitigationRequestForAddArbitratorSelectionDuration){
         this.litigationRequestForReportDto = res.GetLitigationRequestForAddArbitratorSelectionDuration as LitigationRequestForArbitratorSelectionDurationDto;
         this.fillData()

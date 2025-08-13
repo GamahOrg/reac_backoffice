@@ -5,7 +5,7 @@
 <div class="form-wrapper" *ngIf="litigationRequestForReportDto?.allowAdd">
     <div class="accordion-card">
         <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
+            <summary class="flex-y-row gap-2">
                 <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                 <h6 class="small fw-6 op-7">تعيين أعضاء هيئة التحكيم</h6>
                 <p *ngIf="this.litigationRequestForReportDto?.listCount && +this.litigationRequestForReportDto?.listCount!>1" class="text-success">يجب اختار {{this.litigationRequestForReportDto?.listCount}} محكمين</p>
@@ -94,8 +94,8 @@
                                 <td>{{request.arbitratorClass}}</td>
                                 <td>
                                     <button
-                                        class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2"
-                                        style="background: #F6F6F6;"
+                                        class="btn btn-sm btn-light"
+                                        
                                         (click)="open(showBriefModel,request.brief)">
                                         <img src="assets/images/icons/eye.svg" alt="eye">
                                         عرض نبذة عن المحكم
@@ -114,7 +114,7 @@
 <div class="form-wrapper" *ngIf="!litigationRequestForReportDto?.allowAdd">
     <div class="accordion-card">
         <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
+            <summary class="flex-y-row gap-2">
                 <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                 <h6 class="small fw-6 op-7"> أعضاء هيئة التحيكم</h6>
             </summary>
@@ -151,7 +151,7 @@
                     <td>{{request.email}}</td>
                     <td>{{request.status}}</td>
                     <td>
-                      <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;"
+                      <button class="btn btn-sm btn-light"
                       (click)="open(showBriefModel,request.brief)"
                      >
                       <img src="assets/images/icons/eye.svg" alt="eye">
@@ -222,7 +222,7 @@
             <ng-container matColumnDef="brief">
               <th mat-header-cell *matHeaderCellDef> {{translations.CitizenRequest.brief | translate}} </th>
               <td mat-cell *matCellDef="let element"> 
-                <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;"
+                <button class="btn btn-sm btn-light"
                 (click)="open(showBriefModel,element.brief)">
                 <img src="assets/images/icons/eye.svg" alt="eye">
                 {{translations.actions.view| translate}}
@@ -248,7 +248,7 @@
 <div class="form-wrapper">
     <div class="accordion-card">
         <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
+            <summary class="flex-y-row gap-2">
                 <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                 <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.firstPartyData| translate }} </h6>
             </summary>
@@ -270,7 +270,7 @@
 <div class="form-wrapper">
     <div class="accordion-card">
         <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
+            <summary class="flex-y-row gap-2">
                 <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                 <h6 class="small fw-6 op-7"> {{ translations.LitigationRequest.secondPartyData| translate }}</h6>
             </summary>
@@ -293,7 +293,7 @@
 <div class="form-wrapper">
     <div class="accordion-card">
         <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
+            <summary class="flex-y-row gap-2">
                 <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
                 <h6 class="small fw-6 op-7">{{ translations.LitigationRequest.litigationData| translate }} </h6>
             </summary>
@@ -314,7 +314,7 @@
 
 <ng-template #showBriefModel let-modal>
     <div class="modal-header">
-        <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+        <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
     </div>
 
     <div class="modal-body pt-0">

@@ -40,7 +40,7 @@ export class StatisticsReviewReportComponent  extends BaseComponent implements O
   
     onFilterChange(values: any) {
       console.log('Filter values:', values);
-      debugger;
+      
       // You can now use these values to fetch data or perform other actions
       const request: DashbourdRequestDto = {
         fromDate: values.fromDate != null ?new Date(values.fromDate).toISOString().split('T')[0]:null,

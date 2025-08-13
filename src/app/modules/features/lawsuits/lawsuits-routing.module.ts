@@ -9,6 +9,7 @@ import { LitigationRequestCorrespondenceListComponent } from './components/litig
 import { LitigationRequestCorrespondenceDetailsComponent } from './components/litigation-request-correspondence-details/litigation-request-correspondence-details.component';
 import { LitigationRequestNotesListComponent } from './pages/litigation-request-notes-list/litigation-request-notes-list.component';
 import { ModificationRequestsComponent } from './components/modification-requests/modification-requests.component';
+import { LawsuitFullDetailsComponent } from './components/lawsuit-full-details/lawsuit-full-details.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: Configuration.pages.lawsuits.lawsuitList,
     component: LawsuitListComponent,
+  },
+  {
+    
+    path: `${Configuration.pages.lawsuits.lawsuitFullDetails}/:id`,
+    component: LawsuitFullDetailsComponent,
   },
   {
     path: Configuration.pages.lawsuits.AuditngListReconciliation,

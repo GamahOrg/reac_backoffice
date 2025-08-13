@@ -24,13 +24,13 @@
                     <td>{{litigationRequest.requestTypeName}}</td>
                     <td>{{litigationRequest.sessionDatetime | date:'yyyy/MM/dd hh:mm'}}</td>
                     <td>
-                        <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" (click)="openSession(sessionModal,litigationRequest.url)">
+                        <button class="btn btn-sm btn-light" (click)="openSession(sessionModal,litigationRequest.url)">
                             <img src="assets/images/icons/eye.svg" alt="eye">
                             {{translations.actions.view| translate}}
                         </button>
                     </td>
                     <td>
-                        <button class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;" (click)="openSessionDetails(sessionDetailsModal,litigationRequest.meetingId)">
+                        <button class="btn btn-sm btn-light" (click)="openSessionDetails(sessionDetailsModal,litigationRequest.meetingId)">
                             <img src="assets/images/icons/eye.svg" alt="eye">
                             {{translations.actions.viewDetails| translate}}
                         </button>
@@ -60,7 +60,7 @@
 
 <ng-template #sessionModal let-modal>
     <div class="modal-header">
-        <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+        <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
     </div>
 
     <div class="modal-body pt-0">
@@ -75,7 +75,7 @@
 
 <ng-template #sessionDetailsModal let-modal>
     <div class="modal-header">
-        <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+        <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
     </div>
 
     <div *ngIf="sessionDetails != undefined" class="modal-body pt-0">

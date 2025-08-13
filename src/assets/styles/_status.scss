@@ -1,0 +1,87 @@
+[class*="status-"] {
+  font-size: .875rem;
+  font-weight: 500;
+  padding: .25rem .5rem;
+  border-radius: 5rem;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: .625rem;
+    height: .625rem;
+    border-radius: 50%;
+    margin-inline-end: 0.5rem;
+  }
+}
+
+.status-1,
+.status-9,
+.status-19,
+.status-21,
+.status-32 {
+  color: #d8b934;
+  background-color: #FFFAEB;
+
+  &::before {
+    background-color: #d8b934;
+  }
+}
+
+.status-2,
+.status-6,
+.status-11,
+.status-27 {
+  color: #4dc1bb;
+  background-color: #F9FAFB;
+
+  &::before {
+    background-color: #4dc1bb;
+  }
+}
+
+.status-3,
+.status-4,
+.status-5,
+.status-18,
+.status-29,
+.status-30 {
+  color: #719b37;
+  background-color: #ECFDF3;
+
+  &::before {
+    background-color: #719b37;
+  }
+}
+
+.status-7,
+.status-9,
+.status-23 {
+  color: var(--danger);
+  background-color: #FEF3F2;
+
+  &::before {
+    background-color: var(--danger);
+  }
+}
+
+.status-8,
+.status-24 {
+  color: var(--black);
+  background-color: #F9FAFB;
+
+  &::before {
+    background-color: var(--black);
+  }
+}
+
+.status-10,
+.status-14,
+.status-26,
+.status-28 {
+  color: var(--primary);
+  background-color: #EFF8FF;
+
+  &::before {
+    background-color: var(--primary);
+  }
+}

@@ -28,6 +28,8 @@ export class AssignedArbitrationRequestsComponent extends BaseComponent implemen
     private router = inject(Router)
     private modalService = inject(NgbModal)
     private printService = inject(NgxPrintService)
+    private _router = inject(Router);    
+
     litigationData: any;
     documentsUrl: string = `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequestsDocumnets}`
     page = 1;
@@ -40,6 +42,7 @@ export class AssignedArbitrationRequestsComponent extends BaseComponent implemen
     }
 
     litigationRequests: CustomLitigationRequestMircoArbitratorDto[] | undefined = [];
+    lawsuitFullDetailsURL: string = '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitFullDetails
 
 
     get litigationRequestReformerAssigningRequestStatus() {
@@ -137,5 +140,14 @@ export class AssignedArbitrationRequestsComponent extends BaseComponent implemen
         });
 
         this.printService.print(customPrintOptions)
+    }
+
+    
+    public navigateToEditOrDetails(lawsuitId: string | undefined) {
+         
+             
+        this._router.navigate([this.lawsuitFullDetailsURL, lawsuitId]);
+
+       
     }
 }

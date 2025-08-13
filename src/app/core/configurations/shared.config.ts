@@ -122,6 +122,7 @@ export const Configuration = {
       AuditngListArbitration: '/api/LitigationRequest/AuditngListArbitration',
       AuditngListReconciliation: '/api/LitigationRequest/AuditngListReconciliation',
       GetLitigationById: '/api/LitigationRequest/GetLitigationByIdForEmployee',
+      GetLitigationFullDetailsById: '/api/LitigationRequest/GetLitigationByIdForBackoffice',
       GetAuditNotesById: "/api/LitigationRequest/GetAuditNotesById",
       ApproveArbitrationFeesPaid: '/api/LitigationRequest/ApproveArbitrationFeesPaid',
       GetLitigationRequestForFullAllReviewer: '/api/LitigationRequest/GetLitigationRequestForFullAllReviewer',
@@ -282,6 +283,7 @@ export const Configuration = {
     },
     lawsuits: {
       lawsuitList: "lawsuit-list",
+      lawsuitFullDetails: "lawsuit-full-details",
       lawsuitTypes: "lawsuit-types",
       createLawsuit: "create-lawsuit",
       editLawsuit: "edit-lawsuit",

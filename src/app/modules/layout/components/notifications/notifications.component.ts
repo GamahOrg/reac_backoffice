@@ -92,7 +92,7 @@ private watchPagechanged(): void {
   this._paginationService.pageChanged
     .pipe(takeUntil(this.destroy$))
     .subscribe((pageNo) => {
-      debugger;
+      
       this.newPageNo = pageNo;
         this.loadNextPage(this.newPageNo);
 
@@ -103,7 +103,7 @@ private watchPaginationClicked(): void {
   this._paginationService.pageClicked
     .pipe(takeUntil(this.destroy$))
     .subscribe((nextPage: number) => {
-      debugger;
+      
 
       if (this.pagintationData.currentPage != nextPage) {
         this.loadNextPage(nextPage);
@@ -121,7 +121,7 @@ private loadNextPage(nextPage: number): void {
     this._notificationsService.GetNotificationListForBackOfficePaged(currentPage,pageSize)
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: any) => {
-        debugger;
+        
         if (res.isDone && res.data) {
           this.notificationList = res.data.results;
           this.notViewedCount = res.data.totalCount

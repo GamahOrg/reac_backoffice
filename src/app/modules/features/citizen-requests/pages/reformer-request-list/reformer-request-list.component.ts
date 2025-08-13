@@ -82,7 +82,7 @@ export class ReformerRequestListComponent extends BaseComponent implements OnIni
       }
 
     private watchPaginationActions(): void {
-        debugger;
+        
         this.watchPagechanged();
         this.watchPaginationClicked();
       }
@@ -91,7 +91,7 @@ export class ReformerRequestListComponent extends BaseComponent implements OnIni
         this._paginationService.pageChanged
           .pipe(takeUntil(this.destroy$))
           .subscribe((pageNo) => {
-            debugger;
+            
             this.newPageNo = pageNo;
             this.loadNextPage(this.newPageNo);
     
@@ -102,7 +102,7 @@ export class ReformerRequestListComponent extends BaseComponent implements OnIni
         this._paginationService.pageClicked
           .pipe(takeUntil(this.destroy$))
           .subscribe((nextPage: number) => {
-            debugger;
+            
             if (this.pagintationData.currentPage != nextPage) {
               this.loadNextPage(nextPage);
               this.pagintationData.currentPage = this.newPageNo;
@@ -110,7 +110,7 @@ export class ReformerRequestListComponent extends BaseComponent implements OnIni
           })
       }
       private loadNextPage(nextPage: number): void {
-        debugger;
+        
         this.pagintationData.currentPage = nextPage;
         this.list()
       }

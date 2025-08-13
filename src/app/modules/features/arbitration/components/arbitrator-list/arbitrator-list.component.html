@@ -28,7 +28,7 @@
               <td >{{litigationRequest.arbitratorAssigningRequestTypeId==1?'محكم':'رئيس هيئة تحكيم'}}</td>
               <td>              
                 <button (click)="assignArbitrator(litigationRequest,assignArbitratorModal)"
-                  class="btn rounded-2 v-small fw-5 flex-y-row w-fit gap-2 py-2" style="background: #F6F6F6;">
+                  class="btn btn-sm btn-light">
                   <img src="assets/images/icons/eye.svg" alt="eye">
                   {{translations.actions.assignArbitrator| translate}}
                 </button>
@@ -61,7 +61,7 @@
   <ng-template #assignArbitratorModal let-modal>
     <div class="modal-header">
       <h5 class="modal-title fw-6"> {{translations.actions.assignArbitrator| translate}}</h5>
-      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+      <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
     </div>
     <form [formGroup]="assignForm">
       <div class="modal-body pt-0">

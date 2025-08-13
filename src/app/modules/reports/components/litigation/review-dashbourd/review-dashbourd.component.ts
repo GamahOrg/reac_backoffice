@@ -51,7 +51,7 @@ constructor(
      private translations: TranslateService,
       private _storageService :StorageService,
   ) {
-    debugger;
+    
     this.isAdmin = this._storageService.getUserType()=='true' ? true : false;
     this.pageTitle = this.isAdmin ? 'لوحة تحكم مدير إدارة التدقيق' : 'لوحة تحكم موظف التدقيق';
   }
@@ -68,7 +68,7 @@ constructor(
     wafi: 'وافي',
     otherServices: 'خدمات أخرى',
     rent: 'إيجار',
-    properties: 'عقارات'
+    properties: 'ملاك'
   };
   
   // Arabic labels for status
@@ -103,7 +103,7 @@ constructor(
   
 
   onFilterChange(values: any) {
-    debugger;
+    
     // You can now use these values to fetch data or perform other actions
     this.filterRequest = {
       fromDate: values.fromDate != null && values.fromDate !== "" ?new Date(values.fromDate).toISOString().split('T')[0]:null,

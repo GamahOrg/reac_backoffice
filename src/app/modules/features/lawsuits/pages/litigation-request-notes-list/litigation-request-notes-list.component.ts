@@ -65,7 +65,7 @@ export class LitigationRequestNotesListComponent extends BaseComponent implement
         this.subscriptions.push(
             this._litigationRequestNotes.GetLitigationRequestNotes(this.pagintationData.currentPage, this.pagintationData.pageSize,1)
                 .subscribe((res: BaseResponse<Pagination<LitigationRequestMircoDtoReformer[]>> | null) => {
-                    debugger;
+                    
                     if (res?.data?.results && res?.data?.results?.length > 0)
                         this.updateRequestList(res.data)
                 })
@@ -73,7 +73,7 @@ export class LitigationRequestNotesListComponent extends BaseComponent implement
         )
     }
     private updateRequestList(TypeListView: Pagination<LitigationRequestMircoDtoReformer[]>): void {
-        debugger;
+        
         this.reqList = TypeListView;
         this.setPaginationData(
             this.reqList.pageSize,

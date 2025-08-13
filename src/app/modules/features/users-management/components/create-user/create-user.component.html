@@ -4,8 +4,8 @@
 
 <div class="form-wrapper">
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="grid-2">
-      <div class="form-field">
-        <label class="small fw-6 required mb-2">
+      <div class="form-group">
+        <label class="form-label">
           {{translations.UsersManagement.Employee.employeeName | translate}}
         </label>
         <input 
@@ -26,8 +26,8 @@
           </div>
       </div>
   
-      <div class="form-field">
-        <label class="small fw-6 required mb-2">
+      <div class="form-group">
+        <label class="form-label">
           {{translations.UsersManagement.Employee.identityNumber | translate}}
         </label>
         <input 
@@ -46,8 +46,8 @@
         </div>
       </div>
 
-      <div class="form-field">
-        <label class="small fw-6 required mb-2">
+      <div class="form-group">
+        <label class="form-label">
           {{translations.UsersManagement.Employee.email | translate}}
         </label>
         <input 
@@ -66,8 +66,8 @@
         </div>
       </div>
   
-      <div class="form-field">
-        <label class="small fw-6 required mb-2">
+      <div class="form-group">
+        <label class="form-label">
           {{translations.UsersManagement.Employee.department | translate}}
         </label>
         <select 
@@ -87,8 +87,8 @@
         </div>
       </div>
   
-      <div *ngIf="isRoleEnabled"  class="form-field">
-        <label class="small fw-6 required mb-2">
+      <div *ngIf="isRoleEnabled"  class="form-group">
+        <label class="form-label">
           {{translations.UsersManagement.Employee.role | translate}}
         </label>
         <select 
@@ -106,8 +106,8 @@
         </div>
       </div>
 
-      <div class="form-field">
-        <label class="small fw-6 required mb-2">
+      <div class="form-group">
+        <label class="form-label">
           {{translations.UsersManagement.Employee.jobTitle | translate}}
         </label>
         <input 
@@ -124,8 +124,8 @@
         </div>
       </div>
   
-      <div class="form-field">
-        <label class="small fw-6 required mb-2">
+      <div class="form-group">
+        <label class="form-label">
           {{translations.UsersManagement.Employee.mobile | translate}}
         </label>
         <input 
@@ -144,8 +144,8 @@
         </div>
       </div>
   
-      <div class="form-field">
-        <label class="small fw-6 required mb-2">
+      <div class="form-group">
+        <label class="form-label">
           {{translations.UsersManagement.Employee.status | translate}}
         </label>
         <select 
@@ -173,7 +173,7 @@
         
         <button 
           type="submit" 
-          class="btn btn-primary py-3 px-9 span-2 mt-6 ml-6"
+          class="btn btn-primary"
           [disabled]="employeeForm.invalid"
         >
           {{translations.actions.save | translate}}

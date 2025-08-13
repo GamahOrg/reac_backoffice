@@ -1,50 +1,59 @@
 <app-breadcrumbs></app-breadcrumbs>
+
 <app-filter (filterChange)="onFilterChange($event)" [visibleFilters]="filterVisibility"></app-filter>
-<div class="row ">
-  <div class="col-11"></div>
-  <div class="col-1">
-<button class="download-btn" (click)="downloadPDF()">
-  تحميل PDF
-</button>
-</div>
-</div>
-<div class="chart-container"  #pdfContent>
-    <h2>لوحة إحصائيات</h2>
-    
-    <!-- Chart Type Selector -->
-    <div class="chart-controls">
-      <label for="chartType">نوع الرسم البياني:</label>
-      <select id="chartType" [(ngModel)]="selectedChartType" (change)="updateChart()">
-        <option value="bar">رسم بياني عمودي</option>
-        <option value="pie">رسم دائري</option>
-        <option value="doughnut">رسم دائري مجوف</option>
-        <option value="radar">رسم شبكي</option>
-      </select>
-      
-      <label for="dataView">عرض البيانات:</label>
-      <select id="dataView" [(ngModel)]="selectedDataView" (change)="updateChart()">
-        <option value="litigation">عدد الدعاوى</option>
-        <option value="ratios">نسب الإنجاز</option>
-        <option value="experience">الخبرة مقابل إجمالي القضايا</option>
-      </select>
+
+<div class="row row-gap-4">
+  <div class="col-xl-auto">
+    <div class="d-flex align-items-end h-100">
+      <button id="downloadPDFBtn" class="btn btn-primary" (click)="downloadPDF()">تحميل PDF</button>
     </div>
-    
-    <!-- Chart Canvas -->
-    <div class="chart-wrapper">
-      <canvas #chartCanvas></canvas>
-    </div>
-    
-    <!-- Data Summary -->
-    <div class="data-summary">
-      <div class="summary-cards">
+  </div>
+</div>
+
+<div class="chart-container mt-5" #pdfContent>
+  <h2>لوحة إحصائيات</h2>
+
+  <!-- Chart Type Selector -->
+  <div class="chart-controls">
+    <label for="chartType" class="form-label">نوع الرسم البياني:</label>
+    <select class="form-select" id="chartType" [(ngModel)]="selectedChartType" (change)="updateChart()">
+      <option value="bar">رسم بياني عمودي</option>
+      <option value="pie">رسم دائري</option>
+      <option value="doughnut">رسم دائري مجوف</option>
+      <option value="radar">رسم شبكي</option>
+    </select>
+
+    <label for="dataView" class="form-label">عرض البيانات:</label>
+    <select class="form-select" id="dataView" [(ngModel)]="selectedDataView" (change)="updateChart()">
+      <option value="litigation">عدد الدعاوى</option>
+      <option value="ratios">نسب الإنجاز</option>
+      <option value="experience">الخبرة مقابل إجمالي القضايا</option>
+    </select>
+  </div>
+
+  <!-- Chart Canvas -->
+  <div class="chart-wrapper">
+    <canvas #chartCanvas></canvas>
+  </div>
+
+  <!-- Data Summary -->
+  <div class="data-summary">
+    <div class="row row-gap-4">
+      <div class="col-xl">
         <div class="chart-section">
           <h4>إجمالي الاشخاص</h4>
           <p>{{listAllPersonasReport.length}}</p>
         </div>
+      </div>
+
+      <div class="col-xl">
         <div class="chart-section">
           <h4>إجمالي القضايا</h4>
           <p>{{getTotalCases()}}</p>
         </div>
+      </div>
+
+      <div class="col-xl">
         <div class="chart-section">
           <h4>متوسط معدل الإنجاز</h4>
           <p>{{getAverageCompletionRate()}}%</p>
@@ -52,70 +61,63 @@
       </div>
     </div>
   </div>
-<!-- Table to display listReviewReport data -->
-
-<div class="table-wrapper">
-    <div class="mt-5">
-        <button class="btn btn-primary" (click)="exportToExcel()">
-            <i class="fas fa-file-excel me-2"></i>
-            {{translations.general.exportToExcel | translate}}
-        </button>
-    </div>
-    <div class="table-responsive">
-<table class="table">
-    <thead>
-      <tr>
-       
-        <th scope="col">{{translations.Reports.personnelName | translate}}</th>
-        <th scope="col">{{translations.Reports.employeeStatus | translate}}</th>
-        <th scope="col">{{translations.Reports.department | translate}}</th>
-        <th scope="col">{{translations.Reports.totalLitigationCount | translate}}</th>
-        <th scope="col">{{translations.Reports.notFinishedCount | translate}}</th>
-        <th scope="col">{{translations.Reports.finishedCount | translate}}</th>
-        <th scope="col">{{translations.Reports.totalReviewDueDateCount | translate}}</th>
-        <th scope="col">{{translations.Reports.notFinishedRatio | translate}}</th>
-        <th scope="col">{{translations.Reports.finishedRatio | translate}}</th>
-        <th scope="col">{{translations.Reports.totalReviewDueDateRatio | translate}}</th>
-       
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of listAllPersonasReport; let i = index">
-        <td >{{ item.personnelName }}</td>
-        <td >{{ item.personnelStatus }}</td>
-        <td >{{ item.personnelType }}</td>
-        <td >{{ item.totalLitigationCount }}</td>
-        <td >{{ item.notFinishedCount }}</td>
-        <td >{{ item.finishedCount }}</td>
-        <td >{{ item.dueDateCount }}</td>
-        <td >{{ item.notFinishedRatio }}%</td>
-        <td >{{ item.finishedRatio }}%</td>
-        <td >{{ item.dueDateRatio }}%</td>
-      </tr>
-    </tbody>
-  </table>
-
-    </div>
-
-
 </div>
 
+<div class="mt-5">
+  <button class="btn btn-primary" (click)="exportToExcel()">
+    <i class="fas fa-file-excel me-2"></i>
+    {{translations.general.exportToExcel | translate}}
+  </button>
+</div>
 
-  
+<div class="table-wrapper mt-4">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">{{translations.Reports.personnelName | translate}}</th>
+          <th scope="col">{{translations.Reports.employeeStatus | translate}}</th>
+          <th scope="col">{{translations.Reports.department | translate}}</th>
+          <th scope="col">{{translations.Reports.totalLitigationCount | translate}}</th>
+          <th scope="col">{{translations.Reports.notFinishedCount | translate}}</th>
+          <th scope="col">{{translations.Reports.finishedCount | translate}}</th>
+          <th scope="col">{{translations.Reports.totalReviewDueDateCount | translate}}</th>
+          <th scope="col">{{translations.Reports.notFinishedRatio | translate}}</th>
+          <th scope="col">{{translations.Reports.finishedRatio | translate}}</th>
+          <th scope="col">{{translations.Reports.totalReviewDueDateRatio | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listAllPersonasReport; let i = index">
+          <td>{{ item.personnelName }}</td>
+          <td>{{ item.personnelStatus }}</td>
+          <td>{{ item.personnelType }}</td>
+          <td>{{ item.totalLitigationCount }}</td>
+          <td>{{ item.notFinishedCount }}</td>
+          <td>{{ item.finishedCount }}</td>
+          <td>{{ item.dueDateCount }}</td>
+          <td>{{ item.notFinishedRatio }}%</td>
+          <td>{{ item.finishedRatio }}%</td>
+          <td>{{ item.dueDateRatio }}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div *ngIf="listAllPersonasReport && listAllPersonasReport.length === 0" class="mt-3">
- لا توجد بيانات.
+  لا توجد بيانات.
 </div>
 
 <div class="flex-between">
-      <div class="op-6 v-small fw-5">
-        <span>{{translations.tables.from | translate}} </span>
-        <span>{{pagintationData.currentPage}} </span>
-        <span>{{translations.tables.to | translate}} </span>
-        <span>{{pagintationData.totalCount}} </span>
-        <span>{{translations.tables.ofTotal | translate}} </span>
-        <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+  <div class="op-6 v-small fw-5">
+    <span>{{translations.tables.from | translate}} </span>
+    <span>{{pagintationData.currentPage}} </span>
+    <span>{{translations.tables.to | translate}} </span>
+    <span>{{pagintationData.totalCount}} </span>
+    <span>{{translations.tables.ofTotal | translate}} </span>
+    <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
         <span>{{translations.tables.row | translate}} </span>
-      </div>
-      <app-pagination></app-pagination>
-    </div>
+  </div>
+  <app-pagination></app-pagination>
+</div>
