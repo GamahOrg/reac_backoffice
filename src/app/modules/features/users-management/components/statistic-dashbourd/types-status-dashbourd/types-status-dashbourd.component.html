@@ -1,47 +1,39 @@
-<div class="form-wrapper">    إحصائيات تفاصيل حالات وأنواع الدعوى   </div>
+<div class="form-wrapper"> إحصائيات تفاصيل حالات وأنواع الدعوى </div>
 
 <div class="chart-container mt-5">
-    <form [formGroup]="filterForm" (ngSubmit)="applyFilter()">
-    <div class=" row">
-        <div class="col-md-3">
-          <label for="startDate">من تاريخ:</label>
-          <input type="date"  class="form-control" formControlName="startDate" placeholder="تاريخ البداية">
-        </div>
-        <div class="col-md-3">
-          <label for="endDate">إلى تاريخ:</label>
-          <input type="date" class="form-control" formControlName="endDate" placeholder="تاريخ النهاية">
-        </div>
-        <div class="col-md-2">
-            <button class="btn btn-primary mt-6 pt-2" type="submit">تطبيق </button>
-        </div>
-        
+  <form [formGroup]="filterForm" (ngSubmit)="applyFilter()">
+    <div class="row row-gap-4">
+      <div class="col-xl-3">
+        <label for="startDate">من تاريخ:</label>
+        <input type="date" class="form-control" formControlName="startDate" placeholder="تاريخ البداية">
       </div>
-    </form>
-    <div class="row ">
-      <div class="col-11"></div>
-      <div class="col-1">
-    <button class="download-btn" (click)="downloadPDF()">
-      تحميل PDF
-  </button>
-</div>
-</div>
-<div class="row" #pdfContent>
+
+      <div class="col-xl-3">
+        <label for="endDate">إلى تاريخ:</label>
+        <input type="date" class="form-control" formControlName="endDate" placeholder="تاريخ النهاية">
+      </div>
+
+      <div class="col-xl-auto">
+        <button class="btn btn-primary mt-6 pt-2" type="submit">تطبيق </button>
+      </div>
+
+      <div class="col-xl-auto">
+        <div class="d-flex align-items-end h-100">
+          <button id="downloadPDFBtn" class="btn btn-primary" (click)="downloadPDF()">تحميل PDF</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="row row-gap-4" #pdfContent>
     <div class="col-md-4">
-      <app-litigation-statistics-chart 
-        [chartData]="reviewChartData" 
-        chartTitle="مرحلة التدقيق">
-      </app-litigation-statistics-chart>
+      <app-litigation-statistics-chart [chartData]="reviewChartData" chartTitle="مرحلة التدقيق"></app-litigation-statistics-chart>
     </div>
     <div class="col-md-4">
-      <app-litigation-statistics-chart 
-        [chartData]="reconciliationChartData" 
-        chartTitle=" مرحلة الصلح">
-      </app-litigation-statistics-chart>
+      <app-litigation-statistics-chart [chartData]="reconciliationChartData" chartTitle=" مرحلة الصلح"></app-litigation-statistics-chart>
     </div>
     <div class="col-md-4">
-      <app-litigation-statistics-chart 
-        [chartData]="arbitrationChartData" 
-        chartTitle="  مرحلة التحكيم">
-      </app-litigation-statistics-chart>
+      <app-litigation-statistics-chart [chartData]="arbitrationChartData" chartTitle="  مرحلة التحكيم"></app-litigation-statistics-chart>
     </div>
   </div>
+</div>

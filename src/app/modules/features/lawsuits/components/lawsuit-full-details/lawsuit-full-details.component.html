@@ -1,0 +1,47 @@
+@if (lawsuitDetails) {
+<app-breadcrumbs></app-breadcrumbs>
+
+
+<div class="flex-between">
+  <h6> {{ translations.lawsuits.lawsuitDetails.lawsuit| translate }}
+    {{lawsuitTypeTranslation[lawsuitDetails.contract.litigationRequestContractTypeId] | translate}}
+    رقم #{{lawsuitDetails.requestCode}}</h6>
+  <div class="flex-y-row gap-2 py-5">
+    
+    <span class="status-{{lawsuitDetails.externalStatusId}}">{{lawsuitStatus[lawsuitDetails.externalStatusId] | translate}}</span>
+
+    
+    <span>
+      <a [routerLink]="[editLawsuitURL,lawsuitDetails.contract.litigationRequestContractTypeId,litigationId]" class="btn btn-primary py-2 px-6" *ngIf="lawsuitDetails.externalStatusId === LawsuitStatus['SentBackForEdit']">{{translations.lawsuits.lawsuitDetails.completeLawsuit
+        | translate}}</a>
+      
+
+      
+    </span>
+  </div>
+</div>
+
+<div class="d-flex flex-column h-100" style="padding-bottom: 130px;" [ngClass]="{'verticalTabs': tabContent.verticalTabs}">
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="flex-fill {{tabClassName}}" (selectedTabChange)="updateActiveTabIndex($event);" [selectedIndex]="tabContent.activeTabIndex">
+    <ng-container *ngFor="let component of tabContent.tabsComponentList; index as i">
+      <mat-tab [disabled]="component.disabled" *ngIf="component.isVisible">
+        <ng-template mat-tab-label class="collapseTitle">
+          <div class="tab-title flex-y-row" [class.active]="tabContent.activeTabIndex == i">
+            <span *ngIf="component.icon" class="icon">
+              <i class="material-icons-outlined">{{component.icon}}</i>
+            </span>
+            <span class="number flex-center">{{i + 1}}</span>
+            {{component.title}}
+          </div>
+        </ng-template>
+        <ng-container *ngIf="tabContent.activeTabIndex == i && component.Component">
+          <ng-container *ngComponentOutlet="component.Component"></ng-container>
+        </ng-container>
+      </mat-tab>
+    </ng-container>
+  </mat-tab-group>
+</div>
+
+
+
+}

@@ -95,6 +95,14 @@ export class AssignArbitrationHeadListComponent extends BaseComponent implements
         this._paginationService.updatePaginationData(this.pagintationData);
     }
 
+lawsuitFullDetailsURL: string = '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitFullDetails
 
+     public navigateToEditOrDetails(lawsuitId: string | undefined) {
+         
+             
+        this.router.navigate([this.lawsuitFullDetailsURL, lawsuitId]);
+
+       
+    }
 
 }

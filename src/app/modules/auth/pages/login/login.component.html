@@ -8,7 +8,7 @@
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <h4 class="fw-6 mb-8"> {{ translations.auth.login | translate }} </h4>
                 
-                    <label class="small fw-6 required mb-2"> {{ translations.auth.identityNumber | translate }} </label>
+                    <label class="form-label"> {{ translations.auth.identityNumber | translate }} </label>
                 
                     <input class="form-control"
                             [placeholder]="translations.auth.enterIdNumber | translate"

@@ -63,7 +63,7 @@ constructor(
     wafi: 'وافي',
     otherServices: 'خدمات أخرى',
     rent: 'إيجار',
-    properties: 'عقارات'
+    properties: 'ملاك'
   };
   
   // Arabic labels for status
@@ -98,7 +98,7 @@ constructor(
   
 
   onFilterChange(values: any) {
-    debugger;
+    
     // You can now use these values to fetch data or perform other actions
     this.filterRequest = {
       fromDate: values.fromDate != null && values.fromDate !== "" ?new Date(values.fromDate).toISOString().split('T')[0]:null,

@@ -99,7 +99,7 @@ ngOnInit(): void {
 
 
       onFilterChange(values: any) {
-        debugger;
+        
         // You can now use these values to fetch data or perform other actions
         this.filterRequest = {
           fromDate: values.fromDate != null && values.fromDate !== "" ?new Date(values.fromDate).toISOString().split('T')[0]:null,
@@ -153,7 +153,7 @@ ngOnInit(): void {
           this._paginationService.pageChanged
             .pipe(takeUntil(this.destroy$))
             .subscribe((pageNo) => {
-              debugger;
+              
               this.loadNextPage(pageNo);
               this.newPageNo = pageNo;
             })
@@ -163,7 +163,7 @@ ngOnInit(): void {
           this._paginationService.pageClicked
             .pipe(takeUntil(this.destroy$))
             .subscribe((nextPage: number) => {
-              debugger;
+              
               if (this.pagintationData.currentPage != nextPage) {
                 this.loadNextPage(nextPage);
                 this.pagintationData.currentPage = this.newPageNo;

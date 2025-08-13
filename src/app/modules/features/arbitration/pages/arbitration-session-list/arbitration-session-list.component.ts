@@ -82,7 +82,7 @@ export class ArbitrationSessionListComponent extends BaseComponent implements On
         
         this.arbitrationService.GetLitigationRequestSessionDetails(meetingId!).subscribe({
             next: (res) => {
-                debugger;
+                
                 if(res.isDone){
                     this.sessionDetails = res.data
                     this.sessionDetails?.participants.forEach(participant => {

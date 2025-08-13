@@ -1,36 +1,29 @@
 <app-breadcrumbs></app-breadcrumbs>
 
 <form>
-  <div *ngIf="statusId===citizenRequestStatus.WaitingForCertify || statusId===citizenRequestStatus.SentFromEdit || statusId===citizenRequestStatus.FeesPaid ||statusId===citizenRequestStatus.FeesEditPaid"
-  class="form-wrapper">
-  <div class="flex flex-end justify-content-end">
+  <div *ngIf="statusId===citizenRequestStatus.WaitingForCertify || statusId===citizenRequestStatus.SentFromEdit || statusId===citizenRequestStatus.FeesPaid ||statusId===citizenRequestStatus.FeesEditPaid" class="form-wrapper">
+    <div class="flex flex-end justify-content-end">
 
-    <button *ngIf="statusId!==citizenRequestStatus.FeesPaid && citizenRequestFullDataDto?.isFeesPaid != true" class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
-    (click)="open(sendToPayFeesModel)">{{translations.actions.sendToPayFees| translate}} {{citizenRequestFullDataDto?.fees}} ريال</button>
+      <button *ngIf="statusId!==citizenRequestStatus.FeesPaid && citizenRequestFullDataDto?.isFeesPaid != true" class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button" (click)="open(sendToPayFeesModel)">{{translations.actions.sendToPayFees| translate}} {{citizenRequestFullDataDto?.fees}} ريال</button>
 
-    <button *ngIf="statusId == citizenRequestStatus.SentFromEdit && citizenRequestFullDataDto?.isFeesPaid == true" class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
-    (click)="open(sendToPayEditFeesModel)">{{translations.actions.sendToPayEditFees| translate}} {{citizenRequestFullDataDto?.fees}} ريال</button>
+      <button *ngIf="statusId == citizenRequestStatus.SentFromEdit && citizenRequestFullDataDto?.isFeesPaid == true" class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button" (click)="open(sendToPayEditFeesModel)">{{translations.actions.sendToPayEditFees| translate}} {{citizenRequestFullDataDto?.fees}} ريال</button>
 
-    <button *ngIf="statusId!==(citizenRequestStatus.FeesPaid || citizenRequestStatus.FeesEditPaid)" class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
-      (click)="open(acceptModel)">{{translations.actions.accept| translate}}</button>
+      <button *ngIf="statusId!==(citizenRequestStatus.FeesPaid || citizenRequestStatus.FeesEditPaid)" class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button" (click)="open(acceptModel)">{{translations.actions.accept| translate}}</button>
 
-    <button *ngIf="statusId === (citizenRequestStatus.FeesPaid || citizenRequestStatus.FeesEditPaid)" class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
-      (click)="open(acceptWithFeesModel)">{{translations.actions.acceptWithFees| translate}}</button>
+      <button *ngIf="statusId === (citizenRequestStatus.FeesPaid || citizenRequestStatus.FeesEditPaid)" class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button" (click)="open(acceptWithFeesModel)">{{translations.actions.acceptWithFees| translate}}</button>
 
-    <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
-      (click)="open(rejectModel)">{{translations.actions.reject| translate}}</button>
+      <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button" (click)="open(rejectModel)">{{translations.actions.reject| translate}}</button>
 
-    <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button"
-      (click)="open(senToEditModel)">{{translations.actions.sendForEdit| translate}}</button>
+      <button class="btn btn-primary flex-end px-8 py-3 span-2 w-fit mt-4 me-2" type="button" (click)="open(senToEditModel)">{{translations.actions.sendForEdit| translate}}</button>
+
+    </div>
 
   </div>
-
-</div>
 
   <div class="form-wrapper">
     <div class="accordion-card">
       <details open>
-        <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <summary class="flex-y-row gap-2">
           <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
           <h6 class="small fw-6 op-7">{{translations.arbitrator.accountInformation| translate}}</h6>
         </summary>
@@ -55,108 +48,172 @@
     </div>
   </div>
 
-  <div class="form-wrapper" style="margin-bottom: 10px;" *ngIf="isArbitrator!=true">
+  <div class="form-wrapper" style="margin-bottom: 10px;" *ngIf="isArbitrator==true">
     <div class="accordion-card my-5">
-<label class="mb-1 small fw-6 mt-6 "> {{
-translations.CitizenRequest.registeredWithConciliationCenter | translate }} </label>
+      <label class="mb-1 small fw-6 mt-6 "> {{
+        translations.CitizenRequest.registeredWithBachelorDegreeCenter | translate }} </label>
 
-<div>
+      <div>
         <label class="form-control" style="background-color: #8080803b;">
-<span *ngIf="citizenRequestFullDataDto?.isRegisteredReconciliationCenter == true">{{translations.actions.yes | translate}}</span>
-<span *ngIf="citizenRequestFullDataDto?.isRegisteredReconciliationCenter != true">{{translations.actions.no | translate}}</span>
-</label>
-<div *ngIf="citizenRequestFullDataDto?.isRegisteredReconciliationCenter == true">
-<div >
-  <div class="accordion-card my-5">
-    <details open>
-      <summary class="flex-y-row gap-2 border-bottom pb-5">
-        <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
-        <h6 class="small fw-6 op-7 me-5"> {{
-          translations.CitizenRequest.ReconciliationCenterDegreeFile | translate }} </h6>
-      </summary>
-
-      <div class="grid-3 mt-5">
+          <span *ngIf="citizenRequestFullDataDto?.isRegisteredReconciliationCenter == true">{{translations.actions.yes | translate}}</span>
+          <span *ngIf="citizenRequestFullDataDto?.isRegisteredReconciliationCenter != true">{{translations.actions.no | translate}}</span>
+        </label>
+        <div *ngIf="citizenRequestFullDataDto?.isRegisteredReconciliationCenter == true">
           <div>
-            <h6 class="small fw-5">{{ translations.CitizenRequest.attachment | translate }}</h6>
-            <div class="flex-y-row gap-2" *ngFor="let item of citizenRequestFullDataDto?.citizenRequestReconciliationCenterDegreeFiles;let index = index">
-              <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
-              <h6 class="small op-7">{{item.reconciliationCenterFile.fileDescription}}</h6>
-              <a  target="_blank" [href]="baseUrl+item.reconciliationCenterFile.filePath" class="ms-4">
-                <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
-              </a>
+            <div class="accordion-card my-5">
+              <details open>
+                <summary class="flex-y-row gap-2">
+                  <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                  <h6 class="small fw-6 op-7 me-5"> {{
+                    translations.CitizenRequest.realEstateReformerFile | translate }} </h6>
+                </summary>
+
+                <div class="grid-3 mt-5">
+                  <div>
+                    <h6 class="small fw-5">{{ translations.CitizenRequest.attachment | translate }}</h6>
+                    <div class="flex-y-row gap-2" *ngFor="let item of citizenRequestFullDataDto?.citizenRequestReconciliationCenterDegreeFiles;let index = index">
+                      <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
+                      <h6 class="small op-7">{{item.reconciliationCenterFile.fileDescription}}</h6>
+                      <a target="_blank" [href]="baseUrl+item.reconciliationCenterFile.filePath" class="ms-4">
+                        <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
+
+        </div>
       </div>
-    </details>
-  </div>
-</div>
-   
-</div>
-</div>
 
-<label class="mb-1 small fw-6 mt-6"> {{ translations.CitizenRequest.experiencedInArbitration |
-translate }} </label>
-<div>
-  <label class="form-control" style="background-color: #8080803b;">
-<span *ngIf="citizenRequestFullDataDto?.haveArbitrationxperience == true">{{translations.actions.yes | translate}}</span>
-<span *ngIf="citizenRequestFullDataDto?.haveArbitrationxperience != true">{{translations.actions.no | translate}}</span>
-</label>
-<div *ngIf="citizenRequestFullDataDto?.haveArbitrationxperience == true">
-<div >
-<div class="accordion-card my-5">
-<details open>
-<summary class="flex-y-row gap-2 border-bottom pb-5">
-  <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
-  <h6 class="small fw-6 op-7 me-5"> {{
-    translations.CitizenRequest.experiencedInArbitrationFields | translate }} </h6>
-</summary>
+      <label class="mb-1 small fw-6 mt-6"> {{ translations.CitizenRequest.experiencedInArbitration |
+        translate }} </label>
+      <div>
+        <label class="form-control" style="background-color: #8080803b;">
+          <span *ngIf="citizenRequestFullDataDto?.haveArbitrationxperience == true">{{translations.actions.yes | translate}}</span>
+          <span *ngIf="citizenRequestFullDataDto?.haveArbitrationxperience != true">{{translations.actions.no | translate}}</span>
+        </label>
+        <div *ngIf="citizenRequestFullDataDto?.haveArbitrationxperience == true">
+          <div>
+            <div class="accordion-card my-5">
+              <details open>
+                <summary class="flex-y-row gap-2">
+                  <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                  <h6 class="small fw-6 op-7 me-5"> {{
+                    translations.CitizenRequest.experiencedInArbitrationFields | translate }} </h6>
+                </summary>
 
-<div class="grid-3 mt-5">
-    <div>
-      <h6 class="small op-7">{{citizenRequestFullDataDto?.experiencedInArbitrationFields}}</h6>
+                <div class="grid-3 mt-5">
+                  <div>
+                    <h6 class="small op-7">{{citizenRequestFullDataDto?.experiencedInArbitrationFields}}</h6>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- <label class="mb-1 small fw-6 mt-6 required"> {{ translations.CitizenRequest.experiencedInHousingPrograms |
+        translate }} </label>
+      <div>
+        <label class="form-control" style="background-color: #8080803b;">
+          <span *ngIf="citizenRequestFullDataDto?.haveHostingExperience == true">{{translations.actions.yes | translate}}</span>
+          <span *ngIf="citizenRequestFullDataDto?.haveHostingExperience != true">{{translations.actions.no | translate}}</span>
+        </label>
+        <div *ngIf="citizenRequestFullDataDto?.haveHostingExperience == true">
+          <div>
+            <div class="accordion-card my-5">
+              <details open>
+                <summary class="flex-y-row gap-2">
+                  <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                  <h6 class="small fw-6 op-7 me-5"> {{
+                    translations.CitizenRequest.experiencedInHousingProgramsStatuses | translate }} </h6>
+                </summary>
+
+                <div class="grid-3 mt-5">
+                  <div>
+                    <h6 class="small op-7">{{citizenRequestFullDataDto?.experiencedInHousingstatuses}}</h6>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <label class="form-label required"> {{ translations.CitizenRequest.registeredWithBachelorShareaaDegree |
+        translate }} </label>
+        <div>
+          <label class="form-control" style="background-color: #8080803b;">
+      <span *ngIf="citizenRequestFullDataDto?.isregisteredWithBachelorShareaaDegree == true">{{translations.actions.yes | translate}}</span>
+      <span *ngIf="citizenRequestFullDataDto?.isregisteredWithBachelorShareaaDegree != true">{{translations.actions.no | translate}}</span>
+      </label>
     </div>
-</div>
-</details>
-</div>
-</div>
 
-</div>
-</div>
-
-<label class="mb-1 small fw-6 mt-6 required"> {{ translations.CitizenRequest.experiencedInHousingPrograms |
-translate }} </label>
-<div>
-  <label class="form-control" style="background-color: #8080803b;">
+    <label class="form-label required"> {{ translations.CitizenRequest.experiencedInInstitutionalArbitration |
+      translate }} </label>
+      <div>
+        <label class="form-control" style="background-color: #8080803b;">
 <span *ngIf="citizenRequestFullDataDto?.haveHostingExperience == true">{{translations.actions.yes | translate}}</span>
 <span *ngIf="citizenRequestFullDataDto?.haveHostingExperience != true">{{translations.actions.no | translate}}</span>
 </label>
 <div *ngIf="citizenRequestFullDataDto?.haveHostingExperience == true">
 <div >
-<div class="accordion-card my-5">
-<details open>
-<summary class="flex-y-row gap-2 border-bottom pb-5">
-  <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
-  <h6 class="small fw-6 op-7 me-5"> {{
-    translations.CitizenRequest.experiencedInHousingProgramsStatuses | translate }} </h6>
-</summary>
+  <div class="accordion-card my-5">
+    <details open>
+      <summary>
+        
+        <h6 class="small fw-6 op-7 me-5"> {{
+          translations.CitizenRequest.experiencedInInstitutionalArbitrationIssuesCount | translate }} </h6>
+      </summary>
 
-<div class="grid-3 mt-5">
-    <div>
-      <h6 class="small op-7">{{citizenRequestFullDataDto?.experiencedInHousingstatuses}}</h6>
+      <div class="grid-3 mt-4">
+          <div>
+            <h6 class="small op-7">{{citizenRequestFullDataDto?.experiencedInHousingstatuses}}</h6>
+          </div>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+</div>
+<label class="form-label "> {{
+  translations.CitizenRequest.experiencedInFreelanceArbitration | translate }} </label>
+
+  <div>
+          <label class="form-control" style="background-color: #8080803b;">
+  <span *ngIf="citizenRequestFullDataDto?.haveExperiencedInFreelanceArbitration == true">{{translations.actions.yes | translate}}</span>
+  <span *ngIf="citizenRequestFullDataDto?.haveExperiencedInFreelanceArbitration != true">{{translations.actions.no | translate}}</span>
+</label>
+ <div *ngIf="citizenRequestFullDataDto?.haveExperiencedInFreelanceArbitration == true">
+  <div >
+    <div class="accordion-card my-5">
+      <details open>
+        <summary>
+          
+          <h6 class="small fw-6 op-7 me-5"> {{
+            translations.CitizenRequest.experiencedInInstitutionalArbitrationIssuesCount | translate }} </h6>
+        </summary>
+        <div class="grid-3 mt-4">
+            <div>
+              <h6 class="small op-7">{{citizenRequestFullDataDto?.experiencedInFreelanceArbitration}}</h6>
+            </div>
+          </div>
+
+      </details>
     </div>
-</div>
-</details>
-</div>
-</div>
-</div>
+  </div>
+     
+  </div>
 </div>
 
-</div>
-
-<label class="mb-1 small fw-6 mt-6 required"> {{ translations.CitizenRequest.passedTheRealEstateReformer |
-translate }} </label>
-<div>
-  <label class="form-control" style="background-color: #8080803b;">
+<label class="form-label required"> {{ translations.CitizenRequest.experiencedInHousingProgramsForArbitiration |
+  translate }} </label>
+  <div>
+    <label class="form-control" style="background-color: #8080803b;">
 <span *ngIf="citizenRequestFullDataDto?.ispassedRealEstateProgram == true">{{translations.actions.yes | translate}}</span>
 <span *ngIf="citizenRequestFullDataDto?.ispassedRealEstateProgram != true">{{translations.actions.no | translate}}</span>
 </label>
@@ -164,28 +221,24 @@ translate }} </label>
 <div >
 <div class="accordion-card my-5">
 <details open>
-<summary class="flex-y-row gap-2 border-bottom pb-5">
-  <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
-  <h6 class="small fw-6 op-7 me-5"> {{
-    translations.CitizenRequest.realEstateReformerFile | translate }} </h6>
-</summary>
+  <summary>
+    
+    <h6 class="small fw-6 op-7 me-5"> {{
+      translations.CitizenRequest.realEstateReformerFile | translate }} </h6>
+  </summary>
 
-<div class="grid-3 mt-5">
-    <div>
-      <h6 class="small fw-5">{{ translations.CitizenRequest.attachment | translate }}</h6>
-      <div class="flex-y-row gap-2" *ngFor="let item of citizenRequestFullDataDto?.citizenRequestProgramRealEstateInstituteFiles;let index = index">
-        <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
-        <h6 class="small op-7" *ngIf="item.programRealEstateDocumentFile">{{item.programRealEstateDocumentFile.fileDescription}}</h6>
-        <a  *ngIf="item.programRealEstateDocumentFile"  target="_blank" [href]="baseUrl+item.programRealEstateDocumentFile.filePath" class="ms-4">
-          <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
-        </a>
-        <h6 class="small op-7" *ngIf="item.programRealEstateDocumentFile==null">{{item.id}}</h6>
-        <a  *ngIf="item.programRealEstateDocumentFile==null"  target="_blank" [href]="baseUrl+item.id" class="ms-4">
-          <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
-        </a>
+  <div class="grid-3 mt-4">
+      <div>
+        <h6 class="small fw-5">{{ translations.CitizenRequest.attachment | translate }}</h6>
+        <div class="flex-y-row gap-2" *ngFor="let item of citizenRequestFullDataDto?.citizenRequestProgramRealEstateInstituteFiles;let index = index">
+          <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
+          <h6 class="small op-7">{{item.programRealEstateDocumentFile.fileDescription}}</h6>
+          <a  target="_blank" [href]="baseUrl+item.programRealEstateDocumentFile.filePath" class="ms-4">
+            <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
+          </a>
+        </div>
       </div>
-    </div>
-</div>
+  </div>
 </details>
 </div>
 </div>
@@ -194,35 +247,38 @@ translate }} </label>
 </div>
 </div>
 
+ 
+</div>
 
-<div class="form-wrapper">
-<div class="accordion-card my-5">
-<details open>
-<summary class="flex-y-row gap-2 border-bottom pb-5">
-  <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
-  <h6 class="small fw-6 op-7 me-5">{{ translations.CitizenRequest.cvFiles| translate }}</h6>
-</summary>
-
-<div class="grid-3 mt-5">
-    <div>
-      <h6 class="small fw-5">{{ translations.CitizenRequest.attachment | translate }}</h6>
-      <div class="flex-y-row gap-2" *ngFor="let item of citizenRequestFullDataDto?.citizenRequestCVFiles;let index = index">
-        <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
-        <h6 class="small op-7">{{item.cvFile.fileDescription}}</h6>
-        <a  target="_blank" [href]="baseUrl+item.cvFile.filePath" class="ms-4">
-          <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
-        </a>
-      </div>
-    </div>
-</div>
-</details>
-</div>
-</div>
 
   <div class="form-wrapper">
     <div class="accordion-card my-5">
       <details open>
-        <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <summary class="flex-y-row gap-2">
+          <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+          <h6 class="small fw-6 op-7 me-5">{{ translations.CitizenRequest.cvFiles| translate }}</h6>
+        </summary>
+
+        <div class="grid-3 mt-5">
+          <div>
+            <h6 class="small fw-5">{{ translations.CitizenRequest.attachment | translate }}</h6>
+            <div class="flex-y-row gap-2" *ngFor="let item of citizenRequestFullDataDto?.citizenRequestCVFiles;let index = index">
+              <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
+              <h6 class="small op-7">{{item.cvFile.fileDescription}}</h6>
+              <a target="_blank" [href]="baseUrl+item.cvFile.filePath" class="ms-4">
+                <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="form-wrapper">
+    <div class="accordion-card my-5">
+      <details open>
+        <summary class="flex-y-row gap-2">
           <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
           <h6 class="small fw-6 op-7 me-5">{{ translations.CitizenRequest.academicDegreeFiles| translate }}</h6>
         </summary>
@@ -234,7 +290,7 @@ translate }} </label>
               <div class="flex-y-row gap-2">
                 <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
                 <h6 class="small op-7">{{item.academicDegreeFile.fileDescription}}</h6>
-                <a  target="_blank" [href]="baseUrl+item.academicDegreeFile.filePath" class="ms-4">
+                <a target="_blank" [href]="baseUrl+item.academicDegreeFile.filePath" class="ms-4">
                   <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
                 </a>
               </div>
@@ -249,7 +305,7 @@ translate }} </label>
   <div class="form-wrapper">
     <div class="accordion-card my-5">
       <details open>
-        <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <summary class="flex-y-row gap-2">
           <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
           <h6 class="small fw-6 op-7 me-5">{{ translations.CitizenRequest.citizenRequestFreelanceWorkDocumentFiles|
             translate }}</h6>
@@ -262,7 +318,7 @@ translate }} </label>
               <div class="flex-y-row gap-2">
                 <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
                 <h6 class="small op-7">{{item.freelanceWorkDocumentFile.fileDescription}}</h6>
-                <a  target="_blank" [href]="baseUrl+item.freelanceWorkDocumentFile.filePath" class="ms-4">
+                <a target="_blank" [href]="baseUrl+item.freelanceWorkDocumentFile.filePath" class="ms-4">
                   <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
                 </a>
               </div>
@@ -274,10 +330,9 @@ translate }} </label>
   </div>
 
   <div class="form-wrapper">
-    <div *ngFor="let certificate of citizenRequestFullDataDto?.citizenRequestExperienceCertificates;let index = index"
-      class="accordion-card my-5">
+    <div *ngFor="let certificate of citizenRequestFullDataDto?.citizenRequestExperienceCertificates;let index = index" class="accordion-card my-5">
       <details open>
-        <summary class="flex-y-row gap-2 border-bottom pb-5">
+        <summary class="flex-y-row gap-2">
           <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
           <h6 class="small fw-6 op-7 me-5">{{ translations.CitizenRequest.certificate| translate }}</h6>
         </summary>
@@ -313,7 +368,7 @@ translate }} </label>
               <div class="flex-y-row gap-2">
                 <img src="assets/images/icons/lawsuit-details/mobile-programming.svg" alt="icon">
                 <h6 class="small op-7">{{item.experienceCertificateFile.fileDescription}}</h6>
-                <a  target="_blank" [href]="baseUrl+item.experienceCertificateFile.filePath" class="ms-4">
+                <a target="_blank" [href]="baseUrl+item.experienceCertificateFile.filePath" class="ms-4">
                   <img src="assets/images/icons/lawsuit-details/document-download.svg" alt="">
                 </a>
               </div>
@@ -329,20 +384,20 @@ translate }} </label>
 
   <div class="form-wrapper">
     <div class="accordion-card my-5">
-        <details open>
-            <summary class="flex-y-row gap-2 border-bottom pb-5">
-                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
-                <h6 class="small fw-6 op-7 me-5"> {{ translations.CitizenRequest.brief| translate }} </h6>
-            </summary>
+      <details open>
+        <summary class="flex-y-row gap-2">
+          <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+          <h6 class="small fw-6 op-7 me-5"> {{ translations.CitizenRequest.brief| translate }} </h6>
+        </summary>
 
 
-            <div class="mt-5">
-                <!-- <label class="small fw-6 mb-2 required"> {{ translations.CitizenRequest.about | translate }}  </label> -->
-                <h6 class="small op-7">{{citizenRequestFullDataDto?.about}}</h6>
-            </div>
-        </details>
+        <div class="mt-5">
+          <!-- <label class="small fw-6 mb-2 required"> {{ translations.CitizenRequest.about | translate }}  </label> -->
+          <h6 class="small op-7">{{citizenRequestFullDataDto?.about}}</h6>
+        </div>
+      </details>
     </div>
-</div>
+  </div>
 
 
 </form>
@@ -350,7 +405,7 @@ translate }} </label>
 <ng-template #sendToPayFeesModel let-modal>
   <div class="modal-header">
     <!-- <h5 class="modal-title fw-6">{{ translations.CitizenRequest.acceptHeaderTitle | translate }}</h5> -->
-    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
   </div>
 
   <div class="modal-body pt-0">
@@ -370,7 +425,7 @@ translate }} </label>
 <ng-template #sendToPayEditFeesModel let-modal>
   <div class="modal-header">
     <!-- <h5 class="modal-title fw-6">{{ translations.CitizenRequest.acceptHeaderTitle | translate }}</h5> -->
-    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
   </div>
 
   <div class="modal-body pt-0">
@@ -390,7 +445,7 @@ translate }} </label>
 <ng-template #acceptModel let-modal>
   <div class="modal-header">
     <!-- <h5 class="modal-title fw-6">{{ translations.CitizenRequest.acceptHeaderTitle | translate }}</h5> -->
-    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
   </div>
 
   <div class="modal-body pt-0">
@@ -410,7 +465,7 @@ translate }} </label>
 <ng-template #acceptWithFeesModel let-modal>
   <div class="modal-header">
     <!-- <h5 class="modal-title fw-6">{{ translations.CitizenRequest.acceptHeaderTitle | translate }}</h5> -->
-    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
   </div>
 
   <div class="modal-body pt-0">
@@ -429,13 +484,12 @@ translate }} </label>
 <ng-template #rejectModel let-modal>
   <div class="modal-header">
     <h5 class="modal-title fw-6">{{ translations.CitizenRequest.rejectHeaderTitle | translate }}</h5>
-    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
   </div>
 
   <div class="modal-body pt-0">
     <label class="small fw-6 mb-2"> {{ translations.CitizenRequest.notes | translate }} </label>
-    <textarea class="form-control border-0 pt-0 px-0 shadow-none" rows="7"
-      placeholder="{{ translations.CitizenRequest.enterNotes | translate }}" #rejectNotes></textarea>
+    <textarea class="form-control pt-0 px-0 shadow-none" rows="7" placeholder="{{ translations.CitizenRequest.enterNotes | translate }}" #rejectNotes></textarea>
   </div>
 
   <div class="modal-footer">
@@ -451,13 +505,12 @@ translate }} </label>
 <ng-template #senToEditModel let-modal>
   <div class="modal-header">
     <h5 class="modal-title fw-6">{{ translations.CitizenRequest.sendForEditHeaderTitle | translate }}</h5>
-    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"></button>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
   </div>
 
   <div class="modal-body pt-0">
     <label class="small fw-6 mb-2"> {{ translations.CitizenRequest.notes | translate }} </label>
-    <textarea class="form-control border-0 pt-0 px-0 shadow-none" rows="7"
-      placeholder="{{ translations.CitizenRequest.enterNotes | translate }}" #notes></textarea>
+    <textarea class="form-control pt-0 px-0 shadow-none" rows="7" placeholder="{{ translations.CitizenRequest.enterNotes | translate }}" #notes></textarea>
   </div>
 
   <div class="modal-footer">

@@ -1,17 +1,14 @@
-<div class="form-wrapper">    إحصائيات  مقدمين الخدمة   </div>
-<div class="row ">
-    <div class="col-11"></div>
-    <div class="col-1">
-  <button class="download-btn" (click)="downloadPDF()">
-    تحميل PDF
-</button>
+<div class="form-wrapper"> إحصائيات مقدمين الخدمة </div>
+
+<div class="row row-gap-4">
+  <div class="col-xl-auto">
+    <div class="d-flex align-items-end h-100">
+      <button id="downloadPDFBtn" class="btn btn-primary" (click)="downloadPDF()">تحميل PDF</button>
+    </div>
+  </div>
 </div>
-</div>
-<div class="row" #pdfContent>
-    <div class="chart-container">
-<app-litigation-statistics-chart 
-[chartData]="ProviderChartData" 
-chartTitle="إحصائيات  مقدمى الخدمة">
-</app-litigation-statistics-chart>
-</div>
+
+<div class="chart-container mt-5" #pdfContent>
+  <div class="form-wrapper"> إحصائيات مقدمى الخدمة</div>
+  <app-litigation-statistics-chart [chartData]="ProviderChartData" chartTitle="إحصائيات  مقدمى الخدمة"></app-litigation-statistics-chart>
 </div>

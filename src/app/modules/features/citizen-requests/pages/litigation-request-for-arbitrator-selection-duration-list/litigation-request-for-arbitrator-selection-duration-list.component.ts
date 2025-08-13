@@ -18,6 +18,8 @@ import { Pagination, pagination } from '@app/shared/models/pagination.model';
 export class LitigationRequestForArbitratorSelectionDurationListComponent extends BaseComponent implements OnInit {
     reqList?: Pagination<LitigationRequestMircoForArbitratorsSelectionDurationDto[]>
     subscriptions: Subscription[] = [];
+    private _router = inject(Router);    
+    lawsuitFullDetailsURL: string = '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitFullDetails
 
     detailsRequestUrl: string = `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.litigationRequestForArbitratorSelectionDurationDetails}`
     private _paginationService = inject(PaginationService);
@@ -119,5 +121,13 @@ export class LitigationRequestForArbitratorSelectionDurationListComponent extend
     }
     goToDetailsPage(requestId: string) {
         this.router.navigate([this.detailsRequestUrl, requestId]);
+    }
+
+    public navigateToEditOrDetails(lawsuitId: string | undefined) {
+         
+             
+        this._router.navigate([this.lawsuitFullDetailsURL, lawsuitId]);
+
+       
     }
 }

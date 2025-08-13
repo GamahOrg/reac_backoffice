@@ -40,6 +40,8 @@ import { LitigationRequestNotesListComponent } from './pages/litigation-request-
 import { LitigationRequestNotesService } from './services/litigation-request-notes/litigation-request-notes.service';
 import { ModificationRequestsComponent } from './components/modification-requests/modification-requests.component';
 import { FilterComponent } from '@app/shared/components/filter/components/filter/filter.component';
+import { LawsuitFullDetailsComponent } from './components/lawsuit-full-details/lawsuit-full-details.component';
+import { LitigationRequestService } from '../citizen-requests/services/litigation-request.service';
 
 @NgModule({
     declarations: [
@@ -58,7 +60,8 @@ import { FilterComponent } from '@app/shared/components/filter/components/filter
         LitigationRequestCorrespondenceListComponent,
         LitigationRequestCorrespondenceDetailsComponent,
         LitigationRequestNotesListComponent,
-        ModificationRequestsComponent
+        ModificationRequestsComponent,
+        LawsuitFullDetailsComponent
     ],
     providers: [
         LawsuitListService,
@@ -68,7 +71,8 @@ import { FilterComponent } from '@app/shared/components/filter/components/filter
         LawsuitEditReasonsService,
         LawsuitEventsService,
         LitigationRequestCorrespondencesService,
-        LitigationRequestNotesService
+        LitigationRequestNotesService,
+        LitigationRequestService
     ],
     imports: [
         CommonModule,

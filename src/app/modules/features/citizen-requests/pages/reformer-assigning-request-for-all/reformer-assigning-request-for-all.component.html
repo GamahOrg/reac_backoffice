@@ -1,89 +1,91 @@
 <app-breadcrumbs></app-breadcrumbs>
-<div class="row">
-    <div *ngIf="reqList.results" class="options col-6">
-        <p class="text">ترتيب حسب</p>
-        <select (change)="orderList($event)">
-            <option value="false">الأحدث</option>
-            <option value="true">الأقدم</option>
-        </select>
-    </div>
 
-    <div class="col-4 options">
-        <div class="text">توزيع الطلبات تلقائيا</div>
-        <div class="form-check form-switch">
-            <input class="form-check-input" (click)="ToggleAutoDistributionOnAndOff()" type="checkbox" role="switch" [checked]="isAutoDistribution" id="flexSwitchCheckDefault">
-          </div>
-    
+<div class="row row-gap-4">
+  <div class="col-xl-3" *ngIf="!reqList.results">
+    <label class="form-label">ترتيب حسب</label>
+    <select class="form-select" (change)="orderList($event)">
+      <option value="false">الأحدث</option>
+      <option value="true">الأقدم</option>
+    </select>
+  </div>
+
+  <div class="col-xl-3">
+    <div class="d-flex align-items-end h-100 pb-2">
+      <div class="form-check form-switch">
+        <input class="form-check-input" (click)="ToggleAutoDistributionOnAndOff()" type="checkbox" role="switch" [checked]="isAutoDistribution" id="flexSwitchCheckDefault">
+        <label class="form-check-label">توزيع الطلبات تلقائيا</label>
+      </div>
     </div>
+  </div>
 </div>
 
+<div class="table-wrapper mt-4">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">{{translations.Reformerassigningrequestforall.requestCode | translate}}</th>
+          <th scope="col">{{translations.Reformerassigningrequestforall.requestDate | translate}}</th>
+          <th scope="col">{{translations.Reformerassigningrequestforall.reformerAssigningDate | translate}}</th>
+          <th scope="col">{{translations.Reformerassigningrequestforall.firstPartyName | translate}}</th>
+          <th scope="col">{{translations.Reformerassigningrequestforall.secondPartyName | translate}}</th>
+          <th scope="col">{{translations.Reformerassigningrequestforall.reformerName | translate}}</th>
+          <th scope="col">{{translations.Reformerassigningrequestforall.requestTypeName | translate}}</th>
+          <th scope="col">{{translations.Reformerassigningrequestforall.status | translate}}</th>
+          <th scope="col">
+            <span style="max-width: 120px; white-space: normal; display: block;">{{translations.lawsuits.lawsuitsList.remainingReconciliationDays
+              | translate}}</span>
+          </th>
+          <th scope="col">{{translations.LitigationRequest.response | translate}}</th>
+                    <th scope="col">{{translations.lawsuits.lawsuitsList.actions| translate}}</th>
+          <!-- <th scope="col">{{translations.Reformerassigningrequestforall.isDone | translate}}</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        @for (request of reqList.results; track $index) {
+        <tr>
+          <td>{{request.requestCode}}</td>
+          <td>{{request.requestDate | date:'MMM d, y'}}</td>
+          <td>{{request.reformerAssigningDate | date:'MMM d, y'}}</td>
+          <td>{{request.firstPartyName}}</td>
+          <td>{{request.secondPartyName}}</td>
+          <td>{{request.reformerName}}</td>
+          <td>{{request.requestTypeName}}</td>
+          <td>{{request.status}}
 
-<div class="table-wrapper">
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">{{translations.Reformerassigningrequestforall.requestCode | translate}}</th>
-                    <th scope="col">{{translations.Reformerassigningrequestforall.requestDate | translate}}</th>
-                    <th scope="col">{{translations.Reformerassigningrequestforall.reformerAssigningDate | translate}}</th>
-                    <th scope="col">{{translations.Reformerassigningrequestforall.firstPartyName | translate}}</th>
-                    <th scope="col">{{translations.Reformerassigningrequestforall.secondPartyName | translate}}</th>
-                    <th scope="col">{{translations.Reformerassigningrequestforall.reformerName | translate}}</th>
-                    <th scope="col">{{translations.Reformerassigningrequestforall.requestTypeName | translate}}</th>
-                    <th scope="col">{{translations.Reformerassigningrequestforall.status | translate}}</th>
-                    <th scope="col">
-                        <span
-                              style="max-width: 120px; white-space: normal; display: block;">{{translations.lawsuits.lawsuitsList.remainingReconciliationDays
-                          | translate}}</span>
-                      </th>
-                    <th scope="col">{{translations.LitigationRequest.response | translate}}</th>
-                    <!-- <th scope="col">{{translations.Reformerassigningrequestforall.isDone | translate}}</th> -->
-                </tr>
-            </thead>
-            <tbody>
-                @for (request of reqList.results; track $index) {
-                <tr>
-                    <td>{{request.requestCode}}</td>
-                    <td>{{request.requestDate | date:'MMM d, y'}}</td>
-                    <td>{{request.reformerAssigningDate | date:'MMM d, y'}}</td>
-                    <td>{{request.firstPartyName}}</td>
-                    <td>{{request.secondPartyName}}</td>
-                    <td>{{request.reformerName}}</td>
-                    <td>{{request.requestTypeName}}</td>
-                    <td>{{request.status}} 
-                      
-                    </td>
+          </td>
+          <td>
+            {{
+            (request.reconciliationPeriod && request.reconciliationPeriod >= 0)
+            ? request.reconciliationPeriod + (translations.lawsuits.lawsuitsList.days| translate)
+            : '--'
+            }}
+          </td>
+          <td>{{request.response ? (localization[request.response] | translate) : (translations.TasksRequestsList.None | translate)}}
+            <div *ngIf="request.rejectReason">({{request.rejectReason}})</div>
+          </td>
                     <td>
-                        {{
-                        (request.reconciliationPeriod && request.reconciliationPeriod >= 0)
-                        ? request.reconciliationPeriod + (translations.lawsuits.lawsuitsList.days| translate)
-                        : '--'
-                        }}
-                      </td>
-                    <td>{{request.response ? (localization[request.response] | translate) : (translations.TasksRequestsList.None | translate)}}
-                        <div *ngIf="request.rejectReason">({{request.rejectReason}})</div>
+
+              <button class="btn btn-sm btn-primary" (click)="navigateToEditOrDetails(request.requestId)">{{ translations.actions.viewDetails | translate }}</button>
                     </td>
-
-                    <!-- <td>{{request.isDone}}</td> -->
-
-                </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>
 
 @if (reqList.results && reqList.results.length) {
-    <div class="flex-between">
-        <div class="op-6 v-small fw-5">
-          <span>{{translations.tables.from | translate}} </span>
-          <span>{{pagintationData.currentPage}} </span>
-          <span>{{translations.tables.to | translate}} </span>
-          <span>{{pagintationData.totalCount}} </span>
-          <span>{{translations.tables.ofTotal | translate}} </span>
-          <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
-          <span>{{translations.tables.row | translate}} </span>
-        </div>
-        <app-pagination></app-pagination>
-      </div>
+<div class="flex-between">
+  <div class="op-6 v-small fw-5">
+    <span>{{translations.tables.from | translate}} </span>
+    <span>{{pagintationData.currentPage}} </span>
+    <span>{{translations.tables.to | translate}} </span>
+    <span>{{pagintationData.totalCount}} </span>
+    <span>{{translations.tables.ofTotal | translate}} </span>
+    <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+        <span>{{translations.tables.row | translate}} </span>
+  </div>
+  <app-pagination></app-pagination>
+</div>
 }

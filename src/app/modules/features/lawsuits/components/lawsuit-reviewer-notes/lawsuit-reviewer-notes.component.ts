@@ -23,7 +23,7 @@ export class LawsuitReviewerNotesComponent extends BaseComponent implements OnIn
 
   observeLawsuitRequestDetailsSignal() {
     effect(() => {
-      debugger;
+      
         this.reviwerNotes = this._lawsuitRequestDetailsService.litigationDetails()?.workFlowProcessingLogs;
     }, {
         injector: this._injector,

@@ -3,6 +3,7 @@ import { LitigationRequestReformerAssigningRequestStatus } from "./enums/litigat
 export interface LitigationRequestMircoDtoReformer {
     id:string;
      requestCode:string;
+     requestId:string;
     requestDate:Date;
     reformerAssigningDate?: string | null;
     firstPartyName :string;

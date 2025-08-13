@@ -45,7 +45,7 @@
             <span style="font-size: .88rem;">{{ (vacation.approvedOn | date: 'dd/MM/yyy') || '--' }}</span>
           </td>
           <td scope="row">
-            <button *ngIf="vacation.isApproved == null" class="btn btn-primary fw-5 py-2 flex-y-row text-nowrap px-8" (click)="acceptVacation(vacation.id)">{{translations.Profile.vacationRequests.approve | translate}}</button>
+            <button *ngIf="vacation.isApproved == null" class="btn btn-primary" (click)="acceptVacation(vacation.id)">{{translations.Profile.vacationRequests.approve | translate}}</button>
           </td>
           <td scope="row">
             <button *ngIf="vacation.isApproved == null" class="btn btn-danger fw-5 py-2 flex-y-row text-nowrap px-8" (click)="rejectVacation(vacation.id)">{{translations.Profile.vacationRequests.reject | translate}}</button>

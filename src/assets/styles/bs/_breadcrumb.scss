@@ -1,0 +1,16 @@
+.breadcrumb {
+  flex-wrap: nowrap;
+
+  .breadcrumb-item {
+    +.breadcrumb-item {
+      padding-left: 0;
+      padding-inline-start: 0.5rem;
+
+      &::before {
+        float: none;
+        padding-right: 0;
+        padding-inline-end: 0.5rem;
+      }
+    }
+  }
+}

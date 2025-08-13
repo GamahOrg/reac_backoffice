@@ -1,0 +1,86 @@
+$white: #fff;
+$black: #000;
+$dark: #0D121C;
+$primary: #002f56;
+$success: #61a60e;
+$danger: #be4949;
+$info: #54c3ba;
+
+$light: #F6F6F6;
+$lightergray: #E7EAEA;
+
+:root {
+  --white: #{$white};
+  --black: #{$black};
+  --dark: #{$dark};
+  --brown: #61686b;
+  --bs-primary: #{$primary};
+  --primary: #{$primary};
+  --bs-success: #61a60e;
+  --success: #{$success};
+  --danger: #{$danger};
+  --info: #{$info};
+  --beige: #f8f9fb;
+  --beige2: #f4f5f9;
+}
+
+// $themes: (light: ("text": #000,
+//     "bg": #fff),
+//   dark: ("text": #fff,
+//     "bg": #333));
+
+// @each $name,
+// $map in $themes {
+//   .theme-#{$name} {
+
+//     @each $key,
+//     $value in $map {
+//       --#{$key}: #{$value};
+//     }
+//   }
+// }
+
+// $theme-colors: ("primary": $primary,
+//   "success": $success,
+//   "info": $info,
+//   "danger": $danger);
+
+// $colors: ("green": $primary);
+
+// $container-max-widths: (sm: 540px,
+//   md: 720px,
+//   lg: 960px,
+//   xl: 1192px,
+//   xxl: 1320px);
+
+$headings-color: #161616;
+$headings-font-weight: 700;
+
+$input-padding-y: .5rem;
+$input-disabled-color: #a5aeb1;
+$input-placeholder-color: #a5aeb1;
+$input-border-width: 1px;
+$input-border-color: #D2D6DB;
+$input-disabled-border-color: #e9ecef;
+$input-border-radius: .375rem;
+$input-font-size: clamp(0.75rem, 2.5vw, 1rem);
+$input-font-weight: 400;
+$input-box-shadow: none;
+$input-focus-box-shadow: none;
+
+$input-btn-font-size: clamp(0.75rem, 2.5vw, 1rem);
+
+$form-select-padding-y: .5rem;
+$form-select-disabled-color: #a5aeb1;
+$form-select-border-color: #D2D6DB;
+$form-select-disabled-border-color: #e9ecef;
+$form-select-border-radius: .375rem;
+$form-select-indicator-padding: 0.75rem;
+
+$modal-backdrop-bg: rgba($black, 0.6);
+
+$nav-tabs-link-active-color: $white;
+$nav-tabs-link-active-bg: $primary;
+
+$table-striped-order: even;
+$table-striped-bg: #fafafa;

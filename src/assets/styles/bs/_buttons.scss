@@ -1,0 +1,27 @@
+.btn {
+  --bs-btn-focus-box-shadow: none;
+  --bs-btn-font-weight: 500;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: .25rem;
+
+  &:focus {
+    --bs-btn-border-color: #{$white};
+    outline: 2px solid $dark !important;
+    border-color: var(--bs-btn-border-color) !important;
+  }
+
+  &:disabled,
+  &.disabled {
+    --bs-btn-color: #9DA4AE;
+    --bs-btn-bg: #E5E7EB;
+    --bs-btn-border-color: #E5E7EB;
+  }
+}
+
+.btn-outline-success {
+  --bs-btn-hover-color: var(--white);
+  --bs-btn-active-color: var(--white);
+}
