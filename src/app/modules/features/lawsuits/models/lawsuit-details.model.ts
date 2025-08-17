@@ -130,7 +130,14 @@ export interface LawsuitItemDetails {
         translations: { categoryName: string, languageCode: string }[],
         litigationRequests: string[]
     },
-    title: string
+    title: string,
+    exemptionReductionFile:{
+        fileDescription: string,
+        filePath: string,   
+        fileType: string,
+        id: string,
+    }
+
 }
 
 export interface ApplicantCitizen {
