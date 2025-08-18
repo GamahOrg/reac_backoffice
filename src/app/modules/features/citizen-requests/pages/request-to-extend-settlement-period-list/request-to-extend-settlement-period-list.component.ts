@@ -112,4 +112,10 @@ export class RequestToExtendSettlementPeriodListComponent extends BaseComponent 
     goToDetailsPage(requestId: string) {
         this.router.navigate([this.detailsRequestUrl, requestId]);
     }
+
+    lawsuitFullDetailsURL: string = '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitFullDetails
+    public navigateToEditOrDetails(lawsuitId: string | undefined)
+    {
+            this.router.navigate([this.lawsuitFullDetailsURL, lawsuitId]);
+    }
 }
