@@ -430,6 +430,9 @@ export namespace translations {
             nonFinancial = "lawsuits.createEditLawsuit.nonFinancial",
             secondPartyCapacity = "lawsuits.createEditLawsuit.secondPartyCapacity",
             secondPartyName = "lawsuits.createEditLawsuit.secondPartyName",
+            excamptionFile = "lawsuits.createEditLawsuit.excamptionFile",
+
+
         }
     }
 

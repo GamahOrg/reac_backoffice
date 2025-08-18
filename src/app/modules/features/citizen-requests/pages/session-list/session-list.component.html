@@ -12,6 +12,8 @@
                     <th scope="col">{{translations.LitigationRequest.requestTypeName | translate}}</th>
                     <th scope="col">{{translations.LitigationRequest.sessionDatetime | translate}}</th>
                     <th scope="col">{{translations.LitigationRequest.sessionLink | translate}}</th>
+                    <th scope="col">{{translations.actions.procedures | translate}}</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +35,8 @@
                         <button class="btn btn-sm btn-light" (click)="openSessionDetails(sessionDetailsModal,litigationRequest.meetingId)">
                             <img src="assets/images/icons/eye.svg" alt="eye">
                             {{translations.actions.viewDetails| translate}}
-                        </button>
+                        </button>&nbsp;
+                        <button class="btn btn-sm btn-light" (click)="navigateToEditOrDetails(litigationRequest.id)">  تفاصيل الدعوه</button>
                     </td>
                 </tr>
                 }

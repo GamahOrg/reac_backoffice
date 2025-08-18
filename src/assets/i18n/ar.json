@@ -387,7 +387,9 @@
             "financial": "مالي",
             "nonFinancial": "غير مالي",
             "secondPartyCapacity": "صفة المدعي عليه",
-            "secondPartyName": "اسم المدعي عليه"
+            "secondPartyName": "اسم المدعي عليه",
+            "excamptionFile":" ملف اثبات اعفاء من الرسوم"
+
         }
     },
     "establishments": {
