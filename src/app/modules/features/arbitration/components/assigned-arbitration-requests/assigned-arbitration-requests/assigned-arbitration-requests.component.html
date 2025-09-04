@@ -75,8 +75,9 @@
 </div>
 }
 
-<ng-template #formModal let-modal>
-    <div class="modal-body pt-0" id="formPaper">
+<ng-template #formModal let-modal  style="direction: rtl; text-align: right;">
+    
+    <div class="modal-body pt-0" id="formPaper" style="direction: rtl; text-align: right;">
         <app-assigned-arbitration-requests-documnets [litigationData]="litigationData"></app-assigned-arbitration-requests-documnets>
         <img src="assets/images/logo-bg.svg" class="absolute-center" alt="logo">
     </div>
