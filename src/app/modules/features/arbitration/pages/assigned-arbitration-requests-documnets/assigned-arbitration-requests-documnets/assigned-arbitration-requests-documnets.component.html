@@ -27,7 +27,8 @@
     </p>
 
     <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
-    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} <span>:</span> <img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.arbitratorName}}</p>
 </div>
 
 <!-- Reject Properties -->
@@ -55,7 +56,8 @@
     </p>
 
     <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
-    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }}  <span>:</span> <img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.arbitratorName}}</p>
 </div>
 
 <!-- Accept Ejar-Wafi-RealEstateBrokerage -->
@@ -90,7 +92,8 @@
     </p>
 
     <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
-    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }}   <span>:</span> <img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.arbitratorName}}</p>
 </div>
 
 <!-- Reject Ejar-Wafi-RealEstateBrokerage -->
@@ -121,5 +124,6 @@
     </p>
 
     <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
-    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} <span>:</span> <img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.arbitratorName}}</p>
 </div>
