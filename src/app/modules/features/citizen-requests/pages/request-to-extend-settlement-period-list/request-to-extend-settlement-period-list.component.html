@@ -30,7 +30,8 @@
                         <button class="btn btn-sm btn-light" (click)="goToDetailsPage(request.id)">
                             <img src="assets/images/icons/eye.svg" alt="eye">
                             {{translations.actions.view| translate}}
-                        </button>
+                        </button>&nbsp;
+                        <button class="btn btn-sm btn-light" (click)="navigateToEditOrDetails(request.id)">{{ translations.actions.viewDetails | translate }}</button>
 
                     </td>
 
