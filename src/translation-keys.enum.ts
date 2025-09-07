@@ -69,7 +69,6 @@ export namespace translations {
             user = "layout.sidebar.user",
             auditor = "layout.sidebar.auditor",
             lawsuitsList = "layout.sidebar.lawsuitsList",
-            delegationRequests = "layout.sidebar.delegationRequests",
             modificationList = "layout.sidebar.modificationList",
             newLawsuitsList = "layout.sidebar.newLawsuitsList",
             completedLawsuitsList = "layout.sidebar.completedLawsuitsList",
@@ -191,39 +190,6 @@ export namespace translations {
     }
 
     export namespace lawsuits {
-
-        export enum lawsuitDelegations{
-            delegateNumber = "lawsuits.lawsuitDelegations.delegateNumber",
-
-            delegationFile = "lawsuits.lawsuitDelegations.delegationFile",
-            commercialRegistrationFile="lawsuits.lawsuitDelegations.commercialRegistrationFile",
-            establishmentFile="lawsuits.lawsuitDelegations.establishmentFile",
-            representationFile="lawsuits.lawsuitDelegations.representationFile",
-            decisionFile="lawsuits.lawsuitDelegations.decisionFile",
-            custodyFile="lawsuits.lawsuitDelegations.custodyFile",
-
-            individualIdentityNumber = "lawsuits.lawsuitDelegations.individualIdentityNumber",
-            individualFullName = "lawsuits.lawsuitDelegations.individualFullName",
-            individualMobile = "lawsuits.lawsuitDelegations.individualMobile",
-            individualEmail = "lawsuits.lawsuitDelegations.individualEmail",
-            individualNationality = "lawsuits.lawsuitDelegations.individualNationality",
-            individualBirthdate = "lawsuits.lawsuitDelegations.individualBirthdate",
-            individualNationalAddress = "lawsuits.lawsuitDelegations.individualNationalAddress",
-            individualCapacity = "lawsuits.lawsuitDelegations.individualCapacity",
-
-            litigationRequestCode = "lawsuits.lawsuitDelegations.litigationRequestCode",
-            delegationParty = "lawsuits.lawsuitDelegations.delegationParty",
-            litigationRequestOwnerType = "lawsuits.lawsuitDelegations.litigationRequestOwnerType",
-            requestedOn = "lawsuits.lawsuitDelegations.requestedOn",
-            isApproved = "lawsuits.lawsuitDelegations.isApproved",
-            isActive = "lawsuits.lawsuitDelegations.isActive",
-            approvedOn = "lawsuits.lawsuitDelegations.approvedOn",
-            modifiedBy = "lawsuits.lawsuitDelegations.modifiedBy",
-            reason = "lawsuits.lawsuitDelegations.reason",
-            noCurrentDelegationRequests = "lawsuits.lawsuitsList.noCurrentDelegationRequests",
-
-        }
-
         export enum lawsuitsTypes {
             kindlyChooseLawsuitTypeFirst = "lawsuits.lawsuitsTypes.kindlyChooseLawsuitTypeFirst",
             ejarLawsuitApply = "lawsuits.lawsuitsTypes.ejarLawsuitApply",
@@ -380,7 +346,6 @@ export namespace translations {
             plaintiff = "lawsuits.createEditLawsuit.plaintiff",
             plaintiffData = "lawsuits.createEditLawsuit.plaintiffData",
             plaintiffData2 = "lawsuits.createEditLawsuit.plaintiffData2",
-            delegationData = "lawsuits.createEditLawsuit.delegationData",
             reviwerNotes = "lawsuits.createEditLawsuit.reviwerNotes",
             notesCreatedDate = "lawsuits.createEditLawsuit.notesCreatedDate",
             plaintiffName = "lawsuits.createEditLawsuit.plaintiffName",
@@ -449,16 +414,6 @@ export namespace translations {
             addAnotherRequest = "lawsuits.createEditLawsuit.addAnotherRequest",
             Personal = "lawsuits.createEditLawsuit.Personal",
             CompanyRepresentative = "lawsuits.createEditLawsuit.CompanyRepresentative",
-            AgentForCompany = "lawsuits.createEditLawsuit.AgentForCompany",
-            IndividualRepresentative = "lawsuits.createEditLawsuit.IndividualRepresentative",
-            AgentForIndividual = "lawsuits.createEditLawsuit.AgentForIndividual",
-            CompanyManager = "lawsuits.createEditLawsuit.CompanyManager",
-            CompanyCEO = "lawsuits.createEditLawsuit.CompanyCEO",
-            Filterer = "lawsuits.createEditLawsuit.Filterer",
-            JudicialGuard = "lawsuits.createEditLawsuit.JudicialGuard",
-            Custodian = "lawsuits.createEditLawsuit.Custodian",
-            ManagingDirector = "lawsuits.createEditLawsuit.ManagingDirector",
-            BankruptcyTrustee = "lawsuits.createEditLawsuit.BankruptcyTrustee",
             Lawyer = "lawsuits.createEditLawsuit.Lawyer",
             Agent = "lawsuits.createEditLawsuit.Agent",
             ReconciliationAndArbitration = "lawsuits.createEditLawsuit.ReconciliationAndArbitration",
