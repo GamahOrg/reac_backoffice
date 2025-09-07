@@ -1,0 +1,141 @@
+<!-- Accept Properties -->
+<div class="wrapper" class="wrapper" #pdfContent>
+    <img src="assets/images/logo-2.png" class="img-fluid top-img" width="500" alt="logo">
+  
+    <div class="container">
+      <div *ngIf="this.documentId == 1">
+        <div class="modal-header mx-0 border-bottom mb-4">
+          <h4 class="modal-title fw-7"> {{ translations.reformer.reformerAcceptingTaskForm | translate }} </h4>
+        </div>
+  
+        <p class="fw-6 mb-12">
+          {{ translations.reformer.iTheUndersigned | translate }} {{this.litigationDocument?.reformerName}} {{ translations.reformer.iHaveReviewed | translate }} <span>:</span>
+        </p>
+  
+        <p class="fw-6 mb-8">
+          {{ translations.reformer.homeownersAssociationBylaw | translate }} {{this.litigationDocument?.associationName}} {{ translations.reformer.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}}) {{ translations.reformer.between | translate }}
+          {{this.litigationDocument?.firstPartyName}} {{ translations.general.and | translate }} {{this.litigationDocument?.secondPartyName}} 
+        </p>
+  
+        <p class="fw-6 mb-12">
+          {{ translations.reformer.nominatedReformer | translate }} {{ translations.reformer.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}}) {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.contractReleaseDate}}
+        </p>
+  
+        <p class="fw-6 mb-4">
+          {{ translations.reformer.acceptanceDeclaration | translate }}  
+        </p>
+        <p class="fw-6  mb-4">
+         - {{ translations.reformer.acceptanceLawsuits | translate }}    {{this.litigationDocument?.reformerAssigningCost}} {{ translations.lawsuits.createEditLawsuit.saudiRiyal| translate }}
+        </p>
+        <p class="fw-6 mb-8">
+          - {{ translations.reformer.acceptanceReconciliation | translate }}   {{this.litigationDocument?.reformerAssigningCost}} {{ translations.lawsuits.createEditLawsuit.saudiRiyal| translate }}
+        </p>
+  
+        <p class="fw-6 mb-12">
+          {{ translations.reformer.reformerDeclaration | translate }}
+        </p>
+  
+        <p class="fw-7 mb-6"> {{ translations.reformer.reformer | translate }}<span>:</span> {{this.litigationDocument?.reformerName}}</p>
+        <p class="fw-7"> {{ translations.reformer.signature | translate }}<span>:</span> <img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.reformerName}}</p>
+      </div>
+  
+      <!-- Reject Properties -->
+      <div *ngIf="this.documentId == 2">
+        <div class="modal-header mx-0 border-bottom mb-4">
+          <h4 class="modal-title fw-7"> {{ translations.reformer.reformerRejectingTaskForm | translate }} </h4>
+        </div>
+  
+        <p class="fw-6 mb-12">
+          {{ translations.reformer.iTheUndersigned | translate }} {{this.litigationDocument?.reformerName}} {{ translations.reformer.iHaveReviewed | translate }}<span>:</span>
+        </p>
+  
+        <p class="fw-6 mb-8">
+          {{ translations.reformer.homeownersAssociationBylaw | translate }} {{this.litigationDocument?.associationName}} {{ translations.reformer.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}}) {{ translations.reformer.between | translate }}
+          {{this.litigationDocument?.firstPartyName}} {{ translations.general.and | translate }} {{this.litigationDocument?.secondPartyName}}
+        </p>
+  
+        <p class="fw-6 mb-12">
+          {{ translations.reformer.nominatedReformer | translate }}{{ translations.reformer.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}}) {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.contractReleaseDate}}
+        </p>
+  
+        <p class="fw-6 mb-12">
+          {{ translations.reformer.declineTask | translate }}<span>:</span> <br>{{this.litigationDocument?.rejectReason}}
+        </p>
+  
+        <p class="fw-7 mb-6"> {{ translations.reformer.reformer | translate }}<span>:</span> {{this.litigationDocument?.reformerName}}</p>
+        <p class="fw-7"> {{ translations.reformer.signature | translate }}<span>:</span><img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.reformerName}}</p>
+      </div>
+  
+      <!-- Accept Ejar-Wafi-RealEstateBrokerage -->
+      <div *ngIf="this.documentId == 3">
+        <div class="modal-header mx-0 border-bottom mb-4">
+          <h4 class="modal-title fw-7"> {{ translations.reformer.reformerAcceptingTaskForm | translate }} </h4>
+        </div>
+  
+        <p class="fw-6 mb-12">
+          {{ translations.reformer.iTheUndersigned | translate }} {{this.litigationDocument?.reformerName}} {{ translations.reformer.iHaveReviewed | translate }}<span>:</span>
+        </p>
+  
+        <p class="fw-6 mb-8">
+          {{ translations.reformer.contractNumber | translate }} {{this.litigationDocument?.contractNumber}}  {{ translations.reformer.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}}) {{ translations.reformer.between | translate }}
+        </p>
+  
+        <p class="fw-6 mb-8">
+          {{this.litigationDocument?.firstPartyName}} {{ translations.general.and | translate }} {{this.litigationDocument?.secondPartyName}}
+        </p>
+          <p class="fw-6 mb-12">
+            {{ translations.reformer.nominatedReformer| translate }} {{ translations.reformer.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}}) {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.contractReleaseDate}}
+            </p>
+            <p class="fw-6 mb-4">
+              {{ translations.reformer.acceptanceDeclaration | translate }}  
+            </p>
+            <p class="fw-6  mb-4">
+             - {{ translations.reformer.acceptanceLawsuits | translate }}    {{this.litigationDocument?.reformerAssigningCost}} {{ translations.lawsuits.createEditLawsuit.saudiRiyal| translate }}
+            </p>
+            <p class="fw-6 mb-8">
+              - {{ translations.reformer.acceptanceReconciliation | translate }}   {{this.litigationDocument?.reformerAssigningCost}} {{ translations.lawsuits.createEditLawsuit.saudiRiyal| translate }}
+            </p>
+            
+        <p class="fw-6 mb-8">
+          {{ translations.reformer.reformerDeclaration | translate }}
+        </p>
+  
+        <p class="fw-7 mb-6"> {{ translations.reformer.reformer | translate }}<span>:</span> {{this.litigationDocument?.reformerName}}</p>
+        <p class="fw-7"> {{ translations.reformer.signature | translate }}<span>:</span><img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.reformerName}}</p>
+      </div>
+  
+      <!-- Reject Ejar-Wafi-RealEstateBrokerage -->
+      <div *ngIf="this.documentId == 4">
+        <div class="modal-header mx-0 border-bottom mb-4">
+          <h4 class="modal-title fw-7"> {{ translations.reformer.reformerRejectingTaskForm | translate }} </h4>
+        </div>
+  
+        <p class="fw-6 mb-12">
+          {{ translations.reformer.iTheUndersigned | translate }} {{this.litigationDocument?.reformerName}} {{ translations.reformer.iHaveReviewed | translate }}<span>:</span>
+        </p>
+  
+        <p class="fw-6 mb-8">
+          {{ translations.reformer.contractNumber | translate }} {{this.litigationDocument?.contractNumber}}  {{ translations.reformer.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}}) {{ translations.reformer.between | translate }}
+        </p>
+  
+        <p class="fw-6 mb-8">
+          {{this.litigationDocument?.firstPartyName}} {{ translations.general.and | translate }} {{this.litigationDocument?.secondPartyName}}
+        </p>
+  
+        <p class="fw-6 mb-12">
+          {{ translations.reformer.nominatedReformer | translate }} {{ translations.reformer.caseNumber | translate }} ({{this.litigationDocument?.litigationNumber}})   {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.contractReleaseDate }}
+        </p>
+  
+        <p class="fw-6 mb-12">
+          {{ translations.reformer.declineTask | translate }}<span>:</span> <br>{{this.litigationDocument?.rejectReason}}
+        </p>
+  
+        <p class="fw-7 mb-6"> {{ translations.reformer.reformer | translate }}<span>:</span> {{this.litigationDocument?.reformerName}}</p>
+        <p class="fw-7"> {{ translations.reformer.signature | translate }}<span>:</span><img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.reformerName}}</p>
+      </div>
+    </div>
+  </div>

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, TemplateRef } from '@angular/core';
 import { LitigationRequestMircoDtoReformer } from '../../models/litigation-request-mirco-dto-reformer';
 import { pagination, Pagination } from '@app/shared/models/pagination.model';
 import { Subscription, takeUntil } from 'rxjs';
@@ -12,6 +12,8 @@ import { LitigationRequestReformerAssigningRequestStatus } from '../../models/en
 import { SystemSettingsService } from '@app/shared/services/system-settings/system-settings.service';
 import { DepartmentDistributionMode, DepartmentType } from '@app/core/models/enums/department-type.model';
 import { Configuration } from '@app/core/configurations/shared.config';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPrintService, PrintOptions } from 'ngx-print';
 
 @Component({
     selector: 'app-reformer-assigning-request-for-all',
@@ -51,8 +53,9 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
         private _breadcrumbService: BreadcrumbService,
         private _translateService: TranslateService,
         private _systemSettingsService: SystemSettingsService,
-
-        private router: Router
+        private router: Router,
+        private modalService :NgbModal,
+        private printService :NgxPrintService
     ) { super(); }
 
     ngOnInit(): void {
@@ -194,4 +197,28 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
 
        
     }
+    litigationData: any;
+    public openFormModal(content: TemplateRef<any>, litigationId: string, requestId: string) {
+      ;
+      this.litigationData = { litigationId, requestId }
+      const modalOptions: NgbModalOptions = {
+          modalDialogClass: 'modal-dialog-scrollable',
+      };
+
+      const modalRef = this.modalService.open(content, modalOptions)
+  }
+
+  public printForm() {
+    const customPrintOptions: PrintOptions = new PrintOptions({
+        printSectionId: 'formPaper',
+        useExistingCss: true
+    });
+
+    this.printService.print(customPrintOptions)
+}
+parentDownload: string = 'Hello from Parent!';
+updateDownload() {
+  // Update the message without an explicit event handler in the child
+  this.parentDownload = 'Updated Message from Parent!';
+}
 }

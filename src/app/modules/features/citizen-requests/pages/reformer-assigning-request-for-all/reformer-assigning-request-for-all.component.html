@@ -51,7 +51,7 @@
           <td>{{request.secondPartyName}}</td>
           <td>{{request.reformerName}}</td>
           <td>{{request.requestTypeName}}</td>
-          <td>{{request.status}}
+          <td >{{request.status}}
 
           </td>
           <td>
@@ -64,10 +64,17 @@
           <td>{{request.response ? (localization[request.response] | translate) : (translations.TasksRequestsList.None | translate)}}
             <div *ngIf="request.rejectReason">({{request.rejectReason}})</div>
           </td>
-                    <td>
+                    <td colspan="2">
 
               <button class="btn btn-sm btn-light" (click)="navigateToEditOrDetails(request.requestId)">{{ translations.actions.viewDetails | translate }}</button>
+      
                     </td>
+<td>
+  @if (request.response != 0 && request.response != null && request.response != 3) {
+    <button class="btn btn-sm btn-outline-primary" (click)="openFormModal(formModal, request?.requestId!, request?.id!)"> عرض النموذج</button>
+    }
+</td>
+                  
         </tr>
         }
       </tbody>
@@ -89,3 +96,21 @@
   <app-pagination></app-pagination>
 </div>
 }
+
+<ng-template #formModal let-modal>
+  <div class="modal-body pt-0" id="formPaper">
+    <app-assigned-reconciliation-requests-documents [download]="parentDownload" [litigationData]="litigationData"></app-assigned-reconciliation-requests-documents>
+    <img src="assets/images/logo-bg.svg" class="absolute-center" alt="logo">
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn op-7 mw-fit border-0" (click)="printForm()">
+      <i class='material-icons fs-5 text-primary'> download</i>
+    </button>
+    <!-- <button type="button" class="btn op-7 mw-fit border-0" (click)="printForm()">
+            <i class='material-icons fs-5 text-primary'> download</i>
+        </button> -->
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.goBack |
+      translate }}</button>
+  </div>
+</ng-template>

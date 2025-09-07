@@ -101,8 +101,9 @@ export const Configuration = {
       AddArbitrationReportArbitratorRecusalForArbitrator: "/api/Arbitration/AddArbitrationReportArbitratorRecusalForArbitrator",
 
       GetLitigationAcceptanceOrRejectDocumentData: "/api/LitigationRequest/GetLitigationArbitrationTaskAcceptanceOrRejectDocumentData",
-      AddLitigationRequestArbitratorsChairmandecision: "/api/Arbitration/AddLitigationRequestArbitratorsChairmandecision"
-
+      AddLitigationRequestArbitratorsChairmandecision: "/api/Arbitration/AddLitigationRequestArbitratorsChairmandecision",
+      AddLitigationRequestArbitratorsMemberdecision: "/api/Arbitration/AddLitigationRequestArbitratorsdecision",
+      GetLitigationReconciliationTaskAcceptanceOrRejectDocumentData: "/api/LitigationRequest/GetLitigationReconciliationTaskAcceptanceOrRejectDocumentData"
     },
     SysArbitratorCount: {
       Get: "/api/SysArbitratorCount/Get"
