@@ -14,6 +14,7 @@ import { DepartmentDistributionMode, DepartmentType } from '@app/core/models/enu
 import { Configuration } from '@app/core/configurations/shared.config';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPrintService, PrintOptions } from 'ngx-print';
+import { style } from '@angular/animations';
 
 @Component({
     selector: 'app-reformer-assigning-request-for-all',
@@ -209,12 +210,35 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
   }
 
   public printForm() {
+     // Add print styles
+     const printStyles = document.createElement('style');
+     printStyles.innerHTML = `
+         @media print {
+             * { margin: 0 !important; padding: 0 !important; }
+             body { margin: 0; padding: 0; }
+             .img-fluid { 
+                 display: block !important; 
+                 width: 100% !important; 
+                 max-width: none !important;
+                 height: auto !important;
+                 margin: 0 !important;
+                 padding: 5px !important; 
+                 box-sizing: border-box !important;
+             }  
+             #formPaper { width: 100%; margin: 0; padding: 0; }
+         }
+     `;
+     document.head.appendChild(printStyles);
+     
+     document.title = '';
     const customPrintOptions: PrintOptions = new PrintOptions({
         printSectionId: 'formPaper',
-        useExistingCss: true
+        useExistingCss: true,
+        printTitle: '.',
+    
     });
 
-    this.printService.print(customPrintOptions)
+    this.printService.print(customPrintOptions);
 }
 parentDownload: string = 'Hello from Parent!';
 updateDownload() {

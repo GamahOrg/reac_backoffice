@@ -154,11 +154,12 @@ export class AssignedArbitrationRequestsComponent extends BaseComponent implemen
         formPaper.prepend(style);
       }
     public printForm() {
+
         this.injectPrintStyles();
         const customPrintOptions: PrintOptions = new PrintOptions({
             printSectionId: 'formPaper',
             useExistingCss: true,
-           
+            printTitle: '.',
         });
 
         this.printService.print(customPrintOptions)
