@@ -46,6 +46,8 @@ import { SystemSettingsService } from '@app/shared/services/system-settings/syst
 import { ReviewerListComponent } from './pages/reviewer-list/reviewer-list.component';
 import { EmployeeService } from './services/employee.service';
 import { LookupsService } from '@app/shared/services/lookups/lookups.service';
+import { AssignedReconciliationRequestsDocumentsComponent } from './pages/assigned-reconciliation-requests-documents/assigned-reconciliation-requests-documents.component';
+import { ArbitrationDocumentService } from '../arbitration/services/arbitrator-document/arbitrator-document.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -88,7 +90,8 @@ import { LookupsService } from '@app/shared/services/lookups/lookups.service';
     AssignArbitrationHeadListComponent,
     AssignArbitrationMemberDetailsComponent,
     AssignArbitrationHeadDetailsComponent,
-    ReviewerListComponent
+    ReviewerListComponent,
+    AssignedReconciliationRequestsDocumentsComponent
   ],
   providers: [
     CitizenRequestService,
@@ -102,7 +105,8 @@ import { LookupsService } from '@app/shared/services/lookups/lookups.service';
     DeterminearbitratorperiodService,
     SystemSettingsService,
     EmployeeService,
-    LookupsService
+    LookupsService,
+    ArbitrationDocumentService
   ]
 })
 export class CitizenRequestsModule { }

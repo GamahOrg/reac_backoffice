@@ -1052,6 +1052,33 @@ export namespace translations {
         export enum ReviewSettings{
             ReviewSettings='UsersManagement.ReviewSettings.reviewSettings',
         }
+
+        
     }
+    export enum reformer {
+        acceptTask = "reformer.acceptTask",
+        reformerAcceptingTaskForm = "reformer.reformerAcceptingTaskForm",
+        reformerRejectingTaskForm = "reformer.reformerRejectingTaskForm",
+        reformer = "reformer.reformer",
+        signature = "reformer.signature",
+        reformerDeclaration = "reformer.reformerDeclaration",
+        acceptanceDeclaration = "reformer.acceptanceDeclaration",
+        iTheUndersigned = "reformer.iTheUndersigned",
+        iHaveReviewed = "reformer.iHaveReviewed",
+        nominatedReformer = "reformer.nominatedReformer",
+        contractNumber = "reformer.contractNumber",
+        caseNumber = "reformer.caseNumber",
+        between = "reformer.between",
+        declineTask = "reformer.declineTask",
+        articleProvision = "reformer.articleProvision",
+        relatedTo = "reformer.relatedTo",
+        disputeResolutionClause = "reformer.disputeResolutionClause",
+        homeownersAssociationBylaw = "reformer.homeownersAssociationBylaw",
+        acceptanceLawsuits= "reformer.acceptanceLawsuits",
+        acceptanceReconciliation= "reformer.acceptanceReconciliation",
+        rejectReason = "reformer.rejectReason",
+        enterRejectReason = "reformer.enterRejectReason",
+    }
+
    
 }

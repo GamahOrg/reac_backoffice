@@ -15,5 +15,6 @@ arbitratorAssigningDate : string;
 arbitratorAssigningCost : string;
 response : LitigationRequestReformerAssigningRequestStatus
 requestTypeId: number;
-
+signtureFile: string | null;    
+rejectReason: string;
 }
