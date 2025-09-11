@@ -133,10 +133,33 @@ export class AssignedArbitrationRequestsComponent extends BaseComponent implemen
         const modalRef = this.modalService.open(content, modalOptions)
     }
 
+    injectPrintStyles() {
+        const formPaper = document.getElementById('formPaper');
+        if (!formPaper) return;
+      
+        const style = document.createElement('style');
+        style.innerHTML = `
+          @media print {
+            body, html, #formPaper {
+              direction: rtl !important;
+              text-align: right !important;
+            }
+      
+            * {
+              direction: rtl !important;
+              text-align: right !important;
+            }
+          }
+        `;
+        formPaper.prepend(style);
+      }
     public printForm() {
+
+        this.injectPrintStyles();
         const customPrintOptions: PrintOptions = new PrintOptions({
             printSectionId: 'formPaper',
-            useExistingCss: true
+            useExistingCss: true,
+            printTitle: '.',
         });
 
         this.printService.print(customPrintOptions)

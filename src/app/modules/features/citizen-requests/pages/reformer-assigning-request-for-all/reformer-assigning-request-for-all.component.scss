@@ -1,2 +1,14 @@
 @import "assets/styles/controls.scss";
 @import "assets/styles/tables.scss";
+@media print {
+    * {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+
+    
+    #formPaper {
+        padding: 5mm; /* Small padding for readability */
+    }
+}

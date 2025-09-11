@@ -282,5 +282,26 @@
         </div>
     </div>
 
+    <div class="span-3" *ngIf="litigationDetails?.exemptionReductionFile">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.excamptionFile | translate }} </h6>
+        <div class=" gap-2" *ngIf="litigationDetails?.exemptionReductionFile">
+            <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;"
+                *ngIf="litigationDetails?.exemptionReductionFile?.filePath">
+                <div class="flex-y-row gap-2">
+                    <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+                    <p class="v-small fw-6 op-9"> {{ litigationDetails?.exemptionReductionFile?.fileDescription }} </p>
+                </div>
+                <div class="flex-y-row gap-1">
+                    <a [href]="baseUrl + litigationDetails?.exemptionReductionFile?.filePath" target="_blank">
+                        <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+                    </a>
+                    <a [href]="baseUrl + litigationDetails?.exemptionReductionFile?.filePath" download>
+                        <!-- <i class='btn px-0 material-icons op-3 fs-5'>download</i> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>

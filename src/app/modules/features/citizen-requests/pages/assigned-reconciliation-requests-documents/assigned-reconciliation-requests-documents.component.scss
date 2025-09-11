@@ -1,0 +1,105 @@
+
+
+.modal-header {
+    @media print {
+      padding-bottom: 1.5rem;
+    }
+  }
+  
+  div {
+    @media print {
+      direction: rtl;
+    }
+  }
+  
+  :host ::ng-deep {
+    .litigation-request-modal {
+      .modal-dialog {
+        @media (min-width: 1200px) {
+          max-width: 60vw;
+        }
+      }
+  
+      table {
+        width: 100%;
+      }
+  
+      .top-img {
+        padding-block: 1rem 3rem;
+      }
+  
+      th,
+      td {
+        border: 1px solid #000;
+        padding-inline: 8px;
+        height: 30px;
+      }
+  
+      th {
+        background-color: var(--primary);
+        color: white;
+  
+        text-align: center;
+  
+        font-size: 0.69rem;
+        font-weight: 700;
+      }
+  
+      .th {
+        font-size: 0.69rem;
+        font-weight: 700;
+  
+      }
+  
+      td {
+        font-size: 0.56rem;
+      }
+  
+      .header {
+        background-color: #04a488;
+        color: white;
+  
+        border-color: inherit;
+        font-size: 0.69rem;
+      }
+  
+      .title {
+        margin-block: 20px 70px;
+        text-align: center;
+      }
+  
+      .bottom-table {
+        td {
+          font-size: .88rem;
+          height: 40px;
+        }
+      }
+  }
+  
+  /* Force page break before element */
+  .page-break-before {
+      page-break-before: always;
+    }
+    
+    /* Force page break after element */
+    .page-break-after {
+      page-break-after: always;
+    }
+    
+    /* Avoid breaking element across pages */
+    .avoid-break {
+      page-break-inside: avoid;
+    }
+    
+    /* Ensure tables and large elements don't break awkwardly */
+    table, img, div {
+      page-break-inside: avoid;
+    }
+    
+    /* Page margins */
+    @page {
+      size: A4;
+      margin: 1cm;
+    }
+  }
+  

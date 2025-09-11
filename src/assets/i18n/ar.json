@@ -387,7 +387,9 @@
             "financial": "مالي",
             "nonFinancial": "غير مالي",
             "secondPartyCapacity": "صفة المدعي عليه",
-            "secondPartyName": "اسم المدعي عليه"
+            "secondPartyName": "اسم المدعي عليه",
+            "excamptionFile":" ملف اثبات اعفاء من الرسوم"
+
         }
     },
     "establishments": {
@@ -1104,6 +1106,30 @@
     "SLA.LitigationRequestFeesNotPaidReminderFirstPeriod": "مدة سداد الرسوم الإدارية  (بالساعه)"
 
 }
-
+,
+"reformer": {
+    "acceptTask": "قبول المهمة",
+    "reformerAcceptingTaskForm": "نموذج قبول المصلح مهمته",
+    "reformerRejectingTaskForm": "نموذج رفض المصلح مهمته",
+    "reformer": "المصلح",
+    "signature": "التوقيع",
+    "reformerDeclaration": "وأعلن انه ليس بيني وبين اطراف النزاع اي قرابة او اي علاقة او مصلحة تمنعني من ان اكون مصلحا في هذا النزاع.",
+    "acceptanceDeclaration": "وبناءا علي ماتقدم أقر بقبولي المهمه التي كلفت بها كالتالى : ",
+    "iTheUndersigned": "أنا الموقع أدناه",
+    "iHaveReviewed": "اطلعت على",
+    "nominatedReformer": "  و حيث تم ترشيحي مصلحا",
+    "acceptanceLawsuits": "عند قبول استلام الدعوى أتعاب المصالحة قدرها ",
+    "acceptanceReconciliation": "عند إصدار وثيقة صلح أو إصدار محضر تنازل عن حق أتعاب المصالحة قدرها",
+    "contractNumber": "العقد المبرم رقم",
+    "caseNumber": "للدعوي رقم",
+    "between": "بين كل من",
+    "declineTask": "وبناءا علي ماتقدم أمتنع عن عمل المهمه التي كلفت بها و ذلك للأسباب التاليه",
+    "articleProvision": "و الذي تنص المادة",
+    "relatedTo": "المتعلق ب",
+    "disputeResolutionClause": "منه علي حل النزاعات التي تحصل بين الطرفين عن طريق الصلح لدي المركز السعودي للتحكيم العقاري",
+    "homeownersAssociationBylaw": "النظام الأساسي لجمعية ملاك",
+    "rejectReason": "اسباب الرفض",
+    "enterRejectReason": "أدخل اسباب الرفض"
+}
 
 }

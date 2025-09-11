@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Configuration } from '@app/core/configurations/shared.config';
 
 @Component({
     selector: 'app-session-list',
@@ -35,6 +36,7 @@ export class SessionListComponent extends BaseComponent implements OnInit {
         private modalService: NgbModal,
         private _breadcrumbService: BreadcrumbService,
         private _translateService: TranslateService,
+        private _router:Router
     ) {
         super();
     }
@@ -118,6 +120,12 @@ export class SessionListComponent extends BaseComponent implements OnInit {
         if (this.selectedUrl)
             window.open(this.selectedUrl, '_blank')
     }
+
+     lawsuitFullDetailsURL: string = '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitFullDetails
+        public navigateToEditOrDetails(lawsuitId: string | undefined)
+        {
+                this._router.navigate([this.lawsuitFullDetailsURL, lawsuitId]);
+        }
 
 
 

@@ -1,4 +1,10 @@
 <!-- Accept Properties -->
+<div class="wrapper" class="wrapper" #pdfContent>
+    <img src="assets/images/logo-2.png" class="img-fluid top-img" width="500" alt="logo">
+  
+    <div class="container">
+<!-- Accept Properties -->
+
 <div *ngIf="this.documentId == 1">
     <div class="modal-header mx-0 border-bottom mb-4">
         <h4 class="modal-title fw-7"> {{ translations.arbitrator.arbitratorAcceptingTaskForm | translate }} </h4>
@@ -27,7 +33,8 @@
     </p>
 
     <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
-    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} <span>:</span> <img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.arbitratorName}}</p>
 </div>
 
 <!-- Reject Properties -->
@@ -50,12 +57,15 @@
         {{ translations.arbitrator.nominatedArbitrator | translate }} {{this.litigationDocument?.arbitratorAssignerName}} {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.arbitratorAssigningDate}}
     </p>
 
-    <p class="fw-6 mb-12">
-        {{ translations.arbitrator.declineTask | translate }}
-    </p>
 
+    <p class="fw-6 mb-12">
+        {{ translations.reformer.declineTask | translate }}<span>:</span>
+    <br>
+         {{this.litigationDocument?.rejectReason}}
+      </p>
     <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
-    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }}  <span>:</span> <img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.arbitratorName}}</p>
 </div>
 
 <!-- Accept Ejar-Wafi-RealEstateBrokerage -->
@@ -90,7 +100,8 @@
     </p>
 
     <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
-    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }}   <span>:</span> <img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.arbitratorName}}</p>
 </div>
 
 <!-- Reject Ejar-Wafi-RealEstateBrokerage -->
@@ -116,10 +127,13 @@
         {{ translations.arbitrator.nominatedArbitrator | translate }} {{this.litigationDocument?.arbitratorAssignerName}} {{ translations.lawsuits.lawsuitDetails.date | translate }} {{this.litigationDocument?.arbitratorAssigningDate }}
     </p>
 
-    <p class="fw-6 mb-12">
-        {{ translations.arbitrator.declineTask | translate }}
-    </p>
 
+    <p class="fw-6 mb-12">
+        {{ translations.reformer.declineTask | translate }}<span>:</span> <br>{{this.litigationDocument?.rejectReason}}
+      </p>
     <p class="fw-7 mb-6"> {{ translations.arbitrator.arbitrator | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
-    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} : {{this.litigationDocument?.arbitratorName}}</p>
+    <p class="fw-7"> {{ translations.arbitrator.signature | translate }} <span>:</span> <img *ngIf="this.litigationDocument?.signtureFile" src="data:image/jpeg;base64,{{this.litigationDocument?.signtureFile}}" width="100" height="100">
+        <p *ngIf="this.litigationDocument?.signtureFile == null">{{this.litigationDocument?.arbitratorName}}</p>
+</div>
+</div>
 </div>

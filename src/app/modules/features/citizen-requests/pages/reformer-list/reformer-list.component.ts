@@ -17,6 +17,8 @@ import { AreaResponse } from '../../models/area-response.model';
 import { CityResponse } from '../../models/city-response.model';
 import { LookupsService } from '@app/shared/services/lookups/lookups.service';
 import { AssignReformersFilter } from '../../models/assign-reformers-filter.model';
+import { Configuration } from '@app/core/configurations/shared.config';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-reformer-list',
@@ -64,7 +66,8 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
         private _formBuilder: FormBuilder,
         private _breadcrumbService: BreadcrumbService,
         private _translateService: TranslateService,
-        private citizenService: CitizenService
+        private citizenService: CitizenService,
+        private _router:Router
     ) {
         super();
     }
@@ -236,4 +239,10 @@ export class ReformerListComponent extends BaseComponent implements OnInit {
         }
         this.filterFormcontrols.cityId.setValue(null)
     };
+
+    lawsuitFullDetailsURL: string = '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitFullDetails
+    public navigateToEditOrDetails(lawsuitId: string | undefined)
+    {
+            this._router.navigate([this.lawsuitFullDetailsURL, lawsuitId]);
+    }
 }
