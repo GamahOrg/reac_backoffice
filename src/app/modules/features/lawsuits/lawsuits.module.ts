@@ -42,6 +42,12 @@ import { ModificationRequestsComponent } from './components/modification-request
 import { FilterComponent } from '@app/shared/components/filter/components/filter/filter.component';
 import { LawsuitFullDetailsComponent } from './components/lawsuit-full-details/lawsuit-full-details.component';
 import { LitigationRequestService } from '../citizen-requests/services/litigation-request.service';
+import { LawsuitDelegationDataComponent } from './components/lawsuit-delegation-data/lawsuit-delegation-data.component';
+import { DelegationRequestsListComponent } from './components/delegation-requests-list/delegation-requests-list.component';
+import { DelegationRequestService } from './services/delegation-request.service';
+import { DelegationRequestDetailsComponent } from './components/delegation-request-details/delegation-request-details.component';
+import { DelegatorsStopModifyListComponent } from './components/delegators-stop-modify-list/delegators-stop-modify-list/delegators-stop-modify-list.component';
+import { DelegatorsAssignListComponent } from './components/delegators-assign-list/delegators-assign-list/delegators-assign-list.component';
 
 @NgModule({
     declarations: [
@@ -61,7 +67,12 @@ import { LitigationRequestService } from '../citizen-requests/services/litigatio
         LitigationRequestCorrespondenceDetailsComponent,
         LitigationRequestNotesListComponent,
         ModificationRequestsComponent,
-        LawsuitFullDetailsComponent
+        LawsuitFullDetailsComponent,
+        LawsuitDelegationDataComponent,
+        DelegationRequestsListComponent,
+        DelegationRequestDetailsComponent,
+        DelegatorsStopModifyListComponent,
+        DelegatorsAssignListComponent
     ],
     providers: [
         LawsuitListService,
@@ -72,7 +83,8 @@ import { LitigationRequestService } from '../citizen-requests/services/litigatio
         LawsuitEventsService,
         LitigationRequestCorrespondencesService,
         LitigationRequestNotesService,
-        LitigationRequestService
+        LitigationRequestService,
+        DelegationRequestService
     ],
     imports: [
         CommonModule,

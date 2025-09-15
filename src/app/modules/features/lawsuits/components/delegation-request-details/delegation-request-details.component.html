@@ -1,0 +1,273 @@
+<div class="form-wrapper">
+  <div class="grid-3">
+    <div *ngIf="this.delegationRequest?.delegateNumber">
+      <h6 class="small fw-5"> {{ translations.lawsuits.lawsuitDelegations.delegateNumber | translate }} </h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationRequest?.delegateNumber || '--'}}
+        </h6>
+      </div>
+
+      <div class="span-2">
+        <label class="mb-1 small required fw-6">{{translations.lawsuits.lawsuitDelegations.delegationFile|
+          translate}}</label>
+
+        <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+          <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+            <p class="v-small fw-6 op-9"> {{ this.delegationRequest?.delegationFile?.fileDescription }} </p>
+          </div>
+          <div class="flex-y-row gap-1">
+            <a [href]="baseUrl + this.delegationRequest?.delegationFile?.filePath" target="_blank">
+              <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+            </a>
+            <a [href]="baseUrl + this.delegationRequest?.delegationFile?.filePath" download>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="this.delegationRequest?.commercialRegisterationFile">
+      <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.commercialRegistrationFile|
+        translate}}</label>
+
+      <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+          <p class="v-small fw-6 op-9"> {{ this.delegationRequest?.commercialRegisterationFile?.fileDescription }} </p>
+        </div>
+        <div class="flex-y-row gap-1">
+          <a [href]="baseUrl + this.delegationRequest?.commercialRegisterationFile?.filePath" target="_blank">
+            <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+          </a>
+          <a [href]="baseUrl + this.delegationRequest?.commercialRegisterationFile?.filePath" download>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="this.delegationRequest?.establishmentFile">
+      <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.establishmentFile|
+        translate}}</label>
+
+      <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+          <p class="v-small fw-6 op-9"> {{ this.delegationRequest?.establishmentFile?.fileDescription }} </p>
+        </div>
+        <div class="flex-y-row gap-1">
+          <a [href]="baseUrl + this.delegationRequest?.establishmentFile?.filePath" target="_blank">
+            <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+          </a>
+          <a [href]="baseUrl + this.delegationRequest?.establishmentFile?.filePath" download>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="this.delegationRequest?.representationFile">
+      <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.representationFile|
+        translate}}</label>
+
+      <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+          <p class="v-small fw-6 op-9"> {{ this.delegationRequest?.representationFile?.fileDescription }} </p>
+        </div>
+        <div class="flex-y-row gap-1">
+          <a [href]="baseUrl + this.delegationRequest?.representationFile?.filePath" target="_blank">
+            <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+          </a>
+          <a [href]="baseUrl + this.delegationRequest?.representationFile?.filePath" download>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="this.delegationRequest?.decisionFile">
+      <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.decisionFile|
+        translate}}</label>
+
+      <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+          <p class="v-small fw-6 op-9"> {{ this.delegationRequest?.decisionFile?.fileDescription }} </p>
+        </div>
+        <div class="flex-y-row gap-1">
+          <a [href]="baseUrl + this.delegationRequest?.decisionFile?.filePath" target="_blank">
+            <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+          </a>
+          <a [href]="baseUrl + this.delegationRequest?.decisionFile?.filePath" download>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div *ngIf="this.delegationRequest?.custodyFile">
+      <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.custodyFile|
+        translate}}</label>
+
+      <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+          <p class="v-small fw-6 op-9"> {{ this.delegationRequest?.custodyFile?.fileDescription }} </p>
+        </div>
+        <div class="flex-y-row gap-1">
+          <a [href]="baseUrl + this.delegationRequest?.custodyFile?.filePath" target="_blank">
+            <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+          </a>
+          <a [href]="baseUrl + this.delegationRequest?.custodyFile?.filePath" download>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="flex-end mt-6" *ngIf="this.delegationRequest?.isApproved == null">
+  <button (click)="approveOrRejectDelegationRequest(true)" class="btn btn-primary flex-start px-8 py-3 span-2 mt-4 me-2" type="button">{{translations.actions.accept| translate}}</button>
+  <button (click)="openRejectReasonModal(rejectReasonModal)" class="btn btn-primary flex-start px-8 py-3 span-2 mt-4 me-2" type="button">{{translations.actions.reject| translate}}</button>
+</div>
+
+<!-- <div class="mt-5" class="form-wrapper" *ngIf="this.delegationRequest?.delegationRelationshipTypeId === 1">
+    <h1 class="mb-1 small required fw-6">
+        بيانات المدعي فرد
+    </h1>
+    <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.individualIdentityNumber|
+        translate}}</label>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{this.delegationRequest?.citizen?.identityNumber || "--" }}
+            </h6>
+        </div>
+
+    <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.individualFullName|
+        translate}}</label>
+            <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{this.delegationRequest?.citizen?.fullName || "--" }}
+            </h6>
+            </div>
+
+    <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.individualMobile|
+        translate}}</label>
+           <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{this.delegationRequest?.citizen?.mobile || "--" }}
+            </h6>
+            </div>        
+
+    <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.individualCapacity|
+        translate}}</label>
+         <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{this._lawsuitRequestDetailsService?.litigationDetails()?.contract?.firstPartyCapacity || "--" }}
+            </h6>
+            </div>
+
+    <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.individualNationality|
+        translate}}</label>
+           <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{this.delegationRequest?.citizen?.nationality?.nationalityName || "--" }}
+            </h6>
+            </div>           
+
+    <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.individualEmail|
+        translate}}</label>
+           <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{this.delegationRequest?.citizen?.email || "--" }}
+            </h6>
+            </div>
+
+    <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.individualNationalAddress|
+        translate}}</label>
+           <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{this.delegationRequest?.citizen?.nationalAddress || "--" }}
+            </h6>
+            </div>
+
+    <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.individualBirthdate|
+        translate}}</label>
+            <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{this.delegationRequest?.citizen?.birthDate | date  }}
+            </h6>
+            </div>       
+
+</div>
+
+<div class="mt-5" *ngIf="this.delegationRequest?.delegationRelationshipTypeId === 2">
+    <h1 class="mb-1 small required fw-6">
+        بيانات المدعي شركة
+    </h1>
+    <div>
+            <label class="form-label required"> {{
+                translations.establishments.establishmentsDetails.arabicFacilityName | translate }} </label>
+            <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{this.delegationRequest?.facility?.arabicFacilityName || "--" }}
+            </h6>
+            </div>
+        
+        </div>
+
+        <div>
+            <label class="form-label required"> {{
+                translations.establishments.establishmentsDetails.facility700Number | translate }} </label>
+            <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{this.delegationRequest?.facility?.facility700Number || "--" }}
+            </h6>
+            </div>
+   
+        </div>
+
+        <div>
+            <label class="form-label required"> {{
+                translations.establishments.establishmentsDetails.commercialRegisterNumber | translate }} </label>
+            <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+            <h6 class="small op-7">
+                {{this.delegationRequest?.facility?.commercialRegisterNumber || "--" }}
+            </h6>
+            </div>
+     
+
+        </div>
+</div> -->
+
+<ng-template #rejectReasonModal let-modal>
+  <div class="modal-header">
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
+  </div>
+
+  <div class="modal-body pt-0" id="formPaper">
+    <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.reason| translate}}</label>
+    <textarea class="form-control" name="rejectReason" id="rejectReason" [(ngModel)]="rejectReason" [placeholder]="translations.lawsuits.lawsuitDelegations.reason| translate"></textarea>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="submitRejectReason()">{{
+      translations.actions.reject |
+      translate }}</button>
+
+    <button type="button" class="btn btn-primary" (click)="modal.close()">{{ translations.actions.close | translate
+      }}</button>
+  </div>
+</ng-template>

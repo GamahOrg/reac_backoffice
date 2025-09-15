@@ -108,6 +108,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
+                            },
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.delegationRequests),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.DelegationRequestList,
                             }
                             // ,
                             // {
@@ -485,6 +491,20 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.profile + '/' + Configuration.pages.profile.vacationRequestReply,
                         },
+                        {
+                            id: 'stopd-modify-delegators',
+                            title: this.translate.instant(translations.layout.sidebar.stopModifyDelegators),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.StopModifyDelegators,
+                        }
+                        ,
+                        {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.assignDelegators),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.assignDelegators,
+                        }
+                        
                     ],
                 },
                 {
