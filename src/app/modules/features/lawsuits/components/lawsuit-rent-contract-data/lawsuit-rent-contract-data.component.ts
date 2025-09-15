@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Injector, OnInit, effect, inject } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { LawsuitRequestDetailsService } from '../../services/lawsuit-request-details/lawsuit-request-details.service';
-import { ApplicantCitizen, Contract } from '../../models/lawsuit-details.model';
+import { ApplicantCitizen, Contract, LitigationRequestDelegationDataDto } from '../../models/lawsuit-details.model';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -19,7 +19,8 @@ export class LawsuitRentContractDataComponent extends BaseComponent implements O
     _injector = inject(Injector);
     contract: Contract | undefined;
     applicantCitizen: ApplicantCitizen | undefined;
-
+    delegationDate: LitigationRequestDelegationDataDto | undefined;
+    
     constructor(
         private _lawsuitRequestDetailsService: LawsuitRequestDetailsService,
     ) {
@@ -32,6 +33,8 @@ export class LawsuitRentContractDataComponent extends BaseComponent implements O
 
     private observeLawsuitRequestDetailsSignal() {
         effect(() => {
+            
+            this.delegationDate = this._lawsuitRequestDetailsService.litigationDetails()?.delegationDate;
             this.contract = this._lawsuitRequestDetailsService.litigationDetails()?.contract;
             this.applicantCitizen = this._lawsuitRequestDetailsService.litigationDetails()?.applicantCitizen;
         }, {

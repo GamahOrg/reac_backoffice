@@ -10,6 +10,10 @@ import { LitigationRequestCorrespondenceDetailsComponent } from './components/li
 import { LitigationRequestNotesListComponent } from './pages/litigation-request-notes-list/litigation-request-notes-list.component';
 import { ModificationRequestsComponent } from './components/modification-requests/modification-requests.component';
 import { LawsuitFullDetailsComponent } from './components/lawsuit-full-details/lawsuit-full-details.component';
+import { DelegationRequestsListComponent } from './components/delegation-requests-list/delegation-requests-list.component';
+import { DelegationRequestDetailsComponent } from './components/delegation-request-details/delegation-request-details.component';
+import { DelegatorsStopModifyListComponent } from './components/delegators-stop-modify-list/delegators-stop-modify-list/delegators-stop-modify-list.component';
+import { DelegatorsAssignListComponent } from './components/delegators-assign-list/delegators-assign-list/delegators-assign-list.component';
 
 const routes: Routes = [
   {
@@ -53,6 +57,22 @@ const routes: Routes = [
   {
     path: `${Configuration.pages.lawsuits.lawsuitDetails}/:id`,
     component: LawsuitDetailsComponent,
+  },
+  {
+    path: Configuration.pages.lawsuits.DelegationRequestList,
+    component: DelegationRequestsListComponent,
+  },
+  {
+    path: `${Configuration.pages.lawsuits.DelegationRequestDetails}/:id`,
+    component: DelegationRequestDetailsComponent
+  },
+  {
+    path: Configuration.pages.lawsuits.StopModifyDelegators,
+    component: DelegatorsStopModifyListComponent,
+  },
+  {
+    path: Configuration.pages.lawsuits.assignDelegators,
+    component: DelegatorsAssignListComponent,
   },
 ];
 

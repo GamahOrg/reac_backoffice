@@ -9,6 +9,7 @@ export interface LitigationRequestForArbitratorSelectionDurationDto {
 
 export interface LitigationRequestForAllArbitratorNominationListDto {
     allowAdd: boolean;
+    allowDecision: boolean;
     listCount: number | null;
     citizenArbitratorShortStatusDtos: CitizenArbitratorShortStatusDto[];
     litigationRequestShortDto: LitigationRequestShortDto | null;

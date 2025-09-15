@@ -1,0 +1,241 @@
+<div class="grid-3 mt-5">
+  <div *ngIf="this.delegationData?.commercialRegisterationFile">
+    <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.commercialRegistrationFile | translate}}</h6>
+    <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+        <p class="v-small fw-6 op-9"> {{ this.delegationData?.commercialRegisterationFile?.fileDescription }} </p>
+      </div>
+      <div class="flex-y-row gap-1">
+        <a [href]="baseUrl + this.delegationData?.commercialRegisterationFile?.filePath" target="_blank">
+          <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+        </a>
+        <a [href]="baseUrl + this.delegationData?.commercialRegisterationFile?.filePath" download>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="this.delegationData?.establishmentFile">
+    <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.establishmentFile | translate}}</h6>
+    <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+        <p class="v-small fw-6 op-9"> {{ this.delegationData?.establishmentFile?.fileDescription }} </p>
+      </div>
+      <div class="flex-y-row gap-1">
+        <a [href]="baseUrl + this.delegationData?.establishmentFile?.filePath" target="_blank">
+          <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+        </a>
+        <a [href]="baseUrl + this.delegationData?.establishmentFile?.filePath" download>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="this.delegationData?.representationFile">
+    <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.representationFile | translate}}</h6>
+    <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+        <p class="v-small fw-6 op-9"> {{ this.delegationData?.representationFile?.fileDescription }} </p>
+      </div>
+      <div class="flex-y-row gap-1">
+        <a [href]="baseUrl + this.delegationData?.representationFile?.filePath" target="_blank">
+          <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+        </a>
+        <a [href]="baseUrl + this.delegationData?.representationFile?.filePath" download>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="this.delegationData?.decisionFile">
+    <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.decisionFile | translate}}</h6>
+    <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+        <p class="v-small fw-6 op-9"> {{ this.delegationData?.decisionFile?.fileDescription }} </p>
+      </div>
+      <div class="flex-y-row gap-1">
+        <a [href]="baseUrl + this.delegationData?.decisionFile?.filePath" target="_blank">
+          <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+        </a>
+        <a [href]="baseUrl + this.delegationData?.decisionFile?.filePath" download>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="this.delegationData?.custodyFile">
+    <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.custodyFile | translate}}</h6>
+    <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+        <p class="v-small fw-6 op-9"> {{ this.delegationData?.custodyFile?.fileDescription }} </p>
+      </div>
+      <div class="flex-y-row gap-1">
+        <a [href]="baseUrl + this.delegationData?.custodyFile?.filePath" target="_blank">
+          <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+        </a>
+        <a [href]="baseUrl + this.delegationData?.custodyFile?.filePath" download>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="this.delegationData?.delegateNumber">
+    <h6 class="small fw-5"> {{ translations.lawsuits.lawsuitDelegations.delegateNumber | translate }} </h6>
+    <div class="flex-y-row gap-2">
+      <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+      <h6 class="small op-7">
+        {{this.delegationData?.delegateNumber || '--'}}
+      </h6>
+    </div>
+
+    <div class="span-2">
+      <label class="mb-1 small required fw-6">{{translations.lawsuits.lawsuitDelegations.delegationFile|
+        translate}}</label>
+
+      <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+          <p class="v-small fw-6 op-9"> {{ this.delegationData?.delegationFile?.fileDescription }} </p>
+        </div>
+        <div class="flex-y-row gap-1">
+          <a [href]="baseUrl + this.delegationData?.delegationFile?.filePath" target="_blank">
+            <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+          </a>
+          <a [href]="baseUrl + this.delegationData?.delegationFile?.filePath" download>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="this.delegationData?.delegationRelationshipTypeId === 1">
+  <h1 class="mb-1 small required fw-6 mt-6">
+    بيانات المدعي فرد
+  </h1>
+
+  <div class="grid-3 mt-5">
+    <div>
+      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualIdentityNumber | translate}}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.citizen?.identityNumber || "--" }}
+        </h6>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualFullName | translate}}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.citizen?.fullName || "--" }}
+        </h6>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualMobile | translate}}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.citizen?.mobile || "--" }}
+        </h6>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualCapacity | translate}}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this._lawsuitRequestDetailsService?.litigationDetails()?.contract?.firstPartyCapacity || "--" }}
+        </h6>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualNationality | translate}}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.citizen?.nationality?.nationalityName || "--" }}
+        </h6>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualEmail | translate}}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.citizen?.email || "--" }}
+        </h6>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualNationalAddress | translate}}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.citizen?.nationalAddress || "--" }}
+        </h6>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualBirthdate | translate}}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.citizen?.birthDate | date }}
+        </h6>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="this.delegationData?.delegationRelationshipTypeId === 2">
+  <h1 class="mb-1 small required fw-6 mt-6">
+    بيانات المدعي شركة
+  </h1>
+
+  <div class="grid-3 mt-5">
+    <div>
+      <h6 class="small fw-5">{{translations.establishments.establishmentsDetails.arabicFacilityName | translate }}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.facility?.arabicFacilityName || "--" }}
+        </h6>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="small fw-5">{{translations.establishments.establishmentsDetails.facility700Number | translate }}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.facility?.facility700Number || "--" }}
+        </h6>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="small fw-5">{{translations.establishments.establishmentsDetails.commercialRegisterNumber | translate }}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.facility?.commercialRegisterNumber || "--" }}
+        </h6>
+      </div>
+    </div>
+  </div>
+</ng-container>

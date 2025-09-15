@@ -111,7 +111,7 @@
     </div>
 </div>
 
-<div class="form-wrapper" *ngIf="!litigationRequestForReportDto?.allowAdd">
+<div class="form-wrapper" *ngIf="!litigationRequestForReportDto?.allowAdd  && !litigationRequestForReportDto?.allowDecision">
     <div class="accordion-card">
         <details open>
             <summary class="flex-y-row gap-2">
@@ -242,8 +242,98 @@
         </div>
         </ng-container> 
       </div>
+   
     </details>
   </div>
+</div>
+<div class="form-wrapper" *ngIf="litigationRequestForReportDto?.allowDecision">
+  <div class="accordion-card">
+      <details open>
+          <summary class="flex-y-row gap-2">
+              <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+              <h6 class="small fw-6 op-7">  اختيار عضو هيئة التحيكم  </h6>
+              <p  class="text-success">يجب اختار محكم واحد</p>
+
+          </summary>
+<div>
+  <div class="d-flex mt-4 justify-content-end" *ngIf="litigationRequestForReportDto?.allowDecision">
+    <button type="button" class="btn btn-primary mt-3 mb-2" (click)="addLitigationRequestArbitratorsdecision()"> اختيار</button>
+  </div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- totalPriority Column -->
+      <ng-container matColumnDef="totalPriority">
+        <th mat-header-cell *matHeaderCellDef>  محصلة الاولويه</th>
+        <td mat-cell *matCellDef="let element">
+          <input type="radio" *ngIf="litigationRequestForReportDto?.allowDecision" [id]="element.id" name="arbitratorMemberId" [value]="element.id" [(ngModel)]="arbitratorMemberId">
+          {{element.totalPriority}}
+        </td>
+      </ng-container>
+      <!-- identityNumber Column -->
+      <ng-container matColumnDef="identityNumber">
+        <th mat-header-cell *matHeaderCellDef> رقم الهوية </th>
+        <td mat-cell *matCellDef="let element"> {{element.identityNumber}} </td>
+      </ng-container>
+
+      <!-- fullName Column -->
+      <ng-container matColumnDef="fullName">
+        <th mat-header-cell *matHeaderCellDef> الأسم </th>
+        <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+      </ng-container>
+      <!-- requestsCount -->
+      <ng-container matColumnDef="requestsCount">
+        <th mat-header-cell *matHeaderCellDef> عدد الدعاوى </th>
+        <td mat-cell *matCellDef="let element"> {{element.requestsCount}} </td>
+      </ng-container>
+      <!-- experienceYears -->
+      <ng-container matColumnDef="experienceYears">
+        <th mat-header-cell *matHeaderCellDef> سنوات الخبرة </th>
+        <td mat-cell *matCellDef="let element"> {{element.experienceYears}} </td>
+      </ng-container>
+      <!-- arbitratorClass -->
+      <ng-container matColumnDef="arbitratorClass">
+        <th mat-header-cell *matHeaderCellDef> {{translations.CitizenRequest.arbitratorClass | translate}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.arbitratorClass}} </td>
+      </ng-container>
+      <!-- mobile -->
+      <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef> رقم التليفون </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+      </ng-container>
+      <!-- email -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> الإيميل </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+      <!-- status -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> الحالة </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="brief">
+        <th mat-header-cell *matHeaderCellDef> {{translations.CitizenRequest.brief | translate}} </th>
+        <td mat-cell *matCellDef="let element">
+          <button class="btn btn-sm btn-light" (click)="open(showBriefModel,element.brief)">
+            <img src="assets/images/icons/eye.svg" alt="eye">
+            {{translations.actions.view| translate}}
+          </button>
+        </td>
+      </ng-container>
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+    </table>
+
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator> -->
+  </div>
+</div>
+</details>
+</div>
 </div>
 <div class="form-wrapper">
     <div class="accordion-card">

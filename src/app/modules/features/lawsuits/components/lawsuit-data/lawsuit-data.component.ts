@@ -7,6 +7,7 @@ import { LawsuitRentContractDataComponent } from '../lawsuit-rent-contract-data/
 import { LawsuitDefendantDataComponent } from '../lawsuit-defendant-data/lawsuit-defendant-data.component';
 import { LawsuitClaimDataComponent } from '../lawsuit-claim-data/lawsuit-claim-data.component';
 import { LawsuitReviewerNotesComponent } from '../lawsuit-reviewer-notes/lawsuit-reviewer-notes.component';
+import { LawsuitDelegationDataComponent } from '../lawsuit-delegation-data/lawsuit-delegation-data.component';
 
 @Component({
     selector: 'app-lawsuit-data',
@@ -23,6 +24,13 @@ export class LawsuitDataComponent extends BaseComponent implements OnInit {
             //     isVisible: true,
             //     isRendered: true
             // },
+            {
+                title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.delegationData),
+                icon: 'assets/images/icons/bookmarks.svg',
+                component: LawsuitDelegationDataComponent,
+                isVisible: true,
+                isRendered: true
+            },
             {
                 title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.plaintiffData2),
                 icon: 'assets/images/icons/bookmarks.svg',

@@ -131,6 +131,8 @@ export interface LawsuitItemDetails {
         litigationRequests: string[]
     },
     title: string,
+
+    litigationRequestDelegationDataDto? : LitigationRequestDelegationDataDto | null
     exemptionReductionFile:{
         fileDescription: string,
         filePath: string,   
@@ -139,6 +141,38 @@ export interface LawsuitItemDetails {
     }
 
 }
+
+export interface LitigationRequestDelegationDataDto {
+    delegationRelationshipTypeId: number | null,
+
+    delegationNumber?: string,
+    delegationFileId?: string | undefined | null,
+    delegationFile?: SysFileManagerCreateUpdateDto | undefined | null,
+    commercialRegisterationFileId?: string | null,
+    commercialRegisterationFile?: SysFileManagerCreateUpdateDto | null,
+    establishmentFileId?: string | null,
+    establishmentFile?: SysFileManagerCreateUpdateDto | null,
+    representationFileId?: string | null,
+    representationFile?: SysFileManagerCreateUpdateDto | null,
+    decisionFileId?: string | null,
+    decisionFile?: SysFileManagerCreateUpdateDto | null,
+    custodyFileId?: string | null
+    custodyFile?: SysFileManagerCreateUpdateDto | null
+
+    individualIdentityNumber?: string,
+    individualFullName?: string,
+    individualMobile?: string,
+    individualCapacity?: string,
+    individualNationality?: string,
+    individualEmail?: string,
+    individualNationalAddress?: string,
+    individualBirthdate?: string,
+
+    arabicFacilityName?:string,
+    facility700Number?: string,
+    facilityCommercialRegisterationNumber?: string,
+}
+
 
 export interface ApplicantCitizen {
     birthDate: Date,
