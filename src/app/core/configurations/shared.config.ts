@@ -130,6 +130,16 @@ export const Configuration = {
       GetReviewersLookup: "/api/LitigationRequest/GetReviewersLookup",
 
     },
+    Delegation:{
+      GetDelegationRequests:"/api/LitigationRequest/GetDelegationRequests",
+      GetActiveDelegatorsForAdmin:"/api/LitigationRequest/GetActiveDelegatorsForAdmin",
+      GetLitigationRequestsWithoutDelegatorsForAdmin:"/api/LitigationRequest/GetLitigationRequestsWithoutDelegatorsForAdmin",
+      GetInActiveDelegatorsForAdmin:"/api/LitigationRequest/GetInActiveDelegatorsForAdmin",
+      StopDelegator:"/api/LitigationRequest/StopDelegator",
+      ChangeDelegator:"/api/LitigationRequest/ChangeDelegator",
+      GetDelegationRequestById:"/api/LitigationRequest/GetDelegationRequestById",
+      ApproveRejectDelegationRequest:"/api/LitigationRequest/ApproveRejectDelegationRequest"
+    },
     WorkFlowProcessingLog: {
       GetAuditNotesById: "/api/WorkFlowProcessingLog/GetAuditNotesById",
     },
@@ -290,7 +300,11 @@ export const Configuration = {
       editLawsuit: "edit-lawsuit",
       lawsuitDetails: "lawsuit-details",
       AuditngListReconciliation: 'auditng-list-reconciliation',
-      AuditngListArbitration: 'auditng-list-arbitration'
+      AuditngListArbitration: 'auditng-list-arbitration',
+      DelegationRequestList: 'delegation-requests-list',
+      DelegationRequestDetails: 'delegation-requests-details',
+      StopModifyDelegators: 'stop-modify-delegators',
+      assignDelegators: 'assign-delegators',
     },
     litigation: {
       litigationRequestCorrespondencesList: "litigation-request-correspondences-list",

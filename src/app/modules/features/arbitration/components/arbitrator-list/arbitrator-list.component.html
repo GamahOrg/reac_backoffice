@@ -17,23 +17,29 @@
             </tr>
           </thead>
           <tbody>
-            @for (litigationRequest of ArbitratorList; track $index) {
-            <tr>
-              <td>{{litigationRequest.requestCode}}</td>
-              <td>{{litigationRequest.requestDate | date:'yyyy/MM/dd'}}</td>
-              <td>{{litigationRequest.firstPartyName}}</td>
-              <td>{{litigationRequest.secondPartyName}}</td>
-              <td>{{litigationRequest.requestTypeName}}</td>
-              <td>{{litigationRequest.arbitratorName }}</td>
-              <td >{{litigationRequest.arbitratorAssigningRequestTypeId==1?'محكم':'رئيس هيئة تحكيم'}}</td>
-              <td>              
-                <button (click)="assignArbitrator(litigationRequest,assignArbitratorModal)"
-                  class="btn btn-sm btn-light">
-                  <img src="assets/images/icons/eye.svg" alt="eye">
-                  {{translations.actions.assignArbitrator| translate}}
-                </button>
-              </td>
-            </tr>
+            @for (group of groupedArbitratorList; track group.requestCode) {
+              @for (litigationRequest of group.requests; track $index) {
+              <tr>
+                @if ($index === 0) {
+                  <td [attr.rowspan]="group.requests.length" class="grouped-cell">
+                    {{group.requestCode}}
+                  </td>
+                }
+                <td>{{litigationRequest.requestDate | date:'yyyy/MM/dd'}}</td>
+                <td>{{litigationRequest.firstPartyName}}</td>
+                <td>{{litigationRequest.secondPartyName}}</td>
+                <td>{{litigationRequest.requestTypeName}}</td>
+                <td>{{litigationRequest.arbitratorName}}</td>
+                <td>{{litigationRequest.arbitratorAssigningRequestTypeId==1?'محكم':'رئيس هيئة تحكيم'}}</td>
+                <td>              
+                  <button (click)="assignArbitrator(litigationRequest,assignArbitratorModal)"
+                    class="btn btn-sm btn-light">
+                    <img src="assets/images/icons/eye.svg" alt="eye">
+                    {{translations.actions.assignArbitrator | translate}}
+                  </button>
+                </td>
+              </tr>
+              }
             }
           </tbody>
         </table>

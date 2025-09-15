@@ -162,6 +162,7 @@ export class LawsuitDetailsComponent extends BaseComponent {
         this._lawsuitRequestDetailsService.GetLitigationById({ litigationId: (this.id as string) }).subscribe({
             next: (res) => {
                 if (res) {
+                    
                     this.lawsuitDetails = res.data as LawsuitItemDetails;
                     this._breadcrumbService.updateBreadcrumbListContent([
                         { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },

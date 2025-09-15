@@ -17,6 +17,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import Swal from 'sweetalert2';
+import { BaseResponse } from '@app/core/models/base-response';
 
 
 @Component({
@@ -28,10 +29,13 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
     litigationRequestForReportDto?: LitigationRequestForAllArbitratorNominationListDto
     arbitratorSelectionDurationRequestPayload = {} as ArbitratorSelectionDurationRequestPayload
     requestId?: string;
-    displayedColumns: string[] = ['plaintiffPriority', 'defendantPriority', 'identityNumber', 'fullName','requestsCount',
+    displayColumns: string[] = ['totalPriority','identityNumber', 'fullName','requestsCount',
+        'experienceYears','arbitratorClass','mobile','email','status','brief'];
+    displayedColumns: string[] = ['identityNumber', 'fullName','requestsCount',
         'experienceYears','arbitratorClass','mobile','email','status','brief'];
   dataSource :any;
   searchForm!: FormGroup;
+  arbitratorMemberId: string = ""
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
     constructor(private activatedRoute: ActivatedRoute,
         private _translate: TranslateService,
@@ -422,5 +426,23 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
             }
         })
     }
+
+        public addLitigationRequestArbitratorsdecision(): void {
+            console.log("this.requestId", this.requestId);
+            console.log("this.arbitratorId", this.arbitratorMemberId);
+            if (this.arbitratorMemberId == "") {
+                this.toastrNotificationService.showError("لابد من أختيار عضو هيئة المحكمين")
+                return;
+            }
+            this.citizenService.AddLitigationRequestArbitratorsMemberdecision(this.requestId as string, this.arbitratorMemberId)
+                .pipe(takeUntil(this.destroy$))
+                .subscribe((res: BaseResponse<any>) => {
+                    if (res.isDone && this.requestId) {
+    
+                        this.getLitigationRequestForSession(this.requestId);
+                        this.toastrNotificationService.showSuccess(this._translate.instant(this.translations.general.successfullySave))
+                    }
+                })
+        }
 
 }
