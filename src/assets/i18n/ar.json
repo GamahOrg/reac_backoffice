@@ -148,7 +148,8 @@
         "approveArbitrationFeesPaid":"تأكيد دفع رسوم التحكيم",
         "stop":"ايقاف",
         "change":"تغيير",
-        "assignDelegator":"تعيين مفوض"
+        "assignDelegator":"تعيين مفوض",
+        "apply":"تنفيذ"
     },
     "tables": {
         "from": "من",
@@ -217,6 +218,7 @@
             "closed": "مغلقة",
             "canceled": "ملغاة",
             "noCurrentLawsuits": "لا يوجد دعاوى حالية",
+            "noCurrentDelegators": "لا يوجد مفوضين حاليين",
             "lawsuitNumber": "رقم الدعوى",
             "submissionDate": "تاريخ التقديم",
             "otherPartyName": "اسم الطرف الاخر",
