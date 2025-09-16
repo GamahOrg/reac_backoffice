@@ -68,9 +68,18 @@ getOwnerTypeTitle(ownerTypeId: number): string {
           
           this.delegationRequests = res.data as Pagination<LitigationDelegationRequest[]>;
           this.pageCount = res.pageCount;
+          this.setPaginationData(this.pagintationData.pageSize, res.totalCount);
         }
       })
   }
+
+  private setPaginationData(pageSize: number, total: number): void {
+    this.pagintationData.pageSize = pageSize
+    this.pagintationData.totalCount = total
+    this._paginationService.updatePaginationData(this.pagintationData);
+
+  }
+
 
   private watchPaginationActions(): void {
       this.watchPagechanged();

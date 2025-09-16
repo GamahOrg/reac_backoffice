@@ -186,6 +186,7 @@ export namespace translations {
         approveArbitrationFeesPaid= "actions.approveArbitrationFeesPaid",
         stop= "actions.stop",
         change = "actions.change",
+        apply = "actions.apply"
     }
 
     export enum tables {
