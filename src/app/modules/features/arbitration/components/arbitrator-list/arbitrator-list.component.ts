@@ -90,10 +90,16 @@ export class ArbitratorListComponent  extends BaseComponent implements OnInit{
         this.assignArbitratorRequestPayload.requestId=litigationRequestMircoArbitrator.id;
         this.assignArbitratorRequestPayload.litigationRequestArbitratorListId=litigationRequestMircoArbitrator.litigationRequestArbitratorListId;
         this.assignArbitratorRequestPayload.arbitratorAssigningRequestTypeId=litigationRequestMircoArbitrator.arbitratorAssigningRequestTypeId;
+        if(litigationRequestMircoArbitrator.arbitratoId!=null){
         this._assignArbitorService.getArbitratorsLookup(litigationRequestMircoArbitrator.arbitratoId, this.assignArbitratorRequestPayload.requestId).subscribe(res => {
             if (res.data)
                 this.arbitrators = res.data;
-        })
+        })}else{
+            this._assignArbitorService.getAllArbitratorsLookup().subscribe(res => {
+                if (res.data)
+                    this.arbitrators = res.data;
+            })
+        }
     }
 
     selectedArbitratorId!: string;
@@ -120,4 +126,20 @@ this.assignArbitratorRequestPayload.arbitratorId=this.assignForm.controls.arbitr
         }
 
     }
+
+    get groupedArbitratorList() {
+        const grouped = new Map<string, any[]>();
+        
+        this.ArbitratorList?.forEach(request => {
+          if (!grouped.has(request.requestCode)) {
+            grouped.set(request.requestCode, []);
+          }
+          grouped.get(request.requestCode)!.push(request);
+        });
+        
+        return Array.from(grouped.entries()).map(([requestCode, requests]) => ({
+          requestCode,
+          requests
+        }));
+      }
 }

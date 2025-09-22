@@ -35,6 +35,9 @@
             "user": "المستخدم",
             "auditor": "المدقق",
             "lawsuitsList": "قائمة الدعاوى",
+            "delegationRequests": "طلبات التفويض",
+            "stopModifyDelegators": "ايقاف او تغيير مفوض",
+            "assignDelegators": "تعيين المفوضين",
             "modificationList":"قائمة طلبات التعديل",
             "newLawsuitsList": "قائمة الدعاوى الجديدة",
             "completedLawsuitsList": "قائمة الدعاوى المنجزة",
@@ -142,7 +145,11 @@
         "assignArbitrator": "تعين محكم",
         "sendToPayFees":"ارسال الطلب لدفع الرسوم",
         "sendToPayEditFees":"ارسال الطلب لدفع رسوم التعديل",
-        "approveArbitrationFeesPaid":"تأكيد دفع رسوم التحكيم"
+        "approveArbitrationFeesPaid":"تأكيد دفع رسوم التحكيم",
+        "stop":"ايقاف",
+        "change":"تغيير",
+        "assignDelegator":"تعيين مفوض",
+        "apply":"تنفيذ"
     },
     "tables": {
         "from": "من",
@@ -151,6 +158,36 @@
         "row": "صف"
     },
     "lawsuits": {
+        "lawsuitDelegations": {
+            "delegateNumber": "رقم التوكيل",
+            "delegationFile": "إرفاق الوكالة",
+            "commercialRegistrationFile":"إرفاق السجل التجاري للمنشأه",
+            "establishmentFile":"إرفاق عقد التأسيس",
+            "representationFile":"إرفاق مستند التمثيل",
+            "decisionFile":"إرفاق القرار",
+            "custodyFile":"إرفاق مستند اثبات الولايه",
+
+            "individualIdentityNumber" : "رقم الهوية",
+            "individualFullName" : "اسم المدعي",
+            "individualMobile" : "رقم الجوال",
+            "individualEmail" : "البريد الإلكتروني",
+            "individualNationality" : "الجنسية",
+            "individualBirthdate" : "تاريخ الميلاد",
+            "individualNationalAddress" : "العنوان الوطني",
+            "individualCapacity" : "صفة المحتكم",
+            
+            "litigationRequestCode" : "رقم الدعوي",
+            "delegationParty" : "صفة الموكل",
+            "litigationRequestOwnerType" : "نوع التفويض",
+            "requestedOn" : "طلب تفويض بتاريخ",
+            "isApproved" : "تمت الموافقة؟",
+            "isActive" : "نشط؟",
+            "approvedOn" : "موافقة/رفض بتاريخ",
+            "modifiedBy" : "موافقة/رفض بواسطة",
+            "reason" : "سبب الرفض",
+            "noCurrentDelegationRequests" : "لا توجد طلبات تفويض حالية",
+            "delegatorName" : "اسم المفوض"
+        },
         "lawsuitsTypes": {
             "kindlyChooseLawsuitTypeFirst": "يجب أختيار نوع دعوة أولاً",
             "ejarLawsuitApply": "تقديم دعوى إيجار",
@@ -181,6 +218,7 @@
             "closed": "مغلقة",
             "canceled": "ملغاة",
             "noCurrentLawsuits": "لا يوجد دعاوى حالية",
+            "noCurrentDelegators": "لا يوجد مفوضين حاليين",
             "lawsuitNumber": "رقم الدعوى",
             "submissionDate": "تاريخ التقديم",
             "otherPartyName": "اسم الطرف الاخر",
@@ -304,6 +342,7 @@
             "plaintiff": "مقدم الدعوى",
             "plaintiffData": "بيانات مقدم الدعوى",
             "plaintiffData2": "بيانات المدعي",
+            "delegationData": "بيانات التفويض",
             "reviwerNotes": "ملاحظات المدقق",
             "notesCreatedDate": "التاريخ",
             "plaintiffName": "اسم المدعي",
@@ -388,6 +427,17 @@
             "nonFinancial": "غير مالي",
             "secondPartyCapacity": "صفة المدعي عليه",
             "secondPartyName": "اسم المدعي عليه",
+            "CompanyRepresentative": "ممثل منشأة",
+             "AgentForCompany" : "وكيل منشأة",
+            "IndividualRepresentative" : "ممثل فرد",
+            "AgentForIndividual" : "وكيل فرد",
+            "CompanyManager" : "مدير شركة",
+            "CompanyCEO" : "رئيس مجلس الادارة",
+            "Filterer" : "مصفى",
+            "JudicialGuard" : "حارس قضائي",
+            "Custodian" : "ولي",
+            "ManagingDirector" : "عضو منتدب",
+            "BankruptcyTrustee" : "أمين التفليسة",
             "excamptionFile":" ملف اثبات اعفاء من الرسوم"
 
         }
@@ -785,7 +835,9 @@
         "arbitratorName": "اسم المحكم",
         "selectArbitrator": "اختار محكم",
         "selectReviewer": "اختار مدقق",
-        "selectReason": "السبب "
+        "selectReason": "السبب ",
+        "selectDelegator":"اختر المفوض"
+
     },
     "tasksRequestsList": {
         "None": "لم يتم الرد",

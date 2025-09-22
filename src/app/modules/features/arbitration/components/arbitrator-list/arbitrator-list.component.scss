@@ -1,2 +1,38 @@
 @import "assets/styles/controls.scss";
 @import "assets/styles/tables.scss";
+
+.grouped-cell {
+    background-color: #e3f2fd;
+    border-right: 4px solid #1976d2;
+    border-left: 4px solid #1976d2;
+    vertical-align: middle;
+    font-weight: 700;
+    font-size: 14px;
+    color: #1565c0;
+    position: relative;
+  }
+  
+  /* Add top border for first row of each group */
+  .grouped-cell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #1976d2;
+  }
+  
+  /* Style rows within the same group */
+  tbody tr:has(.grouped-cell) {
+    border-top: 3px solid #1976d2;
+  }
+  
+  tbody tr:has(.grouped-cell) + tr:not(:has(.grouped-cell)) {
+    background-color: #f8f9fa;
+  }
+  
+  tbody tr:not(:has(.grouped-cell)) {
+    background-color: #f8f9fa;
+    border-left: 4px solid #1976d2;
+  }
