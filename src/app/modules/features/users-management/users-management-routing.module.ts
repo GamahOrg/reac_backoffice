@@ -20,6 +20,9 @@ import { ListAdminReportComponent } from './components/list-dashboard/list-admin
 import { AllStagesStatisticsComponent } from './components/statistic-dashbourd/all-stages-statistics/all-stages-statistics/all-stages-statistics.component';
 import { ReviewersreformersarbitratorsreportComponent } from './components/statistic-dashbourd/reviewersreformersarbitratorsreport/reviewersreformersarbitratorsreport.component';
 import { ServiceProviderDashbourdComponent } from './components/statistic-dashbourd/service-provider-dashbourd/service-provider-dashbourd.component';
+import { ComplaintListComponent } from './components/complaint-list/complaint-list.component';
+import { ComplaintDetailsComponent } from './components/complaint-list/complaint-details/complaint-details.component';
+import { ComplaintReportComponent } from './components/statistic-dashbourd/compliant-report/compliant-report.component';
 
 const routes: Routes = [
   
@@ -100,7 +103,18 @@ const routes: Routes = [
     path: Configuration.pages.usersManagement.DashbourdProviders,
     component: ServiceProviderDashbourdComponent,
   },
-  
+  {
+    path: Configuration.pages.usersManagement.Complaints,
+    component: ComplaintListComponent,
+  },
+  {
+    path: `${Configuration.pages.usersManagement.ComplaintDetails}/:id`,
+    component: ComplaintDetailsComponent,
+  },
+  {
+    path: Configuration.pages.usersManagement.ComplaintReport,
+    component: ComplaintReportComponent,
+  },
 ];
 
 @NgModule({

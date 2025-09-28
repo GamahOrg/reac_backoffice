@@ -37,6 +37,10 @@ import { ListAdminReportComponent } from './components/list-dashboard/list-admin
 import { AllStagesStatisticsComponent } from './components/statistic-dashbourd/all-stages-statistics/all-stages-statistics/all-stages-statistics.component';
 import { ReviewersreformersarbitratorsreportComponent } from './components/statistic-dashbourd/reviewersreformersarbitratorsreport/reviewersreformersarbitratorsreport.component';
 import { ServiceProviderDashbourdComponent } from './components/statistic-dashbourd/service-provider-dashbourd/service-provider-dashbourd.component';
+import { ComplaintService } from './services/ComplaintService.service';
+import { ComplaintListComponent } from './components/complaint-list/complaint-list.component';
+import { ComplaintDetailsComponent } from './components/complaint-list/complaint-details/complaint-details.component';
+import { ComplaintReportComponent } from './components/statistic-dashbourd/compliant-report/compliant-report.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +63,10 @@ import { ServiceProviderDashbourdComponent } from './components/statistic-dashbo
     ListAdminReportComponent,
     AllStagesStatisticsComponent,
     ReviewersreformersarbitratorsreportComponent,
-    ServiceProviderDashbourdComponent
+    ServiceProviderDashbourdComponent,
+    ComplaintListComponent,
+    ComplaintDetailsComponent,
+    ComplaintReportComponent
   ],
   imports: [
     CommonModule,
@@ -81,6 +88,7 @@ import { ServiceProviderDashbourdComponent } from './components/statistic-dashbo
      ReviewSettingService,
      StatisticDashbourdService,
      ReportsService,
+     ComplaintService,
   { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }
 
   ]
