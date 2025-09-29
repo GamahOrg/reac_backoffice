@@ -1,0 +1,254 @@
+// complaint-report.component.scss
+
+.container-fluid {
+    padding: 1rem;
+  }
+  
+  .card {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+  
+    .card-header {
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #dee2e6;
+      border-radius: 8px 8px 0 0;
+      
+      h5 {
+        color: #495057;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  // Filter section styling
+  .row.mb-4 {
+    .form-label {
+      font-weight: 500;
+      color: #495057;
+      margin-bottom: 0.5rem;
+    }
+  
+    .form-control, .form-select {
+      border-radius: 4px;
+      border: 1px solid #ced4da;
+      
+      &:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+      }
+    }
+  
+    .btn-group {
+      .btn {
+        border-radius: 4px;
+        
+        &:first-child {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+  
+  // Table styling
+  .table-responsive {
+    .table {
+      margin-bottom: 0;
+      
+      th {
+        background-color: #343a40;
+        color: white;
+        font-weight: 500;
+        vertical-align: middle;
+        text-align: center;
+        border: 1px solid #454d55;
+      }
+      
+      td {
+        vertical-align: middle;
+        text-align: center;
+        border: 1px solid #dee2e6;
+        
+        &:nth-child(3) { // Description column
+          text-align: right;
+        }
+      }
+      
+      .text-primary {
+        color: #0d6efd !important;
+      }
+      
+      .text-truncate {
+        max-width: 200px;
+      }
+    }
+  }
+  
+  // Status badge styling
+  .badge {
+    &.badge-success, &.bg-success {
+      background-color: #198754 !important;
+    }
+    
+    &.badge-warning, &.bg-warning {
+      background-color: #ffc107 !important;
+      color: #000 !important;
+    }
+    
+    &.badge-danger, &.bg-danger {
+      background-color: #dc3545 !important;
+    }
+    
+    &.badge-info, &.bg-info {
+      background-color: #0dcaf0 !important;
+      color: #000 !important;
+    }
+    
+    &.badge-secondary, &.bg-secondary {
+      background-color: #6c757d !important;
+    }
+  }
+  
+  // Export buttons styling
+  .btn-group {
+    .btn {
+      &.btn-success {
+        background-color: #198754;
+        border-color: #198754;
+        
+        &:hover {
+          background-color: #157347;
+          border-color: #146c43;
+        }
+      }
+      
+      &.btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        
+        &:hover {
+          background-color: #bb2d3b;
+          border-color: #b02a37;
+        }
+      }
+    }
+  }
+  
+  // Alert styling
+  .alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+    
+    strong {
+      font-weight: 600;
+    }
+  }
+  
+  // Loading spinner
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    color: #0d6efd;
+  }
+  
+  // Pagination styling
+  .pagination {
+    .page-link {
+      color: #0d6efd;
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+      
+      &:hover {
+        color: #0a58ca;
+        background-color: #e9ecef;
+        border-color: #dee2e6;
+      }
+    }
+    
+    .page-item {
+      &.active .page-link {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        color: #fff;
+      }
+      
+      &.disabled .page-link {
+        color: #6c757d;
+        background-color: #fff;
+        border-color: #dee2e6;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+  // Print-specific styles for PDF export
+  @media print {
+    .card-header .btn-group,
+    .pagination,
+    .d-flex.justify-content-between {
+      display: none !important;
+    }
+    
+    .card {
+      border: none !important;
+      box-shadow: none !important;
+    }
+    
+    .table {
+      font-size: 12px;
+      
+      th, td {
+        padding: 0.5rem !important;
+        border: 1px solid #000 !important;
+      }
+      
+      th {
+        background-color: #f8f9fa !important;
+        color: #000 !important;
+      }
+    }
+    
+    .d-print-block {
+      display: block !important;
+    }
+  }
+  
+  // Responsive design
+  @media (max-width: 768px) {
+    .container-fluid {
+      padding: 0.5rem;
+    }
+    
+    .card-header {
+      .btn-group {
+        flex-direction: column;
+        width: 100%;
+        
+        .btn {
+          margin-bottom: 0.5rem;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    
+    .row.mb-4 {
+      .col-md-3, .col-md-2, .col-md-1 {
+        margin-bottom: 1rem;
+      }
+    }
+    
+    .table-responsive {
+      font-size: 0.875rem;
+    }
+    
+    .pagination {
+      .page-link {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+      }
+    }
+  }
