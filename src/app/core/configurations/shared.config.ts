@@ -271,7 +271,8 @@ export const Configuration = {
     arbitration: "arbitration",
     reports: "reports",
     profile: 'profile',
-    UsersManagement: 'users-management'
+    UsersManagement: 'users-management',
+    Compliants: 'complaints',
   },
   pages: {
     auth: {
@@ -380,6 +381,10 @@ export const Configuration = {
       ListOfLitigationForAdminReport:'list-admin-report',
       AllStagesStatisiticsForAdminReport:'all-stages-statistics',
       AllPersonasForAdminReport:'all-personas-report',
+      Complaints: 'complaints',
+      ComplainsList: 'complains-list',
+      ComplaintDetails: 'complaint-details/:id',
+      ComplaintReport: 'complaint-report',
     }
   },
   validators: {
