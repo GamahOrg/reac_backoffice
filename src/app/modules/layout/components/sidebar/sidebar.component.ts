@@ -467,12 +467,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                     icon: 'assets/images/icons/sidebar/book.svg',
                     children: [
                         
-                        // {
-                        //     id: 'create-user',
-                        //     title: this.translate.instant(translations.layout.sidebar.createEmployee),
-                        //     icon: 'assets/images/icons/sidebar/book.svg',
-                        //     url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.createUser,
-                        // },
+                        {
+                            id: 'lawsuit-list',
+                            title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.lawsuitsList,
+                        },
                         {
                             id: 'users-list',
                             title: this.translate.instant(translations.layout.sidebar.employeeList),
