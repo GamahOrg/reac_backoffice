@@ -23,9 +23,15 @@ import { ServiceProviderDashbourdComponent } from './components/statistic-dashbo
 import { ComplaintListComponent } from './components/complaint-list/complaint-list.component';
 import { ComplaintDetailsComponent } from './components/complaint-list/complaint-details/complaint-details.component';
 import { ComplaintReportComponent } from './components/statistic-dashbourd/compliant-report/compliant-report.component';
+import { LawsuitsListForAdminComponent } from './components/lawsuits-list-for-admin/lawsuits-list-for-admin.component';
+import { LawsuitsDetailsForAdminComponent } from './components/lawsuits-details-for-admin/lawsuits-details-for-admin.component';
 
 const routes: Routes = [
-  
+  {
+    path: '',
+    redirectTo: Configuration.pages.lawsuits.lawsuitList,
+    pathMatch: "full"
+  },
   {
     path: Configuration.pages.usersManagement.userList,
     component: UsersListComponent,
@@ -114,6 +120,14 @@ const routes: Routes = [
   {
     path: Configuration.pages.usersManagement.ComplaintReport,
     component: ComplaintReportComponent,
+  },
+  {
+      path: Configuration.pages.usersManagement.lawsuitsList,
+      component: LawsuitsListForAdminComponent,
+  },
+  {
+      path: `lawsuit-details/:id`,
+      component: LawsuitsDetailsForAdminComponent,
   },
 ];
 

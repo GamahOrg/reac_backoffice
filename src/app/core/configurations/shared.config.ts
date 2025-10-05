@@ -382,6 +382,8 @@ export const Configuration = {
       ComplainsList: 'complains-list',
       ComplaintDetails: 'complaint-details/:id',
       ComplaintReport: 'complaint-report',
+      lawsuitsList: 'lawsuits-list',
+      lawsuitsDetails: 'lawsuit-details/:id',
     }
   },
   validators: {
