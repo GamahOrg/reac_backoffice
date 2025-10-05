@@ -116,7 +116,7 @@
 
 <ng-container *ngIf="this.delegationData?.delegationRelationshipTypeId === 1">
   <h1 class="mb-1 small required fw-6 mt-6">
-    بيانات المدعي فرد
+    بيانات المفوض 
   </h1>
 
   <div class="grid-3 mt-5">
@@ -125,17 +125,17 @@
       <div class="flex-y-row gap-2">
         <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
         <h6 class="small op-7">
-          {{this.delegationData?.citizen?.identityNumber || "--" }}
+          {{this.delegationData?.delegatorCitizen?.identityNumber || "--" }}
         </h6>
       </div>
     </div>
 
     <div>
-      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualFullName | translate}}</h6>
+      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.delegatorName | translate}}</h6>
       <div class="flex-y-row gap-2">
         <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
         <h6 class="small op-7">
-          {{this.delegationData?.citizen?.fullName || "--" }}
+          {{this.delegationData?.delegatorCitizen?.fullName || "--" }}
         </h6>
       </div>
     </div>
@@ -145,7 +145,7 @@
       <div class="flex-y-row gap-2">
         <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
         <h6 class="small op-7">
-          {{this.delegationData?.citizen?.mobile || "--" }}
+          {{this.delegationData?.delegatorCitizen?.mobile || "--" }}
         </h6>
       </div>
     </div>
@@ -165,7 +165,7 @@
       <div class="flex-y-row gap-2">
         <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
         <h6 class="small op-7">
-          {{this.delegationData?.citizen?.nationality?.nationalityName || "--" }}
+          {{this.delegationData?.delegatorCitizen?.nationality?.nationalityName || "--" }}
         </h6>
       </div>
     </div>
@@ -175,7 +175,7 @@
       <div class="flex-y-row gap-2">
         <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
         <h6 class="small op-7">
-          {{this.delegationData?.citizen?.email || "--" }}
+          {{this.delegationData?.delegatorCitizen?.email || "--" }}
         </h6>
       </div>
     </div>
@@ -185,7 +185,7 @@
       <div class="flex-y-row gap-2">
         <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
         <h6 class="small op-7">
-          {{this.delegationData?.citizen?.nationalAddress || "--" }}
+          {{this.delegationData?.delegatorCitizen?.nationalAddress || "--" }}
         </h6>
       </div>
     </div>
@@ -195,7 +195,7 @@
       <div class="flex-y-row gap-2">
         <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
         <h6 class="small op-7">
-          {{this.delegationData?.citizen?.birthDate | date }}
+          {{this.delegationData?.delegatorCitizen?.birthDate | date }}
         </h6>
       </div>
     </div>

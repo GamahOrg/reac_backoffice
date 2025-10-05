@@ -41,6 +41,13 @@ import { ComplaintService } from './services/ComplaintService.service';
 import { ComplaintListComponent } from './components/complaint-list/complaint-list.component';
 import { ComplaintDetailsComponent } from './components/complaint-list/complaint-details/complaint-details.component';
 import { ComplaintReportComponent } from './components/statistic-dashbourd/compliant-report/compliant-report.component';
+import { LawsuitsListForAdminComponent } from './components/lawsuits-list-for-admin/lawsuits-list-for-admin.component';
+import { LawsuitsDetailsForAdminComponent } from './components/lawsuits-details-for-admin/lawsuits-details-for-admin.component';
+import { TabsComponent } from "@app/shared/components/tabs/tabs.component";
+import { LawsuitListService } from '../lawsuits/services/lawsuit-list/lawsuit-list.service';
+import { LawsuitRequestDetailsService } from '../lawsuits/services/lawsuit-request-details/lawsuit-request-details.service';
+import { AccordionService } from '@app/shared/services/accordion/accordion.service';
+import { LawsuitEventsService } from '../lawsuits/services/lawsuit-events/lawsuit-events.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +73,9 @@ import { ComplaintReportComponent } from './components/statistic-dashbourd/compl
     ServiceProviderDashbourdComponent,
     ComplaintListComponent,
     ComplaintDetailsComponent,
-    ComplaintReportComponent
+    ComplaintReportComponent,
+    LawsuitsListForAdminComponent,
+    LawsuitsDetailsForAdminComponent
   ],
   imports: [
     CommonModule,
@@ -77,6 +86,7 @@ import { ComplaintReportComponent } from './components/statistic-dashbourd/compl
     OwlDateTimeModule, OwlNativeDateTimeModule, OwlDateTimeModule,
     BreadcrumbsComponent,
     NgChartsModule,
+    TabsComponent
 ],
   providers:[
      UsersManagementService,
@@ -89,6 +99,10 @@ import { ComplaintReportComponent } from './components/statistic-dashbourd/compl
      StatisticDashbourdService,
      ReportsService,
      ComplaintService,
+     LawsuitListService,
+     LawsuitRequestDetailsService,
+     AccordionService,
+     LawsuitEventsService,
   { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }
 
   ]
