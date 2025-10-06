@@ -1,0 +1,106 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+
+@if (auditngList && auditngList.results && auditngList.results.length) {
+  
+  
+
+<div class="table-wrapper">
+
+  <!-- table -->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">
+            {{translations.lawsuits.lawsuitsList.lawsuitNumber | translate}}
+          </th>
+          <th scope="col">{{translations.lawsuits.lawsuitsList.submissionDate | translate}}</th>
+          <th scope="col">{{translations.lawsuits.lawsuitsList.lawsuitType | translate}}</th>
+          <th scope="col">{{translations.lawsuits.createEditLawsuit.plaintiffName | translate}}</th>
+          <th scope="col">{{translations.lawsuits.createEditLawsuit.nameOfTheDefendant | translate}}</th>
+          <!--<th scope="col">{{translations.lawsuits.lawsuitsList.appointmentDate | translate}}</th>-->
+          <th scope="col">{{translations.lawsuits.lawsuitsList.lawsuitStatus | translate}}</th>
+          <!-- <th scope="col">
+            <span
+                  style="max-width: 120px; white-space: normal; display: block;">{{translations.lawsuits.lawsuitsList.remainingAuditDays
+              | translate}}</span>
+          </th> -->
+          <th scope="col">{{translations.lawsuits.lawsuitsList.actions | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of auditngList.results; track $index) {
+        <tr>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ item.requestCode || '--' }}</span>
+          </td>
+          <td>
+            {{ (item.createdOn | date: 'dd/MM/yyy') || '--' }}
+          </td>
+          <td>
+            {{
+            item.litigationRequestContractTypeId
+            ? (lawsuitContractType[item.litigationRequestContractTypeId] | translate)
+            : '--'
+            }}
+          </td>
+          <td>
+            {{ item.firstPartyName || '--' }}
+          </td>
+          <td>
+            {{ item.secondPartyName || '--' }}
+          </td>
+          <!--<td>
+            {{ (item.assignedOn | date: 'dd/MM/yyy') || '--' }}
+          </td>-->
+          <td>
+            <span class="status-{{item.internalStatusId}}">
+              {{lawsuitStatus[item.internalStatusId] | translate}}
+              <span *ngIf="item?.plaintiffAgreementRequestResponse=='Approve' && item?.defendantAgreementRequestResponse=='Approve'" >({{lawsuitStatus[35] | translate}})</span>
+            </span>
+          </td>
+          <!-- <td>
+            {{
+            (item.pretenderRating && item.pretenderRating >= 0)
+            ? item.pretenderRating + (translations.lawsuits.lawsuitsList.days| translate)
+            : '--'
+            }}
+          </td> -->
+          <td>
+            <a [routerLink]="'/users-management/lawsuit-details/' + item.id"
+               class="btn btn-light">
+              <img src="assets/images/icons/eye.svg"
+                   alt="eye">
+              {{translations.actions.view| translate}}
+            </a>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="flex-between">
+  <div class="op-6 v-small fw-5">
+    <span>{{translations.tables.from | translate}} </span>
+    <span>{{pagintationData.currentPage}} </span>
+    <span>{{translations.tables.to | translate}} </span>
+    <span>{{pagintationData.totalCount}} </span>
+    <span>{{translations.tables.ofTotal | translate}} </span>
+    <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+    <span>{{translations.tables.row | translate}} </span>
+  </div>
+  <app-pagination></app-pagination>
+</div>
+}
+
+
+@if((!auditngList.results) || auditngList.results.length==0){
+<div class="flex-center flex-column">
+  <img src="assets/images/no-data.svg"
+       alt="no-data">
+  <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.lawsuits.lawsuitsList.noCurrentLawsuits| translate}}</h4>
+</div>
+}

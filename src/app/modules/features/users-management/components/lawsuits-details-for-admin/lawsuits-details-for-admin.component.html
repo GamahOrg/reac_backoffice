@@ -1,0 +1,97 @@
+<app-breadcrumbs></app-breadcrumbs>
+<!-- 
+<div class="flex-between py-4 px-7 rounded-2" style="background: #E5F4D4;">
+  <h6 class="fw-7 small">{{translations.lawsuits.lawsuitDetails.lawsuitUnderReviewByLawsuitAuditor| translate}}</h6>
+  <div style="background: #E5F4D4; padding-block: 2px"
+       class="px-2 rounded-2 border border-success w-fit">
+    <span class="flex-y-row gap-1 px-3 py-1 small rounded-1 text-success">
+        <i class="material-icons fs-6"> watch_later </i> قيد التدقيق
+    </span>
+  </div>
+</div> -->
+
+<!-- <div class="flex-between py-3 px-6 rounded-2" style="background: #F5EAE7;">
+    <h6 class="fw-7 text-danger">{{translations.lawsuits.lawsuitDetails.modificationRequestInProgress| translate}}</h6>
+    <button type="button" class="btn btn-primary py-2 px-6" (click)="openReasonModal(reasonModal)">
+        {{translations.lawsuits.lawsuitDetails.viewModificationRequest| translate}}
+    </button>
+</div> -->
+
+<!-- <div class="flex-between">
+    <h6 class="fw-7 text-danger">{{translations.lawsuits.lawsuitDetails.modificationRequestInProgress| translate}}</h6>
+    <div class="flex-y-row gap-2">
+        <span class="flex-y-row gap-1 px-3 py-1 small rounded-1 fw-6" style="background: #E6F2FB; color: #4DC1BB;">
+            <i class="material-icons fs-6"> watch_later </i> معاد للتعديل
+        </span>
+        <button type="button" class="btn btn-primary py-2 px-6">
+            {{translations.lawsuits.lawsuitDetails.editData| translate}}
+        </button>
+    </div>
+</div> -->
+
+<div class="flex-end gap-2 w-fit">
+  <span *ngIf="lawsuitDetails && lawsuitDetails.internalStatusId" class="status-{{lawsuitDetails.internalStatusId}}"> {{ lawsuitStatus[lawsuitDetails.internalStatusId] | translate}}</span>
+  <!-- <button type="button" class="btn btn-primary px-6 py-2" (click)="openAuditorsModal(auditorsModal)">
+        {{translations.lawsuits.lawsuitDetails.assignAuditor| translate}}
+    </button> -->
+</div>
+
+
+
+<app-tabs *ngIf="isLawsuitDetails"></app-tabs>
+<!-- <app-lawsuit-review *ngIf="!isLawsuitDetails"></app-lawsuit-review> -->
+
+<ng-template #reasonModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title fw-6">{{translations.lawsuits.lawsuitDetails.studyLawsuitModificationRequest | translate}}
+    </h5>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
+  </div>
+
+  <div class="modal-body">
+    <h6 class="small">{{translations.lawsuits.lawsuitDetails.reasonForLawsuitModificationRequest | translate}}</h6>
+    <p class="py-6 px-4 op-8 mt-2 mb-7 small" style="background: #F4F5F9;">
+      يتم هنا عرض سبب طلب التعديل علی الدعوی يتم هنا عرض سبب طلب التعديل علی الدعوی يتم هنا عرض سبب طلب التعديل علی
+      الدعوی يتم هنا عرض سبب طلب التعديل
+    </p>
+
+    <label class="required">{{translations.lawsuits.lawsuitDetails.selectOneOfTheFollowingActions | translate}}</label>
+    <div class="grid-2 mt-2 mb-4">
+      <label class="rounded-2 border p-4" [ngClass]="{'active': selectedReason === 'accept'}">
+        <input type="radio" name="reason" [(ngModel)]="selectedReason" value="accept">
+        <span>{{translations.lawsuits.lawsuitDetails.acceptModificationRequest | translate}}</span>
+      </label>
+      <label class="rounded-2 border p-4" [ngClass]="{'active': selectedReason === 'reject'}">
+        <input type="radio" name="reason" [(ngModel)]="selectedReason" value="reject">
+        <span>{{translations.lawsuits.lawsuitDetails.rejectModificationRequest | translate}}</span>
+      </label>
+    </div>
+
+    <div class="form-control d-flex flex-column">
+      <textarea id="reason-description" name="reason" [maxlength]="250" class="form-control" style="outline: 0;" rows="5" placeholder="{{translations.lawsuits.lawsuitDetails.enterReason | translate}}" (input)="updateCharCount($event, 'reason')" [(ngModel)]="reason"></textarea>
+      <span class="op-7 w-fit flex-end">{{ charCounts['reason'] }}/{{250}}</span>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn px-8 btn-outline-primary" (click)="modal.close()">{{translations.actions.close| translate}}</button>
+    <button type="button" class="btn px-8 btn-primary">{{translations.actions.next| translate}}</button>
+  </div>
+</ng-template>
+
+<ng-template #auditorsModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title fw-6"> {{ translations.lawsuits.lawsuitDetails.selectLawsuitAuditorToAssignLawsuit |
+      translate }} </h5>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
+  </div>
+
+  <div class="modal-body">
+    <input class="form-control search">
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn px-8 btn-outline-primary" (click)="modal.close()">{{translations.actions.goBack| translate}}</button>
+    <button type="button" class="btn px-8 btn-primary"> {{ translations.actions.assign | translate }} </button>
+  </div>
+</ng-template>

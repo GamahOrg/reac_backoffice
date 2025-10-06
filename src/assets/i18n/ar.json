@@ -103,8 +103,10 @@
             "ArbitrationsReport":"تقرير المحكم",
             "reviewDashbourd":"إحصائيات حالات وأنواع الدعوى",
             "allPersonasStatisticsForAdminReport":"تقرير المدقق والمصلح والمحكم",
-            "providersDashbourd":"إحصائيات مقدمي الخدمة"
-           
+            "providersDashbourd":"إحصائيات مقدمي الخدمة",
+            "complaints": " الشكاوى والاستفسارات",
+            "complainsList": "قائمة الشكاوى والاستفسارات",
+            "complaintsReport": "تقرير الشكاوى والاستفسارات"
         }
     },
     "actions": {
@@ -174,7 +176,7 @@
             "individualNationality" : "الجنسية",
             "individualBirthdate" : "تاريخ الميلاد",
             "individualNationalAddress" : "العنوان الوطني",
-            "individualCapacity" : "صفة المحتكم",
+            "individualCapacity" : "صفة المفوض",
             
             "litigationRequestCode" : "رقم الدعوي",
             "delegationParty" : "صفة الموكل",

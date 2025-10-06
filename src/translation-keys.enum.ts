@@ -141,6 +141,9 @@ export namespace translations {
             ReviewDashbourd='layout.sidebar.reviewDashbourd',
             AdminDashbourd='layout.sidebar.adminDashbourd',
             ProvidersDashbourd='layout.sidebar.providersDashbourd',
+            Complaints='layout.sidebar.complaints',
+            ComplainsList='layout.sidebar.complainsList',
+            ComplaintsReport='layout.sidebar.complaintsReport',
         }
     }
 

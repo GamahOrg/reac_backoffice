@@ -37,6 +37,17 @@ import { ListAdminReportComponent } from './components/list-dashboard/list-admin
 import { AllStagesStatisticsComponent } from './components/statistic-dashbourd/all-stages-statistics/all-stages-statistics/all-stages-statistics.component';
 import { ReviewersreformersarbitratorsreportComponent } from './components/statistic-dashbourd/reviewersreformersarbitratorsreport/reviewersreformersarbitratorsreport.component';
 import { ServiceProviderDashbourdComponent } from './components/statistic-dashbourd/service-provider-dashbourd/service-provider-dashbourd.component';
+import { ComplaintService } from './services/ComplaintService.service';
+import { ComplaintListComponent } from './components/complaint-list/complaint-list.component';
+import { ComplaintDetailsComponent } from './components/complaint-list/complaint-details/complaint-details.component';
+import { ComplaintReportComponent } from './components/statistic-dashbourd/compliant-report/compliant-report.component';
+import { LawsuitsListForAdminComponent } from './components/lawsuits-list-for-admin/lawsuits-list-for-admin.component';
+import { LawsuitsDetailsForAdminComponent } from './components/lawsuits-details-for-admin/lawsuits-details-for-admin.component';
+import { TabsComponent } from "@app/shared/components/tabs/tabs.component";
+import { LawsuitListService } from '../lawsuits/services/lawsuit-list/lawsuit-list.service';
+import { LawsuitRequestDetailsService } from '../lawsuits/services/lawsuit-request-details/lawsuit-request-details.service';
+import { AccordionService } from '@app/shared/services/accordion/accordion.service';
+import { LawsuitEventsService } from '../lawsuits/services/lawsuit-events/lawsuit-events.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +70,12 @@ import { ServiceProviderDashbourdComponent } from './components/statistic-dashbo
     ListAdminReportComponent,
     AllStagesStatisticsComponent,
     ReviewersreformersarbitratorsreportComponent,
-    ServiceProviderDashbourdComponent
+    ServiceProviderDashbourdComponent,
+    ComplaintListComponent,
+    ComplaintDetailsComponent,
+    ComplaintReportComponent,
+    LawsuitsListForAdminComponent,
+    LawsuitsDetailsForAdminComponent
   ],
   imports: [
     CommonModule,
@@ -70,6 +86,7 @@ import { ServiceProviderDashbourdComponent } from './components/statistic-dashbo
     OwlDateTimeModule, OwlNativeDateTimeModule, OwlDateTimeModule,
     BreadcrumbsComponent,
     NgChartsModule,
+    TabsComponent
 ],
   providers:[
      UsersManagementService,
@@ -81,6 +98,11 @@ import { ServiceProviderDashbourdComponent } from './components/statistic-dashbo
      ReviewSettingService,
      StatisticDashbourdService,
      ReportsService,
+     ComplaintService,
+     LawsuitListService,
+     LawsuitRequestDetailsService,
+     AccordionService,
+     LawsuitEventsService,
   { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }
 
   ]
