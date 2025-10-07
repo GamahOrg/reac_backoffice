@@ -33,8 +33,7 @@ export class LawsuitRentContractDataComponent extends BaseComponent implements O
 
     private observeLawsuitRequestDetailsSignal() {
         effect(() => {
-            
-            this.delegationDate = this._lawsuitRequestDetailsService.litigationDetails()?.delegationDate;
+            this.delegationDate = this._lawsuitRequestDetailsService.litigationDetails()?.delegator;
             this.contract = this._lawsuitRequestDetailsService.litigationDetails()?.contract;
             this.applicantCitizen = this._lawsuitRequestDetailsService.litigationDetails()?.applicantCitizen;
         }, {
