@@ -26,8 +26,10 @@ export class LawsuitDelegationDataComponent extends BaseComponent implements OnI
  
      private observeLawsuitRequestDetailsSignal() {
          effect(() => {
-             
+            var ss= this._lawsuitRequestDetailsService.litigationDetails();
+            console.log("ss1",ss)    
              this.delegationData = this._lawsuitRequestDetailsService.litigationDetails()?.delegator;
+             console.log("ss",this.delegationData)
          }, {
              injector: this._injector,
              allowSignalWrites: true

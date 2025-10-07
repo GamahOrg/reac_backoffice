@@ -125,6 +125,133 @@
       </div>
     </div>
   </div>
+
+  
+  <ng-container *ngIf="this.delegationRequest?.delegationRelationshipTypeId === 1">
+    <h1 class="mb-1 small required fw-6 mt-6">
+      بيانات المفوض 
+    </h1>
+  
+    <div class="grid-3 mt-5">
+      <div>
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualIdentityNumber | translate}}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.delegatorCitizen?.identityNumber || "--" }}
+          </h6>
+        </div>
+      </div>
+  
+      <div>
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.delegatorName | translate}}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.delegatorCitizen?.fullName || "--" }}
+          </h6>
+        </div>
+      </div>
+  
+      <!-- <div>
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualMobile | translate}}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.delegatorCitizen?.mobile || "--" }}
+          </h6>
+        </div>
+      </div>
+   -->
+      <!-- <div>
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualCapacity | translate}}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.litigationDetails()?.contract?.firstPartyCapacity || "--" }}
+          </h6>
+        </div>
+      </div> -->
+  
+      <!-- <div>
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualNationality | translate}}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.delegatorCitizen?.nationality?.nationalityName || "--" }}
+          </h6>
+        </div>
+      </div>
+  
+      <div>
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualEmail | translate}}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.delegatorCitizen?.email || "--" }}
+          </h6>
+        </div>
+      </div>
+  
+      <div>
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualNationalAddress | translate}}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.delegatorCitizen?.nationalAddress || "--" }}
+          </h6>
+        </div>
+      </div>
+  
+      <div>
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualBirthdate | translate}}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.delegatorCitizen?.birthDate | date }}
+          </h6>
+        </div>
+      </div> -->
+    </div>
+  </ng-container>
+  
+  <ng-container *ngIf="this.delegationRequest?.delegationRelationshipTypeId === 2">
+    <h1 class="mb-1 small required fw-6 mt-6">
+      بيانات المدعي شركة
+    </h1>
+  
+    <div class="grid-3 mt-5">
+      <div>
+        <h6 class="small fw-5">{{translations.establishments.establishmentsDetails.arabicFacilityName | translate }}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.facility?.arabicFacilityName || "--" }}
+          </h6>
+        </div>
+      </div>
+  
+      <div>
+        <h6 class="small fw-5">{{translations.establishments.establishmentsDetails.facility700Number | translate }}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.facility?.facility700Number || "--" }}
+          </h6>
+        </div>
+      </div>
+  
+      <div>
+        <h6 class="small fw-5">{{translations.establishments.establishmentsDetails.commercialRegisterNumber | translate }}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.facility?.commercialRegisterNumber || "--" }}
+          </h6>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>
 
 <div class="flex-end mt-6" *ngIf="this.delegationRequest?.isApproved == null">
