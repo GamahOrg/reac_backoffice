@@ -108,6 +108,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.lawsuitList,
+                            },
+                            {
+                                id: 'claims-link',
+                                title: this.translate.instant(translations.layout.sidebar.delegationRequests),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.DelegationRequestList,
                             }
                             // ,
                             // {
@@ -461,12 +467,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                     icon: 'assets/images/icons/sidebar/book.svg',
                     children: [
                         
-                        // {
-                        //     id: 'create-user',
-                        //     title: this.translate.instant(translations.layout.sidebar.createEmployee),
-                        //     icon: 'assets/images/icons/sidebar/book.svg',
-                        //     url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.createUser,
-                        // },
+                        {
+                            id: 'lawsuit-list',
+                            title: this.translate.instant(translations.layout.sidebar.lawsuitsList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.lawsuitsList,
+                        },
                         {
                             id: 'users-list',
                             title: this.translate.instant(translations.layout.sidebar.employeeList),
@@ -485,6 +491,20 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.profile + '/' + Configuration.pages.profile.vacationRequestReply,
                         },
+                        {
+                            id: 'stopd-modify-delegators',
+                            title: this.translate.instant(translations.layout.sidebar.stopModifyDelegators),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.StopModifyDelegators,
+                        }
+                        ,
+                        {
+                            id: 'claims-link',
+                            title: this.translate.instant(translations.layout.sidebar.assignDelegators),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.assignDelegators,
+                        }
+                        
                     ],
                 },
                 {
@@ -567,7 +587,13 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 title: this.translate.instant(translations.layout.sidebar.allPersonasStatisticsForAdminReport),
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.AllPersonasForAdminReport,
-                            }
+                            },
+                            // {
+                            //     id: 'complains-link',
+                            //     title: this.translate.instant(translations.layout.sidebar.ComplaintsReport),
+                            //     icon: 'assets/images/icons/sidebar/book.svg',
+                            //     url:'/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.ComplaintReport,
+                            // },
     
                         ]
                     },
@@ -594,8 +620,22 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.DashbourdProviders,
                             },
+                           
                         ]
-                }
+                },
+                // {
+                //     id: 'complains-collapse',
+                //     title: this.translate.instant(translations.layout.sidebar.Complaints),
+                //     icon: 'assets/images/icons/sidebar/book.svg',
+                //     children: [
+                //         {
+                //             id: 'complains-link',
+                //             title: this.translate.instant(translations.layout.sidebar.ComplainsList),
+                //             icon: 'assets/images/icons/sidebar/book.svg',
+                //             url:'/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.Complaints,
+                //         },
+                //     ]
+                // }
             );
 
         }

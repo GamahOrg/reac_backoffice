@@ -45,4 +45,12 @@ export class CitizenService {
     }
     return this._httpClient.post<BaseResponse<any>>(Configuration.APIs.Arbitration.AddLitigationRequestArbitratorsChairmandecision, obj)
   }
+
+  AddLitigationRequestArbitratorsMemberdecision(requestId:string, arbitratorMemberId:string) :Observable<BaseResponse<any>>{
+    let obj = {
+      requestId,
+      arbitratorMemberId
+    }
+    return this._httpClient.post<BaseResponse<any>>(Configuration.APIs.Arbitration.AddLitigationRequestArbitratorsMemberdecision, obj)
+  }
 }

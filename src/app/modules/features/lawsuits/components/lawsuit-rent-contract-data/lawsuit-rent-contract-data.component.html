@@ -15,7 +15,9 @@
         <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.plaintiffRole | translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.firstPartyCapacity || '--'}}</h6>
+            <h6 class="small op-7" *ngIf="delegationDate?.individualCapacity!=null">{{delegationDate?.individualCapacity || '--'}}</h6>
+            <h6 class="small op-7" *ngIf="delegationDate?.individualCapacity==null">{{contract?.firstPartyCapacity || '--'}}</h6>
+
         </div>
     </div>  
 

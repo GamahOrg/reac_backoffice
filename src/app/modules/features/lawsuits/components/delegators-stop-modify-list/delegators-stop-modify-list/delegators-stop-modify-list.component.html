@@ -1,0 +1,105 @@
+
+@if (delegators && delegators.results && delegators.results.length) {
+  
+<div class="table-wrapper">
+
+  <!-- table -->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">
+            {{translations.lawsuits.lawsuitDelegations.litigationRequestCode | translate}}
+          </th>
+          <th scope="col">{{translations.lawsuits.lawsuitDelegations.delegatorName | translate}}</th>
+          <th scope="col">{{translations.lawsuits.lawsuitDelegations.delegationParty | translate}}</th>
+          
+          
+          <th scope="col">{{translations.lawsuits.lawsuitsList.actions | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of delegators.results; track $index) {
+        <tr>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ item.litigationRequestCode || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ item.delegatorName || '--' }}</span>
+          </td>
+          <td>
+            {{ item.delegationParty == 1 ? 'مدعي' : 'مدعي عليه'  }}
+          </td>
+          
+          <td>
+            <button (click)="stopDelegator(item.id)"
+               class="btn btn-light" style="margin-left: 5px;">
+              <img src="assets/images/icons/eye.svg"
+                   alt="eye">
+              {{translations.actions.stop| translate}}
+            </button>
+            <button (click)="showDelegatorsModal(item.litigationRequestId,item.delegationParty,changeDelegatorModal)"
+               class="btn btn-light">
+              <img src="assets/images/icons/eye.svg"
+                   alt="eye">
+              {{translations.actions.change| translate}}
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="flex-between">
+  <div class="op-6 v-small fw-5">
+    <span>{{translations.tables.from | translate}} </span>
+    <span>{{pagintationData.currentPage}} </span>
+    <span>{{translations.tables.to | translate}} </span>
+    <span>{{pagintationData.totalCount}} </span>
+    <span>{{translations.tables.ofTotal | translate}} </span>
+    <span>{{(pageCount < pagintationData.totalCount )? pagintationData.totalCount : pageCount }} </span>
+    <span>{{translations.tables.row | translate}} </span>
+  </div>
+  <app-pagination></app-pagination>
+</div>
+}
+
+
+@if((!delegators.results) || delegators.results.length==0){
+<div class="flex-center flex-column">
+  <img src="assets/images/no-data.svg"
+       alt="no-data">
+  <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.lawsuits.lawsuitDelegations.noCurrentDelegators| translate}}</h4>
+</div>
+}
+
+<ng-template #changeDelegatorModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title fw-6"> {{translations.actions.assignDelegator| translate}}</h5>
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
+  </div>
+
+  <form [formGroup]="changeDelegationRequestForm">
+    <div class="modal-body pt-0">
+      <select class="form-select" formControlName="delegationRequestId" [class.is-invalid]="controls.delegationRequestId.invalid && controls.delegationRequestId.touched">
+        <option disabled [ngValue]="null" selected>
+          {{ translations.LitigationRequest.selectDelegator | translate }}
+        </option>
+        <option *ngFor="let delegator of inActivedelegators" [ngValue]="delegator.id">
+          {{ translations.general.name| translate }} : {{ delegator.delegatorName}}
+        </option>
+      </select>
+      <div class="invalid-feedback" *ngIf="controls.delegationRequestId.touched && controls.delegationRequestId.errors">
+        {{translations.formValidationError.required | translate}}
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="changeDelegator(modal)">{{ translations.actions.save | translate }}</button>
+      <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate }}</button>
+    </div>
+  </form>
+</ng-template>

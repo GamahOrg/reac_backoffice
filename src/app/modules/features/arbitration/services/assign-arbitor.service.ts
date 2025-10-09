@@ -25,7 +25,10 @@ export class AssignArbitorService {
     queryParams = queryParams.append("requestId", requestId);
     return this._httpClient.get<BaseResponse<ArbitratorsLookupDto[]>>(`${Configuration.APIs.Citizen.GetArbitratorsLookup}`, { params: queryParams })
   }
+  getAllArbitratorsLookup(): Observable<BaseResponse<ArbitratorsLookupDto[]>> {
 
+    return this._httpClient.get<BaseResponse<ArbitratorsLookupDto[]>>(`${Configuration.APIs.Citizen.GetArbitratorsLookupForFilter}`)
+  }
 
   assign(model: AssignArbitratorRequestPayload): Observable<EmptyBaseResponse> {
     return this._httpClient.post<EmptyBaseResponse>(`${Configuration.APIs.Arbitration.Assign}`, model)
