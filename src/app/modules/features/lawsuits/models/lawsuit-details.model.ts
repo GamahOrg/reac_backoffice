@@ -138,8 +138,8 @@ export interface LawsuitItemDetails {
         filePath: string,   
         fileType: string,
         id: string,
-    }
-
+    },
+    disputeAmount: number | null,
 }
 
 export interface LitigationRequestDelegationDataDto {
