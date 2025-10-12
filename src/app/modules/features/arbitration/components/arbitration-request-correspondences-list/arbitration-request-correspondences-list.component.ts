@@ -108,18 +108,25 @@ export class ArbitrationRequestCorrespondencesListComponent extends BaseComponen
         });
     }
 
+    // private setPaginationData(currentPage: number, pageSize: number, totalCount: number): void {
+    //     const from = (currentPage - 1) * pageSize + 1;
+    //     const to = Math.min(currentPage * pageSize, totalCount);
+
+    //     this.pagintationData = {
+    //         currentPage,
+    //         pageSize,
+    //         totalCount,
+    //         from,
+    //         to,
+    //     };
+
+    //     this._paginationService.updatePaginationData(this.pagintationData);
+    // }
+
     private setPaginationData(currentPage: number, pageSize: number, totalCount: number): void {
-        const from = (currentPage - 1) * pageSize + 1;
-        const to = Math.min(currentPage * pageSize, totalCount);
-
-        this.pagintationData = {
-            currentPage,
-            pageSize,
-            totalCount,
-            from,
-            to,
-        };
-
+        this.pagintationData.currentPage = currentPage
+        this.pagintationData.pageSize = pageSize
+        this.pagintationData.totalCount = totalCount
         this._paginationService.updatePaginationData(this.pagintationData);
     }
 
