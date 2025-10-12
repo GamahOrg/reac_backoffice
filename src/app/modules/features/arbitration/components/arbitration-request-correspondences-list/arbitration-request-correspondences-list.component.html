@@ -48,19 +48,18 @@
     </div>
   
     @if (litigationRequests && litigationRequests.length) {
-    <div class="flex-between">
-      <div class="op-6 v-small fw-5">
-        <span>{{translations.tables.from | translate}} </span>
-        <span>{{pagintationData.from}} </span>
-        <span>{{translations.tables.to | translate}} </span>
-        <span>{{pagintationData.to}} </span>
-        <span>{{translations.tables.ofTotal | translate}} </span>
-        <span>{{collectionSize}} </span>
-        <span>{{translations.tables.row | translate}} </span>
-      </div>
-  
-  
-      <app-pagination></app-pagination>
+      <div class="flex-between">
+        <div class="op-6 v-small fw-5">
+            <span>{{translations.tables.from | translate}} </span>
+            <span>{{page}} </span>
+            <span>{{translations.tables.to | translate}} </span>
+            <span>{{ page * pagintationData.pageSize}} </span>
+            <span>{{translations.tables.ofTotal | translate}} </span>
+            <span>{{collectionSize}} </span>
+            <span>{{translations.tables.row | translate}} </span>
+        </div>
+    
+        <app-pagination></app-pagination>
     </div>
     }
   </ng-container>
