@@ -12,6 +12,8 @@ import { LitigationRequestReformerAssigningRequestStatus } from '../../models/en
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { TasksRequestsListService } from '../../services/task-request-list/tasks-requests-list.service';
 import { ArbitrationRequestCorrespondencesService } from '../../services/arbitration-request-correspondences/arbitration-request-correspondences.service';
+import { Pagination } from '@app/shared/models/pagination.model';
+import { Subscription, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-arbitration-request-correspondences-list',
@@ -31,17 +33,15 @@ export class ArbitrationRequestCorrespondencesListComponent extends BaseComponen
     private modalService = inject(NgbModal)
     private printService = inject(NgxPrintService)
     detailsRequestUrl: string = `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.arbitrationRequestCorrespondencesDetails}`
-    page = 1;
-    pageSize = 10;
-    collectionSize!: number;
+    newPageNo: number = 1;
+    pageCount: number = 0;
     pagintationData = {
-        currentPage: this.page,
-        pageSize: 0,
+        currentPage: 1,
+        pageSize: 10,
         totalCount: 0,
-        from: 0,
-        to: 0,
     }
-
+    reqList: Pagination<CustomLitigationRequestMircoArbitratorDto[]> = {} as Pagination<CustomLitigationRequestMircoArbitratorDto[]>;
+    subscriptions: Subscription[] = [];
     litigationRequests: CustomLitigationRequestMircoArbitratorDto[] | undefined = [];
     litigationData: any;
 
@@ -50,8 +50,9 @@ export class ArbitrationRequestCorrespondencesListComponent extends BaseComponen
     }
 
     ngOnInit() {
-        this.observePageChange();
         this.updateBreadcrumb();
+        this.list();
+        this.watchPaginationActions();
     }
 
     private updateBreadcrumb(): void {
@@ -85,51 +86,66 @@ export class ArbitrationRequestCorrespondencesListComponent extends BaseComponen
 
     }
 
-    private list(pageIndex: number, pageSize: number): void {
-        this._arbitrationRequestCorrespondencesService.GetLitigationRequestArbitrationCorrespondence(pageIndex, pageSize).subscribe({
-            next: (res) => {
-                 ;
+    private list(): void {
 
-                this.litigationRequests = res?.data?.results;
-
-                this.collectionSize = res?.data?.results.length || 0;
-                this.setPaginationData(this.page, this.pageSize, this.collectionSize)
-            }
-        })
+         this.subscriptions.push(
+                    this._arbitrationRequestCorrespondencesService.GetLitigationRequestArbitrationCorrespondence(this.pagintationData.currentPage, this.pagintationData.pageSize)
+                        .subscribe((response) => {
+                            const res = response?.data;
+                            console.log(res);
+                            if (res && res.results.length > 0) {
+                                this.updateRequestList(res);
+                            }
+                        })
+        
+                )
     }
 
-    private observePageChange(): void {
-        effect(() => {
-            this.page = this._paginationService.currentPage();
-            this.list(this.page, this.pageSize)
-        }, {
-            injector: this._injector,
-            allowSignalWrites: true
-        });
-    }
-
-    // private setPaginationData(currentPage: number, pageSize: number, totalCount: number): void {
-    //     const from = (currentPage - 1) * pageSize + 1;
-    //     const to = Math.min(currentPage * pageSize, totalCount);
-
-    //     this.pagintationData = {
-    //         currentPage,
-    //         pageSize,
-    //         totalCount,
-    //         from,
-    //         to,
-    //     };
-
-    //     this._paginationService.updatePaginationData(this.pagintationData);
-    // }
-
-    private setPaginationData(currentPage: number, pageSize: number, totalCount: number): void {
-        this.pagintationData.currentPage = currentPage
-        this.pagintationData.pageSize = pageSize
-        this.pagintationData.totalCount = totalCount
-        this._paginationService.updatePaginationData(this.pagintationData);
-    }
-
+      private updateRequestList(TypeListView: Pagination<CustomLitigationRequestMircoArbitratorDto[]>): void {
+           this.reqList = TypeListView;
+           this.setPaginationData(
+               this.reqList.pageSize,
+               this.reqList.totalCount,
+           );
+       }
+       private setPaginationData(pageSize: number, total: number): void {
+           this.pagintationData.pageSize = pageSize
+           this.pagintationData.totalCount = total
+           this._paginationService.updatePaginationData(this.pagintationData);
+       
+         }
+   
+       private watchPaginationActions(): void {
+           
+           this.watchPagechanged();
+           this.watchPaginationClicked();
+         }
+       
+         private watchPagechanged(): void {
+           this._paginationService.pageChanged
+             .pipe(takeUntil(this.destroy$))
+             .subscribe((pageNo) => {
+               this.newPageNo = pageNo;
+               this.loadNextPage(this.newPageNo);
+       
+             })
+         }
+       
+         private watchPaginationClicked(): void {
+           this._paginationService.pageClicked
+             .pipe(takeUntil(this.destroy$))
+             .subscribe((nextPage: number) => {
+               if (this.pagintationData.currentPage != nextPage) {
+                 this.loadNextPage(nextPage);
+                 this.pagintationData.currentPage = this.newPageNo;
+               }
+             })
+         }
+   
+         private loadNextPage(nextPage: number): void {
+           this.pagintationData.currentPage = nextPage;
+           this.list()
+         }
     goToDetailsPage(requestId: string, taskId: string, hasAction: boolean) {
          ;
         this.router.navigate([this.detailsRequestUrl, requestId]);
