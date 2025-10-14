@@ -50,8 +50,9 @@ export class ArbitrationRequestCorrespondencesListComponent extends BaseComponen
     }
 
     ngOnInit() {
+        this.observePageChange();
         this.updateBreadcrumb();
-        this.list();
+        // this.list();
         this.watchPaginationActions();
     }
 
@@ -150,7 +151,15 @@ export class ArbitrationRequestCorrespondencesListComponent extends BaseComponen
          ;
         this.router.navigate([this.detailsRequestUrl, requestId]);
     }
-
+    private observePageChange(): void {
+        effect(() => {
+            this.pagintationData.currentPage = this._paginationService.currentPage();
+            this.list();
+        }, {
+            injector: this._injector,
+            allowSignalWrites: true
+        });
+    }
     
 
 }
