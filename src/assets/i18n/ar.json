@@ -165,6 +165,7 @@
             "delegationFile": "إرفاق الوكالة",
             "commercialRegistrationFile":"إرفاق السجل التجاري للمنشأه",
             "establishmentFile":"إرفاق عقد التأسيس",
+            "establishmentLetterFile":" إرفاق خطاب تأسيس الجمعية",
             "representationFile":"إرفاق مستند التمثيل",
             "decisionFile":"إرفاق القرار",
             "custodyFile":"إرفاق مستند اثبات الولايه",
@@ -324,6 +325,8 @@
             "number": "رقم"
         },
         "createEditLawsuit": {
+            "additionalMobile" : "جوال إضافي",
+            "additionalEmail" : "بريد إلكتروني إضافي",
             "rentContractData": "بيانات عقد الإيجار",
             "propertiesContractData": "بيانات عقد الملاك",
             "wafiContractData": "بيانات عقد وافي",
@@ -411,7 +414,7 @@
             "arbitration": "تحكيم",
             "conciliationAndArbitration": "صلح وتحكيم",
             "addAnotherRequest": "إضافة طلب آخر",
-            "Personal": "مقدم عن نفسه",
+            "Personal": "أصالة عن نفسه",
             "CompanyRepresentative": "ممثل شركة",
             "Lawyer": "محامي",
             "Agent": "وكيل",
@@ -440,6 +443,7 @@
             "Custodian" : "ولي",
             "ManagingDirector" : "عضو منتدب",
             "BankruptcyTrustee" : "أمين التفليسة",
+            "AssociationRepresentative" : "ممثل عن جمعية",
             "excamptionFile":" ملف اثبات اعفاء من الرسوم"
 
         }
