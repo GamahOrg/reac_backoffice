@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, effect, Injector, OnInit } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { CitizenRequestService } from '../../services/citizen-request.service';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
@@ -33,6 +33,7 @@ export class ArbitratorRequestListComponent extends BaseComponent implements OnI
         subscriptions: Subscription[] = [];
         reqList: Pagination<CitizenRequestShortDataDto[]> = {} as Pagination<CitizenRequestShortDataDto[]>;
     
+     page = 1;
     newPageNo: number = 1;
     pageCount: number = 0;
     pagintationData = {
@@ -40,12 +41,13 @@ export class ArbitratorRequestListComponent extends BaseComponent implements OnI
         pageSize: 10,
         totalCount: 0,
     }
-
     ngOnInit(): void {
         // this.observePageChange();
-        this.setBreadcrumb()
-        this.list();
+        this.observePageChange();
+        this.setBreadcrumb();
+        // this.list();
         this.watchPaginationActions();
+
     }
 
     get citizenRequestType() {
@@ -116,4 +118,14 @@ export class ArbitratorRequestListComponent extends BaseComponent implements OnI
             { label: this._translateService.instant(this.translations.layout.sidebar.arbitratorRequestList) }
         ])
     }
+
+     private observePageChange(): void {
+            effect(() => {
+                this.pagintationData.currentPage = this._paginationService.currentPage();
+                this.list();
+            }, {
+                injector: this._injector,
+                allowSignalWrites: true
+            });
+        }
 }
