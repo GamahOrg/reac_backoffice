@@ -32,6 +32,22 @@
       </div>
     </div>
   </div>
+  <div *ngIf="this.delegationData?.establishmentLetterFile">
+    <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.establishmentFile | translate}}</h6>
+    <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+        <p class="v-small fw-6 op-9"> {{ this.delegationData?.establishmentLetterFile?.fileDescription }} </p>
+      </div>
+      <div class="flex-y-row gap-1">
+        <a [href]="baseUrl + this.delegationData?.establishmentLetterFile?.filePath" target="_blank">
+          <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+        </a>
+        <a [href]="baseUrl + this.delegationData?.establishmentLetterFile?.filePath" download>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <div *ngIf="this.delegationData?.representationFile">
     <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.representationFile | translate}}</h6>

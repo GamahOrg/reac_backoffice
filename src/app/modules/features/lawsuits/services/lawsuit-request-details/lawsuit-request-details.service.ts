@@ -1,10 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable, WritableSignal, signal } from '@angular/core';
+import { Injectable, WritableSignal, input, signal } from '@angular/core';
 import { Configuration } from '@app/core/configurations/shared.config';
 import { Observable, map, of } from 'rxjs';
 import { BaseResponse } from '@app/core/models/base-response';
 import { createQuery } from '@app/shared/helpers/create-query';
 import { LawsuitItemDetails } from '../../models/lawsuit-details.model';
+import { ChangeCitizenDataModel } from '../../models/change.citizen.data.model';
 
 @Injectable()
 export class LawsuitRequestDetailsService {
@@ -21,4 +22,9 @@ export class LawsuitRequestDetailsService {
   GetLitigationById(body: {litigationId: string}): Observable<BaseResponse<any>> {
     return this._httpClient.get<BaseResponse<LawsuitItemDetails>>(`${Configuration.APIs.LitigationRequest.GetLitigationById}`, { params: createQuery(body) })
   }  
+
+  ChangeCitizenData(input: ChangeCitizenDataModel) {
+ 
+    return this._httpClient.post<BaseResponse<any>>(Configuration.APIs.LitigationRequest.ChangeCitizenData, input);
+  }
 }
