@@ -207,6 +207,7 @@ export namespace translations {
             delegationFile = "lawsuits.lawsuitDelegations.delegationFile",
             commercialRegistrationFile="lawsuits.lawsuitDelegations.commercialRegistrationFile",
             establishmentFile="lawsuits.lawsuitDelegations.establishmentFile",
+            establishmentLetterFile="lawsuits.lawsuitDelegations.establishmentLetterFile",
             representationFile="lawsuits.lawsuitDelegations.representationFile",
             decisionFile="lawsuits.lawsuitDelegations.decisionFile",
             custodyFile="lawsuits.lawsuitDelegations.custodyFile",
@@ -470,6 +471,7 @@ export namespace translations {
             Custodian = "lawsuits.createEditLawsuit.Custodian",
             ManagingDirector = "lawsuits.createEditLawsuit.ManagingDirector",
             BankruptcyTrustee = "lawsuits.createEditLawsuit.BankruptcyTrustee",
+            AssociationRepresentative = "lawsuits.createEditLawsuit.AssociationRepresentative",
             Lawyer = "lawsuits.createEditLawsuit.Lawyer",
             Agent = "lawsuits.createEditLawsuit.Agent",
             ReconciliationAndArbitration = "lawsuits.createEditLawsuit.ReconciliationAndArbitration",
@@ -487,7 +489,10 @@ export namespace translations {
             secondPartyCapacity = "lawsuits.createEditLawsuit.secondPartyCapacity",
             secondPartyName = "lawsuits.createEditLawsuit.secondPartyName",
             excamptionFile = "lawsuits.createEditLawsuit.excamptionFile",
-
+            additionalEmail = "lawsuits.createEditLawsuit.additionalEmail",
+            additionalMobile = "lawsuits.createEditLawsuit.additionalMobile",
+            addMobile = "lawsuits.createEditLawsuit.addMobile",
+            addEmail = "lawsuits.createEditLawsuit.addEmail",
 
         }
     }

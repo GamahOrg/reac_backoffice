@@ -66,6 +66,24 @@
         </div>
       </div>
     </div>
+    <div *ngIf="this.delegationRequest?.establishmentLetterFile">
+      <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.establishmentLetterFile|
+        translate}}</label>
+
+      <div class="flex-between px-2 py-3 rounded-2" style="background: #F7F7F7;">
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
+          <p class="v-small fw-6 op-9"> {{ this.delegationRequest?.establishmentLetterFile?.fileDescription }} </p>
+        </div>
+        <div class="flex-y-row gap-1">
+          <a [href]="baseUrl + this.delegationRequest?.establishmentLetterFile?.filePath" target="_blank">
+            <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
+          </a>
+          <a [href]="baseUrl + this.delegationRequest?.establishmentLetterFile?.filePath" download>
+          </a>
+        </div>
+      </div>
+    </div>
 
     <div *ngIf="this.delegationRequest?.representationFile">
       <label class="form-label required">{{translations.lawsuits.lawsuitDelegations.representationFile|

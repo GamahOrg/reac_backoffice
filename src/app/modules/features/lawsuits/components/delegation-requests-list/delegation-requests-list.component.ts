@@ -39,6 +39,7 @@ export class DelegationRequestsListComponent extends BaseComponent implements On
     { title: this.translations.lawsuits.createEditLawsuit.Custodian, value: 10 , type: 1}, //  ولي 
     { title: this.translations.lawsuits.createEditLawsuit.ManagingDirector, value: 11 , type: 2}, // عضو منتدب 
     { title: this.translations.lawsuits.createEditLawsuit.BankruptcyTrustee, value: 12 , type: 2}, //  أمين التفليسة 
+    { title: this.translations.lawsuits.createEditLawsuit.AssociationRepresentative, value: 13 , type: 2 }
   ];
 
 getOwnerTypeTitle(ownerTypeId: number): string {
