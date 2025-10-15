@@ -588,12 +588,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                                 icon: 'assets/images/icons/sidebar/book.svg',
                                 url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.AllPersonasForAdminReport,
                             },
-                            // {
-                            //     id: 'complains-link',
-                            //     title: this.translate.instant(translations.layout.sidebar.ComplaintsReport),
-                            //     icon: 'assets/images/icons/sidebar/book.svg',
-                            //     url:'/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.ComplaintReport,
-                            // },
+                            {
+                                id: 'complains-link',
+                                title: this.translate.instant(translations.layout.sidebar.ComplaintsReport),
+                                icon: 'assets/images/icons/sidebar/book.svg',
+                                url:'/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.ComplaintReport,
+                            },
     
                         ]
                     },
@@ -623,19 +623,19 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                            
                         ]
                 },
-                // {
-                //     id: 'complains-collapse',
-                //     title: this.translate.instant(translations.layout.sidebar.Complaints),
-                //     icon: 'assets/images/icons/sidebar/book.svg',
-                //     children: [
-                //         {
-                //             id: 'complains-link',
-                //             title: this.translate.instant(translations.layout.sidebar.ComplainsList),
-                //             icon: 'assets/images/icons/sidebar/book.svg',
-                //             url:'/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.Complaints,
-                //         },
-                //     ]
-                // }
+                {
+                    id: 'complains-collapse',
+                    title: this.translate.instant(translations.layout.sidebar.Complaints),
+                    icon: 'assets/images/icons/sidebar/book.svg',
+                    children: [
+                        {
+                            id: 'complains-link',
+                            title: this.translate.instant(translations.layout.sidebar.ComplainsList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url:'/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.Complaints,
+                        },
+                    ]
+                }
             );
 
         }
