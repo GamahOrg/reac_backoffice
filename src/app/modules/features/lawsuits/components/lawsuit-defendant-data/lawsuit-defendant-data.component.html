@@ -20,6 +20,7 @@
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/call.svg" alt="icon">
             <h6 class="small op-7">{{contract?.secondPartyCitizen.mobile || '--'}}</h6>
+            <button class="btn btn-xs btn-success ms-2" (click)="showAddMobile = true" *ngIf="this.showAddAdditionalData() && contract?.secondPartyCitizen.mobile2 == null || contract?.secondPartyCitizen.mobile2 == ''">+</button>
         </div>
     </div>
 
@@ -54,8 +55,44 @@
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
             <h6 class="small op-7">{{contract?.secondPartyCitizen.email || '--'}}</h6>
+            <button class="btn btn-xs btn-success ms-2" (click)="showAddEmail = true" *ngIf="this.showAddAdditionalData() && contract?.secondPartyCitizen.email2 == null || contract?.secondPartyCitizen.email2 == ''">+</button>
         </div>
-    </div>   
+    </div>
+
+    <div *ngIf="showAddMobile">
+        <div class="row mt-2">
+            <div class="col">
+                <input type="text" [(ngModel)]="additionalMobile" class="form-control" placeholder="{{ translations.lawsuits.createEditLawsuit.additionalMobile | translate }}">
+            </div>
+            
+        </div>
+        <button class="btn btn-primary btn-sm mt-2" (click)="saveAdditionalMobile()">{{ translations.actions.save | translate }}</button>
+        <button class="btn btn-secondary btn-sm mt-2 ms-2" (click)="showAddMobile = false">{{ translations.actions.cancel | translate }}</button>
+    </div>
+    <div *ngIf="showAddEmail">
+        <div class="row mt-2">
+            <div class="col">
+                <input type="email" [(ngModel)]="additionalEmail" class="form-control" placeholder="{{ translations.lawsuits.createEditLawsuit.additionalEmail | translate }}">
+            </div>
+        </div>
+        <button class="btn btn-primary btn-sm mt-2" (click)="saveAdditionalEmail()">{{ translations.actions.save | translate }}</button>
+        <button class="btn btn-secondary btn-sm mt-2 ms-2" (click)="showAddEmail = false">{{ translations.actions.cancel | translate }}</button>
+    </div>
+
+    <div *ngIf="contract?.secondPartyCitizen.mobile2 != null && contract?.secondPartyCitizen.mobile2 != ''">
+        <h6 class="small fw-5 mt-2">{{ translations.lawsuits.createEditLawsuit.additionalMobile | translate }}</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/call.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.mobile2}}</h6>
+        </div>
+    </div>
+    <div *ngIf="contract?.secondPartyCitizen.email2 != null && contract?.secondPartyCitizen.email2 != ''">
+        <h6 class="small fw-5 mt-2">{{ translations.lawsuits.createEditLawsuit.additionalEmail | translate }}</h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+            <h6 class="small op-7">{{contract?.secondPartyCitizen.email2}}</h6>
+        </div>
+    </div>
     
     <div *ngIf="contract?.secondPartyFacility?.arabicFacilityName">
         <h6 class="small fw-5"> {{ translations.establishments.establishmentsList.arabicEstablishmentName| translate }} </h6>
