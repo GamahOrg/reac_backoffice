@@ -12,6 +12,7 @@ export interface AuditngListItem {
     id: string,
     requestCode: string,
     createdOn: Date,
+    sentOn: Date,
     assignedOn: Date,
     firstPartyName: string,
     secondPartyName: string,
