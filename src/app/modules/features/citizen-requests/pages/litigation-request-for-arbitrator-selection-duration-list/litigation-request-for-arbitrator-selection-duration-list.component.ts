@@ -46,7 +46,7 @@ export class LitigationRequestForArbitratorSelectionDurationListComponent extend
     }
     private updateBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
-            { label: this._translate.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translate.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}` },
             { label: this._translate.instant(this.translations.layout.sidebar.litigationRequestForArbitratorSelectionDurationList), link: Configuration.pages.citizenRequests.litigationRequestForArbitratorSelectionDurationList },
         ])
     };

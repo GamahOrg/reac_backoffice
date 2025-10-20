@@ -88,7 +88,7 @@ export class UsersListComponent extends BaseComponent implements OnInit {
 
 private setBreadcrumb(): void {
   this._breadcrumbService.updateBreadcrumbListContent([
-    { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+      { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
     { label: this._translateService.instant(this.translations.layout.sidebar.employeeList), link: Configuration.modules.UsersManagement }
   ])
 }
