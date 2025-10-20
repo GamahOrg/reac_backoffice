@@ -164,7 +164,7 @@ export class LawsuitsDetailsForAdminComponent extends BaseComponent{
                     
                     this.lawsuitDetails = res.data as LawsuitItemDetails;
                     this._breadcrumbService.updateBreadcrumbListContent([
-                        { label: this._translateService.instant(this.translations.layout.sidebar.home) },
+                        { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
                         { label: this._translateService.instant(this.translations.lawsuits.lawsuitsList.lawsuitsList) },
                         { label: `${this._translateService.instant(this.translations.lawsuits.lawsuitDetails.lawsuit)} ${this._translateService.instant(this.lawsuitTypeTranslation[this.lawsuitDetails.contract.litigationRequestContractTypeId])} ${this._translateService.instant(this.translations.lawsuits.lawsuitDetails.number)} #${this.lawsuitDetails.requestCode}` },
                     ]);

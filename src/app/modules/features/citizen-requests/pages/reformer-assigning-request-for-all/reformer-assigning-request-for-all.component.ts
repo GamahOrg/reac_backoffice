@@ -68,7 +68,7 @@ export class ReformerAssigningRequestForAllComponent extends BaseComponent imple
 
     private setBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
-            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.reformerassigningrequestforall}` },
             { label: this._translateService.instant(this.translations.layout.sidebar.arbitratorRequestTaskList) }
         ])
     }
