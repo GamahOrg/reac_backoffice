@@ -32,7 +32,7 @@ export class ConfigrationArbitrationFeesSettingsComponent   extends BaseComponen
 
   private setBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
-      { label: this.translate.instant(this.translations.layout.sidebar.home), link: '/' },
+       { label: this.translate.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
       { label: this.translate.instant(this.translations.UsersManagement.ConfigurableArbitiration.ArbitirationRequestFees), link: Configuration.modules.UsersManagement }
     ])
   }

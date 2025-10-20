@@ -106,7 +106,7 @@ export class LawsuitsListForAdminComponent  extends BaseComponent implements OnI
 
   private setBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
-      { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+      { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
       { label: this._translateService.instant(this.translations.layout.sidebar.newLawsuitsList), link: Configuration.modules.lawsuits }
     ])
   }

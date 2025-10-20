@@ -56,7 +56,7 @@ export class AssignArbitrationHeadListComponent extends BaseComponent implements
 
     private setBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
-            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}` },
             { label: this._translateService.instant(this.translations.layout.sidebar.assignArbitrationHeadList) }
         ])
     }

@@ -79,7 +79,7 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
 
     private setBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
-            { label: this._translate.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translate.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}` },
             { label: this._translate.instant(this.translations.layout.sidebar.assignArbitrationHeadList) }
         ])
     }

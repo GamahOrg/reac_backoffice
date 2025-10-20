@@ -75,16 +75,16 @@ export class LoginComponent extends BaseComponent {
               setTimeout((app: any, res: BaseResponse<TokenResponse>) => {
                 this.showLoader = false;
                 if (res.data?.departmentType == DepartmentType.Review ) {
-                  app.navigateTolawsuitsModule()
+                  this.navigateTolawsuitsModule()
                 } else if (res.data?.departmentType == DepartmentType.Reconciliation) {
-                  app.navigateToaReformerAssigningRequestsModule()
+                  this.navigateToaReformerAssigningRequestsModule()
                 } else if (res.data?.departmentType == DepartmentType.Arbitration) {
-                  app.navigateToaArbitratorAssigningRequestsModule()
+                  this.navigateToaArbitratorAssigningRequestsModule()
                 }
                 else if(res.data?.departmentType == DepartmentType.SystemManagement){
-                  app.navigateToHomeModule()
+                  this.navigateToHomeModule()
                 }
-              }, 18000, this, res);
+              }, 10000, this, res);
 
 
 
