@@ -41,7 +41,7 @@ export class ArbitratorDecisionDetailsComponent extends BaseComponent implements
     
     private updateBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
-            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}` },
             { label: this._translateService.instant(this.translations.layout.sidebar.stopAndReleaseArbitrator), link: `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.stopAndReleaseArbitrator}` },
             { label: this._translateService.instant(this.translations.CitizenRequest.arbitratorDecisionDetails), link: Configuration.pages.citizenRequests.arbitratorDecisionDetails }
         ])

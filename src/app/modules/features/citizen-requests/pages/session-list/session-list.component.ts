@@ -48,7 +48,7 @@ export class SessionListComponent extends BaseComponent implements OnInit {
 
     private setBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
-            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.reformerassigningrequestforall}` },
             { label: this._translateService.instant(this.translations.layout.sidebar.sessionList) }
         ])
     }

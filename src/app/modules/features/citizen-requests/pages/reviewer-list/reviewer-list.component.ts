@@ -13,6 +13,7 @@ import { takeUntil } from 'rxjs';
 import { BaseResponse } from '@app/core/models/base-response';
 import { AssignEmployeePayload, EmployeeReviewer, LitigationRequestMircoForRequestReviewerDto } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
+import { Configuration } from '@app/core/configurations/shared.config';
 
 @Component({
     selector: 'app-reviewer-list',
@@ -56,7 +57,7 @@ export class ReviewerListComponent extends BaseComponent implements OnInit {
 
     private updateBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
-            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.reformerassigningrequestforall}` },
             { label: this._translateService.instant(this.translations.layout.sidebar.assignReviewers) }
         ])
     };

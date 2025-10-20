@@ -26,7 +26,7 @@ export class ConfigrationReconciliationFeesSettingsComponent  extends BaseCompon
 
   private setBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
-      { label: this.translate.instant(this.translations.layout.sidebar.home), link: '/' },
+       { label: this.translate.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
       { label: this.translate.instant(this.translations.UsersManagement.Configurable.ReconciliationAndRequestFees), link: Configuration.modules.UsersManagement }
     ])
   }

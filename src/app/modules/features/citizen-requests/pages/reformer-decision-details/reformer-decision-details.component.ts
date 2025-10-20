@@ -38,7 +38,7 @@ export class ReformerDecisionDetailsComponent extends BaseComponent implements O
 
     private updateBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
-            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.reformerassigningrequestforall}` },
             { label: this._translateService.instant(this.translations.layout.sidebar.stopAndReleaseReformer), link: `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.stopAndReleaseReformer}/` },
             { label: this._translateService.instant(this.translations.CitizenRequest.reformerDecisionDetails), link: Configuration.pages.citizenRequests.reformerDecisionDetails }
         ])

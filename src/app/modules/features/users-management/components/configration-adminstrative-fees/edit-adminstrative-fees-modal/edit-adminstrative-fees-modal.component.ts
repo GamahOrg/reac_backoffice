@@ -161,10 +161,8 @@ export class EditAdminstrativeFeesModalComponent extends BaseComponent implement
 
     private updateBreadcrumb(): void {
       this._breadcrumbService.updateBreadcrumbListContent([
-        {
-          label: this._translateService.instant(this.translations.layout.sidebar.home),
-          link: '/'
-        },
+       { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
+
         { label: this._translateService.instant(this.translations.UsersManagement.AdminstrationFees.listFees), link: `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.admistrativeFees}/`}
         ,{
           label: this._translateService.instant(this.translations.UsersManagement.AdminstrationFees.updateFees), link: Configuration.modules.UsersManagement 
