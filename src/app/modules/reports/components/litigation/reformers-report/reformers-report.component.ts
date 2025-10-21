@@ -11,6 +11,7 @@ import { PaginationService } from '@app/shared/services/pagination/pagination.se
 import { TranslateService } from '@ngx-translate/core';
 import { takeUntil } from 'rxjs';
 import * as XLSX from 'xlsx';
+import { Configuration } from '@app/core/configurations/shared.config';
 
 @Component({
   selector: 'app-reformers-report',
@@ -98,7 +99,7 @@ ngOnInit(): void {
 
   private updateBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
-      { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+      { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.reformerassigningrequestforall}` },
       { label: this._translateService.instant(this.translations.layout.sidebar.ReformersReport) }
     ])
   };
