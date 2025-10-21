@@ -11,6 +11,7 @@ import { PaginationService } from '@app/shared/services/pagination/pagination.se
 import { TranslateService } from '@ngx-translate/core';
 import { takeUntil } from 'rxjs';
 import * as XLSX from 'xlsx';
+import { Configuration } from '@app/core/configurations/shared.config';
 
 @Component({
   selector: 'app-arbitrators-report',
@@ -99,7 +100,7 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
 
   private updateBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
-      { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}` },
       { label: this._translateService.instant(this.translations.layout.sidebar.ArbitrationsReport) }
     ])
   };
