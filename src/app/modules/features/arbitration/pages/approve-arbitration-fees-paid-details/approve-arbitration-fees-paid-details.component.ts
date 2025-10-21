@@ -57,7 +57,7 @@ export class ApproveArbitrationFeesPaidDetailsComponent extends BaseComponent im
   }
   private updateBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
-      { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}` },
       { label: this._translateService.instant(this.translations.layout.sidebar.approveArbitrationFeesPaid), link: Configuration.pages.arbitration.approveArbitrationFeesPaidList },
       { label: this._translateService.instant(this.translations.arbitrator.approveArbitrationFeesPaidDetails) }
     ])
