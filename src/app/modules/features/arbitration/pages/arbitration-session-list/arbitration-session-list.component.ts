@@ -6,6 +6,7 @@ import { ArbitrationService } from '../../services/arbitration.service';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Configuration } from '@app/core/configurations/shared.config';
 
 @Component({
     selector: 'app-arbitration-session-list',
@@ -43,7 +44,7 @@ export class ArbitrationSessionListComponent extends BaseComponent implements On
 
     private setBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
-            { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}` },
             { label: this._translateService.instant(this.translations.layout.sidebar.sessionList) }
         ])
     }

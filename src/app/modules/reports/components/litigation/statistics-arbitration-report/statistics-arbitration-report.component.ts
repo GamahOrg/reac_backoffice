@@ -11,6 +11,7 @@ import { FilterVisibility } from '@app/shared/components/filter/components/filte
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ChartData, ChartOptions, ChartType } from 'chart.js';
+import { Configuration } from '@app/core/configurations/shared.config';
 
 @Component({
   selector: 'app-statistics-arbitration-report',
@@ -183,7 +184,7 @@ filterVisibility: FilterVisibility = {
 
   private setBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
-        { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}` },
         { label: this._translateService.instant(this.translations.layout.sidebar.litigationStatisticsِArbitirationReport) }
     ])
 }
