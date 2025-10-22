@@ -40,7 +40,7 @@ export class ArbitratorCountListComponent extends BaseComponent implements OnIni
   }
   private updateBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
-      { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+      { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}` },
       { label: this._translateService.instant(this.translations.layout.sidebar.arbitratorCount), link: Configuration.pages.arbitration.arbitratorCountList }
     ])
   };

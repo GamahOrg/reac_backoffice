@@ -128,7 +128,7 @@ export const Configuration = {
       ApproveArbitrationFeesPaid: '/api/LitigationRequest/ApproveArbitrationFeesPaid',
       GetLitigationRequestForFullAllReviewer: '/api/LitigationRequest/GetLitigationRequestForFullAllReviewer',
       GetReviewersLookup: "/api/LitigationRequest/GetReviewersLookup",
-
+      ChangeCitizenData: '/api/Citizen/ChangeCitizenData',
     },
     Delegation:{
       GetDelegationRequests:"/api/LitigationRequest/GetDelegationRequests",

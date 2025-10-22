@@ -31,7 +31,7 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
     requestId?: string;
     displayColumns: string[] = ['totalPriority','identityNumber', 'fullName','requestsCount',
         'experienceYears','arbitratorClass','mobile','email','status','brief'];
-    displayedColumns: string[] = ['identityNumber', 'fullName','requestsCount',
+    displayedColumns: string[] = ['plaintiffPriority','defendantPriority','identityNumber', 'fullName','requestsCount',
         'experienceYears','arbitratorClass','mobile','email','status','brief'];
   dataSource :any;
   searchForm!: FormGroup;
@@ -81,7 +81,7 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
       }
     private setBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
-            { label: this._translate.instant(this.translations.layout.sidebar.home), link: '/' },
+            { label: this._translate.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}` },
             { label: this._translate.instant(this.translations.layout.sidebar.assignArbitrationMemberList) }
         ])
     }
@@ -89,7 +89,7 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
 
     getLitigationRequestForSession(requestId: string) {
         this._determinearbitratorperiodService.GetLitigationRequestForAddArbitratorsNominationListByRequestId(requestId).subscribe(res => {
-             
+             debugger;
             this.litigationRequestForReportDto = res as LitigationRequestForAllArbitratorNominationListDto;
             this.dataSource = new MatTableDataSource<CitizenArbitratorShortStatusDto>(this.litigationRequestForReportDto.citizenArbitratorShortStatusDtos);
             this.dataSource.paginator = this.paginator;
