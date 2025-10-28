@@ -58,10 +58,7 @@ export class ArbitrationRequestCorrespondencesListComponent extends BaseComponen
 
     private updateBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
-            {
-                label: this._translateService.instant(this.translations.layout.sidebar.home),
-                link: '/'
-            },
+           { label: this._translateService.instant(this.translations.layout.sidebar.home),  link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
             {
                 label: this._translateService.instant(this.translations.layout.sidebar.arbitrationRequestCorrespondences),
                 link: `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}`

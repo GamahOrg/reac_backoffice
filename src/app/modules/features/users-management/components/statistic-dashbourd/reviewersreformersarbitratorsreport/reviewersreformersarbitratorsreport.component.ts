@@ -114,7 +114,7 @@ export class ReviewersreformersarbitratorsreportComponent extends BaseComponent 
 
     private updateBreadcrumb(): void {
       this._breadcrumbService.updateBreadcrumbListContent([
-        { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.reformerassigningrequestforall}` },
+        { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
         { label: this._translateService.instant(this.translations.layout.sidebar.allPersonasStatisticsForAdminReport) }
       ])
     };
