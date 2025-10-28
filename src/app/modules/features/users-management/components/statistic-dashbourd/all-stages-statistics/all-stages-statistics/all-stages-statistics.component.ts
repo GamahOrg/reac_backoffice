@@ -12,6 +12,7 @@ import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.se
 import { TranslateService } from '@ngx-translate/core';
 import { ChartData, ChartType, ChartOptions } from 'chart.js';
 import * as XLSX from 'xlsx';
+import { Configuration } from '@app/core/configurations/shared.config';
 
 @Component({
   selector: 'app-all-stages-statistics',
@@ -320,7 +321,7 @@ filterVisibility: FilterVisibility = {
 
   private setBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
-        { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+      { label: this._translateService.instant(this.translations.layout.sidebar.home),  link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
         { label: this._translateService.instant(this.translations.layout.sidebar.reports) }
     ])
 }
