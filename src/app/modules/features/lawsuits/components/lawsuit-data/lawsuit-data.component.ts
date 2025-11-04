@@ -8,6 +8,7 @@ import { LawsuitDefendantDataComponent } from '../lawsuit-defendant-data/lawsuit
 import { LawsuitClaimDataComponent } from '../lawsuit-claim-data/lawsuit-claim-data.component';
 import { LawsuitReviewerNotesComponent } from '../lawsuit-reviewer-notes/lawsuit-reviewer-notes.component';
 import { LawsuitDelegationDataComponent } from '../lawsuit-delegation-data/lawsuit-delegation-data.component';
+import { LawsuitDelegationDefendantDataComponent } from '../lawsuit-delegation-defendant-data/lawsuit-delegation-defendant-data/lawsuit-delegation-defendant-data.component';
 
 @Component({
     selector: 'app-lawsuit-data',
@@ -28,6 +29,13 @@ export class LawsuitDataComponent extends BaseComponent implements OnInit {
                 title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.delegationData),
                 icon: 'assets/images/icons/bookmarks.svg',
                 component: LawsuitDelegationDataComponent,
+                isVisible: true,
+                isRendered: true
+            },
+            {
+                title: this._translate.instant(this.translations.lawsuits.createEditLawsuit.delegationDefendantData),
+                icon: 'assets/images/icons/bookmarks.svg',
+                component: LawsuitDelegationDefendantDataComponent,
                 isVisible: true,
                 isRendered: true
             },
