@@ -393,6 +393,7 @@ export namespace translations {
             plaintiffData = "lawsuits.createEditLawsuit.plaintiffData",
             plaintiffData2 = "lawsuits.createEditLawsuit.plaintiffData2",
             delegationData = "lawsuits.createEditLawsuit.delegationData",
+            delegationDefendantData = "lawsuits.createEditLawsuit.delegationDefendantData",
             reviwerNotes = "lawsuits.createEditLawsuit.reviwerNotes",
             notesCreatedDate = "lawsuits.createEditLawsuit.notesCreatedDate",
             plaintiffName = "lawsuits.createEditLawsuit.plaintiffName",
