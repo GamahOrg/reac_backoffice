@@ -23,6 +23,7 @@ import { StorageService } from '@app/core/services/storage-service/storage.servi
 export class LawsuitDefendantDataComponent extends BaseComponent implements OnInit {
     _injector = inject(Injector);
     contract!: Contract | undefined;
+    defendantCitizen!: any;
     showAddMobile: boolean = false;
     showAddEmail: boolean = false;
     showAddContact: boolean = false;
@@ -52,7 +53,9 @@ export class LawsuitDefendantDataComponent extends BaseComponent implements OnIn
 
     private observeLawsuitRequestDetailsSignal() {
         effect(() => {
+            debugger;
             this.contract = this._lawsuitRequestDetailsService.litigationDetails()?.contract;
+            this.defendantCitizen = this._lawsuitRequestDetailsService.litigationDetails()?.defendantCitizen;
         }, {
             injector: this._injector,
             allowSignalWrites: true

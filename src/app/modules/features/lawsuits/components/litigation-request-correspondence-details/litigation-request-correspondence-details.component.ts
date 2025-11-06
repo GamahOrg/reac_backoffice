@@ -81,10 +81,8 @@ private forkJoinAllLookups(id:string): void {
 
 private updateBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
-        {
-            label: this._translate.instant(this.translations.layout.sidebar.home),
-            link: '/'
-        },
+            { label: this._translate.instant(this.translations.layout.sidebar.home),  link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
+
         {
             label: this._translate.instant(this.translations.layout.sidebar.arbitration),
             link: `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignarbitratorlist}`
