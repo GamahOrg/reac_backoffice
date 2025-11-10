@@ -26,6 +26,8 @@
           <th scope="col">{{translations.Reports.requestStatus | translate}}</th>
           <th scope="col">{{translations.Reports.litigationAmount | translate}}</th>
           <th scope="col">{{translations.Reports.contractAddress | translate}}</th>
+                     <th scope="col">{{translations.lawsuits.lawsuitsList.actions | translate}}</th>
+
         </tr>
       </thead>
       <tbody>
@@ -44,6 +46,14 @@
           <td>{{ item.requestStatus }}</td>
           <td>{{ item.litigationAmount }}</td>
           <td>{{ item.contractAddress }}</td>
+            <td>
+            <a [routerLink]="'/Lawsuits/lawsuit-details-for-report/' + item.requestCode"
+               class="btn btn-light">
+              <img src="assets/images/icons/eye.svg"
+                   alt="eye">
+              {{translations.actions.view| translate}}
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>

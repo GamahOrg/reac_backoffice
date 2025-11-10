@@ -14,6 +14,8 @@ import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.se
 import { forkJoin, takeUntil } from 'rxjs';
 import { SystemSettingsService } from '@app/shared/services/system-settings/system-settings.service';
 import { SysSettings } from '@app/shared/models/system-settings.model';
+import { CitizenShortDto } from '../../models/litigation-request-for-extend-period-request-dto';
+import { FacilityShortDto } from '@app/modules/features/arbitration/models/arbitration-request.model';
 
 @Component({
   selector: 'app-litigation-request-for-arbitrator-selection-duration-details',
@@ -25,8 +27,8 @@ export class LitigationRequestForArbitratorSelectionDurationDetailsComponent ext
   sysSettings?: SysSettings
   arbitratorSelectionDurationRequestPayload = {} as ArbitratorSelectionDurationRequestPayload
   requestId?: string;
-  defendantCitizen: import("d:/Work/REAC_BackOffice/REAC_BackOfficePortal/src/app/modules/features/citizen-requests/models/litigation-request-for-extend-period-request-dto").CitizenShortDto | undefined;
-  defendantFacility: import("d:/Work/REAC_BackOffice/REAC_BackOfficePortal/src/app/modules/features/citizen-requests/models/litigation-request-for-extend-period-request-dto").FacilityShortDto | null | undefined;
+  defendantCitizen: CitizenShortDto | undefined;
+  defendantFacility:FacilityShortDto | null | undefined;
   LitigationRequestForNotes: any;
   constructor(private activatedRoute: ActivatedRoute,
     private _translate: TranslateService,

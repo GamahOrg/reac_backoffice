@@ -18,6 +18,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import Swal from 'sweetalert2';
 import { BaseResponse } from '@app/core/models/base-response';
+import { CitizenShortDto } from '../../models/litigation-request-for-extend-period-request-dto';
+import { FacilityShortDto } from '@app/modules/features/arbitration/models/arbitration-request.model';
 
 
 @Component({
@@ -37,8 +39,8 @@ export class AssignArbitrationMemberDetailsComponent extends BaseComponent imple
   searchForm!: FormGroup;
   arbitratorMemberId: string = ""
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-    defendantCitizen: import("d:/Work/REAC_BackOffice/REAC_BackOfficePortal/src/app/modules/features/citizen-requests/models/litigation-request-for-extend-period-request-dto").CitizenShortDto | undefined;
-    defendantFacility: import("d:/Work/REAC_BackOffice/REAC_BackOfficePortal/src/app/modules/features/citizen-requests/models/litigation-request-for-extend-period-request-dto").FacilityShortDto | null | undefined;
+    defendantCitizen: CitizenShortDto | undefined;
+    defendantFacility: FacilityShortDto | null | undefined;
     constructor(private activatedRoute: ActivatedRoute,
         private _translate: TranslateService,
         private _determinearbitratorperiodService: DeterminearbitratorperiodService,

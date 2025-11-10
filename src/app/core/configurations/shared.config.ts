@@ -7,23 +7,20 @@ export const Configuration = {
   environments: {
     development: {
       production: false,
-            baseURL: "https://dev-reac-api.rega.gov.sa",
-            securityURl: "https://dev-reac-sso.rega.gov.sa",
+      baseURL: "https://localhost:7156",
+      securityURl: "http://localhost:7144",
+      // securityURl: "http://192.168.194.183:222",
+      // baseURL: "http://192.168.194.183:3333",
     },
     testingAndStaging: {
       production: true,
-            baseURL: "https://staging-reac-api.rega.gov.sa",
-            securityURl: "https://staging-reac-sso.rega.gov.sa",
-            refreshTokenURl: "https://staging-reac-sso.rega.gov.sa",
-
-
+      baseURL: "http://192.168.194.183:3333",
+      securityURl: "http://192.168.194.183:222",
     },
     production: {
       production: true,
-            baseURL: "https://reac-api.rega.gov.sa",
-            securityURl: "https://reac-sso.rega.gov.sa",
-            refreshTokenURl: "https://reac-sso.rega.gov.sa",
-
+      baseURL: "http://192.168.194.183:3333",
+      securityURl: "http://192.168.194.183:222",
     },
   },
   APIs: {
@@ -129,6 +126,8 @@ export const Configuration = {
       GetLitigationRequestForFullAllReviewer: '/api/LitigationRequest/GetLitigationRequestForFullAllReviewer',
       GetReviewersLookup: "/api/LitigationRequest/GetReviewersLookup",
       ChangeCitizenData: '/api/Citizen/ChangeCitizenData',
+      GetLitigationByCode: '/api/LitigationRequest/GetLitigationByCodeForReport',
+
     },
     Delegation:{
       GetDelegationRequests:"/api/LitigationRequest/GetDelegationRequests",
@@ -306,6 +305,8 @@ export const Configuration = {
       DelegationRequestDetails: 'delegation-requests-details',
       StopModifyDelegators: 'stop-modify-delegators',
       assignDelegators: 'assign-delegators',
+      lawsuitDetailsForReport: "lawsuit-details-for-report",
+
     },
     litigation: {
       litigationRequestCorrespondencesList: "litigation-request-correspondences-list",

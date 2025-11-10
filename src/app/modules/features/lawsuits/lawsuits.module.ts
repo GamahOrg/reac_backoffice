@@ -49,6 +49,7 @@ import { DelegationRequestDetailsComponent } from './components/delegation-reque
 import { DelegatorsStopModifyListComponent } from './components/delegators-stop-modify-list/delegators-stop-modify-list/delegators-stop-modify-list.component';
 import { DelegatorsAssignListComponent } from './components/delegators-assign-list/delegators-assign-list/delegators-assign-list.component';
 import { LawsuitDefendantDataComponent } from './components/lawsuit-defendant-data/lawsuit-defendant-data.component';
+import { LawsuitDetailsForReportComponent } from './pages/lawsuit-details-for-report/lawsuit-details-for-report.component';
 import { LawsuitDelegationDefendantDataComponent } from './components/lawsuit-delegation-defendant-data/lawsuit-delegation-defendant-data/lawsuit-delegation-defendant-data.component';
 
 @NgModule({
@@ -76,6 +77,7 @@ import { LawsuitDelegationDefendantDataComponent } from './components/lawsuit-de
         DelegationRequestDetailsComponent,
         DelegatorsStopModifyListComponent,
         DelegatorsAssignListComponent,
+        LawsuitDetailsForReportComponent
     ],
     providers: [
         LawsuitListService,

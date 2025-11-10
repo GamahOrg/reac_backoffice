@@ -414,9 +414,11 @@ export class ApproveArbitrationFeesPaidDetailsComponent extends BaseComponent im
   }
 
   ApprovePayment(modal: any) {
+    
     this._arbitrationService.ApproveArbitrationFeesPaid(this.requestId).subscribe(res => {
       if (res.isDone) {
         modal.dismiss()
+        debugger;
         this._toastrNotificationService.showSuccess(this._translateService.instant(this.translations.general.successfullySave))
         this.navigateToList()
       } else {
