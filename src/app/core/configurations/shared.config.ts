@@ -7,20 +7,22 @@ export const Configuration = {
   environments: {
     development: {
       production: false,
-      baseURL: "https://localhost:7156",
-      securityURl: "http://localhost:7144",
+      baseURL: "https://dev-reac-api.rega.gov.sa",
+            securityURl: "https://dev-reac-sso.rega.gov.sa",
       // securityURl: "http://192.168.194.183:222",
       // baseURL: "http://192.168.194.183:3333",
     },
     testingAndStaging: {
       production: true,
-      baseURL: "http://192.168.194.183:3333",
-      securityURl: "http://192.168.194.183:222",
+      baseURL: "https://staging-reac-api.rega.gov.sa",
+            securityURl: "https://staging-reac-sso.rega.gov.sa",
+            refreshTokenURl: "https://staging-reac-sso.rega.gov.sa",
     },
     production: {
       production: true,
-      baseURL: "http://192.168.194.183:3333",
-      securityURl: "http://192.168.194.183:222",
+      baseURL: "https://reac-api.rega.gov.sa",
+            securityURl: "https://reac-sso.rega.gov.sa",
+            refreshTokenURl: "https://reac-sso.rega.gov.sa",
     },
   },
   APIs: {
