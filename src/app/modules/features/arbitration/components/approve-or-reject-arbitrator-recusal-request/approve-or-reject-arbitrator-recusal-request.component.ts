@@ -363,7 +363,7 @@ export class ApproveOrRejectArbitratorRecusalRequestComponent extends BaseCompon
                 {
                     icon: 'assets/images/icons/lawsuit-details/call.svg',
                     title: this._translate.instant(this.translations.LitigationRequest.secondPartyCapacity),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+                    value: this.litigationRequestForSessionDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
                     isDownload: false,
                 },
             ]
@@ -417,7 +417,7 @@ export class ApproveOrRejectArbitratorRecusalRequestComponent extends BaseCompon
                 {
                     icon: 'assets/images/icons/lawsuit-details/call.svg',
                     title: this._translate.instant(this.translations.LitigationRequest.secondPartyCapacity),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+                    value: this.litigationRequestForSessionDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
                     isDownload: false,
                 },
             ]

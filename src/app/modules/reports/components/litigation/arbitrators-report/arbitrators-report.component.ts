@@ -53,8 +53,10 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
     litigationRequestStatusIds: false,
     litigationRequestAmountId: false,
     litigationRequestStageIds: false,
-    reviewerName: true,
-    reviewerStatus: true,
+    reviewerName: false,
+    arbitratorName: true,
+    arbitratorStatus: true,
+    reviewerStatus: false,
     experienceYears: true
   };
 

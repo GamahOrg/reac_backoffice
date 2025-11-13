@@ -3,7 +3,7 @@ import { StatisticDashbourdService } from '../../../services/statisticDashbourdS
 import { ChartData } from 'chart.js';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DashbourdRequestDto } from '../../../models/dashbourdRequestDto';
-declare let html2pdf: any;
+import html2pdf from 'html2pdf.js';
 @Component({
   selector: 'app-types-status-dashbourd',
   templateUrl: './types-status-dashbourd.component.html',

@@ -957,6 +957,8 @@
         "arbitrators" : "المحكمون",
         "arbitratorsClass" : "فئة المحكم",
         "reviewerName":"اسم المدقق",
+        "reformerName":"اسم المصلح",
+        "arbitratorName":"اسم المحكم",
         "reviewerStatus":"حالة المدقق",
         "status":"الحالة",
         "experienceYears":"عدد سنوات الخبرة"

@@ -350,7 +350,7 @@ export class ApproveArbitrationFeesPaidDetailsComponent extends BaseComponent im
                 {
                     icon: 'assets/images/icons/lawsuit-details/call.svg',
                     title: this._translateService.instant(this.translations.LitigationRequest.secondPartyCapacity),
-                    value: this.arbitratorsCountByRequestId?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+                    value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
                     isDownload: false,
                 },
             ]
@@ -404,7 +404,7 @@ export class ApproveArbitrationFeesPaidDetailsComponent extends BaseComponent im
                 {
                     icon: 'assets/images/icons/lawsuit-details/call.svg',
                     title: this._translateService.instant(this.translations.LitigationRequest.secondPartyCapacity),
-                    value: this.arbitratorsCountByRequestId?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+                    value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
                     isDownload: false,
                 },
             ]

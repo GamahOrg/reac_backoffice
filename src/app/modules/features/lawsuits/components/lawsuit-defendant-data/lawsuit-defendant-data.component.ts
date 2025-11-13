@@ -24,6 +24,7 @@ export class LawsuitDefendantDataComponent extends BaseComponent implements OnIn
     _injector = inject(Injector);
     contract!: Contract | undefined;
     defendantCitizen!: any;
+    defendantFacility!: any;
     showAddMobile: boolean = false;
     showAddEmail: boolean = false;
     showAddContact: boolean = false;
@@ -56,6 +57,7 @@ export class LawsuitDefendantDataComponent extends BaseComponent implements OnIn
             debugger;
             this.contract = this._lawsuitRequestDetailsService.litigationDetails()?.contract;
             this.defendantCitizen = this._lawsuitRequestDetailsService.litigationDetails()?.defendantCitizen;
+            this.defendantFacility = this._lawsuitRequestDetailsService.litigationDetails()?.defendantFacility;
         }, {
             injector: this._injector,
             allowSignalWrites: true

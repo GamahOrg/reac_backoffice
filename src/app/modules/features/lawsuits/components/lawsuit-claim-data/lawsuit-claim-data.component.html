@@ -81,20 +81,20 @@
     </div>
 
     <div>
-        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.contractAddress | translate }} </h6>
-        <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/location.svg"
-                 alt="icon">
-            <h6 class="small op-7">{{litigationDetails?.contractAddress || '--'}}</h6>
-        </div>
+    <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.contractAddress | translate }} </h6>
+    <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/location.svg"
+                alt="icon">
+        <h6 class="small op-7">{{litigationDetails?.contractAddress || '--'}}</h6>
     </div>
+</div>
 
-    <div>
-        <h6 class="small fw-5"> {{translations.CitizenRequest.citizenRequestType | translate}} </h6>
-        <div class="flex-y-row gap-2">
-            <img src="assets/images/icons/lawsuit-details/book.svg"
-                 alt="icon">
-            <h6 class="small op-7">{{litigationDetails?.litigationRequestCategory?.categoryName || '--'}}</h6>
+<div>
+    <h6 class="small fw-5"> {{translations.CitizenRequest.citizenRequestType | translate}} </h6>
+    <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/book.svg"
+                alt="icon">
+        <h6 class="small op-7">{{litigationDetails?.litigationRequestCategory?.categoryName || '--'}}</h6>
         </div>
     </div>
 

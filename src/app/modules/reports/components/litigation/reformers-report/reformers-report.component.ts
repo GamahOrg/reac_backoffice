@@ -44,6 +44,7 @@ private _paginationService = inject(PaginationService);
   filterVisibility: FilterVisibility = {
         employee: false,
         reformers: false,
+        reformersStatus: true,
         arbitrators: false,
         requestCode: false,
         fromDate: false,
@@ -54,8 +55,9 @@ private _paginationService = inject(PaginationService);
         litigationRequestStatusIds: false,
         litigationRequestAmountId: false,
         litigationRequestStageIds: false,
-        reviewerName: true, 
-        reviewerStatus: true,
+        reviewerName: false, 
+        reformerName: true, 
+        reviewerStatus: false,
         experienceYears: true
       };
     
@@ -108,16 +110,16 @@ ngOnInit(): void {
       onFilterChange(values: any) {
         
         this.filterDashbourdRequest = {
-          reformerName: values.reviewerName,
-          reformerStatus: values.reviewerStatus,
+          reformerName: values.reformerName,
+          reformerStatus: values.reformersStatus,
           isAdmin: this.isAdmin,
           skip: 0,
           take: 100 // Fetch all records for the dashboard
         };
         // You can now use these values to fetch data or perform other actions
         this.filterRequest = {
-          reformerName: values.reviewerName,
-          reformerStatus: values.reviewerStatus,
+          reformerName: values.reformerName,
+          reformerStatus: values.reformersStatus,
           isAdmin: this.isAdmin,
           skip: (this.pagintationData.currentPage - 1) * this.pagintationData.pageSize,
           take: this.pagintationData.pageSize

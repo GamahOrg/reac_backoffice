@@ -8,7 +8,7 @@ import { FilterVisibility } from '@app/shared/components/filter/components/filte
 import { BreadcrumbService } from '@app/shared/services/breadcrumb/breadcrumb.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Chart, ChartType } from 'chart.js';
-declare let html2pdf: any;
+import html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-review-dashbourd',

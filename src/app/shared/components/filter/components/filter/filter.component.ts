@@ -15,10 +15,14 @@ import { take, takeUntil } from 'rxjs';
 
 export interface FilterVisibility {
   reviewerName: boolean;
+  reformerName?: boolean;
+  arbitratorName?: boolean;
   reviewerStatus: boolean;
+  arbitratorStatus?: boolean;
   requestCode: boolean;
   employee: boolean;
   reformers: boolean;
+  reformersStatus?: boolean;
   arbitrators: boolean;
   fromDate: boolean;
   toDate: boolean;
@@ -53,7 +57,10 @@ export class FilterComponent extends BaseComponent implements OnInit {
     litigationRequestStageIds: false,
 
     reviewerName: false,
+    arbitratorName: false,
+    reformerName: false,
     reviewerStatus: false,
+    arbitratorStatus: false,
     experienceYears: false,
 
     arbitratorClass: false, // Assuming this is a typo and should be part of the visible filters
@@ -78,7 +85,9 @@ export class FilterComponent extends BaseComponent implements OnInit {
 
   filterForm: FormGroup = this.fb.group({
     reviewerName: [null], // string
+    reformerName: [null], // string
     reviewerStatus: [null],
+    reformersStatus: [null],
     experienceYears: [null], // string
     requestCode: [null], // string
     fromDate: [null], // Date or string
