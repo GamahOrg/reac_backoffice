@@ -13,7 +13,7 @@ import { ReviewReformerArbitratorDto, ReviewReformerArbitratorFilterDto } from '
 import { Chart, ChartConfiguration, ChartType } from 'chart.js';
 import * as XLSX from 'xlsx';
 import { Configuration } from '@app/core/configurations/shared.config';
-declare let html2pdf: any;
+import html2pdf from 'html2pdf.js';
 @Component({
   selector: 'app-reviewersreformersarbitratorsreport',
   templateUrl: './reviewersreformersarbitratorsreport.component.html',

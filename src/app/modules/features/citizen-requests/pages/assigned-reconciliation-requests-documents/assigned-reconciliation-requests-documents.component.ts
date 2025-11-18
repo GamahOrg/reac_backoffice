@@ -5,7 +5,7 @@ import { environment } from '@environment/environment';
 import { BaseComponent } from '@app/shared/components/base/base.component';
 import { LitigationReconciliationTaskAcceptOrRejectDocumentDto } from '../../models/LitigationReconciliationTaskAcceptOrRejectDocumentDto';
 import { ArbitrationDocumentService } from '@app/modules/features/arbitration/services/arbitrator-document/arbitrator-document.service';
-declare let html2pdf: any;
+import html2pdf from 'html2pdf.js';
 @Component({
   selector: 'app-assigned-reconciliation-requests-documents',
   templateUrl: './assigned-reconciliation-requests-documents.component.html',

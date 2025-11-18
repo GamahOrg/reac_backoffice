@@ -34,6 +34,8 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
     arbitratorChairmanId: string = ""
     @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
     searchForm!: FormGroup;
+    defendantCitizen: any;
+    defendantFacility: any;
     constructor(private activatedRoute: ActivatedRoute,
         private _translate: TranslateService,
         private _determinearbitratorperiodService: DeterminearbitratorperiodService,
@@ -249,30 +251,122 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
 
     fillsecondPartyData() {
 
-        if (this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyFacility) {
+        // if (this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyFacility) {
+        //     this.secondParty = [
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/user.svg',
+        //             title: this._translate.instant(this.translations.LitigationRequest.facilityCode),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyFacility.code ?? '',
+        //             isDownload: false,
+        //         },
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/buliding.svg',
+        //             title: this._translate.instant(this.translations.LitigationRequest.facilityName),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyFacility.arabicFacilityName ?? '',
+        //             isDownload: false,
+        //         },
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/call.svg',
+        //             title: this._translate.instant(this.translations.LitigationRequest.commercialRegisterNumber),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyFacility.commercialRegisterNumber ?? '',
+        //             isDownload: false,
+        //         },
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/call.svg',
+        //             title: this._translate.instant(this.translations.LitigationRequest.facility700Number),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyFacility.facility700Number ?? '',
+        //             isDownload: false,
+        //         },
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/call.svg',
+        //             title: this._translate.instant(this.translations.LitigationRequest.secondPartyCapacity),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+        //             isDownload: false,
+        //         },
+        //     ]
+        // }
+
+        // if (this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen) {
+
+        //     this.secondParty = [
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/user.svg',
+        //             title: this._translate.instant(this.translations.arbitrator.fullName),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.fullName ?? '',
+        //             isDownload: false,
+        //         },
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/buliding.svg',
+        //             title: this._translate.instant(this.translations.arbitrator.identityNumber),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.identityNumber ?? '',
+        //             isDownload: false,
+        //         },
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/call.svg',
+        //             title: this._translate.instant(this.translations.arbitrator.workPhone),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.workTelephone ?? '',
+        //             isDownload: false,
+        //         },
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/call.svg',
+        //             title: this._translate.instant(this.translations.arbitrator.homePhone),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.homeTelephone ?? '',
+        //             isDownload: false,
+        //         },
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/send-square.svg',
+        //             title: this._translate.instant(this.translations.arbitrator.fax),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.fax ?? '',
+        //             isDownload: false,
+        //         },
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/location.svg',
+        //             title: this._translate.instant(this.translations.auth.email),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.email ?? '',
+        //             isDownload: false,
+        //         },
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/buliding.svg',
+        //             title: this._translate.instant(this.translations.auth.phoneNumber),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.mobile ?? '',
+        //             isDownload: false,
+        //         },
+        //         {
+        //             icon: 'assets/images/icons/lawsuit-details/call.svg',
+        //             title: this._translate.instant(this.translations.LitigationRequest.secondPartyCapacity),
+        //             value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+        //             isDownload: false,
+        //         },
+        //     ]
+        // }
+
+            this.defendantCitizen = this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantCitizen;
+        this.defendantFacility = this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility;
+
+        if (this.defendantFacility) {
             this.secondParty = [
                 {
                     icon: 'assets/images/icons/lawsuit-details/user.svg',
                     title: this._translate.instant(this.translations.LitigationRequest.facilityCode),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyFacility.code ?? '',
+                    value: this.defendantFacility?.code ?? '',
                     isDownload: false,
                 },
                 {
                     icon: 'assets/images/icons/lawsuit-details/buliding.svg',
                     title: this._translate.instant(this.translations.LitigationRequest.facilityName),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyFacility.arabicFacilityName ?? '',
+                    value: this.defendantFacility?.arabicFacilityName ?? '',
                     isDownload: false,
                 },
                 {
                     icon: 'assets/images/icons/lawsuit-details/call.svg',
                     title: this._translate.instant(this.translations.LitigationRequest.commercialRegisterNumber),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyFacility.commercialRegisterNumber ?? '',
+                    value: this.defendantFacility?.commercialRegisterNumber ?? '',
                     isDownload: false,
                 },
                 {
                     icon: 'assets/images/icons/lawsuit-details/call.svg',
                     title: this._translate.instant(this.translations.LitigationRequest.facility700Number),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyFacility.facility700Number ?? '',
+                    value: this.defendantFacility?.facility700Number ?? '',
                     isDownload: false,
                 },
                 {
@@ -284,49 +378,49 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
             ]
         }
 
-        if (this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen) {
+        if (this.defendantCitizen) {
 
             this.secondParty = [
                 {
                     icon: 'assets/images/icons/lawsuit-details/user.svg',
                     title: this._translate.instant(this.translations.arbitrator.fullName),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.fullName ?? '',
+                    value: this.defendantCitizen?.fullName ?? '',
                     isDownload: false,
                 },
                 {
                     icon: 'assets/images/icons/lawsuit-details/buliding.svg',
                     title: this._translate.instant(this.translations.arbitrator.identityNumber),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.identityNumber ?? '',
+                    value: this.defendantCitizen?.identityNumber ?? '',
                     isDownload: false,
                 },
                 {
                     icon: 'assets/images/icons/lawsuit-details/call.svg',
                     title: this._translate.instant(this.translations.arbitrator.workPhone),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.workTelephone ?? '',
+                    value: this.defendantCitizen?.mobile ?? '',
                     isDownload: false,
                 },
                 {
                     icon: 'assets/images/icons/lawsuit-details/call.svg',
                     title: this._translate.instant(this.translations.arbitrator.homePhone),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.homeTelephone ?? '',
+                    value: this.defendantCitizen?.homeTelephone ?? '',
                     isDownload: false,
                 },
                 {
                     icon: 'assets/images/icons/lawsuit-details/send-square.svg',
                     title: this._translate.instant(this.translations.arbitrator.fax),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.fax ?? '',
+                    value: this.defendantCitizen?.fax ?? '',
                     isDownload: false,
                 },
                 {
                     icon: 'assets/images/icons/lawsuit-details/location.svg',
                     title: this._translate.instant(this.translations.auth.email),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.email ?? '',
+                    value: this.defendantCitizen?.email ?? '',
                     isDownload: false,
                 },
                 {
                     icon: 'assets/images/icons/lawsuit-details/buliding.svg',
                     title: this._translate.instant(this.translations.auth.phoneNumber),
-                    value: this.litigationRequestForReportDto?.litigationRequestShortDto?.contract.secondPartyCitizen.mobile ?? '',
+                    value: this.defendantCitizen?.mobile ?? '',
                     isDownload: false,
                 },
                 {
@@ -337,6 +431,7 @@ export class AssignArbitrationHeadDetailsComponent extends BaseComponent impleme
                 },
             ]
         }
+
 
     }
 

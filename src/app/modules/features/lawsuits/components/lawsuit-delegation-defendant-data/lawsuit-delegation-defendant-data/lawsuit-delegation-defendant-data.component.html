@@ -171,7 +171,7 @@
       <div class="flex-y-row gap-2">
         <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
         <h6 class="small op-7">
-          {{this._lawsuitRequestDetailsService?.litigationDetails()?.contract?.firstPartyCapacity || "--" }}
+          {{this.delegationData?.individualCapacity || "مفوض عن المدعي عليه" }}
         </h6>
       </div>
     </div>
@@ -222,6 +222,26 @@
   <h1 class="mb-1 small required fw-6 mt-6">
     بيانات المدعي شركة
   </h1>
+
+  <div>
+      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualIdentityNumber | translate}}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.delegatorCitizen?.identityNumber || "--" }}
+        </h6>
+      </div>
+    </div>
+
+    <div>
+      <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.delegatorName | translate}}</h6>
+      <div class="flex-y-row gap-2">
+        <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+        <h6 class="small op-7">
+          {{this.delegationData?.delegatorCitizen?.fullName || "--" }}
+        </h6>
+      </div>
+    </div>
 
   <div class="grid-3 mt-5">
     <div>

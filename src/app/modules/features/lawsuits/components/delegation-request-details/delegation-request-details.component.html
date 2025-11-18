@@ -240,6 +240,27 @@
   
     <div class="grid-3 mt-5">
       <div>
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.delegatorName | translate }}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.delegatorCitizen?.fullName || "--" }}
+          </h6>
+        </div>
+      </div>
+
+      <div>
+        <h6 class="small fw-5">{{translations.lawsuits.lawsuitDelegations.individualIdentityNumber | translate}}</h6>
+        <div class="flex-y-row gap-2">
+          <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
+          <h6 class="small op-7">
+            {{this.delegationRequest?.delegatorCitizen?.identityNumber || "--" }}
+          </h6>
+        </div>
+      </div>
+
+
+      <div>
         <h6 class="small fw-5">{{translations.establishments.establishmentsDetails.arabicFacilityName | translate }}</h6>
         <div class="flex-y-row gap-2">
           <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">

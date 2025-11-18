@@ -41,6 +41,9 @@ export class ApproveArbitrationFeesPaidDetailsComponent extends BaseComponent im
   showValidation: boolean = false
   approveArbitrationFeesPaidListURL: string = `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.approveArbitrationFeesPaidList}/`
   countDropdown: ArbitratorCountResponseDto[] = []
+  defendantCitizen: any;
+  defendantFacility: any;
+  arbitratorsCountByRequestId: any;
 
   ngOnInit(): void {
     this.updateBreadcrumb();
@@ -226,101 +229,196 @@ export class ApproveArbitrationFeesPaidDetailsComponent extends BaseComponent im
 
   }
   private fillsecondPartyData(): void {
-    if (this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyFacility) {
-      this.secondParty = [
-        {
-          icon: 'assets/images/icons/lawsuit-details/user.svg',
-          title: this._translateService.instant(this.translations.LitigationRequest.facilityCode),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyFacility.code ?? '',
-          isDownload: false,
-        },
-        {
-          icon: 'assets/images/icons/lawsuit-details/buliding.svg',
-          title: this._translateService.instant(this.translations.LitigationRequest.facilityName),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyFacility.arabicFacilityName ?? '',
-          isDownload: false,
-        },
-        {
-          icon: 'assets/images/icons/lawsuit-details/call.svg',
-          title: this._translateService.instant(this.translations.LitigationRequest.commercialRegisterNumber),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyFacility.commercialRegisterNumber ?? '',
-          isDownload: false,
-        },
-        {
-          icon: 'assets/images/icons/lawsuit-details/call.svg',
-          title: this._translateService.instant(this.translations.LitigationRequest.facility700Number),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyFacility.facility700Number ?? '',
-          isDownload: false,
-        },
-        {
-          icon: 'assets/images/icons/lawsuit-details/call.svg',
-          title: this._translateService.instant(this.translations.LitigationRequest.secondPartyCapacity),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
-          isDownload: false,
-        },
-      ]
-    }
+    // if (this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyFacility) {
+    //   this.secondParty = [
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/user.svg',
+    //       title: this._translateService.instant(this.translations.LitigationRequest.facilityCode),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyFacility.code ?? '',
+    //       isDownload: false,
+    //     },
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/buliding.svg',
+    //       title: this._translateService.instant(this.translations.LitigationRequest.facilityName),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyFacility.arabicFacilityName ?? '',
+    //       isDownload: false,
+    //     },
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/call.svg',
+    //       title: this._translateService.instant(this.translations.LitigationRequest.commercialRegisterNumber),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyFacility.commercialRegisterNumber ?? '',
+    //       isDownload: false,
+    //     },
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/call.svg',
+    //       title: this._translateService.instant(this.translations.LitigationRequest.facility700Number),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyFacility.facility700Number ?? '',
+    //       isDownload: false,
+    //     },
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/call.svg',
+    //       title: this._translateService.instant(this.translations.LitigationRequest.secondPartyCapacity),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+    //       isDownload: false,
+    //     },
+    //   ]
+    // }
 
-    if (this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen) {
+    // if (this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen) {
 
-      this.secondParty = [
-        {
-          icon: 'assets/images/icons/lawsuit-details/user.svg',
-          title: this._translateService.instant(this.translations.arbitrator.fullName),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.fullName ?? '',
-          isDownload: false,
-        },
-        {
-          icon: 'assets/images/icons/lawsuit-details/buliding.svg',
-          title: this._translateService.instant(this.translations.arbitrator.identityNumber),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.identityNumber ?? '',
-          isDownload: false,
-        },
-        {
-          icon: 'assets/images/icons/lawsuit-details/call.svg',
-          title: this._translateService.instant(this.translations.arbitrator.workPhone),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.workTelephone ?? '',
-          isDownload: false,
-        },
-        {
-          icon: 'assets/images/icons/lawsuit-details/call.svg',
-          title: this._translateService.instant(this.translations.arbitrator.homePhone),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.homeTelephone ?? '',
-          isDownload: false,
-        },
-        {
-          icon: 'assets/images/icons/lawsuit-details/send-square.svg',
-          title: this._translateService.instant(this.translations.arbitrator.fax),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.fax ?? '',
-          isDownload: false,
-        },
-        {
-          icon: 'assets/images/icons/lawsuit-details/location.svg',
-          title: this._translateService.instant(this.translations.auth.email),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.email ?? '',
-          isDownload: false,
-        },
-        {
-          icon: 'assets/images/icons/lawsuit-details/buliding.svg',
-          title: this._translateService.instant(this.translations.auth.phoneNumber),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.mobile ?? '',
-          isDownload: false,
-        },
-        {
-          icon: 'assets/images/icons/lawsuit-details/call.svg',
-          title: this._translateService.instant(this.translations.LitigationRequest.secondPartyCapacity),
-          value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
-          isDownload: false,
-        },
-      ]
-    }
+    //   this.secondParty = [
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/user.svg',
+    //       title: this._translateService.instant(this.translations.arbitrator.fullName),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.fullName ?? '',
+    //       isDownload: false,
+    //     },
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/buliding.svg',
+    //       title: this._translateService.instant(this.translations.arbitrator.identityNumber),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.identityNumber ?? '',
+    //       isDownload: false,
+    //     },
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/call.svg',
+    //       title: this._translateService.instant(this.translations.arbitrator.workPhone),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.workTelephone ?? '',
+    //       isDownload: false,
+    //     },
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/call.svg',
+    //       title: this._translateService.instant(this.translations.arbitrator.homePhone),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.homeTelephone ?? '',
+    //       isDownload: false,
+    //     },
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/send-square.svg',
+    //       title: this._translateService.instant(this.translations.arbitrator.fax),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.fax ?? '',
+    //       isDownload: false,
+    //     },
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/location.svg',
+    //       title: this._translateService.instant(this.translations.auth.email),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.email ?? '',
+    //       isDownload: false,
+    //     },
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/buliding.svg',
+    //       title: this._translateService.instant(this.translations.auth.phoneNumber),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCitizen.mobile ?? '',
+    //       isDownload: false,
+    //     },
+    //     {
+    //       icon: 'assets/images/icons/lawsuit-details/call.svg',
+    //       title: this._translateService.instant(this.translations.LitigationRequest.secondPartyCapacity),
+    //       value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+    //       isDownload: false,
+    //     },
+    //   ]
+    // }
+
+    this.defendantCitizen = this.arbitratorsRequest?.litigationRequestShortDto?.defendantCitizen;
+        this.defendantFacility = this.arbitratorsRequest?.litigationRequestShortDto?.defendantFacility;
+
+        if (this.defendantFacility) {
+            this.secondParty = [
+                {
+                    icon: 'assets/images/icons/lawsuit-details/user.svg',
+                    title: this._translateService.instant(this.translations.LitigationRequest.facilityCode),
+                    value: this.defendantFacility?.code ?? '',
+                    isDownload: false,
+                },
+                {
+                    icon: 'assets/images/icons/lawsuit-details/buliding.svg',
+                    title: this._translateService.instant(this.translations.LitigationRequest.facilityName),
+                    value: this.defendantFacility?.arabicFacilityName ?? '',
+                    isDownload: false,
+                },
+                {
+                    icon: 'assets/images/icons/lawsuit-details/call.svg',
+                    title: this._translateService.instant(this.translations.LitigationRequest.commercialRegisterNumber),
+                    value: this.defendantFacility?.commercialRegisterNumber ?? '',
+                    isDownload: false,
+                },
+                {
+                    icon: 'assets/images/icons/lawsuit-details/call.svg',
+                    title: this._translateService.instant(this.translations.LitigationRequest.facility700Number),
+                    value: this.defendantFacility?.facility700Number ?? '',
+                    isDownload: false,
+                },
+                {
+                    icon: 'assets/images/icons/lawsuit-details/call.svg',
+                    title: this._translateService.instant(this.translations.LitigationRequest.secondPartyCapacity),
+                    value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+                    isDownload: false,
+                },
+            ]
+        }
+
+        if (this.defendantCitizen) {
+
+            this.secondParty = [
+                {
+                    icon: 'assets/images/icons/lawsuit-details/user.svg',
+                    title: this._translateService.instant(this.translations.arbitrator.fullName),
+                    value: this.defendantCitizen?.fullName ?? '',
+                    isDownload: false,
+                },
+                {
+                    icon: 'assets/images/icons/lawsuit-details/buliding.svg',
+                    title: this._translateService.instant(this.translations.arbitrator.identityNumber),
+                    value: this.defendantCitizen?.identityNumber ?? '',
+                    isDownload: false,
+                },
+                {
+                    icon: 'assets/images/icons/lawsuit-details/call.svg',
+                    title: this._translateService.instant(this.translations.arbitrator.workPhone),
+                    value: this.defendantCitizen?.mobile ?? '',
+                    isDownload: false,
+                },
+                {
+                    icon: 'assets/images/icons/lawsuit-details/call.svg',
+                    title: this._translateService.instant(this.translations.arbitrator.homePhone),
+                    value: this.defendantCitizen?.homeTelephone ?? '',
+                    isDownload: false,
+                },
+                {
+                    icon: 'assets/images/icons/lawsuit-details/send-square.svg',
+                    title: this._translateService.instant(this.translations.arbitrator.fax),
+                    value: this.defendantCitizen?.fax ?? '',
+                    isDownload: false,
+                },
+                {
+                    icon: 'assets/images/icons/lawsuit-details/location.svg',
+                    title: this._translateService.instant(this.translations.auth.email),
+                    value: this.defendantCitizen?.email ?? '',
+                    isDownload: false,
+                },
+                {
+                    icon: 'assets/images/icons/lawsuit-details/buliding.svg',
+                    title: this._translateService.instant(this.translations.auth.phoneNumber),
+                    value: this.defendantCitizen?.mobile ?? '',
+                    isDownload: false,
+                },
+                {
+                    icon: 'assets/images/icons/lawsuit-details/call.svg',
+                    title: this._translateService.instant(this.translations.LitigationRequest.secondPartyCapacity),
+                    value: this.arbitratorsRequest?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+                    isDownload: false,
+                },
+            ]
+        }
+
 
   }
 
   ApprovePayment(modal: any) {
+    
     this._arbitrationService.ApproveArbitrationFeesPaid(this.requestId).subscribe(res => {
       if (res.isDone) {
         modal.dismiss()
+        debugger;
         this._toastrNotificationService.showSuccess(this._translateService.instant(this.translations.general.successfullySave))
         this.navigateToList()
       } else {

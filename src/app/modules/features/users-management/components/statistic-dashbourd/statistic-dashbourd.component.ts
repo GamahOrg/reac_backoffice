@@ -4,7 +4,7 @@ import { ChartOptions, ChartData, ChartDataset } from 'chart.js';
 import { ChartType } from 'chart.js';
 import { StatisticDashbourdService } from '../../services/statisticDashbourdService';
 import { DashbourdRequestDto } from '../../models/dashbourdRequestDto';
-declare let html2pdf: any;
+import html2pdf from 'html2pdf.js';
 @Component({
   selector: 'app-statistic-dashbourd',
   templateUrl: './statistic-dashbourd.component.html',
