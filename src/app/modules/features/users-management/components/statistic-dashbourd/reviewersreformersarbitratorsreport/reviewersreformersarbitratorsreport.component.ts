@@ -13,7 +13,7 @@ import { ReviewReformerArbitratorDto, ReviewReformerArbitratorFilterDto } from '
 import { Chart, ChartConfiguration, ChartType } from 'chart.js';
 import * as XLSX from 'xlsx';
 import { Configuration } from '@app/core/configurations/shared.config';
-declare let html2pdf: any;
+import html2pdf from 'html2pdf.js';
 @Component({
   selector: 'app-reviewersreformersarbitratorsreport',
   templateUrl: './reviewersreformersarbitratorsreport.component.html',
@@ -114,7 +114,7 @@ export class ReviewersreformersarbitratorsreportComponent extends BaseComponent 
 
     private updateBreadcrumb(): void {
       this._breadcrumbService.updateBreadcrumbListContent([
-        { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.reformerassigningrequestforall}` },
+        { label: this._translateService.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
         { label: this._translateService.instant(this.translations.layout.sidebar.allPersonasStatisticsForAdminReport) }
       ])
     };

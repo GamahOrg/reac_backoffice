@@ -6,7 +6,8 @@ import { ReportsService } from '@app/modules/reports/services/reports-service';
 import { FilterVisibility } from '@app/shared/components/filter/components/filter/filter.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Chart, ChartType } from 'chart.js';
-declare let html2pdf: any;
+import html2pdf from 'html2pdf.js';
+// declare let html2pdf: any;
 @Component({
   selector: 'app-arbitration-dashbourd',
   templateUrl: './arbitration-dashbourd.component.html',

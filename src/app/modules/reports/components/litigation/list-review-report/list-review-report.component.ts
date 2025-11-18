@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Configuration } from '@app/core/configurations/shared.config';
 import { StorageService } from '@app/core/services/storage-service/storage.service';
 import { ListReviewReportModel } from '@app/modules/reports/models/list-review-report/list-review-report.model';
@@ -92,7 +93,7 @@ ngOnInit(): void {
 
   private updateBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
-      { label: this._translateService.instant(this.translations.layout.sidebar.home), link: '/' },
+      { label: this._translateService.instant(this.translations.layout.sidebar.home),  link:  `/${Configuration.modules.UsersManagement}/${Configuration.pages.usersManagement.HomePage}` },
       { label: this._translateService.instant(this.translations.layout.sidebar.arbitratorCount), link: Configuration.pages.arbitration.arbitratorCountList }
     ])
   };
@@ -124,7 +125,7 @@ ngOnInit(): void {
           (response: any) => {
             this.listReviewReport = response.data.results as ListReviewReportModel[];
             this.pageCount = response.data.pageCount;
-
+console.log("response",response);
             this.setPaginationData(
               response.data.pageSize,
               response.data.totalCount
@@ -174,7 +175,7 @@ ngOnInit(): void {
           this.onFilterChange(this.filterRequest);
 
         }
-
+  
 exportToExcel(): void {
     this.filterRequest!.skip = 0;
     this.filterRequest!.take = 1000000;

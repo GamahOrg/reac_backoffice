@@ -22,6 +22,9 @@ export class LawsuitRequestDetailsService {
   GetLitigationById(body: {litigationId: string}): Observable<BaseResponse<any>> {
     return this._httpClient.get<BaseResponse<LawsuitItemDetails>>(`${Configuration.APIs.LitigationRequest.GetLitigationById}`, { params: createQuery(body) })
   }  
+    GetLitigationByrequestCode(body: {requestCode: string}): Observable<BaseResponse<any>> {
+    return this._httpClient.get<BaseResponse<LawsuitItemDetails>>(`${Configuration.APIs.LitigationRequest.GetLitigationByCode}`, { params: createQuery(body) })
+  }  
 
   ChangeCitizenData(input: ChangeCitizenDataModel) {
  

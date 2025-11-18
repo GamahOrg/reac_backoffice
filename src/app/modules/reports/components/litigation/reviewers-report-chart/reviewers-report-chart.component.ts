@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ListReviewersReportResult } from '@app/modules/reports/models/reviewers-report/ListReviwersreport';
 import { Chart, ChartConfiguration, ChartType } from 'chart.js';
 
-declare let html2pdf: any;
+import html2pdf from 'html2pdf.js';
 @Component({
   selector: 'app-reviewers-report-chart',
   templateUrl: './reviewers-report-chart.component.html',

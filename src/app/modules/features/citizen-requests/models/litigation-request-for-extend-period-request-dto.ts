@@ -59,6 +59,8 @@ export interface LitigationRequestShortDto {
     isFinancialLitigation: boolean;
     isExemptionReduction: boolean;
     applicantCitizen: CitizenShortDto;
+    defendantCitizen: CitizenShortDto;
+    defendantFacility: FacilityShortDto | null;
     contract: LitigationRequestContractShortDto;
     externalStatus: SysLitigationRequestStatusDto;
     internalStatus: SysLitigationRequestStatusDto;

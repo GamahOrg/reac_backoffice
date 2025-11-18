@@ -34,6 +34,7 @@ export class LawsuitEventsComponent extends BaseComponent implements OnInit {
         })
     };
     private GetRequestLogForEmployee(): void {
+        console.log("sss",this.requestId);
         this._lawsuitEventsService.GetRequestLogForEmployee(this.requestId)
             .pipe(takeUntil(this.destroy$))
             .subscribe((res: BaseResponse<GetRequestLogForEmployeeResponseDto[]>) => {

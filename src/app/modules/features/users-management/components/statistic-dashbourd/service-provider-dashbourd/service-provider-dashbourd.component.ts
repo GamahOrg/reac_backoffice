@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChartData } from 'chart.js';
 import { StatisticDashbourdService } from '../../../services/statisticDashbourdService';
-declare let html2pdf: any;
+import html2pdf from 'html2pdf.js';
 @Component({
   selector: 'app-service-provider-dashbourd',
   templateUrl: './service-provider-dashbourd.component.html',

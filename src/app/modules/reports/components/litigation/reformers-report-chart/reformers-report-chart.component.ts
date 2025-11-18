@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ListReformersReportResult } from '@app/modules/reports/models/Reformers-Report/reformers-report';
 import { Chart, ChartConfiguration, ChartType } from 'chart.js';
-declare let html2pdf: any;
+import html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-reformers-report-chart',

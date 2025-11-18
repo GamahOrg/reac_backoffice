@@ -1,42 +1,42 @@
 <div class="grid-3 mt-5">
-    <div *ngIf="contract?.secondPartyCitizen.fullName">
+    <div *ngIf="defendantCitizen?.fullName">
         <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.secondPartyName | translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/user.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyCitizen.fullName || '--'}}</h6>
+            <h6 class="small op-7">{{defendantCitizen?.fullName || '--'}}</h6>
         </div>
     </div>
 
-    <div *ngIf="contract?.secondPartyCitizen.identityNumber">
+    <div *ngIf="defendantCitizen?.identityNumber">
         <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.identityNumber | translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/hashtag.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyCitizen.identityNumber || '--'}}</h6>
+            <h6 class="small op-7">{{defendantCitizen?.identityNumber || '--'}}</h6>
         </div>
     </div>
 
-    <div *ngIf="contract?.secondPartyCitizen.mobile">
+    <div *ngIf="defendantCitizen?.mobile">
         <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.mobileNumber| translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/call.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyCitizen.mobile || '--'}}</h6>
+            <h6 class="small op-7">{{defendantCitizen?.mobile || '--'}}</h6>
             <button class="btn btn-xs btn-success ms-2" (click)="showAddMobile = true" *ngIf="this.showAddAdditionalData() && contract?.secondPartyCitizen.mobile2 == null || contract?.secondPartyCitizen.mobile2 == ''">+</button>
         </div>
     </div>
 
-    <div *ngIf="contract?.secondPartyCitizen.birthDate">
+    <div *ngIf="defendantCitizen?.birthDate">
         <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.birthDate| translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
-            <h6 class="small op-7">{{(contract?.secondPartyCitizen.birthDate | date: 'dd-MM-yyy') || '--'}}</h6>
+            <h6 class="small op-7">{{(defendantCitizen?.birthDate | date: 'dd-MM-yyy') || '--'}}</h6>
         </div>
     </div>
 
-    <div *ngIf="contract?.secondPartyCitizen?.nationality?.nationalityName">
+    <div *ngIf="defendantCitizen?.nationalityName">
         <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.nationality| translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/calendar.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyCitizen.nationality.nationalityName || '--'}}</h6>
+            <h6 class="small op-7">{{defendantCitizen?.nationality.nationalityName || '--'}}</h6>
         </div>
     </div> 
 
@@ -50,11 +50,11 @@
         </div>
     </div>  
 
-    <div *ngIf="contract?.secondPartyCitizen.email">
+    <div *ngIf="defendantCitizen?.email">
         <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.email| translate }} </h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyCitizen.email || '--'}}</h6>
+            <h6 class="small op-7">{{defendantCitizen?.email || '--'}}</h6>
             <button class="btn btn-xs btn-success ms-2" (click)="showAddEmail = true" *ngIf="this.showAddAdditionalData() && contract?.secondPartyCitizen.email2 == null || contract?.secondPartyCitizen.email2 == ''">+</button>
         </div>
     </div>
@@ -79,42 +79,42 @@
         <button class="btn btn-secondary btn-sm mt-2 ms-2" (click)="showAddEmail = false">{{ translations.actions.cancel | translate }}</button>
     </div>
 
-    <div *ngIf="contract?.secondPartyCitizen.mobile2 != null && contract?.secondPartyCitizen.mobile2 != ''">
+    <div *ngIf="defendantCitizen?.mobile2 != null && contract?.secondPartyCitizen.mobile2 != ''">
         <h6 class="small fw-5 mt-2">{{ translations.lawsuits.createEditLawsuit.additionalMobile | translate }}</h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/call.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyCitizen.mobile2}}</h6>
+            <h6 class="small op-7">{{defendantCitizen?.mobile2}}</h6>
         </div>
     </div>
-    <div *ngIf="contract?.secondPartyCitizen.email2 != null && contract?.secondPartyCitizen.email2 != ''">
+    <div *ngIf="defendantCitizen?.email2 != null && contract?.secondPartyCitizen.email2 != ''">
         <h6 class="small fw-5 mt-2">{{ translations.lawsuits.createEditLawsuit.additionalEmail | translate }}</h6>
         <div class="flex-y-row gap-2">
             <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
-            <h6 class="small op-7">{{contract?.secondPartyCitizen.email2}}</h6>
+            <h6 class="small op-7">{{defendantCitizen?.email2}}</h6>
         </div>
     </div>
     
-    <div *ngIf="contract?.secondPartyFacility?.arabicFacilityName">
+    <div *ngIf="this.defendantFacility?.arabicFacilityName">
         <h6 class="small fw-5"> {{ translations.establishments.establishmentsList.arabicEstablishmentName| translate }} </h6>
         <div class="flex-y-row gap-2">
             <h6 class="small op-7">
-                {{contract?.secondPartyFacility?.arabicFacilityName || "--" }}
+                {{this.defendantFacility?.arabicFacilityName || "--" }}
             </h6>
         </div>
     </div>
-    <div *ngIf="contract?.secondPartyFacility?.commercialRegisterNumber">
+    <div *ngIf="this.defendantFacility?.commercialRegisterNumber">
         <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.commercialRegistrationNumber| translate }} </h6>
         <div class="flex-y-row gap-2">
             <h6 class="small op-7">
-                {{contract?.secondPartyFacility?.commercialRegisterNumber || "--" }}
+                {{this.defendantFacility?.commercialRegisterNumber || "--" }}
             </h6>
         </div>
     </div>
-    <div *ngIf="contract?.secondPartyFacility?.facility700Number">
+    <div *ngIf="this.defendantFacility?.facility700Number">
         <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.companyNumber| translate }}  </h6>
         <div class="flex-y-row gap-2">
             <h6 class="small op-7">
-                {{contract?.secondPartyFacility?.facility700Number || "--" }}
+                {{this.defendantFacility?.facility700Number || "--" }}
             </h6>
         </div>
     </div>

@@ -4,12 +4,34 @@
       <label for="reviewerName" class="form-label">{{translations.ReportsFilter.reviewerName | translate}}</label>
       <input type="text" id="reviewerName" class="form-control" formControlName="reviewerName" />
     </div>
+    <div class="col-xl-3" *ngIf="isVisible('reformerName')">
+      <label for="reformerName" class="form-label">{{translations.ReportsFilter.reformerName | translate}}</label>
+      <input type="text" id="reformerName" class="form-control" formControlName="reformerName" />
+    </div>
+    <div class="col-xl-3" *ngIf="isVisible('arbitratorName')">
+      <label for="arbitratorName" class="form-label">{{translations.ReportsFilter.arbitratorName | translate}}</label>
+      <input type="text" id="arbitratorName" class="form-control" formControlName="arbitratorName" />
+    </div>
 
     <div class="col-xl-3" *ngIf="isVisible('reviewerStatus')">
       <label for="reviewerStatus" class="form-label">{{translations.ReportsFilter.status | translate}}</label>
       <ng-select id="reviewerStatus" class="form-select" formControlName="reviewerStatus">
         <ng-option [value]="1">مفعل</ng-option>
         <ng-option [value]="0">غير مفعل</ng-option>
+      </ng-select>
+    </div>
+    <div class="col-xl-3" *ngIf="isVisible('reformersStatus')">
+      <label for="reformersStatus" class="form-label">{{translations.ReportsFilter.status | translate}}</label>
+      <ng-select id="reformersStatus" class="form-select" formControlName="reformersStatus">
+        <ng-option [value]="1">مفعل</ng-option>
+        <ng-option [value]="2">غير مفعل</ng-option>
+      </ng-select>
+    </div>
+    <div class="col-xl-3" *ngIf="isVisible('arbitratorStatus')">
+      <label for="arbitratorStatus" class="form-label">{{translations.ReportsFilter.status | translate}}</label>
+      <ng-select id="arbitratorStatus" class="form-select" formControlName="arbitratorStatus">
+        <ng-option [value]="1">مفعل</ng-option>
+        <ng-option [value]="2">غير مفعل</ng-option>
       </ng-select>
     </div>
 
