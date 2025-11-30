@@ -43,11 +43,11 @@ filterVisibility: FilterVisibility = {
   
     onFilterChange(values: any) {
       console.log('Filter values:', values);
-      
+      debugger;
       // You can now use these values to fetch data or perform other actions
       this.request = {
-        fromDate: values.fromDate != null ?new Date(values.fromDate).toISOString().split('T')[0]:null,
-        toDate:values.toDate != null ?new Date(values.toDate).toISOString().split('T')[0]:null,
+        fromDate: values.fromDate != null && values.fromDate != "" ?new Date(values.fromDate).toISOString().split('T')[0]:null,
+        toDate:values.toDate != null && values.fromDate != "" ?new Date(values.toDate).toISOString().split('T')[0]:null,
         areaIds: values.areaIds,
         citiesIds: values.citiesIds,
         litigationRequestCategoryIds:values.litigationRequestCategoryIds,

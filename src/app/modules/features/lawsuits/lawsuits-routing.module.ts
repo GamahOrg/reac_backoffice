@@ -15,6 +15,7 @@ import { DelegationRequestDetailsComponent } from './components/delegation-reque
 import { DelegatorsStopModifyListComponent } from './components/delegators-stop-modify-list/delegators-stop-modify-list/delegators-stop-modify-list.component';
 import { DelegatorsAssignListComponent } from './components/delegators-assign-list/delegators-assign-list/delegators-assign-list.component';
 import { LawsuitDetailsForReportComponent } from './pages/lawsuit-details-for-report/lawsuit-details-for-report.component';
+import { permissionGuard } from '@app/modules/layout/services/AuthGaurd/permission-guard.service';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: Configuration.pages.lawsuits.lawsuitList,
     component: LawsuitListComponent,
+    canActivate: [permissionGuard],
+        data: { 
+          permissions: ['Review.View'] 
+        }
   },
   {
     

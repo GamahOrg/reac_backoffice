@@ -86,7 +86,9 @@ export class FilterComponent extends BaseComponent implements OnInit {
   filterForm: FormGroup = this.fb.group({
     reviewerName: [null], // string
     reformerName: [null], // string
+    arbitratorName: [null], // string
     reviewerStatus: [null],
+    arbitratorStatus: [null],
     reformersStatus: [null],
     experienceYears: [null], // string
     requestCode: [null], // string
@@ -100,7 +102,7 @@ export class FilterComponent extends BaseComponent implements OnInit {
     reformersIds: [[]], // array of ids
     arbitratorsIds: [[]], // array of ids
     arbitratorClassIds: [[]], // array of ids
-    litigationRequestStageIds: [[]], // array of ids
+    litigationRequestStageIds: [null], // array of ids
     litigationRequestAmountId: [null], // array of ids
     skip: [null], // number
     take: [null], // number

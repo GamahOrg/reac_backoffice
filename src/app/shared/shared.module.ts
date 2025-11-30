@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterComponent } from './components/filter/components/filter/filter.component';
 import { LookupsService } from './services/lookups/lookups.service';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 // import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
 
 export const MY_MOMENT_FORMATS = {
@@ -28,7 +29,8 @@ export const MY_MOMENT_FORMATS = {
 
 @NgModule({
     declarations: [
-        FilterComponent
+        FilterComponent,
+        UnauthorizedComponent
     ],
     imports: [
         CommonModule,
@@ -37,6 +39,8 @@ export const MY_MOMENT_FORMATS = {
         ReactiveFormsModule,
         NgSelectModule,
         TranslateModule,
+        
+
         // ModalComponent
         // AngularMaterialModule
     ],

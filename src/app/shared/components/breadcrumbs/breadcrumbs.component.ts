@@ -32,4 +32,11 @@ export class BreadcrumbsComponent extends BaseComponent implements OnInit {
   public trackByFn(index: number, item: Breadcrumb): any {
     return index.toString(); // Assuming each item has a unique 'id' property
   }
+
+   public onBreadcrumbClick(event: Event, item: Breadcrumb): void {
+    if (item.link === 'back') {
+      event.preventDefault();
+     window.history.back();
+    }
+  }
 }
