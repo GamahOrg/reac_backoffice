@@ -103,7 +103,7 @@ const routes: Routes = [
     component: SessionListComponent,
     canActivate: [permissionGuard],
     data: { 
-      permissions: ['Reconciliation.View', 'Arbitration.View'] 
+      permissions: ['Reconciliation.View'] 
     }
   },
   {

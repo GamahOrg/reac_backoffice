@@ -63,6 +63,10 @@ const routes: Routes = [
   {
     path: `${Configuration.pages.lawsuits.lawsuitDetails}/:id`,
     component: LawsuitDetailsComponent,
+    canActivate: [permissionGuard],
+        data: { 
+          permissions: ['Review.View'] 
+        }
   },
   {
     path: `${Configuration.pages.lawsuits.lawsuitDetailsForReport}/:id`,
