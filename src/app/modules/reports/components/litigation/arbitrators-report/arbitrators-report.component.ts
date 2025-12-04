@@ -112,8 +112,8 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
     
     // You can now use these values to fetch data or perform other actions
     this.filterRequest = {
-      arbitratorName: values.reviewerName,
-      arbitratorStatus: values.reviewerStatus,
+      arbitratorName: values.arbitratorName,
+      arbitratorStatus: values.arbitratorStatus,
       experienceYears: values.experienceYears,
       isAdmin: this.isAdmin,
       skip: (this.pagintationData.currentPage - 1) * this.pagintationData.pageSize,
@@ -121,8 +121,8 @@ export class ArbitratorsReportComponent extends BaseComponent implements OnInit 
     };
 
     this.filterDashbourd = {
-      arbitratorName: values.reviewerName,
-      arbitratorStatus: values.reviewerStatus,
+      arbitratorName: values.arbitratorName,
+      arbitratorStatus: values.arbitratorStatus,
       experienceYears: values.experienceYears,
       isAdmin: this.isAdmin,
       skip: 0,

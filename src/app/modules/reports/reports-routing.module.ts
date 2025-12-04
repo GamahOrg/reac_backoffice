@@ -16,6 +16,7 @@ import { ArbitratorsReportComponent } from './components/litigation/arbitrators-
 import { ReviewDashbourdComponent } from './components/litigation/review-dashbourd/review-dashbourd.component';
 import { ReconcilationDashbourdComponent } from './components/litigation/reconcilation-dashbourd/reconcilation-dashbourd.component';
 import { ArbitrationDashbourdComponent } from './components/litigation/arbitration-dashbourd/arbitration-dashbourd.component';
+import { permissionGuard } from '../layout/services/AuthGaurd/permission-guard.service';
 
 const routes: Routes = [
   {
@@ -26,63 +27,122 @@ const routes: Routes = [
   {
     path: Configuration.pages.reports.statisticsReview,
     component: StatisticsReviewComponent,
+    canActivate: [permissionGuard],
+       data: { 
+         permissions: ['Review.View'] 
+       }
   },
   {
     path: Configuration.pages.reports.statisticsReformer,
     component: StatisticsReformerComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: Configuration.pages.reports.StatiscsReformerReport,
     component: StatisticsReformerReportComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: Configuration.pages.reports.StatiscsArbitirationReport,
     component: StatisticsArbitrationReportComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: Configuration.pages.reports.statisticsArbitration,
     component: StatisticsArbitrationComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: Configuration.pages.reports.statisticsReviewReport,
     component: StatisticsReviewReportComponent,
+    canActivate: [permissionGuard],
+       data: { 
+         permissions: ['Review.View'] 
+       }
   },
   {
     path: Configuration.pages.reports.listReviewReport,
     component: ListReviewReportComponent,
+    canActivate: [permissionGuard],
+       data: { 
+         permissions: ['Review.View'] 
+       }
   },
   {
     path: Configuration.pages.reports.listReformerReport,
     component: ListReformerReportComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: Configuration.pages.reports.listArbitratorReport,
     component: ListArbitratorReportComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: Configuration.pages.reports.ReviewersReport,
     component: ReviewersReportComponent,
+    canActivate: [permissionGuard],
+       data: { 
+         permissions: ['Review.View'] 
+       }
   },
     
   {
     path: Configuration.pages.reports.ReformersReport,
     component: ReformersReportComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: Configuration.pages.reports.ArbitratorsReport,
     component: ArbitratorsReportComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: Configuration.pages.reports.ReviewDashbourd,
     component: ReviewDashbourdComponent,
+    canActivate: [permissionGuard],
+       data: { 
+         permissions: ['Review.View'] 
+       }
   },
   {
     path: Configuration.pages.reports.ReformerDashbourd,
     component: ReconcilationDashbourdComponent,
+     data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: Configuration.pages.reports.ArbitratorDashbourd,
     component: ArbitrationDashbourdComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   
 ];
