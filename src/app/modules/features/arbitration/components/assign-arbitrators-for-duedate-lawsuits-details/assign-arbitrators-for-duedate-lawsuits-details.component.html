@@ -1,0 +1,536 @@
+<app-breadcrumbs></app-breadcrumbs>
+<button (click)="renotifyPartiesToSelectArbitrators()">{{ 'إعادة إرسال دعوة لاختيار المحكمين' | translate }}</button>
+<div class="form-wrapper" *ngIf="litigationRequestForReportDto?.allowAdd">
+  <div class="accordion-card">
+    <details open>
+      <summary>
+        <h6>ترتيب المحكمين</h6>
+      </summary>
+
+      <!-- <div class="grid-1 mt-4">
+        <form [formGroup]="myForm">
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary " (click)="AddCitizenLitigationRequestForReportArbitratorsNominationListReply()">اضافة</button>
+          </div>
+
+          <div class="table-responsive mt-3">
+            <table class="table table-striped" formArrayName="citizens">
+              <thead>
+                <tr>
+                  <th scope="col">الأسم</th>
+                  <th scope="col">ترتيب أولوية الاختيار</th>
+                  <th scope="col" class="text-center">{{translations.CitizenRequest.brief | translate}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of citizens.controls; let i = index" [formGroupName]="i">
+                 
+                  <td>{{citizens.controls[i].value.name}}
+                  
+                  </td>
+                  <td>
+                    <input type="number" min="1" class="form-control" formControlName="value" placeholder="الترتيب" [class.is-invalid]="citizens.controls[i].value.invalid && citizens.controls[i].value.touched">
+                    <div class="text-danger" *ngIf="(citizens.controls[i].get('value')?.errors?.['required']) && showValidation">حقل
+                      مطلوب</div>
+                    <div class="text-danger" *ngIf="(citizens.controls[i].get('value')?.errors?.['min']) && showValidation">
+                      يجب ان يكون الترتيب من 1 إلى
+                      {{litigationRequestForReportDto?.citizenArbitratorShortStatusDtos?.length}}
+                    </div>
+                    <div class="text-danger" *ngIf="(citizens.controls[i].get('value')?.errors?.['max'])&& showValidation">
+                      يجب ان يكون الترتيب من 1 إلى
+                      {{litigationRequestForReportDto?.citizenArbitratorShortStatusDtos?.length}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+                      <button class="btn btn-sm btn-primary" (click)="open(showBriefModel, citizens.controls[i].value.brief)">{{ 'عرض نبذة عن المحكم' | translate }}</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div> -->
+   
+      <div class="grid-1 mt-4">
+        <form [formGroup]="myForm">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="alert alert-info">
+              <strong>تعليمات الاختيار:</strong>
+              يجب اختيار {{getRequiredSelectionCount()}} محكم من القائمة
+              ({{getSelectedCount()}} / {{getRequiredSelectionCount()}} محدد)
+            </div>
+            <button type="submit" class="btn btn-primary" 
+                    [disabled]="getSelectedCount() !== getRequiredSelectionCount()"
+                    (click)="AddCitizenLitigationRequestForReportArbitratorsNominationListReply()">
+              اضافة
+            </button>
+          </div>
+      
+          <div class="table-responsive mt-3">
+            <table class="table table-striped" formArrayName="citizens">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 80px;">اختيار</th>
+                  <th scope="col">الأسم</th>
+                  <th scope="col"> رقم الهوية</th>
+                  <th scope="col">  اختيار من قبل</th>
+
+                  <th scope="col">  البريد</th>
+                  <th scope="col">  الجوال</th>
+                  <th scope="col">  الخبرة (سنوات)</th> 
+                  <th scope="col">  التصنيف</th>
+                  <th scope="col" class="text-center">{{translations.CitizenRequest.brief | translate}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of citizens.controls; let i = index" [formGroupName]="i">
+                  <td>
+                    <div class="form-check">
+                      <input style="border: 1px solid #224e4a;" class="form-check-input" 
+                             type="checkbox" 
+                             formControlName="selected"
+                             [id]="'checkbox_' + i"
+                             (change)="onCheckboxChange(i)"
+                             [class.is-invalid]="showValidation && !isSelectionValid()">
+                      <label class="form-check-label" [for]="'checkbox_' + i"></label>
+                    </div>
+                  </td>
+                  <td>{{citizens.controls[i].value.name}}</td>
+                  <td>
+                    {{citizens.controls[i].value.identityNumber || '---'}}
+                  </td>
+            <td><span *ngIf="citizens.controls[i].value.isDefendantSelected">  المدعى عليه </span> <span *ngIf="citizens.controls[i].value.isPlaintiffSelected">  المدعى  </span></td>
+
+                  <td>
+                    {{citizens.controls[i].value.email || '---'}}
+                  </td>
+                  <td>
+                    {{citizens.controls[i].value.mobile || '---'}}
+                  </td>
+                  <td>
+                    {{citizens.controls[i].value.experienceYears || '---'}}
+                  </td>
+                  <td>
+                    {{citizens.controls[i].value.arbitratorClass || '---'}}
+                  </td>
+                  <td>
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+                      <button class="btn btn-sm btn-primary" 
+                              type="button"
+                              (click)="open(showBriefModel, citizens.controls[i].value.brief)">
+                        {{ 'عرض نبذة عن المحكم' | translate }}
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      
+          <!-- Validation Messages -->
+          <div class="mt-3" *ngIf="showValidation && !isSelectionValid()">
+            <div class="alert alert-danger">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              <span *ngIf="getSelectedCount() < getRequiredSelectionCount()">
+                يجب اختيار {{getRequiredSelectionCount()}} محكم. لقد اخترت {{getSelectedCount()}} فقط.
+              </span>
+              <span *ngIf="getSelectedCount() > getRequiredSelectionCount()">
+                لا يمكن اختيار أكثر من {{getRequiredSelectionCount()}} محكم. لقد اخترت {{getSelectedCount()}} محكم.
+              </span>
+            </div>
+          </div>
+      
+          <!-- Selected Arbitrators Summary -->
+          <div class="mt-3" *ngIf="getSelectedCount() > 0">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="mb-0">المحكمون المختارون بترتيب الأولوية</h6>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4 mb-2" *ngFor="let arbitrator of getSelectedArbitrators(); let i = index">
+                    <div class="d-flex align-items-center">
+                      <span class="badge bg-success me-2">{{i + 1}}</span>
+                      <span>{{arbitrator.name}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       <!-- Selected User Arbitrators from another citizen Summary -->
+       <div class="mt-3" *ngIf="litigationRequestForReportDto?.citizenSelectedUserArbitratorShortStatusDtos?.length">
+        <div class="card">
+          <div class="card-header">
+            <h6 class="mb-0">المحكمون المختارون:</h6>
+          </div>
+          <div class="card-body">
+            <div class="row">
+                <div class="table-responsive mt-3">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">الأسم</th>
+                          <th scope="col"> رقم الهوية</th>
+                          <th scope="col">  البريد</th>
+                          <th scope="col">  الجوال</th>
+                          <th scope="col">  الخبرة (سنوات)</th> 
+                          <th scope="col">  التصنيف</th>
+                          <th scope="col" class="text-center">{{translations.CitizenRequest.brief | translate}}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of litigationRequestForReportDto?.citizenSelectedUserArbitratorShortStatusDtos ; let i = index">
+                      
+                          <td>{{item.fullName}}</td>
+                          <td>
+                            {{item.identityNumber || '---'}}
+                          </td>
+                          <td>
+                            {{item.email || '---'}}
+                          </td>
+                          <td>
+                            {{item.mobile || '---'}}
+                          </td>
+                          <td>
+                            {{item.experienceYears || '---'}}
+                          </td>
+                          <td>
+                            {{item.arbitratorClass || '---'}}
+                          </td>
+                          <td>
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                              <button class="btn btn-sm btn-primary" 
+                                      type="button"
+                                      (click)="open(showBriefModel, item.brief)">
+                                {{ 'عرض نبذة عن المحكم' | translate }}
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+               <!-- Selected Arbitrators from another citizen Summary -->
+               <div class="mt-3" *ngIf="litigationRequestForReportDto?.citizenSelectedArbitratorShortStatusDtos?.length">
+                <div class="card">
+                  <div class="card-header">
+                    <h6 class="mb-0">المحكمون المختارون من الطرف الاخر:</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                        <div class="table-responsive mt-3">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th scope="col">الأسم</th>
+                                  <th scope="col"> رقم الهوية</th>
+                                  <th scope="col">  البريد</th>
+                                  <th scope="col">  الجوال</th>
+                                  <th scope="col">  الخبرة (سنوات)</th> 
+                                  <th scope="col">  التصنيف</th>
+                                  <th scope="col" class="text-center">{{translations.CitizenRequest.brief | translate}}</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let item of litigationRequestForReportDto?.citizenSelectedArbitratorShortStatusDtos ; let i = index">
+                              
+                                  <td>{{item.fullName}}</td>
+                                  <td>
+                                    {{item.identityNumber || '---'}}
+                                  </td>
+                                  <td>
+                                    {{item.email || '---'}}
+                                  </td>
+                                  <td>
+                                    {{item.mobile || '---'}}
+                                  </td>
+                                  <td>
+                                    {{item.experienceYears || '---'}}
+                                  </td>
+                                  <td>
+                                    {{item.arbitratorClass || '---'}}
+                                  </td>
+                                  <td>
+                                    <div class="d-flex justify-content-center align-items-center gap-2">
+                                      <button class="btn btn-sm btn-primary" 
+                                              type="button"
+                                              (click)="open(showBriefModel, item.brief)">
+                                        {{ 'عرض نبذة عن المحكم' | translate }}
+                                      </button>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+                   <!-- Selected Arbitrators from another citizen Summary -->
+                   <div class="mt-3" *ngIf="litigationRequestForReportDto?.citizenRejectedArbitratorShortStatusDtos?.length">
+                    <div class="card">
+                      <div class="card-header">
+                        <h6 class="mb-0">المحكمون الذين  تم رفضهم للطلب:</h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="row">
+                            <div class="table-responsive mt-3">
+                                <table class="table table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">الأسم</th>
+                                       <th scope="col">  اختيار(المدعى/ المدعى عليه)</th>
+                                      <th scope="col"> رقم الهوية</th>
+                                      <th scope="col">  البريد</th>
+                                      <th scope="col">  الجوال</th>
+                                      <th scope="col">  الخبرة (سنوات)</th> 
+                                      <th scope="col">  التصنيف</th>
+                                      <th scope="col" class="text-center">{{translations.CitizenRequest.brief | translate}}</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let item of litigationRequestForReportDto?.citizenRejectedArbitratorShortStatusDtos ; let i = index">
+                                  
+                                      <td>{{item.fullName}}</td>
+                                      <td><span *ngIf="item.isDefendantSelected"> تم اختياره من المدعى عليه </span> <span *ngIf="item.isPlaintiffSelected"> تم اختياره من المدعى  </span></td>
+
+                                      <td>
+                                        {{item.identityNumber || '---'}}
+                                      </td>
+                                      <td>
+                                        {{item.email || '---'}}
+                                      </td>
+                                      <td>
+                                        {{item.mobile || '---'}}
+                                      </td>
+                                      <td>
+                                        {{item.experienceYears || '---'}}
+                                      </td>
+                                      <td>
+                                        {{item.arbitratorClass || '---'}}
+                                      </td>
+                                      <td>
+                                        <div class="d-flex justify-content-center align-items-center gap-2">
+                                          <button class="btn btn-sm btn-primary" 
+                                                  type="button"
+                                                  (click)="open(showBriefModel, item.brief)">
+                                            {{ 'عرض نبذة عن المحكم' | translate }}
+                                          </button>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        </form>
+      </div>
+    </details>
+  </div>
+</div>
+<!--
+<div class="form-wrapper" *ngIf="!litigationRequestForReportDto?.allowAdd">
+  <div class="accordion-card">
+    <details open>
+      <summary>
+
+        <h6>اختيار المحكمين</h6>
+      </summary>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">الأسم</th>
+           <th scope="col">ترتيب  المحكم</th> 
+            <th scope="col">  اختيار من قبل</th>
+            <th scope="col"> رقم الهوية</th>
+                  <th scope="col">  البريد</th>
+                  <th scope="col">  الجوال</th>
+                  <th scope="col">  الخبرة (سنوات)</th> 
+                  <th scope="col">  التصنيف</th>
+            <th scope="col">{{translations.CitizenRequest.brief | translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let item of litigationRequestForReportDto?.citizenArbitratorShortStatusDtos; let i = index">
+            <td>{{item.fullName}}</td>
+             <td>{{item.value}}</td> 
+            <td><span *ngIf="item.isDefendantSelected">  المدعى عليه </span> <span *ngIf="item.isPlaintiffSelected">  المدعى  </span></td>
+            <td>
+              {{item.identityNumber || '---'}}
+            </td>
+            <td>
+              {{item.email || '---'}}
+            </td>
+            <td>
+              {{item.mobile || '---'}}
+            </td>
+            <td>
+              {{item.experienceYears || '---'}}
+            </td>
+            <td>
+              {{item.arbitratorClass || '---'}}
+            </td>
+            <td>
+              <div class="d-flex justify-content-center align-items-center gap-2">
+                <button class="btn btn-sm btn-primary" (click)="open(showBriefModel, item.brief)">{{ 'عرض نبذة عن المحكم' | translate }}</button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+                 Selected Arbitrators from another citizen Summary 
+                <div class="mt-3" *ngIf="litigationRequestForReportDto?.citizenRejectedArbitratorShortStatusDtos?.length">
+                    <div class="card">
+                      <div class="card-header">
+                        <h6 class="mb-0">المحكمون الذين  تم رفضهم للطلب:</h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="row">
+                            <div class="table-responsive mt-3">
+                                <table class="table table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">الأسم</th>
+                                      <th scope="col"> رقم الهوية</th>
+                                      <th scope="col">  اختيار(المدعى/ المدعى عليه)</th>
+                                      <th scope="col">  البريد</th>
+                                      <th scope="col">  الجوال</th>
+                                      <th scope="col">  الخبرة (سنوات)</th> 
+                                      <th scope="col">  التصنيف</th>
+                                      <th scope="col" class="text-center">{{translations.CitizenRequest.brief | translate}}</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let item of litigationRequestForReportDto?.citizenRejectedArbitratorShortStatusDtos ; let i = index">
+                                  
+                                      <td>{{item.fullName}}</td>
+                                      <td>
+                                        {{item.identityNumber || '---'}}
+                                      </td>
+                                       <td><span *ngIf="item.isDefendantSelected"> تم اختياره من المدعى عليه </span> <span *ngIf="item.isPlaintiffSelected"> تم اختياره من المدعى  </span></td>
+                                      <td>
+                                        {{item.email || '---'}}
+                                      </td>
+                                      <td>
+                                        {{item.mobile || '---'}}
+                                      </td>
+                                      <td>
+                                        {{item.experienceYears || '---'}}
+                                      </td>
+                                      <td>
+                                        {{item.arbitratorClass || '---'}}
+                                      </td>
+                                      <td>
+                                        <div class="d-flex justify-content-center align-items-center gap-2">
+                                          <button class="btn btn-sm btn-primary" 
+                                                  type="button"
+                                                  (click)="open(showBriefModel, item.brief)">
+                                            {{ 'عرض نبذة عن المحكم' | translate }}
+                                          </button>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    </details>
+  </div>
+</div>-->
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary>
+        <h6>{{ translations.LitigationRequest.firstPartyData| translate }} </h6>
+      </summary>
+
+      <div class="grid-3 mt-4">
+        <ng-container *ngFor="let item of firstParty">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary>
+        <h6> {{ translations.LitigationRequest.secondPartyData| translate }}</h6>
+      </summary>
+
+      <div class="grid-3 mt-4">
+        <ng-container *ngFor="let item of secondParty">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary>
+        <h6>{{ translations.LitigationRequest.litigationData| translate }} </h6>
+      </summary>
+
+      <div class="grid-3 mt-4">
+        <ng-container *ngFor="let item of dataList">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+<ng-template #showBriefModel let-modal>
+  <div class="modal-header">
+    <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
+  </div>
+
+  <div class="modal-body pt-0">
+    <label class="small fw-6 mb-2"> {{translations.CitizenRequest.brief | translate}} :</label>
+    <label class="small fw-6 mb-2"> {{selectedBrief}} </label>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="modal.close()">{{ translations.actions.close | translate }}</button>
+  </div>
+</ng-template>

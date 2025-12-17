@@ -13,6 +13,8 @@ import { ArbitrationRequestCorrespondencesDetailsComponent } from './components/
 import { ArbitrationRequestCorrespondencesListComponent } from './components/arbitration-request-correspondences-list/arbitration-request-correspondences-list.component';
 import { ApproveArbitrationFeesPaidListComponent } from './pages/approve-arbitration-fees-paid-list/approve-arbitration-fees-paid-list.component';
 import { ApproveArbitrationFeesPaidDetailsComponent } from './pages/approve-arbitration-fees-paid-details/approve-arbitration-fees-paid-details.component';
+import { AssignArbitratorsForDuedateLawsuitsComponent } from './components/assign-arbitrators-for-duedate-lawsuits/assign-arbitrators-for-duedate-lawsuits.component';
+import { AssignArbitratorsForDuedateLawsuitsDetailsComponent } from './components/assign-arbitrators-for-duedate-lawsuits-details/assign-arbitrators-for-duedate-lawsuits-details.component';
 
 const routes: Routes = [
   {
@@ -39,6 +41,14 @@ const routes: Routes = [
   {
     path: Configuration.pages.arbitration.assignarbitratorlist,
     component: ArbitratorListComponent,
+  },
+  {
+    path: Configuration.pages.arbitration.assignarbitratorlistforduedatelawsuits,
+    component: AssignArbitratorsForDuedateLawsuitsComponent,
+  },
+  {
+    path: `${Configuration.pages.arbitration.assignarbitratorlistforduedatelawsuitsdetails}/:id`,
+    component: AssignArbitratorsForDuedateLawsuitsDetailsComponent,
   },
   {
     path: Configuration.pages.arbitration.arbitrationRequestCorrespondencesList,

@@ -1,0 +1,61 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+<div class="table-wrapper">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.requestCode | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.requestDate | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.firstPartyName | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.secondPartyName | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.requestTypeName | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.status | translate}}</th>
+                    <th scope="col">{{translations.RequestToExtendSettlementPeriod.isDone | translate}}</th>
+                    <th scope="col">{{translations.actions.procedures | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (request of reqList; track $index) {
+                <tr>
+                    <td>{{request.requestCode}}</td>
+                    <td>{{request.requestDate | date:'yyyy/MM/dd'}}</td>
+                    <td>{{request.firstPartyName}}</td>
+                    <td>{{request.secondPartyName}}</td>
+                    <td>{{request.requestTypeName}}</td>
+                    <td>{{request.status}}</td>
+                    <td>{{request.isDone}}</td>
+
+                    <td class="row">
+
+                        <button class="col-6 btn btn-sm btn-light" (click)="goToDetailsPage(request.id)">
+                            <img src="assets/images/icons/eye.svg" alt="eye">
+                            {{translations.actions.apply| translate}}
+                        </button>
+
+                        <button class="col-6 btn btn-sm btn-primary" (click)="navigateToEditOrDetails(request.id)">{{ translations.actions.viewDetails | translate }}</button>
+                    </td>
+                    
+                    
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (reqList && reqList.length) {
+    <div class="flex-between">
+        <div class="op-6 v-small fw-5">
+            <span>{{translations.tables.from | translate}} </span>
+            <span>{{page}} </span>
+            <span>{{translations.tables.to | translate}} </span>
+            <span>{{ page * pagintationData.pageSize}} </span>
+            <span>{{translations.tables.ofTotal | translate}} </span>
+            <span>{{collectionSize}} </span>
+            <span>{{translations.tables.row | translate}} </span>
+        </div>
+    
+        <app-pagination></app-pagination>
+    </div>
+    }
