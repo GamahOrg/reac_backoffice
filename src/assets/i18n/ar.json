@@ -66,6 +66,7 @@
             "assignReviewers": "تعيين المدققين ",
             "arbitratorCount": "تحديد عدد المحكمين",
             "assignarbitratorlist": "تعين المحكمين",
+            "assignarbitratorlistforduedate": "تعيين المحكمين للدعاوي المتأخرة",
             "details": "عرض التفاصيل",
             "litigationRequestForArbitratorSelectionDurationList": "تحديد مدة اختيار عدد المحكمين",
             "arbitrationSessionList": "قائمة الجلسات",

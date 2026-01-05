@@ -391,6 +391,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.assignarbitratorlist,
                         },
+                        // {
+                        //     id: 'assign-arbitrator-list-for-duedate',
+                        //     title: this.translate.instant(translations.layout.sidebar.assignarbitratorlistforduedate),
+                        //     icon: 'assets/images/icons/sidebar/book.svg',
+                        //     url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.assignarbitratorlistforduedatelawsuits,
+                        // },
                         {
                             id: 'arbitrator-recusal-request',
                             title: this.translate.instant(translations.layout.sidebar.arbitratorRecusalRequests),
