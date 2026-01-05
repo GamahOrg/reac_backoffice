@@ -17,6 +17,7 @@ import { NgbDropdownModule, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { NotificationsService } from './services/notifications/notifications.service';
 import { PaginationComponent } from '@app/shared/components/pagination/pagination.component';
+import { AuthService } from './services/AuthGaurd/auth-service.service';
 
 
 @NgModule({
@@ -41,7 +42,9 @@ import { PaginationComponent } from '@app/shared/components/pagination/paginatio
         
     ],
     providers: [
-        NotificationsService
+        NotificationsService,
+        AuthService
+
     ]
 })
 export class LayoutModule { }

@@ -218,7 +218,8 @@ export class LawsuitFullDetailsComponent extends BaseComponent {
                                 label: this._translateService.instant(
                                     this.translations.lawsuits.lawsuitsList.lawsuitsList
                                 ),
-                                link: Configuration.modules.lawsuits,
+                                
+                                 link: 'back', 
                             },
                             { label: `${this._translateService.instant(this.translations.lawsuits.lawsuitDetails.lawsuit)} ${this._translateService.instant(this.lawsuitTypeTranslation[this.lawsuitDetails.contract.litigationRequestContractTypeId])} ${this._translateService.instant(this.translations.lawsuits.lawsuitDetails.number)} #${this.lawsuitDetails.requestCode}` },
                         ]);

@@ -80,6 +80,7 @@ ngOnInit(): void {
   this.filterRequest = {
     reformerName: null,
     reformerStatus: null,
+    experienceYears: null,
     isAdmin: this.isAdmin,
     skip: this.pagintationData.currentPage - 1,
     take: this.pagintationData.pageSize
@@ -87,6 +88,7 @@ ngOnInit(): void {
   this.filterDashbourdRequest = {
     reformerName: null,
     reformerStatus: null,
+    experienceYears: null,
     isAdmin: this.isAdmin,
     skip: 0,
     take: 100 // Fetch all records for the dashboard
@@ -112,6 +114,7 @@ ngOnInit(): void {
         this.filterDashbourdRequest = {
           reformerName: values.reformerName,
           reformerStatus: values.reformersStatus,
+          experienceYears: values.experienceYears,
           isAdmin: this.isAdmin,
           skip: 0,
           take: 100 // Fetch all records for the dashboard
@@ -120,6 +123,7 @@ ngOnInit(): void {
         this.filterRequest = {
           reformerName: values.reformerName,
           reformerStatus: values.reformersStatus,
+          experienceYears: values.experienceYears,
           isAdmin: this.isAdmin,
           skip: (this.pagintationData.currentPage - 1) * this.pagintationData.pageSize,
           take: this.pagintationData.pageSize

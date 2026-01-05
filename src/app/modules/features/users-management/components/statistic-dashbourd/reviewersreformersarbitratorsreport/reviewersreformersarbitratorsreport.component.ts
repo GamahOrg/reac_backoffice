@@ -121,7 +121,6 @@ export class ReviewersreformersarbitratorsreportComponent extends BaseComponent 
   
   
     onFilterChange(values: any) {
-      
       // You can now use these values to fetch data or perform other actions
       this.filterRequest = {
         employeeIds: values.employeeIds,
@@ -129,7 +128,7 @@ export class ReviewersreformersarbitratorsreportComponent extends BaseComponent 
         arbitratorsIds: values.arbitratorsIds,
         arbitratorClassIds: values.arbitratorClassIds,
         personnelStatusId: values.reviewerStatus,
-        personnelTypeId: values.litigationRequestStageIds,
+        personnelTypeId: values.litigationRequestStageIds ?? values.personnelTypeId,
         experienceYears: values.experienceYears,
         skip: (this.pagintationData.currentPage - 1) * this.pagintationData.pageSize,
         take: this.pagintationData.pageSize
@@ -198,7 +197,14 @@ export class ReviewersreformersarbitratorsreportComponent extends BaseComponent 
     }
   
     createChart() {
-    if (this.listAllPersonasReport.length === 0) return;
+
+      debugger;
+
+    if (this.listAllPersonasReport.length === 0) {
+      this.chart?.destroy();
+      this.chart = null;
+      return;
+    }
   
     const ctx = this.chartCanvas.nativeElement.getContext('2d');
     if (!ctx) return;

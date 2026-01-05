@@ -98,6 +98,7 @@ export namespace translations {
             litigationRequestForArbitratorSelectionDurationList = 'layout.sidebar.litigationRequestForArbitratorSelectionDurationList',
             reportexplanationList = 'layout.sidebar.reportexplanationList',
             assignarbitratorlist = 'layout.sidebar.assignarbitratorlist',
+            assignarbitratorlistforduedate = 'layout.sidebar.assignarbitratorlistforduedate',
             details = 'layout.sidebar.details',
             arbitrationSessionList = 'layout.sidebar.arbitrationSessionList',
             assignArbitrationMemberList = 'layout.sidebar.assignArbitrationMemberList',

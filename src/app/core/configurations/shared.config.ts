@@ -62,6 +62,10 @@ export const Configuration = {
       RemoveRange: '/api/SysFileManager/RemoveRange',
     },
     Arbitration: {
+      
+      AddCitizenLitigationRequestForReportArbitratorsNominationListReplyForCoAdmin: '/api/Arbitration/AddCitizenLitigationRequestForReportArbitratorsNominationListReplyForCoAdmin',
+      GetCitizenLitigationRequestForArbitratorsNominationListReplyByRequestId: '/api/Arbitration/GetCitizenLitigationRequestForArbitratorsNominationListReplyForCoAdmin',
+      ReNotifyPartiesToSelectArbitrators: '/api/Arbitration/ReNotifyPartiesToSelectArbitrators',
       AddArbitrationExtendPeriodForEmployee: '/api/Arbitration/AddArbitrationExtendPeriodForEmployee',
       GetLitigationRequestExtendPeriodForEmployee: '/api/Arbitration/GetLitigationRequestExtendPeriodForEmployee',
       GetLitigationRequestExtendPeriodForEmployeeByRequestId: '/api/Arbitration/GetLitigationRequestExtendPeriodForEmployeeByRequestId',
@@ -83,6 +87,7 @@ export const Configuration = {
 
 
       assignArbitrationMemeberList: '/api/Arbitration/GetLitigationRequestForAddArbitratorsNominationList',
+      GetDueDateLitigationRequestForAssignArbitrators: '/api/Arbitration/GetDueDateLitigationRequestForAssignArbitrators',
       GetLitigationRequestForAddArbitratorsNominationListByRequestId: '/api/Arbitration/GetLitigationRequestForAddArbitratorsNominationListByRequestId',
       AddLitigationRequestArbitratorsNominationList: '/api/Arbitration/AddLitigationRequestArbitratorsNominationList',
 
@@ -287,6 +292,8 @@ export const Configuration = {
       assignedArbitrationRequests: 'assigned-arbitration-requests',
       arbitratorSessionList: "arbitrator-session-list",
       assignarbitratorlist: 'assign-arbitrator-list',
+      assignarbitratorlistforduedatelawsuits: 'assign-arbitrator-list-duedate-lawsuits',
+      assignarbitratorlistforduedatelawsuitsdetails: 'assign-arbitrator-list-duedate-lawsuits-details',
       arbitratorRecusalRequests: 'arbitrator-recusal-requests',
       approveOrRejectArbitrattionRecusalRequest: 'approve-or-reject-arbitrator-recusal-request',
       assignedArbitrationRequestsDocumnets: 'assigned-arbitration-request-documents',

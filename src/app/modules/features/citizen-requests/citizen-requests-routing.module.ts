@@ -23,97 +23,176 @@ import { AssignArbitrationHeadDetailsComponent } from './pages/assign-arbitratio
 import { AssignArbitrationMemberDetailsComponent } from './pages/assign-arbitration-member-details/assign-arbitration-member-details.component';
 import { ReformerAssigningRequestForAllComponent } from './pages/reformer-assigning-request-for-all/reformer-assigning-request-for-all.component';
 import { ReviewerListComponent } from './pages/reviewer-list/reviewer-list.component';
+import { permissionGuard } from '@app/modules/layout/services/AuthGaurd/permission-guard.service';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: Configuration.pages.citizenRequests.list,
-  //   pathMatch: "full"
-  // },
   {
     path: Configuration.pages.citizenRequests.arbitratorRequestList,
     component: ArbitratorRequestListComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: Configuration.pages.citizenRequests.reformerRequestList,
     component: ReformerRequestListComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: `${Configuration.pages.citizenRequests.details}/:code/:id`,
     component: RequestDetailsComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View', 'Arbitration.View'] 
+    }
   },
   {
     path: Configuration.pages.citizenRequests.requestToExtendSettlementPeriodList,
     component: RequestToExtendSettlementPeriodListComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: `${Configuration.pages.citizenRequests.requestToExtendSettlementPeriodDetails}/:id`,
     component: ShowRequestToExtendSettlementPeriodDetailsComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: Configuration.pages.citizenRequests.stopAndReleaseReformer,
     component: StopAndReleaseReformerComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: Configuration.pages.citizenRequests.stopAndReleaseArbitrator,
     component: StopAndReleaseArbitratorComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: `${Configuration.pages.citizenRequests.arbitratorDecisionDetails}/:id`,
     component: ArbitratorDecisionDetailsComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: `${Configuration.pages.citizenRequests.reformerDecisionDetails}/:id`,
     component: ReformerDecisionDetailsComponent,
-  }, 
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
+  },
   {
     path: Configuration.pages.citizenRequests.sessionList,
     component: SessionListComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: Configuration.pages.citizenRequests.reformerList,
     component: ReformerListComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: Configuration.pages.citizenRequests.reviewerList,
     component: ReviewerListComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Review.View'] 
+    }
   },
-
   {
     path: Configuration.pages.citizenRequests.requestToExtendArbitrationPeriodList,
     component: RequestToExtendArbitrationPeriodListComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: Configuration.pages.citizenRequests.reformerassigningrequestforall,
     component: ReformerAssigningRequestForAllComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Reconciliation.View'] 
+    }
   },
   {
     path: `${Configuration.pages.citizenRequests.requestToExtendArbitrationPeriodDetails}/:id`,
     component: ShowRequestToExtendArbitrationPeriodDetailsComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: Configuration.pages.citizenRequests.litigationRequestForArbitratorSelectionDurationList,
     component: LitigationRequestForArbitratorSelectionDurationListComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: `${Configuration.pages.citizenRequests.litigationRequestForArbitratorSelectionDurationDetails}/:id`,
     component: LitigationRequestForArbitratorSelectionDurationDetailsComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: Configuration.pages.citizenRequests.assignArbitrationHeadList,
     component: AssignArbitrationHeadListComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: `${Configuration.pages.citizenRequests.assignArbitrationHeadDetails}/:id`,
     component: AssignArbitrationHeadDetailsComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: Configuration.pages.citizenRequests.assignArbitrationMemberList,
     component: AssignArbitrationMemberListComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
   {
     path: `${Configuration.pages.citizenRequests.assignArbitrationMemberDetails}/:id`,
     component: AssignArbitrationMemberDetailsComponent,
+    canActivate: [permissionGuard],
+    data: { 
+      permissions: ['Arbitration.View'] 
+    }
   },
 ];
 

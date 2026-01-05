@@ -105,6 +105,8 @@ export interface LitigationRequestShortDto {
     litigationRequestCategory: SyslitigationRequestCategoryDto | null;
     sysExemptionReductionCategory: SysExemptionReductionCategoryDto | null;
     litigationRequestOwnerType: SyslitigationRequestOwnerTypeDto;
+    arbitratorsCount: number | null;
+
 }
 
 export interface LitigationRequestContractShortDto {
