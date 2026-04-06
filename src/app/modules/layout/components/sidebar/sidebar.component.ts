@@ -257,6 +257,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                         //     title: this.translate.instant(translations.layout.sidebar.litigationRequestNotes),
                         //     url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.litigation.litigationRequestNotesList,
                         // },
+                        {
+                            id: 'litigation-request-report-list',
+                            title: this.translate.instant(translations.layout.sidebar.litigationRequestReportList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.citizenRequests + '/' + Configuration.pages.citizenRequests.litigationRequestReportList,
+                        },
 
                     ]
                 },
@@ -415,6 +421,12 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             title: this.translate.instant(translations.layout.sidebar.approveArbitrationFeesPaid),
                             url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.approveArbitrationFeesPaidList,
                           },
+                          {
+                            id: 'arbitration-report-list',
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            title: this.translate.instant(translations.layout.sidebar.arbitrationReportList),
+                            url: '/' + Configuration.modules.arbitration + '/' + Configuration.pages.arbitration.arbitrationReportList,
+                          },
 
                     ]
                 },
@@ -509,8 +521,14 @@ export class SidebarComponent extends BaseComponent implements OnInit {
                             title: this.translate.instant(translations.layout.sidebar.assignDelegators),
                             icon: 'assets/images/icons/sidebar/book.svg',
                             url: '/' + Configuration.modules.lawsuits + '/' + Configuration.pages.lawsuits.assignDelegators,
+                        },
+                        {
+                            id: 'reopen-litigation-request-list',
+                            title: this.translate.instant(translations.layout.sidebar.reopenLitigationRequestList),
+                            icon: 'assets/images/icons/sidebar/book.svg',
+                            url: '/' + Configuration.modules.UsersManagement + '/' + Configuration.pages.usersManagement.reopenLitigationRequestList,
                         }
-                        
+
                     ],
                 },
                 {

@@ -1,0 +1,102 @@
+<app-breadcrumbs></app-breadcrumbs>
+<div class="table-wrapper mt-5">
+
+  <div class="table-filter">
+    <h5 class="fw-6">{{translations.reopenLitigationRequest.requestDetailsReopen | translate}}</h5>
+  </div>
+
+  @if(reopenInfo) {
+  <div class="form-wrapper">
+    <table class="styled-table">
+      <tr>
+        <td class="label-cell">{{translations.reopenLitigationRequest.requestCode | translate}} :</td>
+        <td>{{ reopenInfo.requestCode || '--' }}</td>
+      </tr>
+      <tr>
+        <td class="label-cell">{{translations.reopenLitigationRequest.requestType | translate}} :</td>
+        <td>{{ reopenInfo.requestTypeName || '--' }}</td>
+      </tr>
+      <tr>
+        <td class="label-cell">{{translations.reopenLitigationRequest.administrativeFeesPaymentStatus | translate}} :</td>
+        <td>{{ reopenInfo.administrativeFeesPaymentStatus || '--' }}</td>
+      </tr>
+      <tr>
+        <td class="label-cell">{{translations.reopenLitigationRequest.reconciliationFeesPaymentStatus | translate}} :</td>
+        <td>{{ reopenInfo.reconciliationFeesPaymentStatus || '--' }}</td>
+      </tr>
+      <tr>
+        <td class="label-cell">{{translations.reopenLitigationRequest.arbitrationFeesPaymentStatus | translate}} :</td>
+        <td>{{ reopenInfo.arbitrationFeesPaymentStatus || '--' }}</td>
+      </tr>
+      <tr>
+        <td class="label-cell">{{translations.reopenLitigationRequest.submissionDate | translate}} :</td>
+        <td>{{ reopenInfo.submissionDate ? (reopenInfo.submissionDate | date:'yyyy/MM/dd') : '--' }}</td>
+      </tr>
+      <tr>
+        <td class="label-cell">{{translations.reopenLitigationRequest.cancellationDate | translate}} :</td>
+        <td>{{ reopenInfo.cancellationDate ? (reopenInfo.cancellationDate | date:'yyyy/MM/dd') : '--' }}</td>
+      </tr>
+      <tr>
+        <td class="label-cell">{{translations.reopenLitigationRequest.statusBeforeCancellation | translate}} :</td>
+        <td>{{ reopenInfo.statusBeforeCancellation || '--' }}</td>
+      </tr>
+      <tr>
+        <td class="label-cell">{{translations.reopenLitigationRequest.statusAfterReopen | translate}} :</td>
+        <td>{{ reopenInfo.statusAfterReopen || '--' }}</td>
+      </tr>
+      @if(reopenInfo.reopenDate) {
+      <tr>
+        <td class="label-cell">{{translations.reopenLitigationRequest.reopenDate | translate}} :</td>
+        <td>{{ reopenInfo.reopenDate | date:'yyyy/MM/dd' }}</td>
+      </tr>
+      }
+      @if(reopenInfo.reopenReason) {
+      <tr>
+        <td class="label-cell">{{translations.reopenLitigationRequest.reopenReason | translate}} :</td>
+        <td>{{ reopenInfo.reopenReason }}</td>
+      </tr>
+      }
+    </table>
+
+    @if(reopenInfo.allowReopen) {
+    <div class="mt-4">
+      <form [formGroup]="reopenForm" (ngSubmit)="onReopen()">
+        <div class="form-group mb-3">
+          <label class="small fw-3 required mb-2">{{translations.reopenLitigationRequest.reopenReason | translate}}</label>
+          <textarea formControlName="reopenReason" class="form-control" rows="4"
+            [placeholder]="translations.reopenLitigationRequest.enterReopenReason | translate" maxlength="500"></textarea>
+          @if(reopenForm.controls['reopenReason'].errors && reopenForm.controls['reopenReason'].touched) {
+            @if(reopenForm.controls['reopenReason'].errors?.['required']) {
+              <div class="text-danger">{{translations.formValidationError.required | translate}}</div>
+            }
+            @if(reopenForm.controls['reopenReason'].errors?.['maxlength']) {
+              <div class="text-danger">{{translations.reopenLitigationRequest.maxCharacters500 | translate}}</div>
+            }
+          }
+        </div>
+        <div class="form-action d-flex gap-2">
+          <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+            @if(isLoading) {
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            }
+            {{translations.reopenLitigationRequest.reopenRequest | translate}}
+          </button>
+          <button type="button" class="btn btn-outline-primary" (click)="goBack()">{{translations.actions.goBack | translate}}</button>
+        </div>
+      </form>
+    </div>
+    } @else {
+    <div class="mt-4">
+      <div class="alert alert-info">{{translations.reopenLitigationRequest.alreadyReopened | translate}}</div>
+      <button type="button" class="btn btn-outline-primary" (click)="goBack()">{{translations.actions.goBack | translate}}</button>
+    </div>
+    }
+  </div>
+  } @else {
+  <div class="flex-center flex-column">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">{{translations.reopenLitigationRequest.loading | translate}}</span>
+    </div>
+  </div>
+  }
+</div>

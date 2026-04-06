@@ -48,6 +48,8 @@ import { EmployeeService } from './services/employee.service';
 import { LookupsService } from '@app/shared/services/lookups/lookups.service';
 import { AssignedReconciliationRequestsDocumentsComponent } from './pages/assigned-reconciliation-requests-documents/assigned-reconciliation-requests-documents.component';
 import { ArbitrationDocumentService } from '../arbitration/services/arbitrator-document/arbitrator-document.service';
+import { LitigationRequestReportListComponent } from './pages/litigation-request-report-list/litigation-request-report-list.component';
+import { LitigationRequestReportDetailsComponent } from './pages/litigation-request-report-details/litigation-request-report-details.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -91,7 +93,9 @@ import { ArbitrationDocumentService } from '../arbitration/services/arbitrator-d
     AssignArbitrationMemberDetailsComponent,
     AssignArbitrationHeadDetailsComponent,
     ReviewerListComponent,
-    AssignedReconciliationRequestsDocumentsComponent
+    AssignedReconciliationRequestsDocumentsComponent,
+    LitigationRequestReportListComponent,
+    LitigationRequestReportDetailsComponent
   ],
   providers: [
     CitizenRequestService,

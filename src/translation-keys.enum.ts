@@ -145,6 +145,9 @@ export namespace translations {
             Complaints='layout.sidebar.complaints',
             ComplainsList='layout.sidebar.complainsList',
             ComplaintsReport='layout.sidebar.complaintsReport',
+            arbitrationReportList='layout.sidebar.arbitrationReportList',
+            litigationRequestReportList='layout.sidebar.litigationRequestReportList',
+            reopenLitigationRequestList='layout.sidebar.reopenLitigationRequestList',
         }
     }
 
@@ -831,7 +834,24 @@ export namespace translations {
         disputeResolutionClause = "arbitrator.disputeResolutionClause",
         homeownersAssociationBylaw = "arbitrator.homeownersAssociationBylaw",
         approveArbitrationFeesPaidDetails="arbitrator.approveArbitrationFeesPaidDetails",
-        approveArbitrationFeedPaid='arbitrator.approveArbitrationFeedPaid'
+        approveArbitrationFeedPaid='arbitrator.approveArbitrationFeedPaid',
+        arbitrationReportRequestDetails='arbitrator.arbitrationReportRequestDetails',
+        searchByRequestCode='arbitrator.searchByRequestCode',
+        searchByArbitratorName='arbitrator.searchByArbitratorName',
+        searchByPartyName='arbitrator.searchByPartyName',
+        submissionDateFrom='arbitrator.submissionDateFrom',
+        submissionDateTo='arbitrator.submissionDateTo',
+        auditorAcceptanceDateFrom='arbitrator.auditorAcceptanceDateFrom',
+        auditorAcceptanceDateTo='arbitrator.auditorAcceptanceDateTo',
+        arbitratorAcceptanceDateFrom='arbitrator.arbitratorAcceptanceDateFrom',
+        arbitratorAcceptanceDateTo='arbitrator.arbitratorAcceptanceDateTo',
+        judgmentDateFrom='arbitrator.judgmentDateFrom',
+        judgmentDateTo='arbitrator.judgmentDateTo',
+        submissionDate='arbitrator.submissionDate',
+        auditorAcceptanceDate='arbitrator.auditorAcceptanceDate',
+        arbitratorAcceptanceDate='arbitrator.arbitratorAcceptanceDate',
+        judgmentDate='arbitrator.judgmentDate',
+        arbitrationChairmanName='arbitrator.arbitrationChairmanName',
     }
 
     export enum RequestToExtendSettlementPeriod {
@@ -921,6 +941,7 @@ export namespace translations {
         selectReviewer = "litigationRequest.selectReviewer",
         selectDelegator = "litigationRequest.selectDelegator",
         selectReason = "litigationRequest.selectReason",
+        settlementRecord = "litigationRequest.settlementRecord",
 
     }
 
@@ -1144,7 +1165,55 @@ export namespace translations {
         acceptanceReconciliation= "reformer.acceptanceReconciliation",
         rejectReason = "reformer.rejectReason",
         enterRejectReason = "reformer.enterRejectReason",
+        litigationRequestReportDetails = "reformer.litigationRequestReportDetails",
+        searchByRequestCode = "reformer.searchByRequestCode",
+        searchByReformerName = "reformer.searchByReformerName",
+        searchByPartyName = "reformer.searchByPartyName",
+        submissionDate = "reformer.submissionDate",
+        submissionDateFrom = "reformer.submissionDateFrom",
+        submissionDateTo = "reformer.submissionDateTo",
+        feeConfirmationDate = "reformer.feeConfirmationDate",
+        feeConfirmationDateFrom = "reformer.feeConfirmationDateFrom",
+        feeConfirmationDateTo = "reformer.feeConfirmationDateTo",
+        reformerAcceptanceDate = "reformer.reformerAcceptanceDate",
+        reformerAcceptanceDateFrom = "reformer.reformerAcceptanceDateFrom",
+        reformerAcceptanceDateTo = "reformer.reformerAcceptanceDateTo",
+        reportIssuedDate = "reformer.reportIssuedDate",
+        reportDateFrom = "reformer.reportDateFrom",
+        reportDateTo = "reformer.reportDateTo",
+        reformerNameColumn = "reformer.reformerNameColumn",
     }
 
-   
+    export enum reopenLitigationRequest {
+        reopenClosedRequests = "reopenLitigationRequest.reopenClosedRequests",
+        requestDetails = "reopenLitigationRequest.requestDetails",
+        requestDetailsReopen = "reopenLitigationRequest.requestDetailsReopen",
+        requestCode = "reopenLitigationRequest.requestCode",
+        requestType = "reopenLitigationRequest.requestType",
+        status = "reopenLitigationRequest.status",
+        submissionDate = "reopenLitigationRequest.submissionDate",
+        cancellationDate = "reopenLitigationRequest.cancellationDate",
+        applicantName = "reopenLitigationRequest.applicantName",
+        details = "reopenLitigationRequest.details",
+        noClosedRequests = "reopenLitigationRequest.noClosedRequests",
+        administrativeFeesPaymentStatus = "reopenLitigationRequest.administrativeFeesPaymentStatus",
+        reconciliationFeesPaymentStatus = "reopenLitigationRequest.reconciliationFeesPaymentStatus",
+        arbitrationFeesPaymentStatus = "reopenLitigationRequest.arbitrationFeesPaymentStatus",
+        statusBeforeCancellation = "reopenLitigationRequest.statusBeforeCancellation",
+        statusAfterReopen = "reopenLitigationRequest.statusAfterReopen",
+        reopenDate = "reopenLitigationRequest.reopenDate",
+        reopenReason = "reopenLitigationRequest.reopenReason",
+        enterReopenReason = "reopenLitigationRequest.enterReopenReason",
+        maxCharacters500 = "reopenLitigationRequest.maxCharacters500",
+        reopenRequest = "reopenLitigationRequest.reopenRequest",
+        alreadyReopened = "reopenLitigationRequest.alreadyReopened",
+        loading = "reopenLitigationRequest.loading",
+        confirmReopenTitle = "reopenLitigationRequest.confirmReopenTitle",
+        confirmReopenYes = "reopenLitigationRequest.confirmReopenYes",
+        confirmReopenCancel = "reopenLitigationRequest.confirmReopenCancel",
+        reopenSuccess = "reopenLitigationRequest.reopenSuccess",
+        reopenError = "reopenLitigationRequest.reopenError",
+    }
+
+
 }

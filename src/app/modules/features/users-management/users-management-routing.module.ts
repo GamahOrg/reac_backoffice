@@ -25,6 +25,8 @@ import { ComplaintDetailsComponent } from './components/complaint-list/complaint
 import { ComplaintReportComponent } from './components/statistic-dashbourd/compliant-report/compliant-report.component';
 import { LawsuitsListForAdminComponent } from './components/lawsuits-list-for-admin/lawsuits-list-for-admin.component';
 import { LawsuitsDetailsForAdminComponent } from './components/lawsuits-details-for-admin/lawsuits-details-for-admin.component';
+import { ReopenLitigationRequestListComponent } from './components/reopen-litigation-request-list/reopen-litigation-request-list.component';
+import { ReopenLitigationRequestDetailsComponent } from './components/reopen-litigation-request-details/reopen-litigation-request-details.component';
 
 const routes: Routes = [
   {
@@ -128,6 +130,14 @@ const routes: Routes = [
   {
       path: `lawsuit-details/:id`,
       component: LawsuitsDetailsForAdminComponent,
+  },
+  {
+      path: Configuration.pages.usersManagement.reopenLitigationRequestList,
+      component: ReopenLitigationRequestListComponent,
+  },
+  {
+      path: `${Configuration.pages.usersManagement.reopenLitigationRequestDetails}/:id`,
+      component: ReopenLitigationRequestDetailsComponent,
   },
 ];
 

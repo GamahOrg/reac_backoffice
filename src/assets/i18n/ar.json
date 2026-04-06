@@ -107,7 +107,10 @@
             "providersDashbourd":"إحصائيات مقدمي الخدمة",
             "complaints": " الشكاوى والاستفسارات",
             "complainsList": "قائمة الشكاوى والاستفسارات",
-            "complaintsReport": "تقرير الشكاوى والاستفسارات"
+            "complaintsReport": "تقرير الشكاوى والاستفسارات",
+            "arbitrationReportList": "الأحكام الصادرة",
+            "litigationRequestReportList": "محاضر الصلح الصادرة",
+            "reopenLitigationRequestList": "إعادة فتح الطلبات المغلقة"
         }
     },
     "actions": {
@@ -771,7 +774,24 @@
         "disputeResolutionClause": "منه علي حل النزاعات التي تحصل بين الطرفين عن طريق التحكيم لدي المركز السعودي للتحكيم العقاري",
         "homeownersAssociationBylaw": "النظام الأساسي لجمعية ملاك",
         "approveArbitrationFeesPaidDetails":"تفاصيل تاكيد دفع رسوم التحكيم",
-        "approveArbitrationFeedPaid":"تاكيد الدفع"
+        "approveArbitrationFeedPaid":"تاكيد الدفع",
+        "arbitrationReportRequestDetails":"تفاصيل الأحكام الصادرة",
+        "searchByRequestCode":"البحث برقم الدعوى",
+        "searchByArbitratorName":"البحث باسم المحكم",
+        "searchByPartyName":"البحث باسم أحد أطراف الدعوى",
+        "submissionDateFrom":"تاريخ تقديم الدعوى - من",
+        "submissionDateTo":"تاريخ تقديم الدعوى - إلى",
+        "auditorAcceptanceDateFrom":"تاريخ قبول الدعوى من المدقق - من",
+        "auditorAcceptanceDateTo":"تاريخ قبول الدعوى من المدقق - إلى",
+        "arbitratorAcceptanceDateFrom":"تاريخ قبول المحكم الدعوى - من",
+        "arbitratorAcceptanceDateTo":"تاريخ قبول المحكم الدعوى - إلى",
+        "judgmentDateFrom":"تاريخ إصدار الحكم - من",
+        "judgmentDateTo":"تاريخ إصدار الحكم - إلى",
+        "submissionDate":"تاريخ تقديم الدعوى",
+        "auditorAcceptanceDate":"تاريخ قبول الدعوى من المدقق",
+        "arbitratorAcceptanceDate":"تاريخ قبول المحكم الدعوى",
+        "judgmentDate":"تاريخ إصدار الحكم",
+        "arbitrationChairmanName":"اسم رئيس هيئة التحكيم"
     },
     "RequestToExtendSettlementPeriod": {
         "requestCode": "كود الدعوة",
@@ -844,7 +864,8 @@
         "selectArbitrator": "اختار محكم",
         "selectReviewer": "اختار مدقق",
         "selectReason": "السبب ",
-        "selectDelegator":"اختر المفوض"
+        "selectDelegator":"اختر المفوض",
+        "settlementRecord": "محضر الصلح"
 
     },
     "tasksRequestsList": {
@@ -1191,7 +1212,55 @@
     "disputeResolutionClause": "منه علي حل النزاعات التي تحصل بين الطرفين عن طريق الصلح لدي المركز السعودي للتحكيم العقاري",
     "homeownersAssociationBylaw": "النظام الأساسي لجمعية ملاك",
     "rejectReason": "اسباب الرفض",
-    "enterRejectReason": "أدخل اسباب الرفض"
+    "enterRejectReason": "أدخل اسباب الرفض",
+    "litigationRequestReportDetails": "تفاصيل محضر الصلح",
+    "searchByRequestCode": "بحث برقم الدعوى",
+    "searchByReformerName": "بحث باسم المصلح",
+    "searchByPartyName": "بحث باسم أحد أطراف الدعوى",
+    "submissionDate": "تاريخ تقديم الدعوى",
+    "submissionDateFrom": "تاريخ تقديم الدعوى من",
+    "submissionDateTo": "تاريخ تقديم الدعوى إلى",
+    "feeConfirmationDate": "تاريخ تأكيد سداد رسوم الصلح",
+    "feeConfirmationDateFrom": "تاريخ تأكيد السداد من",
+    "feeConfirmationDateTo": "تاريخ تأكيد السداد إلى",
+    "reformerAcceptanceDate": "تاريخ قبول المصلح الدعوى",
+    "reformerAcceptanceDateFrom": "تاريخ قبول المصلح من",
+    "reformerAcceptanceDateTo": "تاريخ قبول المصلح إلى",
+    "reportIssuedDate": "تاريخ إصدار المحضر",
+    "reportDateFrom": "تاريخ إصدار المحضر من",
+    "reportDateTo": "تاريخ إصدار المحضر إلى",
+    "reformerNameColumn": "اسم المصلح"
+},
+
+"reopenLitigationRequest": {
+    "reopenClosedRequests": "إعادة فتح الطلبات المغلقة",
+    "requestDetails": "تفاصيل الطلب",
+    "requestDetailsReopen": "تفاصيل الطلب - إعادة فتح",
+    "requestCode": "رقم الدعوى",
+    "requestType": "نوع الدعوى",
+    "status": "الحالة",
+    "submissionDate": "تاريخ تقديم الطلب",
+    "cancellationDate": "تاريخ الإلغاء",
+    "applicantName": "اسم مقدم الطلب",
+    "details": "تفاصيل",
+    "noClosedRequests": "لا توجد طلبات مغلقة",
+    "administrativeFeesPaymentStatus": "حالة سداد الرسوم الإدارية",
+    "reconciliationFeesPaymentStatus": "حالة سداد رسوم الصلح",
+    "arbitrationFeesPaymentStatus": "حالة سداد رسوم التحكيم",
+    "statusBeforeCancellation": "الحالة قبل الإلغاء",
+    "statusAfterReopen": "الحالة بعد إعادة الفتح",
+    "reopenDate": "تاريخ إعادة الفتح",
+    "reopenReason": "سبب إعادة الفتح",
+    "enterReopenReason": "أدخل سبب إعادة فتح الطلب...",
+    "maxCharacters500": "الحد الأقصى 500 حرف",
+    "reopenRequest": "إعادة فتح الطلب",
+    "alreadyReopened": "تم إعادة فتح هذا الطلب مسبقاً",
+    "loading": "جاري التحميل...",
+    "confirmReopenTitle": "هل تريد إعادة فتح هذا الطلب؟",
+    "confirmReopenYes": "نعم، إعادة فتح",
+    "confirmReopenCancel": "إلغاء",
+    "reopenSuccess": "تم إعادة فتح الطلب بنجاح",
+    "reopenError": "حدث خطأ أثناء إعادة فتح الطلب"
 }
 
 }

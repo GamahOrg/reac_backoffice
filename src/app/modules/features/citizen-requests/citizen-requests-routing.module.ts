@@ -23,6 +23,8 @@ import { AssignArbitrationHeadDetailsComponent } from './pages/assign-arbitratio
 import { AssignArbitrationMemberDetailsComponent } from './pages/assign-arbitration-member-details/assign-arbitration-member-details.component';
 import { ReformerAssigningRequestForAllComponent } from './pages/reformer-assigning-request-for-all/reformer-assigning-request-for-all.component';
 import { ReviewerListComponent } from './pages/reviewer-list/reviewer-list.component';
+import { LitigationRequestReportListComponent } from './pages/litigation-request-report-list/litigation-request-report-list.component';
+import { LitigationRequestReportDetailsComponent } from './pages/litigation-request-report-details/litigation-request-report-details.component';
 import { permissionGuard } from '@app/modules/layout/services/AuthGaurd/permission-guard.service';
 
 const routes: Routes = [
@@ -190,8 +192,24 @@ const routes: Routes = [
     path: `${Configuration.pages.citizenRequests.assignArbitrationMemberDetails}/:id`,
     component: AssignArbitrationMemberDetailsComponent,
     canActivate: [permissionGuard],
-    data: { 
-      permissions: ['Arbitration.View'] 
+    data: {
+      permissions: ['Arbitration.View']
+    }
+  },
+  {
+    path: Configuration.pages.citizenRequests.litigationRequestReportList,
+    component: LitigationRequestReportListComponent,
+    canActivate: [permissionGuard],
+    data: {
+      permissions: ['Reconciliation.View']
+    }
+  },
+  {
+    path: `${Configuration.pages.citizenRequests.litigationRequestReportDetails}/:id`,
+    component: LitigationRequestReportDetailsComponent,
+    canActivate: [permissionGuard],
+    data: {
+      permissions: ['Reconciliation.View']
     }
   },
 ];

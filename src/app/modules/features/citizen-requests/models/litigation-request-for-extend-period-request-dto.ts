@@ -53,7 +53,8 @@ export interface LitigationRequestShortDto {
     isArbitrationFeesHaveBeenCollected: boolean;
     mintuesOfMeetingApprovalPlaintiffStatusOn: Date;
     mintuesOfMeetingApprovalDefendantStatusOn: Date;
-
+mintuesOfMeetingApprovalPlaintiffStatus: number;
+mintuesOfMeetingApprovalDefendantStatus: number;
     title: string;
     description: string;
     isFinancialLitigation: boolean;
@@ -168,9 +169,40 @@ export interface LitigationRequestReconciliationReportCreateUpdateDto {
     reportDate: string;
     reconciliationSessionDetails: string;
     modificationRequest: string;
+    reconciliationRequestDecisionStatus:number;
     litigationRequestMeetingReconciliationItems: LitigationRequestReconciliationReportItemCreateUpdateDto[];
 }
 export interface LitigationRequestReconciliationReportItemCreateUpdateDto {
     id: string;
     reconciliationItem: string;
+}
+
+export interface LitigationRequestReportReformerFilterDto {
+    requestCode?: string | null;
+    reformerName?: string | null;
+    partyName?: string | null;
+    submissionDateFrom?: string | null;
+    submissionDateTo?: string | null;
+    feeConfirmationDateFrom?: string | null;
+    feeConfirmationDateTo?: string | null;
+    reformerAcceptanceDateFrom?: string | null;
+    reformerAcceptanceDateTo?: string | null;
+    reportDateFrom?: string | null;
+    reportDateTo?: string | null;
+}
+
+export interface LitigationRequestMircoReportDto {
+    id: string;
+    requestCode: string | null;
+    requestDate: string;
+    firstPartyName: string;
+    secondPartyName: string;
+    requestTypeName: string;
+    status: string;
+    isDone: string;
+    submissionDate?: string | null;
+    feeConfirmationDate?: string | null;
+    reformerAcceptanceDate?: string | null;
+    reportDate?: string | null;
+    reformerName?: string | null;
 }

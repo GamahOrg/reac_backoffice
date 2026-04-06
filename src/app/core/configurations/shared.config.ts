@@ -8,21 +8,21 @@ export const Configuration = {
     development: {
       production: false,
       baseURL: "https://dev-reac-api.rega.gov.sa",
-            securityURl: "https://dev-reac-sso.rega.gov.sa",
+      securityURl: "https://dev-reac-sso.rega.gov.sa",
       // securityURl: "http://192.168.194.183:222",
       // baseURL: "http://192.168.194.183:3333",
     },
     testingAndStaging: {
       production: true,
       baseURL: "https://staging-reac-api.rega.gov.sa",
-            securityURl: "https://staging-reac-sso.rega.gov.sa",
-            refreshTokenURl: "https://staging-reac-sso.rega.gov.sa",
+      securityURl: "https://staging-reac-sso.rega.gov.sa",
+      refreshTokenURl: "https://staging-reac-sso.rega.gov.sa",
     },
     production: {
       production: true,
       baseURL: "https://reac-api.rega.gov.sa",
-            securityURl: "https://reac-sso.rega.gov.sa",
-            refreshTokenURl: "https://reac-sso.rega.gov.sa",
+      securityURl: "https://reac-sso.rega.gov.sa",
+      refreshTokenURl: "https://reac-sso.rega.gov.sa",
     },
   },
   APIs: {
@@ -107,7 +107,12 @@ export const Configuration = {
       GetLitigationAcceptanceOrRejectDocumentData: "/api/LitigationRequest/GetLitigationArbitrationTaskAcceptanceOrRejectDocumentData",
       AddLitigationRequestArbitratorsChairmandecision: "/api/Arbitration/AddLitigationRequestArbitratorsChairmandecision",
       AddLitigationRequestArbitratorsMemberdecision: "/api/Arbitration/AddLitigationRequestArbitratorsdecision",
-      GetLitigationReconciliationTaskAcceptanceOrRejectDocumentData: "/api/LitigationRequest/GetLitigationReconciliationTaskAcceptanceOrRejectDocumentData"
+      GetLitigationReconciliationTaskAcceptanceOrRejectDocumentData: "/api/LitigationRequest/GetLitigationReconciliationTaskAcceptanceOrRejectDocumentData",
+      GetLitigationRequestForReport: '/api/Arbitration/GetLitigationRequestForReport',
+      GetLitigationRequestForReportForAdmin: '/api/ArbitrationReport/GetLitigationRequestForReportForAdmin',
+      GetLitigationRequestForReportByRequestId: '/api/Arbitration/GetLitigationRequestForReportByRequestId',
+      AddArbitrationReport: '/api/Arbitration/AddArbitrationReport',
+      GetMeetingLocations: '/api/SysMeetingLocation/GetAll',
     },
     SysArbitratorCount: {
       Get: "/api/SysArbitratorCount/Get"
@@ -121,6 +126,8 @@ export const Configuration = {
       GetLitigationRequestForFullAllReformer: '/api/Reconciliation/GetLitigationRequestForFullAllReformer',
       Assign: '/api/Reconciliation/Assign',
       AssignReviewer: '/api/LitigationRequest/Assign',
+      GetReconciliationRequestForReportForAdmin: '/api/ReconciliationReportAdmin/GetLitigationRequestForReconciliationAdminReport',
+      GetLitigationRequestForReportByRequestId: '/api/Reconciliation/GetLitigationRequestForReport',
     },
     LitigationRequest: {
       AuditngList: '/api/LitigationRequest/AuditngList',
@@ -220,6 +227,11 @@ export const Configuration = {
       updateEmployee:"/api/SysEmployee/UpdateEmployee",
       getEmployeeById:"/api/SysEmployee/GetByIdAsync"
     },
+    reopenLitigationRequest:{
+      GetClosedLitigationRequests:"/api/ReopenLitigationRequest/GetClosedLitigationRequests",
+      GetLitigationRequestReopenInfo:"/api/ReopenLitigationRequest/GetLitigationRequestReopenInfo",
+      ReopenLitigationRequest:"/api/ReopenLitigationRequest/ReopenLitigationRequest"
+    },
     adminstrativeFees:{
       getAllFees:"/api/SysLitigationRequestAmount/Get",
       updateFees:"/api/SysLitigationRequestAmount/UpdateAsync",
@@ -299,7 +311,8 @@ export const Configuration = {
       assignedArbitrationRequestsDocumnets: 'assigned-arbitration-request-documents',
       approveArbitrationFeesPaidList:'approve-arbitration-fees-paid-list',
       approveArbitrationFeesPaidDetails:'approve-arbitration-fees-paid-details',
-      
+      arbitrationReportList:'arbitration-report-list',
+      arbitrationReportDetails:'arbitration-report-details',
     },
     lawsuits: {
       lawsuitList: "lawsuit-list",
@@ -346,7 +359,8 @@ export const Configuration = {
       assignArbitrationHeadDetails: 'assign-arbitration-head-details',
       assignArbitrationMemberList: 'assign-arbitration-member-list',
       assignArbitrationMemberDetails: 'assign-arbitration-member-details',
-
+      litigationRequestReportList: 'litigation-request-report-list',
+      litigationRequestReportDetails: 'litigation-request-report-details',
     },
     reports: {
       statisticsReview: 'statistics-review',
@@ -397,6 +411,8 @@ export const Configuration = {
       ComplaintReport: 'complaint-report',
       lawsuitsList: 'lawsuits-list',
       lawsuitsDetails: 'lawsuit-details/:id',
+      reopenLitigationRequestList: 'reopen-litigation-request-list',
+      reopenLitigationRequestDetails: 'reopen-litigation-request-details',
     }
   },
   validators: {
