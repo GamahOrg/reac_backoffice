@@ -542,17 +542,29 @@
         "cvFiles":"مرفقات السيره الذاتية"
     },
     "extendLitigationRequest": {
-        "extendLitigationRequest": "مد فترة الصلح",
-        "requiredDays": "عدد الايام المطلوبه",
-        "reason": "السبب",
-        "notes": "ملاحظات",
-        "addExtendLitigationRequest": "اضافة مد لمدة الصلح",
-        "status": "حالة طلب مد الدعوي",
-        "accepted": "مقبول",
-        "rejected": "مرفوض",
-        "finishStatusReason": "سبب الرفض",
-        "acceptExtendLitigationRequest": "قبول مد مدة الصلح",
-        "rejectExtendLitigationRequest": "قبول مد مدة الصلح"
+        "extendLitigationRequest": "Extend Litigation Period",
+        "requiredDays": "Required Days",
+        "reason": "Reason",
+        "notes": "Notes",
+        "addExtendLitigationRequest": "Add Extension Request",
+        "status": "Extension Request Status",
+        "accepted": "Accepted",
+        "rejected": "Rejected",
+        "finishStatusReason": "Rejection Reason",
+        "acceptExtendLitigationRequest": "Accept Extension Request",
+        "rejectExtendLitigationRequest": "Reject Extension Request",
+        "acceptExtendArbitrationRequest": "Accept Arbitration Extension",
+        "rejectExtendArbitrationRequest": "Reject Arbitration Extension",
+        "acceptExtendSettlementRequest": "Accept Settlement Extension",
+        "rejectExtendSettlementRequest": "Reject Settlement Extension",
+        "requestStatus": "Request Status",
+        "litigationFinishedDate": "Phase End Date",
+        "litigationFininshedNewDate": "New End Date",
+        "extensionHistory": "Extension History",
+        "extensionArbitrationHistory": "Arbitration Extension History",
+        "extensionSettlementHistory": "Settlement Extension History",
+        "underReview": "Under Review",
+        "decisionNotes": "Decision Notes"
     },
     "arbitrator": {
         "arbitratorRegistrationForm": "استمارة التسجيل للمحكم",
@@ -668,8 +680,8 @@
         "firstPartyName": "المدعي",
         "secondPartyName": "المدعي عليه",
         "requestTypeName": "نوع الدعوة",
-        "status": "حالة الدعوة",
-        "isDone": "الحالة",
+        "status": "حالة الدعوى",
+        "isDone": "حالة طلب المد",
         "actorType":"صفة مقدم الطلب"
     },
     "Modificationrequestforall": {
@@ -695,6 +707,7 @@
         "isDone": "حالة الانتهاء",
         "replyStatus": "الرد",
         "sessionDatetime": "ميعاد الجلسة",
+        "sessionType": "نوع الجلسة",
         "litigationRequesSessions": "جلسات الصلح",
         "addSession": "اضافة ميعاد جلسة صلح",
         "requestNumber": "رقم الدعوى",
@@ -725,7 +738,9 @@
         "selectReformer": "اختار مصلح",
         "sessionLink": "رابط الجلسة",
         "selectReviewer": "اختار مدقق",
-        "selectReason": "السبب "
+        "selectReason": "السبب ",
+        "correctionStatus": "Correction Request Status",
+        "days": "يوم"
     },
     "tasksRequestsList": {
         "None": "لم يتم الرد",

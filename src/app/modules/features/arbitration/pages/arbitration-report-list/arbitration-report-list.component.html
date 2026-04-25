@@ -91,6 +91,7 @@
           <th scope="col">{{translations.LitigationRequest.firstPartyName | translate}}</th>
           <th scope="col">{{translations.LitigationRequest.secondPartyName | translate}}</th>
           <th scope="col">{{translations.arbitrator.arbitrationChairmanName | translate}}</th>
+          <th scope="col">{{translations.LitigationRequest.correctionStatus | translate}}</th>
           <th scope="col" class="text-center">{{translations.CitizenRequest.actions | translate}}</th>
         </tr>
       </thead>
@@ -106,6 +107,7 @@
           <td>{{litigationRequest.firstPartyName}}</td>
           <td>{{litigationRequest.secondPartyName}}</td>
           <td>{{litigationRequest.arbitratorName}}</td>
+          <td>{{litigationRequest.correctionRequestStatus ?? '-'}}</td>
           <td>
             <div class="d-flex justify-content-center align-items-center gap-2">
               <button class="btn btn-sm btn-primary" (click)="goToDetailsPage(litigationRequest.id)">{{ translations.actions.view | translate }}</button>

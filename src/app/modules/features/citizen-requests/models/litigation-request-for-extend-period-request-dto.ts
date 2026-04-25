@@ -6,7 +6,8 @@ export interface LitigationRequestForExtendPeriodRequestDto {
     allowDecision: boolean;
 
     litigationRequestShortDto: LitigationRequestShortDto;
-    litigationRequestExtendPeriodRequestCreateUpdateDto: LitigationRequestExtendPeriodRequestCreateUpdateDto
+    litigationRequestExtendPeriodRequestCreateUpdateDto: LitigationRequestExtendPeriodRequestCreateUpdateDto;
+    litigationRequestExtendPeriodRequests: LitigationRequestExtendPeriodRequestCreateUpdateDto[];
 }
 
 export interface LitigationRequestExtendPeriodRequestCreateUpdateDto {
@@ -22,8 +23,13 @@ export interface LitigationRequestExtendPeriodRequestCreateUpdateDto {
     notes: string;
 
     litigationRequestExtendPeriodRequestStatusId: number;
+    createdOn?: string;
 
     finishStatusReason: string;
+
+    status: string;
+    litigationFinishedDate: string | null;
+    litigationFininshedNewDate: string | null;
 
     litigationRequestExtendPeriodRequestFiles: LitigationRequestExtendPeriodRequestFileCreateUpdateDto[];
 }

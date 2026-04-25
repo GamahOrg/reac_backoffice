@@ -7,60 +7,84 @@
                 <h6 class="small fw-6 op-7"> {{ translations.ExtendLitigationRequest.extendLitigationRequest | translate }} </h6>
             </summary>
 
-            <div class="grid-2">
-                <div>
-                    <label class="fw-6 mb-2">
-                        {{ translations.LitigationRequest.requestreson | translate }}:
-                    </label>
-                    <h6 class="small op-8">{{litigationRequestForReportDto?.litigationRequestExtendPeriodRequestCreateUpdateDto?.requestReason}}</h6>
-                </div>
-
-                <div>
-                    <label class="fw-6 mb-2">
-                        {{ translations.LitigationRequest.dayscount | translate }}:
-                    </label>
-                    <h6 class="small op-8">{{litigationRequestForReportDto?.litigationRequestExtendPeriodRequestCreateUpdateDto?.requiredDays}}</h6>
-                </div>
-
-                <div *ngIf="litigationRequestForReportDto?.litigationRequestExtendPeriodRequestCreateUpdateDto?.finishStatusReason">
-                    <label class="fw-6 mb-2">
-                        {{ translations.LitigationRequest.rejectionReasons | translate }}:
-                    </label>
-                    <h6 class="small op-8">{{litigationRequestForReportDto?.litigationRequestExtendPeriodRequestCreateUpdateDto?.finishStatusReason}}</h6>
-                </div>
-
-                <div>
-                    <label class="fw-6 mb-2"> {{ translations.general.files | translate }}: </label>
-                    <div class="flex-between p-2 rounded-2 w-lg-5" style="background: #F7F7F7;" *ngFor="let file of litigationRequestForReportDto?.litigationRequestExtendPeriodRequestCreateUpdateDto?.litigationRequestExtendPeriodRequestFiles">
-                        <div class="flex-y-row gap-2">
-                            <img src="assets/images/icons/lawsuit-details/attachment.svg" alt="attachment">
-                            <p class="v-small fw-6 op-9">{{file.fileManager.fileDescription}}</p>
-                        </div>
+            <div class="form-wrapper mt-5" *ngIf="this.litigationRequestForReportDto?.litigationRequestExtendPeriodRequests?.length">
+                <h5 class="mb-5 op-7 fw-4"> {{ ExtendLitigationRequest.extensionSettlementHistory | translate }} </h5>
                 
-                        <div class="flex-y-row gap-1">
-                            <a *ngIf="file && file.fileManager" [href]="baseUrl + file.fileManager.filePath" target="_blank" id="link-marketingPlanFile">
-                                <i class='btn px-0 material-icons op-3 fs-5'>visibility</i>
-                            </a>
-                            <a *ngIf="file && file.fileManager" [href]="baseUrl + file.fileManager.filePath" target="_blank" id="link-marketingPlanFile-download" download>
-                                <!-- <i class='btn px-0 material-icons op-3 fs-5'>download</i> -->
-                            </a>
-                        </div>
-                    </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="py-3">#</th>
+                                <th class="py-3">{{ ExtendLitigationRequest.requiredDays | translate }}</th>
+                                <th class="py-3">{{ ExtendLitigationRequest.status | translate }}</th>
+                                <th class="py-3">{{ ExtendLitigationRequest.litigationFinishedDate | translate }}</th>
+                                <th class="py-3">{{ ExtendLitigationRequest.litigationFininshedNewDate | translate }}</th>
+                                <th class="py-3">{{ ExtendLitigationRequest.reason | translate }}</th>
+                                <th class="py-3">{{ ExtendLitigationRequest.decisionNotes | translate }}</th>
+                                <th class="py-3">{{ translations.general.files | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let request of this.litigationRequestForReportDto?.litigationRequestExtendPeriodRequests; let i = index">
+                                <td class="fw-bold">{{ i + 1 }}</td>
+                                <td>{{ request?.requiredDays }} {{ LitigationRequest.days | translate }}</td>
+                                <td>
+                                    <span class="badge px-3 py-2 status-badge" 
+                                          [class.status-approve]="request?.litigationRequestExtendPeriodRequestStatusId == 1"
+                                          [class.status-reject]="request?.litigationRequestExtendPeriodRequestStatusId == 2"
+                                          [class.status-pending]="!request?.litigationRequestExtendPeriodRequestStatusId">
+                                        {{ getRequestStatusString(request?.litigationRequestExtendPeriodRequestStatusId) }}
+                                    </span>
+                                </td>
+                                <td>{{ request?.litigationFinishedDate | date: 'yyyy/MM/dd' }}</td>
+                                <td>{{ request?.litigationFininshedNewDate | date: 'yyyy/MM/dd' || '--' }}</td>
+                                <td>
+                                    <span class="text-truncate-max" [ngbTooltip]="request?.requestReason">
+                                        {{ request?.requestReason }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div *ngIf="request?.litigationRequestExtendPeriodRequestStatusId == 1 && request?.notes" 
+                                         class="feedback-box feedback-approve" [ngbTooltip]="request?.notes">
+                                        <strong>{{ ExtendLitigationRequest.notes | translate }}:</strong>
+                                        <span class="text-truncate-max">{{ request?.notes }}</span>
+                                    </div>
+                                    <div *ngIf="request?.litigationRequestExtendPeriodRequestStatusId == 2 && request?.finishStatusReason" 
+                                         class="feedback-box feedback-reject" [ngbTooltip]="request?.finishStatusReason">
+                                        <strong>{{ translations.LitigationRequest.rejectionReasons | translate }}:</strong>
+                                        <span class="text-truncate-max">{{ request?.finishStatusReason }}</span>
+                                    </div>
+                                    <span *ngIf="!request?.litigationRequestExtendPeriodRequestStatusId" class="text-muted small">--</span>
+                                </td>
+                                <td>
+                                    <div class="d-flex gap-2">
+                                        <a *ngFor="let attachment of request.litigationRequestExtendPeriodRequestFiles"
+                                           [href]="baseUrl + attachment.fileManager.filePath" 
+                                           target="_blank"
+                                           class="btn btn-sm btn-outline-secondary p-1"
+                                           [title]="attachment.fileManager.fileDescription">
+                                            <i class="material-icons fs-6">attachment</i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+            </div>
 
-                <div class="flex-y-row span-2 gap-2" *ngIf="litigationRequestForReportDto && litigationRequestForReportDto.allowAdd">
-                    <button
-                        (click)="open(acceptModal)"
-                        class="btn btn-primary px-8"
-                        type="button">{{translations.actions.accept|
-                        translate}}</button>
+            <div class="flex-y-row mt-5 gap-2" *ngIf="litigationRequestForReportDto && litigationRequestForReportDto.allowAdd">
+                <button
+                    (click)="open(acceptModal)"
+                    class="btn btn-primary px-8"
+                    type="button">{{translations.actions.accept|
+                    translate}}</button>
 
-                    <button
-                        (click)="open(rejectModal)"
-                        class="btn btn-danger px-8"
-                        type="button">{{translations.actions.reject|
-                        translate}}</button>
-                </div>
+                <button
+                    (click)="open(rejectModal)"
+                    class="btn btn-danger px-8"
+                    type="button">{{translations.actions.reject|
+                    translate}}</button>
             </div>
         </details>
     </div>
@@ -135,12 +159,18 @@
 
 <ng-template #acceptModal let-modal>
     <div class="modal-header">
-        <h5 class="modal-title fw-6"> {{ translations.ExtendLitigationRequest.acceptExtendLitigationRequest| translate }} </h5>
+        <h5 class="modal-title fw-6"> {{ translations.ExtendLitigationRequest.acceptExtendSettlementRequest | translate }} </h5>
         <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
     </div>
 
-    <div class="modal-body pt-0">
+    <div class="modal-body pt-0" [formGroup]="form">
         {{ translations.LitigationRequest.applyActionMessageBody | translate }}
+
+        <textarea
+            class="form-control mt-3"
+            rows="4"
+            placeholder="{{translations.ExtendLitigationRequest.notes | translate}}"
+            formControlName="notes"></textarea>
     </div>
 
     <div class="modal-footer">
@@ -153,7 +183,7 @@
 
 <ng-template #rejectModal let-modal>
     <div class="modal-header">
-        <h5 class="modal-title fw-6"> {{ translations.ExtendLitigationRequest.rejectExtendLitigationRequest| translate }} </h5>
+        <h5 class="modal-title fw-6"> {{ translations.ExtendLitigationRequest.rejectExtendSettlementRequest | translate }} </h5>
         <button type="button" class="close-btn" aria-label="Close" (click)="modal.dismiss()"><i class="hgi hgi-stroke hgi-cancel-circle"></i></button>
     </div>
 

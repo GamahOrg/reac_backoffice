@@ -8,7 +8,7 @@ import { TabsComponent } from '@app/shared/components/tabs/tabs.component';
 import { NextAndPreviusButtonsComponent } from '@app/shared/components/next-and-previus-buttons/next-and-previus-buttons.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploaderComponent } from '@app/shared/components/file-uploader/file-uploader.component';
-import { NgbAccordionModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbsComponent } from '@app/shared/components/breadcrumbs/breadcrumbs.component';
 import { PaginationComponent } from '@app/shared/components/pagination/pagination.component';
 import { AccordionComponent } from '@app/shared/components/accordion/accordion.component';
@@ -62,6 +62,7 @@ import { LitigationRequestReportDetailsComponent } from './pages/litigation-requ
     FileUploaderComponent,
     NgbDropdownModule,
     NgbAccordionModule,
+    NgbTooltipModule,
     PaginationComponent,
     BreadcrumbsComponent,
     AccordionComponent,

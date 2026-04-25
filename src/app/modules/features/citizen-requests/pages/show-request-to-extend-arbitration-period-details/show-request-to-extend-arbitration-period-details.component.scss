@@ -1,0 +1,56 @@
+.status-badge {
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    
+    &.status-approve {
+        background-color: #e6f7ef !important;
+        color: #10b981 !important;
+    }
+    
+    &.status-reject {
+        background-color: #fef2f2 !important;
+        color: #ef4444 !important;
+    }
+    
+    &.status-pending {
+        background-color: #fffbeb !important;
+        color: #f59e0b !important;
+    }
+}
+
+.text-truncate-max {
+    max-width: 150px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: default;
+}
+
+.feedback-box {
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    display: block;
+    
+    &.feedback-approve {
+        background-color: #f0fdf4;
+        border-right: 3px solid #22c55e;
+        color: #15803d;
+    }
+    
+    &.feedback-reject {
+        background-color: #fef2f2;
+        border-right: 3px solid #ef4444;
+        color: #b91c1c;
+    }
+
+    strong {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+}

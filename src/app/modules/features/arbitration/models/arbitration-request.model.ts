@@ -36,6 +36,7 @@ export interface LitigationRequestMircoDto {
     arbitratorAcceptanceDate?: string | null;
     judgmentDate?: string | null;
     arbitratorName?: string | null;
+    correctionRequestStatus?: string | null;
 }
 
 export class ArbitrationRequestDocumentContent{
@@ -225,6 +226,18 @@ export interface LitigationRequestForArbitrationReportDto {
     allowAdd: boolean;
     litigationRequestShortDto: LitigationRequestShortDto | null;
     report: LitigationRequestArbitrationReportCreateUpdateDto | null;
+    correctionRequest: CorrectionRequestDto | null;
+}
+
+export interface CorrectionRequestDto {
+    correctionDescription: string;
+    requestDate: string;
+    files: CorrectionRequestFileDto[];
+}
+
+export interface CorrectionRequestFileDto {
+    correctionRequestFileId: string;
+    filePath: string;
 }
 
 export interface LitigationRequestArbitrationReportCreateUpdateDto {

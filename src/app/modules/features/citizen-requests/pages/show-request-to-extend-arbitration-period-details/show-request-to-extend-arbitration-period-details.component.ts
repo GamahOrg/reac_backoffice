@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base/base.component';
+import { translations } from 'translation-keys.enum';
 import { LitigationRequestForExtendPeriodRequestDto } from '../../models/litigation-request-for-extend-period-request-dto';
 import { LitigationRequestExtendPeriodRequestCreateUpdateEmployeeDto, LitigationRequestExtendPeriodRequestStatus } from '../../models/litigation-request-extend-period-request-create-update-employee-dto';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -27,6 +28,8 @@ export class ShowRequestToExtendArbitrationPeriodDetailsComponent extends BaseCo
   defendantCitizen: any;
   defendantFacility: any;
   litigationRequestForSessionDto: any;
+  ExtendLitigationRequest = translations.ExtendLitigationRequest;
+  LitigationRequest = translations.LitigationRequest;
   constructor(private activatedRoute: ActivatedRoute,
     private _translate: TranslateService,
     private _requestToExtendArbitrationPeridService: RequestToExtendArbitrationPeridService,
@@ -42,6 +45,7 @@ export class ShowRequestToExtendArbitrationPeriodDetailsComponent extends BaseCo
   showValidation: boolean = false;
   form = this._formBuilder.group({
     finishStatusReason: [''],
+    notes: [''],
   });
 
   get controls() {
@@ -60,14 +64,23 @@ export class ShowRequestToExtendArbitrationPeriodDetailsComponent extends BaseCo
   private updateBreadcrumb(): void {
     this._breadcrumbService.updateBreadcrumbListContent([
             { label: this._translate.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.arbitration}/${Configuration.pages.arbitration.assignedArbitrationRequests}` },
-      { label: this._translate.instant(this.translations.layout.sidebar.requestToExtendArbitrationPeriodList), link: Configuration.pages.citizenRequests.requestToExtendArbitrationPeriodList },
+      { label: this._translate.instant(this.translations.layout.sidebar.requestToExtendArbitrationPeriodList), link: `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.requestToExtendArbitrationPeriodList}` },
       { label: this._translate.instant(this.translations.layout.sidebar.details) },
     ])
   };
-  getLitigationRequestForSession(requestId: string) {
+    getLitigationRequestForSession(requestId: string) {
     this._requestToExtendArbitrationPeridService.getLitigationRequestExtendPeriodForEmployeeByRequestId(requestId).subscribe(res => {
        
       this.litigationRequestForReportDto = res as LitigationRequestForExtendPeriodRequestDto;
+      
+      // The backend returns requests sorted by date descending.
+      if (this.litigationRequestForReportDto?.litigationRequestExtendPeriodRequests) {
+        this.litigationRequestForReportDto.litigationRequestExtendPeriodRequests = 
+            this.litigationRequestForReportDto.litigationRequestExtendPeriodRequests.sort((a, b) => 
+                new Date(b.createdOn!).getTime() - new Date(a.createdOn!).getTime()
+            );
+      }
+
       this.fillData()
       this.fillfirstPartyData()
       this.fillsecondPartyData()
@@ -421,6 +434,9 @@ export class ShowRequestToExtendArbitrationPeriodDetailsComponent extends BaseCo
         return;
       }
     }
+    if (litigationRequestExtendPeriodRequestStatus == this.litigationRequestExtendPeriodRequestStatus.Approve) {
+      this.litigationRequestExtendPeriodRequestCreateUpdateEmployee.notes = this.form.controls.notes.value as string;
+    }
     this.litigationRequestExtendPeriodRequestCreateUpdateEmployee.litigationRequestId = this.requestId as string;
     this.litigationRequestExtendPeriodRequestCreateUpdateEmployee.litigationRequestExtendPeriodRequestStatusId=litigationRequestExtendPeriodRequestStatus;
     // console.log(this.litigationRequestExtendPeriodRequestCreateUpdateEmployee);
@@ -429,9 +445,25 @@ export class ShowRequestToExtendArbitrationPeriodDetailsComponent extends BaseCo
        
       if (result) {
         this.litigationRequestForReportDto = result as LitigationRequestForExtendPeriodRequestDto;
+        
+        // The backend returns requests sorted by date descending.
+        if (this.litigationRequestForReportDto?.litigationRequestExtendPeriodRequests) {
+          this.litigationRequestForReportDto.litigationRequestExtendPeriodRequests = 
+              this.litigationRequestForReportDto.litigationRequestExtendPeriodRequests.sort((a, b) => 
+                  new Date(b.createdOn!).getTime() - new Date(a.createdOn!).getTime()
+              );
+        }
+
         this.toastrNotificationService.showSuccess(this._translate.instant(this.translations.general.successfullySave))
         modal.dismiss()
       }
     })
+  }
+
+  getRequestStatusString(statusId: number | undefined): string {
+    if (!statusId) return this._translate.instant(this.translations.ExtendLitigationRequest.underReview);
+    if (statusId === LitigationRequestExtendPeriodRequestStatus.Approve) return this._translate.instant(this.translations.ExtendLitigationRequest.accepted);
+    if (statusId === LitigationRequestExtendPeriodRequestStatus.Reject) return this._translate.instant(this.translations.ExtendLitigationRequest.rejected);
+    return '';
   }
 }

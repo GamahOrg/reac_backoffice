@@ -722,6 +722,18 @@ export namespace translations {
         finishStatusReason = "extendLitigationRequest.finishStatusReason",
         acceptExtendLitigationRequest = "extendLitigationRequest.acceptExtendLitigationRequest",
         rejectExtendLitigationRequest = "extendLitigationRequest.rejectExtendLitigationRequest",
+        acceptExtendArbitrationRequest = "extendLitigationRequest.acceptExtendArbitrationRequest",
+        rejectExtendArbitrationRequest = "extendLitigationRequest.rejectExtendArbitrationRequest",
+        acceptExtendSettlementRequest = "extendLitigationRequest.acceptExtendSettlementRequest",
+        rejectExtendSettlementRequest = "extendLitigationRequest.rejectExtendSettlementRequest",
+        requestStatus = "extendLitigationRequest.requestStatus",
+        litigationFinishedDate = "extendLitigationRequest.litigationFinishedDate",
+        litigationFininshedNewDate = "extendLitigationRequest.litigationFininshedNewDate",
+        extensionHistory = "extendLitigationRequest.extensionHistory",
+        extensionArbitrationHistory = "extendLitigationRequest.extensionArbitrationHistory",
+        extensionSettlementHistory = "extendLitigationRequest.extensionSettlementHistory",
+        underReview = "extendLitigationRequest.underReview",
+        decisionNotes = "extendLitigationRequest.decisionNotes"
     }
 
     export enum arbitrator {
@@ -893,6 +905,7 @@ export namespace translations {
     }
 
     export enum LitigationRequest {
+        days = "litigationRequest.days",
         sessionLink = "litigationRequest.sessionLink",
         reformerName = "litigationRequest.reformerName",
         reviewerName = "litigationRequest.reviewerName",
@@ -907,6 +920,7 @@ export namespace translations {
         isDone = "litigationRequest.isDone",
         replyStatus = "litigationRequest.replyStatus",
         sessionDatetime = "litigationRequest.sessionDatetime",
+        sessionType = "litigationRequest.sessionType",
         litigationRequesSessions = "litigationRequest.litigationRequesSessions",
         addSession = "litigationRequest.addSession",
         requestNumber = "litigationRequest.requestNumber",
@@ -942,6 +956,16 @@ export namespace translations {
         selectDelegator = "litigationRequest.selectDelegator",
         selectReason = "litigationRequest.selectReason",
         settlementRecord = "litigationRequest.settlementRecord",
+        correctionRequest = "litigationRequest.correctionRequest",
+        correctionDescription = "litigationRequest.correctionDescription",
+        correctionRequestDate = "litigationRequest.correctionRequestDate",
+        correctionAttachments = "litigationRequest.correctionAttachments",
+        correctionResponse = "litigationRequest.correctionResponse",
+        correctionStatus = "litigationRequest.correctionStatus",
+        correctionApproved = "litigationRequest.correctionApproved",
+        correctionRejected = "litigationRequest.correctionRejected",
+        correctionRejectionReason = "litigationRequest.correctionRejectionReason",
+        correctionDecision = "litigationRequest.correctionDecision",
 
     }
 
