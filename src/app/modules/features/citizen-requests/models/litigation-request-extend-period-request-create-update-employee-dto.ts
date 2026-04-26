@@ -2,6 +2,7 @@ export interface LitigationRequestExtendPeriodRequestCreateUpdateEmployeeDto {
     litigationRequestId :string;
    litigationRequestExtendPeriodRequestStatusId :LitigationRequestExtendPeriodRequestStatus;
     finishStatusReason :string;
+    notes :string;
 }
 export enum LitigationRequestExtendPeriodRequestStatus
 {

@@ -8,6 +8,9 @@ import { Configuration } from '@app/core/configurations/shared.config';
 import { LitigationRequestMircoDto } from '../../citizen-requests/models/litigation-request-mirco-dto';
 import { ArbitratorNominationListRequestReplyPayload, LitigationRequestForAllArbitratorNominationListWithPartiesValueDto } from '../../citizen-requests/models/assign-arbitrators.model';
 import { ArbitrationReportDto, LitigationRequestForArbitrationReportDto, LitigationRequestMircoDto as ArbitrationMircoDto, LitigationRequestReportAdminFilterDto } from '../models/arbitration-request.model';
+import { LitigationRequestForArbitrationReportCorrectionRequestDto } from '../models/arbitration-report-correction-request-dto';
+import { ArbitrationReportCorrectionRequestCreateDto } from '../models/arbitration-report-correction-request-create-dto';
+import { ArbitrationCorrectionRequestResponseDto } from '../models/arbitration-correction-request-response-dto';
 
 @Injectable()
 export class ArbitrationService {
@@ -83,6 +86,40 @@ export class ArbitrationService {
 
   addArbitrationReport(model: ArbitrationReportDto): Observable<BaseResponse<LitigationRequestForArbitrationReportDto>> {
     return this._httpClient.post<BaseResponse<LitigationRequestForArbitrationReportDto>>(`${Configuration.APIs.Arbitration.AddArbitrationReport}`, model)
+  }
+
+  getArbitrationReportCorrectionRequestByRequestId(requestId: string): Observable<LitigationRequestForArbitrationReportCorrectionRequestDto | null> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("litigationRequestId", requestId);
+    return this._httpClient.get<BaseResponse<LitigationRequestForArbitrationReportCorrectionRequestDto>>(
+      `${Configuration.APIs.Arbitration.GetArbitrationReportCorrectionRequestByRequestId}`, { params: queryParams }
+    ).pipe(
+      map((res: BaseResponse<LitigationRequestForArbitrationReportCorrectionRequestDto>) => {
+        if (res.isDone) {
+          return res.data as LitigationRequestForArbitrationReportCorrectionRequestDto;
+        }
+        return {} as LitigationRequestForArbitrationReportCorrectionRequestDto;
+      })
+    );
+  }
+
+  addArbitrationReportCorrectionRequest(dto: ArbitrationReportCorrectionRequestCreateDto): Observable<LitigationRequestForArbitrationReportCorrectionRequestDto | null> {
+    return this._httpClient.post<BaseResponse<LitigationRequestForArbitrationReportCorrectionRequestDto>>(
+      Configuration.APIs.Arbitration.AddArbitrationReportCorrectionRequest, dto
+    ).pipe(
+      map((res: BaseResponse<LitigationRequestForArbitrationReportCorrectionRequestDto>) => {
+        if (res && res.data) {
+          return res.data;
+        }
+        return null;
+      })
+    );
+  }
+
+  addArbitrationCorrectionRequestResponse(dto: ArbitrationCorrectionRequestResponseDto): Observable<BaseResponse<LitigationRequestForArbitrationReportCorrectionRequestDto>> {
+    return this._httpClient.post<BaseResponse<LitigationRequestForArbitrationReportCorrectionRequestDto>>(
+      Configuration.APIs.Arbitration.AddArbitrationCorrectionRequestResponse, dto
+    );
   }
 
     getArbitrationRequestForAdminReport(pageIndex: number, pageSize: number, filter?: LitigationRequestReportAdminFilterDto): Observable<BaseResponse<Pagination<ArbitrationMircoDto[]>>> {
