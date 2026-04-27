@@ -113,6 +113,9 @@ export const Configuration = {
       GetLitigationRequestForReportByRequestId: '/api/Arbitration/GetLitigationRequestForReportByRequestId',
       AddArbitrationReport: '/api/Arbitration/AddArbitrationReport',
       GetMeetingLocations: '/api/SysMeetingLocation/GetAll',
+      GetArbitrationReportCorrectionRequestByRequestId: '/api/ArbitrationCorrectionRequest/GetArbitrationCorrectionRequestById',
+      AddArbitrationReportCorrectionRequest: '/api/ArbitrationCorrectionRequest/AddArbitrationCorrectionRequest',
+      AddArbitrationCorrectionRequestResponse: '/api/ArbitrationCorrectionRequest/AddArbitrationCorrectionRequestResponse',
     },
     SysArbitratorCount: {
       Get: "/api/SysArbitratorCount/Get"
