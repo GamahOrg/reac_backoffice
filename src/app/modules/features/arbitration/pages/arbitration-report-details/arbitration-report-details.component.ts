@@ -734,7 +734,7 @@ export class ArbitrationReportDetailsComponent extends BaseComponent implements 
         pdf.setTextColor(0, 0, 0);
         pdf.setFontSize(10);
 
-        rows.forEach((row, index) => {
+        rows.forEach((row) => {
             let currentRowHeight = rowHeight;
             if (row.isMultiLine && Array.isArray(row.value)) {
                 currentRowHeight = rowHeight + (row.value.length - 1) * 6;
@@ -1165,14 +1165,19 @@ export class ArbitrationReportDetailsComponent extends BaseComponent implements 
             yPosition = this.addPartiesTable(pdf, yPosition, pageWidth, margin);
             yPosition += 20;
 
-            const correctionDecisionText = this.litigationRequestForCorrectionDto?.correctionRequests?.[0]?.correctionDecisionText;
-            if (correctionDecisionText) {
-                addSectionTitle('\u0627\u0644\u0642\u0631\u0627\u0631');
-                checkNewPage(30);
-                yPosition += 3;
-                addFormattedContent(correctionDecisionText, false);
-                yPosition += 8;
-            }
+            const approvedCorrections = this.litigationRequestForCorrectionDto?.correctionRequests?.filter(r => r.approveRejectStatus == 1) ?? [];
+            approvedCorrections.forEach((correction, index) => {
+                if (correction.correctionDecisionText) {
+                    const titleLabel = approvedCorrections.length > 1
+                        ? `\u0627\u0644\u0642\u0631\u0627\u0631 \u0631\u0642\u0645 ${index + 1}`
+                        : '\u0627\u0644\u0642\u0631\u0627\u0631';
+                    addSectionTitle(titleLabel);
+                    checkNewPage(30);
+                    yPosition += 3;
+                    addFormattedContent(correction.correctionDecisionText, false);
+                    yPosition += 8;
+                }
+            });
 
             addSignatureSection();
 
