@@ -327,11 +327,13 @@ export class ShowRequestToExtendArbitrationPeriodDetailsComponent extends BaseCo
     //   ]
     // }
 
-    this.defendantCitizen = this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantCitizen;
-        this.defendantFacility = this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility;
+    this.defendantFacility = this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility;
+        this.defendantCitizen = this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantCitizen
+            ?? (this.defendantFacility ? null : this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.secondPartyCitizen ?? null);
 
+        this.secondParty = [];
         if (this.defendantFacility) {
-            this.secondParty = [
+            this.secondParty.push(
                 {
                     icon: 'assets/images/icons/lawsuit-details/user.svg',
                     title: this._translate.instant(this.translations.LitigationRequest.facilityCode),
@@ -356,18 +358,11 @@ export class ShowRequestToExtendArbitrationPeriodDetailsComponent extends BaseCo
                     value: this.defendantFacility?.facility700Number ?? '',
                     isDownload: false,
                 },
-                {
-                    icon: 'assets/images/icons/lawsuit-details/call.svg',
-                    title: this._translate.instant(this.translations.LitigationRequest.secondPartyCapacity),
-                    value: this.litigationRequestForSessionDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
-                    isDownload: false,
-                },
-            ]
+            );
         }
 
         if (this.defendantCitizen) {
-
-            this.secondParty = [
+            this.secondParty.push(
                 {
                     icon: 'assets/images/icons/lawsuit-details/user.svg',
                     title: this._translate.instant(this.translations.arbitrator.fullName),
@@ -410,14 +405,15 @@ export class ShowRequestToExtendArbitrationPeriodDetailsComponent extends BaseCo
                     value: this.defendantCitizen?.mobile ?? '',
                     isDownload: false,
                 },
-                {
-                    icon: 'assets/images/icons/lawsuit-details/call.svg',
-                    title: this._translate.instant(this.translations.LitigationRequest.secondPartyCapacity),
-                    value: this.litigationRequestForSessionDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
-                    isDownload: false,
-                },
-            ]
+            );
         }
+
+        this.secondParty.push({
+            icon: 'assets/images/icons/lawsuit-details/call.svg',
+            title: this._translate.instant(this.translations.LitigationRequest.secondPartyCapacity),
+            value: this.litigationRequestForSessionDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+            isDownload: false,
+        });
 
 
   }

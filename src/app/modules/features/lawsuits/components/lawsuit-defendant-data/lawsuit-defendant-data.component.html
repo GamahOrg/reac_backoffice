@@ -118,4 +118,32 @@
             </h6>
         </div>
     </div>
+    <div *ngIf="defendantFacility">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.nationalAddress | translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/location.svg" alt="icon">
+            <h6 class="small op-7">{{defendantFacilityAddress || '--'}}</h6>
+        </div>
+    </div>
+    <div *ngIf="defendantFacility?.identityNumber">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.identityNumber | translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/hashtag.svg" alt="icon">
+            <h6 class="small op-7">{{defendantFacility?.identityNumber || '--'}}</h6>
+        </div>
+    </div>
+    <div *ngIf="defendantFacility?.mobile">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.mobileNumber | translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/call.svg" alt="icon">
+            <h6 class="small op-7">{{defendantFacility?.mobile || '--'}}</h6>
+        </div>
+    </div>
+    <div *ngIf="defendantFacility?.email">
+        <h6 class="small fw-5"> {{ translations.lawsuits.createEditLawsuit.email | translate }} </h6>
+        <div class="flex-y-row gap-2">
+            <img src="assets/images/icons/lawsuit-details/book.svg" alt="icon">
+            <h6 class="small op-7">{{defendantFacility?.email || '--'}}</h6>
+        </div>
+    </div>
 </div>

@@ -340,11 +340,13 @@ export class ArbitratorCountDetailsComponent extends BaseComponent implements On
     //   ]
     // }
 
-    this.defendantCitizen = this.arbitratorsCountByRequestId?.litigationRequestShortDto?.defendantCitizen;
-        this.defendantFacility = this.arbitratorsCountByRequestId?.litigationRequestShortDto?.defendantFacility;
+    this.defendantFacility = this.arbitratorsCountByRequestId?.litigationRequestShortDto?.defendantFacility;
+        this.defendantCitizen = this.arbitratorsCountByRequestId?.litigationRequestShortDto?.defendantCitizen
+            ?? (this.defendantFacility ? this.arbitratorsCountByRequestId?.litigationRequestShortDto?.contract?.secondPartyCitizen : null);
 
+        this.secondParty = [];
         if (this.defendantFacility) {
-            this.secondParty = [
+            this.secondParty.push(
                 {
                     icon: 'assets/images/icons/lawsuit-details/user.svg',
                     title: this._translateService.instant(this.translations.LitigationRequest.facilityCode),
@@ -369,18 +371,11 @@ export class ArbitratorCountDetailsComponent extends BaseComponent implements On
                     value: this.defendantFacility?.facility700Number ?? '',
                     isDownload: false,
                 },
-                {
-                    icon: 'assets/images/icons/lawsuit-details/call.svg',
-                    title: this._translateService.instant(this.translations.LitigationRequest.secondPartyCapacity),
-                    value: this.arbitratorsCountByRequestId?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
-                    isDownload: false,
-                },
-            ]
+            );
         }
 
         if (this.defendantCitizen) {
-
-            this.secondParty = [
+            this.secondParty.push(
                 {
                     icon: 'assets/images/icons/lawsuit-details/user.svg',
                     title: this._translateService.instant(this.translations.arbitrator.fullName),
@@ -423,14 +418,15 @@ export class ArbitratorCountDetailsComponent extends BaseComponent implements On
                     value: this.defendantCitizen?.mobile ?? '',
                     isDownload: false,
                 },
-                {
-                    icon: 'assets/images/icons/lawsuit-details/call.svg',
-                    title: this._translateService.instant(this.translations.LitigationRequest.secondPartyCapacity),
-                    value: this.arbitratorsCountByRequestId?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
-                    isDownload: false,
-                },
-            ]
+            );
         }
+
+        this.secondParty.push({
+            icon: 'assets/images/icons/lawsuit-details/call.svg',
+            title: this._translateService.instant(this.translations.LitigationRequest.secondPartyCapacity),
+            value: this.arbitratorsCountByRequestId?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+            isDownload: false,
+        });
 
   }
 

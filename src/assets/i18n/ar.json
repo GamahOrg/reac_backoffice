@@ -1143,6 +1143,8 @@
     "Zoom.MeetingDuration":"مدة جلسة الصُلح (بالساعه)",
     "Reconciliation.ExtendRequest.Accepted":"نص إشعار للمُصلح بقرار تمديد فترة الصُلح",
     "Reconciliation.ExtendRequest.Added":"نص إشعار لمدير إدارة الصُلح بوجود طلب تمديد فترة الصُلح",
+    "Reconciliation.Reconciliator.AcceptTask":"نص إشعار لقبول المُصلح مهمة الدعوى",
+    "Reconciliation.Reconciliator.RejectTask":"نص إشعار لرفض المُصلح مهمة الدعوى",
     "Reformer.Activate":" نص إشعار لمدير إدارة الصُلح بتفعيل حساب المُصلح",
     "SLA.LitigationRequestFeesNotPaidReminderFirstPeriod":"الفترة المسموح بها سداد الرسوم الادارية (بالساعه)",
     "SLA.LitigationRequestReformerAssigningRequestResponsePeriod":"المدة المسموح بها لقبول أو رفض الدعوى من المصلح (بالساعه)",
@@ -1182,7 +1184,10 @@
     "SLA.AddLitigationRequestArbitratorNominationListWarning":"نص اشعار لمدير ادارة التحكيم لاختيار المحكمين",
     "Arbitrators.Count.FromBothSides":"نص اشعار لمدير ادارة التحكيم بعدد المحكمين من الطرفين",
     "Arbitrators.Count.Added": "نص اشعار لمدير ادارة التحكيم بعدد المحكمين النهائي",
-    "ArbitratorsNominationList.Added": "نص اشعار لمدير ادارة التحكيم بقائمة مرشحين التحكيم"
+    "ArbitratorsNominationList.Added": "نص اشعار لمدير ادارة التحكيم بقائمة مرشحين التحكيم",
+    "SLA.VerdictSessionReminderHoursBefore": "عدد الساعات قبل جلسة النطق بالحكم لإرسال التذكير",
+    "SLA.VerdictSessionReminderMessage": "نص تذكير موعد جلسة النطق بالحكم",
+    "Arbitration.LitigationRequestArbitrationReportExplanationRequestPeriod": "المهلة المتاحة لإضافة طلب تفسير الحكم (بالساعه)"
 
 },
 "reviewSettingsPage":{

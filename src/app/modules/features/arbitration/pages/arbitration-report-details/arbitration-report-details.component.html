@@ -139,7 +139,7 @@
                     </table>
                 </div>
                 
-                <div class="mt-4 pb-2 d-flex justify-content-end" *ngIf="litigationRequestForCorrectionDto?.correctionRequests?.[0]?.approveRejectStatus == 1">
+                <div class="mt-4 pb-2 d-flex justify-content-end" *ngIf="hasApprovedCorrection">
                     <button class="btn btn-primary px-8 py-3 d-flex align-items-center gap-2" (click)="downloadPDF()">
                         <i class="material-icons fs-5">description</i>
                         <span>تحميل حكم التحكيم بعد التصحيح</span>
