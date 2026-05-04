@@ -8,6 +8,7 @@ import { Configuration } from '@app/core/configurations/shared.config';
 import { AssignRequestPayload } from '../models/citizen.model';
 import { AssignEmployeePayload, LitigationRequestMircoForRequestReviewerDto } from '../models/employee.model';
 import { AssignReformersFilter } from '../models/assign-reformers-filter.model';
+import { LitigationRequestForReportDto, LitigationRequestMircoReportDto, LitigationRequestReportReformerFilterDto } from '../models/litigation-request-for-extend-period-request-dto';
 
 @Injectable()
 export class LitigationRequestService {
@@ -50,6 +51,22 @@ export class LitigationRequestService {
     return this._httpClient.post<EmptyBaseResponse>(`${Configuration.APIs.Reconciliation.AssignReviewer}`, model)
   }
 
+  getReconciliationRequestForReportForAdmin(pageIndex: number, pageSize: number, filter?: LitigationRequestReportReformerFilterDto): Observable<BaseResponse<Pagination<LitigationRequestMircoReportDto[]>>> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("pageIndex", pageIndex);
+    queryParams = queryParams.append("pageSize", pageSize);
+    if (filter) {
+      Object.entries(filter).forEach(([key, value]) => {
+        if (value !== null && value !== undefined && value !== '') {
+          queryParams = queryParams.append(key.charAt(0).toUpperCase() + key.slice(1), value);
+        }
+      });
+    }
+    return this._httpClient.get<BaseResponse<Pagination<LitigationRequestMircoReportDto[]>>>(Configuration.APIs.Reconciliation.GetReconciliationRequestForReportForAdmin, { params: queryParams })
+  }
 
+  getLitigationRequestForReportByRequestId(requestId: string): Observable<BaseResponse<LitigationRequestForReportDto>> {
+    return this._httpClient.get<BaseResponse<LitigationRequestForReportDto>>(`${Configuration.APIs.Reconciliation.GetLitigationRequestForReportByRequestId}?litigationRequestId=${requestId}`)
+  }
 
 }

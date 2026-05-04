@@ -1,0 +1,75 @@
+<app-breadcrumbs></app-breadcrumbs>
+<div class="table-wrapper mt-5">
+
+  <div class="table-filter">
+    <h5 class="fw-6">{{translations.reopenLitigationRequest.reopenClosedRequests | translate}}</h5>
+  </div>
+
+  <div *ngIf="closedRequestsList?.length != 0" class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">{{translations.reopenLitigationRequest.requestCode | translate}}</th>
+          <th scope="col">{{translations.reopenLitigationRequest.requestType | translate}}</th>
+          <th scope="col">{{translations.reopenLitigationRequest.status | translate}}</th>
+          <th scope="col">{{translations.reopenLitigationRequest.submissionDate | translate}}</th>
+          <th scope="col">{{translations.reopenLitigationRequest.cancellationDate | translate}}</th>
+          <th scope="col">{{translations.reopenLitigationRequest.applicantName | translate}}</th>
+          <th scope="col">{{translations.lawsuits.lawsuitsList.actions | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (request of closedRequestsList; track $index) {
+        <tr>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ request.requestCode || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ request.requestTypeName || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ request.internalStatusName || '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ request.submissionDate ? (request.submissionDate | date:'yyyy/MM/dd') : '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ request.cancellationDate ? (request.cancellationDate | date:'yyyy/MM/dd') : '--' }}</span>
+          </td>
+          <td scope="row">
+            <span style="font-size: .88rem;">{{ request.applicantName || '--' }}</span>
+          </td>
+          <td scope="row">
+            <div class="d-flex align-items-center gap-2">
+              <button (click)="openDetails(request.litigationRequestId)" class="btn btn-sm btn-outline-primary">
+                <img src="assets/images/icons/eye.svg" alt="eye">
+                {{translations.reopenLitigationRequest.details | translate}}
+              </button>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="flex-between">
+  <div class="op-6 v-small fw-5">
+    <span>{{translations.tables.from | translate}} </span>
+    <span>{{pagintationData.currentPage}} </span>
+    <span>{{translations.tables.to | translate}} </span>
+    <span>{{pagintationData.totalCount}} </span>
+    <span>{{translations.tables.ofTotal | translate}} </span>
+    <span>{{pageCount}} </span>
+    <span>{{translations.tables.row | translate}} </span>
+  </div>
+  <app-pagination></app-pagination>
+</div>
+
+@if((!closedRequestsList) || closedRequestsList.length==0){
+<div class="flex-center flex-column">
+  <img src="assets/images/no-data.svg" alt="no-data">
+  <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.reopenLitigationRequest.noClosedRequests | translate}}</h4>
+</div>
+}

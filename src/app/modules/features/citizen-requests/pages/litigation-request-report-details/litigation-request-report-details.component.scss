@@ -1,0 +1,95 @@
+@import "assets/styles/tables.scss";
+
+.printable {
+
+  h6,
+  p {
+    page-break-inside: avoid;
+  }
+
+  table {
+    width: 100%;
+    page-break-inside: auto;
+
+    tr {
+      page-break-inside: avoid;
+      page-break-after: auto;
+    }
+  }
+
+  .top-img {
+    padding-block: 1.5rem;
+  }
+
+  th,
+  td {
+    border: 1px solid #000;
+    padding-inline: 8px;
+    height: 30px;
+  }
+
+  th {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    font-size: 0.69rem;
+    font-weight: 700;
+  }
+
+  .th {
+    font-size: 0.69rem;
+    font-weight: 700;
+  }
+
+  td {
+    font-size: 0.56rem;
+  }
+
+  .header {
+    background-color: #04a488;
+    color: white;
+    border-color: inherit;
+    font-size: 0.69rem;
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .bottom-table {
+    td {
+      font-size: .88rem;
+      height: 40px;
+    }
+  }
+
+  .page-break-before {
+    page-break-before: always;
+    break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+    break-after: always;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  table,
+  img,
+  div,
+  tr,
+  td,
+  h6 {
+    page-break-inside: avoid;
+  }
+
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+}

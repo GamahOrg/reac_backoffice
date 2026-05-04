@@ -6,6 +6,7 @@ export interface LitigationRequestMircoForRequestSessionDto  {
     secondPartyName: string;
     requestTypeName: string;
     sessionDatetime: string;
+    sessionType: string | null;
     url: string | null;
     meetingId: number | null;
 }
