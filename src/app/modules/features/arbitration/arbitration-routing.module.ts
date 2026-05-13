@@ -15,6 +15,8 @@ import { ApproveArbitrationFeesPaidListComponent } from './pages/approve-arbitra
 import { ApproveArbitrationFeesPaidDetailsComponent } from './pages/approve-arbitration-fees-paid-details/approve-arbitration-fees-paid-details.component';
 import { AssignArbitratorsForDuedateLawsuitsComponent } from './components/assign-arbitrators-for-duedate-lawsuits/assign-arbitrators-for-duedate-lawsuits.component';
 import { AssignArbitratorsForDuedateLawsuitsDetailsComponent } from './components/assign-arbitrators-for-duedate-lawsuits-details/assign-arbitrators-for-duedate-lawsuits-details.component';
+import { ArbitrationReportListComponent } from './pages/arbitration-report-list/arbitration-report-list.component';
+import { ArbitrationReportDetailsComponent } from './pages/arbitration-report-details/arbitration-report-details.component';
 
 const routes: Routes = [
   {
@@ -77,6 +79,14 @@ const routes: Routes = [
   {
     path: `${Configuration.pages.arbitration.approveArbitrationFeesPaidDetails}/:id`,
     component: ApproveArbitrationFeesPaidDetailsComponent,
+  },
+  {
+    path: Configuration.pages.arbitration.arbitrationReportList,
+    component: ArbitrationReportListComponent,
+  },
+  {
+    path: `${Configuration.pages.arbitration.arbitrationReportDetails}/:id`,
+    component: ArbitrationReportDetailsComponent,
   },
 ];
 

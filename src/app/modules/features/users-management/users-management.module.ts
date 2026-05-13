@@ -43,6 +43,9 @@ import { ComplaintDetailsComponent } from './components/complaint-list/complaint
 import { ComplaintReportComponent } from './components/statistic-dashbourd/compliant-report/compliant-report.component';
 import { LawsuitsListForAdminComponent } from './components/lawsuits-list-for-admin/lawsuits-list-for-admin.component';
 import { LawsuitsDetailsForAdminComponent } from './components/lawsuits-details-for-admin/lawsuits-details-for-admin.component';
+import { ReopenLitigationRequestListComponent } from './components/reopen-litigation-request-list/reopen-litigation-request-list.component';
+import { ReopenLitigationRequestDetailsComponent } from './components/reopen-litigation-request-details/reopen-litigation-request-details.component';
+import { ReopenLitigationRequestService } from './services/reopenLitigationRequest.service';
 import { TabsComponent } from "@app/shared/components/tabs/tabs.component";
 import { LawsuitListService } from '../lawsuits/services/lawsuit-list/lawsuit-list.service';
 import { LawsuitRequestDetailsService } from '../lawsuits/services/lawsuit-request-details/lawsuit-request-details.service';
@@ -75,7 +78,9 @@ import { LawsuitEventsService } from '../lawsuits/services/lawsuit-events/lawsui
     ComplaintDetailsComponent,
     ComplaintReportComponent,
     LawsuitsListForAdminComponent,
-    LawsuitsDetailsForAdminComponent
+    LawsuitsDetailsForAdminComponent,
+    ReopenLitigationRequestListComponent,
+    ReopenLitigationRequestDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -103,6 +108,7 @@ import { LawsuitEventsService } from '../lawsuits/services/lawsuit-events/lawsui
      LawsuitRequestDetailsService,
      AccordionService,
      LawsuitEventsService,
+     ReopenLitigationRequestService,
   { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS }
 
   ]

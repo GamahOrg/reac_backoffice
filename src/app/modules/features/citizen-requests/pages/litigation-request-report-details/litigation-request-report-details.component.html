@@ -1,0 +1,781 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary>
+        <h6> {{ translations.LitigationRequest.settlementRecord | translate }} </h6>
+      </summary>
+
+      <ng-container *ngIf="litigationRequestForReportDto?.report!=null">
+        <div class="mb-5">
+          <p class="fw-6 mb-2 me-2"> {{ translations.LitigationRequest.reconciliationSessionDetails | translate }}: </p>
+          <span class="small mb-2 op-8"> {{ litigationRequestForReportDto?.report?.reconciliationSessionDetails }} </span>
+        </div>
+      </ng-container>
+
+      <div *ngIf="litigationRequestForReportDto?.report!=null && this.litigationRequestForReportDto?.report?.litigationRequestMeetingReconciliationItems&& this.litigationRequestForReportDto?.report!.litigationRequestMeetingReconciliationItems.length>0" class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">
+                {{translations.LitigationRequest.reconciliationItems | translate}}:
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of this.litigationRequestForReportDto?.report?.litigationRequestMeetingReconciliationItems;let index=index">
+              <td>{{index+1}} - <span>{{item.reconciliationItem}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="d-flex justify-content-end align-items-center gap-3 mt-4">
+        <button *ngIf="litigationRequestForReportDto?.report!=null" class="btn btn-primary" (click)="downloadPDF()">تحميل محضر الصلح</button>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary>
+        <h6>{{ translations.LitigationRequest.firstPartyData| translate }} </h6>
+      </summary>
+
+      <div class="grid-3 mt-4">
+        <ng-container *ngFor="let item of firstParty">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary>
+        <h6> {{ translations.LitigationRequest.secondPartyData| translate }}</h6>
+      </summary>
+
+      <div class="grid-3 mt-4">
+        <ng-container *ngFor="let item of secondParty">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <div class="accordion-card">
+    <details open>
+      <summary>
+        <h6>{{ translations.LitigationRequest.litigationData| translate }} </h6>
+      </summary>
+
+      <div class="grid-3 mt-4">
+        <ng-container *ngFor="let item of dataList">
+          <div>
+            <h6 class="small fw-5">{{item.title}}</h6>
+            <div class="flex-y-row gap-2">
+              <h6 class="small op-7">{{item.value}}</h6>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- Report For ReconciliationWasMade -->
+<div style="display: none;" class="printable" #reconciliationWasMadePdfContent id="reconciliationWasMadePdfContent">
+        <div class="wrapper">
+          <img src="assets/images/logo-2.png" class="img-fluid top-img" width="500" alt="logo">
+
+          <div class="container">
+            <h3 class="title" style="color: #005257;"> محضر صلح</h3>
+            <h5>في الدعوى رقم ({{this.litigationRequestForReportDto?.litigationRequestShortDto?.requestCode}}) وتاريخ {{this.litigationRequestForReportDto?.report?.reportDate | date}} </h5>
+            <h5>والصادر من المركز السعودي للتحكيم العقاري</h5>
+
+            <h4 class="title" style="color: #00848d;">بيانات أطراف الدعوى</h4>
+
+            <table class="bottom-table">
+              <tr>
+                <td colspan="2" class="header text-center" style="background: #005257;">الطرف الاول</td>
+              </tr>
+              <tr>
+                <td> اسم المدعي <span>:</span>  {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}  </td>
+                <td>الهوية \ الاقامة \ السجل التجاري <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>رقم الهاتف <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.mobile}}</td>
+                <td>العنوان الوطني <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contractAddress}}</td>
+              </tr>
+              <tr>
+                <td>البريد الالكتروني <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.email}}</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ويمثله إن وجد <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegatorCitizen?.fullName}}</td>
+                <td>الهوية <span>/</span> الإقامة <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegatorCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>صفته <span>:</span> {{this.plaintiffDelegatorData?.delegator?.individualCapacity}}</td>
+                <td>رقم الوكالة <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegateNumber}}</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="header text-center" style="background: #04a488;">الطرف الثاني</td>
+              </tr>
+              <tr>
+                <td *ngIf="this.defendantCitizen?.fullName">اسم المدعى عليه <span>:</span> {{this.defendantCitizen?.fullName}}</td>
+                <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">اسم المدعى عليه <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                <td *ngIf="this.defendantCitizen?.identityNumber" >الهوية <span>/</span>الإقامة <span>/</span> السجل التجاري <span>:</span> {{this.defendantCitizen?.identityNumber}}</td>
+                <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.commercialRegisterNumber" >الهوية <span>/</span>الإقامة <span>/</span> السجل التجاري <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.commercialRegisterNumber}}</td>
+              </tr>
+              <tr>
+                <td>رقم الهاتف <span>:</span> {{this.defendantCitizen?.mobile}}</td>
+                <td>البريد الالكتروني <span>:</span> {{this.defendantCitizen?.email}}</td>
+              </tr>
+              <tr>
+                <td>ويمثله إن وجد <span>:</span> {{this.defendantDelegatorData?.delegator?.delegatorCitizen?.fullName}}</td>
+                <td>الهوية <span>/</span> الإقامة <span>:</span> {{this.defendantDelegatorData?.delegator?.delegatorCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>صفته <span>:</span> {{this.defendantDelegatorData?.delegator?.individualCapacity}}</td>
+                <td>رقم الوكالة <span>:</span> {{this.defendantDelegatorData?.delegator?.delegateNumber}}</td>
+              </tr>
+            </table>
+
+            <div class="d-flex flex-column gap-5 mt-5">
+              <div class="intro">
+                <p>فإنه في يوم {{this.litigationRequestForReportDto?.report?.reportDate | date : "YYYY-MM-dd"}} م في تمام الساعة ({{this.litigationRequestForReportDto?.report?.reportDate | date: 'HH'}}) تم التصالح بين الأطراف الموضحة بياناتهم أعلاه في مقر المركز السعودي للتحكيم العقاري وتم إنهاء النزاع الحاصل بينهم وتحرير هذا الصلح وكتابته في هذا اليوم.</p>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #005257;"><span>"</span>تحرير محل النزاع<span>"</span></h4>
+                <p class="mt-3">
+                  {{this.litigationRequestForReportDto?.report?.reconciliationSessionDetails}}
+                </p>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #005257;"><span>"</span>بنود الصلح<span>"</span></h4>
+                <p class="mt-3 mb-0">
+                  اتفق الأطراف الموضح بياناتهم أعلاه على إنهاء النزاع الحاصل بينهم وفق البنود التالية <span>:</span>
+                </p>
+                <ol class="list-unstyled">
+                  <li *ngFor="let item of litigationRequestForReportDto?.report?.litigationRequestMeetingReconciliationItems">{{item.reconciliationItem}}</li>
+                </ol>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #04a488;">أحكام عامة</h4>
+                <p class="mt-6">
+                  تسري أحكام هذا الصلح اعتباراً من تاريخ التوقيع عليه، ويتعهد الطرفان بتنفيذ واحترام جميع بنودها مع اتفاقهما على ما يأتي<span>:</span>
+                </p>
+
+                <ul>
+                  <li>&nbsp;</li>
+
+                  <li>لا يعتبر تعديل أي بند من بنود هذا الصلح نافذاً إلى بعد موافقة الطرفين كتابتاً على التعديل، ويعتبر التعديل ملحقاً من ملحقات هذا المحضر، ويرفق به كجزء لا يتجزأ منه.</li>
+                  <li>&nbsp;</li>
+                  <li>إن عدم استخدام أي من الطرفين لأي حق من حقوقه المنصوص عليها بهذا الصلح، أو المقررة له نظاماً، ولا يمكن بأي حال من الأحوال اعتباره تنازلاً من هذا الطرف عن استخدام هذا الحق ما لم يقع هذا التنازل بصورة صريحة ومكتوبة، ولا يشمل التنازل الكتابي المذكور إلا الواقعة المخصصة فيه ولا يتعدى نطاقه إلى أي خروقات أو حقوق أو مطالبات لاحقة مهما كانت صفتها حتى لو تشابهت مع ما جرى التنازل بخصوصه.</li>
+                  <li>&nbsp;</li>
+
+                  <li>أقر كل طرف في هذا المحضر بالتفهم الكامل لبنوده والإدراك التام لكافة ما ورد فيه بعد الاطلاع عليه، بما يمتنع معه بعد التوقيع عليه المعارضة بعدم الإدراك أو الفهم الخاطئ أو الغبن أو خلافه.</li>
+                  <li>&nbsp;</li>
+
+                  <li>على الطرفين تقوى الله سبحانه وتعالى في أمورهم كلها وفي تنفيذ هذا الصلح طبقاً للأحكام والبنود الواردة فيه وبما يتفق مع الأنظمة والعرف وبطريقة تلائم موجبات حسن النية.</li>
+                  <li>&nbsp;</li>
+
+                </ul>
+                <p class="my-0">
+                  وعليه جرى التوقيع وصلى الله وسلم على نبينا محمد وآله وصحبه أجمعين
+                </p>
+              </div>
+
+              <div class="signature">
+                <h4 class="title" style="color: #04a488">توقيع الأطراف</h4>
+
+                <table class="bottom-table">
+                  <tr>
+                    <th class="header text-center" style="background: #005257;">البيانات</th>
+                    <th class="header text-center" style="background: #005257;">الطرف الأول</th>
+                    <th class="header text-center" style="background: #005257;">الطرف الثاني</th>
+                  </tr>
+                  <tr>
+                    <td>الاسم</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}</td>
+                    <td *ngIf="this.defendantCitizen?.fullName">{{this.defendantCitizen?.fullName}}</td>
+                    <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">{{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                  </tr>
+                  <tr>
+                    <td>التوقيع</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}</td>
+                    <td *ngIf="this.defendantCitizen?.fullName">{{this.defendantCitizen?.fullName}}</td>
+                    <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">{{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatus==1?' طلب مقبول بتاريخ': this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatus==2?'طلب مرفوض بتاريخ ':'فى حاله انتظار'}} {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatusOn | date}}</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatus==1?' طلب مقبول بتاريخ': this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatus==2?'طلب مرفوض بتاريخ ':'فى حاله انتظار'}} {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatusOn | date}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+</div>
+
+      <!-- Report For ReconciliationWasNotMade or ReconciliationWasNotMadeAndMoveToArbitration -->
+<div style="display: none;" class="printable" #reconciliationWasNotMadePdfContent id="reconciliationWasNotMadePdfContent">
+        <div class="wrapper">
+          <img src="assets/images/logo-2.png" class="img-fluid top-img" width="500" alt="logo">
+
+          <div class="container">
+            <h3 class="title" style="color: #005257;"> محضر عدم صلح</h3>
+            <h5>في الدعوى رقم ({{this.litigationRequestForReportDto?.litigationRequestShortDto?.requestCode}}) وتاريخ {{this.litigationRequestForReportDto?.report?.reportDate | date}} </h5>
+            <h5>والصادر من المركز السعودي للتحكيم العقاري</h5>
+
+            <h4 class="title" style="color: #00848d;">بيانات أطراف الدعوى</h4>
+
+            <table class="bottom-table">
+              <tr>
+                <td colspan="2" class="header text-center" style="background: #005257;">الطرف الاول</td>
+              </tr>
+              <tr>
+                <td> اسم المدعي <span>:</span>  {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}  </td>
+                <td>الهوية \ الاقامة \ السجل التجاري <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>رقم الهاتف <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.mobile}}</td>
+                <td>العنوان الوطني <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contractAddress}}</td>
+              </tr>
+              <tr>
+                <td>البريد الالكتروني <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.email}}</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ويمثله إن وجد <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegatorCitizen?.fullName}}</td>
+                <td>الهوية <span>/</span> الإقامة <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegatorCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>صفته <span>:</span> {{this.plaintiffDelegatorData?.delegator?.individualCapacity}}</td>
+                <td>رقم الوكالة <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegateNumber}}</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="header text-center" style="background: #04a488;">الطرف الثاني</td>
+              </tr>
+              <tr>
+                <td *ngIf="this.defendantCitizen?.fullName">اسم المدعى عليه <span>:</span> {{this.defendantCitizen?.fullName}}</td>
+                <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">اسم المدعى عليه <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                <td *ngIf="this.defendantCitizen?.identityNumber" >الهوية <span>/</span>الإقامة <span>/</span> السجل التجاري <span>:</span> {{this.defendantCitizen?.identityNumber}}</td>
+                <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.commercialRegisterNumber" >الهوية <span>/</span>الإقامة <span>/</span> السجل التجاري <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.commercialRegisterNumber}}</td>
+              </tr>
+              <tr>
+                <td>رقم الهاتف <span>:</span> {{this.defendantCitizen?.mobile}}</td>
+                <td>البريد الالكتروني <span>:</span> {{this.defendantCitizen?.email}}</td>
+              </tr>
+              <tr>
+                <td>ويمثله إن وجد <span>:</span> {{this.defendantDelegatorData?.delegator?.delegatorCitizen?.fullName}}</td>
+                <td>الهوية <span>/</span> الإقامة <span>:</span> {{this.defendantDelegatorData?.delegator?.delegatorCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>صفته <span>:</span> {{this.defendantDelegatorData?.delegator?.individualCapacity}}</td>
+                <td>رقم الوكالة <span>:</span> {{this.defendantDelegatorData?.delegator?.delegateNumber}}</td>
+              </tr>
+            </table>
+
+            <div class="d-flex flex-column gap-5 mt-5">
+
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #005257;"><span>"</span>تحرير محل النزاع<span>"</span></h4>
+                <p class="mt-3">
+                  {{this.litigationRequestForReportDto?.report?.reconciliationSessionDetails}}
+                </p>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #005257;"><span>"</span>بنود الصلح<span>"</span></h4>
+                <p class="mt-3 mb-0">
+                 لم يتم الصلح وذلك للأسباب التالية<span>:</span>
+                </p>
+                <ol class="list-unstyled">
+                  <li *ngFor="let item of litigationRequestForReportDto?.report?.litigationRequestMeetingReconciliationItems">{{item.reconciliationItem}}</li>
+                </ol>
+              </div>
+
+              <div class="signature">
+                <h4 class="title" style="color: #04a488">توقيع</h4>
+
+                <table class="bottom-table">
+                  <tr>
+                    <th class="header text-center" style="background: #005257;">البيانات</th>
+                    <th class="header text-center" style="background: #005257;">الطرف الأول</th>
+                    <th class="header text-center" style="background: #005257;">الطرف الثاني</th>
+                  </tr>
+                  <tr>
+                    <td>الاسم</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}</td>
+                    <td *ngIf="this.defendantCitizen?.fullName">{{this.defendantCitizen?.fullName}}</td>
+                    <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">{{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                  </tr>
+                  <tr>
+                    <td>التوقيع</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}</td>
+                    <td *ngIf="this.defendantCitizen?.fullName">{{this.defendantCitizen?.fullName}}</td>
+                    <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">{{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                  </tr>
+
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+
+<!-- Report For reconciliationOnTradyPlatform -->
+<div style="display: none;" class="printable" #reconciliationOnTradyPlatformPdfContent id="reconciliationOnTradyPlatformPdfContent">
+        <div class="wrapper">
+          <img src="assets/images/logo-2.png" class="img-fluid top-img" width="500" alt="logo">
+
+          <div class="container">
+            <h3 class="title" style="color: #005257;"> محضر تم الصلح في منصة تراضي</h3>
+            <h5>في الدعوى رقم ({{this.litigationRequestForReportDto?.litigationRequestShortDto?.requestCode}}) وتاريخ {{this.litigationRequestForReportDto?.report?.reportDate | date}} </h5>
+            <h5>والصادر من المركز السعودي للتحكيم العقاري</h5>
+
+            <h4 class="title" style="color: #00848d;">بيانات أطراف الدعوى</h4>
+
+            <table class="bottom-table">
+              <tr>
+                <td colspan="2" class="header text-center" style="background: #005257;">الطرف الاول</td>
+              </tr>
+              <tr>
+                <td> اسم المدعي <span>:</span>  {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}  </td>
+                <td>الهوية \ الاقامة \ السجل التجاري <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>رقم الهاتف <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.mobile}}</td>
+                <td>العنوان الوطني <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contractAddress}}</td>
+              </tr>
+              <tr>
+                <td>البريد الالكتروني <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.email}}</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ويمثله إن وجد <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegatorCitizen?.fullName}}</td>
+                <td>الهوية <span>/</span> الإقامة <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegatorCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>صفته <span>:</span> {{this.plaintiffDelegatorData?.delegator?.individualCapacity}}</td>
+                <td>رقم الوكالة <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegateNumber}}</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="header text-center" style="background: #04a488;">الطرف الثاني</td>
+              </tr>
+              <tr>
+                <td *ngIf="this.defendantCitizen?.fullName">اسم المدعى عليه <span>:</span> {{this.defendantCitizen?.fullName}}</td>
+                <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">اسم المدعى عليه <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                <td *ngIf="this.defendantCitizen?.identityNumber" >الهوية <span>/</span>الإقامة <span>/</span> السجل التجاري <span>:</span> {{this.defendantCitizen?.identityNumber}}</td>
+                <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.commercialRegisterNumber" >الهوية <span>/</span>الإقامة <span>/</span> السجل التجاري <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.commercialRegisterNumber}}</td>
+              </tr>
+              <tr>
+                <td>رقم الهاتف <span>:</span> {{this.defendantCitizen?.mobile}}</td>
+                <td>البريد الالكتروني <span>:</span> {{this.defendantCitizen?.email}}</td>
+              </tr>
+              <tr>
+                <td>ويمثله إن وجد <span>:</span> {{this.defendantDelegatorData?.delegator?.delegatorCitizen?.fullName}}</td>
+                <td>الهوية <span>/</span> الإقامة <span>:</span> {{this.defendantDelegatorData?.delegator?.delegatorCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>صفته <span>:</span> {{this.defendantDelegatorData?.delegator?.individualCapacity}}</td>
+                <td>رقم الوكالة <span>:</span> {{this.defendantDelegatorData?.delegator?.delegateNumber}}</td>
+              </tr>
+            </table>
+
+            <div class="d-flex flex-column gap-5 mt-5">
+              <div class="intro">
+                <p>فإنه في يوم {{this.litigationRequestForReportDto?.report?.reportDate | date : "YYYY-MM-dd"}} م في تمام الساعة ({{this.litigationRequestForReportDto?.report?.reportDate | date: 'HH'}}) تم التصالح بين الأطراف الموضحة بياناتهم أعلاه في منصة تراضي وتم إنهاء النزاع الحاصل بينهم.</p>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #005257;"><span>"</span>تحرير محل النزاع<span>"</span></h4>
+                <p class="mt-3">
+                  {{this.litigationRequestForReportDto?.report?.reconciliationSessionDetails}}
+                </p>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #005257;"><span>"</span>بنود الصلح<span>"</span></h4>
+                <p class="mt-3 mb-0">
+                  اتفق الأطراف الموضح بياناتهم أعلاه على إنهاء النزاع الحاصل بينهم وفق البنود التالية <span>:</span>
+                </p>
+                <ol class="list-unstyled">
+                  <li *ngFor="let item of litigationRequestForReportDto?.report?.litigationRequestMeetingReconciliationItems">{{item.reconciliationItem}}</li>
+                </ol>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #04a488;">أحكام عامة</h4>
+                <p class="mt-6">
+                  تسري أحكام هذا الصلح اعتباراً من تاريخ التوقيع عليه، ويتعهد الطرفان بتنفيذ واحترام جميع بنودها مع اتفاقهما على ما يأتي<span>:</span>
+                </p>
+
+                <ul>
+                  <li>&nbsp;</li>
+
+                  <li>لا يعتبر تعديل أي بند من بنود هذا الصلح نافذاً إلى بعد موافقة الطرفين كتابتاً على التعديل، ويعتبر التعديل ملحقاً من ملحقات هذا المحضر، ويرفق به كجزء لا يتجزأ منه.</li>
+                  <li>&nbsp;</li>
+                  <li>إن عدم استخدام أي من الطرفين لأي حق من حقوقه المنصوص عليها بهذا الصلح، أو المقررة له نظاماً، ولا يمكن بأي حال من الأحوال اعتباره تنازلاً من هذا الطرف عن استخدام هذا الحق ما لم يقع هذا التنازل بصورة صريحة ومكتوبة، ولا يشمل التنازل الكتابي المذكور إلا الواقعة المخصصة فيه ولا يتعدى نطاقه إلى أي خروقات أو حقوق أو مطالبات لاحقة مهما كانت صفتها حتى لو تشابهت مع ما جرى التنازل بخصوصه.</li>
+                  <li>&nbsp;</li>
+
+                  <li>أقر كل طرف في هذا المحضر بالتفهم الكامل لبنوده والإدراك التام لكافة ما ورد فيه بعد الاطلاع عليه، بما يمتنع معه بعد التوقيع عليه المعارضة بعدم الإدراك أو الفهم الخاطئ أو الغبن أو خلافه.</li>
+                  <li>&nbsp;</li>
+
+                  <li>على الطرفين تقوى الله سبحانه وتعالى في أمورهم كلها وفي تنفيذ هذا الصلح طبقاً للأحكام والبنود الواردة فيه وبما يتفق مع الأنظمة والعرف وبطريقة تلائم موجبات حسن النية.</li>
+                  <li>&nbsp;</li>
+
+                </ul>
+                <p class="my-0">
+                  وعليه جرى التوقيع وصلى الله وسلم على نبينا محمد وآله وصحبه أجمعين
+                </p>
+              </div>
+
+              <div class="signature">
+                <h4 class="title" style="color: #04a488">توقيع الأطراف</h4>
+
+                <table class="bottom-table">
+                  <tr>
+                    <th class="header text-center" style="background: #005257;">البيانات</th>
+                    <th class="header text-center" style="background: #005257;">الطرف الأول</th>
+                    <th class="header text-center" style="background: #005257;">الطرف الثاني</th>
+                  </tr>
+                  <tr>
+                    <td>الاسم</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}</td>
+                    <td *ngIf="this.defendantCitizen?.fullName">{{this.defendantCitizen?.fullName}}</td>
+                    <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">{{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                  </tr>
+                  <tr>
+                    <td>التوقيع</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}</td>
+                    <td *ngIf="this.defendantCitizen?.fullName">{{this.defendantCitizen?.fullName}}</td>
+                    <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">{{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatus==1?' طلب مقبول بتاريخ': this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatus==2?'طلب مرفوض بتاريخ ':'فى حاله انتظار'}} {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatusOn | date}}</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatus==1?' طلب مقبول بتاريخ': this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatus==2?'طلب مرفوض بتاريخ ':'فى حاله انتظار'}} {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatusOn | date}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+<!-- Report For waiverOfTheLitigation -->
+<div style="display: none;" class="printable" #waiverOfTheLitigationPdfContent id="waiverOfTheLitigationPdfContent">
+        <div class="wrapper">
+          <img src="assets/images/logo-2.png" class="img-fluid top-img" width="500" alt="logo">
+
+          <div class="container">
+            <h3 class="title" style="color: #005257;"> محضر تنازل عن الدعوى</h3>
+            <h5>في الدعوى رقم ({{this.litigationRequestForReportDto?.litigationRequestShortDto?.requestCode}}) وتاريخ {{this.litigationRequestForReportDto?.report?.reportDate | date}} </h5>
+            <h5>والصادر من المركز السعودي للتحكيم العقاري</h5>
+
+            <h4 class="title" style="color: #00848d;">بيانات أطراف الدعوى</h4>
+
+            <table class="bottom-table">
+              <tr>
+                <td colspan="2" class="header text-center" style="background: #005257;">الطرف الاول</td>
+              </tr>
+              <tr>
+                <td> اسم المدعي <span>:</span>  {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}  </td>
+                <td>الهوية \ الاقامة \ السجل التجاري <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>رقم الهاتف <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.mobile}}</td>
+                <td>العنوان الوطني <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contractAddress}}</td>
+              </tr>
+              <tr>
+                <td>البريد الالكتروني <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.email}}</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ويمثله إن وجد <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegatorCitizen?.fullName}}</td>
+                <td>الهوية <span>/</span> الإقامة <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegatorCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>صفته <span>:</span> {{this.plaintiffDelegatorData?.delegator?.individualCapacity}}</td>
+                <td>رقم الوكالة <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegateNumber}}</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="header text-center" style="background: #04a488;">الطرف الثاني</td>
+              </tr>
+              <tr>
+                <td *ngIf="this.defendantCitizen?.fullName">اسم المدعى عليه <span>:</span> {{this.defendantCitizen?.fullName}}</td>
+                <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">اسم المدعى عليه <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                <td *ngIf="this.defendantCitizen?.identityNumber" >الهوية <span>/</span>الإقامة <span>/</span> السجل التجاري <span>:</span> {{this.defendantCitizen?.identityNumber}}</td>
+                <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.commercialRegisterNumber" >الهوية <span>/</span>الإقامة <span>/</span> السجل التجاري <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.commercialRegisterNumber}}</td>
+              </tr>
+              <tr>
+                <td>رقم الهاتف <span>:</span> {{this.defendantCitizen?.mobile}}</td>
+                <td>البريد الالكتروني <span>:</span> {{this.defendantCitizen?.email}}</td>
+              </tr>
+              <tr>
+                <td>ويمثله إن وجد <span>:</span> {{this.defendantDelegatorData?.delegator?.delegatorCitizen?.fullName}}</td>
+                <td>الهوية <span>/</span> الإقامة <span>:</span> {{this.defendantDelegatorData?.delegator?.delegatorCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>صفته <span>:</span> {{this.defendantDelegatorData?.delegator?.individualCapacity}}</td>
+                <td>رقم الوكالة <span>:</span> {{this.defendantDelegatorData?.delegator?.delegateNumber}}</td>
+              </tr>
+            </table>
+
+            <div class="d-flex flex-column gap-5 mt-5">
+              <div class="intro">
+                <p>فإنه في يوم {{this.litigationRequestForReportDto?.report?.reportDate | date : "YYYY-MM-dd"}} م في تمام الساعة ({{this.litigationRequestForReportDto?.report?.reportDate | date: 'HH'}}) تم تنازل المدعي عن الدعوى الموضحة بياناته أعلاه في مقر المركز السعودي للتحكيم العقاري وتم إنهاء النزاع الحاصل بينهم وتحرير هذا التنازل وكتابته في هذا اليوم.</p>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #005257;"><span>"</span>تحرير محل النزاع<span>"</span></h4>
+                <p class="mt-3">
+                  {{this.litigationRequestForReportDto?.report?.reconciliationSessionDetails}}
+                </p>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #005257;"><span>"</span>بنود الصلح<span>"</span></h4>
+                <p class="mt-3 mb-0">
+                  اتفق الأطراف الموضح بياناتهم أعلاه على إنهاء النزاع الحاصل بينهم وفق البنود التالية <span>:</span>
+                </p>
+                <ol class="list-unstyled">
+                  <li *ngFor="let item of litigationRequestForReportDto?.report?.litigationRequestMeetingReconciliationItems">{{item.reconciliationItem}}</li>
+                </ol>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #04a488;">أحكام عامة</h4>
+                <p class="mt-6">
+                  تسري أحكام هذا الصلح اعتباراً من تاريخ التوقيع عليه، ويتعهد الطرفان بتنفيذ واحترام جميع بنودها مع اتفاقهما على ما يأتي<span>:</span>
+                </p>
+
+                <ul>
+                  <li>&nbsp;</li>
+
+                  <li>لا يعتبر تعديل أي بند من بنود هذا الصلح نافذاً إلى بعد موافقة الطرفين كتابتاً على التعديل، ويعتبر التعديل ملحقاً من ملحقات هذا المحضر، ويرفق به كجزء لا يتجزأ منه.</li>
+                  <li>&nbsp;</li>
+                  <li>إن عدم استخدام أي من الطرفين لأي حق من حقوقه المنصوص عليها بهذا الصلح، أو المقررة له نظاماً، ولا يمكن بأي حال من الأحوال اعتباره تنازلاً من هذا الطرف عن استخدام هذا الحق ما لم يقع هذا التنازل بصورة صريحة ومكتوبة، ولا يشمل التنازل الكتابي المذكور إلا الواقعة المخصصة فيه ولا يتعدى نطاقه إلى أي خروقات أو حقوق أو مطالبات لاحقة مهما كانت صفتها حتى لو تشابهت مع ما جرى التنازل بخصوصه.</li>
+                  <li>&nbsp;</li>
+
+                  <li>أقر كل طرف في هذا المحضر بالتفهم الكامل لبنوده والإدراك التام لكافة ما ورد فيه بعد الاطلاع عليه، بما يمتنع معه بعد التوقيع عليه المعارضة بعدم الإدراك أو الفهم الخاطئ أو الغبن أو خلافه.</li>
+                  <li>&nbsp;</li>
+
+                  <li>على الطرفين تقوى الله سبحانه وتعالى في أمورهم كلها وفي تنفيذ هذا الصلح طبقاً للأحكام والبنود الواردة فيه وبما يتفق مع الأنظمة والعرف وبطريقة تلائم موجبات حسن النية.</li>
+                  <li>&nbsp;</li>
+
+                </ul>
+                <p class="my-0">
+                  وعليه جرى التوقيع وصلى الله وسلم على نبينا محمد وآله وصحبه أجمعين
+                </p>
+              </div>
+
+              <div class="signature">
+                <h4 class="title" style="color: #04a488">توقيع الأطراف</h4>
+
+                <table class="bottom-table">
+                  <tr>
+                    <th class="header text-center" style="background: #005257;">البيانات</th>
+                    <th class="header text-center" style="background: #005257;">الطرف الأول</th>
+                    <th class="header text-center" style="background: #005257;">الطرف الثاني</th>
+                  </tr>
+                  <tr>
+                    <td>الاسم</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}</td>
+                    <td *ngIf="this.defendantCitizen?.fullName">{{this.defendantCitizen?.fullName}}</td>
+                    <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">{{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                  </tr>
+                  <tr>
+                    <td>التوقيع</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}</td>
+                    <td *ngIf="this.defendantCitizen?.fullName">{{this.defendantCitizen?.fullName}}</td>
+                    <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">{{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatus==1?' طلب مقبول بتاريخ': this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatus==2?'طلب مرفوض بتاريخ ':'فى حاله انتظار'}} {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatusOn | date}}</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatus==1?' طلب مقبول بتاريخ': this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatus==2?'طلب مرفوض بتاريخ ':'فى حاله انتظار'}} {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatusOn | date}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+<!-- Report For waiverOfRight -->
+<div style="display: none;" class="printable" #waiverOfRightPdfContent id="waiverOfRightPdfContent">
+        <div class="wrapper">
+          <img src="assets/images/logo-2.png" class="img-fluid top-img" width="500" alt="logo">
+
+          <div class="container">
+            <h3 class="title" style="color: #005257;"> محضر تنازل عن حق</h3>
+            <h5>في الدعوى رقم ({{this.litigationRequestForReportDto?.litigationRequestShortDto?.requestCode}}) وتاريخ {{this.litigationRequestForReportDto?.report?.reportDate | date}} </h5>
+            <h5>والصادر من المركز السعودي للتحكيم العقاري</h5>
+
+            <h4 class="title" style="color: #00848d;">بيانات أطراف الدعوى</h4>
+
+            <table class="bottom-table">
+              <tr>
+                <td colspan="2" class="header text-center" style="background: #005257;">الطرف الاول</td>
+              </tr>
+              <tr>
+                <td> اسم المدعي <span>:</span>  {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}  </td>
+                <td>الهوية \ الاقامة \ السجل التجاري <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>رقم الهاتف <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.mobile}}</td>
+                <td>العنوان الوطني <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contractAddress}}</td>
+              </tr>
+              <tr>
+                <td>البريد الالكتروني <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.email}}</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>ويمثله إن وجد <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegatorCitizen?.fullName}}</td>
+                <td>الهوية <span>/</span> الإقامة <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegatorCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>صفته <span>:</span> {{this.plaintiffDelegatorData?.delegator?.individualCapacity}}</td>
+                <td>رقم الوكالة <span>:</span> {{this.plaintiffDelegatorData?.delegator?.delegateNumber}}</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="header text-center" style="background: #04a488;">الطرف الثاني</td>
+              </tr>
+              <tr>
+                <td *ngIf="this.defendantCitizen?.fullName">اسم المدعى عليه <span>:</span> {{this.defendantCitizen?.fullName}}</td>
+                <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">اسم المدعى عليه <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                <td *ngIf="this.defendantCitizen?.identityNumber" >الهوية <span>/</span>الإقامة <span>/</span> السجل التجاري <span>:</span> {{this.defendantCitizen?.identityNumber}}</td>
+                <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.commercialRegisterNumber" >الهوية <span>/</span>الإقامة <span>/</span> السجل التجاري <span>:</span> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.commercialRegisterNumber}}</td>
+              </tr>
+              <tr>
+                <td>رقم الهاتف <span>:</span> {{this.defendantCitizen?.mobile}}</td>
+                <td>البريد الالكتروني <span>:</span> {{this.defendantCitizen?.email}}</td>
+              </tr>
+              <tr>
+                <td>ويمثله إن وجد <span>:</span> {{this.defendantDelegatorData?.delegator?.delegatorCitizen?.fullName}}</td>
+                <td>الهوية <span>/</span> الإقامة <span>:</span> {{this.defendantDelegatorData?.delegator?.delegatorCitizen?.identityNumber}}</td>
+              </tr>
+              <tr>
+                <td>صفته <span>:</span> {{this.defendantDelegatorData?.delegator?.individualCapacity}}</td>
+                <td>رقم الوكالة <span>:</span> {{this.defendantDelegatorData?.delegator?.delegateNumber}}</td>
+              </tr>
+            </table>
+
+            <div class="d-flex flex-column gap-5 mt-5">
+              <div class="intro">
+                <p>فإنه في يوم {{this.litigationRequestForReportDto?.report?.reportDate | date : "YYYY-MM-dd"}} م في تمام الساعة ({{this.litigationRequestForReportDto?.report?.reportDate | date: 'HH'}}) تم تنازل المدعي عن حقه الموضحة بياناته أعلاه في مقر المركز السعودي للتحكيم العقاري وتم إنهاء النزاع الحاصل بينهم وتحرير هذا التنازل وكتابته في هذا اليوم</p>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #005257;"><span>"</span>تحرير محل النزاع<span>"</span></h4>
+                <p class="mt-3">
+                  {{this.litigationRequestForReportDto?.report?.reconciliationSessionDetails}}
+                </p>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #005257;"><span>"</span>بنود الصلح<span>"</span></h4>
+                <p class="mt-3 mb-0">
+                  اتفق الأطراف الموضح بياناتهم أعلاه على إنهاء النزاع الحاصل بينهم وفق البنود التالية <span>:</span>
+                </p>
+                <ol class="list-unstyled">
+                  <li *ngFor="let item of litigationRequestForReportDto?.report?.litigationRequestMeetingReconciliationItems">{{item.reconciliationItem}}</li>
+                </ol>
+              </div>
+
+              <div class="text-part">
+                <h4 class="text-center" style="color: #04a488;">أحكام عامة</h4>
+                <p class="mt-6">
+                  تسري أحكام هذا الصلح اعتباراً من تاريخ التوقيع عليه، ويتعهد الطرفان بتنفيذ واحترام جميع بنودها مع اتفاقهما على ما يأتي<span>:</span>
+                </p>
+
+                <ul>
+                  <li>&nbsp;</li>
+
+                  <li>لا يعتبر تعديل أي بند من بنود هذا الصلح نافذاً إلى بعد موافقة الطرفين كتابتاً على التعديل، ويعتبر التعديل ملحقاً من ملحقات هذا المحضر، ويرفق به كجزء لا يتجزأ منه.</li>
+                  <li>&nbsp;</li>
+                  <li>إن عدم استخدام أي من الطرفين لأي حق من حقوقه المنصوص عليها بهذا الصلح، أو المقررة له نظاماً، ولا يمكن بأي حال من الأحوال اعتباره تنازلاً من هذا الطرف عن استخدام هذا الحق ما لم يقع هذا التنازل بصورة صريحة ومكتوبة، ولا يشمل التنازل الكتابي المذكور إلا الواقعة المخصصة فيه ولا يتعدى نطاقه إلى أي خروقات أو حقوق أو مطالبات لاحقة مهما كانت صفتها حتى لو تشابهت مع ما جرى التنازل بخصوصه.</li>
+                  <li>&nbsp;</li>
+
+                  <li>أقر كل طرف في هذا المحضر بالتفهم الكامل لبنوده والإدراك التام لكافة ما ورد فيه بعد الاطلاع عليه، بما يمتنع معه بعد التوقيع عليه المعارضة بعدم الإدراك أو الفهم الخاطئ أو الغبن أو خلافه.</li>
+                  <li>&nbsp;</li>
+
+                  <li>على الطرفين تقوى الله سبحانه وتعالى في أمورهم كلها وفي تنفيذ هذا الصلح طبقاً للأحكام والبنود الواردة فيه وبما يتفق مع الأنظمة والعرف وبطريقة تلائم موجبات حسن النية.</li>
+                  <li>&nbsp;</li>
+
+                </ul>
+                <p class="my-0">
+                  وعليه جرى التوقيع وصلى الله وسلم على نبينا محمد وآله وصحبه أجمعين
+                </p>
+              </div>
+
+              <div class="signature">
+                <h4 class="title" style="color: #04a488">توقيع الأطراف</h4>
+
+                <table class="bottom-table">
+                  <tr>
+                    <th class="header text-center" style="background: #005257;">البيانات</th>
+                    <th class="header text-center" style="background: #005257;">الطرف الأول</th>
+                    <th class="header text-center" style="background: #005257;">الطرف الثاني</th>
+                  </tr>
+                  <tr>
+                    <td>الاسم</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}</td>
+                    <td *ngIf="this.defendantCitizen?.fullName">{{this.defendantCitizen?.fullName}}</td>
+                    <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">{{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                  </tr>
+                  <tr>
+                    <td>التوقيع</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.firstPartyCitizen?.fullName}}</td>
+                    <td *ngIf="this.defendantCitizen?.fullName">{{this.defendantCitizen?.fullName}}</td>
+                    <td *ngIf="this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName">{{this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility?.arabicFacilityName}}</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td> {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatus==1?' طلب مقبول بتاريخ': this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatus==2?'طلب مرفوض بتاريخ ':'فى حاله انتظار'}} {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalPlaintiffStatusOn | date}}</td>
+                    <td>{{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatus==1?' طلب مقبول بتاريخ': this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatus==2?'طلب مرفوض بتاريخ ':'فى حاله انتظار'}} {{this.litigationRequestForReportDto?.litigationRequestShortDto?.mintuesOfMeetingApprovalDefendantStatusOn | date}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>

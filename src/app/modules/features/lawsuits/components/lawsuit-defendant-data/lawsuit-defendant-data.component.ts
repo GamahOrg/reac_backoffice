@@ -25,6 +25,7 @@ export class LawsuitDefendantDataComponent extends BaseComponent implements OnIn
     contract!: Contract | undefined;
     defendantCitizen!: any;
     defendantFacility!: any;
+    defendantFacilityAddress: string = '';
     showAddMobile: boolean = false;
     showAddEmail: boolean = false;
     showAddContact: boolean = false;
@@ -55,9 +56,15 @@ export class LawsuitDefendantDataComponent extends BaseComponent implements OnIn
     private observeLawsuitRequestDetailsSignal() {
         effect(() => {
             debugger;
-            this.contract = this._lawsuitRequestDetailsService.litigationDetails()?.contract;
-            this.defendantCitizen = this._lawsuitRequestDetailsService.litigationDetails()?.defendantCitizen;
-            this.defendantFacility = this._lawsuitRequestDetailsService.litigationDetails()?.defendantFacility;
+            const details = this._lawsuitRequestDetailsService.litigationDetails();
+            this.contract = details?.contract;
+            this.defendantFacility = details?.defendantFacility;
+            this.defendantCitizen = details?.defendantCitizen ?? (this.defendantFacility ? this.contract?.secondPartyCitizen : null);
+            this.defendantFacilityAddress = [
+                this.defendantFacility?.city,
+                this.defendantFacility?.district,
+                this.defendantFacility?.street
+            ].filter((p: string | undefined) => p?.trim()).join(', ');
         }, {
             injector: this._injector,
             allowSignalWrites: true

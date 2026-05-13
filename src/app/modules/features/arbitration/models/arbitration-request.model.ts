@@ -30,7 +30,13 @@ export interface LitigationRequestMircoDto {
     status: string;
     isDone: string;
     response?: LitigationRequestReformerAssigningRequestStatus;
-    requestId?: string
+    requestId?: string;
+    submissionDate?: string | null;
+    auditorAcceptanceDate?: string | null;
+    arbitratorAcceptanceDate?: string | null;
+    judgmentDate?: string | null;
+    arbitratorName?: string | null;
+    correctionRequestStatus?: string | null;
 }
 
 export class ArbitrationRequestDocumentContent{
@@ -106,7 +112,8 @@ export interface LitigationRequestShortDto {
     sysExemptionReductionCategory: SysExemptionReductionCategoryDto | null;
     litigationRequestOwnerType: SyslitigationRequestOwnerTypeDto;
     arbitratorsCount: number | null;
-
+    isFinancialLitigation?: boolean | null;
+    arbitratorCitizen?: ArbitratorCitizenDto;
 }
 
 export interface LitigationRequestContractShortDto {
@@ -200,4 +207,76 @@ export interface litigationRequestReconciliationReportCreateUpdateDto  {
     reconciliationSessionDetails: string;
     modificationRequest: string | null;
     litigationRequestMeetingReconciliationItems: litigationRequestReconciliationReportItemCreateUpdateDto[];
+}
+
+export interface ArbitratorCitizenDto {
+    id: string;
+    identityNumber: string;
+    fullName: string;
+    mobile: string;
+    homeTelephone: string | null;
+    workTelephone: string | null;
+    fax: string | null;
+    email: string;
+    signtureFile?: string | null;
+    city?: { id: string; cityName: string } | null;
+}
+
+export interface LitigationRequestForArbitrationReportDto {
+    allowAdd: boolean;
+    litigationRequestShortDto: LitigationRequestShortDto | null;
+    report: LitigationRequestArbitrationReportCreateUpdateDto | null;
+    correctionRequest: CorrectionRequestDto | null;
+}
+
+export interface CorrectionRequestDto {
+    correctionDescription: string;
+    requestDate: string;
+    files: CorrectionRequestFileDto[];
+}
+
+export interface CorrectionRequestFileDto {
+    correctionRequestFileId: string;
+    filePath: string;
+}
+
+export interface LitigationRequestArbitrationReportCreateUpdateDto {
+    id: string;
+    litigationRequestId: string;
+    judgmentDate: string;
+    facts: string;
+    reasons: string;
+    judgmentDecisionText: string;
+    modificationRequest: string;
+    judgmentDecisionDate: string;
+    judgmentDecisionPlace: string;
+    meetingLocationId: string;
+    arbitratorCitizenName: string;
+    meetingLocationName?: string;
+    isPublished?: boolean;
+}
+
+export interface ArbitrationReportDto {
+    requestId: string;
+    facts: string;
+    reasons: string;
+    judgmentDecisionText: string;
+    modificationRequest: string;
+    judgmentDecisionDate: string;
+    judgmentDecisionPlace: string;
+    meetingLocationId: string;
+}
+
+export interface LitigationRequestReportAdminFilterDto {
+    requestCode?: string | null;
+    arbitratorName?: string | null;
+    partyName?: string | null;
+    submissionDateFrom?: string | null;
+    submissionDateTo?: string | null;
+    auditorAcceptanceDateFrom?: string | null;
+    auditorAcceptanceDateTo?: string | null;
+    arbitratorAcceptanceDateFrom?: string | null;
+    arbitratorAcceptanceDateTo?: string | null;
+    judgmentDateFrom?: string | null;
+    judgmentDateTo?: string | null;
 }

@@ -8,7 +8,7 @@ import { TabsComponent } from '@app/shared/components/tabs/tabs.component';
 import { NextAndPreviusButtonsComponent } from '@app/shared/components/next-and-previus-buttons/next-and-previus-buttons.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploaderComponent } from '@app/shared/components/file-uploader/file-uploader.component';
-import { NgbAccordionModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbsComponent } from '@app/shared/components/breadcrumbs/breadcrumbs.component';
 import { PaginationComponent } from '@app/shared/components/pagination/pagination.component';
 import { AccordionComponent } from '@app/shared/components/accordion/accordion.component';
@@ -48,6 +48,8 @@ import { EmployeeService } from './services/employee.service';
 import { LookupsService } from '@app/shared/services/lookups/lookups.service';
 import { AssignedReconciliationRequestsDocumentsComponent } from './pages/assigned-reconciliation-requests-documents/assigned-reconciliation-requests-documents.component';
 import { ArbitrationDocumentService } from '../arbitration/services/arbitrator-document/arbitrator-document.service';
+import { LitigationRequestReportListComponent } from './pages/litigation-request-report-list/litigation-request-report-list.component';
+import { LitigationRequestReportDetailsComponent } from './pages/litigation-request-report-details/litigation-request-report-details.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -60,6 +62,7 @@ import { ArbitrationDocumentService } from '../arbitration/services/arbitrator-d
     FileUploaderComponent,
     NgbDropdownModule,
     NgbAccordionModule,
+    NgbTooltipModule,
     PaginationComponent,
     BreadcrumbsComponent,
     AccordionComponent,
@@ -91,7 +94,9 @@ import { ArbitrationDocumentService } from '../arbitration/services/arbitrator-d
     AssignArbitrationMemberDetailsComponent,
     AssignArbitrationHeadDetailsComponent,
     ReviewerListComponent,
-    AssignedReconciliationRequestsDocumentsComponent
+    AssignedReconciliationRequestsDocumentsComponent,
+    LitigationRequestReportListComponent,
+    LitigationRequestReportDetailsComponent
   ],
   providers: [
     CitizenRequestService,

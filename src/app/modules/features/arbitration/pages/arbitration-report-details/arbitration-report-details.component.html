@@ -1,0 +1,202 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+        <details open>
+            <summary class="flex-y-row gap-2">
+                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <h6 class="small fw-6 op-7"> {{ translations.arbitrator.arbitrationReportRequestDetails | translate }} </h6>
+            </summary>
+
+            <!-- 1. Judgment Details (Restore to top) -->
+            <div class="mt-5 px-4" *ngIf="litigationRequestForReportDto?.allowAdd">
+                <form [formGroup]="reportForm">
+                    <div class="d-flex justify-content-end mb-4">
+                        <button class="btn btn-primary px-8 py-3" type="button" (click)="onSave()"> {{translations.actions.send | translate}} </button>
+                    </div>
+
+                    <div class="mt-5">
+                        <label class="form-label"> الوقائع </label>
+                        <textarea class="form-control" rows="7" formControlName="facts" [class.is-invalid]="controls.facts.invalid && controls.facts.touched"></textarea>
+                    </div>
+
+                    <div class="mt-4">
+                        <label class="form-label"> الأسباب </label>
+                        <textarea class="form-control" rows="7" formControlName="reasons" [class.is-invalid]="controls.reasons.invalid && controls.reasons.touched"></textarea>
+                    </div>
+
+                    <div class="mt-4">
+                        <label class="form-label"> منطوق قرار التحكم </label>
+                        <textarea class="form-control" rows="7" formControlName="judgmentDecisionText" [class.is-invalid]="controls.judgmentDecisionText.invalid && controls.judgmentDecisionText.touched"></textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label class="small fw-6 mt-6 mb-2 required"> مكان اصدار الحكم </label>
+                            <input formControlName="judgmentDecisionPlace" class="form-control" type="text">
+                        </div>
+                        <div class="col">
+                            <label class="small fw-6 mt-6 mb-2 required"> تاريخ النطق بالحكم </label>
+                            <input type="date" formControlName="judgmentDecisionDate" class="form-control" [readonly]="true">
+                        </div>
+                        <div class="col">
+                            <label class="small fw-6 required mt-6 mb-2"> مقر الانعقاد </label>
+                            <select class="form-select" formControlName="meetingLocationId">
+                                <option *ngFor="let meetingLocation of meetingLocations" [ngValue]="meetingLocation.id"> {{meetingLocation.meetingLocationName}} </option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="mt-5 px-4 pb-4" *ngIf="!litigationRequestForReportDto?.allowAdd && litigationRequestForReportDto?.report != null">
+                <div class="mb-4">
+                    <label class="fw-6 mb-2 d-block small"> الوقائع: </label>
+                    <span class="small op-8 fact-text"> {{ litigationRequestForReportDto?.report?.facts }} </span>
+                </div>
+                <div class="mb-4">
+                    <label class="fw-6 mb-2 d-block small"> الأسباب: </label>
+                    <span class="small op-8"> {{ litigationRequestForReportDto?.report?.reasons }} </span>
+                </div>
+                <div class="mb-4">
+                    <label class="fw-6 mb-2 d-block small"> منطوق قرار التحكم: </label>
+                    <span class="small op-8"> {{ litigationRequestForReportDto?.report?.judgmentDecisionText }} </span>
+                </div>
+                <div class="mb-4">
+                    <label class="fw-6 mb-2 d-block small"> تاريخ النطق بالحكم: </label>
+                    <span class="small op-8"> {{ litigationRequestForReportDto?.report?.judgmentDecisionDate | date:'yyyy/MM/dd' }} </span>
+                </div>
+                <div class="mb-4">
+                    <label class="fw-6 mb-2 d-block small"> مكان اصدار الحكم: </label>
+                    <span class="small op-8"> {{ litigationRequestForReportDto?.report?.meetingLocationName }} </span>
+                </div>
+                <div class="mb-4">
+                    <label class="fw-6 mb-2 d-block small"> معد الحكم: </label>
+                    <span class="small op-8"> {{ litigationRequestForReportDto?.litigationRequestShortDto?.arbitratorCitizen?.fullName || '--' }} </span>
+                </div>
+                <button *ngIf="litigationRequestForReportDto?.report?.isPublished != null" class="btn btn-primary flex-end px-8 py-3 mt-4" (click)="downloadPDF()"> تحميل حكم التحكيم </button>
+            </div>
+
+            <!-- 2. Correction History Table (Now BELOW judgment details) -->
+            <div class="form-wrapper mt-5 px-4 pb-4" *ngIf="litigationRequestForCorrectionDto?.correctionRequests?.length">
+                <h5 class="mb-5 op-7 fw-4"> سجل طلبات التصحيح </h5>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="py-3">#</th>
+                                <th class="py-3 text-nowrap"> تاريخ الطلب </th>
+                                <th class="py-3 text-nowrap"> حالة طلب تصحيح الحكم </th>
+                                <th class="py-3 text-nowrap"> وصف التصحيح </th>
+                                <th class="py-3 text-nowrap"> ملاحظات القرار </th>
+                                <th class="py-3 text-nowrap"> المرفقات </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let request of litigationRequestForCorrectionDto?.correctionRequests; let i = index">
+                                <td class="fw-bold">{{ i + 1 }}</td>
+                                <td>{{ request.requestDate | date: 'yyyy/MM/dd' }}</td>
+                                <td>
+                                    <span class="badge px-3 py-2 status-badge" 
+                                          [class.status-approve]="request.approveRejectStatus == 1"
+                                          [class.status-reject]="request.approveRejectStatus == 2"
+                                          [class.status-pending]="!request.approveRejectStatus || request.approveRejectStatus == 0">
+                                        {{ request.approveRejectStatus == 1 ? 'مقبول' : request.approveRejectStatus == 2 ? 'مرفوض' : 'قيد المراجعة' }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-truncate-max" [ngbTooltip]="request.correctionDescription">
+                                        {{ request.correctionDescription }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div *ngIf="request.approveRejectStatus == 1 && request.correctionDecisionText" 
+                                         class="feedback-box feedback-approve" [ngbTooltip]="request.correctionDecisionText">
+                                        <strong> القرار: </strong>
+                                        <span class="text-truncate-max">{{ request.correctionDecisionText }}</span>
+                                    </div>
+                                    <div *ngIf="request.approveRejectStatus == 2 && request.rejectReason" 
+                                         class="feedback-box feedback-reject" [ngbTooltip]="request.rejectReason">
+                                        <strong> سبب الرفض: </strong>
+                                        <span class="text-truncate-max">{{ request.rejectReason }}</span>
+                                    </div>
+                                    <span *ngIf="!request.approveRejectStatus || request.approveRejectStatus == 0" class="text-muted small">--</span>
+                                </td>
+                                <td>
+                                    <div class="d-flex gap-2">
+                                        <a *ngFor="let file of request.files"
+                                           [href]="baseUrl + file.filePath" 
+                                           target="_blank"
+                                           class="btn btn-sm btn-outline-secondary p-1">
+                                            <i class="material-icons fs-6">attachment</i>
+                                        </a>
+                                        <span *ngIf="!request.files?.length" class="text-muted small">--</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-4 pb-2 d-flex justify-content-end" *ngIf="hasApprovedCorrection">
+                    <button class="btn btn-primary px-8 py-3 d-flex align-items-center gap-2" (click)="downloadCorrectedPDF()">
+                        <i class="material-icons fs-5">description</i>
+                        <span>تحميل حكم التحكيم بعد التصحيح</span>
+                    </button>
+                </div>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+        <details open>
+            <summary class="flex-y-row gap-2">
+                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <h6 class="small fw-6 op-7"> بيانات الطرف الأول </h6>
+            </summary>
+            <div class="grid-3 mt-5 px-4 pb-4">
+                <div *ngFor="let item of firstParty">
+                    <h6 class="small fw-5">{{item.title}}</h6>
+                    <h6 class="small op-7">{{item.value || '--'}}</h6>
+                </div>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+        <details open>
+            <summary class="flex-y-row gap-2">
+                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <h6 class="small fw-6 op-7"> بيانات الطرف الثاني </h6>
+            </summary>
+            <div class="grid-3 mt-5 px-4 pb-4">
+                <div *ngFor="let item of secondParty">
+                    <h6 class="small fw-5">{{item.title}}</h6>
+                    <h6 class="small op-7">{{item.value || '--'}}</h6>
+                </div>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="accordion-card">
+        <details open>
+            <summary class="flex-y-row gap-2">
+                <img src="assets/images/icons/bookmarks.svg" alt="bookmarks">
+                <h6 class="small fw-6 op-7"> بيانات الدعوى </h6>
+            </summary>
+            <div class="grid-3 mt-5 px-4 pb-4">
+                <div *ngFor="let item of dataList">
+                    <h6 class="small fw-5">{{item.title}}</h6>
+                    <h6 class="small op-7">{{item.value || '--'}}</h6>
+                </div>
+            </div>
+        </details>
+    </div>
+</div>

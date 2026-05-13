@@ -1,0 +1,142 @@
+<app-breadcrumbs></app-breadcrumbs>
+
+<form [formGroup]="filterForm">
+  <div class="row row-gap-4">
+    <div class="col-xl-3">
+      <label class="form-label">{{translations.arbitrator.searchByRequestCode | translate}}</label>
+      <input formControlName="requestCode" class="form-control" type="text">
+    </div>
+
+    <div class="col-xl-3">
+      <label class="form-label">{{translations.arbitrator.searchByArbitratorName | translate}}</label>
+      <input formControlName="arbitratorName" class="form-control" type="text">
+    </div>
+
+    <div class="col-xl-3">
+      <label class="form-label">{{translations.arbitrator.searchByPartyName | translate}}</label>
+      <input formControlName="partyName" class="form-control" type="text">
+    </div>
+  </div>
+
+  <div class="row row-gap-4 mt-3">
+    <div class="col-xl-3">
+      <label class="form-label">{{translations.arbitrator.submissionDateFrom | translate}}</label>
+      <input formControlName="submissionDateFrom" class="form-control" type="date">
+    </div>
+
+    <div class="col-xl-3">
+      <label class="form-label">{{translations.arbitrator.submissionDateTo | translate}}</label>
+      <input formControlName="submissionDateTo" class="form-control" type="date">
+    </div>
+
+    <div class="col-xl-3">
+      <label class="form-label">{{translations.arbitrator.auditorAcceptanceDateFrom | translate}}</label>
+      <input formControlName="auditorAcceptanceDateFrom" class="form-control" type="date">
+    </div>
+
+    <div class="col-xl-3">
+      <label class="form-label">{{translations.arbitrator.auditorAcceptanceDateTo | translate}}</label>
+      <input formControlName="auditorAcceptanceDateTo" class="form-control" type="date">
+    </div>
+  </div>
+
+  <div class="row row-gap-4 mt-3">
+    <div class="col-xl-3">
+      <label class="form-label">{{translations.arbitrator.arbitratorAcceptanceDateFrom | translate}}</label>
+      <input formControlName="arbitratorAcceptanceDateFrom" class="form-control" type="date">
+    </div>
+
+    <div class="col-xl-3">
+      <label class="form-label">{{translations.arbitrator.arbitratorAcceptanceDateTo | translate}}</label>
+      <input formControlName="arbitratorAcceptanceDateTo" class="form-control" type="date">
+    </div>
+
+    <div class="col-xl-3">
+      <label class="form-label">{{translations.arbitrator.judgmentDateFrom | translate}}</label>
+      <input formControlName="judgmentDateFrom" class="form-control" type="date">
+    </div>
+
+    <div class="col-xl-3">
+      <label class="form-label">{{translations.arbitrator.judgmentDateTo | translate}}</label>
+      <input formControlName="judgmentDateTo" class="form-control" type="date">
+    </div>
+  </div>
+
+  <div class="row row-gap-4 mt-3">
+    <div class="col-xl-auto">
+      <div class="d-flex align-items-end gap-2 h-100">
+        <button class="btn btn-primary" (click)="getArbitrationRequestForAdminReport()">{{translations.general.search | translate}}</button>
+      </div>
+    </div>
+    <div class="col-xl-auto">
+      <div class="d-flex align-items-end gap-2 h-100">
+        <button class="btn btn-primary" (click)="resetFilter()">{{translations.general.clearFilter | translate}}</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+@if (litigationRequests && litigationRequests.results && litigationRequests.results.length) {
+<div class="table-wrapper mt-4">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">{{translations.LitigationRequest.requestCode | translate}}</th>
+          <th scope="col">{{translations.arbitrator.submissionDate | translate}}</th>
+          <th scope="col">{{translations.arbitrator.auditorAcceptanceDate | translate}}</th>
+          <th scope="col">{{translations.arbitrator.arbitratorAcceptanceDate | translate}}</th>
+          <th scope="col">{{translations.arbitrator.judgmentDate | translate}}</th>
+          <th scope="col">{{translations.LitigationRequest.requestTypeName | translate}}</th>
+          <th scope="col">{{translations.LitigationRequest.firstPartyName | translate}}</th>
+          <th scope="col">{{translations.LitigationRequest.secondPartyName | translate}}</th>
+          <th scope="col">{{translations.arbitrator.arbitrationChairmanName | translate}}</th>
+          <th scope="col">{{translations.LitigationRequest.correctionStatus | translate}}</th>
+          <th scope="col" class="text-center">{{translations.CitizenRequest.actions | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (litigationRequest of litigationRequests.results; track $index) {
+        <tr>
+          <td>{{litigationRequest.requestCode}}</td>
+          <td>{{litigationRequest.submissionDate | date:'yyyy/MM/dd'}}</td>
+          <td>{{litigationRequest.auditorAcceptanceDate | date:'yyyy/MM/dd'}}</td>
+          <td>{{litigationRequest.arbitratorAcceptanceDate | date:'yyyy/MM/dd'}}</td>
+          <td>{{litigationRequest.judgmentDate | date:'yyyy/MM/dd'}}</td>
+          <td>{{litigationRequest.requestTypeName}}</td>
+          <td>{{litigationRequest.firstPartyName}}</td>
+          <td>{{litigationRequest.secondPartyName}}</td>
+          <td>{{litigationRequest.arbitratorName}}</td>
+          <td>{{litigationRequest.correctionRequestStatus ?? '-'}}</td>
+          <td>
+            <div class="d-flex justify-content-center align-items-center gap-2">
+              <button class="btn btn-sm btn-primary" (click)="goToDetailsPage(litigationRequest.id)">{{ translations.actions.view | translate }}</button>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="flex-between">
+  <div class="op-6 v-small fw-5">
+    <span>{{translations.tables.from | translate}} </span>
+    <span>{{pagintationData.currentPage}} </span>
+    <span>{{translations.tables.to | translate}} </span>
+    <span>{{pagintationData.pageSize}} </span>
+    <span>{{translations.tables.ofTotal | translate}} </span>
+    <span>{{pageCount}} </span>
+    <span>{{translations.tables.row | translate}} </span>
+  </div>
+  <app-pagination></app-pagination>
+</div>
+}
+
+@if((!litigationRequests.results) || litigationRequests.results.length==0){
+<div class="flex-center flex-column">
+  <img src="assets/images/no-data.svg" alt="no-data">
+  <h4 class="op-4 fw-5 mt-6 mb-4">{{translations.lawsuits.lawsuitsList.noCurrentLawsuits| translate}}</h4>
+</div>
+}

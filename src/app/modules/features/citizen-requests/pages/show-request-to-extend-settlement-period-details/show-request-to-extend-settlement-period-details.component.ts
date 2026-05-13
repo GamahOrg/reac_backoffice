@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { LawsuitDetailsItem } from '@app/modules/features/lawsuits/models/lawsuit-details.model';
 import { BaseComponent } from '@app/shared/components/base/base.component';
+import { translations } from 'translation-keys.enum';
 import { TranslateService } from '@ngx-translate/core';
 import { LitigationRequestForExtendPeriodRequestDto } from '../../models/litigation-request-for-extend-period-request-dto';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -26,6 +27,8 @@ export class ShowRequestToExtendSettlementPeriodDetailsComponent extends BaseCom
     requestId?: string;
     baseUrl = `${environment.baseURL}/`;
     litigationRequestExtendPeriodRequestStatus = LitigationRequestExtendPeriodRequestStatus;
+  ExtendLitigationRequest = translations.ExtendLitigationRequest;
+  LitigationRequest = translations.LitigationRequest;
     defendantCitizen: any;
     defendantFacility: any;
     litigationRequestForSessionDto: any;
@@ -46,6 +49,7 @@ export class ShowRequestToExtendSettlementPeriodDetailsComponent extends BaseCom
     showValidation: boolean = false;
     form = this._formBuilder.group({
         finishStatusReason: [''],
+        notes: [''],
     });
 
     get controls() {
@@ -66,7 +70,7 @@ export class ShowRequestToExtendSettlementPeriodDetailsComponent extends BaseCom
     private updateBreadcrumb(): void {
         this._breadcrumbService.updateBreadcrumbListContent([
             { label: this._translate.instant(this.translations.layout.sidebar.home), link:  `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.reformerassigningrequestforall}` },
-            { label: this._translate.instant(this.translations.layout.sidebar.requestToExtendArbitrationPeriodList), link: Configuration.pages.citizenRequests.requestToExtendSettlementPeriodList },
+            { label: this._translate.instant(this.translations.layout.sidebar.requestToExtendSettlementPeriod), link: `/${Configuration.modules.citizenRequests}/${Configuration.pages.citizenRequests.requestToExtendSettlementPeriodList}` },
             { label: this._translate.instant(this.translations.layout.sidebar.details) },
         ])
     };
@@ -74,10 +78,19 @@ export class ShowRequestToExtendSettlementPeriodDetailsComponent extends BaseCom
         this._requestToExtendSettlementPeriodService.getLitigationRequestExtendPeriodForEmployeeByRequestId(requestId).subscribe(res => {
              
             this.litigationRequestForReportDto = res as LitigationRequestForExtendPeriodRequestDto;
+            
+            // The backend returns requests sorted by date descending.
+            if (this.litigationRequestForReportDto?.litigationRequestExtendPeriodRequests) {
+                this.litigationRequestForReportDto.litigationRequestExtendPeriodRequests = 
+                    this.litigationRequestForReportDto.litigationRequestExtendPeriodRequests.sort((a, b) => 
+                        new Date(b.createdOn!).getTime() - new Date(a.createdOn!).getTime()
+                    );
+            }
+
             this.fillData()
             this.fillfirstPartyData()
             this.fillsecondPartyData()
-        })
+        });
     }
 
     deleteItem() {
@@ -320,11 +333,13 @@ export class ShowRequestToExtendSettlementPeriodDetailsComponent extends BaseCom
         //     ]
         // }
 
-    this.defendantCitizen = this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantCitizen;
-        this.defendantFacility = this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility;
+    this.defendantFacility = this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantFacility;
+        this.defendantCitizen = this.litigationRequestForReportDto?.litigationRequestShortDto?.defendantCitizen
+            ?? (this.defendantFacility ? null : this.litigationRequestForReportDto?.litigationRequestShortDto?.contract?.secondPartyCitizen ?? null);
 
+        this.secondParty = [];
         if (this.defendantFacility) {
-            this.secondParty = [
+            this.secondParty.push(
                 {
                     icon: 'assets/images/icons/lawsuit-details/user.svg',
                     title: this._translate.instant(this.translations.LitigationRequest.facilityCode),
@@ -349,18 +364,11 @@ export class ShowRequestToExtendSettlementPeriodDetailsComponent extends BaseCom
                     value: this.defendantFacility?.facility700Number ?? '',
                     isDownload: false,
                 },
-                {
-                    icon: 'assets/images/icons/lawsuit-details/call.svg',
-                    title: this._translate.instant(this.translations.LitigationRequest.secondPartyCapacity),
-                    value: this.litigationRequestForSessionDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
-                    isDownload: false,
-                },
-            ]
+            );
         }
 
         if (this.defendantCitizen) {
-
-            this.secondParty = [
+            this.secondParty.push(
                 {
                     icon: 'assets/images/icons/lawsuit-details/user.svg',
                     title: this._translate.instant(this.translations.arbitrator.fullName),
@@ -403,14 +411,15 @@ export class ShowRequestToExtendSettlementPeriodDetailsComponent extends BaseCom
                     value: this.defendantCitizen?.mobile ?? '',
                     isDownload: false,
                 },
-                {
-                    icon: 'assets/images/icons/lawsuit-details/call.svg',
-                    title: this._translate.instant(this.translations.LitigationRequest.secondPartyCapacity),
-                    value: this.litigationRequestForSessionDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
-                    isDownload: false,
-                },
-            ]
+            );
         }
+
+        this.secondParty.push({
+            icon: 'assets/images/icons/lawsuit-details/call.svg',
+            title: this._translate.instant(this.translations.LitigationRequest.secondPartyCapacity),
+            value: this.litigationRequestForSessionDto?.litigationRequestShortDto?.contract.secondPartyCapacity ?? '',
+            isDownload: false,
+        });
 
     }
 
@@ -425,16 +434,36 @@ export class ShowRequestToExtendSettlementPeriodDetailsComponent extends BaseCom
                 this.showValidation = true;
                 return;
             }
-        } this.litigationRequestExtendPeriodRequestCreateUpdateEmployee.litigationRequestExtendPeriodRequestStatusId = litigationRequestExtendPeriodRequestStatus;
+        }
+        if (litigationRequestExtendPeriodRequestStatus == this.litigationRequestExtendPeriodRequestStatus.Approve) {
+            this.litigationRequestExtendPeriodRequestCreateUpdateEmployee.notes = this.form.controls.notes.value as string;
+        }
+        this.litigationRequestExtendPeriodRequestCreateUpdateEmployee.litigationRequestExtendPeriodRequestStatusId = litigationRequestExtendPeriodRequestStatus;
         this.litigationRequestExtendPeriodRequestCreateUpdateEmployee.litigationRequestId = this.requestId as string;
         this._requestToExtendSettlementPeriodService.addReconciliationExtendPeriodForEmployee(this.litigationRequestExtendPeriodRequestCreateUpdateEmployee as LitigationRequestExtendPeriodRequestCreateUpdateEmployeeDto).subscribe(result => {
              
             if (result) {
                  
                 this.litigationRequestForReportDto = result as LitigationRequestForExtendPeriodRequestDto;
+                
+                // The backend returns requests sorted by date descending.
+                if (this.litigationRequestForReportDto?.litigationRequestExtendPeriodRequests) {
+                    this.litigationRequestForReportDto.litigationRequestExtendPeriodRequests = 
+                        this.litigationRequestForReportDto.litigationRequestExtendPeriodRequests.sort((a, b) => 
+                            new Date(b.createdOn!).getTime() - new Date(a.createdOn!).getTime()
+                        );
+                }
+
                 this.toastrNotificationService.showSuccess(this._translate.instant(this.translations.general.successfullySave))
                 modal.dismiss()
             }
         })
+    }
+
+    getRequestStatusString(statusId: number | undefined): string {
+        if (!statusId) return this._translate.instant(this.translations.ExtendLitigationRequest.underReview);
+        if (statusId === LitigationRequestExtendPeriodRequestStatus.Approve) return this._translate.instant(this.translations.ExtendLitigationRequest.accepted);
+        if (statusId === LitigationRequestExtendPeriodRequestStatus.Reject) return this._translate.instant(this.translations.ExtendLitigationRequest.rejected);
+        return '';
     }
 }

@@ -9,7 +9,7 @@ import { BreadcrumbService } from './services/breadcrumb/breadcrumb.service';
 import { PaginationService } from './services/pagination/pagination.service';
 // import { ModalService } from '@app/shared/services/modal/modal.service';
 // import { ModalComponent } from './components/modal/modal.component';
-import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterComponent } from './components/filter/components/filter/filter.component';
 import { LookupsService } from './services/lookups/lookups.service';
@@ -35,6 +35,7 @@ export const MY_MOMENT_FORMATS = {
     imports: [
         CommonModule,
         NgbModalModule,
+        NgbTooltipModule,
         FormsModule,
         ReactiveFormsModule,
         NgSelectModule,
@@ -48,6 +49,7 @@ export const MY_MOMENT_FORMATS = {
         TranslateModule,
         FormsModule,
         FilterComponent,
+        NgbTooltipModule
         // AngularMaterialModule
     ],
     providers: [

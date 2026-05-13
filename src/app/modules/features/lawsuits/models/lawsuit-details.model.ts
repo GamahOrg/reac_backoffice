@@ -223,6 +223,8 @@ export interface Facility {
     commercialRegisterNumber: string,
     district: string,
     email: string,
+    mobile: string,
+    identityNumber: string,
     facility700Number: string,
     facilityDelegators: FacilityDelegator[],
     fax: string,

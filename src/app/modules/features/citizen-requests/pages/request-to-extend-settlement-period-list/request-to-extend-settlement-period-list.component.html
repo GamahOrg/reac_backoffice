@@ -24,7 +24,7 @@
                     <td>{{request.secondPartyName}}</td>
                     <td>{{request.requestTypeName}}</td>
                     <td>{{request.status}}</td>
-                    <td>{{request.isDone}}</td>
+                    <td>{{request.isDone | translate}}</td>
                     <td>
 
                         <button class="btn btn-sm btn-light" (click)="goToDetailsPage(request.id)">
